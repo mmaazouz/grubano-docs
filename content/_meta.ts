@@ -5,18 +5,8 @@ export default {
     title: 'Accueil',
     type: 'page',
   },
-  'getting-started': {
-    title: 'Démarrage rapide',
-  },
-  guides: {
-    title: 'Guides',
-    type: 'menu',
-  },
-  api: {
-    title: 'API Reference',
-    type: 'menu',
-  },
-  changelog: {
-    title: 'Changelog',
-  },
+  'getting-started': 'Démarrage rapide',
+  guides: 'Guides',
+  api: 'API Reference',
+  changelog: 'Changelog',
 } satisfies MetaRecord

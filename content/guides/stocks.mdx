@@ -1,0 +1,38 @@
+---
+title: Gestion des stocks
+description: Suivre l'inventaire, les DLC et les suggestions IA
+---
+
+import { Callout } from 'nextra/components'
+
+# Gestion des stocks
+
+La section **Stocks** (`/stocks`) tient un journal d'inventaire par marque, avec gestion des quantités et des dates limites de consommation (DLC).
+
+## Ajouter un article
+
+Chaque entrée de stock comprend :
+
+| Champ | Description |
+|---|---|
+| **Nom** | Désignation de l'ingrédient |
+| **Quantité** | Stock actuel |
+| **Unité** | kg, L, pièces… (défaut : kg) |
+| **Seuil minimum** | Déclenche une alerte de réapprovisionnement |
+| **DLC** | Date limite de consommation (optionnelle) |
+
+## Mise à jour en langage naturel
+
+Grubano comprend les mises à jour en langage naturel grâce à l'IA. Saisissez par exemple :
+
+> « Il me reste 3 kg de gnocchi et j'ai reçu 10 L de sauce tomate »
+
+L'IA met automatiquement à jour les quantités correspondantes dans votre journal.
+
+<Callout type="info">
+  Les articles sous leur **seuil minimum** ou approchant leur **DLC** sont mis en évidence pour anticiper les ruptures et le gaspillage.
+</Callout>
+
+## Suggestions IA
+
+À partir de votre historique de consommation et de vos réservations à venir, l'IA peut suggérer des quantités à commander pour éviter les ruptures.

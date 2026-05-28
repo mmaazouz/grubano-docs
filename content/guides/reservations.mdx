@@ -1,0 +1,44 @@
+---
+title: Réservations
+description: Gérer le plan de salle et les réservations de tables
+---
+
+import { Callout } from 'nextra/components'
+
+# Réservations
+
+La section **Tables** (`/tables`) gère votre plan de salle et vos réservations.
+
+## Créer une réservation
+
+Une réservation comprend :
+
+| Champ | Description |
+|---|---|
+| **Table** | Table assignée |
+| **Client** | Nom du client |
+| **Couverts** | Nombre de convives (1 à 30) |
+| **Date / fin** | Créneau de la réservation |
+| **Type** | `quick`, `standard` ou `full` |
+| **Allergies** | Liste des allergies déclarées |
+| **Acompte** | Montant de l'acompte éventuel |
+
+## Gestion des conflits
+
+Le système refuse automatiquement toute réservation qui chevauche un créneau déjà occupé sur la même table.
+
+<Callout type="warning">
+  Si une table est déjà réservée sur le créneau demandé, l'API renvoie une erreur `409` avec les heures du conflit.
+</Callout>
+
+## Statuts de réservation
+
+| Statut | Signification |
+|---|---|
+| `confirmed` | Réservation confirmée |
+| `arrived` | Client arrivé |
+| `overrun` | Dépassement de créneau |
+| `cancelled` | Annulée |
+| `noshow` | Client absent |
+
+Les statuts se mettent à jour via la fiche réservation ou l'API `PATCH /api/reservations`.

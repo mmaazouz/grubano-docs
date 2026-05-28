@@ -1,0 +1,64 @@
+name: Auto-update docs
+
+# Regenerates API reference + changelog from the main app repo.
+# Triggers:
+#   - Nightly at 02:00 (UTC)
+#   - repository_dispatch (event_type: app-updated) fired by grubano-kitchen-hub
+#     after a successful production deploy
+#   - Manual run from the Actions tab
+
+on:
+  schedule:
+    - cron: '0 2 * * *'
+  repository_dispatch:
+    types: [app-updated]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: auto-update-docs
+  cancel-in-progress: true
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout docs repo
+        uses: actions/checkout@v4
+        with:
+          path: grubano-docs
+
+      - name: Checkout main app repo
+        uses: actions/checkout@v4
+        with:
+          repository: mmaazouz/grubano-kitchen-hub
+          ref: main
+          token: ${{ secrets.APP_REPO_TOKEN || secrets.GITHUB_TOKEN }}
+          path: grubano-kitchen-hub
+          fetch-depth: 50 # enough history for the changelog
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Generate docs
+        working-directory: grubano-docs
+        env:
+          APP_REPO_PATH: ${{ github.workspace }}/grubano-kitchen-hub
+        run: node scripts/generate-docs.js
+
+      - name: Commit & push if changed
+        working-directory: grubano-docs
+        run: |
+          git config user.name  "grubano-docs-bot"
+          git config user.email "bot@grubano.com"
+          git add content/api content/changelog
+          if git diff --staged --quiet; then
+            echo "No documentation changes to commit."
+            exit 0
+          fi
+          git commit -m "docs: auto-update API reference + changelog [skip ci]"
+          git push origin main

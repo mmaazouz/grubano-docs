@@ -1,0 +1,31 @@
+---
+title: Créateurs
+description: Soumettre un plat et gagner des commissions
+---
+
+import { Callout } from 'nextra/components'
+
+# Créateurs
+
+Le portail créateurs (`/creators`) permet aux chefs et créateurs culinaires de soumettre leurs plats et de percevoir des commissions.
+
+## Devenir créateur
+
+Postulez via le formulaire de candidature (API `/api/creators/apply`). Une fois accepté, vous obtenez le rôle `creator` et l'accès au portail.
+
+## Soumettre un plat
+
+Depuis **Mes plats** (`/creators` → `/api/creators/my-dishes`), proposez vos créations :
+- Nom et description du plat
+- Photos
+- Ingrédients et allergènes
+
+Les plats validés sont intégrés au catalogue et produits dans les dark kitchens du réseau.
+
+## Commissions & classement
+
+Vous percevez une commission sur chaque vente de vos plats. Le **leaderboard** (`/api/creators/leaderboard`) classe les créateurs selon leurs performances.
+
+<Callout type="info">
+  L'accès au portail créateurs nécessite le rôle `creator`, attribué après validation de votre candidature.
+</Callout>

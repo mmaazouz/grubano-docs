@@ -1,0 +1,46 @@
+---
+title: Commander & suivre
+description: Guide consommateur — commander, fidélité et suivi de commande
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# Commander & suivre
+
+L'application consommateur (`/eat`) est optimisée pour mobile et ne nécessite pas de compte pour parcourir les restaurants.
+
+## Passer une commande
+
+<Steps>
+
+### Parcourir les restaurants
+
+Sur la page d'accueil (`/eat`), explorez les restaurants par catégorie ou via la recherche (`/eat/search`) avec filtres : cuisine, temps de livraison, note.
+
+### Choisir un restaurant
+
+La fiche restaurant (`/eat/r/[id]`) affiche le menu groupé par catégorie. Ajoutez des plats au panier.
+
+### Valider le panier
+
+Sur `/eat/cart`, renseignez votre adresse de livraison et le mode de paiement (carte, espèces, portefeuille), puis confirmez.
+
+<Callout type="info">
+  Une commande minimum peut s'appliquer selon le restaurant. Le panier vous l'indique avant validation.
+</Callout>
+
+### Suivre la livraison
+
+La page de suivi (`/eat/track/[orderId]`) actualise le statut toutes les 15 secondes :
+`received → preparing → ready → picked_up → delivered`.
+
+</Steps>
+
+## Fidélité & compte
+
+Le compte consommateur (`/eat/account`) regroupe :
+- Votre solde de points et votre palier
+- L'historique de vos commandes
+- Vos récompenses disponibles
+
+Vous gagnez **1 point par euro dépensé**, crédité à la livraison de la commande.

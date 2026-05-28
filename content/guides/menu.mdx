@@ -1,0 +1,62 @@
+---
+title: Menu & Scan IA
+description: Gérer votre menu et créer des plats par reconnaissance d'image
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# Menu & Scan IA
+
+La section **Menu** (`/menu`) vous permet de gérer l'ensemble de vos plats par marque et par catégorie.
+
+## Ajouter un plat manuellement
+
+<Steps>
+
+### Ouvrir le formulaire
+
+Cliquez sur **Ajouter un plat** depuis la page Menu.
+
+### Renseigner les champs
+
+| Champ | Obligatoire | Description |
+|---|---|---|
+| Nom | Oui | Nom du plat (max 100 caractères) |
+| Prix | Oui | Prix de vente en euros |
+| Catégorie | Oui | Entrée, Plat, Dessert, Boisson… |
+| Description | Non | Texte descriptif (max 500 caractères) |
+| Allergènes | Non | Liste des allergènes |
+| Photos | Non | Visuels du plat |
+| Temps de prép. | Non | En minutes |
+
+### Enregistrer
+
+Le plat apparaît immédiatement dans votre menu et devient disponible côté consommateur si **Disponible** est activé.
+
+</Steps>
+
+## Scan IA
+
+Le **Scan IA** crée automatiquement une fiche plat à partir d'une simple photo, grâce à Claude Vision.
+
+<Steps>
+
+### Lancer le scan
+
+Cliquez sur **Scan IA** et téléversez une photo du plat.
+
+### Validation
+
+L'IA détecte :
+- Le nom du plat
+- Une description appétissante
+- Les allergènes probables
+- Une catégorie suggérée
+
+Vérifiez et ajustez les informations proposées, puis enregistrez.
+
+</Steps>
+
+<Callout type="warning">
+  Vérifiez toujours les **allergènes** détectés par l'IA. La détection automatique est une aide, pas une garantie réglementaire.
+</Callout>

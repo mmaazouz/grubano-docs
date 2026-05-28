@@ -1,0 +1,39 @@
+---
+title: Programme fidélité
+description: Fonctionnement du programme de points et des paliers
+---
+
+import { Callout } from 'nextra/components'
+
+# Programme fidélité
+
+Le programme de fidélité (`/loyalty`) récompense vos clients réguliers par un système de points et de paliers.
+
+## Règles de points
+
+- **1 point = 1 € dépensé** (arrondi à l'inférieur)
+- **Bonus de bienvenue : 10 points** à l'inscription
+- Les points sont crédités lorsqu'une commande passe au statut `delivered`
+
+## Paliers de fidélité
+
+| Palier | Seuil de points |
+|---|---|
+| 🥉 Bronze | 50 pts |
+| 🥈 Silver | 100 pts |
+| 🥇 Gold | 200 pts |
+| 💎 Platinum | 400 pts |
+
+## Inscription d'un client
+
+Les clients peuvent rejoindre le programme :
+- via l'application consommateur (`/eat/auth`)
+- via l'API `/api/loyalty/register` (nom + email)
+
+<Callout type="info">
+  Chaque membre reçoit un **code de parrainage** unique à son inscription, utilisable pour des campagnes de recommandation.
+</Callout>
+
+## Validation de commandes externes
+
+Les commandes passées sur des plateformes externes (UberEats) peuvent créditer des points via l'endpoint `/api/loyalty/validate`.
