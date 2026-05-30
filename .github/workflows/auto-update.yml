@@ -1,11 +1,21 @@
 name: Auto-update docs
 
-# Regenerates API reference + changelog from the main app repo.
+# Regenerates API reference + changelog from the main app repo, then translates
+# them into fr/es/ar/it via the Claude API.
+#
 # Triggers:
 #   - Nightly at 02:00 (UTC)
 #   - repository_dispatch (event_type: app-updated) fired by grubano-kitchen-hub
 #     after a successful production deploy
 #   - Manual run from the Actions tab
+#
+# Required secrets:
+#   APP_REPO_TOKEN       — PAT with read access to grubano-kitchen-hub
+#                          (omit to fall back to GITHUB_TOKEN if the source
+#                          repo is public)
+#   ANTHROPIC_API_KEY    — Claude API key for the translation pass.
+#                          If absent, the translate step is skipped and only
+#                          the English source is regenerated + committed.
 
 on:
   schedule:
@@ -43,22 +53,54 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
+          cache-dependency-path: grubano-docs/package-lock.json
 
-      - name: Generate docs
+      - name: Install docs deps
+        working-directory: grubano-docs
+        run: npm ci
+
+      - name: Generate English source (API + changelog)
         working-directory: grubano-docs
         env:
           APP_REPO_PATH: ${{ github.workspace }}/grubano-kitchen-hub
-        run: node scripts/generate-docs.js
+        run: node scripts/generate-from-source.js
+
+      - name: Translate to fr / es / ar / it
+        id: translate
+        working-directory: grubano-docs
+        if: env.ANTHROPIC_API_KEY != ''
+        continue-on-error: true
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/translate-content.js
+
+      - name: Note when translation was skipped
+        if: env.ANTHROPIC_API_KEY == ''
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          echo "ANTHROPIC_API_KEY secret is not set."
+          echo "Skipping translation pass — only content/en will be updated this run."
 
       - name: Commit & push if changed
         working-directory: grubano-docs
         run: |
           git config user.name  "grubano-docs-bot"
           git config user.email "bot@grubano.com"
-          git add content/api content/changelog
+          # Stage every locale dir the new pipeline writes to. Missing dirs are
+          # silently ignored by `git add --` with the pathspec form below.
+          git add -- content/en content/fr content/es content/ar content/it 2>/dev/null || true
           if git diff --staged --quiet; then
             echo "No documentation changes to commit."
             exit 0
           fi
-          git commit -m "docs: auto-update API reference + changelog [skip ci]"
+          SRC_SHA="${{ github.event.client_payload.sha }}"
+          if [ -n "$SRC_SHA" ]; then
+            SHORT="${SRC_SHA:0:7}"
+            MSG="docs: auto-update from grubano-kitchen-hub@${SHORT} [skip ci]"
+          else
+            MSG="docs: auto-update API reference + changelog [skip ci]"
+          fi
+          git commit -m "$MSG"
           git push origin main

@@ -5,7 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "docs:generate": "node scripts/generate-from-source.js",
+    "docs:translate": "node scripts/translate-content.js",
+    "docs:auto": "npm run docs:generate && npm run docs:translate"
   },
   "dependencies": {
     "next": "^15.5.0",
