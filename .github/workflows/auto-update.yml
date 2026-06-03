@@ -44,7 +44,12 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: mmaazouz/grubano-kitchen-hub
-          ref: main
+          # IMPORTANT: the Grubano operator app (Next.js, with app/api/**) lives
+          # on `develop`. The `main` branch of that repo currently carries an
+          # unrelated Vite scaffold — cloning main produces no app/api and the
+          # generator throws. See repo's CLAUDE.md: "all work goes to develop;
+          # main is merged from develop only when staging is verified".
+          ref: develop
           token: ${{ secrets.APP_REPO_TOKEN || secrets.GITHUB_TOKEN }}
           path: grubano-kitchen-hub
           fetch-depth: 50 # enough history for the changelog
@@ -66,22 +71,26 @@ jobs:
           APP_REPO_PATH: ${{ github.workspace }}/grubano-kitchen-hub
         run: node scripts/generate-from-source.js
 
-      - name: Translate to fr / es / ar / it
+      # ── Translation pass — HELD until D3·7 ──────────────────────────────
+      # Cost guardrail (D3·1 directive): do NOT burn the Claude budget
+      # translating throwaway content while D3 still rewrites pages. When
+      # the FR/EN content is final, re-enable by changing `if: false` to
+      # `if: env.ANTHROPIC_API_KEY != ''` (and make sure the
+      # ANTHROPIC_API_KEY secret is configured on this repo).
+      - name: Translate to fr / es / ar / it (HELD — re-enable in D3·7)
         id: translate
         working-directory: grubano-docs
-        if: env.ANTHROPIC_API_KEY != ''
+        if: false
         continue-on-error: true
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node scripts/translate-content.js
 
-      - name: Note when translation was skipped
-        if: env.ANTHROPIC_API_KEY == ''
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      - name: Note translation is on hold
         run: |
-          echo "ANTHROPIC_API_KEY secret is not set."
-          echo "Skipping translation pass — only content/en will be updated this run."
+          echo "Translation step is currently disabled (if: false)."
+          echo "Re-enable in D3·7 once the FR/EN source content is final."
+          echo "Only content/en is updated by this run."
 
       - name: Commit & push if changed
         working-directory: grubano-docs
