@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && pagefind --site out --output-subdir _pagefind",
     "start": "next start",
     "docs:generate": "node scripts/generate-from-source.js",
     "docs:translate": "node scripts/translate-content.js",
@@ -26,6 +26,7 @@
     "@types/node": "^20",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
+    "pagefind": "^1.5.2",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
