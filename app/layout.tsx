@@ -7,7 +7,7 @@ export const metadata = {
     template: '%s – Grubano Docs',
     default: 'Grubano Documentation',
   },
-  description: 'Documentation officielle de Grubano — la plateforme de gestion de dark kitchens multi-marques.',
+  description: 'Documentation officielle de Grubano — la marketplace qui reconnecte les restaurants locaux et leurs clients, avec une commission juste de 10 %.',
   metadataBase: new URL('https://docs.grubano.com'),
 }
 
