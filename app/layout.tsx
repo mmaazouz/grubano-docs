@@ -14,15 +14,46 @@ export const metadata = {
   metadataBase: new URL('https://docs.grubano.com'),
 }
 
+// Grubano docs logo: rounded orange tile with a bold white "G",
+// followed by the "grubano" wordmark (navy/ink, semibold) and a muted "docs" tag.
 const logo = (
-  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-    <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-      <rect width="28" height="28" rx="6" fill="#F97316" />
-      <text x="5" y="20" fontFamily="Inter, sans-serif" fontSize="16" fontWeight="bold" fill="white">G</text>
-    </svg>
-    <span style={{ fontWeight: 700, fontSize: '1.1rem', color: '#F97316' }}>Grubano</span>
-    <span style={{ fontSize: '0.7rem', color: '#999', letterSpacing: '0.05em', textTransform: 'uppercase' }}>docs</span>
-  </div>
+  <span
+    aria-label="Grubano Docs"
+    style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', lineHeight: 1 }}
+  >
+    <span
+      style={{
+        width: 30,
+        height: 30,
+        borderRadius: 9,
+        background: '#F97316',
+        color: '#fff',
+        fontWeight: 800,
+        fontSize: 17,
+        fontFamily: "'Inter', system-ui, sans-serif",
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        boxShadow:
+          '0 2px 6px rgba(249, 115, 22, 0.35), 0 1px 2px rgba(0, 0, 0, 0.08)',
+        flexShrink: 0,
+      }}
+    >
+      G
+    </span>
+    <span
+      className="grubano-logo__wordmark"
+      style={{ fontSize: '1.05rem' }}
+    >
+      grubano
+    </span>
+    <span
+      className="grubano-logo__badge"
+      style={{ fontSize: '0.95rem' }}
+    >
+      docs
+    </span>
+  </span>
 )
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
@@ -32,14 +63,45 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
     <Navbar
       logo={logo}
       projectLink="https://github.com/mmaazouz/grubano-docs"
-    />
+    >
+      {/* Quick link back to the main Grubano site */}
+      <a
+        href="https://www.grubano.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          fontSize: '0.875rem',
+          fontWeight: 500,
+          color: 'var(--grubano-ink)',
+          padding: '0 0.5rem',
+          whiteSpace: 'nowrap',
+        }}
+      >
+        Site principal ↗
+      </a>
+    </Navbar>
   )
 
   const footer = (
     <Footer>
-      <p style={{ textAlign: 'center', color: '#666', fontSize: '0.875rem' }}>
-        © {new Date().getFullYear()} Grubano — Tous droits réservés
-      </p>
+      <span
+        style={{
+          width: '100%',
+          textAlign: 'center',
+          color: 'var(--grubano-muted)',
+          fontSize: '0.85rem',
+        }}
+      >
+        © {new Date().getFullYear()} Grubano · {' '}
+        <a
+          href="https://www.grubano.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ color: 'inherit' }}
+        >
+          grubano.com
+        </a>
+      </span>
     </Footer>
   )
 
