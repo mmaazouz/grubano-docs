@@ -130,6 +130,23 @@ function extractStatusCodes(src) {
 }
 
 /**
+ * Escape characters that MDX parses as JSX so a JSDoc-derived description can
+ * be inlined as prose without breaking the build:
+ *   - `{` and `}` would otherwise start a JSX expression (so `{code}` gets
+ *     evaluated as a reference to a variable named `code` and throws
+ *     "ReferenceError: code is not defined" at prerender).
+ *   - `<` followed by a letter would otherwise start a JSX tag.
+ * MDX accepts backslash escapes for all three.
+ */
+function escapeForMdx(text) {
+  return text
+    .replace(/\\/g, '\\\\')
+    .replace(/\{/g, '\\{')
+    .replace(/\}/g, '\\}')
+    .replace(/<(?=[A-Za-z])/g, '\\<')
+}
+
+/**
  * Extract a brief description for the route. Tries (in order):
  *   1. The first JSDoc /** ... *​/ block in the file
  *   2. The first `//` line comment at the top of the file
@@ -145,7 +162,7 @@ function extractDescription(src, endpoint) {
       .filter((l) => l && !l.startsWith('@'))
       .join(' ')
       .trim()
-    if (cleaned) return cleaned
+    if (cleaned) return escapeForMdx(cleaned)
   }
   // Leading // comments
   const lines = src.split('\n')
@@ -156,7 +173,7 @@ function extractDescription(src, endpoint) {
     else if (t === '' && leading.length === 0) continue
     else break
   }
-  if (leading.length) return leading.join(' ').trim()
+  if (leading.length) return escapeForMdx(leading.join(' ').trim())
   // Placeholder
   return `Auto-detected endpoint at \`${endpoint}\`. Description not yet documented.`
 }
