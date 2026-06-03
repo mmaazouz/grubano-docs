@@ -2,6 +2,16 @@ import { Layout, Navbar, Footer } from 'nextra-theme-docs'
 import { Head } from 'nextra/components'
 import { getPageMap } from 'nextra/page-map'
 import type { ReactNode } from 'react'
+import { HtmlLangSync } from '@/components/HtmlLangSync'
+
+// Languages exposed in the navbar dropdown. Order = display order.
+// Only locales that have real content are listed; es/ar/it land in D3 once
+// their content trees exist (LocaleSwitch would otherwise route users into
+// 404s). When AR is added, HtmlLangSync flips <html dir> to rtl automatically.
+const I18N = [
+  { locale: 'fr', name: 'Français' },
+  { locale: 'en', name: 'English' },
+] as const
 
 // Per-locale UI labels for the Nextra theme chrome.
 const UI = {
@@ -126,7 +136,9 @@ export default async function LocaleLayout({
         sidebar={{ defaultMenuCollapseLevel: 1 }}
         toc={t.toc}
         themeSwitch={t.themeSwitch}
+        i18n={[...I18N]}
       >
+        <HtmlLangSync lang={lang} />
         {children}
       </Layout>
     </>
