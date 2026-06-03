@@ -1,0 +1,82 @@
+name: Deploy docs to o2switch
+
+# Builds the Nextra static export (`next build` with output: 'export') and
+# uploads ./out to the o2switch document root for docs.grubano.com via FTPS.
+#
+# Triggers:
+#   - Push to the default branch (main) — every doc change deploys
+#   - Manual dispatch from the Actions tab
+#
+# Required secrets (already configured for the main grubano-kitchen-hub repo,
+# replicate the same values here):
+#   O2SWITCH_HOST       — FTP hostname (e.g. ftp.deyi0010.odns.fr)
+#   O2SWITCH_FTP_USER   — FTP username
+#   O2SWITCH_FTP_PASS   — FTP password
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-docs
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Build static export
+        run: npm run build
+
+      - name: Verify out/ produced
+        run: |
+          test -f out/index.html || { echo "::error::out/index.html missing — static export failed"; exit 1; }
+          echo "Static export OK — $(find out -type f | wc -l) files, $(du -sh out | cut -f1) total"
+
+      - name: Deploy to o2switch via FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.O2SWITCH_HOST }}
+          username: ${{ secrets.O2SWITCH_FTP_USER }}
+          password: ${{ secrets.O2SWITCH_FTP_PASS }}
+          protocol: ftps
+          port: 21
+          timeout: 120000
+          log-level: verbose
+          local-dir: ./out/
+          server-dir: /docs.grubano.com/
+          # IMPORTANT: dangerous-clean-slate is left at default (false) so the
+          # action does an INCREMENTAL sync rather than wiping the server first.
+          # We also explicitly exclude the server-managed files that live in
+          # the doc root but must NEVER be touched by this deploy:
+          #   - .well-known/   (Let's Encrypt ACME challenges for SSL renewals)
+          #   - cgi-bin/       (cPanel CGI shim)
+          #   - .htaccess      (system .htaccess managed by cPanel/Passenger)
+          # Adding them to `exclude` means the action will neither upload nor
+          # delete them. Defaults from the action (.git*, node_modules/**, etc.)
+          # are also re-declared so we don't lose them by overriding the input.
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.next/**
+            **/.well-known/**
+            **/cgi-bin/**
+            .htaccess
+            **/.htaccess
