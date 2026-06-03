@@ -1,0 +1,60 @@
+{
+  "_comment": "App↔docs link contract. Maps stable topic keys to documentation paths (locale-relative) and, eventually, to the matching deep-link in the Grubano app. The full doc URL is `${base}/${locale}${doc}` (e.g. https://docs.grubano.com/fr/guides/pro/). The `app` field is null today and will be filled in once the corresponding routes are verified on the app side — do not invent deep links. Doc paths listed here are the public, frozen URLs: do not rename them without bumping `version`. Source of truth lives in this file (https://docs.grubano.com/docs-map.json) — consumers should fetch it at build time or at runtime with a cache.",
+  "version": 1,
+  "base": "https://docs.grubano.com",
+  "locales": ["fr", "en"],
+  "topics": {
+    "intro": {
+      "doc": "/getting-started",
+      "app": null
+    },
+    "restaurant.quick-start": {
+      "doc": "/guides/quick-start",
+      "app": null
+    },
+    "restaurant.dashboard": {
+      "doc": "/guides/restaurant",
+      "app": null
+    },
+    "restaurant.menu": {
+      "doc": "/guides/menu",
+      "app": null
+    },
+    "restaurant.stocks": {
+      "doc": "/guides/stocks",
+      "app": null
+    },
+    "restaurant.loyalty": {
+      "doc": "/guides/loyalty",
+      "app": null
+    },
+    "restaurant.reservations": {
+      "doc": "/guides/reservations",
+      "app": null
+    },
+    "restaurant.pro": {
+      "doc": "/guides/pro",
+      "app": null
+    },
+    "consumer.order": {
+      "doc": "/guides/consumer",
+      "app": null
+    },
+    "franchise": {
+      "doc": "/guides/franchise",
+      "app": null
+    },
+    "creators": {
+      "doc": "/guides/creators",
+      "app": null
+    },
+    "api": {
+      "doc": "/api",
+      "app": null
+    },
+    "changelog": {
+      "doc": "/changelog",
+      "app": null
+    }
+  }
+}
