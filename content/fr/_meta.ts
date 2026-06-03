@@ -15,7 +15,7 @@ export default {
       breadcrumb: false,
     },
   },
-  'getting-started': 'Démarrage rapide',
+  'getting-started': 'Découvrir Grubano',
   guides: 'Guides',
   api: 'API Reference',
   changelog: 'Changelog',
