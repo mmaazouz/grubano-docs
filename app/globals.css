@@ -128,6 +128,24 @@ html.dark .nextra-card {
   color: var(--grubano-orange);
 }
 
+/* Roomier inner padding for home Cards — Nextra ships x:p-4 (16px) on the
+   title row and zero on the description, so text and the → arrow sit
+   uncomfortably close to the edges. Override on direct children. */
+.nextra-card > p {
+  padding: 22px 22px 4px 22px !important;
+  margin: 0 !important;
+  line-height: 1.5 !important;
+}
+.nextra-card > span {
+  padding: 14px 22px 22px 22px !important;
+  gap: 14px !important;
+  line-height: 1.4 !important;
+}
+/* Title-only cards (no description paragraph above) need full top padding. */
+.nextra-card > span:first-child {
+  padding-top: 22px !important;
+}
+
 /* ── Links & inline accents ──────────────────────────────────────────────── */
 .nextra-content a:not(.nextra-card) {
   color: var(--grubano-orange);
