@@ -164,3 +164,141 @@ html.dark .nextra-card {
 .nextra-search input {
   border-radius: 10px;
 }
+
+/* ── Home / help-center landing (D2·c) ───────────────────────────────────── */
+.grubano-home {
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.grubano-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 3rem 1rem 3.5rem;
+}
+.grubano-hero__badge {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--grubano-orange);
+  background: var(--grubano-orange-soft);
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 1.25rem;
+}
+.grubano-hero__title {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  color: var(--grubano-ink);
+  margin: 0 0 1rem;
+}
+.grubano-hero__subtitle {
+  font-size: 1.075rem;
+  line-height: 1.55;
+  color: var(--grubano-muted);
+  max-width: 42rem;
+  margin: 0 0 2rem;
+}
+
+/* Big search trigger that visually anchors the hero. Clicking it focuses
+   the navbar's real Pagefind input — single source of truth for search. */
+.grubano-hero__search {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 38rem;
+  padding: 14px 18px;
+  border: 1px solid var(--grubano-border-strong);
+  border-radius: 14px;
+  background: #fff;
+  color: var(--grubano-muted);
+  cursor: text;
+  font: inherit;
+  text-align: left;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 1px 2px rgba(0, 0, 0, 0.03);
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+html.dark .grubano-hero__search {
+  background: #11141d;
+}
+.grubano-hero__search:hover {
+  border-color: var(--grubano-orange);
+  box-shadow: 0 8px 24px -8px rgba(249, 115, 22, 0.18);
+}
+.grubano-hero__search:focus-visible {
+  outline: 2px solid var(--grubano-orange);
+  outline-offset: 2px;
+}
+.grubano-hero__search-icon {
+  color: var(--grubano-muted);
+  flex-shrink: 0;
+}
+.grubano-hero__search-placeholder {
+  flex: 1;
+  font-size: 0.98rem;
+}
+.grubano-hero__search-kbd {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--grubano-muted);
+  background: var(--grubano-border);
+  padding: 3px 7px;
+  border-radius: 6px;
+  border: 1px solid var(--grubano-border-strong);
+  flex-shrink: 0;
+}
+
+.grubano-hero__popular {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 6px 10px;
+  margin-top: 1.5rem;
+  font-size: 0.92rem;
+}
+.grubano-hero__popular-label {
+  color: var(--grubano-muted);
+  font-weight: 600;
+  margin-right: 4px;
+}
+.grubano-hero__popular a {
+  color: var(--grubano-ink) !important;
+  text-decoration: none !important;
+  padding: 4px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--grubano-border);
+  background: #fff;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+html.dark .grubano-hero__popular a {
+  background: #11141d;
+}
+.grubano-hero__popular a:hover {
+  color: var(--grubano-orange) !important;
+  border-color: var(--grubano-orange);
+}
+
+.grubano-section {
+  margin: 2.5rem 0;
+  padding: 0 1rem;
+}
+.grubano-section__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--grubano-ink);
+  margin: 0 0 1.25rem;
+  /* Reset Nextra's prose margins for our custom layout */
+  border: none !important;
+  padding: 0 !important;
+}

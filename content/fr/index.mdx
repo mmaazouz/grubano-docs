@@ -1,50 +1,61 @@
 ---
-title: Grubano Documentation
-description: Documentation officielle de la plateforme Grubano
+title: Centre d'aide Grubano
+description: Tout pour comprendre et utiliser Grubano — la marketplace qui reconnecte les restaurants locaux et leurs clients, avec une commission juste de 10 %.
 ---
 
 import { Cards } from 'nextra/components'
+import { HeroSearchTrigger } from '@/components/HeroSearchTrigger'
 
-<div className="grubano-hero">
-  <p className="grubano-hero__eyebrow">Documentation</p>
-  <h1 className="grubano-hero__title">La plateforme Grubano, documentée de bout en bout</h1>
+<div className="grubano-home">
+
+<section className="grubano-hero">
+  <span className="grubano-hero__badge">Centre d'aide Grubano</span>
+  <h1 className="grubano-hero__title">Comment pouvons-nous vous aider&nbsp;?</h1>
   <p className="grubano-hero__subtitle">
-    Tous les guides et ressources pour développer, exploiter et faire grandir vos
-    dark kitchens multi-marques — côté restaurateur, consommateur, franchise et créateurs.
+    Tout pour comprendre et utiliser Grubano — la marketplace qui reconnecte les
+    restaurants locaux et leurs clients, avec une commission juste de 10&nbsp;%.
   </p>
+  <HeroSearchTrigger placeholder="Rechercher dans la documentation…" />
+  <div className="grubano-hero__popular">
+    <span className="grubano-hero__popular-label">Populaire :</span>
+    <a href="/fr/guides/restaurant/">Passer en Pro</a>
+    <a href="/fr/guides/consumer/">Commander</a>
+    <a href="/fr/guides/franchise/">Rejoindre une franchise</a>
+    <a href="/fr/guides/creators/">Devenir créateur</a>
+  </div>
+</section>
+
+<section className="grubano-section">
+  <h2 className="grubano-section__title">Choisissez votre profil</h2>
+  <Cards>
+    <Cards.Card title="🏪 Restaurateurs" href="/fr/guides/restaurant/" arrow>
+      Vendez en direct, gardez vos marges. Menu, commandes, stocks, abonnement Pro.
+    </Cards.Card>
+    <Cards.Card title="🍽️ Clients" href="/fr/guides/consumer/" arrow>
+      Commandez local — en livraison, à emporter ou en réservant votre table.
+    </Cards.Card>
+    <Cards.Card title="🤝 Franchisés" href="/fr/guides/franchise/" arrow>
+      Adoptez une marque qui marche, ou ouvrez la vôtre à la franchise.
+    </Cards.Card>
+    <Cards.Card title="🎬 Créateurs" href="/fr/guides/creators/" arrow>
+      Recommandez vos restos préférés et touchez une commission sur les ventes.
+    </Cards.Card>
+  </Cards>
+</section>
+
+<section className="grubano-section">
+  <h2 className="grubano-section__title">Accès rapide</h2>
+  <Cards>
+    <Cards.Card title="⚡ Démarrer en 15 minutes" href="/fr/getting-started/" arrow>
+      Configurer son compte et lancer sa première commande.
+    </Cards.Card>
+    <Cards.Card title="🔌 Référence API" href="/fr/api/" arrow>
+      Tous les endpoints REST publics et privés.
+    </Cards.Card>
+    <Cards.Card title="❓ Questions fréquentes" href="/fr/getting-started/" arrow>
+      Les réponses aux questions les plus courantes.
+    </Cards.Card>
+  </Cards>
+</section>
+
 </div>
-
-## Par où commencer ?
-
-<Cards>
-  <Cards.Card title="⚡ Démarrage rapide" href="/getting-started" arrow>
-    Configurez votre restaurant en 15 minutes
-  </Cards.Card>
-  <Cards.Card title="📋 Guides" href="/guides/restaurant" arrow>
-    Tutoriels complets pour chaque fonctionnalité
-  </Cards.Card>
-  <Cards.Card title="🔌 API Reference" href="/api" arrow>
-    Documentation complète des endpoints REST
-  </Cards.Card>
-  <Cards.Card title="📅 Changelog" href="/changelog" arrow>
-    Historique des nouvelles fonctionnalités
-  </Cards.Card>
-</Cards>
-
-## Portails disponibles
-
-| Portail | Accès | Description |
-|---------|-------|-------------|
-| **Dashboard** | `grubano.com/dashboard` | Gestion opérationnelle du restaurant |
-| **Consumer** | `grubano.com/eat` | Application mobile de commande |
-| **Franchise** | `grubano.com/franchise` | Portail réseau franchisés |
-| **Créateurs** | `grubano.com/creators` | Soumission de plats et commissions |
-
-## Marques actives
-
-- **Gnocchi Bar** — ~66% du chiffre d'affaires
-- **Le Riz Gourmand**
-- **Pasta Fresca**
-- **Rollix** (wraps)
-- **Bowl Healthy** — en lancement
-- **Mac & Cheese Co** — en lancement
