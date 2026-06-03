@@ -1,5 +1,5 @@
 import { Layout, Navbar, Footer } from 'nextra-theme-docs'
-import { Head } from 'nextra/components'
+import { Head, Search } from 'nextra/components'
 import { getPageMap } from 'nextra/page-map'
 import type { ReactNode } from 'react'
 import { HtmlLangSync } from '@/components/HtmlLangSync'
@@ -21,6 +21,10 @@ const UI = {
     toc: { title: 'Sur cette page', backToTop: 'Retour en haut' },
     themeSwitch: { dark: 'Sombre', light: 'Clair', system: 'Système' },
     mainSite: 'Site principal ↗',
+    searchPlaceholder: 'Rechercher dans la documentation…',
+    searchEmpty: 'Aucun résultat',
+    searchLoading: 'Chargement…',
+    searchError: 'Échec du chargement de l’index de recherche.',
   },
   en: {
     editLink: 'Edit this page',
@@ -28,6 +32,10 @@ const UI = {
     toc: { title: 'On this page', backToTop: 'Back to top' },
     themeSwitch: { dark: 'Dark', light: 'Light', system: 'System' },
     mainSite: 'Main site ↗',
+    searchPlaceholder: 'Search the documentation…',
+    searchEmpty: 'No results',
+    searchLoading: 'Loading…',
+    searchError: 'Failed to load the search index.',
   },
 } as const
 
@@ -81,6 +89,15 @@ export default async function LocaleLayout({
   // Locale-scoped page map → sidebar only lists pages for the active locale.
   const pageMap = await getPageMap(`/${lang}`)
 
+  const search = (
+    <Search
+      placeholder={t.searchPlaceholder}
+      emptyResult={t.searchEmpty}
+      loading={t.searchLoading}
+      errorText={t.searchError}
+    />
+  )
+
   const navbar = (
     <Navbar logo={logo} projectLink="https://github.com/mmaazouz/grubano-docs">
       <a
@@ -130,6 +147,7 @@ export default async function LocaleLayout({
         navbar={navbar}
         pageMap={pageMap}
         footer={footer}
+        search={search}
         docsRepositoryBase="https://github.com/mmaazouz/grubano-docs/tree/main"
         editLink={t.editLink}
         feedback={t.feedback}
