@@ -5,6 +5,7 @@ export default {
     type: 'separator',
     title: 'Restaurateur',
   },
+  'quick-start': 'Démarrer en 15 minutes',
   restaurant: 'Tableau de bord',
   menu: 'Menu & Scan IA',
   stocks: 'Gestion des stocks',
