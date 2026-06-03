@@ -97,13 +97,23 @@ jobs:
         run: |
           git config user.name  "grubano-docs-bot"
           git config user.email "bot@grubano.com"
-          # Stage every locale dir the new pipeline writes to. Missing dirs are
-          # silently ignored by `git add --` with the pathspec form below.
-          git add -- content/en content/fr content/es content/ar content/it 2>/dev/null || true
+          # Stage everything the generator (and, when D3·7 reactivates it,
+          # the translator) writes under content/. `-A` picks up additions,
+          # modifications and deletions across content/en + any future
+          # content/{fr,es,ar,it} locale dirs.
+          #
+          # NOTE: the previous form `git add -- content/en content/fr content/es
+          # content/ar content/it` silently failed because `git add` with a
+          # missing pathspec aborts the whole add and stages nothing — the
+          # `2>/dev/null || true` masked it, so the workflow was reporting
+          # "No documentation changes to commit" even when the generator had
+          # written new MDX files.
+          git add -A -- content/
           if git diff --staged --quiet; then
             echo "No documentation changes to commit."
             exit 0
           fi
+          echo "Staging $(git diff --staged --name-only | wc -l) file(s)."
           SRC_SHA="${{ github.event.client_payload.sha }}"
           if [ -n "$SRC_SHA" ]; then
             SHORT="${SRC_SHA:0:7}"
