@@ -1,0 +1,148 @@
+/* ──────────────────────────────────────────────────────────────────────────
+   Grubano Docs — brand skin
+   Layered on top of nextra-theme-docs/style.css (imported before this file).
+   Brand: #F97316 orange (hsl 25 95% 53%) · #1a1a2e navy · Inter typeface.
+   Scope D2·a: color + font + brand surface accents only.
+   Hero / homepage classes belong to D2·c, sidebar reorg to D2·b.
+   ────────────────────────────────────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Recolor Nextra's whole accent palette to Grubano orange.
+     Nextra derives --x-color-primary-* from these three HSL channels.
+     #F97316 ≈ hsl(25deg 95% 53%). */
+  --nextra-primary-hue: 25deg;
+  --nextra-primary-saturation: 95%;
+  --nextra-primary-lightness: 53%;
+
+  /* Brand tokens for the custom rules below */
+  --grubano-orange: #f97316;
+  --grubano-orange-dark: #ea6912;
+  --grubano-orange-soft: rgba(249, 115, 22, 0.12);
+  --grubano-navy: #1a1a2e;
+  --grubano-border: #f3f4f6;
+  --grubano-border-strong: #e5e7eb;
+  --grubano-ink: #111827;
+  --grubano-muted: #6b7280;
+}
+
+.dark:root,
+html.dark {
+  --grubano-border: #1f2433;
+  --grubano-border-strong: #2a3145;
+  --grubano-ink: #f3f4f6;
+  --grubano-muted: #9ca3af;
+}
+
+/* ── Typography (Inter everywhere) ───────────────────────────────────────── */
+html,
+body,
+.nextra-content,
+.nextra-sidebar-container,
+.nextra-navbar {
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  color: var(--grubano-ink);
+}
+
+/* Tighter, bolder headings to match the brand */
+.nextra-content h1 {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.nextra-content h2,
+.nextra-content h3 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* ── Top navbar: hairline border + frosted background ────────────────────── */
+.nextra-navbar nav {
+  border-bottom: 1px solid var(--grubano-border);
+  backdrop-filter: saturate(180%) blur(8px);
+}
+
+/* Logo helper classes (consumed by the JSX logo in app/layout.tsx) */
+.grubano-logo__wordmark {
+  color: var(--grubano-ink);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.grubano-logo__badge {
+  color: var(--grubano-muted);
+  font-weight: 400;
+}
+
+/* ── Sidebar: clean white, soft gray active/hover ────────────────────────── */
+.nextra-sidebar-container {
+  border-right: 1px solid var(--grubano-border);
+}
+.nextra-sidebar-container a,
+.nextra-sidebar-container button {
+  border-radius: 8px;
+  font-weight: 500;
+}
+/* Active sidebar item → soft neutral fill, orange-accented text */
+.nextra-sidebar-container a.x\:bg-primary-100,
+.nextra-sidebar-container a[aria-current='page'],
+.nextra-sidebar-container .nextra-focus[data-active='true'] {
+  background: var(--grubano-border) !important;
+  color: var(--grubano-ink) !important;
+  font-weight: 600;
+}
+
+/* ── Feature cards (Nextra <Cards>) ──────────────────────────────────────── */
+.nextra-card {
+  border: 1px solid var(--grubano-border) !important;
+  border-radius: 14px !important;
+  background: #fff;
+  box-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.05),
+    0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+html.dark .nextra-card {
+  background: #11141d;
+}
+.nextra-card:hover {
+  border-color: var(--grubano-border-strong) !important;
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 24px -8px rgba(249, 115, 22, 0.22),
+    0 2px 6px 0 rgba(0, 0, 0, 0.04);
+}
+.nextra-card svg {
+  color: var(--grubano-muted);
+  transition: color 0.18s ease;
+}
+.nextra-card:hover svg,
+.nextra-card:hover .nextra-card-icon {
+  color: var(--grubano-orange);
+}
+
+/* ── Links & inline accents ──────────────────────────────────────────────── */
+.nextra-content a:not(.nextra-card) {
+  color: var(--grubano-orange);
+  text-decoration-color: rgba(249, 115, 22, 0.35);
+}
+.nextra-content a:not(.nextra-card):hover {
+  color: var(--grubano-orange-dark);
+}
+
+/* Subtle warm tint on table headers */
+.nextra-content table th {
+  background: var(--grubano-orange-soft);
+}
+
+/* Search box: rounded, neutral */
+.nextra-search input {
+  border-radius: 10px;
+}
