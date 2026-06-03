@@ -10,6 +10,7 @@ export default {
   stocks: 'Stock management',
   loyalty: 'Loyalty program',
   reservations: 'Reservations',
+  pro: 'Go Pro',
   '-- consumer': {
     type: 'separator',
     title: 'Consumer',
