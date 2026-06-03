@@ -2,18 +2,24 @@ import nextra from 'nextra'
 
 const withNextra = nextra({
   defaultShowCopyCode: true,
+  // Tells Nextra to prefix every page-map link with the active locale. Required
+  // when running without middleware (i.e. with `output: 'export'`) so /fr/...
+  // and /en/... URLs are correctly emitted into the static export.
+  unstable_shouldAddLocaleToLinks: true,
 })
 
 export default withNextra({
   reactStrictMode: true,
-  // Pin the workspace root so file tracing ignores stray lockfiles in parent dirs.
   outputFileTracingRoot: __dirname,
-  // Static export for o2switch FTP deploy (no Node runtime on the docs subdomain).
-  // Producing ./out with one HTML per route. trailingSlash keeps Apache happy with
-  // /foo/ → /foo/index.html. images.unoptimized is mandatory for `output: 'export'`.
-  // I18n is handled via Nextra's content/<locale>/ folder convention — NOT via
-  // Next.js native i18n routing, which is incompatible with `output: 'export'`.
   output: 'export',
   trailingSlash: true,
   images: { unoptimized: true },
+  // i18n via Nextra's content/<locale>/ convention. Nextra reads `locales` and
+  // `defaultLocale` here, then strips this `i18n` block so Next.js native i18n
+  // routing — which is INCOMPATIBLE with output: 'export' — never activates.
+  // Only locales with real content are declared; es/ar/it land in D3.
+  i18n: {
+    locales: ['fr', 'en'],
+    defaultLocale: 'fr',
+  },
 })
