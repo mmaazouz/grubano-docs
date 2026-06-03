@@ -11,6 +11,7 @@ export default {
   stocks: 'Gestion des stocks',
   loyalty: 'Programme fidélité',
   reservations: 'Réservations',
+  pro: 'Passer en Pro',
   '-- consumer': {
     type: 'separator',
     title: 'Consommateur',
