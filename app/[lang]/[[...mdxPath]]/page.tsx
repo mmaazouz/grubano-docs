@@ -1,5 +1,6 @@
 import { generateStaticParamsFor, importPage } from 'nextra/pages'
 import { useMDXComponents } from '@/mdx-components'
+import { AppCTA } from '@/components/AppCTA'
 
 // Generate every (lang, mdxPath) tuple from content/<lang>/** at build time.
 // `output: 'export'` requires every dynamic route to be statically enumerated.
@@ -21,8 +22,19 @@ export default async function Page(props: {
   const params = await props.params
   const result = await importPage(params.mdxPath, params.lang)
   const { default: MDXContent, toc, metadata, sourceCode } = result
+
+  // Inject the "Open in Grubano" CTA at the bottom of every guide page.
+  // Detection is by URL shape, not file path: any route under /guides/.
+  const isGuidePage = (params.mdxPath?.[0] ?? '') === 'guides'
+  const bottomContent = isGuidePage ? <AppCTA lang={params.lang} /> : undefined
+
   return (
-    <Wrapper toc={toc} metadata={metadata} sourceCode={sourceCode}>
+    <Wrapper
+      toc={toc}
+      metadata={metadata}
+      sourceCode={sourceCode}
+      bottomContent={bottomContent}
+    >
       <MDXContent {...props} params={params} />
     </Wrapper>
   )

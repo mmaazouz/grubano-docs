@@ -302,3 +302,68 @@ html.dark .grubano-hero__popular a {
   border: none !important;
   padding: 0 !important;
 }
+
+/* ── "Open in Grubano" CTA card (B1) ─────────────────────────────────────── */
+.grubano-app-cta {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--grubano-border);
+}
+.grubano-app-cta__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 24px;
+  padding: 18px 22px;
+  border: 1px solid var(--grubano-border-strong);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 1px 2px rgba(0, 0, 0, 0.03);
+}
+html.dark .grubano-app-cta__inner {
+  background: #11141d;
+}
+.grubano-app-cta__text {
+  flex: 1 1 18rem;
+  min-width: 0;
+}
+.grubano-app-cta__title {
+  margin: 0 0 4px !important;
+  font-weight: 700;
+  color: var(--grubano-ink);
+  font-size: 1rem;
+  line-height: 1.4;
+}
+.grubano-app-cta__body {
+  margin: 0 !important;
+  color: var(--grubano-muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+.grubano-app-cta__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: var(--grubano-orange);
+  color: #fff !important;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 1px 2px rgba(249, 115, 22, 0.18);
+}
+.grubano-app-cta__link:hover {
+  background: var(--grubano-orange-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px -2px rgba(249, 115, 22, 0.35);
+}
+.grubano-app-cta__link:focus-visible {
+  outline: 2px solid var(--grubano-orange);
+  outline-offset: 3px;
+}
