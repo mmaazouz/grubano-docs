@@ -2,24 +2,26 @@
 title: "Gestion des stocks"
 description: "Tenir l'inventaire d'une marque à jour : ajouter des articles, suivre les quantités et les DLC, recevoir des alertes de réapprovisionnement, et mettre à jour les stocks en langage naturel via l'IA."
 generated: true
-sourceHash: 61a820240eca9ec3
+sourceHash: 3cf3d5e354397e63
 generator: scripts/generate-feature-page.js
-templateVersion: 2
+templateVersion: 4
 ---
 
 import { Steps, Callout } from 'nextra/components'
 
 # Gestion des stocks
 
-Suivez vos quantités en temps réel, anticipez les ruptures et commandez au bon moment grâce à des alertes automatiques et à une mise à jour en langage naturel.
+Suivez vos ingrédients en temps réel, recevez des alertes avant la rupture et mettez à jour vos quantités en langage naturel grâce à l'IA.
 
 <FlowDiagram steps={["Ajouter un article","Définir un seuil mini","Alerte de réappro","Prévision de rupture 7 j"]} />
 
 ## Ce que ça fait
 
-La gestion des stocks vous permet de tenir l'inventaire de votre marque à jour sans tableur externe. Ajoutez chaque ingrédient ou produit avec sa quantité actuelle, son unité (kg, L, u pour les pièces) et sa date limite de consommation. Définissez un seuil minimum : dès que la quantité passe en dessous, le système vous alerte depuis votre [tableau de bord](/fr/guides/restaurant/). L'outil prévoit également les ruptures sur les 7 jours à venir en croisant la quantité disponible avec une consommation quotidienne moyenne.
+La gestion des stocks vous permet de tenir l'inventaire de votre marque à jour sans saisie fastidieuse. Vous enregistrez vos ingrédients (farine, huile, poulet, sauce tomate…), définissez une quantité minimale pour chacun, et recevez une alerte dès qu'un article passe sous ce seuil. Chaque article peut porter une date limite de consommation (DLC) pour vous aider à prioriser l'utilisation des produits périssables.
 
-Vous pouvez aussi mettre à jour plusieurs articles d'un coup en langage naturel via l'IA : dictez ou tapez « poulet 3 kg, riz 5 kg, sauce tomate terminée », et Claude analyse le texte pour créer ou actualiser les fiches correspondantes. Idéal après un inventaire rapide en cuisine. Les articles liés à vos plats du [menu](/fr/guides/menu/) bénéficient ainsi d'une visibilité centralisée, ce qui facilite la planification des achats et évite les ruptures en service.
+L'atout principal : **la mise à jour en langage naturel**. Plutôt que de remplir des formulaires ligne par ligne, vous écrivez « poulet 3 kg, riz 5 kg, sauce tomate terminée » — l'IA Claude analyse votre texte, identifie les ingrédients et les quantités, puis met à jour votre inventaire automatiquement. Elle génère aussi une **prévision de rupture sur 7 jours** en estimant votre consommation quotidienne moyenne par type de produit (kg, L, unités…), de sorte que vous voyez en un coup d'œil quels articles seront épuisés en fin de semaine. Idéal pour anticiper vos commandes fournisseurs et ne jamais décevoir un client en retirant un plat du [menu](/fr/guides/menu/) à la dernière minute.
+
+La page Stocks est accessible depuis votre [tableau de bord](/fr/guides/restaurant/) opérateur, sous l'onglet dédié à l'inventaire.
 
 ## Comment l'utiliser
 
@@ -27,29 +29,29 @@ Vous pouvez aussi mettre à jour plusieurs articles d'un coup en langage naturel
 
 ### Ajouter un article
 
-Accédez à la section Stocks de votre marque. Renseignez le nom (poulet, farine, huile d'olive…), la quantité actuelle, l'unité (kg, g, L, mL ou u), et si vous le souhaitez la date limite de consommation. Enregistrez : l'article apparaît dans la liste.
-
-### Définir le seuil de réapprovisionnement
-
-Modifiez la fiche de l'article et saisissez le seuil minimum dans le champ **minThreshold**. Dès que la quantité descend sous ce seuil, une alerte se déclenche automatiquement.
+Dans l'interface Stocks, cliquez sur « Nouvel article ». Renseignez le nom de l'ingrédient (par exemple « Farine »), la quantité actuelle (nombre décimal), l'unité (`kg`, `g`, `L`, `mL` ou `u` pour unité/pièce), le seuil minimal de réapprovisionnement, et éventuellement une DLC. Validez : l'article apparaît dans la liste.
 
 ### Mettre à jour en langage naturel
 
-Tapez une phrase simple (« tomates 2 kg, lait 4 L, œufs 0 ») dans le champ prévu, puis validez. Claude extrait les ingrédients, les quantités et les unités, puis crée ou met à jour les fiches correspondantes. Vous recevez un récapitulatif des articles modifiés et une prévision de rupture sur 7 jours.
+Au lieu de modifier chaque ligne manuellement, tapez dans le champ texte dédié une phrase comme « poulet 3 kg, riz 5 kg, sauce tomate 0 L ». Cliquez sur « Mettre à jour avec l'IA » : Claude analyse le texte, détecte les ingrédients connus (par nom proche), crée les nouveaux articles si nécessaire, et met à jour les quantités. Vous obtenez immédiatement un récapitulatif des articles modifiés et de leur statut (ok / bas / critique selon les jours de stock restants estimés).
 
-### Consulter les prévisions
+### Consulter les alertes et la prévision
 
-Le système calcule automatiquement le nombre de jours restants avant rupture pour chaque article, en fonction d'une consommation quotidienne moyenne. Les articles marqués **critique** (≤ 1 jour) ou **bas** (≤ 3 jours) apparaissent en haut de liste.
+Après chaque mise à jour IA, l'API calcule le nombre de jours de stock restants pour chaque article en fonction d'une consommation journalière par défaut (par exemple 0,7 kg/jour pour les produits en kg, 5 unités/jour pour les pièces). Les articles avec moins de 3 jours de stock s'affichent en statut « bas », moins d'1 jour en « critique ». La date de rupture estimée figure à côté. Vous pouvez ainsi passer commande avant la pénurie réelle.
+
+### Ajuster les seuils et les DLC
+
+Éditez n'importe quel article pour corriger le seuil minimal ou ajouter/modifier la DLC. Le seuil sert de repère visuel dans l'interface ; la DLC vous aide à respecter les normes HACCP et à prioriser l'utilisation des produits périssables.
 
 </Steps>
 
 ## Bon à savoir
 
 <Callout type="info">
-La prévision de rupture repose sur une consommation quotidienne forfaitaire (par exemple 0,7 kg/jour pour les ingrédients en kg). Elle donne un ordre de grandeur ; affinez vos seuils au fil du temps pour coller à votre volume réel de service.
+L'IA analyse le texte en français et reconnaît les unités courantes (`kg`, `g`, `L`, `mL`, `u`). Si un ingrédient n'existe pas encore, il est créé automatiquement avec l'unité détectée. La prévision de rupture repose sur des ratios de consommation par défaut — affinez vos seuils minimaux au fil du temps pour coller à votre activité réelle.
 </Callout>
 
 ## Pour aller plus loin
 
-- [Menu & Scan IA](/fr/guides/menu/) : reliez vos plats à leurs ingrédients pour une visibilité complète de bout en bout.
-- [Tableau de bord restaurant](/fr/guides/restaurant/) : consultez toutes vos alertes de réapprovisionnement et vos indicateurs clés au même endroit.
+- **[Menu & Scan IA](/fr/guides/menu/)** — Retirez automatiquement du menu les plats dont un ingrédient clé est en rupture.
+- **[Tableau de bord restaurateur](/fr/guides/restaurant/)** — Retrouvez les alertes stocks dans le bloc « Next best actions » de l'accueil opérateur.
