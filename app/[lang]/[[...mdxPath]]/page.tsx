@@ -25,8 +25,13 @@ export default async function Page(props: {
 
   // Inject the "Open in Grubano" CTA at the bottom of every guide page.
   // Detection is by URL shape, not file path: any route under /guides/.
+  // EXCEPT generated feature pages (frontmatter `generated: true`): those
+  // already render their own richer block-7 strategic CTA per the template,
+  // so the wrapper-injected card would be redundant noise.
   const isGuidePage = (params.mdxPath?.[0] ?? '') === 'guides'
-  const bottomContent = isGuidePage ? <AppCTA lang={params.lang} /> : undefined
+  const isGenerated = (metadata as { generated?: boolean })?.generated === true
+  const bottomContent =
+    isGuidePage && !isGenerated ? <AppCTA lang={params.lang} /> : undefined
 
   return (
     <Wrapper

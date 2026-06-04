@@ -1,38 +1,48 @@
 ---
-title: Gestion des stocks
-description: Suivre l'inventaire, les DLC et les suggestions IA
+title: "Gestion des stocks"
+description: "Tenir l'inventaire d'une marque à jour : ajouter des articles, suivre les quantités et les DLC, recevoir des alertes de réapprovisionnement, et mettre à jour les stocks en langage naturel via l'IA."
+generated: true
+sourceHash: 1def64de6e3d8ba4
+generator: scripts/generate-feature-page.js
+templateVersion: 1
 ---
 
-import { Callout } from 'nextra/components'
+import { Steps, Callout } from 'nextra/components'
 
 # Gestion des stocks
 
-La section **Stocks** (`/stocks`) tient un journal d'inventaire par marque, avec gestion des quantités et des dates limites de consommation (DLC).
+Suivez vos ingrédients en temps réel, anticipez les ruptures et mettez à jour vos quantités en langage naturel grâce à l'IA.
 
-## Ajouter un article
+## Ce que ça fait
 
-Chaque entrée de stock comprend :
+La gestion des stocks vous permet de tenir l'inventaire d'une marque à jour : ajoutez des articles (nom, quantité, unité, seuil minimum), enregistrez les dates limites de consommation (DLC), et recevez des alertes lorsque vous approchez du seuil de réapprovisionnement. Vous pouvez également mettre à jour les quantités en tapant simplement « poulet 3 kg, riz 5 kg, sauce tomate terminée » : l'IA interprète votre texte, crée ou met à jour les articles correspondants, et vous donne une prévision de rupture sur les sept prochains jours.
 
-| Champ | Description |
-|---|---|
-| **Nom** | Désignation de l'ingrédient |
-| **Quantité** | Stock actuel |
-| **Unité** | kg, L, pièces… (défaut : kg) |
-| **Seuil minimum** | Déclenche une alerte de réapprovisionnement |
-| **DLC** | Date limite de consommation (optionnelle) |
+## Comment l'utiliser
 
-## Mise à jour en langage naturel
-
-Grubano comprend les mises à jour en langage naturel grâce à l'IA. Saisissez par exemple :
-
-> « Il me reste 3 kg de gnocchi et j'ai reçu 10 L de sauce tomate »
-
-L'IA met automatiquement à jour les quantités correspondantes dans votre journal.
+| Action | Où | Effet |
+|--------|-----|-------|
+| **Consulter l'inventaire** | `GET /api/stocks?brandId=<ID>` | Récupère la liste des articles d'une marque, triés par nom. |
+| **Créer un article** | `POST /api/stocks` avec `{ brandId, name, quantity, unit, minThreshold, dlc }` | Ajoute un nouvel article. Les champs `unit` (défaut `kg`), `minThreshold` (défaut `0`) et `dlc` sont facultatifs. |
+| **Modifier un article** | `POST /api/stocks` avec `{ id, quantity, unit, minThreshold, dlc }` | Met à jour les quantités, l'unité, le seuil et la DLC de l'article identifié par `id`. |
+| **Mise à jour en langage naturel** | `POST /api/stocks/update-ai` avec `{ text, brandId }` | Analyse le texte (ex. « tomates 2 kg, huile d'olive terminée »), crée ou met à jour les articles, et retourne une prévision de rupture sur sept jours (statuts : `critique` ≤ 1 jour, `bas` ≤ 3 jours, `ok` sinon). |
 
 <Callout type="info">
-  Les articles sous leur **seuil minimum** ou approchant leur **DLC** sont mis en évidence pour anticiper les ruptures et le gaspillage.
+**Unités reconnues** : `kg`, `g`, `L`, `mL`, `u` (pièces ou boîtes). Si vous indiquez « terminée », « vide » ou « 0 », l'IA enregistre une quantité à zéro.
 </Callout>
 
-## Suggestions IA
+<Callout type="warning">
+**Prévision de rupture** : le calcul repose sur une consommation moyenne fixe (par exemple 0,7 kg/jour pour les ingrédients en kilogrammes). Ajustez vos seuils en fonction de votre cadence réelle.
+</Callout>
 
-À partir de votre historique de consommation et de vos réservations à venir, l'IA peut suggérer des quantités à commander pour éviter les ruptures.
+## Pour aller plus loin
+
+- [Gestion du menu](/fr/guides/menu/) — liez vos plats aux ingrédients en stock
+- [Gestion d'un restaurant](/fr/guides/restaurant/) — paramétrez vos marques et points de vente
+
+## Passer à l'action
+
+**[Faites-le dans l'app →](https://www.grubano.com)**
+
+Pas encore sur Grubano ? [Démarrer en 15 minutes](/fr/guides/quick-start/).
+
+*Page générée depuis le code de grubano-kitchen-hub.*
