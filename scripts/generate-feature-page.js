@@ -331,14 +331,58 @@ function sliceTextByTokens(text, tokens, limit = 30) {
   return kept.join('\n')
 }
 
+// Headings in the règlement that must ALWAYS travel with every prompt — the
+// "Règle d'or" (canonical facts + guardrails + forbidden phrasings). Match
+// is case-insensitive substring on the heading line.
+const REGLEMENT_GOLDEN_RULE_KEYS = [
+  'règle d',          // « Règle d'or »
+  'garde-fou',        // « Garde-fous » (singular/plural)
+  'formulation',      // « Formulations interdites »
+  'faits canon',      // « Faits canoniques »
+  'économie',         // « Économie côté utilisateur »
+  'pro',              // « Pro » / « Grubano Pro »
+  'principe',         // « Principe »
+  'style',            // « Style »
+]
+
+/**
+ * Split a Notion-exported règlement into H2/H3 sections and keep:
+ *   - every section whose heading matches a GOLDEN_RULE key (the always-keep
+ *     "Règle d'or" — guardrails, canonical facts, forbidden phrasings),
+ *   - any other section that mentions a topic-relevant token,
+ *   - the lede paragraph before the first heading (it sets the frame).
+ * Caps the result at ~6 KB so big règlements don't double the prompt cost.
+ */
+function sliceReglementByTopic(text, tokens) {
+  if (!text) return ''
+  const tokenSet = tokens.map((t) => t.toLowerCase())
+  // Split BEFORE any markdown heading (# / ## / ### …) so each chunk starts
+  // with a heading line — easy to test the heading text in isolation.
+  const parts = text.split(/\n(?=#{1,3}\s)/)
+  const kept = []
+  for (const part of parts) {
+    const firstLine = (part.split('\n')[0] || '').toLowerCase()
+    const low = part.toLowerCase()
+    const isHeading = /^#{1,3}\s/.test(firstLine.trim())
+    const isGolden = isHeading && REGLEMENT_GOLDEN_RULE_KEYS.some((k) => firstLine.includes(k))
+    const matchesTopic = tokenSet.some((t) => t && low.includes(t))
+    if (!isHeading || isGolden || matchesTopic) kept.push(part)
+  }
+  // Hard cap to keep prompt cost bounded even if the rulebook grows.
+  return kept.join('\n').slice(0, 6000)
+}
+
 function buildContextSlices(topicKey, cfg, notion) {
   const tokens = topicSlugTokens(topicKey, cfg)
-  // The règlement is small + canonical → include in full (capped).
-  const reglement = (notion.reglement || '').slice(0, 12000)
-  // Cerveau & inbox can be long → slice by topic-relevant lines.
-  const cerveau = sliceTextByTokens(notion.cerveau || '', tokens, 60)
-  const inbox = sliceTextByTokens(notion.inbox || '', tokens, 40)
-  return { reglement, cerveau, inbox }
+  return {
+    // Per-topic slice of the règlement, with the "Règle d'or" sections
+    // (canonical facts + guardrails + forbidden phrasings) ALWAYS retained
+    // even when their heading doesn't mention the topic.
+    reglement: sliceReglementByTopic(notion.reglement || '', tokens),
+    // Cerveau & inbox: line-level token match, tighter line caps post-optim.
+    cerveau: sliceTextByTokens(notion.cerveau || '', tokens, 30),
+    inbox: sliceTextByTokens(notion.inbox || '', tokens, 20),
+  }
 }
 
 // ── Prompt ──────────────────────────────────────────────────────────────────
