@@ -42,3 +42,9 @@ next-env.d.ts
 
 # local dev logs
 dev.log
+
+.vercel
+
+# Notion source cache (re-fetched on demand via generate-feature-page.js
+# --refresh-notion). Plain-text excerpts of strategy pages we don't commit.
+.notion-cache/

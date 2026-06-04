@@ -1,57 +1,80 @@
 #!/usr/bin/env node
 /**
- * generate-feature-page.js — Grubano docs feature-page generator (B1-bis)
+ * generate-feature-page.js — Grubano harmonized doc generator
  *
- * For a given topic key (e.g. `restaurant.stocks`), gathers facts from a
- * checkout of grubano-kitchen-hub, calls the Claude API with the 8-block
- * template + the strategic guardrails, and writes a MDX page into
- * content/<locale>/<docPath>.mdx.
+ * Reads three sources, produces a coherent summary of the doc catalog,
+ * and (re)generates feature pages on a sensitivity-hash basis:
  *
- * The generator:
- *   - REFUSES to overwrite editorial pages (see feature-pages.config.js).
- *   - Embeds `generated: true` + a `sourceHash` in the frontmatter so the
- *     existing wrapper logic can detect generated pages, and so re-runs
- *     skip topics whose source has not changed.
- *   - Reuses the EXACT same API key + model as translate-content.js
- *     (claude-sonnet-4-5) — no new infra.
+ *   CODE       — checkout of grubano-kitchen-hub (routes + Prisma models)
+ *   INBOX      — Notion shared inbox page (what each agent has shipped)
+ *   RÈGLEMENT  — Notion docs-rulebook page (canonical facts, guardrails,
+ *                forbidden phrasings)
+ *   CERVEAU    — Notion brain page (cross-agent decisions)
+ *
+ * Notion pages are fetched via the Notion API with NOTION_TOKEN, cached
+ * to .notion-cache/ so subsequent runs can work offline / cheap.
+ *
+ * Each generated page embeds `generated: true` + a `sourceHash` in its
+ * frontmatter. On re-runs, a page whose sourceHash already matches the
+ * current input bundle (code facts + Notion slices) is skipped — no API
+ * call. That is the "sensitivity update".
+ *
+ * The generator never overwrites editorial pages (see feature-pages.config.js
+ * — the EDITORIAL_PAGES set is derived from the catalog).
  *
  * CLI:
- *   APP_REPO_PATH=../grubano-kitchen-hub \
- *   ANTHROPIC_API_KEY=sk-ant-... \
- *   node scripts/generate-feature-page.js <topic-key>
+ *   node scripts/generate-feature-page.js --summary
+ *       Print the harmonized topic catalog grouped by audience + the source
+ *       inventory (Notion cache freshness, code repo path). Cheap, no LLM.
  *
- *   <topic-key>         — single topic to (re)generate
- *   --all               — every topic in FEATURE_PAGES
- *   --force             — ignore sourceHash cache
- *   --dry-run           — print the prompt + planned output, no API call
+ *   node scripts/generate-feature-page.js <topic-key>
+ *       (Re)generate the matching page. Skipped if sourceHash unchanged.
+ *
+ *   node scripts/generate-feature-page.js --all
+ *       Iterate every topic whose status === 'generated'.
+ *
+ *   --force            Ignore sourceHash cache (regen anyway).
+ *   --dry-run          Print plan + prompt head, no Claude call.
+ *   --refresh-notion   Re-fetch Notion pages into .notion-cache/ before run.
  *
  * Env:
- *   APP_REPO_PATH          (default: ../grubano-kitchen-hub, then ../grubano)
- *   ANTHROPIC_API_KEY      required unless --dry-run
- *   ANTHROPIC_MODEL        default claude-sonnet-4-5
+ *   APP_REPO_PATH       Path to a kitchen-hub checkout
+ *                       (defaults: ../grubano-kitchen-hub, then ../grubano)
+ *   ANTHROPIC_API_KEY   Required for generation; ignored for --summary
+ *   ANTHROPIC_MODEL     Default claude-sonnet-4-5
+ *   NOTION_TOKEN        Required for --refresh-notion; reads from
+ *                       ../grubano/.env.local as a fallback
  */
 
 const fs = require('fs')
 const path = require('path')
 const crypto = require('crypto')
+const https = require('https')
 
-const { EDITORIAL_PAGES, FEATURE_PAGES } = require('./feature-pages.config.js')
+const { AUDIENCES, EDITORIAL_PAGES, FEATURE_PAGES } = require('./feature-pages.config.js')
 
 // Bumping this invalidates every sourceHash → forces regen on next run.
-// Bump when you change the prompt / template structure in a meaningful way.
 //   v1 — original 8-block template, in-content CTA, footer marker.
 //   v2 — premium Menu-style layout: <FlowDiagram> at top, richer prose,
 //        inline contextual links, wrapper-handled CTA, no footer marker.
-//   v3 — canonical Pro definition + forbidden phrasings locked in the
-//        guardrails so no auto-generated page can reintroduce the
-//        invented "visibilité / affiliation / stats avancées" framing.
-const TEMPLATE_VERSION = 3
+//   v3 — canonical Pro definition + forbidden phrasings locked.
+//   v4 — Notion-sourced strategic context fed into the prompt (the
+//        harmonized 3-sources flow): règlement + cerveau slices included.
+const TEMPLATE_VERSION = 4
 
-// ── Locate repos ────────────────────────────────────────────────────────────
+// ── Paths & Notion ──────────────────────────────────────────────────────────
 
 const DOCS_ROOT = path.resolve(__dirname, '..')
 const CONTENT_DIR = path.join(DOCS_ROOT, 'content')
+const NOTION_CACHE_DIR = path.join(DOCS_ROOT, '.notion-cache')
 
+const NOTION_PAGES = {
+  inbox: '36efd2c9-8146-8195-a65a-d146cfed0642',
+  reglement: '374fd2c9-8146-810a-99ea-dd83c1e827da',
+  cerveau: '36dfd2c9-8146-81ae-bfab-e5e09076ea8e',
+}
+
+// Locate kitchen-hub
 function resolveAppRepo() {
   const candidates = [
     process.env.APP_REPO_PATH,
@@ -75,29 +98,159 @@ const DOCS_MAP = JSON.parse(
 const MODEL = process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-5'
 const API_KEY = process.env.ANTHROPIC_API_KEY
 
+// NOTION_TOKEN fallback to the kitchen-hub .env.local for local dev runs.
+function readNotionToken() {
+  if (process.env.NOTION_TOKEN) return process.env.NOTION_TOKEN
+  const envFile = path.join(APP_REPO, '.env.local')
+  if (!fs.existsSync(envFile)) return null
+  for (const line of fs.readFileSync(envFile, 'utf8').split('\n')) {
+    const m = line.match(/^NOTION_TOKEN=(.+)$/)
+    if (m) return m[1].trim().replace(/^["']|["']$/g, '')
+  }
+  return null
+}
+const NOTION_TOKEN = readNotionToken()
+
 // ── CLI ─────────────────────────────────────────────────────────────────────
 
 const argv = process.argv.slice(2)
+const ARG_SUMMARY = argv.includes('--summary')
 const ARG_ALL = argv.includes('--all')
 const ARG_FORCE = argv.includes('--force')
 const ARG_DRY = argv.includes('--dry-run')
+const ARG_REFRESH = argv.includes('--refresh-notion')
 const topicArg = argv.find((a) => !a.startsWith('--'))
 
-if (!ARG_ALL && !topicArg) {
-  console.error(
-    'Usage: node scripts/generate-feature-page.js <topic-key> [--force] [--dry-run]\n' +
-      '       node scripts/generate-feature-page.js --all [--force] [--dry-run]',
-  )
-  process.exit(1)
-}
-if (!ARG_DRY && !API_KEY) {
-  console.error(
-    '[generator] ANTHROPIC_API_KEY is required (use --dry-run to preview without an API call).',
-  )
-  process.exit(1)
+// ── Notion fetcher (minimal, paginated, one level of children) ──────────────
+
+function notionGet(pathname) {
+  return new Promise((resolve, reject) => {
+    const req = https.request(
+      {
+        hostname: 'api.notion.com',
+        path: `/v1${pathname}`,
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${NOTION_TOKEN}`,
+          'Notion-Version': '2022-06-28',
+          'Content-Type': 'application/json',
+        },
+      },
+      (res) => {
+        const chunks = []
+        res.on('data', (c) => chunks.push(c))
+        res.on('end', () => {
+          const body = Buffer.concat(chunks).toString('utf8')
+          if (res.statusCode >= 400) {
+            return reject(new Error(`Notion ${res.statusCode}: ${body.slice(0, 200)}`))
+          }
+          try {
+            resolve(JSON.parse(body))
+          } catch (e) {
+            reject(e)
+          }
+        })
+      },
+    )
+    req.on('error', reject)
+    req.end()
+  })
 }
 
-// ── Helpers ─────────────────────────────────────────────────────────────────
+function richTextToPlain(rt) {
+  if (!Array.isArray(rt)) return ''
+  return rt.map((t) => t.plain_text || '').join('')
+}
+
+function blockToText(block) {
+  const type = block.type
+  const data = block[type] || {}
+  const rt = data.rich_text || data.title
+  const text = richTextToPlain(rt)
+  switch (type) {
+    case 'heading_1':
+      return `\n# ${text}`
+    case 'heading_2':
+      return `\n## ${text}`
+    case 'heading_3':
+      return `\n### ${text}`
+    case 'bulleted_list_item':
+      return `- ${text}`
+    case 'numbered_list_item':
+      return `1. ${text}`
+    case 'quote':
+      return `> ${text}`
+    case 'callout':
+      return `> [!] ${text}`
+    case 'code':
+      return '```\n' + text + '\n```'
+    case 'divider':
+      return '---'
+    case 'paragraph':
+    default:
+      return text
+  }
+}
+
+async function fetchChildrenPaginated(blockId) {
+  const all = []
+  let cursor = null
+  do {
+    const qs = cursor ? `?start_cursor=${cursor}&page_size=100` : '?page_size=100'
+    const res = await notionGet(`/blocks/${blockId}/children${qs}`)
+    all.push(...(res.results || []))
+    cursor = res.has_more ? res.next_cursor : null
+  } while (cursor)
+  return all
+}
+
+async function fetchNotionPageAsText(pageId, depth = 2) {
+  const blocks = await fetchChildrenPaginated(pageId)
+  const lines = []
+  for (const b of blocks) {
+    const t = blockToText(b)
+    if (t && t.trim()) lines.push(t)
+    if (b.has_children && depth > 0) {
+      try {
+        const kids = await fetchChildrenPaginated(b.id)
+        for (const k of kids) {
+          const kt = blockToText(k)
+          if (kt && kt.trim()) lines.push('  ' + kt.trim())
+        }
+      } catch {
+        /* swallow nested-fetch errors — page is still usable */
+      }
+    }
+  }
+  return lines.join('\n')
+}
+
+async function loadNotionSources({ refresh }) {
+  fs.mkdirSync(NOTION_CACHE_DIR, { recursive: true })
+  const out = {}
+  for (const [name, id] of Object.entries(NOTION_PAGES)) {
+    const cacheFile = path.join(NOTION_CACHE_DIR, `${name}.txt`)
+    if (refresh && NOTION_TOKEN) {
+      try {
+        console.log(`[generator] fetching Notion ${name} (${id.slice(0, 8)}…)`)
+        const text = await fetchNotionPageAsText(id)
+        fs.writeFileSync(cacheFile, text, 'utf8')
+        out[name] = text
+        continue
+      } catch (e) {
+        console.warn(`[generator] Notion fetch ${name} failed: ${e.message}`)
+      }
+    }
+    if (fs.existsSync(cacheFile)) {
+      out[name] = fs.readFileSync(cacheFile, 'utf8')
+    } else {
+      out[name] = ''
+    }
+  }
+  return out
+}
+
+// ── Code-side fact gathering (unchanged) ────────────────────────────────────
 
 function sha(s) {
   return crypto.createHash('sha256').update(s).digest('hex').slice(0, 16)
@@ -109,7 +262,6 @@ function readSafe(rel) {
   return fs.readFileSync(full, 'utf8')
 }
 
-/** Pluck the named model block from a Prisma schema file. */
 function extractPrismaModel(schemaSrc, modelName) {
   if (!schemaSrc) return null
   const re = new RegExp(`model\\s+${modelName}\\s*\\{[\\s\\S]*?\\n\\}`, 'm')
@@ -117,7 +269,6 @@ function extractPrismaModel(schemaSrc, modelName) {
   return m ? m[0] : null
 }
 
-/** Read the existing frontmatter sourceHash from a .mdx file. */
 function readSourceHash(file) {
   if (!fs.existsSync(file)) return null
   const src = fs.readFileSync(file, 'utf8')
@@ -128,15 +279,12 @@ function readSourceHash(file) {
 }
 
 function gatherFacts(cfg) {
-  const facts = {
-    routes: {},
-    models: {},
-  }
-  for (const rel of cfg.sources.routes || []) {
+  const facts = { routes: {}, models: {} }
+  for (const rel of cfg.sources?.routes || []) {
     const src = readSafe(rel)
     if (src) facts.routes[rel] = src
   }
-  if (cfg.sources.models?.length) {
+  if (cfg.sources?.models?.length) {
     const schema = readSafe('prisma/schema.prisma')
     for (const m of cfg.sources.models) {
       const block = extractPrismaModel(schema, m)
@@ -154,6 +302,43 @@ function relatedDocLinks(relatedKeys, locale) {
     out.push(`/${locale}${entry.doc}/`)
   }
   return out
+}
+
+// ── Notion slicing (per-topic) ──────────────────────────────────────────────
+
+function topicSlugTokens(topicKey, cfg) {
+  // Words to look for in Notion text when picking topic-relevant slices.
+  const tokens = new Set([topicKey.toLowerCase()])
+  for (const part of topicKey.split('.')) tokens.add(part.toLowerCase())
+  if (cfg.title) tokens.add(cfg.title.toLowerCase())
+  const slug = cfg.docPath?.split('/').pop()
+  if (slug) tokens.add(slug.toLowerCase())
+  return [...tokens].filter(Boolean)
+}
+
+/** Extract paragraph-ish lines from `text` that mention any of the tokens. */
+function sliceTextByTokens(text, tokens, limit = 30) {
+  if (!text) return ''
+  const lines = text.split('\n')
+  const kept = []
+  for (const line of lines) {
+    const low = line.toLowerCase()
+    if (tokens.some((t) => low.includes(t))) {
+      kept.push(line.trim())
+      if (kept.length >= limit) break
+    }
+  }
+  return kept.join('\n')
+}
+
+function buildContextSlices(topicKey, cfg, notion) {
+  const tokens = topicSlugTokens(topicKey, cfg)
+  // The règlement is small + canonical → include in full (capped).
+  const reglement = (notion.reglement || '').slice(0, 12000)
+  // Cerveau & inbox can be long → slice by topic-relevant lines.
+  const cerveau = sliceTextByTokens(notion.cerveau || '', tokens, 60)
+  const inbox = sliceTextByTokens(notion.inbox || '', tokens, 40)
+  return { reglement, cerveau, inbox }
 }
 
 // ── Prompt ──────────────────────────────────────────────────────────────────
@@ -187,7 +372,7 @@ Si la fonctionnalité que tu décris ne touche PAS à l'agrégation multi-platef
 `
 
 const TEMPLATE_INSTRUCTIONS = `
-GABARIT v2 — style aligné sur la page de référence « Menu & Scan IA » : aéré,
+GABARIT v4 — style aligné sur la page de référence « Menu & Scan IA » : aéré,
 premium, calme, avec de l'air entre les blocs. Pas de surcharge de Callouts.
 Étapes propres. Liens contextuels tissés dans la prose.
 
@@ -243,6 +428,8 @@ LIENS HYPERTEXTE EN LIGNE :
   deux fois la même cible dans le même paragraphe — pas de spam).
 - N'ajoute pas de liens vers des URLs que tu inventes. Strictement
   \`INLINE_LINKS\` + \`RELATED_LINKS\`.
+- Les liens sont des liens prose ordinaires : pas de **gras** autour,
+  pas d'emoji ➡️ devant, pas de flèche → décorative.
 
 FORMAT DE SORTIE :
 - MDX seul. Pas de frontmatter (je l'ajoute). Pas de \`\`\`mdx fence.
@@ -252,24 +439,37 @@ FORMAT DE SORTIE :
 - N'utilise pas d'autres composants React.
 `
 
-function buildPrompt(cfg, facts) {
+function topicKeyFor(cfg) {
+  for (const [k, v] of Object.entries(FEATURE_PAGES)) if (v === cfg) return k
+  return '?'
+}
+
+function buildPrompt(cfg, facts, slices) {
   const RELATED_LINKS = relatedDocLinks(cfg.related, cfg.locale)
   const FLOW_STEPS = cfg.flow || []
   const INLINE_LINKS = cfg.inlineLinks || {}
 
   const factsBlock = [
-    '== SOURCES (routes) ==',
+    '== SOURCES CODE (routes) ==',
     ...Object.entries(facts.routes).map(
       ([p, src]) => `\n--- ${p} ---\n${src}\n`,
     ),
-    '\n== SOURCES (modèles Prisma) ==',
+    '\n== SOURCES CODE (modèles Prisma) ==',
     ...Object.entries(facts.models).map(
       ([m, src]) => `\n--- model ${m} ---\n${src}\n`,
     ),
   ].join('\n')
 
+  const contextBlock = [
+    '== CONTEXTE STRATÉGIQUE (depuis Notion — règlement + cerveau + inbox) ==',
+    '\nCes extraits priment sur tes intuitions. Si une affirmation contredit ces extraits, NE l\'ÉCRIS PAS.',
+    '\n--- Règlement (canonique) ---\n' + (slices.reglement || '(vide — fournir le règlement Notion pour ce topic)'),
+    '\n--- Cerveau (décisions liées au topic) ---\n' + (slices.cerveau || '(rien de pertinent dans le cerveau pour ce topic)'),
+    '\n--- Inbox (faits récents liés au topic) ---\n' + (slices.inbox || '(rien de pertinent dans l\'inbox pour ce topic)'),
+  ].join('\n')
+
   return [
-    `Vous êtes le rédacteur technique de la documentation Grubano. Rédigez la fiche pour "${cfg.title}" (topic \`${topicKeyForPrompt(cfg)}\`, locale \`${cfg.locale}\`).`,
+    `Vous êtes le rédacteur technique de la documentation Grubano. Rédigez la fiche pour "${cfg.title}" (topic \`${topicKeyFor(cfg)}\`, locale \`${cfg.locale}\`).`,
     `\nINTENT (1 phrase, ce que l'utilisateur veut accomplir) : ${cfg.intent}`,
     STRATEGIC_GUARDRAILS,
     TEMPLATE_INSTRUCTIONS,
@@ -277,14 +477,9 @@ function buildPrompt(cfg, facts) {
     `FLOW_STEPS     = ${JSON.stringify(FLOW_STEPS)}`,
     `INLINE_LINKS   = ${JSON.stringify(INLINE_LINKS)}`,
     `RELATED_LINKS  = ${JSON.stringify(RELATED_LINKS)}`,
+    `\n${contextBlock}`,
     `\n${factsBlock}`,
   ].join('\n')
-}
-
-function topicKeyForPrompt(cfg) {
-  // The cfg object doesn't carry the key, so look it up.
-  for (const [k, v] of Object.entries(FEATURE_PAGES)) if (v === cfg) return k
-  return '?'
 }
 
 // ── Claude call ─────────────────────────────────────────────────────────────
@@ -310,17 +505,16 @@ async function callClaude(prompt) {
   const data = await res.json()
   const block = (data.content || []).find((b) => b.type === 'text')
   if (!block) throw new Error('Claude API returned no text block')
-  return {
-    text: block.text,
-    usage: data.usage || {},
-  }
+  return { text: block.text, usage: data.usage || {} }
 }
 
-// ── Write ───────────────────────────────────────────────────────────────────
+// ── Output paths & frontmatter ──────────────────────────────────────────────
 
 function targetPathFor(cfg) {
-  // /guides/stocks → content/<locale>/guides/stocks.mdx
-  const rel = cfg.docPath.replace(/^\//, '') + '.mdx'
+  // Root path '/' resolves to <locale>/index.mdx; anything else strips the
+  // leading slash and appends .mdx.
+  const slug = cfg.docPath === '/' ? '/index' : cfg.docPath
+  const rel = slug.replace(/^\//, '') + '.mdx'
   return path.join(CONTENT_DIR, cfg.locale, rel)
 }
 
@@ -342,12 +536,89 @@ function frontmatter(cfg, sourceHash, description) {
   ].join('\n')
 }
 
+// ── Summary ─────────────────────────────────────────────────────────────────
+
+function statSize(p) {
+  try { return fs.statSync(p).size } catch { return 0 }
+}
+
+function notionCacheInventory() {
+  const out = {}
+  for (const [name, id] of Object.entries(NOTION_PAGES)) {
+    const f = path.join(NOTION_CACHE_DIR, `${name}.txt`)
+    out[name] = {
+      id,
+      cached: fs.existsSync(f),
+      bytes: statSize(f),
+      mtime: fs.existsSync(f) ? fs.statSync(f).mtime.toISOString().slice(0, 16).replace('T', ' ') : null,
+    }
+  }
+  return out
+}
+
+function printSummary() {
+  const lines = []
+  lines.push('GRUBANO DOCS — SOMMAIRE GÉNÉRÉ')
+  lines.push(`templateVersion=${TEMPLATE_VERSION}  app-repo=${path.relative(path.resolve(DOCS_ROOT, '..'), APP_REPO)}`)
+  lines.push('')
+
+  const counts = { editorial: 0, generated: 0, planned: 0 }
+
+  for (const audience of AUDIENCES) {
+    const entries = Object.entries(FEATURE_PAGES).filter(([, v]) => v.audience === audience)
+    if (!entries.length) continue
+    lines.push(audience)
+    for (const [key, cfg] of entries) {
+      counts[cfg.status] = (counts[cfg.status] || 0) + 1
+      const tag = `[${cfg.status.padEnd(9)}]`
+      const url = `/${cfg.locale}${cfg.docPath}`
+      const exists = fs.existsSync(targetPathFor(cfg))
+      const liveMark = exists ? '●' : '○'
+      lines.push(`  ${liveMark} ${key.padEnd(28)} ${tag}  ${url.padEnd(28)}  ${cfg.title}`)
+    }
+    lines.push('')
+  }
+
+  lines.push('Sources lues :')
+  const repoRel = path.relative(path.resolve(DOCS_ROOT, '..'), APP_REPO)
+  lines.push(`  - CODE       : ${repoRel} (live checkout)`)
+  for (const [name, info] of Object.entries(notionCacheInventory())) {
+    if (info.cached) {
+      lines.push(`  - ${name.toUpperCase().padEnd(9)}: ${info.id.slice(0, 8)}… cached ${info.bytes}B (${info.mtime} UTC)`)
+    } else {
+      lines.push(`  - ${name.toUpperCase().padEnd(9)}: ${info.id.slice(0, 8)}… NO CACHE — run --refresh-notion (NOTION_TOKEN required)`)
+    }
+  }
+  lines.push('')
+
+  lines.push('Status :')
+  lines.push(`  Éditorial   : ${counts.editorial || 0}   (jamais réécrits par le générateur)`)
+  lines.push(`  Généré      : ${counts.generated || 0}   (fiches owned par le générateur)`)
+  lines.push(`  Planifié    : ${counts.planned || 0}   (déclarés, à régénérer après revue)`)
+  lines.push('')
+  lines.push(`Légende : ● fichier MDX existant   ○ pas encore écrit`)
+
+  return lines.join('\n')
+}
+
 // ── Per-topic generation ────────────────────────────────────────────────────
 
-async function generateOne(topicKey) {
+async function generateOne(topicKey, notion) {
   const cfg = FEATURE_PAGES[topicKey]
   if (!cfg) {
     console.error(`[generator] Unknown topic: ${topicKey}`)
+    process.exitCode = 1
+    return
+  }
+  if (cfg.status === 'editorial') {
+    console.error(`[generator] REFUSED ${topicKey}: editorial topic.`)
+    process.exitCode = 1
+    return
+  }
+  if (cfg.status === 'planned') {
+    console.error(
+      `[generator] REFUSED ${topicKey}: status='planned' — flip to 'generated' in feature-pages.config.js after manual review.`,
+    )
     process.exitCode = 1
     return
   }
@@ -355,21 +626,18 @@ async function generateOne(topicKey) {
   const targetRel = path.relative(DOCS_ROOT, targetAbs).replace(/\\/g, '/')
 
   if (isEditorial(targetAbs)) {
-    console.error(
-      `[generator] REFUSED to write ${targetRel}: marked editorial in feature-pages.config.js.`,
-    )
+    console.error(`[generator] REFUSED ${targetRel}: editorial path.`)
     process.exitCode = 1
     return
   }
 
   const facts = gatherFacts(cfg)
   if (!Object.keys(facts.routes).length && !Object.keys(facts.models).length) {
-    console.error(
-      `[generator] No sources found for ${topicKey} — check feature-pages.config sources paths.`,
-    )
+    console.error(`[generator] No code sources found for ${topicKey} — check feature-pages.config.js paths.`)
     process.exitCode = 1
     return
   }
+  const slices = buildContextSlices(topicKey, cfg, notion)
 
   const sourceHash = sha(
     JSON.stringify({
@@ -377,18 +645,19 @@ async function generateOne(topicKey) {
       template: TEMPLATE_VERSION,
       intent: cfg.intent,
       facts,
+      slices, // règlement + cerveau + inbox slices participate in the hash
     }),
   )
 
   if (!ARG_FORCE) {
     const existing = readSourceHash(targetAbs)
     if (existing === sourceHash) {
-      console.log(`[generator] ${topicKey} → no source change since last run, skipping.`)
+      console.log(`[generator] ${topicKey} → no input change since last run, skipping.`)
       return
     }
   }
 
-  const prompt = buildPrompt(cfg, facts)
+  const prompt = buildPrompt(cfg, facts, slices)
 
   if (ARG_DRY) {
     console.log(`[generator] DRY-RUN ${topicKey}`)
@@ -396,8 +665,14 @@ async function generateOne(topicKey) {
     console.log(`  sourceHash: ${sourceHash}`)
     console.log(`  prompt bytes: ${prompt.length}`)
     console.log('--- prompt head ---')
-    console.log(prompt.slice(0, 1500))
+    console.log(prompt.slice(0, 1800))
     console.log('...')
+    return
+  }
+
+  if (!API_KEY) {
+    console.error('[generator] ANTHROPIC_API_KEY is required (use --dry-run to preview).')
+    process.exitCode = 1
     return
   }
 
@@ -405,18 +680,15 @@ async function generateOne(topicKey) {
   const t0 = Date.now()
   const { text, usage } = await callClaude(prompt)
   const dt = ((Date.now() - t0) / 1000).toFixed(1)
-
-  // Cost estimate based on public Sonnet 4.5 pricing — purely informative.
   const cost =
     ((usage.input_tokens || 0) / 1_000_000) * 3 +
     ((usage.output_tokens || 0) / 1_000_000) * 15
 
-  const description = cfg.intent
   const body = text.trim() + '\n'
   fs.mkdirSync(path.dirname(targetAbs), { recursive: true })
   fs.writeFileSync(
     targetAbs,
-    `${frontmatter(cfg, sourceHash, description)}\n\n${body}`,
+    `${frontmatter(cfg, sourceHash, cfg.intent)}\n\n${body}`,
     'utf8',
   )
   console.log(
@@ -427,16 +699,47 @@ async function generateOne(topicKey) {
 // ── Main ────────────────────────────────────────────────────────────────────
 
 async function main() {
-  const topics = ARG_ALL ? Object.keys(FEATURE_PAGES) : [topicArg]
+  if (ARG_SUMMARY) {
+    // For the summary view, refresh-notion is optional; otherwise just print
+    // what's on disk so anyone can see the catalog quickly.
+    if (ARG_REFRESH) {
+      if (!NOTION_TOKEN) {
+        console.warn('[generator] --refresh-notion requested but NOTION_TOKEN is missing.')
+      } else {
+        await loadNotionSources({ refresh: true })
+      }
+    }
+    console.log(printSummary())
+    return
+  }
+
+  // Generation path
+  if (!ARG_ALL && !topicArg) {
+    console.error(
+      'Usage:\n' +
+        '  node scripts/generate-feature-page.js --summary [--refresh-notion]\n' +
+        '  node scripts/generate-feature-page.js <topic-key> [--force] [--dry-run] [--refresh-notion]\n' +
+        '  node scripts/generate-feature-page.js --all       [--force] [--dry-run] [--refresh-notion]',
+    )
+    process.exit(1)
+  }
+
+  const notion = await loadNotionSources({ refresh: ARG_REFRESH })
+
+  const topics = ARG_ALL
+    ? Object.entries(FEATURE_PAGES)
+        .filter(([, v]) => v.status === 'generated')
+        .map(([k]) => k)
+    : [topicArg]
+
   console.log(
-    `[generator] ${topics.length} topic(s) — model=${MODEL} dry=${ARG_DRY} force=${ARG_FORCE}`,
+    `[generator] ${topics.length} topic(s) — model=${MODEL} dry=${ARG_DRY} force=${ARG_FORCE} refreshNotion=${ARG_REFRESH}`,
   )
   console.log(`[generator] editorial-protected files: ${EDITORIAL_PAGES.size}`)
   for (const t of topics) {
     try {
-      // sequential — keeps logs readable and rate-limit-safe
       // eslint-disable-next-line no-await-in-loop
-      await generateOne(t)
+      await generateOne(t, notion)
     } catch (err) {
       console.error(`[generator] FAILED ${t}: ${err.message}`)
       process.exitCode = 2
