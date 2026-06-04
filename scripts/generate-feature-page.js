@@ -42,7 +42,10 @@ const { EDITORIAL_PAGES, FEATURE_PAGES } = require('./feature-pages.config.js')
 //   v1 — original 8-block template, in-content CTA, footer marker.
 //   v2 — premium Menu-style layout: <FlowDiagram> at top, richer prose,
 //        inline contextual links, wrapper-handled CTA, no footer marker.
-const TEMPLATE_VERSION = 2
+//   v3 — canonical Pro definition + forbidden phrasings locked in the
+//        guardrails so no auto-generated page can reintroduce the
+//        invented "visibilité / affiliation / stats avancées" framing.
+const TEMPLATE_VERSION = 3
 
 // ── Locate repos ────────────────────────────────────────────────────────────
 
@@ -163,6 +166,24 @@ GARDE-FOUS STRATÉGIQUES (impératifs) :
 - Ne nomme JAMAIS de marques (Gnocchi Bar, Pasta Fresca, etc.) — utiliser des descriptions génériques (« votre marque principale »).
 - Pas de framing « dark kitchens » / « ghost kitchens » — Grubano = marketplace de restaurants LOCAUX qui cuisinent dans LEUR cuisine.
 - Ton : bénéfices clairs, premium, sobre. Français. Tutoiement INTERDIT — utilisez le « vous » de politesse.
+
+DÉFINITION CANONIQUE de Grubano Pro (la SEULE description acceptable de Pro, à utiliser au futur / "bientôt") :
+> Grubano Pro permettra de recevoir les commandes de toutes vos autres
+> plateformes (Uber Eats, Deliveroo, Just Eat…) directement sur votre
+> tableau de bord Grubano : un seul écran pour toutes vos commandes,
+> avec des analyses et rapports unifiés. La commission ne change pas
+> (10 % en Standard comme en Pro). Pro est un forfait mensuel de
+> 29 €/mois, sans engagement, qui s'ajoute à la commission sans la
+> remplacer.
+
+FORMULATIONS INTERDITES pour décrire Pro (n'écris JAMAIS ces phrases, ni leurs synonymes proches) :
+- « accélérer la visibilité » / « visibilité accrue » / « boost de visibilité »
+- « mise en avant dans la découverte » / « apparaître en priorité » côté Pro
+- « débloquer l'affiliation créateurs » / « accès à l'affiliation » présenté comme une feature Pro
+- « statistiques avancées » présentées comme une feature Pro distincte (cohortes, rétention, panier moyen, comparatifs marques, heures de pointe — n'invente AUCUNE de ces features Pro)
+- « support prioritaire » comme feature Pro
+
+Si la fonctionnalité que tu décris ne touche PAS à l'agrégation multi-plateformes, ne mentionne Pro QUE pour rappeler la commission identique 10 % ; ne décris pas le contenu de Pro hors du périmètre canonique ci-dessus.
 `
 
 const TEMPLATE_INSTRUCTIONS = `
