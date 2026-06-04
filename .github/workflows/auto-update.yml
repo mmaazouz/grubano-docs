@@ -1,21 +1,29 @@
 name: Auto-update docs
 
-# Regenerates API reference + changelog from the main app repo, then translates
-# them into fr/es/ar/it via the Claude API.
+# Regenerates the auto-doc artefacts from three sources:
+#   1. API reference + changelog        (from the kitchen-hub code)
+#   2. Harmonized FR feature guide pages (from code + Notion règlement
+#                                         + cerveau + inbox)
+#   3. (HELD) Translations of EN source to fr/es/ar/it via Claude API
 #
 # Triggers:
-#   - Nightly at 02:00 (UTC)
-#   - repository_dispatch (event_type: app-updated) fired by grubano-kitchen-hub
-#     after a successful production deploy
-#   - Manual run from the Actions tab
+#   - Nightly at 02:00 UTC   → catches Notion (règlement/cerveau/inbox)
+#                              changes even when code didn't move.
+#   - repository_dispatch    → fired by grubano-kitchen-hub after a
+#     (event_type: app-updated) successful production deploy.
+#   - Manual run from the Actions tab.
 #
 # Required secrets:
-#   APP_REPO_TOKEN       — PAT with read access to grubano-kitchen-hub
-#                          (omit to fall back to GITHUB_TOKEN if the source
-#                          repo is public)
-#   ANTHROPIC_API_KEY    — Claude API key for the translation pass.
-#                          If absent, the translate step is skipped and only
-#                          the English source is regenerated + committed.
+#   APP_REPO_TOKEN     — PAT with read access to grubano-kitchen-hub
+#                        (omit to fall back to GITHUB_TOKEN if the source
+#                        repo is public — it is, today).
+#   ANTHROPIC_API_KEY  — Claude API key for the harmonized feature-page
+#                        generator (and, later, the held translation pass).
+#                        Required to regenerate sensitivity-changed pages;
+#                        if absent, only the API ref + changelog refresh.
+#   NOTION_TOKEN       — Notion API token with read access to the inbox,
+#                        règlement and cerveau pages. Required for the
+#                        harmonized generator (use --refresh-notion).
 
 on:
   schedule:
@@ -70,6 +78,32 @@ jobs:
         env:
           APP_REPO_PATH: ${{ github.workspace }}/grubano-kitchen-hub
         run: node scripts/generate-from-source.js
+
+      # ── Harmonized feature pages (B2 — autonomous) ───────────────────────
+      # Reads 3 sources (code + Notion règlement + cerveau + inbox), refreshes
+      # the .notion-cache/, then regenerates only the topics whose sourceHash
+      # changed (sensitivity update). Built-in 429-backoff lets `--all` pace
+      # itself across the 30 k-token-per-minute rate window. continue-on-error
+      # so a transient Claude/Notion hiccup doesn't fail the whole workflow —
+      # the API ref + changelog from the previous step still ship.
+      - name: Generate harmonized feature pages
+        id: feature-pages
+        working-directory: grubano-docs
+        if: env.ANTHROPIC_API_KEY != ''
+        continue-on-error: true
+        env:
+          APP_REPO_PATH: ${{ github.workspace }}/grubano-kitchen-hub
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+        run: node scripts/generate-feature-page.js --all --refresh-notion
+
+      - name: Note harmonized generator is gated on ANTHROPIC_API_KEY
+        if: env.ANTHROPIC_API_KEY == ''
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          echo "ANTHROPIC_API_KEY secret is not set on this repo."
+          echo "Harmonized feature-page generation skipped this run."
 
       # ── Translation pass — HELD until D3·7 ──────────────────────────────
       # Cost guardrail (D3·1 directive): do NOT burn the Claude budget

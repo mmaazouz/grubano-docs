@@ -536,7 +536,7 @@ function buildPrompt(cfg, facts, slices) {
 
 // ── Claude call ─────────────────────────────────────────────────────────────
 
-async function callClaude(prompt) {
+async function callClaude(prompt, attempt = 1) {
   const res = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: {
@@ -551,6 +551,15 @@ async function callClaude(prompt) {
     }),
   })
   if (!res.ok) {
+    // Backoff on rate-limit so an --all run in CI doesn't fail just
+    // because we paced 8 topics inside the 30 k-input-tokens-per-minute
+    // window. 3 attempts → 60 s → 120 s → 180 s.
+    if (res.status === 429 && attempt <= 3) {
+      const wait = 60 * attempt
+      console.warn(`[generator] rate-limited; waiting ${wait}s before retry ${attempt + 1}/3`)
+      await new Promise((r) => setTimeout(r, wait * 1000))
+      return callClaude(prompt, attempt + 1)
+    }
     const text = await res.text().catch(() => '')
     throw new Error(`Claude API ${res.status}: ${text.slice(0, 400)}`)
   }
