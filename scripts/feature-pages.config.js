@@ -40,6 +40,23 @@ const FEATURE_PAGES = {
       models: ['StockItem'],
     },
     related: ['restaurant.menu', 'restaurant.dashboard'],
+    // High-level flow rendered as a <FlowDiagram> at the top of the page.
+    // 3–5 steps, very short labels (≤ 5 words). Verb-led where possible.
+    flow: [
+      'Ajouter un article',
+      'Définir un seuil mini',
+      'Alerte de réappro',
+      'Prévision de rupture 7 j',
+    ],
+    // Terms to weave as inline links inside the prose (in addition to the
+    // "Pour aller plus loin" block). Key = surface form to look for, value
+    // = target href. Case-insensitive match. Generator suggests, the LLM
+    // decides where it reads naturally.
+    inlineLinks: {
+      menu: '/fr/guides/menu/',
+      'tableau de bord': '/fr/guides/restaurant/',
+      'fidélité': '/fr/guides/loyalty/',
+    },
     // Set to true ONLY if the feature touches multi-platform aggregation
     // (Uber Eats / Deliveroo / Just Eat etc. consolidated into one screen).
     // Stock journaling is local-only → false. The Pro callout in the CTA

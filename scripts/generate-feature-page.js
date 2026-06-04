@@ -39,7 +39,10 @@ const { EDITORIAL_PAGES, FEATURE_PAGES } = require('./feature-pages.config.js')
 
 // Bumping this invalidates every sourceHash → forces regen on next run.
 // Bump when you change the prompt / template structure in a meaningful way.
-const TEMPLATE_VERSION = 1
+//   v1 — original 8-block template, in-content CTA, footer marker.
+//   v2 — premium Menu-style layout: <FlowDiagram> at top, richer prose,
+//        inline contextual links, wrapper-handled CTA, no footer marker.
+const TEMPLATE_VERSION = 2
 
 // ── Locate repos ────────────────────────────────────────────────────────────
 
@@ -163,34 +166,75 @@ GARDE-FOUS STRATÉGIQUES (impératifs) :
 `
 
 const TEMPLATE_INSTRUCTIONS = `
-GABARIT (8 blocs, dans cet ordre exact) :
+GABARIT v2 — style aligné sur la page de référence « Menu & Scan IA » : aéré,
+premium, calme, avec de l'air entre les blocs. Pas de surcharge de Callouts.
+Étapes propres. Liens contextuels tissés dans la prose.
 
-1. **Titre** : un H1 \`# <title>\`. Pas de fil d'ariane à inclure dans le MDX, Nextra le pose automatiquement.
-2. **Accroche bénéfice** : exactement UNE phrase, au présent, orientée bénéfice utilisateur, juste sous le H1.
-3. **Ce que ça fait** : un paragraphe court (2–4 phrases) qui décrit la fonctionnalité en termes simples, sans jargon.
-4. **Comment l'utiliser** : étapes numérotées (\`<Steps>\` Nextra) OU tableau Markdown (Action / Où / Effet), selon ce qui est le plus clair pour les sources fournies. Reposer EXCLUSIVEMENT sur les routes/champs/statuts présents dans les sources.
-5. **Bon à savoir / limites** : un ou deux \`<Callout>\` Nextra si pertinent. OMETTRE le bloc s'il n'y a rien à dire — ne meuble pas.
-6. **Pour aller plus loin** : une liste de 2–4 liens internes pointant uniquement vers les URLs fournies dans \`RELATED_LINKS\`. OMETTRE si la liste est vide.
-7. **Bloc CTA stratégique** (TOUJOURS PRÉSENT — c'est le cœur rentable, ne le supprime pas) :
-   - Sous un H2 \`## Passer à l'action\`
-   - Lien principal : « **Faites-le dans l'app →** » pointant vers \`APP_LINK\`.
-   - Si \`SHOW_PRO_HINT === true\` : ajouter, en dessous, une phrase courte « Bientôt avec Grubano Pro : agrégation multi-plateformes — toutes vos commandes consolidées en un seul écran. » puis un lien « Découvrir Grubano Pro » vers \`/<locale>/guides/pro/\`.
-   - Toujours, en dessous, en plus petit : « Pas encore sur Grubano ? [Démarrer en 15 minutes](\`QUICK_START_LINK\`). »
-8. **Pied** : une dernière ligne en italique, courte : « *Page générée depuis le code de grubano-kitchen-hub.* ». L'horodatage « dernière mise à jour » et le lien « Modifier cette page » sont rendus automatiquement par le thème Nextra — ne les inclus pas.
+ORDRE des blocs :
+
+1. **Titre H1** \`# <title>\`. (Nextra pose automatiquement le fil d'ariane.)
+
+2. **Accroche bénéfice** : exactement UNE phrase, au présent, orientée
+   bénéfice utilisateur, juste sous le H1. Doit donner envie de lire la
+   suite, sans survendre.
+
+3. **Schéma de flux** : appelle \`<FlowDiagram steps={FLOW_STEPS} />\`
+   IMMÉDIATEMENT APRÈS l'accroche. Le composant est déjà disponible
+   globalement (pas d'import à émettre). Recopie EXACTEMENT le tableau
+   \`FLOW_STEPS\` fourni ci-dessous — n'invente pas d'étapes.
+
+4. **Ce que ça fait** (H2 \`## Ce que ça fait\`) : 1 ou 2 paragraphes qui
+   expliquent la fonctionnalité EN PROFONDEUR — le POURQUOI et le contexte
+   métier (à qui ça sert, quel problème ça résout, quand l'utiliser), pas
+   seulement le QUOI. Vivant, pas une fiche technique sèche. Tisse 1–2
+   liens hypertextes contextuels en utilisant les entrées \`INLINE_LINKS\`
+   si elles apparaissent naturellement dans la prose.
+
+5. **Comment l'utiliser** (H2 \`## Comment l'utiliser\`) : étapes
+   numérotées avec \`<Steps>\` Nextra (préféré, plus aéré) OU un tableau
+   Markdown propre (Action / Où / Effet) si vraiment plus clair. Repose
+   EXCLUSIVEMENT sur les routes/champs/statuts/unités du code fourni.
+   Chaque étape est courte (1–3 phrases) et concrète. Tisse 1 lien
+   contextuel \`INLINE_LINKS\` ici aussi si pertinent.
+
+6. **Bon à savoir** (H2 \`## Bon à savoir\`) : UN seul \`<Callout>\` (type
+   "info" ou "warning") avec l'information non évidente la plus utile
+   — limite, comportement par défaut, piège classique. OMETTRE
+   complètement la section si rien d'utile à dire ; ne meuble pas.
+
+7. **Pour aller plus loin** (H2 \`## Pour aller plus loin\`) : 2 à 4
+   liens internes pointant UNIQUEMENT vers les URLs fournies dans
+   \`RELATED_LINKS\`. Une phrase descriptive par lien, pas juste l'URL nue.
+   OMETTRE si \`RELATED_LINKS\` est vide.
+
+NE PAS ÉMETTRE :
+- AUCUN bloc « Passer à l'action » / « Faites-le dans l'app » dans le
+  corps : un encart CTA premium identique est ajouté automatiquement
+  au pied de chaque page de guide par le thème. NE LE DUPLIQUE PAS.
+- AUCUN pied « Page générée depuis le code » ni horodatage : le thème
+  Nextra rend déjà « Modifier cette page » et « last updated ».
+- Aucun bouton CTA dans le contenu : la carte d'action est rendue par
+  le wrapper.
+
+LIENS HYPERTEXTE EN LIGNE :
+- Quand un terme de \`INLINE_LINKS\` apparaît dans le texte des blocs 4–6,
+  enveloppe-le d'un lien Markdown vers la cible (max 1–2 par bloc, jamais
+  deux fois la même cible dans le même paragraphe — pas de spam).
+- N'ajoute pas de liens vers des URLs que tu inventes. Strictement
+  \`INLINE_LINKS\` + \`RELATED_LINKS\`.
 
 FORMAT DE SORTIE :
-- Réponds avec le MDX seul. Pas de frontmatter (je l'ajoute moi-même). Pas de \`\`\`mdx fence. Pas d'explication.
-- Imports MDX autorisés et recommandés en tête : \`import { Steps, Callout } from 'nextra/components'\`.
-- N'utilise pas de composants React custom hors \`Steps\` et \`Callout\`.
+- MDX seul. Pas de frontmatter (je l'ajoute). Pas de \`\`\`mdx fence.
+  Pas d'explication.
+- Imports MDX en tête : \`import { Steps, Callout } from 'nextra/components'\`.
+  \`<FlowDiagram>\` est global, pas besoin de l'importer.
+- N'utilise pas d'autres composants React.
 `
 
 function buildPrompt(cfg, facts) {
-  const appEntry = DOCS_MAP.topics[topicKeyForPrompt(cfg)]
-  const APP_LINK =
-    (appEntry && appEntry.app) || 'https://www.grubano.com'
-  const QUICK_START_LINK = `/${cfg.locale}/guides/quick-start/`
-  const SHOW_PRO_HINT = !!cfg.touchesMultiPlatformAggregation
   const RELATED_LINKS = relatedDocLinks(cfg.related, cfg.locale)
+  const FLOW_STEPS = cfg.flow || []
+  const INLINE_LINKS = cfg.inlineLinks || {}
 
   const factsBlock = [
     '== SOURCES (routes) ==',
@@ -208,11 +252,10 @@ function buildPrompt(cfg, facts) {
     `\nINTENT (1 phrase, ce que l'utilisateur veut accomplir) : ${cfg.intent}`,
     STRATEGIC_GUARDRAILS,
     TEMPLATE_INSTRUCTIONS,
-    `\nVARIABLES À UTILISER DANS LE BLOC CTA :`,
-    `APP_LINK         = ${APP_LINK}`,
-    `QUICK_START_LINK = ${QUICK_START_LINK}`,
-    `SHOW_PRO_HINT    = ${SHOW_PRO_HINT}`,
-    `RELATED_LINKS    = ${JSON.stringify(RELATED_LINKS)}`,
+    `\nVARIABLES À UTILISER :`,
+    `FLOW_STEPS     = ${JSON.stringify(FLOW_STEPS)}`,
+    `INLINE_LINKS   = ${JSON.stringify(INLINE_LINKS)}`,
+    `RELATED_LINKS  = ${JSON.stringify(RELATED_LINKS)}`,
     `\n${factsBlock}`,
   ].join('\n')
 }
