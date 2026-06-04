@@ -9,6 +9,15 @@ export const metadata = {
   },
   description: 'Documentation officielle de Grubano — la marketplace qui reconnecte les restaurants locaux et leurs clients, avec une commission juste de 10 %.',
   metadataBase: new URL('https://docs.grubano.com'),
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-96x96.png', type: 'image/png', sizes: '96x96' },
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
+    apple: '/apple-touch-icon.png',
+    shortcut: '/favicon.ico',
+  },
 }
 
 // Root layout — intentionally minimal. The Nextra theme (sidebar, navbar,
