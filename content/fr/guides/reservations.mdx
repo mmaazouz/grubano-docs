@@ -1,44 +1,54 @@
 ---
-title: Réservations
-description: Gérer le plan de salle et les réservations de tables
+title: "Réservations"
+description: "Gérer les tables et les créneaux : plan de salle, accepter / refuser une demande, suivre l’occupation en temps réel."
+generated: true
+sourceHash: 7a8ac2ec1dbd74be
+generator: scripts/generate-feature-page.js
+templateVersion: 4
 ---
 
-import { Callout } from 'nextra/components'
+import { Steps, Callout } from 'nextra/components'
 
 # Réservations
 
-La section **Tables** (`/tables`) gère votre plan de salle et vos réservations.
+Gérez les tables et les créneaux : plan de salle, accepter ou refuser une demande, suivre l'occupation en temps réel.
 
-## Créer une réservation
+<FlowDiagram steps={["Configurer la salle","Recevoir la demande","Valider","Service"]} />
 
-Une réservation comprend :
+## Ce que ça fait
 
-| Champ | Description |
-|---|---|
-| **Table** | Table assignée |
-| **Client** | Nom du client |
-| **Couverts** | Nombre de convives (1 à 30) |
-| **Date / fin** | Créneau de la réservation |
-| **Type** | `quick`, `standard` ou `full` |
-| **Allergies** | Liste des allergies déclarées |
-| **Acompte** | Montant de l'acompte éventuel |
+La fonctionnalité Réservations vous permet de piloter les demandes de tables directement depuis votre [tableau de bord](/fr/guides/restaurant/), sans jongler entre cahier papier, téléphone et messagerie. Vous placez vos tables sur un plan visuel, définissez leur capacité, puis chaque réservation arrive avec les informations essentielles : nombre de convives, créneau souhaité, allergies éventuelles et note du client. Le système vérifie automatiquement les conflits de créneaux — une table ne peut pas être réservée deux fois au même moment —, vous évitant les doublons et les situations délicates le soir du service.
 
-## Gestion des conflits
+Trois types de service sont prévus : service rapide (« quick »), standard et complet (« full »), pour adapter la durée selon votre rythme de salle. Vous pouvez également enregistrer une précommande ou un acompte, et suivre l'évolution du statut de chaque réservation (confirmée, arrivée, dépassée, annulée ou absence non signalée).
 
-Le système refuse automatiquement toute réservation qui chevauche un créneau déjà occupé sur la même table.
+## Comment l'utiliser
 
-<Callout type="warning">
-  Si une table est déjà réservée sur le créneau demandé, l'API renvoie une erreur `409` avec les heures du conflit.
+<Steps>
+
+### Créer les tables
+
+Ajoutez chaque table via le plan de salle : donnez-lui un nom (par exemple « Table 3 »), indiquez le nombre de places (de 1 à 30), et positionnez-la sur le canevas en glissant l'icône. Une table désactivée reste visible dans le plan mais n'accepte plus de nouvelles réservations.
+
+### Recevoir une demande
+
+Le client réserve en ligne ou vous saisissez la demande manuellement. Renseignez le nom, le nombre de convives, la date, l'heure de début et de fin, et sélectionnez la table. Le type de service (rapide, standard ou complet) détermine la durée par défaut. Ajoutez éventuellement un téléphone, un e-mail, une note, ou des allergies.
+
+### Valider ou refuser
+
+Avant de confirmer, le système vérifie qu'aucun créneau concurrent n'existe sur la même table. Si une autre réservation active (ni annulée ni absence) chevauche l'horaire, vous recevez un message d'erreur 409 indiquant l'heure de conflit. Sinon, la réservation est créée avec le statut « confirmée ».
+
+### Faire évoluer le statut
+
+Passez la réservation à « arrivée » lorsque les convives s'installent, « dépassée » si le service s'éternise, « annulée » en cas de désistement, ou « absence non signalée » si personne ne vient. Vous pouvez également marquer l'acompte comme payé en basculant le champ `depositPaid`.
+
+</Steps>
+
+## Bon à savoir
+
+<Callout type="info">
+Le calcul de conflit repose sur la date de début et l'heure de fin : une réservation est considérée en chevauchement si elle commence avant la fin d'une autre réservation active et se termine après son début. Pensez à prévoir des temps de rotation réalistes pour éviter les refus automatiques.
 </Callout>
 
-## Statuts de réservation
+## Pour aller plus loin
 
-| Statut | Signification |
-|---|---|
-| `confirmed` | Réservation confirmée |
-| `arrived` | Client arrivé |
-| `overrun` | Dépassement de créneau |
-| `cancelled` | Annulée |
-| `noshow` | Client absent |
-
-Les statuts se mettent à jour via la fiche réservation ou l'API `PATCH /api/reservations`.
+**[Tableau de bord restaurant](/fr/guides/restaurant/)** — Vue d'ensemble de toutes les fonctionnalités opérateur : commandes, menu, stocks, avis et réservations réunis sur un seul écran.

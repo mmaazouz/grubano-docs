@@ -1,39 +1,58 @@
 ---
-title: Tableau de bord restaurateur
-description: Vue d'ensemble du dashboard opérationnel Grubano
+title: "Tableau de bord"
+description: "Voir en un coup d’œil l’activité de votre restaurant : commandes en cours, chiffre d’affaires, alertes — et piloter le service depuis cet écran unique."
+generated: true
+sourceHash: 82810a09427dd8ed
+generator: scripts/generate-feature-page.js
+templateVersion: 4
 ---
 
-import { Callout } from 'nextra/components'
+import { Steps, Callout } from 'nextra/components'
 
-# Tableau de bord restaurateur
+# Tableau de bord
 
-Le tableau de bord (`/dashboard`) est le centre de contrôle de votre activité. Il regroupe vos indicateurs clés en temps réel.
+Pilotez votre restaurant depuis un écran unique : commandes en temps réel, chiffre d'affaires du jour, alertes intelligentes et vue consolidée multi-marques.
 
-## KPIs affichés
+<FlowDiagram steps={["Commandes en cours","Chiffres temps réel","Alertes","Multi-marques"]} />
 
-| Indicateur | Description |
-|---|---|
-| **Chiffre d'affaires** | Revenus du jour, de la semaine et du mois |
-| **Commandes** | Nombre de commandes par statut |
-| **Fidélité** | Nouveaux membres et points distribués |
-| **Heures de pointe** | Répartition horaire des commandes |
+## Ce que ça fait
 
-## Navigation principale
+Le tableau de bord est le centre de contrôle de votre activité sur Grubano. Il affiche en temps réel les commandes du jour, le chiffre d'affaires, le nombre de clients fidélité inscrits, et identifie automatiquement votre marque la plus performante. Vous voyez d'un coup d'œil si votre service tourne bien — ou si une alerte (rupture de [stock](/fr/guides/stocks/), pic de demande, [réservation](/fr/guides/reservations/) imminente) nécessite votre attention.
 
-Le menu latéral donne accès à toutes les sections :
+Conçu pour les restaurateurs qui gèrent plusieurs concepts ou points de vente, le tableau de bord agrège les données de toutes vos marques : vous comparez leur contribution au chiffre d'affaires, repérez les tendances et prenez des décisions rapides sans jongler entre plusieurs systèmes. Les commandes s'actualisent automatiquement ; vous n'avez pas besoin de rafraîchir la page pour suivre le flux du service.
 
-- **Commandes** (`/orders`) — gestion et suivi des commandes en cours
-- **Menu** (`/menu`) — création et édition des plats
-- **Stocks** (`/stocks`) — inventaire et alertes
-- **Réservations** (`/tables`) — plan de salle et réservations
-- **Analytiques** (`/analytics`) — graphiques de performance
-- **Fidélité** (`/loyalty`) — programme de points
-- **Fournisseurs** (`/suppliers`) — gestion des approvisionnements
+## Comment l'utiliser
+
+<Steps>
+
+### Accédez au tableau de bord
+
+Connectez-vous à votre compte restaurant sur [grubano.com/dashboard](https://www.grubano.com/dashboard). Le tableau de bord s'affiche dès l'ouverture de session.
+
+### Consultez les indicateurs du jour
+
+Trois cartes principales s'affichent en haut de l'écran : **Chiffre d'affaires du jour** (avec évolution par rapport à la veille), **Commandes du jour** (nombre total), et **Clients fidélité** (base active). Une quatrième carte identifie votre **Meilleure marque** du jour et son pourcentage de contribution au chiffre d'affaires total.
+
+### Surveillez les commandes en cours
+
+La liste des commandes apparaît sous les indicateurs, classée par heure de validation. Chaque ligne affiche le statut (`received`, `preparing`, `ready`, `picked_up`, `delivered`, `cancelled`), le montant, la marque concernée et l'adresse de livraison. Cliquez sur une commande pour voir le détail des articles et mettre à jour son statut.
+
+### Réagissez aux alertes multi-marques
+
+Si plusieurs marques tournent en parallèle, le tableau de bord calcule automatiquement la répartition du chiffre d'affaires. Vous repérez immédiatement si une marque décroche ou si un concept explose : cette visibilité vous permet d'ajuster les capacités (personnel, ingrédients) en cours de service.
+
+</Steps>
+
+## Bon à savoir
 
 <Callout type="info">
-  Le **Briefing IA** (`/briefing`) génère chaque matin un résumé personnalisé de votre journée à venir, en croisant vos stocks et vos réservations.
+Le tableau de bord affiche les données du jour (de 00:00 à 23:59, heure du serveur). L'évolution J-1 compare le chiffre d'affaires et le nombre de commandes d'hier à ceux d'aujourd'hui. Si la base de données n'est pas encore connectée ou vide, le tableau de bord renvoie des valeurs par défaut (0 € de CA, 0 commandes) sans bloquer l'interface.
 </Callout>
 
-## Plusieurs marques sous un même compte
+## Pour aller plus loin
 
-Si votre établissement opère **plusieurs marques** sous le même compte (votre marque principale plus une marque franchisée du réseau, par exemple), utilisez le sélecteur de marque en haut de l'écran pour filtrer les données affichées par marque.
+Explorez les autres outils du tableau de bord pour affiner votre pilotage opérationnel.
+
+- [Menu & Scan IA](/fr/guides/menu/) — Ajoutez ou modifiez vos plats directement depuis le dashboard, avec reconnaissance automatique des photos de carte.
+- [Gestion des stocks](/fr/guides/stocks/) — Suivez vos niveaux d'ingrédients et recevez des alertes de rupture avant qu'elles n'impactent le service.
+- [Tables & Réservations](/fr/guides/reservations/) — Visualisez les réservations du jour et leur statut (confirmée, arrivée, terminée) depuis le même écran.

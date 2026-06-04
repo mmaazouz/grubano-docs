@@ -32,7 +32,7 @@ const FEATURE_PAGES = {
   },
   'restaurant.dashboard': {
     audience: 'Restaurateurs',
-    status: 'planned',
+    status: 'generated',
     locale: 'fr',
     docPath: '/guides/restaurant',
     title: 'Tableau de bord',
@@ -53,7 +53,7 @@ const FEATURE_PAGES = {
   },
   'restaurant.menu': {
     audience: 'Restaurateurs',
-    status: 'planned',
+    status: 'generated',
     locale: 'fr',
     docPath: '/guides/menu',
     title: 'Menu & Scan IA',
@@ -99,7 +99,7 @@ const FEATURE_PAGES = {
   },
   'restaurant.loyalty': {
     audience: 'Restaurateurs',
-    status: 'planned',
+    status: 'generated',
     locale: 'fr',
     docPath: '/guides/loyalty',
     title: 'Programme fidélité',
@@ -122,7 +122,7 @@ const FEATURE_PAGES = {
   },
   'restaurant.reservations': {
     audience: 'Restaurateurs',
-    status: 'planned',
+    status: 'generated',
     locale: 'fr',
     docPath: '/guides/reservations',
     title: 'Réservations',
@@ -150,7 +150,7 @@ const FEATURE_PAGES = {
   // ── Clients ───────────────────────────────────────────────────────────
   'consumer.order': {
     audience: 'Clients',
-    status: 'planned',
+    status: 'generated',
     locale: 'fr',
     docPath: '/guides/consumer',
     title: 'Commander & suivre',
@@ -174,7 +174,7 @@ const FEATURE_PAGES = {
   // ── Franchisés ────────────────────────────────────────────────────────
   'franchise': {
     audience: 'Franchisés',
-    status: 'planned',
+    status: 'generated',
     locale: 'fr',
     docPath: '/guides/franchise',
     title: 'Franchise',
@@ -195,12 +195,12 @@ const FEATURE_PAGES = {
   // ── Créateurs ────────────────────────────────────────────────────────
   'creators': {
     audience: 'Créateurs',
-    status: 'planned',
+    status: 'generated',
     locale: 'fr',
     docPath: '/guides/creators',
     title: 'Créateurs',
     intent:
-      'Proposer une recette ou un lien d’affiliation et toucher une commission sur les ventes — dans les limites fixées par Grubano.',
+      "Deux casquettes côte à côte : (1) proposer une recette qu'un restaurant partenaire pourra adopter et cuisiner sous sa propre enseigne ; (2) recommander des restaurants à votre communauté via un lien d'affiliation. Dans les deux cas vous touchez une commission sur les ventes générées, dans les limites fixées par Grubano.",
     sources: {
       routes: [
         'app/api/creators/apply/route.ts',
@@ -211,9 +211,17 @@ const FEATURE_PAGES = {
       models: ['Creator', 'CreatorDish'],
     },
     related: ['restaurant.menu', 'consumer.order'],
-    flow: ['Candidater', 'Proposer une recette', 'Partager un lien', 'Commission sur ventes'],
+    // Flow couvre les DEUX casquettes (recette adoptée + lien d'affiliation),
+    // pas un seul des deux : la fiche doit faire apparaître les deux voies.
+    flow: [
+      'Candidater',
+      'Recette OU lien',
+      'Adoption / partage',
+      'Commission sur ventes',
+    ],
     inlineLinks: {
       menu: '/fr/guides/menu/',
+      'commander': '/fr/guides/consumer/',
     },
     touchesMultiPlatformAggregation: false,
   },

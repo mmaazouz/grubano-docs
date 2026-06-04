@@ -1,39 +1,54 @@
 ---
-title: Programme fidélité
-description: Fonctionnement du programme de points et des paliers
+title: "Programme fidélité"
+description: "Fidéliser sa clientèle : 1 point = 1 € dépensé, paliers Bronze/Silver/Gold/Platinum, points crédités à la livraison de la commande."
+generated: true
+sourceHash: 34a61b1a4c48864a
+generator: scripts/generate-feature-page.js
+templateVersion: 4
 ---
 
-import { Callout } from 'nextra/components'
+import { Steps, Callout } from 'nextra/components'
 
 # Programme fidélité
 
-Le programme de fidélité (`/loyalty`) récompense vos clients réguliers par un système de points et de paliers.
+Récompensez chaque euro dépensé : vos clients cumulent des points et débloquent des paliers Bronze, Silver, Gold et Platinum pour bénéficier d'avantages exclusifs.
 
-## Règles de points
+<FlowDiagram steps={["Inscrire un client","Acheter","Crédit de points","Récompense"]} />
 
-- **1 point = 1 € dépensé** (arrondi à l'inférieur)
-- **Bonus de bienvenue : 10 points** à l'inscription
-- Les points sont crédités lorsqu'une commande passe au statut `delivered`
+## Ce que ça fait
 
-## Paliers de fidélité
+Le programme de fidélité transforme chaque achat en une raison de revenir. Un client inscrit gagne **1 point par euro dépensé** sur vos commandes, quel que soit le canal de livraison. Dès que sa commande est livrée, les points sont automatiquement crédités sur son compte. Ces points font progresser le client à travers quatre paliers — Bronze, Silver, Gold et Platinum — qui déverrouillent des récompenses de plus en plus attractives : boissons offertes, desserts, plats, voire un repas complet pour les plus fidèles.
 
-| Palier | Seuil de points |
-|---|---|
-| 🥉 Bronze | 50 pts |
-| 🥈 Silver | 100 pts |
-| 🥇 Gold | 200 pts |
-| 💎 Platinum | 400 pts |
+Ce mécanisme vous permet de fidéliser sans effort : le système enregistre les clients, suit leurs achats et calcule les points en arrière-plan. Les clients voient leur solde et leur progression en temps réel, ce qui renforce l'incitation à commander chez vous plutôt qu'ailleurs. Chaque commande validée devient une brique dans la relation à long terme avec votre clientèle, visible depuis votre [tableau de bord](/fr/guides/restaurant/).
 
-## Inscription d'un client
+## Comment l'utiliser
 
-Les clients peuvent rejoindre le programme :
-- via l'application consommateur (`/eat/auth`)
-- via l'API `/api/loyalty/register` (nom + email)
+<Steps>
+
+### Inscrire un client
+
+Un client communique son nom, email et téléphone (optionnel) via `POST /api/loyalty/register`. Le système vérifie l'unicité de l'email et crée un compte avec 10 points de bienvenue offerts et le palier Bronze par défaut. Le client reçoit en retour son identifiant et son code de parrainage.
+
+### Valider une commande externe
+
+Quand une commande Uber Eats (ou autre plateforme externe) est livrée, vous appelez `POST /api/loyalty/validate` avec l'email du client, le numéro de commande unique, le montant TTC et le nom de la marque. Le système vérifie que la commande n'a pas déjà été validée, attribue le nombre de points correspondant au montant (arrondi à l'entier inférieur), met à jour le solde et recalcule le palier. Le client reçoit confirmation de ses nouveaux points et de son niveau actuel.
+
+### Consulter le portefeuille
+
+Le client interroge `GET /api/loyalty/wallet?email=` pour voir son solde, son palier actuel, le nombre de points restant avant le prochain palier, les 10 dernières commandes et les récompenses qu'il peut débloquer. Les récompenses disponibles sont filtrées en fonction du solde : Boisson offerte (50 pts), Dessert offert (100 pts), Plat offert (200 pts), Repas complet (400 pts).
+
+### Racheter une récompense
+
+Lorsque le client choisit une récompense, un enregistrement `Reward` est créé avec un code promo unique. Le client présente ce code en caisse ou en ligne ; une fois utilisé, vous marquez `redeemed: true` pour éviter toute réutilisation. Le code reste valide tant que la récompense n'a pas été consommée.
+
+</Steps>
+
+## Bon à savoir
 
 <Callout type="info">
-  Chaque membre reçoit un **code de parrainage** unique à son inscription, utilisable pour des campagnes de recommandation.
+Le calcul des points est effectué **au moment de la livraison** (champ `validatedAt`), pas à la commande. Si une commande est annulée ou remboursée avant livraison, aucun point n'est crédité. Les montants sont arrondis à l'entier inférieur — une commande de 19,90 € rapporte 19 points.
 </Callout>
 
-## Validation de commandes externes
+## Pour aller plus loin
 
-Les commandes passées sur des plateformes externes (UberEats) peuvent créditer des points via l'endpoint `/api/loyalty/validate`.
+Consultez le [guide du tableau de bord](/fr/guides/restaurant/) pour piloter l'ensemble de vos opérations, ou explorez le [parcours consommateur](/fr/guides/consumer/) pour comprendre comment vos clients vivent l'expérience fidélité de bout en bout.

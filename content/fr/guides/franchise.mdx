@@ -1,30 +1,54 @@
 ---
-title: Franchise
-description: Rejoindre et gérer le réseau de franchise Grubano
+title: "Franchise"
+description: "Adopter une marque existante du réseau, ou faire entrer la sienne — dans les limites fixées par Grubano."
+generated: true
+sourceHash: 4a6237201c86d000
+generator: scripts/generate-feature-page.js
+templateVersion: 4
 ---
 
-import { Callout } from 'nextra/components'
+import { Steps, Callout } from 'nextra/components'
 
 # Franchise
 
-Le portail franchise (`/franchise`) permet de rejoindre le réseau Grubano et de piloter votre établissement franchisé.
+Adoptez une marque qui fonctionne déjà ou proposez la vôtre au réseau Grubano — vous cuisinez localement, dans votre propre cuisine, avec l'identité et le soutien d'une enseigne reconnue.
 
-## Rejoindre le réseau
+<FlowDiagram steps={["Candidater","Validation Grubano","Adopter une marque","Suivre les KPIs"]} />
 
-Déposez une candidature via le formulaire dédié (API `/api/franchise/apply`). Une fois validée, vous accédez à votre tableau de bord franchisé.
+## Ce que ça fait
 
-## Tableau de bord franchisé
+La franchise Grubano vous permet de rejoindre le réseau sous deux casquettes : **franchisé** (vous adoptez une marque existante — ses recettes, son identité visuelle, son nom — et la déployez dans votre ville) ou **franchiseur** (vous ouvrez votre propre marque au réseau pour qu'elle soit adoptée ailleurs, sous conditions). Dans les deux cas, vous cuisinez dans votre propre cuisine — pas de dark kitchen, pas de central fantôme. Votre point de vente reste local, visible, ancré dans le quartier.
 
-Le portail (`/franchise/my-dashboard`) donne accès à :
+Ce système offre deux bénéfices clairs. Si vous êtes candidat franchisé, vous héritez d'une identité rodée (recettes éprouvées, emballages, notoriété), ce qui réduit le risque de lancement et accélère la montée en puissance. Si vous êtes un restaurateur établi qui ouvre sa marque au réseau, vous essaimez votre concept sans investissement physique : chaque nouveau point de vente porte votre nom et paie une redevance, dans les limites fixées par Grubano. Les KPIs de chaque établissement — chiffre d'affaires, nombre de commandes, redevances dues — sont disponibles en temps réel sur votre [tableau de bord](/fr/guides/restaurant/).
 
-- Les marques disponibles à exploiter (`/api/franchise/brands`)
-- Vos indicateurs de performance
-- Les ressources et standards du réseau
+## Comment l'utiliser
+
+<Steps>
+
+### Candidater
+
+Depuis `/franchise`, consultez les marques ouvertes au franchisage (carte interactive avec chiffre d'affaires moyen, zones disponibles, frais de démarrage) puis cliquez sur **Candidater**. Le formulaire (4 étapes) demande votre identité, votre ville, vos coordonnées bancaires (SIRET, RIB), si vous disposez déjà d'une cuisine, et la marque que vous souhaitez adopter. Une fois soumis, votre dossier est transmis à Grubano pour validation.
+
+### Validation et contrat
+
+L'équipe Grubano examine votre candidature — vérification de la cuisine, cohérence du projet avec les zones disponibles, solvabilité. Si vous êtes accepté, vous recevez un contrat de franchise qui fixe les conditions financières : frais d'entrée, redevances mensuelles, durée d'exclusivité territoriale, obligations de conformité (recettes, emballages, délais). Ces conditions sont définies avec vous au moment de l'ouverture.
+
+### Ouvrir votre point de vente
+
+Après signature, votre compte Grubano passe au rôle `franchise` et vous accédez à `/franchise/dashboard`. Créez votre premier point de vente en renseignant l'adresse, la ville, les horaires. Le système géocode automatiquement l'emplacement et l'indexe par `franchiseId` (votre identifiant opérateur). Chaque point de vente peut accueillir des commandes indépendantes ; le tableau de bord les regroupe sur une fenêtre glissante de 30 jours.
+
+### Suivre les performances
+
+Le tableau de bord affiche le chiffre d'affaires mensuel (somme des `Order.subtotal` livrées sur 30 jours), le nombre de commandes, les redevances dues, et compare votre performance à la moyenne du réseau. Chaque point de vente est dépliable pour voir son détail : ville, revenus, redevances, top des plats. La période précédente (jours -60 à -30) est calculée pour afficher un delta d'évolution.
+
+</Steps>
+
+## Bon à savoir
 
 <Callout type="info">
-  L'accès au portail franchise nécessite le rôle `franchise`. Contactez votre référent réseau pour l'activation.
+La commission Grubano reste de **10 %** sur chaque commande, que vous soyez franchisé ou franchiseur. Les redevances de franchise (versées au franchiseur ou dues par le franchisé) sont un flux distinct, calculé sur le chiffre d'affaires du point de vente, dans les limites fixées par Grubano au moment de la signature du contrat. Ces deux prélèvements (commission plateforme et redevance franchise) sont indépendants.
 </Callout>
 
-## Marques exploitables
+## Pour aller plus loin
 
-Le réseau Grubano regroupe des marques opérées par des restaurateurs partenaires. Vous pouvez **adopter** une marque existante pour la lancer dans votre établissement, ou **faire entrer la vôtre** dans le réseau pour qu'elle soit reprise par d'autres restaurants. Les conditions financières (apport, royalties, durée) sont définies entre la marque et le restaurant, dans les limites fixées par Grubano.
+- [Tableau de bord restaurant](/fr/guides/restaurant/) — Consultez les KPIs consolidés de tous vos points de vente, pilotez vos stocks et vos commandes depuis une interface unique.

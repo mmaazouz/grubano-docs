@@ -413,6 +413,14 @@ FORMULATIONS INTERDITES pour décrire Pro (n'écris JAMAIS ces phrases, ni leurs
 - « support prioritaire » comme feature Pro
 
 Si la fonctionnalité que tu décris ne touche PAS à l'agrégation multi-plateformes, ne mentionne Pro QUE pour rappeler la commission identique 10 % ; ne décris pas le contenu de Pro hors du périmètre canonique ci-dessus.
+
+⛔ ZÉRO TAUX INTERNE PUBLIÉ — TRÈS IMPORTANT :
+Le code te montre peut-être des constantes ou des valeurs par défaut pour la commission d'affiliation, le taux de redevance de franchise, les royalties, ou tout autre prélèvement interne. **Tu ne dois JAMAIS publier ces chiffres**, même s'ils apparaissent littéralement dans une ligne comme \`FRANCHISE_DEFAULT_FEE = 0.06\` ou \`AFFILIATE_RATE = 0.20\`. Ces valeurs sont **confidentielles** (Mohammed peut les ajuster).
+Remplace toute valeur interne par l'une des formulations suivantes :
+- « dans les limites fixées par Grubano »
+- « défini avec vous au moment de l'ouverture »
+- « les conditions financières sont fixées entre les acteurs concernés »
+Les SEULS chiffres financiers publiables sont la commission Grubano de **10 %** et l'abonnement Pro de **29 €/mois**. Tout autre pourcentage, tout autre forfait, toute autre commission = ne PAS écrire.
 `
 
 const TEMPLATE_INSTRUCTIONS = `
@@ -550,6 +558,58 @@ async function callClaude(prompt) {
   const block = (data.content || []).find((b) => b.type === 'text')
   if (!block) throw new Error('Claude API returned no text block')
   return { text: block.text, usage: data.usage || {} }
+}
+
+// ── MDX sanitizer (defensive — strips fence-wrapping artefacts) ────────────
+
+/**
+ * The LLM sometimes wraps its MDX output in a code fence (```mdx … ```) or
+ * appends a dangling closing ``` / a trailing `---` separator with an
+ * import-only code block. Both would break rendering. We strip them.
+ */
+function sanitizeMdxBody(text, topicKey) {
+  let body = text.trim()
+  let changed = false
+
+  // Full ```mdx ... ``` wrap around the whole body.
+  const fullFence = /^```(?:mdx|md|markdown|jsx|tsx)?\s*\n([\s\S]*?)\n```\s*$/m
+  const fm = body.match(fullFence)
+  if (fm) {
+    body = fm[1].trim()
+    changed = true
+  }
+  // Orphan LEADING opening fence (the closing was on the trailing
+  // artefact, which the next regex below would strip — strip the
+  // opener too so the body isn't treated as a code block).
+  body = body.replace(/^```(?:mdx|md|markdown|jsx|tsx)?\s*\n/, (m) => {
+    changed = true; return ''
+  }).trim()
+  // Trailing `---` separator + a code block that just re-imports nextra
+  // components — pure noise.
+  body = body.replace(
+    /\n+---\s*\n+```[a-z]*\s*\nimport[^\n`]+\n```\s*$/i,
+    (m) => { changed = true; return '' },
+  ).trim()
+  // Standalone trailing closing ``` (no opening).
+  body = body.replace(/\n+```\s*$/g, (m) => { changed = true; return '' }).trim()
+  // Trailing lone `---` (orphan horizontal rule).
+  body = body.replace(/\n+---\s*$/g, (m) => { changed = true; return '' }).trim()
+
+  if (changed) {
+    console.log(`[generator] ${topicKey} → sanitized trailing fence/separator artefacts`)
+  }
+
+  // If the body uses <Steps> or <Callout> but the import line is missing
+  // (typically because the LLM put it inside the trailing artefact we just
+  // stripped), inject it at the top so MDX prerender doesn't crash on
+  // "component is not defined".
+  const usesNextraComponents = /<(Steps|Callout)[\s/>]/.test(body)
+  const hasImport = /^import\s+\{[^}]+\}\s+from\s+['"]nextra\/components['"]/m.test(body)
+  if (usesNextraComponents && !hasImport) {
+    console.log(`[generator] ${topicKey} → injecting missing nextra/components import`)
+    body = `import { Steps, Callout } from 'nextra/components'\n\n` + body
+  }
+  return body
 }
 
 // ── Output paths & frontmatter ──────────────────────────────────────────────
@@ -728,7 +788,7 @@ async function generateOne(topicKey, notion) {
     ((usage.input_tokens || 0) / 1_000_000) * 3 +
     ((usage.output_tokens || 0) / 1_000_000) * 15
 
-  const body = text.trim() + '\n'
+  const body = sanitizeMdxBody(text, topicKey) + '\n'
   fs.mkdirSync(path.dirname(targetAbs), { recursive: true })
   fs.writeFileSync(
     targetAbs,

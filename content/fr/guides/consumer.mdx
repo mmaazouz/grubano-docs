@@ -1,46 +1,59 @@
 ---
-title: Commander & suivre
-description: Guide consommateur — commander, fidélité et suivi de commande
+title: "Commander & suivre"
+description: "Trouver un restaurant local, passer commande (livraison / click & collect / table) et suivre l’avancée en temps réel."
+generated: true
+sourceHash: 5b7534067a150729
+generator: scripts/generate-feature-page.js
+templateVersion: 4
 ---
 
 import { Steps, Callout } from 'nextra/components'
 
 # Commander & suivre
 
-L'application consommateur (`/eat`) est optimisée pour mobile et ne nécessite pas de compte pour parcourir les restaurants.
+Trouvez un restaurant local, passez commande (livraison ou retrait) et suivez l'avancée de votre commande en temps réel jusqu'à la livraison.
 
-## Passer une commande
+<FlowDiagram steps={["Trouver un resto","Commander","Payer","Suivre la livraison"]} />
+
+## Ce que ça fait
+
+Grubano vous connecte à des restaurants locaux qui cuisinent dans leur propre cuisine — pas de dark kitchens, uniquement des établissements que vous pourriez visiter en personne. Vous commandez en quelques clics, choisissez entre la livraison à domicile ou le retrait sur place (le retrait ne facture aucun frais de livraison), puis suivez votre commande en direct depuis sa réception jusqu'à la remise.
+
+Chaque euro dépensé vous rapporte des points de [fidélité](/fr/guides/loyalty/) — un point par euro — que vous pouvez échanger contre des réductions sur vos prochaines commandes. Si vous utilisez un code de parrainage créateur à votre première commande, vous bénéficiez d'une remise de bienvenue (jusqu'à 10 % du montant, plafonnée à 5 €) financée par le restaurant.
+
+## Comment l'utiliser
 
 <Steps>
 
-### Parcourir les restaurants
+### Trouvez un restaurant
 
-Sur la page d'accueil (`/eat`), explorez les restaurants par catégorie ou via la recherche (`/eat/search`) avec filtres : cuisine, temps de livraison, note.
+Rendez-vous sur `/eat` ou `/eat/search`. La découverte géolocalisée vous montre d'abord les restaurants dans un rayon de 5 km ; si moins de 8 résultats correspondent à votre filtre de cuisine, le rayon s'élargit automatiquement (10 km, 25 km, 50 km, puis sans limite) jusqu'à trouver suffisamment de choix. Vous pouvez aussi rechercher par nom, ville ou spécialité culinaire.
 
-### Choisir un restaurant
+### Ajoutez des plats au panier
 
-La fiche restaurant (`/eat/r/[id]`) affiche le menu groupé par catégorie. Ajoutez des plats au panier.
+Cliquez sur un restaurant pour voir sa carte. Sélectionnez un plat, personnalisez-le si des options sont disponibles (taille, suppléments, exclusions), puis ajoutez-le au panier. Le panier affiche le sous-total, les frais de livraison (1,99 € en livraison, 0 € en retrait) et le total. Si vous êtes éligible à une remise de bienvenue (première commande avec un code créateur valide), elle apparaît ici automatiquement.
 
-### Valider le panier
+### Choisissez le mode de retrait
 
-Sur `/eat/cart`, renseignez votre adresse de livraison et le mode de paiement (carte, espèces, portefeuille), puis confirmez.
+En haut du panier, deux onglets : **Livraison** (🛵) ou **Retrait sur place** (🥡). En retrait, les frais de livraison sont retirés du total et l'adresse du restaurant s'affiche avec l'heure de retrait estimée. En livraison, renseignez votre adresse complète (minimum 5 caractères).
 
-<Callout type="info">
-  Une commande minimum peut s'appliquer selon le restaurant. Le panier vous l'indique avant validation.
-</Callout>
+### Validez et payez
 
-### Suivre la livraison
+Vérifiez que le sous-total respecte le minimum de commande du restaurant. Cliquez sur **Commander** : la requête `POST /api/orders` crée la commande, attribue les points de fidélité (1 point par euro payé), enregistre votre code de parrainage s'il y en a un, et déclenche un appel Uber Direct (actuellement simulé) pour organiser la livraison. Vous êtes redirigé vers `/eat/track/[orderId]`.
 
-La page de suivi (`/eat/track/[orderId]`) actualise le statut toutes les 15 secondes :
-`received → preparing → ready → picked_up → delivered`.
+### Suivez en temps réel
+
+La page de suivi affiche le statut de votre commande : **Reçue** → **En préparation** → **Prête** → **Récupérée** (par le livreur ou par vous en retrait) → **Livrée**. Le restaurant met à jour chaque étape depuis son tableau de bord opérateur ; vous voyez les changements se refléter en direct. Un lien de suivi Uber Direct est disponible pour localiser le livreur (bientôt fonctionnel avec l'API réelle).
 
 </Steps>
 
-## Fidélité & compte
+## Bon à savoir
 
-Le compte consommateur (`/eat/account`) regroupe :
-- Votre solde de points et votre palier
-- L'historique de vos commandes
-- Vos récompenses disponibles
+<Callout type="info">
+Le minimum de commande s'applique au **sous-total avant remise** : si vous commandez pour 15 € avec un minimum de 12 €, la remise de bienvenue (par exemple 1,50 €) est appliquée *en plus* sans bloquer la validation. Les points de fidélité, eux, se calculent sur le **total payé** (après remise et frais de livraison), arrondi à l'entier inférieur.
+</Callout>
 
-Vous gagnez **1 point par euro dépensé**, crédité à la livraison de la commande.
+## Pour aller plus loin
+
+- [Gérer votre restaurant](/fr/guides/restaurant/) : découvrez comment les restaurateurs reçoivent et acceptent les commandes depuis leur tableau de bord.
+- [Programme de fidélité](/fr/guides/loyalty/) : comprenez comment les points s'accumulent et se transforment en réductions sur vos futures commandes.

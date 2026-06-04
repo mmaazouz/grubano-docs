@@ -2,7 +2,7 @@
 title: "Gestion des stocks"
 description: "Tenir l'inventaire d'une marque à jour : ajouter des articles, suivre les quantités et les DLC, recevoir des alertes de réapprovisionnement, et mettre à jour les stocks en langage naturel via l'IA."
 generated: true
-sourceHash: 3cf3d5e354397e63
+sourceHash: b9570e7428fc4a3a
 generator: scripts/generate-feature-page.js
 templateVersion: 4
 ---
@@ -11,17 +11,17 @@ import { Steps, Callout } from 'nextra/components'
 
 # Gestion des stocks
 
-Suivez vos ingrédients en temps réel, recevez des alertes avant la rupture et mettez à jour vos quantités en langage naturel grâce à l'IA.
+Suivez votre inventaire en temps réel et anticipez les ruptures avant qu'elles n'affectent vos clients.
 
 <FlowDiagram steps={["Ajouter un article","Définir un seuil mini","Alerte de réappro","Prévision de rupture 7 j"]} />
 
 ## Ce que ça fait
 
-La gestion des stocks vous permet de tenir l'inventaire de votre marque à jour sans saisie fastidieuse. Vous enregistrez vos ingrédients (farine, huile, poulet, sauce tomate…), définissez une quantité minimale pour chacun, et recevez une alerte dès qu'un article passe sous ce seuil. Chaque article peut porter une date limite de consommation (DLC) pour vous aider à prioriser l'utilisation des produits périssables.
+La gestion des stocks vous permet de tenir à jour l'inventaire de chaque marque que vous exploitez sur Grubano. Ajoutez vos articles (ingrédients, produits finis, conditionnements), définissez un seuil minimum pour chaque ligne, et le système vous alertera automatiquement lorsqu'un article passe sous ce seuil — fini les ruptures découvertes au moment du coup de feu.
 
-L'atout principal : **la mise à jour en langage naturel**. Plutôt que de remplir des formulaires ligne par ligne, vous écrivez « poulet 3 kg, riz 5 kg, sauce tomate terminée » — l'IA Claude analyse votre texte, identifie les ingrédients et les quantités, puis met à jour votre inventaire automatiquement. Elle génère aussi une **prévision de rupture sur 7 jours** en estimant votre consommation quotidienne moyenne par type de produit (kg, L, unités…), de sorte que vous voyez en un coup d'œil quels articles seront épuisés en fin de semaine. Idéal pour anticiper vos commandes fournisseurs et ne jamais décevoir un client en retirant un plat du [menu](/fr/guides/menu/) à la dernière minute.
+L'outil intègre également une fonction de mise à jour en langage naturel : tapez « poulet 3 kg, riz 5 kg, sauce tomate terminée » et l'IA Claude analyse votre texte pour mettre à jour les quantités en une seule passe. Cela vous permet de corriger rapidement votre inventaire après une réception ou en fin de service, sans multiplier les saisies. Chaque article peut porter une date limite de consommation (DLC), et le système prévoit la date de rupture sur sept jours glissants en fonction d'une consommation journalière estimée, ce qui vous aide à passer vos commandes fournisseur au bon moment.
 
-La page Stocks est accessible depuis votre [tableau de bord](/fr/guides/restaurant/) opérateur, sous l'onglet dédié à l'inventaire.
+Les stocks sont rattachés à votre marque ; si vous gérez plusieurs concepts depuis votre [tableau de bord](/fr/guides/restaurant/), chacun dispose de son propre inventaire. Les articles en alerte apparaissent directement sur la page d'accueil du dashboard pour que vous sachiez en un coup d'œil ce qui nécessite un réapprovisionnement.
 
 ## Comment l'utiliser
 
@@ -29,29 +29,28 @@ La page Stocks est accessible depuis votre [tableau de bord](/fr/guides/restaura
 
 ### Ajouter un article
 
-Dans l'interface Stocks, cliquez sur « Nouvel article ». Renseignez le nom de l'ingrédient (par exemple « Farine »), la quantité actuelle (nombre décimal), l'unité (`kg`, `g`, `L`, `mL` ou `u` pour unité/pièce), le seuil minimal de réapprovisionnement, et éventuellement une DLC. Validez : l'article apparaît dans la liste.
+Ouvrez la page **Stocks** depuis le [tableau de bord](/fr/guides/restaurant/). Cliquez sur **Ajouter un article**, renseignez le nom (par exemple « Farine T55 »), la quantité initiale, l'unité (kg, g, L, mL, u pour pièce), et optionnellement une date limite de consommation. Enregistrez : l'article rejoint votre inventaire.
+
+### Définir un seuil minimum
+
+Lors de la création ou en modifiant un article existant, indiquez le **seuil de réapprovisionnement** (champ `minThreshold`). Lorsque la quantité passe en dessous de cette valeur, l'article est marqué en alerte sur votre tableau de bord. Par exemple, seuil à 2 kg pour la farine — dès que vous descendez à 1,8 kg, vous recevez un signal visuel.
 
 ### Mettre à jour en langage naturel
 
-Au lieu de modifier chaque ligne manuellement, tapez dans le champ texte dédié une phrase comme « poulet 3 kg, riz 5 kg, sauce tomate 0 L ». Cliquez sur « Mettre à jour avec l'IA » : Claude analyse le texte, détecte les ingrédients connus (par nom proche), crée les nouveaux articles si nécessaire, et met à jour les quantités. Vous obtenez immédiatement un récapitulatif des articles modifiés et de leur statut (ok / bas / critique selon les jours de stock restants estimés).
+Depuis la page Stocks, utilisez le champ de saisie « Mettre à jour en texte ». Écrivez votre relevé en français naturel : « tomates 4 kg, huile d'olive 2 L, parmesan terminé ». Cliquez sur **Analyser** : l'IA Claude extrait les articles, quantités et unités, puis met à jour ou crée les lignes correspondantes en une seule opération. La réponse JSON contient la liste des articles modifiés et une prévision de rupture sur les sept prochains jours pour chaque ligne.
 
-### Consulter les alertes et la prévision
+### Consulter les alertes et prévisions
 
-Après chaque mise à jour IA, l'API calcule le nombre de jours de stock restants pour chaque article en fonction d'une consommation journalière par défaut (par exemple 0,7 kg/jour pour les produits en kg, 5 unités/jour pour les pièces). Les articles avec moins de 3 jours de stock s'affichent en statut « bas », moins d'1 jour en « critique ». La date de rupture estimée figure à côté. Vous pouvez ainsi passer commande avant la pénurie réelle.
-
-### Ajuster les seuils et les DLC
-
-Éditez n'importe quel article pour corriger le seuil minimal ou ajouter/modifier la DLC. Le seuil sert de repère visuel dans l'interface ; la DLC vous aide à respecter les normes HACCP et à prioriser l'utilisation des produits périssables.
+Les articles sous le seuil apparaissent dans la section **Stocks bas** de la page d'accueil du dashboard. La prévision de rupture (nombre de jours restants, date estimée) est calculée en fonction d'une consommation journalière moyenne par type d'unité (0,7 kg/jour pour les articles en kg, 5 pièces/jour pour les articles à l'unité, etc.). Ces estimations vous aident à planifier vos commandes fournisseur sans risquer de rupture sèche.
 
 </Steps>
 
 ## Bon à savoir
 
 <Callout type="info">
-L'IA analyse le texte en français et reconnaît les unités courantes (`kg`, `g`, `L`, `mL`, `u`). Si un ingrédient n'existe pas encore, il est créé automatiquement avec l'unité détectée. La prévision de rupture repose sur des ratios de consommation par défaut — affinez vos seuils minimaux au fil du temps pour coller à votre activité réelle.
+L'unité « u » (pièce) est automatiquement appliquée par l'IA lorsque vous décrivez des conditionnements entiers (« 3 boîtes », « 5 sachets »). Si vous gérez plusieurs marques, veillez à sélectionner la bonne marque avant d'ajouter ou de mettre à jour des articles : les stocks ne sont jamais partagés entre marques, même si elles appartiennent au même opérateur.
 </Callout>
 
 ## Pour aller plus loin
 
-- **[Menu & Scan IA](/fr/guides/menu/)** — Retirez automatiquement du menu les plats dont un ingrédient clé est en rupture.
-- **[Tableau de bord restaurateur](/fr/guides/restaurant/)** — Retrouvez les alertes stocks dans le bloc « Next best actions » de l'accueil opérateur.
+Découvrez comment [gérer votre menu](/fr/guides/menu/) et retirer un plat en rupture d'un ingrédient clé, ou consultez votre [tableau de bord](/fr/guides/restaurant/) pour voir les alertes de réapprovisionnement consolidées avec vos autres indicateurs de performance.
