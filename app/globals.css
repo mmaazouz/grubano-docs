@@ -146,13 +146,22 @@ html.dark .nextra-card {
   padding-top: 22px !important;
 }
 
-/* ── Links & inline accents ──────────────────────────────────────────────── */
+/* ── Links & inline accents (premium tone — D-bis revisited) ─────────────
+   Brand orange #F97316 stays the link color, but the underline is muted
+   and offset so prose remains calm. Hover snaps to a denser underline +
+   slightly deeper orange for clear affordance. */
 .nextra-content a:not(.nextra-card) {
   color: var(--grubano-orange);
-  text-decoration-color: rgba(249, 115, 22, 0.35);
+  text-decoration: underline;
+  text-decoration-color: rgba(249, 115, 22, 0.28);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color 0.12s ease, text-decoration-color 0.12s ease;
 }
 .nextra-content a:not(.nextra-card):hover {
   color: var(--grubano-orange-dark);
+  text-decoration-color: var(--grubano-orange);
+  text-decoration-thickness: 2px;
 }
 
 /* Subtle warm tint on table headers */
@@ -366,4 +375,81 @@ html.dark .grubano-app-cta__inner {
 .grubano-app-cta__link:focus-visible {
   outline: 2px solid var(--grubano-orange);
   outline-offset: 3px;
+}
+/* The CTA button is itself an <a>, but its underline / orange override
+   must NOT inherit from .nextra-content a — neutralize them. */
+.grubano-app-cta__link,
+.grubano-app-cta__link:hover {
+  text-decoration: none !important;
+  text-decoration-color: transparent !important;
+}
+
+/* ── Flow diagram (B1-bis v2) ────────────────────────────────────────────
+   Sober horizontal row of numbered step chips connected by orange arrows.
+   Wraps to multiple lines on narrow viewports. Pure CSS — no client JS. */
+.grubano-flow {
+  margin: 2rem 0;
+  padding: 1.25rem 1rem;
+  border: 1px solid var(--grubano-border);
+  border-radius: 14px;
+  background: linear-gradient(
+    180deg,
+    var(--grubano-orange-soft) 0%,
+    transparent 100%
+  );
+}
+.grubano-flow__list {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px 4px;
+}
+.grubano-flow__step {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px 8px 8px;
+  border: 1px solid var(--grubano-border-strong);
+  border-radius: 999px;
+  background: #fff;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--grubano-ink);
+  white-space: nowrap;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  margin: 0 !important; /* override Nextra's li x:my-[.5em] */
+}
+html.dark .grubano-flow__step {
+  background: #11141d;
+}
+.grubano-flow__index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: var(--grubano-orange);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+.grubano-flow__label {
+  line-height: 1.2;
+}
+/* Arrow between consecutive steps (rendered as a pseudo-element on the
+   following step so it lays out cleanly inside flex with `gap`). */
+.grubano-flow__step + .grubano-flow__step::before {
+  content: '→';
+  color: var(--grubano-orange);
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin: 0 4px 0 -2px;
+  flex-shrink: 0;
 }
