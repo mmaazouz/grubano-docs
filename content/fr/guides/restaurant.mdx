@@ -2,7 +2,7 @@
 title: "Tableau de bord"
 description: "Voir en un coup d’œil l’activité de votre restaurant : commandes en cours, chiffre d’affaires, alertes — et piloter le service depuis cet écran unique."
 generated: true
-sourceHash: 82810a09427dd8ed
+sourceHash: 778089505331ef4f
 generator: scripts/generate-feature-page.js
 templateVersion: 4
 ---
@@ -11,15 +11,15 @@ import { Steps, Callout } from 'nextra/components'
 
 # Tableau de bord
 
-Pilotez votre restaurant depuis un écran unique : commandes en temps réel, chiffre d'affaires du jour, alertes intelligentes et vue consolidée multi-marques.
+Pilotez l'activité de votre restaurant en temps réel — commandes du jour, chiffre d'affaires, alertes et performance par marque — depuis un seul écran.
 
 <FlowDiagram steps={["Commandes en cours","Chiffres temps réel","Alertes","Multi-marques"]} />
 
 ## Ce que ça fait
 
-Le tableau de bord est le centre de contrôle de votre activité sur Grubano. Il affiche en temps réel les commandes du jour, le chiffre d'affaires, le nombre de clients fidélité inscrits, et identifie automatiquement votre marque la plus performante. Vous voyez d'un coup d'œil si votre service tourne bien — ou si une alerte (rupture de [stock](/fr/guides/stocks/), pic de demande, [réservation](/fr/guides/reservations/) imminente) nécessite votre attention.
+Le tableau de bord agrège les indicateurs essentiels de votre activité quotidienne : nombre de commandes validées, chiffre d'affaires réalisé, évolution par rapport à la veille, nombre de clients fidélité inscrits, et performance de chacune de vos [marques](/fr/guides/menu/). Il affiche également les heures de pointe de la semaine écoulée, la répartition du chiffre d'affaires par marque sur les trente derniers jours, et l'évolution du revenu sur sept jours glissants. Cet écran unique remplace plusieurs écrans de suivi : vous voyez en un coup d'œil quelle marque tire le mieux, si les commandes progressent, et quelles tranches horaires génèrent le plus de ventes.
 
-Conçu pour les restaurateurs qui gèrent plusieurs concepts ou points de vente, le tableau de bord agrège les données de toutes vos marques : vous comparez leur contribution au chiffre d'affaires, repérez les tendances et prenez des décisions rapides sans jongler entre plusieurs systèmes. Les commandes s'actualisent automatiquement ; vous n'avez pas besoin de rafraîchir la page pour suivre le flux du service.
+Concrètement, vous identifiez rapidement les ruptures de [stock](/fr/guides/stocks/) probables en observant les pics horaires, ajustez vos équipes aux heures de forte demande, et comparez objectivement la performance de vos concepts — sans exporter de fichiers ni croiser manuellement des tableurs.
 
 ## Comment l'utiliser
 
@@ -27,32 +27,32 @@ Conçu pour les restaurateurs qui gèrent plusieurs concepts ou points de vente,
 
 ### Accédez au tableau de bord
 
-Connectez-vous à votre compte restaurant sur [grubano.com/dashboard](https://www.grubano.com/dashboard). Le tableau de bord s'affiche dès l'ouverture de session.
+Ouvrez l'app Grubano et rendez-vous dans **Tableau de bord**. L'écran charge automatiquement les données du jour en cours et des trente derniers jours.
 
-### Consultez les indicateurs du jour
+### Consultez les chiffres du jour
 
-Trois cartes principales s'affichent en haut de l'écran : **Chiffre d'affaires du jour** (avec évolution par rapport à la veille), **Commandes du jour** (nombre total), et **Clients fidélité** (base active). Une quatrième carte identifie votre **Meilleure marque** du jour et son pourcentage de contribution au chiffre d'affaires total.
+En haut de l'écran, vous lisez le chiffre d'affaires du jour, le nombre de commandes validées, le nombre total de clients fidélité inscrits, et la marque qui réalise le meilleur chiffre d'affaires aujourd'hui. Une pastille affiche l'évolution en pourcentage par rapport à la veille.
 
-### Surveillez les commandes en cours
+### Identifiez les tendances hebdomadaires et mensuelles
 
-La liste des commandes apparaît sous les indicateurs, classée par heure de validation. Chaque ligne affiche le statut (`received`, `preparing`, `ready`, `picked_up`, `delivered`, `cancelled`), le montant, la marque concernée et l'adresse de livraison. Cliquez sur une commande pour voir le détail des articles et mettre à jour son statut.
+Plus bas, un graphique présente l'évolution du revenu sur les sept derniers jours (barres verticales par jour), un tableau classe vos marques par chiffre d'affaires sur trente jours (montant total et nombre de commandes), et une courbe d'heures de pointe indique les tranches horaires les plus chargées de la semaine écoulée.
 
-### Réagissez aux alertes multi-marques
+### Ajustez votre organisation
 
-Si plusieurs marques tournent en parallèle, le tableau de bord calcule automatiquement la répartition du chiffre d'affaires. Vous repérez immédiatement si une marque décroche ou si un concept explose : cette visibilité vous permet d'ajuster les capacités (personnel, ingrédients) en cours de service.
+Utilisez les heures de pointe pour planifier vos équipes en cuisine et en salle, et la comparaison par marque pour décider quels concepts mettre en avant, ajuster les [stocks](/fr/guides/stocks/), ou enrichir le [menu](/fr/guides/menu/) d'un concept qui performe moins.
 
 </Steps>
 
 ## Bon à savoir
 
 <Callout type="info">
-Le tableau de bord affiche les données du jour (de 00:00 à 23:59, heure du serveur). L'évolution J-1 compare le chiffre d'affaires et le nombre de commandes d'hier à ceux d'aujourd'hui. Si la base de données n'est pas encore connectée ou vide, le tableau de bord renvoie des valeurs par défaut (0 € de CA, 0 commandes) sans bloquer l'interface.
+Les chiffres du tableau de bord reflètent uniquement les commandes validées sur Grubano. Si votre restaurant reçoit aussi des commandes sur d'autres plateformes, ces données ne sont pas encore agrégées ici. Grubano Pro permettra bientôt de recevoir les commandes de toutes vos autres plateformes (Uber Eats, Deliveroo, Just Eat…) directement sur votre tableau de bord : un seul écran pour toutes vos commandes, avec des analyses et rapports unifiés. La commission ne change pas (10 % en Standard comme en Pro). Pro est un forfait mensuel de 29 €/mois, sans engagement, qui s'ajoute à la commission sans la remplacer.
 </Callout>
 
 ## Pour aller plus loin
 
-Explorez les autres outils du tableau de bord pour affiner votre pilotage opérationnel.
+**[Menu & Scan IA](/fr/guides/menu/)** — Ajustez votre offre en fonction des marques qui performent le mieux sur le tableau de bord.
 
-- [Menu & Scan IA](/fr/guides/menu/) — Ajoutez ou modifiez vos plats directement depuis le dashboard, avec reconnaissance automatique des photos de carte.
-- [Gestion des stocks](/fr/guides/stocks/) — Suivez vos niveaux d'ingrédients et recevez des alertes de rupture avant qu'elles n'impactent le service.
-- [Tables & Réservations](/fr/guides/reservations/) — Visualisez les réservations du jour et leur statut (confirmée, arrivée, terminée) depuis le même écran.
+**[Gestion des stocks](/fr/guides/stocks/)** — Anticipez les ruptures en croisant les heures de pointe et les volumes de commandes.
+
+**[Réservations](/fr/guides/reservations/)** — Planifiez vos équipes en tenant compte des créneaux horaires les plus chargés identifiés dans le tableau de bord.

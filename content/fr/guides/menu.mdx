@@ -2,7 +2,7 @@
 title: "Menu & Scan IA"
 description: "Mettre en ligne la carte d’un restaurant en photographiant simplement le menu — l’IA reconnaît les plats, propose nom, description et allergènes ; le restaurateur valide."
 generated: true
-sourceHash: 5c5fac7a35da6d3e
+sourceHash: 00edd04119ed2c08
 generator: scripts/generate-feature-page.js
 templateVersion: 4
 ---
@@ -11,50 +11,45 @@ import { Steps, Callout } from 'nextra/components'
 
 # Menu & Scan IA
 
-Photographiez votre carte papier — l'intelligence artificielle reconnaît chaque plat, génère nom, description et allergènes, puis vous laisse valider avant publication.
+Photographiez votre carte papier : l'IA reconnaît chaque plat, propose un nom, une description appétissante et les allergènes potentiels — vous vérifiez, corrigez si besoin, et publiez votre menu en quelques minutes.
 
 <FlowDiagram steps={["Scanner la carte","Vérifier les plats","Publier","Mettre à jour"]} />
 
 ## Ce que ça fait
 
-Plutôt que de ressaisir manuellement des dizaines de plats avec leurs descriptions et leurs allergènes, vous prenez une photo de votre menu existant. L'IA lit l'image, détecte les noms de plats, rédige une description appétissante en français, identifie les ingrédients principaux et propose les allergènes réglementaires (gluten, lactose, fruits à coque…). Elle estime également les calories et attribue une catégorie (Entrées, Plats, Desserts, Boissons) ainsi que des labels pertinents (Veggie, Halal, Sans gluten, Épicé).
+Saisir une carte complète à la main — noms, descriptions, prix, allergènes — prend des heures et décourage souvent les restaurants qui rejoignent une plateforme. Le scan IA vous fait gagner ce temps : vous prenez une photo de chaque plat ou de votre menu imprimé, l'IA extrait automatiquement le nom en français, rédige une description de une à deux phrases qui donne envie, identifie les ingrédients principaux et détecte les allergènes parmi les quatorze réglementaires (gluten, lactose, œuf, soja, arachide, fruits à coque, poisson, crustacés, mollusques, céleri, moutarde, sésame, sulfites, lupin).
 
-Vous contrôlez chaque suggestion depuis votre [tableau de bord](/fr/guides/restaurant/) : corrigez un prix, ajoutez une option de taille, ajustez la description. Une fois validé, le plat apparaît instantanément sur Grubano — vos clients voient une carte claire, professionnelle, sans que vous ayez passé une heure à tout taper. Idéal lors du lancement, d'un changement de saison ou quand vous intégrez les recettes d'un créateur que vous venez d'adopter.
+L'IA propose également une fourchette de calories estimée, classe le plat dans la catégorie adaptée (entrées, plats, desserts, boissons) et suggère des labels pertinents (végétarien, halal, sans gluten, épicé). Vous conservez toujours la main : chaque proposition apparaît dans votre [tableau de bord](/fr/guides/restaurant/), où vous pouvez corriger le nom, réécrire la description, ajuster le prix ou compléter les allergènes avant de publier. Une fois validé, le plat rejoint votre menu en ligne et les clients peuvent le commander ; vous pouvez également gérer la disponibilité en temps réel via la page [stocks](/fr/guides/stocks/) si un ingrédient vient à manquer.
 
 ## Comment l'utiliser
 
 <Steps>
 
-### Ouvrez la section Menu
+### Préparez vos photos
 
-Connectez-vous au tableau de bord restaurateur, puis cliquez sur **Menu** dans la barre latérale. Si vous n'avez pas encore configuré de marque, un écran vide vous invitera à le faire en premier.
+Prenez une photo nette de chaque plat (éclairage naturel, cadrage serré sur l'assiette) ou photographiez directement votre carte papier si elle est lisible. Les formats acceptés sont JPEG, PNG, GIF et WebP.
 
-### Prenez une photo du plat ou de la carte
+### Envoyez l'image au scan
 
-Cliquez sur le bouton **Scanner un plat** (icône appareil photo). Choisissez une image depuis votre téléphone ou votre ordinateur — JPEG, PNG, WebP ou GIF acceptés. L'IA fonctionne mieux avec une photo nette, bien éclairée, où le texte du menu est lisible.
+Dans votre tableau de bord, accédez à la section Menu et cliquez sur « Scanner un plat ». Téléchargez la photo ; l'IA analyse l'image et renvoie en quelques secondes un objet JSON contenant le nom du plat, la description, les ingrédients, les allergènes détectés, la fourchette calorique, la catégorie suggérée et les labels recommandés.
 
-### Vérifiez et corrigez les données détectées
+### Vérifiez et corrigez
 
-L'IA renvoie un bloc structuré : nom, description, ingrédients, allergènes, fourchette calorique, catégorie et labels suggérés. Lisez attentivement — en particulier les allergènes, car ils engagent votre responsabilité réglementaire. Modifiez le prix, ajoutez des options (tailles, suppléments), changez la photo si vous en avez une meilleure.
+Relisez chaque champ proposé : corrigez les fautes éventuelles, ajustez la description pour qu'elle reflète votre style, vérifiez que les allergènes correspondent bien à votre recette, ajoutez le prix de vente et éventuellement un prix barré (`comparePrice`) si vous souhaitez afficher une promotion.
 
-### Publiez ou enregistrez en brouillon
+### Publiez le plat
 
-Cochez **Disponible** pour rendre le plat visible immédiatement sur Grubano, ou laissez décoché pour l'enregistrer en brouillon. Cliquez sur **Ajouter au menu**. Le plat rejoint votre catalogue et les clients peuvent le commander dès maintenant.
-
-### Gérez les ruptures de stock
-
-Si un ingrédient manque, désactivez temporairement le plat via le bouton **Rupture** sur la ligne correspondante. Grubano le masque automatiquement côté client. Réactivez-le d'un clic quand vous avez réapprovisionné — la gestion fine des [stocks](/fr/guides/stocks/) vous permet même de déclencher des alertes avant la rupture.
+Une fois satisfait, enregistrez : l'entrée est créée dans votre menu avec le statut `available: true` par défaut. Le plat apparaît immédiatement sur votre page restaurant, classé par catégorie puis par ordre alphabétique. Vous pouvez à tout moment revenir dans le tableau de bord pour modifier le prix, la disponibilité, les photos ou les options (suppléments, choix de taille).
 
 </Steps>
 
 ## Bon à savoir
 
-<Callout type="warning">
-L'IA propose des allergènes sur la base des ingrédients visibles ou déduits, mais **elle ne remplace pas votre expertise métier**. Vérifiez systématiquement la liste avant publication : un oubli d'allergène engage votre responsabilité légale et la sécurité de vos clients.
+<Callout type="info">
+L'IA détecte uniquement les allergènes présents dans la liste réglementaire des quatorze allergènes majeurs. Si votre plat contient un ingrédient rare ou une préparation spécifique non visible sur la photo, ajoutez manuellement l'allergène correspondant avant de publier pour respecter vos obligations d'information.
 </Callout>
 
 ## Pour aller plus loin
 
-[**Gestion des stocks**](/fr/guides/stocks/) — Définissez des seuils de réapprovisionnement par ingrédient et recevez une alerte avant la rupture, pour ne jamais afficher un plat que vous ne pouvez pas servir.
-
-[**Tableau de bord restaurant**](/fr/guides/restaurant/) — Centralisez commandes, statistiques et actions prioritaires sur un seul écran : le Menu & Scan IA s'intègre dans ce hub opérationnel quotidien.
+- [Gérer les stocks](/fr/guides/stocks/) explique comment désactiver automatiquement un plat lorsqu'un ingrédient clé est épuisé, sans retirer définitivement l'entrée de votre menu.
+- [Tableau de bord restaurant](/fr/guides/restaurant/) détaille l'ensemble des actions disponibles sur vos plats, y compris la gestion des catégories, des photos multiples et des options de personnalisation.

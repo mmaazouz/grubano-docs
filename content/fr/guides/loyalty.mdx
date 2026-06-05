@@ -2,7 +2,7 @@
 title: "Programme fidélité"
 description: "Fidéliser sa clientèle : 1 point = 1 € dépensé, paliers Bronze/Silver/Gold/Platinum, points crédités à la livraison de la commande."
 generated: true
-sourceHash: 34a61b1a4c48864a
+sourceHash: 142e67aef9e64d2e
 generator: scripts/generate-feature-page.js
 templateVersion: 4
 ---
@@ -11,44 +11,47 @@ import { Steps, Callout } from 'nextra/components'
 
 # Programme fidélité
 
-Récompensez chaque euro dépensé : vos clients cumulent des points et débloquent des paliers Bronze, Silver, Gold et Platinum pour bénéficier d'avantages exclusifs.
+Récompensez chaque commande et transformez vos clients occasionnels en habitués grâce à un système de points automatique qui valorise leur engagement.
 
 <FlowDiagram steps={["Inscrire un client","Acheter","Crédit de points","Récompense"]} />
 
 ## Ce que ça fait
 
-Le programme de fidélité transforme chaque achat en une raison de revenir. Un client inscrit gagne **1 point par euro dépensé** sur vos commandes, quel que soit le canal de livraison. Dès que sa commande est livrée, les points sont automatiquement crédités sur son compte. Ces points font progresser le client à travers quatre paliers — Bronze, Silver, Gold et Platinum — qui déverrouillent des récompenses de plus en plus attractives : boissons offertes, desserts, plats, voire un repas complet pour les plus fidèles.
+Le programme fidélité Grubano crédite automatiquement **1 point par euro dépensé** sur chaque commande livrée. Vos clients progressent dans quatre paliers — Bronze, Silver, Gold et Platine — et débloquent des récompenses à mesure que leur solde augmente. Un client Bronze (0 points) qui commande régulièrement atteindra Silver à 100 points, Gold à 200, puis Platine à 400.
 
-Ce mécanisme vous permet de fidéliser sans effort : le système enregistre les clients, suit leurs achats et calcule les points en arrière-plan. Les clients voient leur solde et leur progression en temps réel, ce qui renforce l'incitation à commander chez vous plutôt qu'ailleurs. Chaque commande validée devient une brique dans la relation à long terme avec votre clientèle, visible depuis votre [tableau de bord](/fr/guides/restaurant/).
+Chaque nouveau membre reçoit 10 points de bienvenue dès son inscription. Les points s'accumulent commande après commande, vous permettant d'offrir une boisson (50 points), un dessert (100 points), un plat principal (200 points) ou un repas complet (400 points) sans gestion manuelle. Le système associe chaque commande à votre marque et empêche les validations multiples d'un même numéro de commande.
+
+Les clients consultent leur solde, leur progression vers le palier suivant et leur historique de commandes depuis leur compte. Vous pilotez l'engagement directement depuis le [tableau de bord](/fr/guides/restaurant/) : nouveaux inscrits, paliers franchis, récompenses en attente.
 
 ## Comment l'utiliser
 
 <Steps>
 
-### Inscrire un client
+### Inscrire un nouveau client
 
-Un client communique son nom, email et téléphone (optionnel) via `POST /api/loyalty/register`. Le système vérifie l'unicité de l'email et crée un compte avec 10 points de bienvenue offerts et le palier Bronze par défaut. Le client reçoit en retour son identifiant et son code de parrainage.
+Collectez nom, email et téléphone (facultatif) au moment de la première commande. Le système crédite automatiquement 10 points de bienvenue et attribue le palier Bronze.
 
-### Valider une commande externe
+### Valider une commande livrée
 
-Quand une commande Uber Eats (ou autre plateforme externe) est livrée, vous appelez `POST /api/loyalty/validate` avec l'email du client, le numéro de commande unique, le montant TTC et le nom de la marque. Le système vérifie que la commande n'a pas déjà été validée, attribue le nombre de points correspondant au montant (arrondi à l'entier inférieur), met à jour le solde et recalcule le palier. Le client reçoit confirmation de ses nouveaux points et de son niveau actuel.
+Une fois la commande livrée, enregistrez le numéro de commande Uber Eats, le montant total et le nom de votre marque. Le système crédite 1 point par euro (arrondi à l'entier inférieur) et recalcule le palier si nécessaire.
 
-### Consulter le portefeuille
+### Suivre les soldes de points
 
-Le client interroge `GET /api/loyalty/wallet?email=` pour voir son solde, son palier actuel, le nombre de points restant avant le prochain palier, les 10 dernières commandes et les récompenses qu'il peut débloquer. Les récompenses disponibles sont filtrées en fonction du solde : Boisson offerte (50 pts), Dessert offert (100 pts), Plat offert (200 pts), Repas complet (400 pts).
+Consultez le solde de chaque client, le nombre de points restants avant le palier suivant, et les 10 dernières commandes validées. Les récompenses disponibles apparaissent dès que le solde atteint le seuil requis.
 
-### Racheter une récompense
+### Échanger une récompense
 
-Lorsque le client choisit une récompense, un enregistrement `Reward` est créé avec un code promo unique. Le client présente ce code en caisse ou en ligne ; une fois utilisé, vous marquez `redeemed: true` pour éviter toute réutilisation. Le code reste valide tant que la récompense n'a pas été consommée.
+Lorsqu'un client utilise ses points, la récompense est marquée comme échangée et un code promo unique est généré. Le solde ne baisse pas automatiquement ; ajustez-le manuellement si vous souhaitez débiter les points consommés.
 
 </Steps>
 
 ## Bon à savoir
 
 <Callout type="info">
-Le calcul des points est effectué **au moment de la livraison** (champ `validatedAt`), pas à la commande. Si une commande est annulée ou remboursée avant livraison, aucun point n'est crédité. Les montants sont arrondis à l'entier inférieur — une commande de 19,90 € rapporte 19 points.
+Les points sont crédités **après livraison**, pas à la confirmation de commande. Si un client annule ou se fait rembourser, la commande ne sera jamais validée dans le programme fidélité, et aucun point ne sera attribué. Chaque numéro de commande Uber Eats ne peut être validé qu'une seule fois.
 </Callout>
 
 ## Pour aller plus loin
 
-Consultez le [guide du tableau de bord](/fr/guides/restaurant/) pour piloter l'ensemble de vos opérations, ou explorez le [parcours consommateur](/fr/guides/consumer/) pour comprendre comment vos clients vivent l'expérience fidélité de bout en bout.
+- [Tableau de bord restaurant](/fr/guides/restaurant/) : pilotez vos paliers, récompenses et inscriptions en temps réel.
+- [Guides consommateur](/fr/guides/consumer/) : découvrez comment vos clients consultent leur solde et progressent dans les paliers.

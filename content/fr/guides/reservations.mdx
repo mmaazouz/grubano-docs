@@ -2,7 +2,7 @@
 title: "Réservations"
 description: "Gérer les tables et les créneaux : plan de salle, accepter / refuser une demande, suivre l’occupation en temps réel."
 generated: true
-sourceHash: 7a8ac2ec1dbd74be
+sourceHash: 5f5239cb31066cbd
 generator: scripts/generate-feature-page.js
 templateVersion: 4
 ---
@@ -11,44 +11,44 @@ import { Steps, Callout } from 'nextra/components'
 
 # Réservations
 
-Gérez les tables et les créneaux : plan de salle, accepter ou refuser une demande, suivre l'occupation en temps réel.
+Vous optimisez l'occupation de votre salle en acceptant les réservations en ligne, en évitant les conflits de créneaux et en anticipant les préférences de vos clients.
 
 <FlowDiagram steps={["Configurer la salle","Recevoir la demande","Valider","Service"]} />
 
 ## Ce que ça fait
 
-La fonctionnalité Réservations vous permet de piloter les demandes de tables directement depuis votre [tableau de bord](/fr/guides/restaurant/), sans jongler entre cahier papier, téléphone et messagerie. Vous placez vos tables sur un plan visuel, définissez leur capacité, puis chaque réservation arrive avec les informations essentielles : nombre de convives, créneau souhaité, allergies éventuelles et note du client. Le système vérifie automatiquement les conflits de créneaux — une table ne peut pas être réservée deux fois au même moment —, vous évitant les doublons et les situations délicates le soir du service.
+Le module Réservations transforme votre plan de salle en agenda intelligent. Chaque table possède une capacité, une position et un statut ; dès qu'un client demande un créneau, Grubano vérifie automatiquement la disponibilité et bloque la table si vous acceptez. Vous visualisez en temps réel l'occupation de votre salle, suivez les arrivées, repérez les dépassements de durée et gérez les annulations ou les absences sans prévenir.
 
-Trois types de service sont prévus : service rapide (« quick »), standard et complet (« full »), pour adapter la durée selon votre rythme de salle. Vous pouvez également enregistrer une précommande ou un acompte, et suivre l'évolution du statut de chaque réservation (confirmée, arrivée, dépassée, annulée ou absence non signalée).
+Le système enregistre également les allergies, une éventuelle précommande et les notes libres pour chaque réservation. Si vous imposez un acompte ou une pénalité en cas d'absence, le montant et le statut de paiement sont conservés dans la fiche de réservation. L'ensemble des informations — nom, téléphone, adresse e‑mail, nombre de couverts — reste accessible depuis votre [tableau de bord](/fr/guides/restaurant/), ce qui facilite la préparation du service et la communication avec vos clients.
 
 ## Comment l'utiliser
 
 <Steps>
 
-### Créer les tables
+### Créez vos tables dans le plan de salle
 
-Ajoutez chaque table via le plan de salle : donnez-lui un nom (par exemple « Table 3 »), indiquez le nombre de places (de 1 à 30), et positionnez-la sur le canevas en glissant l'icône. Une table désactivée reste visible dans le plan mais n'accepte plus de nouvelles réservations.
+Attribuez à chaque table un nom, un nombre de places (de 1 à 30), et positionnez‑la sur le plan (`x`, `y` en coordonnées relatives). Activez ou désactivez une table selon vos besoins (déplacement, travaux, privatisation).
 
-### Recevoir une demande
+### Recevez une demande de réservation
 
-Le client réserve en ligne ou vous saisissez la demande manuellement. Renseignez le nom, le nombre de convives, la date, l'heure de début et de fin, et sélectionnez la table. Le type de service (rapide, standard ou complet) détermine la durée par défaut. Ajoutez éventuellement un téléphone, un e-mail, une note, ou des allergies.
+Le client indique son nom, son numéro de couverts, la date et l'heure de début, ainsi que l'heure de fin prévue. Il peut ajouter un téléphone, un e‑mail, mentionner des allergies, précommander des plats et laisser des notes. Un montant d'acompte et une pénalité d'absence peuvent être définis.
 
-### Valider ou refuser
+### Validez la disponibilité
 
-Avant de confirmer, le système vérifie qu'aucun créneau concurrent n'existe sur la même table. Si une autre réservation active (ni annulée ni absence) chevauche l'horaire, vous recevez un message d'erreur 409 indiquant l'heure de conflit. Sinon, la réservation est créée avec le statut « confirmée ».
+Le système interroge `GET /api/reservations?date=` pour afficher les créneaux déjà pris. Lors de la création (`POST /api/reservations`), Grubano refuse automatiquement toute réservation dont l'intervalle chevauche un créneau existant sur la même table (statut différent de `cancelled` ou `noshow`).
 
-### Faire évoluer le statut
+### Suivez l'état de la réservation
 
-Passez la réservation à « arrivée » lorsque les convives s'installent, « dépassée » si le service s'éternise, « annulée » en cas de désistement, ou « absence non signalée » si personne ne vient. Vous pouvez également marquer l'acompte comme payé en basculant le champ `depositPaid`.
+Cinq statuts jalonnent le cycle : `confirmed` (acceptée), `arrived` (client installé), `overrun` (dépassement de l'heure de fin), `cancelled` (annulation), `noshow` (absence sans prévenir). Vous modifiez le statut et le paiement de l'acompte via `PATCH /api/reservations`.
 
 </Steps>
 
 ## Bon à savoir
 
 <Callout type="info">
-Le calcul de conflit repose sur la date de début et l'heure de fin : une réservation est considérée en chevauchement si elle commence avant la fin d'une autre réservation active et se termine après son début. Pensez à prévoir des temps de rotation réalistes pour éviter les refus automatiques.
+La vérification de conflit compare uniquement les intervalles de temps (`date` < `endTime` de la réservation existante et `endTime` > `date` de la nouvelle demande). Si deux tables différentes partagent le même nom par erreur, aucune alerte n'est levée : veillez à nommer chaque table de façon unique dans votre plan de salle.
 </Callout>
 
 ## Pour aller plus loin
 
-**[Tableau de bord restaurant](/fr/guides/restaurant/)** — Vue d'ensemble de toutes les fonctionnalités opérateur : commandes, menu, stocks, avis et réservations réunis sur un seul écran.
+**[Tableau de bord restaurant](/fr/guides/restaurant/)** : accédez à la vue d'ensemble de vos réservations, commandes et analyses depuis une interface unique.

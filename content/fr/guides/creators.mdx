@@ -2,7 +2,7 @@
 title: "Créateurs"
 description: "Deux casquettes côte à côte : (1) proposer une recette qu'un restaurant partenaire pourra adopter et cuisiner sous sa propre enseigne ; (2) recommander des restaurants à votre communauté via un lien d'affiliation. Dans les deux cas vous touchez une commission sur les ventes générées, dans les limites fixées par Grubano."
 generated: true
-sourceHash: cc835708fc71285a
+sourceHash: d5bef5ddc57f699b
 generator: scripts/generate-feature-page.js
 templateVersion: 4
 ---
@@ -11,48 +11,50 @@ import { Steps, Callout } from 'nextra/components'
 
 # Créateurs
 
-Proposez des recettes qu'un restaurant partenaire cuisinera sous son enseigne, ou recommandez des adresses à votre communauté : dans les deux cas, vous touchez une commission sur les ventes générées.
+Proposez des recettes que des restaurants adopteront sous leur enseigne, ou recommandez des adresses à votre communauté : vous touchez une commission sur chaque vente générée.
 
 <FlowDiagram steps={["Candidater","Recette OU lien","Adoption / partage","Commission sur ventes"]} />
 
 ## Ce que ça fait
 
-Le programme créateurs vous ouvre deux casquettes distinctes, cumulables à volonté. **Première casquette : concepteur de recettes.** Vous soumettez des idées de plats — avec nom, description, ingrédients, photo et prix suggéré — que les restaurateurs partenaires découvrent dans leur espace. Lorsqu'un établissement adopte votre recette, il la cuisine dans sa propre cuisine, sous son enseigne, et vous percevez une commission sur chaque vente du plat dans les limites fixées par Grubano. Votre création figure alors dans [le menu](/fr/guides/menu/) du restaurant, enrichie d'un badge portant votre nom et votre photo ; les clients qui [commandent](/fr/guides/consumer/) ce plat contribuent directement à vos revenus. **Seconde casquette : recommandation par lien d'affiliation.** Vous recevez un code et un lien personnalisés que vous partagez sur vos réseaux ; chaque nouveau client qui passe commande via ce lien déclenche une commission dans les limites fixées par Grubano. Les deux flux sont indépendants — vous pouvez vous concentrer sur les recettes, sur l'affiliation, ou mener les deux de front — et se pilotent depuis un tableau de bord unifié qui affiche vos gains, vos plats adoptés et vos parrainages actifs.
+Grubano vous offre deux modes de monétisation complémentaires. Le premier consiste à déposer une recette originale : un restaurant partenaire qui l'approuve la cuisine dans sa propre cuisine, sous sa propre marque, et la met en vente sur son [menu](/fr/guides/menu/) ; chaque fois qu'un client [commande](/fr/guides/consumer/) ce plat, vous percevez une commission sur le prix de vente, dans les limites fixées par Grubano. Le second mode repose sur l'affiliation : vous partagez un lien personnalisé vers un restaurant que vous recommandez ; tout nouveau client qui passe commande via ce lien bénéficie d'une réduction de bienvenue, et vous touchez une commission récurrente sur ses achats futurs, toujours dans les limites fixées par Grubano.
+
+Aucun minimum de followers n'est requis pour candidater, mais vous devrez prouver que vous contrôlez bien le compte social que vous déclarez en y publiant un code de vérification fourni après dépôt de candidature. Une fois validé, vous accédez à un tableau de bord qui suit en temps réel le nombre de plats adoptés, les ventes générées et vos gains cumulés. Le classement public des créateurs met en avant ceux qui totalisent le plus de ventes, créant une émulation saine et une visibilité naturelle pour les meilleurs contributeurs.
 
 ## Comment l'utiliser
 
 <Steps>
 
-### Candidater au programme
+### Déposez votre candidature
 
-Rendez-vous sur la page publique Créateurs et cliquez sur **Rejoindre le programme**. Remplissez le formulaire avec votre nom, email, biographie, liens vers vos réseaux sociaux (Instagram, TikTok, YouTube) et le nombre d'abonnés. Ajoutez entre une et trois idées de plats — nom, description, type de cuisine — pour illustrer votre style culinaire.
+Renseignez votre nom, e‑mail, biographie, liens de réseaux sociaux (Instagram, TikTok, YouTube) et nombre approximatif de followers. Ajoutez entre une et trois idées de plat (nom, description, type de cuisine) pour illustrer votre univers culinaire.
 
-### Vérifier votre chaîne YouTube (optionnel)
+### Prouvez que vous contrôlez votre chaîne
 
-Si vous avez fourni un lien YouTube, l'application génère un code de vérification au format `GRUBANO-XXXXXX` que vous devez coller dans la description de votre chaîne. Cliquez ensuite sur **Vérifier ma chaîne** : le système lit la description, contrôle la présence du code et analyse le contenu récent de vos vidéos pour confirmer la pertinence culinaire. Une vérification réussie active le badge vérifié sur votre profil et facilite l'adoption de vos recettes par les restaurateurs.
+Après validation du formulaire, vous recevez un code de vérification unique. Publiez ce code dans la description de votre chaîne YouTube (ou le réseau social déclaré) pour confirmer la propriété du compte.
 
-### Soumettre une recette
+### Soumettez des recettes détaillées
 
-Depuis votre espace créateur, accédez à **Mes recettes** puis **Soumettre un plat**. Renseignez le nom, la description détaillée, la liste des ingrédients, le type de cuisine, un prix suggéré et téléchargez une photo attrayante. La recette passe au statut `pending` le temps que l'équipe Grubano vérifie la qualité et la faisabilité ; une fois approuvée (`approved`), elle devient visible dans l'espace des restaurateurs qui peuvent l'adopter.
+Une fois vérifié, connectez‑vous pour créer des fiches de plat complètes : nom, description longue, liste d'ingrédients, type de cuisine, prix suggéré et photo. Chaque recette passe en statut `pending` jusqu'à ce qu'un restaurateur l'approuve.
 
-### Partager votre lien d'affiliation
+### Ou partagez votre lien d'affiliation
 
-Dans **Mon affiliation**, copiez votre code personnel et le lien associé. Partagez-les sur vos réseaux, dans vos vidéos ou vos stories : chaque nouveau client qui commande via ce lien active une commission sur sa première commande. Le tableau **Clients parrainés** liste les parrainages actifs et les gains correspondants.
+Grubano génère automatiquement un code de parrainage (par exemple `MARCO20`) et une URL courte (`/r/votre‑slug`). Diffusez ce lien à votre communauté : le premier achat d'un nouveau client lui accorde une réduction de bienvenue, et vous commencez à percevoir une commission sur ses commandes, dans les limites fixées par Grubano.
 
-### Suivre vos revenus
+### Suivez vos gains
 
-La page **Mes revenus** sépare les deux sources : commission sur les recettes adoptées d'un côté, commission d'affiliation de l'autre. Un graphique sur trente jours glissants affiche l'évolution de vos gains totaux ; des compteurs synthétisent le nombre de ventes par plat et le chiffre d'affaires généré par vos parrainages.
+Votre tableau de bord regroupe le nombre de recettes adoptées, le total de ventes réalisées, vos revenus cumulés et votre position dans le classement public des créateurs.
 
 </Steps>
 
 ## Bon à savoir
 
 <Callout type="info">
-La commission que vous percevez sur chaque vente — recette ou affiliation — est définie avec vous au moment de l'ouverture de votre compte créateur et reste stable tant que le contrat n'est pas renégocié. Le badge vérifié améliore la confiance des restaurateurs et accélère l'adoption de vos plats, mais n'est pas obligatoire pour soumettre des recettes ou partager votre lien d'affiliation.
+Une recette adoptée par un restaurant reste visible sous l'enseigne de ce restaurant, jamais sous votre propre nom côté client final : c'est le restaurateur qui engage sa réputation et sa marque. Vous apparaissez uniquement dans le classement public des créateurs et dans les rapports internes du restaurateur qui a choisi votre recette.
 </Callout>
 
 ## Pour aller plus loin
 
-[**Gestion du menu**](/fr/guides/menu/) — Découvrez comment un restaurateur consulte, adopte et active vos recettes dans son catalogue, et comment le badge créateur apparaît sur la fiche du plat côté client.
+[Menu & Scan IA](/fr/guides/menu/) explique comment un restaurateur publie et met à jour les plats qu'il cuisine, y compris ceux issus de recettes de créateurs.
 
-[**Commander sur Grubano**](/fr/guides/consumer/) — Comprenez le parcours du client qui découvre un plat signé par vous, passe commande et déclenche votre commission à chaque vente.
+[Commander sur Grubano](/fr/guides/consumer/) détaille le parcours d'achat côté client, du panier jusqu'à la livraison, que la commande porte sur un plat de créateur ou sur une recette maison du restaurant.

@@ -2,7 +2,7 @@
 title: "Gestion des stocks"
 description: "Tenir l'inventaire d'une marque à jour : ajouter des articles, suivre les quantités et les DLC, recevoir des alertes de réapprovisionnement, et mettre à jour les stocks en langage naturel via l'IA."
 generated: true
-sourceHash: b9570e7428fc4a3a
+sourceHash: bad70a3ad8fc5b99
 generator: scripts/generate-feature-page.js
 templateVersion: 4
 ---
@@ -11,46 +11,45 @@ import { Steps, Callout } from 'nextra/components'
 
 # Gestion des stocks
 
-Suivez votre inventaire en temps réel et anticipez les ruptures avant qu'elles n'affectent vos clients.
+Tenez à jour l'inventaire de vos ingrédients, anticipez les ruptures et commandez au bon moment grâce aux alertes automatiques et à la mise à jour en langage naturel.
 
 <FlowDiagram steps={["Ajouter un article","Définir un seuil mini","Alerte de réappro","Prévision de rupture 7 j"]} />
 
 ## Ce que ça fait
 
-La gestion des stocks vous permet de tenir à jour l'inventaire de chaque marque que vous exploitez sur Grubano. Ajoutez vos articles (ingrédients, produits finis, conditionnements), définissez un seuil minimum pour chaque ligne, et le système vous alertera automatiquement lorsqu'un article passe sous ce seuil — fini les ruptures découvertes au moment du coup de feu.
+La gestion des stocks vous permet de surveiller en temps réel les quantités disponibles pour chaque ingrédient de votre marque. Vous créez une fiche par article (farine, huile, viande, légumes…), enregistrez la quantité actuelle, l'unité de mesure (kg, L, g, mL ou unités) et, si nécessaire, la date limite de consommation. Grubano calcule automatiquement combien de jours vous restent avant la rupture, en tenant compte d'une consommation quotidienne estimée pour chaque type d'ingrédient.
 
-L'outil intègre également une fonction de mise à jour en langage naturel : tapez « poulet 3 kg, riz 5 kg, sauce tomate terminée » et l'IA Claude analyse votre texte pour mettre à jour les quantités en une seule passe. Cela vous permet de corriger rapidement votre inventaire après une réception ou en fin de service, sans multiplier les saisies. Chaque article peut porter une date limite de consommation (DLC), et le système prévoit la date de rupture sur sept jours glissants en fonction d'une consommation journalière estimée, ce qui vous aide à passer vos commandes fournisseur au bon moment.
-
-Les stocks sont rattachés à votre marque ; si vous gérez plusieurs concepts depuis votre [tableau de bord](/fr/guides/restaurant/), chacun dispose de son propre inventaire. Les articles en alerte apparaissent directement sur la page d'accueil du dashboard pour que vous sachiez en un coup d'œil ce qui nécessite un réapprovisionnement.
+Quand un article passe sous le seuil minimal que vous avez défini, vous recevez une alerte de réapprovisionnement. Vous pouvez aussi mettre à jour plusieurs stocks d'un coup en langage naturel — « poulet 3 kg, riz 5 kg, sauce tomate terminée » — et l'IA analyse votre phrase pour ajuster les quantités correspondantes. Cette fonctionnalité est pensée pour les moments de pression en cuisine, où taper « terminé » dans un message est plus rapide que remplir un formulaire. Les prévisions de rupture s'affichent ensuite sur votre [tableau de bord](/fr/guides/restaurant/), vous aidant à organiser vos commandes fournisseurs sans surprise.
 
 ## Comment l'utiliser
 
 <Steps>
 
-### Ajouter un article
+### Créer un nouvel article
 
-Ouvrez la page **Stocks** depuis le [tableau de bord](/fr/guides/restaurant/). Cliquez sur **Ajouter un article**, renseignez le nom (par exemple « Farine T55 »), la quantité initiale, l'unité (kg, g, L, mL, u pour pièce), et optionnellement une date limite de consommation. Enregistrez : l'article rejoint votre inventaire.
+Depuis l'écran Stocks de votre marque, saisissez le nom de l'ingrédient (par exemple « farine T55 »), la quantité actuelle, l'unité (kg, L, g, mL ou u pour « unités ») et, si vous le souhaitez, la date limite de consommation au format ISO (AAAA-MM-JJ). Validez pour enregistrer la fiche.
 
-### Définir un seuil minimum
+### Définir un seuil minimal
 
-Lors de la création ou en modifiant un article existant, indiquez le **seuil de réapprovisionnement** (champ `minThreshold`). Lorsque la quantité passe en dessous de cette valeur, l'article est marqué en alerte sur votre tableau de bord. Par exemple, seuil à 2 kg pour la farine — dès que vous descendez à 1,8 kg, vous recevez un signal visuel.
+Dans la fiche de l'article, renseignez le champ `minThreshold` : c'est la quantité en dessous de laquelle vous souhaitez être alerté. Par exemple, 2 kg de farine. Dès que le stock descend sous ce seuil, Grubano le signale.
 
 ### Mettre à jour en langage naturel
 
-Depuis la page Stocks, utilisez le champ de saisie « Mettre à jour en texte ». Écrivez votre relevé en français naturel : « tomates 4 kg, huile d'olive 2 L, parmesan terminé ». Cliquez sur **Analyser** : l'IA Claude extrait les articles, quantités et unités, puis met à jour ou crée les lignes correspondantes en une seule opération. La réponse JSON contient la liste des articles modifiés et une prévision de rupture sur les sept prochains jours pour chaque ligne.
+Envoyez un texte libre (maximum 2 000 caractères) décrivant vos stocks actuels : « poulet 3 kg, riz 5 kg, sauce tomate 0 L ». L'IA Claude identifie chaque ingrédient, extrait la quantité et l'unité, puis met à jour ou crée automatiquement les fiches correspondantes. Si un ingrédient est marqué « terminé », « vide » ou « 0 », la quantité passe à zéro.
 
-### Consulter les alertes et prévisions
+### Consulter les prévisions de rupture
 
-Les articles sous le seuil apparaissent dans la section **Stocks bas** de la page d'accueil du dashboard. La prévision de rupture (nombre de jours restants, date estimée) est calculée en fonction d'une consommation journalière moyenne par type d'unité (0,7 kg/jour pour les articles en kg, 5 pièces/jour pour les articles à l'unité, etc.). Ces estimations vous aident à planifier vos commandes fournisseur sans risquer de rupture sèche.
+Grubano calcule, pour chaque article, le nombre de jours restants avant rupture sur la base d'une consommation quotidienne par défaut (0,7 kg/jour pour les solides, 0,5 L/jour pour les liquides, 5 unités/jour pour les pièces). Le statut affiché est « critique » (≤ 1 jour), « bas » (≤ 3 jours) ou « ok ». La date estimée de rupture vous aide à planifier votre prochain réassort.
 
 </Steps>
 
 ## Bon à savoir
 
 <Callout type="info">
-L'unité « u » (pièce) est automatiquement appliquée par l'IA lorsque vous décrivez des conditionnements entiers (« 3 boîtes », « 5 sachets »). Si vous gérez plusieurs marques, veillez à sélectionner la bonne marque avant d'ajouter ou de mettre à jour des articles : les stocks ne sont jamais partagés entre marques, même si elles appartiennent au même opérateur.
+Les prévisions de rupture reposent sur des moyennes de consommation fixes par type d'unité. Elles donnent un ordre de grandeur utile, mais ne tiennent pas encore compte de vos ventes réelles ni des variations saisonnières. Ajustez vos seuils minimaux en fonction de votre expérience terrain pour affiner les alertes.
 </Callout>
 
 ## Pour aller plus loin
 
-Découvrez comment [gérer votre menu](/fr/guides/menu/) et retirer un plat en rupture d'un ingrédient clé, ou consultez votre [tableau de bord](/fr/guides/restaurant/) pour voir les alertes de réapprovisionnement consolidées avec vos autres indicateurs de performance.
+- [Menu & Scan IA](/fr/guides/menu/) — découvrez comment les plats de votre menu consomment les ingrédients référencés dans vos stocks, pour une vision complète de la chaîne d'approvisionnement.
+- [Tableau de bord restaurant](/fr/guides/restaurant/) — retrouvez toutes vos alertes de réapprovisionnement et vos prévisions de rupture sur l'écran d'accueil de votre marque.
