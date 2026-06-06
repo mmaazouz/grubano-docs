@@ -12,6 +12,7 @@ export default {
   "dashboard": "Dashboard",
   "dishes": "Dishes",
   "email-agent": "Email-agent",
+  "establishments": "Establishments",
   "finance": "Finance",
   "franchise": "Franchise",
   "loyalty": "Loyalty",
