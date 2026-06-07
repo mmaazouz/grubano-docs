@@ -2,7 +2,7 @@
 title: "Commander & suivre"
 description: "Trouver un restaurant local, passer commande (livraison / click & collect / table) et suivre l’avancée en temps réel."
 generated: true
-sourceHash: bf08631e3e695b3f
+sourceHash: ac0cd2574ee006e0
 generator: scripts/generate-feature-page.js
 templateVersion: 4
 ---
@@ -11,56 +11,44 @@ import { Steps, Callout } from 'nextra/components'
 
 # Commander & suivre
 
-Vous trouvez un restaurant local, commandez en livraison ou click & collect, puis suivez l'avancée en temps réel depuis votre espace client.
+Trouvez un restaurant local, passez commande en livraison ou à emporter, et suivez l'avancée de votre repas en temps réel.
 
 <FlowDiagram steps={["Trouver un resto","Commander","Payer","Suivre la livraison"]} />
 
 ## Ce que ça fait
 
-Le parcours de commande vous permet de découvrir les restaurants actifs près de chez vous, de choisir vos plats et de finaliser votre achat en quelques clics. Grubano calcule automatiquement le montant total — panier, frais de livraison, réduction de bienvenue éventuelle — et génère une confirmation instantanée avec lien de suivi.
+Grubano vous connecte aux restaurants locaux qui cuisinent dans leur propre cuisine — pas de dark kitchens ni de marques fantômes. Vous choisissez un établissement proche de chez vous, composez votre panier, et passez commande soit en livraison à domicile, soit en click & collect (vous venez récupérer sur place). Le statut de votre commande se met à jour automatiquement : vous savez quand le restaurant la prépare, quand elle part, et quand elle arrive. Les points de [fidélité](/fr/guides/loyalty/) s'accumulent à chaque euro dépensé — 1 point par euro — et peuvent être transformés en réductions sur vos prochaines commandes.
 
-Dès validation, la commande part vers la cuisine du restaurant et un coursier est dispatché via notre partenaire logistique. Vous recevez une URL de suivi en temps réel (`trackingUrl`) et une estimation d'arrivée qui tient compte du temps de préparation et de la distance. Pour le click & collect, les frais de livraison tombent à zéro : vous payez uniquement le panier et récupérez votre commande directement sur place.
-
-Le système enregistre aussi vos [points de fidélité](/fr/guides/loyalty/) : 1 point par euro dépensé, arrondi à l'entier inférieur. Vos commandes passées restent visibles dans votre historique, triées de la plus récente à la plus ancienne.
+La recherche géolocalisée détecte votre position et affiche d'abord les restaurants les plus proches ; si vous cherchez une cuisine spécifique (italien, sushi, healthy), Grubano élargit progressivement le rayon jusqu'à trouver au moins huit établissements correspondants. Pas de résultat ? La plateforme vous propose alors les restaurants les plus proches, quelle que soit leur spécialité, pour que vous ayez toujours le choix.
 
 ## Comment l'utiliser
 
 <Steps>
 
-### Découvrir les restaurants disponibles
+### Trouver un restaurant
 
-Appelez `GET /api/restaurants` avec vos coordonnées GPS (`lat`, `lng`). Le moteur de découverte géolocalisée élargit progressivement le rayon de recherche — 5, 10, 25, 50 km, puis illimité — jusqu'à trouver au moins 8 établissements actifs. Vous pouvez filtrer par type de cuisine via `category` ; si la catégorie demandée ne donne aucun résultat même au rayon maximum, la réponse bascule automatiquement sur les restaurants les plus proches, toutes cuisines confondues, et signale `categoryHadNoMatch: true`.
+Depuis la page principale, laissez l'application détecter votre position ou saisissez votre adresse manuellement. Les restaurants actifs apparaissent classés par distance ; filtrez par type de cuisine (italien, asiatique, burger…) ou triez par note client, nouveauté ou rapidité de livraison.
 
 ### Composer votre panier
 
-Sélectionnez vos plats dans le menu du restaurant. Chaque ligne de commande doit porter `itemId` (identifiant du plat), `name`, `qty`, `price` et un tableau `options` pour les personnalisations (taille, extras). Le montant minimum (`minOrder`) s'applique au sous-total **avant** toute réduction de bienvenue : si vous commandez suffisamment, le code parrainage sera appliqué en bonus sans bloquer l'ordre.
+Parcourez le menu, ajoutez les plats souhaités, personnalisez les options (taille, extras). Le panier affiche le sous-total, les frais de livraison (ou leur absence en mode click & collect) et la commande minimum. Si vous récupérez sur place, aucuns frais de livraison ne sont appliqués.
 
-### Choisir le mode de retrait
+### Payer
 
-Précisez `fulfillmentType: "delivery"` pour une livraison classique ou `"pickup"` pour récupérer votre commande sur place. En click & collect, les frais de livraison (`deliveryFee`) passent à zéro dans le calcul du total ; l'adresse de retrait (`pickupAddress`) et les instructions (`pickupInstructions`) sont configurées par le restaurateur.
+Validez le panier, confirmez votre adresse de livraison (ou l'horaire de retrait), choisissez votre mode de paiement (carte, espèces, portefeuille). Le montant total, incluant les points de fidélité gagnés, s'affiche avant confirmation. Si un code de parrainage valide est détecté (cookie ou saisie manuelle) et qu'il s'agit de votre première commande référée, une réduction de bienvenue s'applique automatiquement.
 
-### Finaliser la commande
+### Suivre en temps réel
 
-Envoyez `POST /api/orders` avec `restaurantId`, `items`, `deliveryAddress`, `paymentMethod` (`card`, `cash` ou `wallet`) et `fulfillmentType`. Si vous avez un code parrainage, ajoutez-le dans `referralCode` ou laissez le cookie `grubano_ref` faire le travail : le serveur applique automatiquement la réduction de bienvenue (10 % du sous-total, plafonné à 5 €) si c'est votre première commande parrainée. La réponse contient `orderId`, `trackingUrl`, `estimatedDelivery` (en minutes), `total`, `pointsEarned` et `discount`.
-
-### Suivre l'avancée en temps réel
-
-Ouvrez l'URL de suivi (`trackingUrl`) pour voir le statut évoluer : `received` → `preparing` → `ready` → `picked_up` → `delivered`. Le champ `estimatedTime` vous donne l'estimation d'arrivée initiale ; le lien de suivi la met à jour en direct si le coursier accélère ou ralentit.
-
-### Consulter l'historique
-
-Appelez `GET /api/orders` pour récupérer vos commandes passées, triées de la plus récente à la plus ancienne. Vous pouvez paginer (`take`, `skip`) et filtrer par statut (`status=delivered`, par exemple). Chaque ligne affiche le total payé, les points gagnés, l'adresse de livraison, le mode de paiement et un résumé du restaurant.
+Une fois la commande validée, vous recevez un lien de suivi. Le statut évolue automatiquement : « reçue », « en préparation », « prête », « récupérée par le livreur », « livrée ». L'heure estimée d'arrivée s'affiche dès la prise en charge par le coursier.
 
 </Steps>
 
 ## Bon à savoir
 
 <Callout type="info">
-Le montant minimum (`minOrder`) porte sur le sous-total **avant** réduction. Si vous commandez pour 15 € alors que le minimum est 12 €, une réduction de bienvenue de 1,50 € fait tomber votre total à 13,50 € mais n'invalide pas la commande : vous avez bien respecté les 12 € au départ.
+Les restaurants fixent leur propre commande minimum et leurs frais de livraison. En mode click & collect, vous ne payez jamais de frais de livraison — seul le montant des plats compte — et vous récupérez directement à l'adresse indiquée par l'établissement. Grubano prélève une commission de 10 % sur chaque commande, quel que soit le mode de livraison.
 </Callout>
 
 ## Pour aller plus loin
 
-**[Menu & Scan IA](/fr/guides/restaurant/)** : découvrez comment les restaurateurs construisent leur catalogue de plats, activent la reconnaissance photo et configurent les modes de retrait (livraison, click & collect, réservation).
-
-**[Fidélité](/fr/guides/loyalty/)** : consultez les règles de conversion des points (1 point = 1 €) et les paliers de récompenses que vous débloquez au fil de vos commandes.
+Découvrez [comment les restaurants gèrent leurs profils, menus et disponibilités](/fr/guides/restaurant/) sur la plateforme, et consultez la page [fidélité](/fr/guides/loyalty/) pour comprendre comment cumuler et utiliser vos points.
