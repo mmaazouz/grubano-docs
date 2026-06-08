@@ -2,7 +2,7 @@
 title: "Tableau de bord"
 description: "Voir en un coup d’œil l’activité de votre restaurant : commandes en cours, chiffre d’affaires, alertes — et piloter le service depuis cet écran unique."
 generated: true
-sourceHash: d82e0029d95ee86b
+sourceHash: 9aba7f3263c218a1
 generator: scripts/generate-feature-page.js
 templateVersion: 4
 ---
@@ -11,51 +11,46 @@ import { Steps, Callout } from 'nextra/components'
 
 # Tableau de bord
 
-Pilotez votre activité depuis un seul écran : commandes du jour, chiffre d'affaires en temps réel, marques les plus performantes et alertes directement accessibles.
+Le tableau de bord centralise l'activité de toutes vos marques en temps réel : chiffre d'affaires du jour, évolution par rapport à la veille, répartition entre vos concepts, et aperçu de votre base de clients fidélité.
 
 <FlowDiagram steps={["Commandes en cours","Chiffres temps réel","Alertes","Multi-marques"]} />
 
 ## Ce que ça fait
 
-Le tableau de bord centralise les indicateurs opérationnels dont vous avez besoin pour prendre des décisions rapides : combien de commandes validées aujourd'hui, quel chiffre d'affaires réalisé depuis ce matin, quelle marque a généré le plus de revenus, combien de clients fidélité sont actifs. Chaque chiffre se met à jour automatiquement à chaque nouvelle commande validée, et vous voyez en un coup d'œil l'évolution par rapport à la veille.
+Le tableau de bord vous donne une vue consolidée de votre activité quotidienne, quelle que soit votre configuration : marque unique ou portefeuille de plusieurs concepts. Il récupère les commandes validées dans la journée, calcule le chiffre d'affaires cumulé et l'évolution par rapport à la veille, identifie la marque la plus performante, et affiche le nombre total de clients enregistrés dans votre programme de fidélité.
 
-Si vous gérez plusieurs marques — par exemple un concept italien et un concept asiatique sous le même toit — le tableau de bord calcule automatiquement la répartition du chiffre d'affaires par marque et vous indique laquelle contribue le plus à l'activité du jour. Vous pouvez ainsi ajuster vos [stocks](/fr/guides/stocks/) ou mettre en avant certains plats du [menu](/fr/guides/menu/) en fonction des tendances observées en temps réel, sans jongler entre plusieurs outils.
+Ce point d'entrée unique vous permet de démarrer chaque service avec les bonnes priorités : quand une marque représente une part inhabituelle du chiffre d'affaires, vous savez immédiatement où concentrer l'effort en cuisine. L'évolution jour après jour signale une tendance — hausse ou baisse — que vous pouvez corréler avec une promotion active, un changement de [menu](/fr/guides/menu/), ou un ajustement de [stocks](/fr/guides/stocks/). Pour un opérateur multi-marques, le tableau de bord devient la boucle de rétroaction quotidienne qui remplace les tableaux Excel dispersés.
 
 ## Comment l'utiliser
 
 <Steps>
 
-### Ouvrez le tableau de bord
+### Consultez les chiffres du jour
 
-Dès que vous vous connectez à votre espace restaurateur, l'écran principal affiche le chiffre d'affaires du jour, le nombre de commandes validées et le nombre de clients fidélité inscrits.
+Dès que vous ouvrez l'application, le tableau de bord affiche le chiffre d'affaires cumulé depuis minuit, le nombre de commandes validées, et l'évolution en pourcentage par rapport à la veille. Si la base de données n'est pas encore connectée, des valeurs par défaut s'affichent pour que l'interface reste utilisable.
 
-### Lisez les chiffres clés
+### Identifiez la marque leader
 
-Le tableau de bord présente :
+Le tableau indique quelle marque a généré le chiffre d'affaires le plus élevé dans la journée, avec sa part en pourcentage du total. Cela vous aide à équilibrer la charge entre vos cuisines ou à repérer un concept en forte croissance.
 
-- **CA du jour** : somme des montants de toutes les commandes validées depuis minuit.
-- **Nombre de commandes** : compteur mis à jour à chaque validation.
-- **Clients fidélité** : total des clients inscrits au programme de fidélité (toutes marques confondues).
-- **Meilleure marque** : nom de la marque qui a généré le plus de revenu aujourd'hui, avec son pourcentage de contribution au CA total.
+### Suivez votre base de clients fidélité
 
-### Comparez avec la veille
+Le compteur de clients fidélité affiche le nombre total de profils enregistrés dans votre programme. Ce chiffre évolue au fur et à mesure que de nouveaux clients passent commande et rejoignent le programme.
 
-Un pourcentage d'évolution apparaît automatiquement si vous avez enregistré des commandes hier : vous voyez immédiatement si l'activité progresse, stagne ou recule par rapport au jour précédent.
+### Actualisez pour voir l'évolution
 
-### Naviguez vers les détails
-
-Cliquez sur une section du tableau de bord — par exemple « Commandes » — pour ouvrir la liste complète des commandes en cours, ou sur « Meilleure marque » pour filtrer l'activité par concept.
+Le tableau se rafraîchit à chaque chargement de page. Pour suivre l'activité en continu pendant le service, rechargez manuellement la page ou ouvrez-la dans un nouvel onglet.
 
 </Steps>
 
 <Callout type="info">
-Si vous venez d'ouvrir votre compte ou si aucune commande n'a été validée aujourd'hui, le tableau de bord affiche des valeurs à zéro : c'est normal, les chiffres monteront dès la première commande du jour.
+Le tableau de bord calcule l'évolution par rapport à la veille uniquement si vous avez enregistré au moins une commande la veille. Sans historique, le pourcentage d'évolution reste masqué.
 </Callout>
 
 ## Pour aller plus loin
 
-Consultez le guide [Menu & Scan IA](/fr/guides/menu/) pour découvrir comment enrichir votre offre et maximiser le panier moyen visible sur le tableau de bord.
+[Menu & Scan IA](/fr/guides/menu/) — Ajoutez ou modifiez les plats qui alimentent le chiffre d'affaires affiché sur le tableau de bord, et utilisez le scan IA pour accélérer la saisie.
 
-Explorez la page [Stocks](/fr/guides/stocks/) pour apprendre à marquer automatiquement indisponibles les plats en rupture et éviter les commandes impossibles à honorer.
+[Gestion des stocks](/fr/guides/stocks/) — Suivez en temps réel les ingrédients qui correspondent aux commandes validées aujourd'hui, et anticipez les ruptures avant la fin du service.
 
-Découvrez comment gérer les [Réservations](/fr/guides/reservations/) pour compléter votre activité de vente à emporter par un flux de clients en salle.
+[Réservations](/fr/guides/reservations/) — Croisez l'activité de vente à emporter affichée sur le tableau de bord avec les réservations en salle pour piloter l'ensemble du service.

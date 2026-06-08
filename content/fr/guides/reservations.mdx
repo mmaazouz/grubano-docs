@@ -2,7 +2,7 @@
 title: "Réservations"
 description: "Gérer les tables et les créneaux : plan de salle, accepter / refuser une demande, suivre l’occupation en temps réel."
 generated: true
-sourceHash: bf82fa268b695ae3
+sourceHash: 8b1973e6479223e7
 generator: scripts/generate-feature-page.js
 templateVersion: 4
 ---
@@ -11,15 +11,15 @@ import { Steps, Callout } from 'nextra/components'
 
 # Réservations
 
-Acceptez, suivez et optimisez l'occupation de votre salle en temps réel, créneau par créneau.
+Vous planifiez l'occupation de vos tables, acceptez ou refusez les demandes et suivez le service en temps réel depuis un tableau unique.
 
 <FlowDiagram steps={["Configurer la salle","Recevoir la demande","Valider","Service"]} />
 
 ## Ce que ça fait
 
-Le module Réservations vous permet de piloter l'activité de votre salle : créer un plan des tables avec leur capacité, recevoir les demandes de vos clients, bloquer un créneau horaire pour chaque groupe, et marquer les étapes du service (confirmation, arrivée, dépassement, annulation ou absence). Vous visualisez d'un coup d'œil l'occupation de la journée, détectez les conflits avant qu'ils ne surviennent, et collectez les informations utiles — allergies, pré-commande, acompte — dès la réservation.
+Le module **Réservations** transforme votre plan de salle en agenda intelligent. Vous créez vos tables (nom, capacité, position), définissez la durée par défaut d'un créneau — 60 minutes si vous ne précisez rien — et recevez ensuite chaque demande avec le nom du client, le nombre de convives, les allergies et une éventuelle précommande. Le système vérifie automatiquement qu'aucune réservation confirmée ou en cours n'occupe déjà la table sur le même créneau ; en cas de chevauchement, la demande est refusée avec l'horaire du conflit.
 
-Chaque table est positionnée sur un plan graphique avec son nombre de places. Lorsqu'un client réserve, le système vérifie automatiquement qu'aucun autre groupe n'occupe la même table sur le même créneau ; en cas de chevauchement, la demande est bloquée avec l'indication de l'horaire déjà pris. Vous pouvez enregistrer un montant d'acompte et une pénalité en cas de non-présentation (« no-show »), puis basculer le statut de chaque réservation au fil du service depuis votre [tableau de bord](/fr/guides/restaurant/).
+Chaque réservation traverse cinq états : **confirmée** dès la création, **arrivée** quand le client se présente, **dépassée** si la table reste occupée au-delà du créneau, **annulée** ou **absent** (no-show). Vous pouvez enregistrer un acompte et une pénalité d'absence, puis basculer l'état `depositPaid` lorsque le client a réglé. Toutes les réservations d'une journée s'affichent dans votre [tableau de bord](/fr/guides/restaurant/) ; un filtre par date vous permet de préparer le service du lendemain ou de vérifier l'historique.
 
 ## Comment l'utiliser
 
@@ -27,28 +27,31 @@ Chaque table est positionnée sur un plan graphique avec son nombre de places. L
 
 ### Créer les tables
 
-Ajoutez chaque table avec un nom, un nombre de places (1–30) et sa position sur le plan. Marquez une table comme inactive si elle est temporairement hors service ; elle disparaît alors des créneaux disponibles sans perdre l'historique des réservations passées.
+Depuis la page **Tables**, ajoutez chaque table avec son nom (par exemple « Table 3 »), sa capacité (de 1 à 30 couverts) et sa position sur le plan. Une table inactive n'apparaît plus dans le formulaire de réservation.
 
 ### Enregistrer une réservation
 
-Sélectionnez la table, indiquez le nom du client, le nombre de convives, la date et l'heure de début, puis l'heure de fin. Choisissez le type de service : *quick* (rotation rapide), *standard* ou *full* (soirée complète). Ajoutez allergies, pré-commande, montants d'acompte et de pénalité si besoin. Le système refuse immédiatement la demande si la table est déjà occupée sur ce créneau.
+Cliquez sur **Nouvelle réservation**, sélectionnez la table, renseignez le nom du client, le téléphone ou l'email (facultatifs), le nombre de convives, la date et l'heure de début. Le système calcule automatiquement l'heure de fin à partir de la durée par défaut de l'établissement, ou vous pouvez saisir une durée spécifique (de 15 à 600 minutes). Ajoutez éventuellement les allergies, une précommande, un acompte et une pénalité no-show. Si la table est libre sur le créneau, la réservation est créée au statut **confirmée**.
 
-### Suivre les statuts
+### Suivre le service
 
-Chaque réservation démarre au statut `confirmed`. Lorsque le client arrive, passez-la à `arrived`. Si le groupe dépasse son créneau, marquez `overrun` ; en cas d'annulation anticipée, `cancelled` ; si le client ne se présente pas, `noshow`. Seuls les statuts `confirmed` et `arrived` bloquent la table ; annuler ou marquer « no-show » libère le créneau pour une nouvelle réservation.
+Le jour J, consultez la liste filtrée par date. Lorsque le client arrive, passez la réservation à **arrivée**. Si la table dépasse l'horaire prévu, le statut bascule manuellement en **dépassée**. En cas d'annulation par le client, choisissez **annulée** ; s'il ne se présente pas, sélectionnez **absent** pour déclencher l'éventuelle pénalité.
 
-### Filtrer par jour
+### Encaisser l'acompte
 
-Interrogez l'API `/api/reservations?date=YYYY-MM-DD` pour récupérer toutes les réservations d'une journée précise. Sans paramètre de date, vous obtenez l'ensemble des réservations, toutes périodes confondues. L'ordre de tri est chronologique croissant.
+Si vous avez défini un montant d'acompte, cochez **Acompte réglé** dès réception du paiement. Ce champ n'affecte pas le statut de la réservation mais vous permet de suivre les encaissements.
 
 </Steps>
 
 ## Bon à savoir
 
 <Callout type="warning">
-Un créneau est bloqué dès que la réservation est créée, même si l'acompte n'est pas encore encaissé. Le champ `depositPaid` bascule manuellement à `true` une fois le paiement reçu ; il ne déclenche aucun workflow automatique de confirmation ou d'annulation. Pensez à vérifier l'encaissement avant le service.
+
+Le système refuse toute réservation dont l'heure de début est déjà passée de plus de cinq minutes — une fenêtre de tolérance absorbe les décalages d'horloge et les réservations « pour tout de suite », mais bloque les créneaux nettement échus. Vérifiez l'heure affichée dans le formulaire avant de valider.
+
 </Callout>
 
 ## Pour aller plus loin
 
-- [Tableau de bord restaurant](/fr/guides/restaurant/) : consultez l'occupation en temps réel et changez les statuts d'un clic.
+[**Tableau de bord**](/fr/guides/restaurant/)  
+Retrouvez toutes vos réservations du jour et basculez rapidement d'un statut à l'autre pendant le service.

@@ -2,7 +2,7 @@
 title: "Menu & Scan IA"
 description: "Mettre en ligne la carte d’un restaurant en photographiant simplement le menu — l’IA reconnaît les plats, propose nom, description et allergènes ; le restaurateur valide."
 generated: true
-sourceHash: 00edd04119ed2c08
+sourceHash: 2a7a266d2c0bc683
 generator: scripts/generate-feature-page.js
 templateVersion: 4
 ---
@@ -11,45 +11,45 @@ import { Steps, Callout } from 'nextra/components'
 
 # Menu & Scan IA
 
-Photographiez votre carte papier : l'IA reconnaît chaque plat, propose un nom, une description appétissante et les allergènes potentiels — vous vérifiez, corrigez si besoin, et publiez votre menu en quelques minutes.
+Photographiez votre carte papier et obtenez une proposition structurée — nom, description, allergènes — que vous validez avant publication.
 
 <FlowDiagram steps={["Scanner la carte","Vérifier les plats","Publier","Mettre à jour"]} />
 
 ## Ce que ça fait
 
-Saisir une carte complète à la main — noms, descriptions, prix, allergènes — prend des heures et décourage souvent les restaurants qui rejoignent une plateforme. Le scan IA vous fait gagner ce temps : vous prenez une photo de chaque plat ou de votre menu imprimé, l'IA extrait automatiquement le nom en français, rédige une description de une à deux phrases qui donne envie, identifie les ingrédients principaux et détecte les allergènes parmi les quatorze réglementaires (gluten, lactose, œuf, soja, arachide, fruits à coque, poisson, crustacés, mollusques, céleri, moutarde, sésame, sulfites, lupin).
+Digitaliser une carte papier ligne par ligne prend du temps et laisse place à l'erreur. Menu & Scan IA analyse la photo de votre plat, identifie le nom en français, rédige une description appétissante, détecte les allergènes principaux (gluten, lactose, arachide, crustacés…) et suggère une catégorie (Entrées, Plats, Desserts, Boissons) ainsi que des labels (Veggie, Halal, Sans gluten, Épicé). Vous obtenez en quelques secondes une fiche complète que vous pouvez corriger, enrichir — ajouter le prix, ajuster la disponibilité dans les [stocks](/fr/guides/stocks/), marquer un plat populaire — puis publier directement sur votre [tableau de bord](/fr/guides/restaurant/).
 
-L'IA propose également une fourchette de calories estimée, classe le plat dans la catégorie adaptée (entrées, plats, desserts, boissons) et suggère des labels pertinents (végétarien, halal, sans gluten, épicé). Vous conservez toujours la main : chaque proposition apparaît dans votre [tableau de bord](/fr/guides/restaurant/), où vous pouvez corriger le nom, réécrire la description, ajuster le prix ou compléter les allergènes avant de publier. Une fois validé, le plat rejoint votre menu en ligne et les clients peuvent le commander ; vous pouvez également gérer la disponibilité en temps réel via la page [stocks](/fr/guides/stocks/) si un ingrédient vient à manquer.
+L'IA ne remplace pas votre connaissance du produit : elle accélère la saisie initiale et vous laisse le contrôle éditorial final. Une fois validé, le plat apparaît immédiatement dans votre catalogue en ligne ; toute modification ultérieure — prix, disponibilité, photo — se fait depuis la même interface de gestion.
 
 ## Comment l'utiliser
 
 <Steps>
 
-### Préparez vos photos
+### Photographier le plat
 
-Prenez une photo nette de chaque plat (éclairage naturel, cadrage serré sur l'assiette) ou photographiez directement votre carte papier si elle est lisible. Les formats acceptés sont JPEG, PNG, GIF et WebP.
+Ouvrez l'interface d'ajout de plat, activez l'appareil photo ou téléchargez une image existante (JPEG, PNG, WebP, GIF acceptés). Cadrez le plat seul, avec un éclairage suffisant.
 
-### Envoyez l'image au scan
+### Lancer l'analyse
 
-Dans votre tableau de bord, accédez à la section Menu et cliquez sur « Scanner un plat ». Téléchargez la photo ; l'IA analyse l'image et renvoie en quelques secondes un objet JSON contenant le nom du plat, la description, les ingrédients, les allergènes détectés, la fourchette calorique, la catégorie suggérée et les labels recommandés.
+Envoyez la photo. L'IA retourne en quelques secondes une proposition JSON contenant le nom, la description (1–2 phrases en français), la liste des ingrédients détectés, les allergènes identifiés parmi les quatorze allergènes réglementaires, une fourchette de calories (minimum–maximum), la catégorie suggérée et les labels applicables.
 
-### Vérifiez et corrigez
+### Vérifier et corriger
 
-Relisez chaque champ proposé : corrigez les fautes éventuelles, ajustez la description pour qu'elle reflète votre style, vérifiez que les allergènes correspondent bien à votre recette, ajoutez le prix de vente et éventuellement un prix barré (`comparePrice`) si vous souhaitez afficher une promotion.
+Relisez chaque champ : ajustez le nom si l'IA a mal interprété l'écriture manuscrite, complétez la description, retirez ou ajoutez des allergènes, saisissez le prix de vente et, si pertinent, un prix barré (`comparePrice`). Cochez « disponible » et « populaire » selon vos besoins.
 
-### Publiez le plat
+### Publier
 
-Une fois satisfait, enregistrez : l'entrée est créée dans votre menu avec le statut `available: true` par défaut. Le plat apparaît immédiatement sur votre page restaurant, classé par catégorie puis par ordre alphabétique. Vous pouvez à tout moment revenir dans le tableau de bord pour modifier le prix, la disponibilité, les photos ou les options (suppléments, choix de taille).
+Enregistrez : le plat est immédiatement écrit en base avec les photos, catégorie, allergènes et labels validés. Il devient visible dans votre catalogue en ligne et modifiable à tout instant depuis la liste des plats.
 
 </Steps>
 
 ## Bon à savoir
 
 <Callout type="info">
-L'IA détecte uniquement les allergènes présents dans la liste réglementaire des quatorze allergènes majeurs. Si votre plat contient un ingrédient rare ou une préparation spécifique non visible sur la photo, ajoutez manuellement l'allergène correspondant avant de publier pour respecter vos obligations d'information.
+L'IA propose jusqu'à quatorze allergènes normalisés (Gluten, Lactose, Œuf, Soja, Arachide, Fruits à coque, Poisson, Crustacés, Mollusques, Céleri, Moutarde, Sésame, Sulfites, Lupin). Si votre plat contient un allergène moins courant ou une combinaison spécifique, ajoutez-le manuellement après validation — la détection automatique reste une aide, pas une certification réglementaire.
 </Callout>
 
 ## Pour aller plus loin
 
-- [Gérer les stocks](/fr/guides/stocks/) explique comment désactiver automatiquement un plat lorsqu'un ingrédient clé est épuisé, sans retirer définitivement l'entrée de votre menu.
-- [Tableau de bord restaurant](/fr/guides/restaurant/) détaille l'ensemble des actions disponibles sur vos plats, y compris la gestion des catégories, des photos multiples et des options de personnalisation.
+- [Gérer les stocks](/fr/guides/stocks/) pour activer ou désactiver un plat en un clic lorsqu'un ingrédient est épuisé.
+- [Tableau de bord restaurant](/fr/guides/restaurant/) pour piloter l'ensemble de votre catalogue, vos commandes et vos performances depuis une interface unique.

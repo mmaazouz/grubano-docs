@@ -26,5 +26,6 @@ export default {
   "reviews": "Reviews",
   "stocks": "Stocks",
   "suppliers": "Suppliers",
+  "t": "T",
   "tables": "Tables",
 } satisfies MetaRecord

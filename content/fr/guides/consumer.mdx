@@ -2,7 +2,7 @@
 title: "Commander & suivre"
 description: "Trouver un restaurant local, passer commande (livraison / click & collect / table) et suivre l’avancée en temps réel."
 generated: true
-sourceHash: ac0cd2574ee006e0
+sourceHash: aae701ded2fb2599
 generator: scripts/generate-feature-page.js
 templateVersion: 4
 ---
@@ -11,15 +11,15 @@ import { Steps, Callout } from 'nextra/components'
 
 # Commander & suivre
 
-Trouvez un restaurant local, passez commande en livraison ou à emporter, et suivez l'avancée de votre repas en temps réel.
+Vous trouvez un restaurant local, passez commande (livraison, retrait ou réservation de table) et suivez l'avancée en temps réel depuis votre écran.
 
 <FlowDiagram steps={["Trouver un resto","Commander","Payer","Suivre la livraison"]} />
 
 ## Ce que ça fait
 
-Grubano vous connecte aux restaurants locaux qui cuisinent dans leur propre cuisine — pas de dark kitchens ni de marques fantômes. Vous choisissez un établissement proche de chez vous, composez votre panier, et passez commande soit en livraison à domicile, soit en click & collect (vous venez récupérer sur place). Le statut de votre commande se met à jour automatiquement : vous savez quand le restaurant la prépare, quand elle part, et quand elle arrive. Les points de [fidélité](/fr/guides/loyalty/) s'accumulent à chaque euro dépensé — 1 point par euro — et peuvent être transformés en réductions sur vos prochaines commandes.
+Cette fonctionnalité vous permet de commander un repas auprès d'un restaurant local — que ce soit pour une livraison à domicile, un retrait sur place (click & collect), ou une réservation de table — puis de suivre l'avancée de votre commande en direct. Une fois le panier validé, le système calcule automatiquement le total (sous-total + frais de livraison éventuels), applique les remises disponibles, et génère un lien de suivi en temps réel. Les frais de livraison sont automatiquement supprimés lorsque vous choisissez le retrait sur place : vous ne payez que ce que vous collectez. Chaque commande vous rapporte des points de [fidélité](/fr/guides/loyalty/) — 1 point par euro dépensé — cumulables pour vos achats futurs.
 
-La recherche géolocalisée détecte votre position et affiche d'abord les restaurants les plus proches ; si vous cherchez une cuisine spécifique (italien, sushi, healthy), Grubano élargit progressivement le rayon jusqu'à trouver au moins huit établissements correspondants. Pas de résultat ? La plateforme vous propose alors les restaurants les plus proches, quelle que soit leur spécialité, pour que vous ayez toujours le choix.
+Le système enregistre chaque commande avec son statut détaillé (`received`, `preparing`, `ready`, `picked_up`, `delivered`, `cancelled`), vous permettant de consulter votre historique complet à tout moment. Lorsque la commande est confiée à un livreur, un lien de suivi est généré avec un temps de livraison estimé, automatiquement mis à jour. Les restaurants cuisinent dans leur propre cuisine locale — Grubano ne fonctionne pas avec des cuisines virtuelles — et la commission prélevée sur chaque commande est de 10 %, identique en Standard comme en Pro.
 
 ## Comment l'utiliser
 
@@ -27,28 +27,33 @@ La recherche géolocalisée détecte votre position et affiche d'abord les resta
 
 ### Trouver un restaurant
 
-Depuis la page principale, laissez l'application détecter votre position ou saisissez votre adresse manuellement. Les restaurants actifs apparaissent classés par distance ; filtrez par type de cuisine (italien, asiatique, burger…) ou triez par note client, nouveauté ou rapidité de livraison.
+Consultez la page `/eat` pour explorer les restaurants actifs près de vous. Vous pouvez filtrer par ville (`?city=`), type de cuisine (`?cuisine=`), ou recherche libre (`?q=`). Lorsque vous envoyez votre position géographique (`?lat=` et `?lng=`), le système trie les résultats par distance et élargit progressivement le rayon de recherche (5, 10, 25, 50 km) jusqu'à trouver au moins 8 établissements.
 
 ### Composer votre panier
 
-Parcourez le menu, ajoutez les plats souhaités, personnalisez les options (taille, extras). Le panier affiche le sous-total, les frais de livraison (ou leur absence en mode click & collect) et la commande minimum. Si vous récupérez sur place, aucuns frais de livraison ne sont appliqués.
+Sélectionnez des plats dans le [menu du restaurant](/fr/guides/restaurant/). Chaque ligne du panier contient l'identifiant du plat (`itemId`), la quantité (`qty`), le prix unitaire (`price`), et les options éventuelles (`options[]`). Le sous-total est calculé automatiquement. Si le montant est inférieur au minimum imposé par le restaurant (`minOrder`), la commande est refusée avec un message explicite.
 
-### Payer
+### Choisir le mode de réception
 
-Validez le panier, confirmez votre adresse de livraison (ou l'horaire de retrait), choisissez votre mode de paiement (carte, espèces, portefeuille). Le montant total, incluant les points de fidélité gagnés, s'affiche avant confirmation. Si un code de parrainage valide est détecté (cookie ou saisie manuelle) et qu'il s'agit de votre première commande référée, une réduction de bienvenue s'applique automatiquement.
+Indiquez si vous souhaitez une livraison (`fulfillmentType: "delivery"`) ou un retrait sur place (`fulfillmentType: "pickup"`). Pour le retrait, les frais de livraison sont mis à zéro ; pour la livraison, les frais configurés par le restaurant (`deliveryFee`, par défaut 1,99 €) sont appliqués. Saisissez l'adresse de livraison ou les instructions de retrait selon le cas.
 
-### Suivre en temps réel
+### Payer et valider
 
-Une fois la commande validée, vous recevez un lien de suivi. Le statut évolue automatiquement : « reçue », « en préparation », « prête », « récupérée par le livreur », « livrée ». L'heure estimée d'arrivée s'affiche dès la prise en charge par le coursier.
+Sélectionnez un moyen de paiement (`paymentMethod: "card" | "cash" | "wallet"`) et validez. Le serveur crée la commande avec un statut initial `received`, génère un lien de suivi (`trackingUrl`) et un temps estimé (`estimatedTime`). Le total final est figé, intégrant le sous-total, les frais de livraison (ou 0 si retrait), et les remises éventuelles. Vous recevez immédiatement le nombre de points de fidélité gagnés (`pointsEarned`), arrondi à l'entier inférieur du montant payé.
+
+### Suivre l'avancée
+
+Consultez votre historique de commandes via `GET /api/orders` (trié du plus récent au plus ancien). Chaque commande affiche son statut actuel, le lien de suivi en temps réel, et le temps de livraison estimé. Vous pouvez filtrer par statut (`?status=`) et paginer les résultats (`?take=`, `?skip=`).
 
 </Steps>
 
 ## Bon à savoir
 
 <Callout type="info">
-Les restaurants fixent leur propre commande minimum et leurs frais de livraison. En mode click & collect, vous ne payez jamais de frais de livraison — seul le montant des plats compte — et vous récupérez directement à l'adresse indiquée par l'établissement. Grubano prélève une commission de 10 % sur chaque commande, quel que soit le mode de livraison.
+Le système refuse une commande si le sous-total est inférieur au minimum imposé par le restaurant **avant** application des remises. Une remise de bienvenue ou un code promotionnel ne peut pas servir à contourner ce seuil : vous devez commander suffisamment pour atteindre le montant minimum, la remise étant un cadeau ajouté ensuite.
 </Callout>
 
 ## Pour aller plus loin
 
-Découvrez [comment les restaurants gèrent leurs profils, menus et disponibilités](/fr/guides/restaurant/) sur la plateforme, et consultez la page [fidélité](/fr/guides/loyalty/) pour comprendre comment cumuler et utiliser vos points.
+- [**Gérer votre restaurant**](/fr/guides/restaurant/) — Configurez vos horaires d'ouverture, vos modes de réception (livraison, retrait, réservation) et votre rayon de livraison.
+- [**Programme de fidélité**](/fr/guides/loyalty/) — Comprenez comment les points sont attribués et comment vos clients les utilisent pour leurs prochaines commandes.
