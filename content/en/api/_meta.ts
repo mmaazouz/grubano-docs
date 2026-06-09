@@ -28,4 +28,6 @@ export default {
   "suppliers": "Suppliers",
   "t": "T",
   "tables": "Tables",
+  "tickets": "Tickets",
+  "webhooks": "Webhooks",
 } satisfies MetaRecord
