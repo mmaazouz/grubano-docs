@@ -11,6 +11,7 @@ export default {
   "creators": "Creators",
   "dashboard": "Dashboard",
   "dishes": "Dishes",
+  "eat": "Eat",
   "email-agent": "Email-agent",
   "establishments": "Establishments",
   "finance": "Finance",
