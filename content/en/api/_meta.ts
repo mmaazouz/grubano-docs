@@ -3,6 +3,7 @@ import type { MetaRecord } from 'nextra'
 
 export default {
   index: 'Overview',
+  "admin": "Admin",
   "analytics": "Analytics",
   "auth": "Auth",
   "brands": "Brands",

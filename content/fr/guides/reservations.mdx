@@ -2,7 +2,7 @@
 title: "Réservations"
 description: "Gérer les tables et les créneaux : plan de salle, accepter / refuser une demande, suivre l’occupation en temps réel."
 generated: true
-sourceHash: ec34be61bd08423e
+sourceHash: da8165b7da754884
 generator: scripts/generate-feature-page.js
 templateVersion: 4
 ---
@@ -11,44 +11,42 @@ import { Steps, Callout } from 'nextra/components'
 
 # Réservations
 
-Organisez votre plan de salle, acceptez ou refusez les demandes, et suivez l'occupation de vos tables en temps réel.
+Acceptez ou refusez une demande, suivez l'occupation en temps réel et organisez le service directement depuis votre plan de salle.
 
 <FlowDiagram steps={["Configurer la salle","Recevoir la demande","Valider","Service"]} />
 
 ## Ce que ça fait
 
-Le module Réservations vous permet de gérer l'ensemble du cycle d'une réservation, de la demande initiale jusqu'à l'arrivée du client. Vous définissez d'abord votre plan de salle — nombre de tables, capacité de chacune, disposition — puis vous recevez les demandes de réservation, que vous pouvez accepter ou refuser selon la disponibilité. Le système vérifie automatiquement qu'une table n'est pas déjà réservée sur le créneau choisi et que le nombre de couverts demandé ne dépasse pas la capacité de la table.
+Le module Réservations transforme votre plan de salle en agenda interactif : vous voyez d'un coup d'œil quelles tables sont libres, lesquelles accueillent déjà un service, et où placer la prochaine demande. Chaque réservation précise le nombre de couverts, l'horaire de début et la durée prévue ; Grubano bloque automatiquement la table concernée pendant ce créneau et vous prévient en cas de conflit.
 
-Chaque réservation peut être suivie depuis son statut initial « confirmé » jusqu'à « arrivé » (lorsque le client se présente), « annulé » ou « no-show » (absence sans prévenir). Vous pouvez noter les allergies, une précommande, et ajouter des remarques pour le service. Lorsque vous marquez une réservation « arrivé », le [tableau de bord](/fr/guides/restaurant/) ouvre automatiquement l'addition liée à cette table, ce qui permet d'enchaîner immédiatement la prise de commande.
+Quand un client arrive, vous basculez son statut en « arrivé » : cela ouvre immédiatement [l'addition](/fr/guides/restaurant/) liée à cette table, prête à recevoir les plats commandés. Si la table porte encore une note impayée d'un service précédent, le système vous alerte pour que vous régliez ou annuliez l'ancienne addition avant d'accueillir les nouveaux arrivants. En cas d'absence sans préavis (no-show), vous pouvez appliquer la pénalité configurée lors de la réservation ; elle sera capturée sur l'empreinte bancaire que le client avait autorisée.
 
 ## Comment l'utiliser
 
 <Steps>
 
-### Créez votre plan de salle
+### Dessinez votre salle
 
-Ajoutez une ou plusieurs tables dans la section « Salle » : indiquez le nom (par exemple « Table 3 »), le nombre de places assises, et leur position sur le plan. Une table inactive n'apparaît plus dans le formulaire de réservation.
+Créez les tables depuis **Plan de salle** : donnez un nom (ex. « Table 3 »), définissez le nombre de places et positionnez-les sur le plan. Une table inexistante ou sans capacité bloque la création de toute réservation.
 
-### Enregistrez une nouvelle réservation
+### Créez ou recevez la demande
 
-Sélectionnez la table, la date, l'heure de début, le nombre de couverts, et les coordonnées du client (nom obligatoire, téléphone et email facultatifs). Le système propose automatiquement une durée par défaut (60 minutes, ou la durée configurée pour votre établissement) ; vous pouvez l'ajuster manuellement si nécessaire. Si la table est déjà occupée sur ce créneau, vous recevez un message d'erreur avec les horaires du conflit.
+Cliquez sur **Nouvelle réservation**, sélectionnez la table, l'horaire de début et la durée. Grubano vérifie immédiatement la disponibilité : si un créneau chevauche une réservation active, il rejette la demande. Les demandes passées (horaire déjà dépassé de plus de cinq minutes) sont également refusées.
 
-### Confirmez ou annulez la réservation
+### Marquez l'arrivée
 
-Le statut initial est « confirmé ». Vous pouvez passer la réservation en « annulé » si le client se désiste, ou en « no-show » s'il ne se présente pas. Les réservations annulées ou no-show libèrent automatiquement la table pour d'autres créneaux.
+Passez le statut à **Arrivé** dès que le client s'installe. Grubano ouvre automatiquement l'addition de la table ; si une note précédente est encore impayée, vous verrez une alerte vous invitant à clore l'ancienne session.
 
-### Marquez l'arrivée du client
+### Gérez l'absence
 
-Lorsque le client se présente, passez la réservation au statut « arrivé ». L'addition de service s'ouvre alors automatiquement sur cette table, vous permettant d'enchaîner directement la prise de commande.
+Si le client ne se présente pas, changez le statut en **No-show**. La pénalité définie à la réservation est alors prélevée sur l'empreinte bancaire, et un e‑mail de notification est envoyé au client avec les instructions pour contester le prélèvement si nécessaire.
 
 </Steps>
 
-## Bon à savoir
-
 <Callout type="info">
-Une réservation dont l'horaire de début est déjà passé (de plus de cinq minutes) ne peut plus être créée — le système bloque la demande pour éviter les erreurs de saisie. Si vous devez enregistrer une arrivée sans rendez-vous, créez d'abord une réservation pour un créneau à venir, puis marquez-la immédiatement « arrivé ».
+**Capacité stricte** : un client ne peut jamais réserver plus de couverts que la table n'en comporte. Le serveur bloque toute tentative de sur-réservation, même si le formulaire laisse saisir un nombre supérieur.
 </Callout>
 
 ## Pour aller plus loin
 
-- **[Tableau de bord restaurant](/fr/guides/restaurant/)** — vue d'ensemble des réservations du jour, suivi de l'occupation en temps réel, et gestion des additions liées à chaque table.
+- [Tableau de bord](/fr/guides/restaurant/) : consultez en un coup d'œil toutes les réservations du jour et leur statut en temps réel.
