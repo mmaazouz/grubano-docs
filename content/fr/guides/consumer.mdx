@@ -2,7 +2,7 @@
 title: "Commander & suivre"
 description: "Trouver un restaurant local, passer commande (livraison / click & collect / table) et suivre l’avancée en temps réel."
 generated: true
-sourceHash: b2df8a1589a78225
+sourceHash: b235dc6de2bdd1c4
 generator: scripts/generate-feature-page.js
 templateVersion: 4
 ---
@@ -11,45 +11,50 @@ import { Steps, Callout } from 'nextra/components'
 
 # Commander & suivre
 
-Trouvez un restaurant local, passez commande (livraison ou retrait) et suivez l'avancée en temps réel jusqu'à la réception.
+Trouvez un restaurant local, passez commande et suivez l'avancée en temps réel depuis votre tableau de bord.
 
 <FlowDiagram steps={["Trouver un resto","Commander","Payer","Suivre la livraison"]} />
 
 ## Ce que ça fait
 
-Vous choisissez un restaurant parmi ceux disponibles dans votre zone (Grubano calcule automatiquement la distance et élargit le rayon de recherche jusqu'à trouver au moins 8 établissements), composez votre panier en sélectionnant des plats avec leurs options, puis validez la commande — livraison à domicile ou retrait sur place. Le montant minimum et les frais de livraison sont fixés par chaque restaurant ; un retrait en personne annule automatiquement les frais de livraison.
+Le parcours de commande vous permet de découvrir les restaurants locaux autour de vous, de composer votre panier et de payer en ligne en quelques clics. Une fois la commande confirmée, vous suivez sa progression en direct — de la réception en cuisine à la livraison — grâce à une URL de suivi unique.
 
-Une fois le paiement effectué (carte, espèces ou wallet), votre commande part en cuisine et vous recevez un lien de suivi en temps réel. Chaque euro dépensé vous rapporte un point de [fidélité](/fr/guides/loyalty/), cumulable pour débloquer des récompenses chez vos restaurants favoris. L'historique complet de vos commandes reste accessible à tout moment pour consulter les factures ou renouveler une commande précédente.
+Chaque commande validée vous rapporte des points de [fidélité](/fr/guides/loyalty/) : 1 point par euro dépensé, cumulables sur votre compte pour débloquer des récompenses chez vos restaurants préférés.
 
 ## Comment l'utiliser
 
 <Steps>
 
-### Découvrir les restaurants disponibles
+### Parcourir les restaurants
 
-Entrez votre position (latitude, longitude) ou naviguez par ville. Grubano affiche les établissements actifs en élargissant progressivement le rayon (5, 10, 25, 50 km) jusqu'à atteindre au moins 8 résultats. Filtrez par type de cuisine (italien, asiatique, burger…) : si aucune correspondance n'existe dans votre rayon, l'application vous propose automatiquement les restaurants les plus proches, quelle que soit leur spécialité.
+Rendez-vous sur la page de découverte. Filtrez par cuisine (italien, sushi, healthy…) ou cherchez par nom. Les résultats sont triés par pertinence : note, nouveauté ou délai de livraison.
 
 ### Composer votre panier
 
-Sélectionnez les plats, précisez les quantités et options (taille, suppléments). Le sous-total affiché tient compte des prix unitaires et des quantités ; le montant minimum de commande est vérifié sur ce sous-total *avant* application d'éventuelles réductions.
+Consultez le menu du [restaurant](/fr/guides/restaurant/) choisi. Ajoutez des plats, personnalisez les options (taille, extras) et vérifiez que le montant total respecte la commande minimum affichée.
 
-### Valider et payer
+### Choisir le mode de retrait
 
-Choisissez livraison ou retrait (`fulfillmentType: delivery` ou `pickup`). Si vous collectez sur place, les frais de livraison tombent à zéro. Précisez votre adresse de livraison (minimum 5 caractères) et le mode de paiement (carte, espèces, wallet). La commande est bloquée si le restaurant est actuellement fermé — un message vous indique la prochaine ouverture (« Ouvre à 19h00 »).
+Sélectionnez **livraison** (à domicile, frais de livraison appliqués) ou **click & collect** (retrait sur place, sans frais). L'adresse de retrait s'affiche automatiquement pour le click & collect.
 
-### Suivre la livraison
+### Payer en ligne
 
-Dès la confirmation, vous recevez un lien de suivi en temps réel et une estimation du délai (calculée par le service de coursiers). Le statut évolue de `received` (reçue) à `preparing` (en préparation), `ready` (prête), `picked_up` (récupérée par le coursier) puis `delivered` (livrée). Vous pouvez consulter l'historique complet de vos commandes via `/api/orders` (tri par date décroissante).
+Confirmez l'adresse de livraison et réglez par carte bancaire. Le paiement est immédiat : la commission Grubano de 10 % est prélevée sur le sous-total produits, les frais de livraison reviennent intégralement au restaurateur.
+
+### Suivre la commande
+
+Après validation, vous recevez un lien de suivi. Consultez-le pour voir le statut en temps réel : reçue, en préparation, prête, en route, livrée. Le délai estimé s'affiche dès la confirmation.
 
 </Steps>
 
 ## Bon à savoir
 
 <Callout type="info">
-Une commande ne peut être passée que si le restaurant est ouvert *maintenant* (horaires configurés par l'établissement). La consultation du menu reste libre en dehors des heures d'ouverture, mais le bouton de commande est désactivé tant que le service n'a pas repris.
+Une commande passée en dehors des horaires d'ouverture du restaurant est automatiquement refusée, avec un message indiquant la prochaine ouverture. Le menu reste consultable en permanence — seule la validation du panier est bloquée.
 </Callout>
 
 ## Pour aller plus loin
 
-- [**Gérer votre restaurant**](/fr/guides/restaurant/) — Configurez vos horaires d'ouverture, votre rayon de livraison et les options de retrait pour contrôler quand et comment les clients peuvent commander.
-- [**Fidélité**](/fr/guides/loyalty/) — Découvrez comment les points gagnés à chaque commande se transforment en récompenses et avantages chez vos restaurants préférés.
+Découvrez comment [gérer votre profil restaurant](/fr/guides/restaurant/) pour optimiser la visibilité de votre établissement et configurer les paramètres de livraison.
+
+Consultez le [programme de fidélité](/fr/guides/loyalty/) pour comprendre comment vos clients accumulent et dépensent leurs points.
