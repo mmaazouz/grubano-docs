@@ -2,7 +2,7 @@
 title: "Tableau de bord"
 description: "Voir en un coup d’œil l’activité de votre restaurant : commandes en cours, chiffre d’affaires, alertes — et piloter le service depuis cet écran unique."
 generated: true
-sourceHash: 6d620058ad37296d
+sourceHash: 3ee4aac6b70fe267
 generator: scripts/generate-feature-page.js
 templateVersion: 4
 ---
@@ -11,48 +11,46 @@ import { Steps, Callout } from 'nextra/components'
 
 # Tableau de bord
 
-Pilotez votre activité en temps réel : chiffre d'affaires du jour, commandes en cours, meilleure marque — tout ce dont vous avez besoin pour décider vite et bien.
+Visualisez en temps réel les commandes du jour, le chiffre d'affaires, les clients fidélité et la performance de vos marques — le tout depuis un écran unique.
 
 <FlowDiagram steps={["Commandes en cours","Chiffres temps réel","Alertes","Multi-marques"]} />
 
 ## Ce que ça fait
 
-Le tableau de bord centralise les indicateurs clés de votre journée : nombre de commandes validées, chiffre d'affaires réalisé, nombre de clients fidélité inscrits, et la répartition de vos ventes entre vos différentes marques. Si vous gérez plusieurs concepts sur Grubano, vous voyez immédiatement lequel génère le plus de volume et quel pourcentage du chiffre d'affaires il représente.
+Le tableau de bord centralise l'activité de votre restaurant sur la journée en cours : nombre de commandes validées, chiffre d'affaires cumulé, clients inscrits au programme de fidélité, et classement de vos marques par volume de ventes. Vous disposez aussi d'une comparaison jour par jour (évolution du CA et du nombre de commandes par rapport à la veille), ce qui vous permet de repérer immédiatement les tendances à la hausse ou à la baisse.
 
-Vous visualisez aussi l'évolution par rapport à la veille — une donnée essentielle pour ajuster vos [stocks](/fr/guides/stocks/) ou anticiper un coup de feu. Parce que le service ne laisse jamais le temps de fouiller dans des rapports, le tableau de bord vous donne une photo complète de votre activité en une seule page, sans effort.
+Si vous gérez plusieurs marques, le tableau affiche automatiquement celle qui génère le plus de chiffre d'affaires aujourd'hui, ainsi que sa part du CA total. Vous voyez d'un coup d'œil si votre [menu](/fr/guides/menu/) phare tire les ventes ou si une marque secondaire prend le relais, ce qui oriente vos décisions d'approvisionnement et vos ajustements de [stocks](/fr/guides/stocks/) en cours de service.
 
 ## Comment l'utiliser
 
 <Steps>
 
-### Accédez au tableau de bord
+### Ouvrez le tableau de bord au début du service
 
-Dès que vous vous connectez, vous arrivez sur le tableau de bord principal. Aucune action supplémentaire : les chiffres se chargent automatiquement.
+L'écran récapitule automatiquement les commandes validées depuis minuit : nombre total, montant cumulé, et nombre de clients ayant commandé via le programme de fidélité.
 
-### Consultez les indicateurs du jour
+### Surveillez l'évolution en temps réel
 
-Vous voyez le chiffre d'affaires du jour (0 h – minuit), le nombre de commandes validées, le nombre de clients fidélité inscrits, et votre meilleure marque avec sa contribution en pourcentage du chiffre d'affaires total.
+Chaque nouvelle commande validée met à jour le compteur et le chiffre d'affaires du jour. Le pourcentage d'évolution par rapport à la veille s'affiche en regard, positif ou négatif.
 
-### Comparez avec la veille
+### Identifiez la marque leader
 
-Si vous avez enregistré des commandes la veille, l'évolution du chiffre d'affaires s'affiche en pourcentage (positif ou négatif). Cela vous aide à détecter rapidement une baisse d'activité ou un pic inattendu.
+Le bloc « Meilleure marque » indique celle qui génère le plus de CA aujourd'hui et sa part du total. Si vous notez un déséquilibre inhabituel, vérifiez la disponibilité des plats concernés dans les stocks.
 
-### Suivez la performance par marque
+### Consultez les tendances hebdomadaires et mensuelles
 
-Le tableau de bord identifie automatiquement la marque qui génère le plus de chiffre d'affaires dans la journée. Si vous proposez plusieurs concepts, cette vue vous permet de comprendre lequel attire le plus de commandes et d'ajuster votre [menu](/fr/guides/menu/) en conséquence.
+Bientôt, le tableau affichera le chiffre d'affaires sur 7 jours glissants et sur 30 jours, avec une courbe quotidienne, ainsi que les heures de pointe repérées sur la semaine écoulée.
 
 </Steps>
 
 ## Bon à savoir
 
 <Callout type="info">
-Les chiffres du tableau de bord se réinitialisent chaque jour à minuit. Les données historiques restent disponibles dans la section Analytique (graphiques sur 7 jours et 30 jours, heures de pointe, répartition par marque), mais le tableau de bord lui-même se concentre exclusivement sur la journée en cours pour faciliter le pilotage en temps réel.
+Les valeurs du tableau démarrent à zéro chaque jour à minuit et comptabilisent uniquement les commandes dont le statut est « validée » (payées). Les commandes annulées ou en attente de paiement ne sont jamais incluses dans les totaux affichés.
 </Callout>
 
 ## Pour aller plus loin
 
-[Menu & Scan IA](/fr/guides/menu/) — Modifiez vos plats, vos prix et votre description pour maximiser l'attractivité de votre offre.
-
-[Gestion des stocks](/fr/guides/stocks/) — Marquez un ingrédient indisponible dès que vous constatez une rupture, pour éviter les commandes impossibles à honorer.
-
-[Réservations](/fr/guides/reservations/) — Consultez les réservations du jour et anticipez l'affluence en salle parallèlement aux commandes à emporter.
+- [Menu & Scan IA](/fr/guides/menu/) : ajustez vos plats et leurs prix pour optimiser le panier moyen que le tableau reflète.
+- [Stocks intelligents](/fr/guides/stocks/) : réapprovisionnez en priorité les ingrédients des marques leaders identifiées sur le tableau.
+- [Réservations et file d'attente](/fr/guides/reservations/) : croisez les données de commandes avec celles des couverts réservés pour anticiper les pics de service.
