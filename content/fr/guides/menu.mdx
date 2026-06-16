@@ -2,7 +2,7 @@
 title: "Menu & Scan IA"
 description: "Mettre en ligne la carte d’un restaurant en photographiant simplement le menu — l’IA reconnaît les plats, propose nom, description et allergènes ; le restaurateur valide."
 generated: true
-sourceHash: 2a7a266d2c0bc683
+sourceHash: 8ec1122c83e72de6
 generator: scripts/generate-feature-page.js
 templateVersion: 4
 ---
@@ -11,45 +11,46 @@ import { Steps, Callout } from 'nextra/components'
 
 # Menu & Scan IA
 
-Photographiez votre carte papier et obtenez une proposition structurée — nom, description, allergènes — que vous validez avant publication.
+Mettez en ligne votre carte en photographiant simplement chaque plat : l'intelligence artificielle reconnaît le contenu, propose un nom, une description et les allergènes, puis vous validez.
 
 <FlowDiagram steps={["Scanner la carte","Vérifier les plats","Publier","Mettre à jour"]} />
 
 ## Ce que ça fait
 
-Digitaliser une carte papier ligne par ligne prend du temps et laisse place à l'erreur. Menu & Scan IA analyse la photo de votre plat, identifie le nom en français, rédige une description appétissante, détecte les allergènes principaux (gluten, lactose, arachide, crustacés…) et suggère une catégorie (Entrées, Plats, Desserts, Boissons) ainsi que des labels (Veggie, Halal, Sans gluten, Épicé). Vous obtenez en quelques secondes une fiche complète que vous pouvez corriger, enrichir — ajouter le prix, ajuster la disponibilité dans les [stocks](/fr/guides/stocks/), marquer un plat populaire — puis publier directement sur votre [tableau de bord](/fr/guides/restaurant/).
+Créer une carte de restaurant complète prend du temps : rédiger les descriptions, lister les allergènes, calculer les calories, trier les plats par catégorie. Le scan IA accélère cette étape : photographiez un plat, l'intelligence artificielle analyse l'image et vous suggère instantanément un nom en français, une description appétissante d'une à deux phrases, la liste des ingrédients détectés, les allergènes probables (gluten, lactose, fruits à coque…), une estimation de calories (fourchette basse/haute), la catégorie (entrées, plats, desserts, boissons) et des labels éventuels (végétarien, halal, sans gluten, épicé).
 
-L'IA ne remplace pas votre connaissance du produit : elle accélère la saisie initiale et vous laisse le contrôle éditorial final. Une fois validé, le plat apparaît immédiatement dans votre catalogue en ligne ; toute modification ultérieure — prix, disponibilité, photo — se fait depuis la même interface de gestion.
+Vous restez maître de chaque information : l'IA ne publie rien automatiquement. Vous relisez, ajustez le prix, complétez la description si nécessaire, puis validez. Une fois publié, le plat apparaît immédiatement sur votre [tableau de bord](/fr/guides/restaurant/) et dans la marketplace Grubano. Vous pouvez ensuite modifier les quantités disponibles via la gestion des [stocks](/fr/guides/stocks/) ou mettre à jour la carte quand votre menu évolue.
 
 ## Comment l'utiliser
 
 <Steps>
 
-### Photographier le plat
+### Photographiez le plat
 
-Ouvrez l'interface d'ajout de plat, activez l'appareil photo ou téléchargez une image existante (JPEG, PNG, WebP, GIF acceptés). Cadrez le plat seul, avec un éclairage suffisant.
+Depuis votre interface de gestion, ouvrez la création de plat et téléchargez une photo claire du plat fini. Formats acceptés : JPEG, PNG, GIF ou WebP.
 
-### Lancer l'analyse
+### Laissez l'IA analyser
 
-Envoyez la photo. L'IA retourne en quelques secondes une proposition JSON contenant le nom, la description (1–2 phrases en français), la liste des ingrédients détectés, les allergènes identifiés parmi les quatorze allergènes réglementaires, une fourchette de calories (minimum–maximum), la catégorie suggérée et les labels applicables.
+L'intelligence artificielle examine l'image et renvoie une fiche complète en quelques secondes : nom du plat, description, ingrédients, allergènes, fourchette de calories, catégorie suggérée et labels.
 
-### Vérifier et corriger
+### Vérifiez et complétez
 
-Relisez chaque champ : ajustez le nom si l'IA a mal interprété l'écriture manuscrite, complétez la description, retirez ou ajoutez des allergènes, saisissez le prix de vente et, si pertinent, un prix barré (`comparePrice`). Cochez « disponible » et « populaire » selon vos besoins.
+Relisez chaque champ proposé. Ajustez le nom ou la description si besoin, fixez le prix de vente (obligatoire), validez les allergènes et les labels. Vous pouvez aussi ajouter un temps de préparation estimé et cocher « plat populaire » pour le mettre en avant.
 
-### Publier
+### Publiez
 
-Enregistrez : le plat est immédiatement écrit en base avec les photos, catégorie, allergènes et labels validés. Il devient visible dans votre catalogue en ligne et modifiable à tout instant depuis la liste des plats.
+Enregistrez le plat : il rejoint instantanément votre [tableau de bord](/fr/guides/restaurant/) et devient visible dans la marketplace. Répétez l'opération pour chaque plat de votre carte.
 
 </Steps>
 
 ## Bon à savoir
 
 <Callout type="info">
-L'IA propose jusqu'à quatorze allergènes normalisés (Gluten, Lactose, Œuf, Soja, Arachide, Fruits à coque, Poisson, Crustacés, Mollusques, Céleri, Moutarde, Sésame, Sulfites, Lupin). Si votre plat contient un allergène moins courant ou une combinaison spécifique, ajoutez-le manuellement après validation — la détection automatique reste une aide, pas une certification réglementaire.
+La modération des images est automatique : si la photo ne respecte pas les règles de contenu (image floue, texte publicitaire, contenu inapproprié), l'API refuse le téléchargement et vous demande une nouvelle photo. Aucun plat sans photo valide n'est créé dans la base.
 </Callout>
 
 ## Pour aller plus loin
 
-- [Gérer les stocks](/fr/guides/stocks/) pour activer ou désactiver un plat en un clic lorsqu'un ingrédient est épuisé.
-- [Tableau de bord restaurant](/fr/guides/restaurant/) pour piloter l'ensemble de votre catalogue, vos commandes et vos performances depuis une interface unique.
+**[Gérer les stocks](/fr/guides/stocks/)** — Ajustez en temps réel les quantités disponibles pour chaque plat et évitez les commandes impossibles à honorer.
+
+**[Tableau de bord restaurant](/fr/guides/restaurant/)** — Consultez l'ensemble de votre catalogue, modifiez les prix, les descriptions ou la disponibilité de vos plats en quelques clics.
