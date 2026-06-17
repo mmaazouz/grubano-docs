@@ -19,6 +19,7 @@ export default {
   "establishments": "Establishments",
   "finance": "Finance",
   "franchise": "Franchise",
+  "logistics": "Logistics",
   "loyalty": "Loyalty",
   "marketplace": "Marketplace",
   "menu": "Menu",
