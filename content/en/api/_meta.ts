@@ -24,6 +24,7 @@ export default {
   "marketplace": "Marketplace",
   "menu": "Menu",
   "orders": "Orders",
+  "partner": "Partner",
   "partners": "Partners",
   "ref": "Ref",
   "referral": "Referral",

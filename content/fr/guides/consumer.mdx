@@ -2,7 +2,7 @@
 title: "Commander & suivre"
 description: "Trouver un restaurant local, passer commande (livraison / click & collect / table) et suivre l’avancée en temps réel."
 generated: true
-sourceHash: f7356b8686df4916
+sourceHash: cd3312bd5ce63f18
 generator: scripts/generate-feature-page.js
 templateVersion: 4
 ---
@@ -11,54 +11,53 @@ import { Steps, Callout } from 'nextra/components'
 
 # Commander & suivre
 
-Trouvez un restaurant local, commandez en livraison ou à emporter et suivez l'avancée de votre commande en temps réel.
+Trouvez un restaurant local, passez commande et suivez l'avancée de votre livraison en temps réel.
 
 <FlowDiagram steps={["Trouver un resto","Commander","Payer","Suivre la livraison"]} />
 
 ## Ce que ça fait
 
-La commande Grubano permet de commander depuis des restaurants locaux qui cuisinent dans leur propre cuisine, puis de suivre la préparation et la livraison en temps réel. Vous choisissez votre mode de retrait — livraison à domicile ou click & collect — et le restaurant reçoit immédiatement votre commande.
+Commander sur Grubano, c'est choisir un restaurant près de vous, composer votre panier, puis suivre votre commande jusqu'à la livraison — sans jamais quitter l'application. Le système de découverte géographique vous montre automatiquement les établissements à proximité, en élargissant progressivement le rayon de recherche jusqu'à trouver au moins huit résultats : vous voyez toujours des options pertinentes, même si vous êtes loin du centre-ville. Une fois la commande passée, vous cumulez des points de [fidélité](/fr/guides/loyalty/) — un point par euro dépensé — et recevez un lien de suivi en temps réel pour savoir exactement où en est votre repas.
 
-Chaque commande rapporte des points de [fidélité](/fr/guides/loyalty/) : 1 point par euro dépensé. Ces points réduisent ensuite le montant de vos prochaines commandes, dans les limites fixées par Grubano pour préserver la viabilité du service.
+Le paiement est confirmé côté serveur avant que le restaurant ne voie la commande : aucune commande fantôme ne vient perturber la cuisine. Les promotions actives s'appliquent automatiquement au moment du paiement (le client ne sélectionne rien), et si vous choisissez le retrait sur place plutôt que la livraison, les frais de livraison tombent à zéro.
 
 ## Comment l'utiliser
 
 <Steps>
 
-### Trouvez un restaurant
+### Parcourir les restaurants
 
-Parcourez la liste des restaurants actifs (`GET /api/restaurants`) en filtrant par ville (`city`), cuisine (`cuisine` ou `category`) ou recherche libre (`q`). Lorsque vous envoyez votre position (`lat`, `lng`), le système trie automatiquement par distance et élargit progressivement le rayon de recherche (5 → 10 → 25 → 50 km) jusqu'à trouver au moins 8 restaurants correspondants.
+Envoyez une requête `GET /api/restaurants` avec les paramètres de géolocalisation (`lat` et `lng`) pour déclencher la découverte par distance. Le système parcourt des paliers de rayon (5, 10, 25, 50 km, puis sans limite) jusqu'à obtenir au moins huit résultats. Vous pouvez aussi filtrer par catégorie de cuisine (`category`) — si aucun restaurant ne correspond même au rayon infini, le système renvoie les plus proches de toutes catégories et signale `categoryHadNoMatch: true` pour que vous adaptiez votre message (« Pas de sushi près de vous, voici les restaurants les plus proches »).
 
-### Ajoutez des plats au panier
+### Composer le panier
 
-Sélectionnez les plats du menu (champ `items`) avec leurs quantités et options éventuelles. Le montant minimum de commande (`minOrder`) s'applique au sous-total produits avant toute réduction.
+Construisez un tableau d'articles (`items`) contenant pour chaque ligne l'identifiant du plat (`itemId`), son nom, la quantité, le prix unitaire et les options éventuelles (taille, extras). Le sous-total est calculé automatiquement par le serveur — n'envoyez pas de montant calculé côté client.
 
-### Choisissez le mode de retrait
+### Créer la commande
 
-Précisez `fulfillmentType: 'delivery'` (livraison à domicile, frais de livraison appliqués) ou `fulfillmentType: 'pickup'` (à emporter, aucun frais de livraison). L'adresse de livraison (`deliveryAddress`) est obligatoire dans les deux cas.
+Envoyez `POST /api/orders` avec le panier, l'adresse de livraison, le mode de paiement (`card`, `cash` ou `wallet`), et le type de récupération (`fulfillmentType: 'delivery'` ou `'pickup'`). Le serveur vérifie que le restaurant est actif, que le panier respecte le minimum de commande (calculé sur le sous-total avant toute réduction), puis applique automatiquement la meilleure promotion active. Si vous passez `usePoints: true`, le système déduit un crédit de fidélité plafonné pour que Grubano reste à l'équilibre. Les frais de livraison disparaissent si vous choisissez le retrait sur place.
 
-### Passez commande
+### Confirmer le paiement
 
-Envoyez `POST /api/orders` avec vos articles, l'adresse et le mode de paiement (`card`, `cash` ou `wallet`). Le système vérifie automatiquement que le restaurant est ouvert, calcule le total (sous-total + frais éventuels − réductions), génère les points de fidélité et crée la commande.
+Pour les commandes par carte, la commande est créée avec le statut `awaiting_payment` — elle reste invisible pour le restaurant. Le client reçoit un identifiant d'intention de paiement Stripe (`stripePaymentIntentId`) et doit finaliser le paiement. Une fois le paiement confirmé par webhook (`payment_intent.succeeded`), le statut bascule à `received` et la commande apparaît dans l'écran du restaurateur. Les paiements en espèces ou via portefeuille sont visibles immédiatement.
 
-### Payez par carte
+### Suivre la livraison
 
-Les commandes par carte (`paymentMethod: 'card'`) démarrent au statut `awaiting_payment` et ne deviennent visibles pour le restaurant qu'après confirmation du paiement par webhook Stripe (`payment_intent.succeeded` → statut `received`). Les paiements en espèces ou portefeuille sont visibles immédiatement.
+La réponse de création renvoie un `trackingUrl` et un temps estimé de livraison (`estimatedTime`, en minutes). Le client peut ouvrir ce lien pour voir la position en temps réel du livreur (intégration Uber Direct simulée pour l'instant). Le nombre de points gagnés (`pointsEarned`) et le total final payé (`total`, réductions et crédits déduits) sont aussi renvoyés.
 
-### Suivez la livraison
+### Consulter l'historique
 
-Récupérez l'URL de suivi (`trackingUrl`) et le temps estimé (`estimatedTime`, en minutes) retournés dans la réponse. Le statut de la commande évolue automatiquement : `received` → `preparing` → `ready` → `picked_up` → `delivered` ou `cancelled`.
+Envoyez `GET /api/orders` pour récupérer toutes les commandes du client connecté, triées de la plus récente à la plus ancienne. Vous pouvez paginer avec `take` et `skip`, ou filtrer par statut (`status`) pour ne voir que les commandes en cours, par exemple.
 
 </Steps>
 
 ## Bon à savoir
 
 <Callout type="info">
-Une commande passée pendant les heures de fermeture du restaurant est refusée avec le code `closed` et un message indiquant la prochaine ouverture (`nextOpening`). La consultation du menu reste libre en toute circonstance — seule la validation de la commande est bloquée.
+Une commande par carte ne devient visible pour le restaurant qu'après confirmation du paiement par webhook. Si le paiement échoue ou si le client abandonne, la commande reste en `awaiting_payment` et n'encombre jamais la cuisine — le système élimine les commandes fantômes à la source.
 </Callout>
 
 ## Pour aller plus loin
 
-Consultez le guide [Créer un restaurant](/fr/guides/restaurant/) pour comprendre comment les établissements configurent leurs horaires, frais de livraison et commande minimum.
-
-Découvrez le guide [Fidélité & points](/fr/guides/loyalty/) pour savoir comment les points sont gagnés, utilisés et comment la réduction fidélité est calculée sur chaque commande.
+- [Créer votre restaurant](/fr/guides/restaurant/) : configurez votre établissement, vos plats et vos horaires avant de recevoir vos premières commandes.
+- [Programme de fidélité](/fr/guides/loyalty/) : découvrez comment vos clients cumulent des points à chaque commande et les utilisent pour réduire leur prochaine addition.

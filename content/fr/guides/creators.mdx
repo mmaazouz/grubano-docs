@@ -2,7 +2,7 @@
 title: "Créateurs"
 description: "Deux casquettes côte à côte : (1) proposer une recette qu'un restaurant partenaire pourra adopter et cuisiner sous sa propre enseigne ; (2) recommander des restaurants à votre communauté via un lien d'affiliation. Dans les deux cas vous touchez une commission sur les ventes générées, dans les limites fixées par Grubano."
 generated: true
-sourceHash: 71a75c793e1a07ae
+sourceHash: bab4a48ea9e2f3be
 generator: scripts/generate-feature-page.js
 templateVersion: 4
 ---
@@ -11,45 +11,48 @@ import { Steps, Callout } from 'nextra/components'
 
 # Créateurs
 
-Partagez votre savoir-faire culinaire ou recommandez les meilleurs restaurants de votre ville, et percevez une commission sur chaque vente générée.
+Proposez vos recettes aux restaurants partenaires ou recommandez des établissements à votre communauté : deux modèles de rémunération complémentaires, pilotés depuis un seul compte.
 
 <FlowDiagram steps={["Candidater","Recette OU lien","Adoption / partage","Commission sur ventes"]} />
 
 ## Ce que ça fait
 
-La plateforme Créateurs vous ouvre deux manières complémentaires de valoriser votre expertise. Si vous êtes chef ou passionné de cuisine, vous pouvez proposer des recettes originales : un restaurant partenaire peut les adopter, les cuisiner dans sa propre cuisine sous son enseigne, et vous touchez une commission sur chaque vente. Si vous êtes influenceur ou simplement prescripteur, vous pouvez recommander des restaurants à votre communauté via un lien d'affiliation personnalisé : vos abonnés bénéficient d'une réduction de bienvenue, et vous percevez une commission sur leurs premières [commandes](/fr/guides/consumer/).
+Le statut Créateur vous ouvre deux leviers de monétisation distincts et cumulables. **Chef créateur** : vous soumettez des recettes originales que les restaurants peuvent adopter et cuisiner sous leur propre enseigne — vous touchez une commission sur chaque vente de votre plat, dans les limites fixées par Grubano. **Influenceur** : vous recommandez des restaurants de la plateforme à votre communauté via un lien d'affiliation personnalisé — chaque [commande](/fr/guides/consumer/) passée par un nouveau client que vous parrainez génère une commission sur la transaction.
 
-Les deux casquettes sont cumulables : un créateur peut à la fois enrichir le [menu](/fr/guides/menu/) d'un restaurant avec une recette inédite *et* recommander ce même restaurant à son audience. Dans les deux cas, la commission est calculée sur les ventes réelles, dans les limites fixées par Grubano, et versée chaque mois. Vous restez propriétaire de vos contenus et conservez toute liberté éditoriale.
+Les deux rôles se complètent : un chef peut également partager son lien pour orienter sa communauté vers les établissements qui adoptent ses créations, tandis qu'un influenceur peut, s'il le souhaite, soumettre ses propres concepts culinaires. Vous choisissez librement d'activer un seul rôle ou les deux au moment de la candidature, et vous pouvez ajuster ce choix à tout moment depuis votre profil. Vos gains cumulés — royalties de recettes et commissions d'affiliation confondues — apparaissent sur un tableau de bord unifié.
 
 ## Comment l'utiliser
 
 <Steps>
 
-### Candidater au programme Créateurs
+### Déposez votre candidature
 
-Remplissez le formulaire de candidature avec votre biographie, vos réseaux sociaux (Instagram, TikTok, YouTube) et, si vous souhaitez proposer des recettes, au moins un concept de plat (nom, description, type de cuisine). Si vous candidatez uniquement comme influenceur, le portefeuille de recettes est optionnel. Vous recevrez un code de vérification à publier dans la description d'une de vos chaînes pour prouver que vous en êtes propriétaire.
+Rendez-vous sur la page de candidature Créateur et renseignez votre nom, votre adresse e-mail, votre biographie et vos réseaux sociaux (Instagram, TikTok, YouTube). Indiquez le nombre d'abonnés cumulés et cochez le(s) rôle(s) souhaité(s) : **Chef créateur**, **Influenceur**, ou les deux. Si vous activez le rôle Chef, joignez au moins un concept de plat (nom, description, type de cuisine) ; les influenceurs purs peuvent sauter cette étape.
 
-### Créer une recette (rôle Chef) ou partager votre lien d'affiliation (rôle Influenceur)
+### Validez votre identité
 
-Une fois approuvé, deux espaces s'ouvrent dans votre tableau de bord. L'éditeur de recettes vous permet de documenter vos plats (ingrédients, étapes, photo, allergènes) et de les soumettre : un modérateur valide la qualité et l'originalité avant publication. Votre lien d'affiliation personnalisé (code unique) est immédiatement disponible pour être partagé sur vos réseaux ou dans vos contenus.
+L'API génère un code de vérification unique à l'issue de votre candidature. Publiez ce code dans la description d'une vidéo YouTube ou dans une story Instagram pour prouver que vous êtes bien le propriétaire du compte. Une fois validé, votre dossier passe en revue manuelle.
 
-### Adoption ou partage
+### Attendez l'approbation
 
-Un restaurateur qui adopte l'une de vos recettes la reçoit avec sa fiche technique complète (quantités, timings, dressage) et l'ajoute à son menu sous sa propre marque. Parallèlement, chaque fois qu'un nouveau client commande via votre lien d'affiliation, il bénéficie d'une réduction et l'opération est enregistrée comme référencement.
+L'équipe Grubano examine votre profil, votre audience et la cohérence de vos concepts (le cas échéant). Si votre candidature est acceptée, vous recevez un code de parrainage unique et un lien `/r/{slug}` personnalisé. Votre compte opérateur est automatiquement créé ou enrichi du rôle `creator` s'il existait déjà.
 
-### Percevoir votre commission
+### Activez vos leviers
 
-Votre tableau de bord affiche en temps réel le nombre de ventes générées (recettes adoptées et commandes référencées) et le montant cumulé de vos commissions. Les versements sont effectués chaque mois, dans les limites fixées par Grubano, sur le compte bancaire que vous avez renseigné lors de votre inscription.
+**Chef** : soumettez de nouvelles recettes depuis l'éditeur de [menu](/fr/guides/menu/) créateur. Chaque recette approuvée devient disponible dans le catalogue d'adoption ; les restaurants qui la cuisinent génèrent des royalties à chaque vente. **Influenceur** : partagez votre lien d'affiliation sur vos réseaux. Chaque nouveau client qui passe commande après avoir cliqué sur votre lien déclenche une commission, dans les limites fixées par Grubano.
 
 </Steps>
 
 ## Bon à savoir
 
 <Callout type="info">
-La soumission d'une recette déclenche une modération automatique suivie d'une validation humaine. Si le système détecte une similarité élevée avec un plat déjà présent dans le catalogue ou un contenu inapproprié, votre recette reste en attente de révision manuelle. Vous pouvez sauvegarder autant de brouillons que vous le souhaitez avant de soumettre.
+Les deux rôles partagent le même tableau de bord et le même compte de paiement — vos gains de recettes et d'affiliation sont cumulés dans un solde unique. La commission Grubano reste de **10 %** sur toutes les transactions, quel que soit le modèle (Standard ou Pro à 29 €/mois). Les conditions de rémunération Créateur — royalties de recettes et commission d'affiliation — sont définies avec vous au moment de l'ouverture de votre compte.
 </Callout>
 
 ## Pour aller plus loin
 
-- [Menu & Scan IA](/fr/guides/menu/) : découvrez comment les restaurateurs ajoutent vos recettes à leur carte et déclenchent la fiche technique.
-- [Commander](/fr/guides/consumer/) : comprenez le parcours de vos filleuls depuis votre lien d'affiliation jusqu'au paiement.
+[**Menu & Scan IA**](/fr/guides/menu/)  
+Découvrez comment soumettre vos recettes, compléter la fiche technique et suivre les adoptions par les restaurants partenaires.
+
+[**Commander**](/fr/guides/consumer/)  
+Comprenez le parcours d'achat de vos filleuls : du panier au paiement, en passant par la réduction de bienvenue accordée sur leur première commande.
