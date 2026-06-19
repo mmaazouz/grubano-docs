@@ -2,7 +2,7 @@
 title: "Franchise"
 description: "Adopter une marque existante du réseau, ou faire entrer la sienne — dans les limites fixées par Grubano."
 generated: true
-sourceHash: e9a173172484aaa2
+sourceHash: e3cf9d3f9a53894b
 generator: scripts/generate-feature-page.js
 templateVersion: 4
 ---
@@ -11,15 +11,15 @@ import { Steps, Callout } from 'nextra/components'
 
 # Franchise
 
-Adoptez une marque performante du réseau ou faites entrer la vôtre pour multiplier vos points de vente sans créer de nouveau concept.
+Une candidature unique vous permet d'adopter une marque du réseau ou de faire entrer la vôtre, dans les limites fixées par Grubano.
 
 <FlowDiagram steps={["Candidater","Validation Grubano","Adopter une marque","Suivre les KPIs"]} />
 
 ## Ce que ça fait
 
-La franchise vous permet d'exploiter une marque déjà validée sur Grubano — son menu, son identité, ses recettes — dans votre propre cuisine, ou inversement d'ouvrir votre propre enseigne à d'autres opérateurs. C'est particulièrement utile si vous disposez d'une cuisine équipée mais que vous ne souhaitez pas développer un concept de zéro, ou si vous avez au contraire bâti une marque qui fonctionne et que vous voulez la déployer dans d'autres villes sans ouvrir vous-même chaque point de vente.
+Le modèle de franchise vous permet de démarrer rapidement avec une marque déjà connue localement — menu validé, recettes documentées, identité visuelle prête — ou d'ouvrir votre propre marque à d'autres opérateurs si vous avez déjà un concept éprouvé. Vous cuisinez dans votre cuisine, vous recevez les commandes sur votre [tableau de bord](/fr/guides/restaurant/), et Grubano s'occupe de la livraison finale.
 
-Concrètement, une fois votre candidature validée, vous choisissez une marque ouverte à la franchise dans votre zone géographique. Vous conservez votre autonomie d'exploitation — personnel, stock, gestion des commandes via votre [tableau de bord](/fr/guides/restaurant/) — tout en bénéficiant du menu et de la notoriété de la marque. Les conditions financières sont fixées entre les acteurs concernés dans les limites fixées par Grubano ; la commission Grubano reste à 10 % du sous-total de chaque commande, que vous soyez en Standard ou en Pro.
+Concrètement : si vous candidatez pour adopter une marque existante, Grubano valide votre dossier (local, équipement, SIRET, motivation), puis vous attribue un point de vente opérant sous cette marque dans votre ville. Vous démarrez avec un catalogue pré-rempli et une identité reconnue. Si vous souhaitez faire entrer votre propre marque dans le réseau, la candidature documente votre concept ; après validation, votre marque devient disponible pour d'autres franchisés. Dans les deux cas, la commission Grubano reste de 10 % sur chaque commande livrée, identique au tarif Standard.
 
 ## Comment l'utiliser
 
@@ -27,29 +27,26 @@ Concrètement, une fois votre candidature validée, vous choisissez une marque o
 
 ### Soumettre votre candidature
 
-Rendez-vous sur `/franchise/apply` (accessible depuis le menu principal une fois connecté). Renseignez votre nom, ville, téléphone, email, SIRET et RIB si vous en disposez déjà, indiquez si vous possédez une cuisine équipée, précisez la marque que vous souhaitez adopter ou faire entrer, et joignez une brève motivation. Une fois envoyée, votre demande passe en revue chez Grubano.
+Remplissez le formulaire avec vos coordonnées (nom, ville, téléphone, e-mail), votre SIRET et RIB si vous les avez déjà, et confirmez que vous disposez d'une cuisine équipée. Indiquez la marque que vous souhaitez adopter ou le nom de votre propre concept, et expliquez votre motivation en quelques lignes (minimum 10 caractères). La route `POST /api/franchise/apply` enregistre votre candidature.
 
 ### Attendre la validation
 
-Grubano examine votre candidature — conformité du local, capacité à respecter le menu et les standards de la marque — et vous notifie par email. Le délai est généralement de quelques jours. Aucune action de votre part n'est requise pendant cette phase.
+Grubano examine votre dossier — vérification du local, cohérence du projet, zone géographique disponible — et vous notifie par e-mail de la décision. Si votre candidature est acceptée, vous recevez les accès à votre point de vente et, le cas échéant, le catalogue de la marque adoptée.
 
-### Choisir une marque ouverte
+### Commencer à opérer
 
-Si votre candidature est acceptée, consultez la liste des marques disponibles (`/api/franchise/brands`) : pour chacune vous voyez le type de cuisine, les villes éligibles, le chiffre d'affaires moyen mensuel, et quelques exemples de plats phares. Sélectionnez celle qui correspond à votre zone et à votre équipement.
+Une fois validé, votre point de vente apparaît dans votre [tableau de bord](/fr/guides/restaurant/) franchisé. Vous activez les plats, gérez les horaires et recevez les commandes. La page `/api/franchise/my-dashboard` affiche vos revenus sur 30 jours glissants, le nombre de commandes et, pour chaque point de vente, la performance détaillée. Les KPIs incluent également la moyenne du réseau pour vous situer.
 
-### Suivre vos performances
+### Suivre les indicateurs
 
-Une fois actif, rendez-vous sur votre [tableau de bord](/fr/guides/restaurant/) franchise (`/api/franchise/my-dashboard`) : vous y retrouvez le chiffre d'affaires des 30 derniers jours (fenêtre glissante, pas le mois calendaire), le nombre de commandes livrées par point de vente, et un comparatif avec la moyenne du réseau. Les redevances dues sont calculées automatiquement sur la base du chiffre d'affaires réalisé.
+Le tableau de bord franchisé récapitule les revenus du mois en cours comparés au mois précédent, le nombre de commandes livrées et les conditions financières applicables, dans les limites fixées par Grubano. Chaque point de vente que vous opérez est listé avec son emoji (📍), sa ville, son chiffre d'affaires du mois et le nombre de commandes traitées.
 
 </Steps>
 
-## Bon à savoir
-
 <Callout type="info">
-Le chiffre d'affaires et les KPIs affichés dans votre tableau de bord franchise portent sur une fenêtre **glissante de 30 jours** (aujourd'hui moins 30 jours), et non sur le mois calendaire en cours. Ce choix évite qu'en début de mois civil vos indicateurs tombent à zéro et vous donne une vue plus stable de la tendance.
+La fenêtre de 30 jours est glissante (les 30 derniers jours complets), pas calée sur le mois calendaire. Cela évite d'afficher zéro en début de mois et vous donne une vue continue de votre activité.
 </Callout>
 
 ## Pour aller plus loin
 
-[**Tableau de bord restaurant**](/fr/guides/restaurant/)  
-Consultez vos commandes en temps réel, vos statistiques de livraison et l'état de chaque point de vente que vous exploitez, qu'il s'agisse de votre marque ou d'une enseigne franchisée.
+[Tableau de bord restaurant](/fr/guides/restaurant/) — Toutes vos commandes et statistiques centralisées, que vous opériez en franchise ou en marque indépendante.
