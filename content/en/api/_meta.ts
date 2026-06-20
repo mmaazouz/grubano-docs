@@ -30,6 +30,7 @@ export default {
   "orders": "Orders",
   "partner": "Partner",
   "partners": "Partners",
+  "prestataire": "Prestataire",
   "ref": "Ref",
   "referral": "Referral",
   "reservations": "Reservations",
