@@ -26,6 +26,7 @@ export default {
   "loyalty": "Loyalty",
   "marketplace": "Marketplace",
   "menu": "Menu",
+  "onboarding": "Onboarding",
   "operator": "Operator",
   "orders": "Orders",
   "partner": "Partner",
