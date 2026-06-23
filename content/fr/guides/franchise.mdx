@@ -2,7 +2,7 @@
 title: "Franchise"
 description: "Adopter une marque existante du réseau, ou faire entrer la sienne — dans les limites fixées par Grubano."
 generated: true
-sourceHash: e3cf9d3f9a53894b
+sourceHash: 2b662c11e9191de7
 generator: scripts/generate-feature-page.js
 templateVersion: 4
 ---
@@ -11,42 +11,46 @@ import { Steps, Callout } from 'nextra/components'
 
 # Franchise
 
-Une candidature unique vous permet d'adopter une marque du réseau ou de faire entrer la vôtre, dans les limites fixées par Grubano.
+Adoptez une marque existante du réseau ou faites entrer la vôtre, sous réserve de validation par Grubano.
 
 <FlowDiagram steps={["Candidater","Validation Grubano","Adopter une marque","Suivre les KPIs"]} />
 
 ## Ce que ça fait
 
-Le modèle de franchise vous permet de démarrer rapidement avec une marque déjà connue localement — menu validé, recettes documentées, identité visuelle prête — ou d'ouvrir votre propre marque à d'autres opérateurs si vous avez déjà un concept éprouvé. Vous cuisinez dans votre cuisine, vous recevez les commandes sur votre [tableau de bord](/fr/guides/restaurant/), et Grubano s'occupe de la livraison finale.
+Le système de franchise vous permet de deux choses : soit ouvrir un point de vente sous une marque déjà présente sur Grubano (vous évitez ainsi de bâtir une réputation depuis zéro et bénéficiez du menu, de la charte visuelle et des standards opératoires de la marque mère), soit proposer votre propre marque pour que d'autres restaurateurs la déploient ailleurs. Dans les deux cas, Grubano valide d'abord votre candidature — siret, motivation, possession d'une cuisine — puis vous donne accès au catalogue de marques ouvertes à la franchise ou active la diffusion de la vôtre.
 
-Concrètement : si vous candidatez pour adopter une marque existante, Grubano valide votre dossier (local, équipement, SIRET, motivation), puis vous attribue un point de vente opérant sous cette marque dans votre ville. Vous démarrez avec un catalogue pré-rempli et une identité reconnue. Si vous souhaitez faire entrer votre propre marque dans le réseau, la candidature documente votre concept ; après validation, votre marque devient disponible pour d'autres franchisés. Dans les deux cas, la commission Grubano reste de 10 % sur chaque commande livrée, identique au tarif Standard.
+Ce mécanisme est pensé pour les restaurateurs locaux qui cuisinent dans leur propre cuisine et veulent mutualiser leur savoir-faire ou capitaliser sur une marque qui fonctionne. Grubano ne prélève que sa commission habituelle de 10 % sur chaque commande ; les conditions financières entre franchiseur et franchisé (redevances, frais d'installation) sont définies avec vous au moment de l'ouverture, en fonction de la marque adoptée et de la zone géographique.
+
+Une fois votre point de vente activé, toutes vos commandes apparaissent dans le [tableau de bord](/fr/guides/restaurant/) unifié, aux côtés de vos éventuels autres restaurants. Vous suivez en temps réel le chiffre d'affaires généré, le nombre de commandes et une estimation des redevances dues, calculée sur une fenêtre glissante de 30 jours.
 
 ## Comment l'utiliser
 
 <Steps>
 
-### Soumettre votre candidature
+### Déposez une candidature
 
-Remplissez le formulaire avec vos coordonnées (nom, ville, téléphone, e-mail), votre SIRET et RIB si vous les avez déjà, et confirmez que vous disposez d'une cuisine équipée. Indiquez la marque que vous souhaitez adopter ou le nom de votre propre concept, et expliquez votre motivation en quelques lignes (minimum 10 caractères). La route `POST /api/franchise/apply` enregistre votre candidature.
+Envoyez votre dossier via `POST /api/franchise/apply` avec votre nom, email, siret (facultatif au dépôt), RIB (facultatif), une déclaration de possession de cuisine (`hasKitchen`), le nom de la marque que vous souhaitez adopter ou proposer (`brandName`) et votre motivation. Ville et téléphone ne sont plus demandés à ce stade ; vous les renseignerez plus tard dans votre profil opérateur.
 
-### Attendre la validation
+### Attendez la validation
 
-Grubano examine votre dossier — vérification du local, cohérence du projet, zone géographique disponible — et vous notifie par e-mail de la décision. Si votre candidature est acceptée, vous recevez les accès à votre point de vente et, le cas échéant, le catalogue de la marque adoptée.
+Grubano examine votre candidature (email, nom, siret le cas échéant). La validation reste manuelle et n'est pas déclenchée automatiquement par l'API.
 
-### Commencer à opérer
+### Choisissez une marque ouverte
 
-Une fois validé, votre point de vente apparaît dans votre [tableau de bord](/fr/guides/restaurant/) franchisé. Vous activez les plats, gérez les horaires et recevez les commandes. La page `/api/franchise/my-dashboard` affiche vos revenus sur 30 jours glissants, le nombre de commandes et, pour chaque point de vente, la performance détaillée. Les KPIs incluent également la moyenne du réseau pour vous situer.
+Une fois validé, consultez `GET /api/franchise/brands` pour voir les marques marquées `openToFranchise: true`. Chaque fiche indique le type de cuisine, les plats phares, le chiffre d'affaires mensuel moyen constaté, les frais d'installation (`setupFee`) et les villes disponibles (`franchiseZones`). Le taux de redevance (`royaltyPct`) est affiché mais ne constitue pas la commission Grubano — celle-ci reste 10 % quelle que soit la marque.
 
-### Suivre les indicateurs
+### Suivez vos indicateurs
 
-Le tableau de bord franchisé récapitule les revenus du mois en cours comparés au mois précédent, le nombre de commandes livrées et les conditions financières applicables, dans les limites fixées par Grubano. Chaque point de vente que vous opérez est listé avec son emoji (📍), sa ville, son chiffre d'affaires du mois et le nombre de commandes traitées.
+Appelez `GET /api/franchise/my-dashboard` pour obtenir le chiffre d'affaires du mois en cours (fenêtre glissante de 30 jours), celui du mois précédent, le nombre de commandes par point de vente et une estimation des redevances dues, calculée en appliquant le taux propre à chaque marque que vous exploitez. Le tableau de bord retourne également les totaux réels (`royaltiesAccrued`, `royaltiesSettled`, `royaltiesPending`) lorsque le système de retenue est activé ; si `royaltyEnabled` vaut `false`, ces montants restent à zéro et l'estimation est une simple projection.
 
 </Steps>
 
+## Bon à savoir
+
 <Callout type="info">
-La fenêtre de 30 jours est glissante (les 30 derniers jours complets), pas calée sur le mois calendaire. Cela évite d'afficher zéro en début de mois et vous donne une vue continue de votre activité.
+La commission Grubano de 10 % s'applique à toutes vos commandes, que vous exploitiez votre propre marque ou une marque du réseau. Les conditions financières entre franchiseurs et franchisés (redevances, royalties) sont définies dans les limites fixées par Grubano et apparaissent dans le catalogue de marques ; elles ne remplacent pas la commission Grubano, elles s'y ajoutent.
 </Callout>
 
 ## Pour aller plus loin
 
-[Tableau de bord restaurant](/fr/guides/restaurant/) — Toutes vos commandes et statistiques centralisées, que vous opériez en franchise ou en marque indépendante.
+- [Tableau de bord restaurant](/fr/guides/restaurant/) : consultez toutes vos commandes et statistiques en un seul endroit, quel que soit le nombre de points de vente ou de marques que vous exploitez.
