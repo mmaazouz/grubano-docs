@@ -2,7 +2,7 @@
 title: "Réservations"
 description: "Gérer les tables et les créneaux : plan de salle, accepter / refuser une demande, suivre l’occupation en temps réel."
 generated: true
-sourceHash: 33c9d8b615853324
+sourceHash: 710e7f7766a8ec4c
 generator: scripts/generate-feature-page.js
 templateVersion: 4
 ---
@@ -11,15 +11,15 @@ import { Steps, Callout } from 'nextra/components'
 
 # Réservations
 
-Organisez le service en salle et optimisez l'occupation de vos tables grâce à un système de réservation intégré à votre tableau de bord.
+Maîtrisez l'occupation de votre salle en temps réel : configurez votre plan, validez ou refusez chaque demande, suivez le flux du service.
 
 <FlowDiagram steps={["Configurer la salle","Recevoir la demande","Valider","Service"]} />
 
 ## Ce que ça fait
 
-Le module Réservations vous permet de gérer l'ensemble du cycle de vie d'une réservation : de la demande initiale jusqu'au service en salle, en passant par la validation et le suivi de l'occupation. Chaque réservation est liée à une table précise de votre plan de salle et bloque automatiquement le créneau horaire correspondant pour éviter les doubles réservations.
+Le module Réservations vous donne le contrôle complet de votre plan de salle et de votre capacité. Vous définissez les tables (nom, nombre de couverts, emplacement), puis vous recevez et validez les demandes de réservation — qu'elles proviennent de votre [tableau de bord](/fr/guides/restaurant/) ou, prochainement, du widget public intégré à votre site.
 
-Vous définissez la durée par défaut d'un service (60 minutes si vous ne précisez rien), mais vous pouvez ajuster cette durée pour chaque réservation selon le type de repas ou les besoins du client. Le système vérifie la capacité : une table de 4 places ne pourra jamais accueillir une réservation de 6 couverts. Vous contrôlez également les prises de réservation hors de vos horaires d'ouverture habituels — idéal pour un événement privé un jour de fermeture. Toutes les réservations apparaissent dans votre [tableau de bord](/fr/guides/restaurant/) avec leur statut en temps réel : confirmée, arrivée, annulée ou non-présentée.
+Chaque réservation occupe une table pour un créneau précis : le système vérifie automatiquement la disponibilité et bloque les doublons. Vous visualisez l'occupation en un coup d'œil (jour, semaine), acceptez ou refusez chaque demande, puis marquez l'arrivée du client pour ouvrir le service. Les allergies et précommandes éventuelles remontent directement dans la fiche, de sorte que votre équipe dispose de toutes les informations avant même que le convive ne franchisse la porte.
 
 ## Comment l'utiliser
 
@@ -27,28 +27,32 @@ Vous définissez la durée par défaut d'un service (60 minutes si vous ne préc
 
 ### Créez vos tables
 
-Dans votre plan de salle, ajoutez les tables avec leur nom et leur nombre de places. Chaque table devient disponible pour la réservation une fois enregistrée.
+Rendez-vous dans le tableau de bord, section **Tables**. Ajoutez chaque table en indiquant son nom (numéro ou identifiant), sa capacité en couverts et, si vous le souhaitez, sa position sur le plan visuel. Une table doit exister avant de pouvoir y affecter une réservation.
 
-### Enregistrez une nouvelle réservation
+### Recevez ou créez une réservation
 
-Sélectionnez la table, la date, l'heure d'arrivée souhaitée et le nombre de couverts. Indiquez le nom du client et, si vous le souhaitez, son téléphone ou son email. Ajoutez des notes internes (allergies, pré-commande) si nécessaire. Le système calcule automatiquement l'heure de fin en fonction de la durée par défaut ou d'une durée personnalisée.
+Lorsqu'un client demande une table (via le widget public, bientôt disponible, ou que vous saisissez une demande téléphonique dans le tableau de bord), le système vérifie la disponibilité de la table choisie sur le créneau souhaité. Si la table est libre, la réservation est créée au statut `confirmed` ; si elle est déjà occupée, vous recevez un message d'erreur indiquant l'heure du conflit.
 
-### Validez la disponibilité
+### Validez ou refusez
 
-Le système refuse toute réservation qui chevauche un créneau déjà occupé par une autre réservation confirmée, arrivée ou en dépassement sur la même table. Un créneau passé (heure d'arrivée déjà écoulée) est également refusé.
+Depuis la liste des réservations du jour, vous pouvez annuler une demande (statut `cancelled`) si vous ne pouvez pas la satisfaire. Le client lié à un compte Grubano reçoit alors un email l'informant de l'annulation. Inversement, une réservation confirmée reste active jusqu'à l'arrivée du client.
 
-### Suivez le statut
+### Marquez l'arrivée
 
-Une fois le client arrivé, marquez la réservation « arrivée » — cela ouvre automatiquement l'addition associée à la table. En fin de service, le statut passe à « terminé » lorsque l'addition est réglée. Si le client ne se présente pas, marquez « non-présenté ».
+Dès que le convive se présente, passez la réservation au statut `arrived`. Cette action ouvre automatiquement l'addition liée à la table, de sorte que votre équipe peut immédiatement prendre la commande et suivre le service. Si une addition précédente sur cette table n'a pas encore été réglée, le système vous alerte pour que vous la soldiez d'abord.
+
+### Gérez les no-shows (absences)
+
+Si un client ne se présente pas, vous pouvez marquer la réservation `noshow`. Lorsqu'une empreinte bancaire (pré-autorisation) a été prise au moment de la réservation, le montant de pénalité configuré est alors capturé sur la carte du client, et un email de notification lui est envoyé automatiquement.
 
 </Steps>
 
 ## Bon à savoir
 
 <Callout type="info">
-Une réservation hors de vos horaires d'ouverture configurés génère un avertissement, mais elle est quand même enregistrée : vous restez libre d'accepter un événement privé ou une ouverture exceptionnelle. En revanche, tout créneau dont l'heure d'arrivée est déjà passée au moment de la création est systématiquement refusé par le serveur.
+Une réservation occupe **une seule table** à la fois. Si un groupe dépasse la capacité de votre plus grande table, vous devrez créer plusieurs réservations côte à côte sur des tables distinctes. Le système refuse toute réservation dont le nombre de couverts excède les places assises de la table choisie.
 </Callout>
 
 ## Pour aller plus loin
 
-- [Tableau de bord restaurant](/fr/guides/restaurant/) : consultez l'ensemble de vos réservations du jour et gérez leur statut depuis un seul écran.
+- [Tableau de bord](/fr/guides/restaurant/) — Retrouvez toutes vos réservations, commandes et rapports au même endroit, et bientôt, centralisez également les flux de vos autres plateformes de livraison (Uber Eats, Deliveroo, Just Eat) avec Grubano Pro.
