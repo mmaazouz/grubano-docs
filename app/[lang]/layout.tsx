@@ -1,50 +1,42 @@
-import { Layout, Navbar, Footer } from 'nextra-theme-docs'
+import { Layout, Navbar } from 'nextra-theme-docs'
 import { Head, Search } from 'nextra/components'
 import { getPageMap } from 'nextra/page-map'
 import type { ReactNode } from 'react'
 import { HtmlLangSync } from '@/components/HtmlLangSync'
+import { LangSwitch } from '@/components/LangSwitch'
+import { SiteFooter } from '@/components/SiteFooter'
 
-// Languages exposed in the navbar dropdown. Order = display order.
-// Only locales that have real content are listed; es/ar/it land in D3 once
-// their content trees exist (LocaleSwitch would otherwise route users into
-// 404s). When AR is added, HtmlLangSync flips <html dir> to rtl automatically.
-const I18N = [
-  { locale: 'fr', name: 'Français' },
-  { locale: 'en', name: 'English' },
-] as const
-
-// Per-locale UI labels for the Nextra theme chrome.
+// Per-locale UI labels for the Nextra theme chrome + our own header/footer.
 const UI = {
   fr: {
     editLink: 'Modifier cette page',
     feedback: { content: 'Une question ?', labels: 'feedback' },
     toc: { title: 'Sur cette page', backToTop: 'Retour en haut' },
-    themeSwitch: { dark: 'Sombre', light: 'Clair', system: 'Système' },
-    mainSite: 'Site principal ↗',
-    searchPlaceholder: 'Rechercher dans la documentation…',
+    searchPlaceholder: 'Rechercher…',
     searchEmpty: 'Aucun résultat',
     searchLoading: 'Chargement…',
     searchError: 'Échec du chargement de l’index de recherche.',
+    home: 'Accueil',
   },
   en: {
     editLink: 'Edit this page',
     feedback: { content: 'Question?', labels: 'feedback' },
     toc: { title: 'On this page', backToTop: 'Back to top' },
-    themeSwitch: { dark: 'Dark', light: 'Light', system: 'System' },
-    mainSite: 'Main site ↗',
-    searchPlaceholder: 'Search the documentation…',
+    searchPlaceholder: 'Search…',
     searchEmpty: 'No results',
     searchLoading: 'Loading…',
     searchError: 'Failed to load the search index.',
+    home: 'Home',
   },
 } as const
 
 type Lang = keyof typeof UI
 
-// Grubano docs logo (unchanged from D2·a): rounded orange tile + wordmark + tag.
-const logo = (
+// Header brand — orange G tile + "Grubano" + "Centre d'aide" tag.
+const brand = (
   <span
-    aria-label="Grubano Docs"
+    aria-label="Grubano — Centre d'aide"
+    className="hd__brand"
     style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', lineHeight: 1 }}
   >
     <span
@@ -66,12 +58,8 @@ const logo = (
     >
       G
     </span>
-    <span className="grubano-logo__wordmark" style={{ fontSize: '1.05rem' }}>
-      Grubano
-    </span>
-    <span className="grubano-logo__badge" style={{ fontSize: '0.78rem' }}>
-      Centre d’aide
-    </span>
+    <b className="grubano-logo__wordmark" style={{ fontSize: '1.05rem' }}>Grubano</b>
+    <span className="grubano-logo__badge" style={{ fontSize: '0.78rem' }}>Centre d’aide</span>
   </span>
 )
 
@@ -86,7 +74,6 @@ export default async function LocaleLayout({
   const langKey: Lang = lang === 'en' ? 'en' : 'fr'
   const t = UI[langKey]
 
-  // Locale-scoped page map → sidebar only lists pages for the active locale.
   const pageMap = await getPageMap(`/${lang}`)
 
   const search = (
@@ -98,47 +85,22 @@ export default async function LocaleLayout({
     />
   )
 
+  // Navbar — logo left, search middle (from Layout's search prop),
+  // then children on the right: "Accueil" link + custom LangSwitch.
+  // No projectLink (removes GitHub icon), no i18n (removes Nextra's
+  // LocaleSwitch — replaced by our LangSwitch). Theme switch hidden
+  // via CSS.
   const navbar = (
-    <Navbar logo={logo} projectLink="https://github.com/mmaazouz/grubano-docs">
-      <a
-        href="https://www.grubano.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{
-          fontSize: '0.875rem',
-          fontWeight: 500,
-          color: 'var(--grubano-ink)',
-          padding: '0 0.5rem',
-          whiteSpace: 'nowrap',
-        }}
-      >
-        {t.mainSite}
+    <Navbar logo={brand}>
+      <a href={`/${lang}/`} className="hd__link" aria-label={t.home}>
+        <span className="ms">home</span>
+        <span>{t.home}</span>
       </a>
+      <LangSwitch />
     </Navbar>
   )
 
-  const footer = (
-    <Footer>
-      <span
-        style={{
-          width: '100%',
-          textAlign: 'center',
-          color: 'var(--grubano-muted)',
-          fontSize: '0.85rem',
-        }}
-      >
-        © {new Date().getFullYear()} Grubano · {' '}
-        <a
-          href="https://www.grubano.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ color: 'inherit' }}
-        >
-          grubano.com
-        </a>
-      </span>
-    </Footer>
-  )
+  const footer = <SiteFooter locale={lang} />
 
   return (
     <>
@@ -153,8 +115,6 @@ export default async function LocaleLayout({
         feedback={t.feedback}
         sidebar={{ defaultMenuCollapseLevel: 1 }}
         toc={t.toc}
-        themeSwitch={t.themeSwitch}
-        i18n={[...I18N]}
       >
         <HtmlLangSync lang={lang} />
         {children}

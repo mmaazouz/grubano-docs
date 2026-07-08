@@ -106,17 +106,28 @@ body {
 .flip-rtl { display: inline-block; }
 [dir="rtl"] .flip-rtl { transform: scaleX(-1); }
 
-/* ── 4. Nextra — navbar ───────────────────────────────────────────────── */
+/* ── 4. Nextra — navbar (skeleton) ────────────────────────────────────── */
 .nextra-navbar nav {
   border-bottom: 1px solid var(--gb-border);
   background: rgba(251, 248, 243, .9);
   backdrop-filter: saturate(180%) blur(12px);
+  gap: 12px;
 }
 html.dark .nextra-navbar nav {
   background: rgba(15, 39, 66, .85);
 }
 
-/* Wordmark accents used inside the inline logo */
+/* Hide Nextra chrome we don't ship: theme toggle. Locale switch and
+   GitHub icon are already suppressed by not passing i18n / projectLink
+   props in app/[lang]/layout.tsx — belt-and-braces here in case a future
+   refactor forgets. */
+.nextra-navbar button[title='Change theme'],
+.nextra-navbar select[aria-label='Change theme'] { display: none !important; }
+.nextra-navbar a[href*='github.com/mmaazouz/grubano-docs'],
+.nextra-navbar a[title='GitHub'] { display: none !important; }
+
+/* Brand + wordmark accents used inside the inline logo (kept for the
+   header brand block; also used at footer/print). */
 .grubano-logo__wordmark {
   color: var(--gb-text);
   font-family: var(--gb-font-display);
@@ -126,6 +137,176 @@ html.dark .nextra-navbar nav {
   color: var(--gb-muted);
   font-weight: 600;
   font-size: 0.78rem;
+  padding-inline-start: 9px;
+  margin-inline-start: 2px;
+  border-inline-start: 1px solid var(--gb-border-2);
+  white-space: nowrap;
+}
+@media (max-width: 760px) { .grubano-logo__badge { display: none; } }
+
+/* Right-side "Accueil" link in the header (mockup: .hd__link) */
+.hd__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gb-muted) !important;
+  white-space: nowrap;
+  text-decoration: none !important;
+}
+.hd__link:hover { color: var(--gb-text) !important; }
+.hd__link .ms { font-size: 17px; }
+@media (max-width: 760px) { .hd__link span:not(.ms) { display: none; } }
+
+/* Header brand — icon-only on very narrow */
+.hd__brand { text-decoration: none !important; }
+
+/* Search input in the navbar — restrict width so it doesn't devour the row */
+.nextra-navbar .nextra-search {
+  flex: 1;
+  max-width: 420px;
+  margin-inline: auto;
+}
+
+/* ── 4-bis. Custom LangSwitch — matches accueil.html mockup ───────────── */
+.lang { position: relative; }
+.lang__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--gb-surface);
+  border: 1px solid var(--gb-border-2);
+  border-radius: var(--gb-r-pill);
+  padding: 8px 12px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gb-text);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color .15s;
+}
+.lang__btn:hover { border-color: var(--gb-zest); }
+.lang__btn .ms { font-size: 17px; color: var(--gb-muted); }
+.lang__menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  inset-inline-end: 0;
+  background: var(--gb-surface);
+  border: 1px solid var(--gb-border);
+  border-radius: var(--gb-r-md);
+  box-shadow: var(--gb-shadow);
+  padding: 6px;
+  min-width: 180px;
+  display: none;
+  z-index: 60;
+}
+.lang.open .lang__menu { display: block; }
+.lang__opt {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 11px;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--gb-text);
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: start;
+  cursor: pointer;
+}
+.lang__opt:hover:not(:disabled) { background: var(--gb-surface-2); }
+.lang__opt.on { color: var(--gb-zest-600); font-weight: 800; }
+.lang__opt.on .ms { color: var(--gb-zest-600); font-size: 17px; margin-inline-start: auto; }
+.lang__opt:not(.on) .ms { display: none; }
+.lang__opt .fl { font-size: 15px; }
+.lang__opt-name { flex: 1; }
+.lang__opt-soon {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--gb-muted-2);
+  background: var(--gb-surface-2);
+  border: 1px solid var(--gb-border-2);
+  border-radius: 999px;
+  padding: 2px 7px;
+  margin-inline-start: auto;
+}
+.lang__opt--soon { color: var(--gb-muted); cursor: not-allowed; }
+.lang__opt--soon:hover { background: transparent; }
+@media (max-width: 760px) { .lang__btn > span:not(.ms):first-of-type { display: none; } }
+
+/* ── 4-ter. SiteFooter — matches accueil.html mockup ──────────────────── */
+.nextra-footer,
+footer.nextra-footer,
+.nextra-footer > div { padding: 0 !important; background: transparent !important; border: 0 !important; }
+.foot__in {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 30px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--gb-border);
+}
+.foot__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--gb-text);
+}
+.foot__mark {
+  width: 22px;
+  height: 22px;
+  border-radius: 7px;
+  background: var(--gb-zest);
+  color: #fff;
+  font-family: var(--gb-font-display), system-ui, sans-serif;
+  font-weight: 900;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.foot__brand b {
+  font-family: var(--gb-font-display), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+}
+.foot__links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.foot__links a {
+  font-size: 13px;
+  color: var(--gb-muted) !important;
+  font-weight: 600;
+  text-decoration: none !important;
+}
+.foot__links a:hover { color: var(--gb-text) !important; }
+.foot__lang {
+  margin-inline-start: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--gb-muted);
+}
+.foot__lang .ms { font-size: 16px; }
+.foot__copy {
+  width: 100%;
+  font-size: 12px;
+  color: var(--gb-muted-2);
 }
 
 /* ── 5. Nextra — sidebar ──────────────────────────────────────────────── */
