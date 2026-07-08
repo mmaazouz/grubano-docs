@@ -52,25 +52,25 @@ const logo = (
         width: 30,
         height: 30,
         borderRadius: 9,
-        background: '#F97316',
+        background: '#FF6A1F',
         color: '#fff',
-        fontWeight: 800,
+        fontWeight: 900,
         fontSize: 17,
-        fontFamily: "'Inter', system-ui, sans-serif",
+        fontFamily: 'var(--gb-font-display), system-ui, sans-serif',
         display: 'inline-flex',
         alignItems: 'center',
         justifyContent: 'center',
-        boxShadow: '0 2px 6px rgba(249, 115, 22, 0.35), 0 1px 2px rgba(0, 0, 0, 0.08)',
+        boxShadow: '0 2px 6px rgba(255, 106, 31, 0.35), 0 1px 2px rgba(0, 0, 0, 0.08)',
         flexShrink: 0,
       }}
     >
       G
     </span>
     <span className="grubano-logo__wordmark" style={{ fontSize: '1.05rem' }}>
-      grubano
+      Grubano
     </span>
-    <span className="grubano-logo__badge" style={{ fontSize: '0.95rem' }}>
-      docs
+    <span className="grubano-logo__badge" style={{ fontSize: '0.78rem' }}>
+      Centre d’aide
     </span>
   </span>
 )

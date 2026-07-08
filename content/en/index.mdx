@@ -1,61 +1,16 @@
 ---
 title: Grubano Help Center
-description: Everything you need to understand and use Grubano — the marketplace that reconnects local restaurants and their customers, with a fair 10% commission.
+description: Find answers, guides and resources for every Grubano space.
 ---
 
-import { Cards } from 'nextra/components'
-import { HeroSearchTrigger } from '@/components/HeroSearchTrigger'
+<div className="gb-home">
 
-<div className="grubano-home">
+<HomeHero locale="en" />
 
-<section className="grubano-hero">
-  <span className="grubano-hero__badge">Grubano Help Center</span>
-  <h1 className="grubano-hero__title">How can we help you?</h1>
-  <p className="grubano-hero__subtitle">
-    Everything you need to understand and use Grubano — the marketplace that
-    reconnects local restaurants and their customers, with a fair 10% commission.
-  </p>
-  <HeroSearchTrigger placeholder="Search the documentation…" />
-  <div className="grubano-hero__popular">
-    <span className="grubano-hero__popular-label">Popular:</span>
-    <a href="/en/guides/pro/">Go Pro</a>
-    <a href="/en/guides/consumer/">Order</a>
-    <a href="/en/guides/franchise/">Join a franchise</a>
-    <a href="/en/guides/creators/">Become a creator</a>
-  </div>
-</section>
+<SpacesGrid locale="en" />
 
-<section className="grubano-section">
-  <h2 className="grubano-section__title">Choose your profile</h2>
-  <Cards>
-    <Cards.Card title="🏪 Restaurants" href="/en/guides/restaurant/" arrow>
-      Sell direct, keep your margins. Menu, orders, stock, Pro subscription.
-    </Cards.Card>
-    <Cards.Card title="🍽️ Customers" href="/en/guides/consumer/" arrow>
-      Order local — delivery, takeaway, or by booking a table.
-    </Cards.Card>
-    <Cards.Card title="🤝 Franchisees" href="/en/guides/franchise/" arrow>
-      Adopt a brand that works, or open your own to franchising.
-    </Cards.Card>
-    <Cards.Card title="🎬 Creators" href="/en/guides/creators/" arrow>
-      Recommend your favorite restaurants and earn a commission on sales.
-    </Cards.Card>
-  </Cards>
-</section>
+<QuickStartCards locale="en" />
 
-<section className="grubano-section">
-  <h2 className="grubano-section__title">Quick access</h2>
-  <Cards>
-    <Cards.Card title="⚡ Get started in 15 minutes" href="/en/getting-started/" arrow>
-      Set up your account and place your first order.
-    </Cards.Card>
-    <Cards.Card title="🔌 API reference" href="/en/api/" arrow>
-      Every public and private REST endpoint.
-    </Cards.Card>
-    <Cards.Card title="❓ Frequently asked questions" href="/en/getting-started/" arrow>
-      Answers to the most common questions.
-    </Cards.Card>
-  </Cards>
-</section>
+<ContactStrip locale="en" />
 
 </div>
