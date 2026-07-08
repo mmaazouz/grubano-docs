@@ -6,11 +6,11 @@ import { HtmlLangSync } from '@/components/HtmlLangSync'
 import { LangSwitch } from '@/components/LangSwitch'
 import { SiteFooter } from '@/components/SiteFooter'
 
-// Per-locale UI labels for the Nextra theme chrome + our own header/footer.
+// Per-locale UI labels for our own header/footer + the minimal Nextra chrome
+// we keep (search + TOC title). editLink / feedback are intentionally NOT
+// configured — those Nextra TOC affordances are absent from the CD mockups.
 const UI = {
   fr: {
-    editLink: 'Modifier cette page',
-    feedback: { content: 'Une question ?', labels: 'feedback' },
     toc: { title: 'Sur cette page', backToTop: 'Retour en haut' },
     searchPlaceholder: 'Rechercher…',
     searchEmpty: 'Aucun résultat',
@@ -19,8 +19,6 @@ const UI = {
     home: 'Accueil',
   },
   en: {
-    editLink: 'Edit this page',
-    feedback: { content: 'Question?', labels: 'feedback' },
     toc: { title: 'On this page', backToTop: 'Back to top' },
     searchPlaceholder: 'Search…',
     searchEmpty: 'No results',
@@ -32,32 +30,21 @@ const UI = {
 
 type Lang = keyof typeof UI
 
-// Header brand — orange G tile + "Grubano" + "Centre d'aide" tag.
+// Header brand — official Grubano symbol (gradient leaf-G) + wordmark + tag,
+// matching accueil.html's hd__brand block exactly.
 const brand = (
   <span
     aria-label="Grubano — Centre d'aide"
     className="hd__brand"
     style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', lineHeight: 1 }}
   >
-    <span
-      style={{
-        width: 30,
-        height: 30,
-        borderRadius: 9,
-        background: '#FF6A1F',
-        color: '#fff',
-        fontWeight: 900,
-        fontSize: 17,
-        fontFamily: 'var(--gb-font-display), system-ui, sans-serif',
-        display: 'inline-flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        boxShadow: '0 2px 6px rgba(255, 106, 31, 0.35), 0 1px 2px rgba(0, 0, 0, 0.08)',
-        flexShrink: 0,
-      }}
-    >
-      G
-    </span>
+    {/* eslint-disable-next-line @next/next/no-img-element */}
+    <img
+      src="/grubano-symbol.svg"
+      alt="Grubano"
+      height={26}
+      style={{ height: 26, width: 'auto', flexShrink: 0, display: 'block' }}
+    />
     <b className="grubano-logo__wordmark" style={{ fontSize: '1.05rem' }}>Grubano</b>
     <span className="grubano-logo__badge" style={{ fontSize: '0.78rem' }}>Centre d’aide</span>
   </span>
@@ -110,9 +97,11 @@ export default async function LocaleLayout({
         pageMap={pageMap}
         footer={footer}
         search={search}
-        docsRepositoryBase="https://github.com/mmaazouz/grubano-docs/tree/main"
-        editLink={t.editLink}
-        feedback={t.feedback}
+        // No docsRepositoryBase / editLink / feedback: the "Modifier cette page"
+        // and "Une question ?" TOC links are Nextra chrome absent from the CD
+        // mockups (and would re-expose a GitHub URL — kept for a future /dev/).
+        editLink={null}
+        feedback={{ content: null }}
         sidebar={{ defaultMenuCollapseLevel: 1 }}
         toc={t.toc}
       >

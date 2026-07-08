@@ -37,7 +37,8 @@ export function SiteFooter({ locale = 'fr' }: { locale?: string }) {
   return (
     <div className="foot__in">
       <div className="foot__brand">
-        <span className="foot__mark" aria-hidden="true">G</span>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/grubano-symbol.svg" alt="Grubano" height={22} className="foot__mark" />
         <b>Grubano</b>
       </div>
       <div className="foot__links">

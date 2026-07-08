@@ -18,27 +18,32 @@ type Space = {
   soon?: boolean
 }
 
+// Per accueil.html: every space is a normal card EXCEPT "Développeurs", which
+// carries the "À venir" badge and is non-clickable. The 4 audiences whose
+// landing pages don't exist yet (fournisseurs / affiliés / influenceurs /
+// livreurs) point at '#' as a placeholder — étape 2 (arborescence) wires
+// their real routes.
 const SPACES: Record<string, Space[]> = {
   fr: [
     { key: 'clients',      icon: 'restaurant',      title: 'Clients',       subtitle: 'Commander, suivre et payer',              href: '/fr/guides/consumer/' },
     { key: 'restaurateur', icon: 'storefront',      title: 'Restaurateurs', subtitle: 'Vendre et gérer mon établissement',       href: '/fr/guides/restaurant/' },
-    { key: 'fournisseurs', icon: 'local_shipping',  title: 'Fournisseurs',  subtitle: 'Vendre mes approvisionnements',           soon: true },
+    { key: 'fournisseurs', icon: 'local_shipping',  title: 'Fournisseurs',  subtitle: 'Vendre mes approvisionnements',           href: '#' },
     { key: 'franchises',   icon: 'hub',             title: 'Franchisés',    subtitle: 'Exploiter une marque, plusieurs points',  href: '/fr/guides/franchise/' },
     { key: 'createurs',    icon: 'restaurant_menu', title: 'Créateurs',     subtitle: 'Proposer mes recettes',                   href: '/fr/guides/creators/' },
-    { key: 'affilies',     icon: 'link',            title: 'Affiliés',      subtitle: 'Promouvoir et gagner',                    soon: true },
-    { key: 'influenceurs', icon: 'campaign',        title: 'Influenceurs',  subtitle: 'Statut vérifié, gros volumes',            soon: true },
-    { key: 'livreurs',     icon: 'two_wheeler',     title: 'Livreurs',      subtitle: 'Livrer et gérer mes courses',             soon: true },
+    { key: 'affilies',     icon: 'link',            title: 'Affiliés',      subtitle: 'Promouvoir et gagner',                    href: '#' },
+    { key: 'influenceurs', icon: 'campaign',        title: 'Influenceurs',  subtitle: 'Statut vérifié, gros volumes',            href: '#' },
+    { key: 'livreurs',     icon: 'two_wheeler',     title: 'Livreurs',      subtitle: 'Livrer et gérer mes courses',             href: '#' },
     { key: 'developpeurs', icon: 'code',            title: 'Développeurs',  subtitle: 'API & intégrations',                      soon: true },
   ],
   en: [
     { key: 'customers',    icon: 'restaurant',      title: 'Customers',    subtitle: 'Order, track and pay',                     href: '/en/guides/consumer/' },
     { key: 'restaurants',  icon: 'storefront',      title: 'Restaurants',  subtitle: 'Sell and run your business',              href: '/en/guides/restaurant/' },
-    { key: 'suppliers',    icon: 'local_shipping',  title: 'Suppliers',    subtitle: 'Sell your ingredients',                    soon: true },
+    { key: 'suppliers',    icon: 'local_shipping',  title: 'Suppliers',    subtitle: 'Sell your ingredients',                    href: '#' },
     { key: 'franchises',   icon: 'hub',             title: 'Franchisees',  subtitle: 'Run a brand, multiple locations',          href: '/en/guides/franchise/' },
     { key: 'creators',     icon: 'restaurant_menu', title: 'Creators',     subtitle: 'Submit your recipes',                      href: '/en/guides/creators/' },
-    { key: 'affiliates',   icon: 'link',            title: 'Affiliates',   subtitle: 'Promote and earn',                         soon: true },
-    { key: 'influencers',  icon: 'campaign',        title: 'Influencers',  subtitle: 'Verified status, higher volumes',          soon: true },
-    { key: 'couriers',     icon: 'two_wheeler',     title: 'Couriers',     subtitle: 'Deliver and manage your rides',            soon: true },
+    { key: 'affiliates',   icon: 'link',            title: 'Affiliates',   subtitle: 'Promote and earn',                         href: '#' },
+    { key: 'influencers',  icon: 'campaign',        title: 'Influencers',  subtitle: 'Verified status, higher volumes',          href: '#' },
+    { key: 'couriers',     icon: 'two_wheeler',     title: 'Couriers',     subtitle: 'Deliver and manage your rides',            href: '#' },
     { key: 'developers',   icon: 'code',            title: 'Developers',   subtitle: 'API & integrations',                       soon: true },
   ],
 }

@@ -40,17 +40,10 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   const fontVars = `${fontDisplay.variable} ${fontUi.variable} ${fontMono.variable}`
+  // Material Symbols Rounded is now self-hosted via @font-face in globals.css
+  // (public/fonts/material-symbols-rounded.woff2) — no external font request.
   return (
     <html lang="fr" dir="ltr" suppressHydrationWarning className={fontVars}>
-      <head>
-        {/* Material Symbols Rounded — icon ligature font used by the design.
-            TODO: self-host to remove the last external font request once we
-            introduce a CSP header on docs.grubano.com. */}
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400..700,0..1,0&display=block"
-        />
-      </head>
       <body>{children}</body>
     </html>
   )
