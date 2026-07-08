@@ -15,6 +15,7 @@ export default {
   "claims": "Claims",
   "creator": "Creator",
   "creators": "Creators",
+  "csp-report": "Csp-report",
   "dashboard": "Dashboard",
   "dishes": "Dishes",
   "eat": "Eat",
