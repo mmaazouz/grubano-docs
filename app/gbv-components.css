@@ -5,12 +5,13 @@
 
 /* Callout / info / error tokens (the 4 callout variants of the v5 gabarit). */
 :root {
-  --gb-info: #2f6fed;
+  /* Hex EXACTS de la maquette article-v5 (:root) */
+  --gb-info: #2e78f0;
   --gb-info-bg: #eaf1fe;
-  --gb-info-bd: #c9dbfb;
-  --gb-err: #d64545;
-  --gb-err-bg: #fdecec;
-  --gb-err-bd: #f5c9c9;
+  --gb-info-bd: #cbdefb;
+  --gb-err: #d5372a;
+  --gb-err-bg: #fcedea;
+  --gb-err-bd: #f3c9c2;
 }
 html.dark {
   --gb-info-bg: rgba(47, 111, 237, 0.14);
@@ -20,29 +21,29 @@ html.dark {
 /* Nextra <Callout> → 4 CD variants: info = astuce (bleu), warning = à venir
    (ambre, styled in globals), error/important = erreur (rouge), default = tip
    / bonne pratique (vert basil). */
-.nextra-callout[data-type='info'] {
+.nextra-callout[class*="bg-blue-"] {
   background: var(--gb-info-bg) !important;
   border-color: var(--gb-info-bd) !important;
 }
-.nextra-callout[data-type='info'] > :first-child,
-.nextra-callout[data-type='info'] svg {
+.nextra-callout[class*="bg-blue-"] > :first-child,
+.nextra-callout[class*="bg-blue-"] svg {
   color: var(--gb-info) !important;
 }
-.nextra-callout[data-type='error'],
-.nextra-callout[data-type='important'] {
+.nextra-callout[class*="bg-red-"],
+.nextra-callout[class*="bg-orange-"] {
   background: var(--gb-err-bg) !important;
   border-color: var(--gb-err-bd) !important;
 }
-.nextra-callout[data-type='error'] > :first-child,
-.nextra-callout[data-type='error'] svg {
+.nextra-callout[class*="bg-red-"] > :first-child,
+.nextra-callout[class*="bg-red-"] svg {
   color: var(--gb-err) !important;
 }
-.nextra-callout[data-type='default'] {
+.nextra-callout[class*="bg-green-"] {
   background: var(--gb-basil-bg) !important;
   border-color: #cde9d8 !important;
 }
-.nextra-callout[data-type='default'] > :first-child,
-.nextra-callout[data-type='default'] svg {
+.nextra-callout[class*="bg-green-"] > :first-child,
+.nextra-callout[class*="bg-green-"] svg {
   color: var(--gb-basil-600) !important;
 }
 

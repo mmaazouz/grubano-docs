@@ -11,6 +11,37 @@
 }
 
 /* ── Typo d'article (maquette) — le contenu Nextra 4 vit dans article>main */
+/* Corps de texte : .art p.body de la maquette = 15.5px / 1.72 / #2C3A4A,
+   marge haute 14px. Les composants (callouts, faq…) redéfinissent plus
+   spécifiquement leurs tailles et gagnent la cascade. */
+article main p {
+  font-size: 15.5px;
+  line-height: 1.72;
+  color: #2c3a4a;
+  margin-top: 14px;
+}
+html.dark article main p { color: var(--gb-text); }
+article main p b,
+article main p strong {
+  color: var(--gb-text);
+  font-weight: 800;
+}
+article main > ul li,
+article main > ol li {
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: #2c3a4a;
+}
+html.dark article main > ul li,
+html.dark article main > ol li { color: var(--gb-text); }
+
+/* Séparateur nav | article : bordure discrète comme la maquette
+   (.side { border-inline-end: 1px solid var(--gb-border) }). */
+.nextra-sidebar,
+aside.nextra-sidebar-container {
+  border-inline-end: 1px solid var(--gb-border) !important;
+}
+
 article main h1 {
   font-size: 37px !important;
   font-weight: 800 !important;
@@ -294,17 +325,21 @@ html.dark .nextra-steps > p { color: var(--gb-text); }
 .av-ex__r--total .av-ex__kic .ms { color: #fff; }
 .av-ex__r--total .av-ex__v { color: var(--gb-basil-600); font-weight: 800; font-size: 17px; }
 
-/* ── Callouts Nextra → 4 variantes maquette (chip carré coloré) ──────── */
+/* ── Callouts Nextra → 4 variantes maquette (chip carré + icône Material)
+   Astuce (info) BLEU lightbulb · À venir (warning) AMBRE schedule ·
+   Erreur (error) ROUGE close · Bonne pratique (default) VERT check_circle. */
 .nextra-callout {
   border-radius: var(--gb-r-lg) !important;
   padding: 16px 18px !important;
   margin-top: 20px !important;
   gap: 13px !important;
   align-items: flex-start !important;
+  color: #2c3a4a !important; /* neutralise text-green/red/etc. de Nextra */
 }
-.nextra-callout > .ms:first-child,
-.nextra-callout > svg:first-child,
-.nextra-callout > span:first-child {
+html.dark .nextra-callout { color: var(--gb-text) !important; }
+/* Le chip : l'emoji Nextra est masqué (font-size:0), l'icône Material est
+   injectée en ::before par LIGATURE (le glyphe = son nom). */
+.nextra-callout > :first-child {
   width: 34px;
   height: 34px;
   border-radius: 10px;
@@ -312,18 +347,39 @@ html.dark .nextra-steps > p { color: var(--gb-text); }
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: #fff !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  font-size: 0 !important;
 }
-.nextra-callout[data-type='default'] > :first-child { background: var(--gb-basil); }
-.nextra-callout[data-type='info'] > :first-child { background: var(--gb-info); }
-.nextra-callout[data-type='warning'] > :first-child { background: var(--gb-warn); }
-.nextra-callout[data-type='error'] > :first-child,
-.nextra-callout[data-type='important'] > :first-child { background: var(--gb-err); }
-.nextra-callout[data-type='warning'] {
+.nextra-callout > :first-child::before {
+  font-family: 'Material Symbols Rounded';
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  -webkit-font-feature-settings: 'liga';
+  font-size: 20px;
+  color: #fff;
+}
+.nextra-callout[class*="bg-green-"] > :first-child { background: var(--gb-basil); }
+.nextra-callout[class*="bg-green-"] > :first-child::before { content: 'check_circle'; }
+.nextra-callout[class*="bg-blue-"] > :first-child { background: var(--gb-info); }
+.nextra-callout[class*="bg-blue-"] > :first-child::before { content: 'lightbulb'; }
+.nextra-callout[class*="bg-yellow-"] > :first-child { background: var(--gb-warn); }
+.nextra-callout[class*="bg-yellow-"] > :first-child::before { content: 'schedule'; }
+.nextra-callout[class*="bg-red-"] > :first-child,
+.nextra-callout[class*="bg-orange-"] > :first-child { background: var(--gb-err); }
+.nextra-callout[class*="bg-red-"] > :first-child::before,
+.nextra-callout[class*="bg-orange-"] > :first-child::before { content: 'close'; }
+.nextra-callout[class*="bg-yellow-"] {
   background: var(--gb-warn-bg) !important;
   border-color: var(--gb-warn-bd) !important;
 }
-.nextra-callout p { font-size: 14px; line-height: 1.6; }
+/* Titres (gras) colorés par variante — .call__m b de la maquette */
+.nextra-callout[class*="bg-green-"] b, .nextra-callout[class*="bg-green-"] strong { color: var(--gb-basil-600); }
+.nextra-callout[class*="bg-blue-"] b, .nextra-callout[class*="bg-blue-"] strong { color: #1c4fa6; }
+.nextra-callout[class*="bg-yellow-"] b, .nextra-callout[class*="bg-yellow-"] strong { color: var(--gb-warn); }
+.nextra-callout[class*="bg-red-"] b, .nextra-callout[class*="bg-red-"] strong { color: var(--gb-err); }
+.nextra-callout p { font-size: 14px !important; line-height: 1.6 !important; margin-top: 0 !important; }
 .nextra-callout ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
 .nextra-callout li { font-size: 14px; line-height: 1.55; }
 
@@ -578,91 +634,3 @@ html.dark .nextra-steps > p { color: var(--gb-text); }
 .avsp-card__m span { display: block; font-size: 12px; color: var(--gb-muted); margin-top: 2px; line-height: 1.4; }
 .avsp-card > .ms { color: var(--gb-muted-2); font-size: 18px; flex-shrink: 0; }
 .avsp-card:hover > .ms { color: var(--gb-zest-600); }
-
-/* ── Navbar épuré : recherche = champ simple + OVERLAY avec portée ───── */
-.navov { flex: 1; max-width: 420px; margin-inline: auto; position: relative; }
-.navov__field { position: relative; }
-.navov__field > .ms {
-  position: absolute;
-  inset-inline-start: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 19px;
-  color: var(--gb-muted-2);
-  pointer-events: none;
-  z-index: 1;
-}
-.navov__input {
-  width: 100%;
-  border: 1px solid var(--gb-border-2);
-  background: var(--gb-surface);
-  border-radius: var(--gb-r-pill);
-  padding: 10px 14px 10px 38px;
-  font-size: 13.5px;
-  font-family: inherit;
-  color: var(--gb-text);
-  cursor: text;
-  text-align: start;
-}
-[dir='rtl'] .navov__input { padding: 10px 38px 10px 14px; }
-.navov__input::placeholder { color: var(--gb-muted-2); }
-.navov__input:focus { outline: none; border-color: var(--gb-zest); box-shadow: 0 0 0 3px rgba(255, 106, 31, 0.13); }
-.navov__panel {
-  position: absolute;
-  top: calc(100% + 8px);
-  inset-inline: 0;
-  background: var(--gb-surface);
-  border: 1px solid var(--gb-border);
-  border-radius: var(--gb-r-lg);
-  box-shadow: var(--gb-shadow);
-  padding: 10px;
-  z-index: 70;
-}
-.navov__scope {
-  display: flex;
-  gap: 2px;
-  background: var(--gb-surface-2);
-  border: 1px solid var(--gb-border-2);
-  border-radius: var(--gb-r-pill);
-  padding: 2px;
-  margin-bottom: 10px;
-}
-.navov__tab {
-  flex: 1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  border: none;
-  background: none;
-  cursor: pointer;
-  border-radius: var(--gb-r-pill);
-  padding: 6px 11px;
-  font-family: inherit;
-  font-size: 12.5px;
-  font-weight: 700;
-  color: var(--gb-muted);
-  white-space: nowrap;
-  transition: background 0.12s, color 0.12s;
-}
-.navov__tab .ms { font-size: 16px; }
-.navov__tab[aria-selected='true'] {
-  background: var(--gb-surface);
-  color: var(--gb-zest-600);
-  box-shadow: 0 1px 2px rgba(15, 39, 66, 0.08);
-}
-/* the widgets inside the panel span it fully; their own dropdown stays inline */
-.navov__panel .nextra-search,
-.navov__panel .inpage { max-width: none; margin-inline: 0; }
-.navov__panel .inpage__results,
-.navov__panel .nextra-search-results {
-  position: static !important;
-  margin-top: 8px;
-  box-shadow: none !important;
-  border: none !important;
-  border-top: 1px solid var(--gb-border) !important;
-  border-radius: 0 !important;
-  max-height: min(56vh, 420px);
-  overflow-y: auto;
-}
-@media (max-width: 760px) { .navov { display: none; } }

@@ -10,7 +10,7 @@ import { NavbarSearch } from '@/components/NavbarSearch'
 // Per-locale UI labels for our own header/footer + the minimal Nextra chrome
 // we keep (the TOC title). editLink / feedback are intentionally NOT configured
 // — those Nextra TOC affordances are absent from the CD mockups. Search labels
-// live inside HomeHero (global search) and InPageSearch (per-article search).
+// live inside HomeHero and NavbarSearch (single global Pagefind search).
 const UI = {
   fr: {
     toc: { title: 'Sur cette page', backToTop: 'Retour en haut' },
