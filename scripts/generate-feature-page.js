@@ -52,6 +52,7 @@ const crypto = require('crypto')
 const https = require('https')
 
 const { AUDIENCES, EDITORIAL_PAGES, FEATURE_PAGES } = require('./feature-pages.config.js')
+const { parseStatusEnum, buildStateDiagram } = require('./gen-state-diagram.js')
 
 // Bumping this invalidates every sourceHash → forces regen on next run.
 //   v1 — original 8-block template, in-content CTA, footer marker.
@@ -60,7 +61,12 @@ const { AUDIENCES, EDITORIAL_PAGES, FEATURE_PAGES } = require('./feature-pages.c
 //   v3 — canonical Pro definition + forbidden phrasings locked.
 //   v4 — Notion-sourced strategic context fed into the prompt (the
 //        harmonized 3-sources flow): règlement + cerveau slices included.
-const TEMPLATE_VERSION = 4
+//   v5 — pedagogical template (débutant→expert layered): visual-first
+//        (FlowDiagram / JourneyStrip / RelatedActors / MiniMap / Mermaid
+//        state-diagram), "L'essentiel" beginner block, conditional
+//        Exemple/Bonnes pratiques/Erreurs/Astuces/FAQ/Dépannage blocks,
+//        knowledge-graph "Pour aller plus loin", 3-role partner distinction.
+const TEMPLATE_VERSION = 5
 
 // ── Paths & Notion ──────────────────────────────────────────────────────────
 
@@ -421,74 +427,131 @@ Remplace toute valeur interne par l'une des formulations suivantes :
 - « défini avec vous au moment de l'ouverture »
 - « les conditions financières sont fixées entre les acteurs concernés »
 Les SEULS chiffres financiers publiables sont la commission Grubano de **10 %** et l'abonnement Pro de **29 €/mois**. Tout autre pourcentage, tout autre forfait, toute autre commission = ne PAS écrire.
+
+TROIS RÔLES PARTENAIRES DISTINCTS (ne jamais les confondre) :
+- **Créateur** = chef / cuisinier qui publie des recettes et concepts de plats. Rémunéré sur l'usage de ses recettes. NE PAS le décrire comme un influenceur ni un affilié.
+- **Affilié** = partenaire qui recommande Grubano via un lien/code de parrainage et touche sur les commandes apportées. NE PAS le décrire comme un créateur de recettes.
+- **Influenceur** = un PALIER de l'affilié à audience vérifiée (pas un rôle séparé) : mêmes mécaniques d'affiliation, statut vérifié en plus. NE PAS l'ériger en 4ᵉ métier ni le confondre avec le créateur.
+Quand une page parle de l'un, ne lui prête pas les fonctions d'un autre. En cas de doute, reste générique et renvoie vers la fiche du bon public via « Voir aussi ».
+
+PUBLICS RÉCENTS (livreur, fournisseur, franchisé, affilié, influenceur) : décris leur espace UNIQUEMENT d'après les routes/modèles fournis. Beaucoup de briques argent (versements, gains) sont encore gatées OFF → formule au futur « bientôt » et n'annonce jamais un paiement effectif tant que la source ne le démontre pas.
 `
 
 const TEMPLATE_INSTRUCTIONS = `
-GABARIT v4 — style aligné sur la page de référence « Menu & Scan IA » : aéré,
-premium, calme, avec de l'air entre les blocs. Pas de surcharge de Callouts.
-Étapes propres. Liens contextuels tissés dans la prose.
+GABARIT v5 — PAGE D'APPRENTISSAGE, pas fiche technique. Objectif : ÉDUQUER.
+Une page = un parcours du simple au détaillé : le débutant trouve l'essentiel
+en haut, l'expert descend vers les détails. La page se lit EN COUCHES —
+personne n'est perdu, personne ne s'ennuie. Ton chaleureux, clair,
+pédagogique ; on parle au lecteur (« vous ») ; on explique le POURQUOI ;
+zéro jargon inutile. Aéré, premium, calme, de l'air entre les blocs.
 
-ORDRE des blocs :
+── BLOCS OBLIGATOIRES (dans cet ordre) ─────────────────────────────────────
 
-1. **Titre H1** \`# <title>\`. (Nextra pose automatiquement le fil d'ariane.)
+1. **Titre H1** \`# <title>\` + **accroche bénéfice** juste dessous : UNE phrase
+   au présent, orientée résultat, qui donne envie sans survendre.
 
-2. **Accroche bénéfice** : exactement UNE phrase, au présent, orientée
-   bénéfice utilisateur, juste sous le H1. Doit donner envie de lire la
-   suite, sans survendre.
+2. **Aperçu visuel** — un schéma qui explique en un coup d'œil, IMMÉDIATEMENT
+   après l'accroche (⚡ il REMPLACE un gros paragraphe). Choisis le visuel le
+   plus adapté au sujet, parmi (détails props plus bas) :
+   • \`<FlowDiagram steps={FLOW_STEPS} />\` ou \`<JourneyStrip …/>\` → une
+     SÉQUENCE d'étapes. Si \`FLOW_STEPS\` est fourni, recopie-le EXACTEMENT.
+   • un bloc \`\`\`mermaid → un CYCLE DE VIE. Si \`STATE_DIAGRAM\` est fourni
+     ci-dessous (non vide), colle-le TEL QUEL dans un bloc mermaid. N'invente
+     jamais d'états ni de transitions.
+   • \`<RelatedActors …/>\` ou \`<MiniMap …/>\` → une RELATION entre acteurs
+     (client, restaurant, livreur, créateur, affilié, influenceur,
+     fournisseur, franchisé). N'emploie QUE des rôles réels de la plateforme.
+   Exactement UN visuel principal ici. Ne fabrique aucune donnée : appuie-toi
+   sur \`FLOW_STEPS\` / \`STATE_DIAGRAM\` / les rôles réels / le code fourni.
 
-3. **Schéma de flux** : appelle \`<FlowDiagram steps={FLOW_STEPS} />\`
-   IMMÉDIATEMENT APRÈS l'accroche. Le composant est déjà disponible
-   globalement (pas d'import à émettre). Recopie EXACTEMENT le tableau
-   \`FLOW_STEPS\` fourni ci-dessous — n'invente pas d'étapes.
+3. **L'essentiel** (H2 \`## L'essentiel\`) — niveau DÉBUTANT : 2 à 3 phrases
+   simples : à quoi ça sert, pour qui, ce que ça change concrètement. Pas de
+   détail technique ici.
 
-4. **Ce que ça fait** (H2 \`## Ce que ça fait\`) : 1 ou 2 paragraphes qui
-   expliquent la fonctionnalité EN PROFONDEUR — le POURQUOI et le contexte
-   métier (à qui ça sert, quel problème ça résout, quand l'utiliser), pas
-   seulement le QUOI. Vivant, pas une fiche technique sèche. Tisse 1–2
-   liens hypertextes contextuels en utilisant les entrées \`INLINE_LINKS\`
-   si elles apparaissent naturellement dans la prose.
+4. **Comment ça marche** (H2 \`## Comment ça marche\`) — le PRINCIPE + le
+   contexte métier : le POURQUOI (quel problème c'est résolu, quand l'utiliser),
+   pas seulement le quoi. 1–2 paragraphes vivants. Tisse 1–2 liens
+   \`INLINE_LINKS\` s'ils tombent naturellement.
 
-5. **Comment l'utiliser** (H2 \`## Comment l'utiliser\`) : étapes
-   numérotées avec \`<Steps>\` Nextra (préféré, plus aéré) OU un tableau
-   Markdown propre (Action / Où / Effet) si vraiment plus clair. Repose
-   EXCLUSIVEMENT sur les routes/champs/statuts/unités du code fourni.
-   Chaque étape est courte (1–3 phrases) et concrète. Tisse 1 lien
-   contextuel \`INLINE_LINKS\` ici aussi si pertinent.
+5. **Étape par étape** (H2 \`## Étape par étape\`) — le guide pratique, orienté
+   action : \`<Steps>\` Nextra (préféré) OU un tableau Markdown (Action / Où /
+   Effet). Repose EXCLUSIVEMENT sur les routes/champs/statuts/unités du code.
+   Chaque étape courte (1–3 phrases), concrète.
 
-6. **Bon à savoir** (H2 \`## Bon à savoir\`) : UN seul \`<Callout>\` (type
-   "info" ou "warning") avec l'information non évidente la plus utile
-   — limite, comportement par défaut, piège classique. OMETTRE
-   complètement la section si rien d'utile à dire ; ne meuble pas.
+6. **Pour aller plus loin** (H2 \`## Pour aller plus loin\`) — le knowledge
+   graph : 2 à 4 liens internes pris UNIQUEMENT dans \`RELATED_LINKS\`, chacun
+   avec une phrase descriptive. Quand c'est pertinent, catégorise en une ligne :
+   « À lire avant », « Étape suivante », « Voir aussi » (le pendant du sujet
+   chez un AUTRE public). OMETTRE le bloc si \`RELATED_LINKS\` est vide.
 
-7. **Pour aller plus loin** (H2 \`## Pour aller plus loin\`) : 2 à 4
-   liens internes pointant UNIQUEMENT vers les URLs fournies dans
-   \`RELATED_LINKS\`. Une phrase descriptive par lien, pas juste l'URL nue.
-   OMETTRE si \`RELATED_LINKS\` est vide.
+── BLOCS CONDITIONNELS (n'inclure QUE si tu as de la vraie matière ; sinon
+   OMETTRE — ne meuble jamais) ─────────────────────────────────────────────
 
-NE PAS ÉMETTRE :
-- AUCUN bloc « Passer à l'action » / « Faites-le dans l'app » dans le
-  corps : un encart CTA premium identique est ajouté automatiquement
-  au pied de chaque page de guide par le thème. NE LE DUPLIQUE PAS.
-- AUCUN pied « Page générée depuis le code » ni horodatage : le thème
-  Nextra rend déjà « Modifier cette page » et « last updated ».
-- Aucun bouton CTA dans le contenu : la carte d'action est rendue par
-  le wrapper.
+- **Exemple concret** (H2) : un mini-cas réaliste Grubano (générique, sans
+  nom de marque). Idéal pour le niveau intermédiaire.
+- **Bonnes pratiques** (H2) : 2–4 recommandations concrètes (intermédiaire).
+- **Erreurs fréquentes** (H2) : pièges classiques à éviter (avancé). Un
+  \`<Callout type="warning">\` va bien ici.
+- **Astuces & conseils** (H2) : gains de temps. Si une fonction IA existe
+  dans le code du sujet, ajoute 1 conseil pour bien s'en servir.
+- **Questions fréquentes** (H2) : 2 à 4 VRAIES questions via
+  \`<Faq items={[…]} />\`. Réponses courtes, uniquement d'après les sources.
+- **Dépannage** (H2) : seulement si la fonction a des ratés courants
+  démontrables.
 
-LIENS HYPERTEXTE EN LIGNE :
-- Quand un terme de \`INLINE_LINKS\` apparaît dans le texte des blocs 4–6,
-  enveloppe-le d'un lien Markdown vers la cible (max 1–2 par bloc, jamais
-  deux fois la même cible dans le même paragraphe — pas de spam).
-- N'ajoute pas de liens vers des URLs que tu inventes. Strictement
-  \`INLINE_LINKS\` + \`RELATED_LINKS\`.
-- Les liens sont des liens prose ordinaires : pas de **gras** autour,
-  pas d'emoji ➡️ devant, pas de flèche → décorative.
+── COMPOSANTS DISPONIBLES (globaux — AUCUN import à émettre pour eux) ────────
+Émets-les avec des props VALIDES ; ne mets QUE des données réelles.
 
-FORMAT DE SORTIE :
-- MDX seul. Pas de frontmatter (je l'ajoute). Pas de \`\`\`mdx fence.
-  Pas d'explication.
-- Imports MDX en tête : \`import { Steps, Callout } from 'nextra/components'\`.
-  \`<FlowDiagram>\` est global, pas besoin de l'importer.
-- N'utilise pas d'autres composants React.
+  <FlowDiagram steps={FLOW_STEPS} />
+  <JourneyStrip title="…" steps={[{ icon:"add", title:"…", desc:"…" }]} />
+      icon = nom d'icône Material Symbols (ex. add, menu_book, payments, check).
+  <RelatedActors title="…" nodes={[{ icon:"person", label:"Client",
+      desc:"…", variant:"zest"|"ink", to:"étiquette de la flèche" }]}
+      returnNote={<span>…</span>} />
+  <MiniMap title="…" center={{ icon:"hub", label:"Grubano", desc:"…" }}
+      blocks={[{ icon:"person", title:"Client", role:"commande", desc:"…" }]} />
+  <Comparison
+      options={[{ icon:"…", name:"Standard", desc:"…" },
+                { icon:"…", name:"Pro", desc:"…", featured:true, tag:"Pro" }]}
+      rows={[{ label:"…", icon:"…", values:[true,false] }]} />
+      (valeurs = true/false → coche/tiret, ou une courte chaîne. À n'utiliser
+      QUE pour des comparaisons publiables : Standard vs Pro (10 % + 29 €/mois),
+      ou distinctions de rôles issues du catalogue. Jamais de tarif inventé.)
+  <LearningPath title="…" subtitle="…" meta={[{icon:"schedule",text:"10 min"}]}
+      steps={[{ title:"…", note:"…", status:"done"|"current"|"todo",
+                href:"UNE URL de RELATED_LINKS" }]} />
+      (parcours guidé — href UNIQUEMENT depuis RELATED_LINKS, jamais inventé.)
+  <Faq items={[{ icon:"help", q:"…", a:"…" }]} />
+
+Pour \`<Steps>\` et \`<Callout>\`, garde l'import \`nextra/components\`.
+
+── CALLOUTS (4 variantes) ───────────────────────────────────────────────────
+\`<Callout type="info">\` astuce / info · \`type="warning"\` attention / « bientôt »
+· \`type="error">\` risque réel · \`type="default">\` bonne pratique. Sans excès :
+1 à 3 sur toute la page, jamais deux collés.
+
+── NE PAS ÉMETTRE ───────────────────────────────────────────────────────────
+- Aucun bloc « Passer à l'action » / « Faites-le dans l'app » ni bouton CTA :
+  un encart CTA premium est ajouté automatiquement au pied par le thème.
+- Aucun pied « Page générée depuis le code » ni horodatage : le thème rend
+  déjà « Modifier cette page » et « last updated ».
+
+── LIENS HYPERTEXTE EN LIGNE ────────────────────────────────────────────────
+- Un terme de \`INLINE_LINKS\` qui apparaît dans la prose → enveloppe-le d'un
+  lien Markdown vers sa cible (max 1–2 par bloc, pas de spam, jamais deux fois
+  la même cible dans un paragraphe).
+- Strictement \`INLINE_LINKS\` + \`RELATED_LINKS\` : n'invente aucune URL.
+- Liens prose ordinaires : pas de **gras**, pas d'emoji, pas de flèche
+  décorative.
+
+── FORMAT DE SORTIE ─────────────────────────────────────────────────────────
+- MDX seul. Pas de frontmatter (je l'ajoute). Pas de \`\`\`mdx d'enrobage. Pas
+  d'explication avant/après.
+- SEUL import autorisé, si tu utilises <Steps>/<Callout> :
+  \`import { Steps, Callout } from 'nextra/components'\`. Tous les composants
+  visuels ci-dessus (FlowDiagram, JourneyStrip, RelatedActors, MiniMap,
+  Comparison, LearningPath, Faq) sont globaux — NE les importe PAS.
+- N'utilise aucun autre composant React que ceux listés.
 `
 
 function topicKeyFor(cfg) {
@@ -496,10 +559,29 @@ function topicKeyFor(cfg) {
   return '?'
 }
 
+// Build the Mermaid state-diagram for a topic from its OWN declared models
+// (so it is always relevant): pick a lifecycle-looking status enum (≥3 states),
+// preferring an explicit cfg.stateModel, then 'Order', then the richest one.
+// Returns { model, mermaid } or null when the topic has no such lifecycle.
+function computeStateDiagram(cfg, facts) {
+  const candidates = []
+  for (const [model, src] of Object.entries(facts.models || {})) {
+    const states = parseStatusEnum(src, model, 'status')
+    if (states.length >= 3) candidates.push({ model, states })
+  }
+  if (!candidates.length) return null
+  const pick =
+    candidates.find((c) => c.model === cfg.stateModel) ||
+    candidates.find((c) => c.model === 'Order') ||
+    candidates.sort((a, b) => b.states.length - a.states.length)[0]
+  return { model: pick.model, mermaid: buildStateDiagram(pick.states) }
+}
+
 function buildPrompt(cfg, facts, slices) {
   const RELATED_LINKS = relatedDocLinks(cfg.related, cfg.locale)
   const FLOW_STEPS = cfg.flow || []
   const INLINE_LINKS = cfg.inlineLinks || {}
+  const stateDiagram = computeStateDiagram(cfg, facts)
 
   const factsBlock = [
     '== SOURCES CODE (routes) ==',
@@ -529,6 +611,9 @@ function buildPrompt(cfg, facts, slices) {
     `FLOW_STEPS     = ${JSON.stringify(FLOW_STEPS)}`,
     `INLINE_LINKS   = ${JSON.stringify(INLINE_LINKS)}`,
     `RELATED_LINKS  = ${JSON.stringify(RELATED_LINKS)}`,
+    stateDiagram
+      ? `STATE_DIAGRAM  = (cycle de vie « ${stateDiagram.model} » — colle-le TEL QUEL dans un bloc \`\`\`mermaid si tu choisis le visuel cycle de vie)\n\`\`\`mermaid\n${stateDiagram.mermaid}\n\`\`\``
+      : `STATE_DIAGRAM  = (aucun cycle de vie pour ce sujet — utilise un autre visuel)`,
     `\n${contextBlock}`,
     `\n${factsBlock}`,
   ].join('\n')
@@ -599,8 +684,13 @@ function sanitizeMdxBody(text, topicKey) {
     /\n+---\s*\n+```[a-z]*\s*\nimport[^\n`]+\n```\s*$/i,
     (m) => { changed = true; return '' },
   ).trim()
-  // Standalone trailing closing ``` (no opening).
-  body = body.replace(/\n+```\s*$/g, (m) => { changed = true; return '' }).trim()
+  // Standalone trailing closing ``` (no opening) — but ONLY when the fences
+  // are unbalanced. A page whose last block is a Mermaid diagram legitimately
+  // ends on ``` and must not be corrupted.
+  const fenceCount = (body.match(/```/g) || []).length
+  if (fenceCount % 2 === 1) {
+    body = body.replace(/\n+```\s*$/, (m) => { changed = true; return '' }).trim()
+  }
   // Trailing lone `---` (orphan horizontal rule).
   body = body.replace(/\n+---\s*$/g, (m) => { changed = true; return '' }).trim()
 
