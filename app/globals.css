@@ -148,13 +148,14 @@ html.dark .nextra-navbar nav {
 .grubano-logo__badge {
   color: var(--gb-muted);
   font-weight: 600;
-  font-size: 0.78rem;
-  padding-inline-start: 9px;
-  margin-inline-start: 2px;
+  font-size: 0.72rem;
+  padding-inline-start: 7px;
   border-inline-start: 1px solid var(--gb-border-2);
   white-space: nowrap;
 }
-@media (max-width: 760px) { .grubano-logo__badge { display: none; } }
+/* Drop the "Centre d'aide" tag earlier (below ~900px) to keep the lockup
+   compact next to the sidebar column; hide entirely on mobile. */
+@media (max-width: 900px) { .grubano-logo__badge { display: none; } }
 
 /* Right-side "Accueil" link in the header (mockup: .hd__link) */
 .hd__link {
@@ -597,59 +598,51 @@ html.dark .nextra-content code:not(pre code) { color: var(--gb-text); }
   margin-top: 14px !important;
 }
 
+/* Hero GLOBAL search — wraps an embedded Nextra <Search>. The big pill look
+   comes from the inner Pagefind input; the leading magnifier is overlaid. */
 .gb-hero__search {
-  margin: 30px auto 0;
   position: relative;
+  margin: 30px auto 0;
   max-width: 600px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
   width: 100%;
-  border: 1px solid var(--gb-border-2);
-  background: var(--gb-surface);
-  border-radius: var(--gb-r-pill);
-  padding: 19px 22px 19px 56px;
-  color: var(--gb-muted-2);
-  font-family: inherit;
-  font-size: 16px;
-  cursor: text;
-  text-align: start;
-  box-shadow: var(--gb-shadow);
-  transition: border-color .15s, box-shadow .15s;
-}
-.gb-hero__search:hover,
-.gb-hero__search:focus-visible {
-  outline: none;
-  border-color: var(--gb-zest);
-  box-shadow: 0 0 0 4px rgba(255, 106, 31, .14), var(--gb-shadow);
 }
 .gb-hero__search-ic {
   position: absolute;
   inset-inline-start: 20px;
-  top: 50%;
+  top: 28px;
   transform: translateY(-50%);
   font-size: 24px;
   color: var(--gb-muted-2);
+  z-index: 2;
+  pointer-events: none;
 }
-.gb-hero__search-ph {
-  flex: 1;
-  min-width: 0;
-  color: var(--gb-muted-2);
-}
-.gb-hero__kbd {
-  display: flex;
-  gap: 4px;
-  flex-shrink: 0;
-}
-.gb-hero__kbd span {
-  font-family: var(--gb-font-mono), ui-monospace, monospace;
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--gb-muted-2);
-  background: var(--gb-surface-2);
+.gb-hero__pagefind { width: 100%; display: block; }
+/* Higher specificity to beat the navbar `.nextra-search input` rule. */
+.gb-hero__search .gb-hero__pagefind input {
+  width: 100%;
   border: 1px solid var(--gb-border-2);
-  border-radius: 6px;
-  padding: 3px 7px;
+  background: var(--gb-surface);
+  border-radius: var(--gb-r-pill);
+  padding: 18px 22px 18px 56px;
+  font-family: var(--gb-font-ui), system-ui, sans-serif;
+  font-size: 16px;
+  color: var(--gb-text);
+  box-shadow: var(--gb-shadow);
+  transition: border-color .15s, box-shadow .15s;
+}
+[dir="rtl"] .gb-hero__search .gb-hero__pagefind input {
+  padding: 18px 56px 18px 22px;
+}
+.gb-hero__search .gb-hero__pagefind input::placeholder { color: var(--gb-muted-2); }
+.gb-hero__search .gb-hero__pagefind input:focus {
+  outline: none;
+  border-color: var(--gb-zest);
+  box-shadow: 0 0 0 4px rgba(255, 106, 31, .14), var(--gb-shadow);
+}
+/* Nextra's ⌘K hint sits at the input's trailing edge */
+.gb-hero__pagefind kbd,
+.gb-hero__pagefind .nextra-kbd {
+  inset-inline-end: 18px;
 }
 
 .gb-hero__pop {
@@ -1161,4 +1154,109 @@ html.dark .nextra-content code:not(pre code) { color: var(--gb-text); }
   .nf__pop-list { grid-template-columns: 1fr; }
   .nf__big { font-size: 92px; }
   .nf__brand span { display: none; }
+}
+
+/* ── 20. In-page search (navbar search on article pages) ──────────────────
+   Custom per-article search — orange overlay reused from the CD look. */
+.inpage {
+  flex: 1;
+  max-width: 420px;
+  margin-inline: auto;
+  position: relative;
+}
+.inpage__ic {
+  position: absolute;
+  inset-inline-start: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 19px;
+  color: var(--gb-muted-2);
+  pointer-events: none;
+}
+.inpage__input {
+  width: 100%;
+  border: 1px solid var(--gb-border-2);
+  background: var(--gb-surface);
+  border-radius: var(--gb-r-pill);
+  padding: 10px 14px 10px 38px;
+  font-family: var(--gb-font-ui), system-ui, sans-serif;
+  font-size: 13.5px;
+  color: var(--gb-text);
+}
+[dir="rtl"] .inpage__input { padding: 10px 38px 10px 14px; }
+.inpage__input::placeholder { color: var(--gb-muted-2); }
+.inpage__input:focus {
+  outline: none;
+  border-color: var(--gb-zest);
+  box-shadow: 0 0 0 3px rgba(255, 106, 31, .13);
+}
+.inpage__results {
+  position: absolute;
+  top: calc(100% + 8px);
+  inset-inline: 0;
+  background: var(--gb-surface);
+  border: 1px solid var(--gb-border);
+  border-radius: var(--gb-r-lg);
+  box-shadow: var(--gb-shadow);
+  padding: 6px;
+  max-height: min(70vh, 460px);
+  overflow-y: auto;
+  z-index: 70;
+}
+.inpage__empty {
+  padding: 18px 14px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--gb-muted);
+}
+.inpage__item {
+  display: block;
+  width: 100%;
+  text-align: start;
+  background: none;
+  border: none;
+  border-radius: var(--gb-r-md);
+  padding: 11px 13px;
+  cursor: pointer;
+  font-family: var(--gb-font-ui), system-ui, sans-serif;
+  transition: background .12s;
+}
+.inpage__item:hover,
+.inpage__item:focus-visible {
+  background: var(--gb-zest-bg);
+  outline: none;
+}
+.inpage__title {
+  display: block;
+  font-family: var(--gb-font-display), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--gb-text);
+}
+.inpage__item:hover .inpage__title { color: var(--gb-zest-600); }
+.inpage__snip {
+  display: block;
+  margin-top: 3px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--gb-muted);
+}
+.inpage__snip mark {
+  background: var(--gb-zest-bg);
+  color: var(--gb-zest-600);
+  font-weight: 700;
+  border-radius: 3px;
+  padding: 0 2px;
+}
+/* Hide the article search on mobile (burger territory) — matches article.html */
+@media (max-width: 760px) { .inpage { display: none; } }
+
+/* Flash the target heading when an in-page result is clicked */
+@keyframes inpageFlash {
+  0% { background: var(--gb-zest-bg); }
+  100% { background: transparent; }
+}
+.inpage-flash {
+  animation: inpageFlash 1.3s ease;
+  border-radius: 6px;
 }

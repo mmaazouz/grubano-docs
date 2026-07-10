@@ -1,25 +1,28 @@
 'use client'
 
-import { useCallback, useEffect, useState } from 'react'
+import { Search } from 'nextra/components'
 
 /**
- * Home hero — badge + title + subtitle + big search + popular chips.
- * Matches the design mockup (accueil.html) exactly.
+ * Home hero — badge + title + subtitle + GLOBAL search + popular chips.
  *
- * The search input is a click-to-focus proxy: it looks like a real input but
- * on activation focuses the navbar's Pagefind search input, so the site keeps
- * a single search source of truth. `/` shortcut fallback for browsers where
- * the navbar input hasn't mounted yet.
+ * The big search field is a real, autonomous instance of Nextra's Pagefind
+ * <Search> (whole-site index). It renders its OWN results overlay right below
+ * the field and does NOT move focus anywhere else — it is the site's global
+ * search entry point. (Nextra's <Search> is self-contained: it only needs
+ * window.pagefind, no navbar/theme context, so embedding it here is clean.)
  */
 
 const COPY = {
   fr: {
     badge: "Centre d'aide Grubano",
     icon: 'support_agent',
-    title: 'Comment pouvons-nous vous aider ?',
+    title: 'Comment pouvons-nous vous aider ?',
     subtitle:
       "Trouvez des réponses, des guides et des ressources pour tous les espaces Grubano.",
     placeholder: 'Rechercher un article, un guide, une question…',
+    empty: 'Aucun résultat',
+    loading: 'Chargement…',
+    error: 'Échec du chargement de l’index de recherche.',
     popularLabel: 'Populaire :',
     popular: [
       { label: 'suivre ma commande', href: '/fr/guides/consumer/' },
@@ -31,9 +34,11 @@ const COPY = {
     badge: 'Grubano Help Center',
     icon: 'support_agent',
     title: 'How can we help you?',
-    subtitle:
-      'Find answers, guides and resources for every Grubano space.',
+    subtitle: 'Find answers, guides and resources for every Grubano space.',
     placeholder: 'Search articles, guides, questions…',
+    empty: 'No results',
+    loading: 'Loading…',
+    error: 'Failed to load the search index.',
     popularLabel: 'Popular:',
     popular: [
       { label: 'track my order', href: '/en/guides/consumer/' },
@@ -47,25 +52,6 @@ type Locale = keyof typeof COPY
 
 export function HomeHero({ locale = 'fr' }: { locale?: string }) {
   const t = (COPY as Record<string, (typeof COPY)[Locale]>)[locale] ?? COPY.fr
-  const [shortcut, setShortcut] = useState('Ctrl+K')
-
-  useEffect(() => {
-    if (typeof navigator !== 'undefined' && navigator.userAgent.includes('Mac')) {
-      setShortcut('⌘K')
-    }
-  }, [])
-
-  const trigger = useCallback(() => {
-    const input = document.querySelector<HTMLInputElement>('input[type="search"]')
-    if (input) {
-      input.focus()
-      input.scrollIntoView({ behavior: 'smooth', block: 'center' })
-      return
-    }
-    window.dispatchEvent(new KeyboardEvent('keydown', { key: '/' }))
-  }, [])
-
-  const kbdChars = shortcut === '⌘K' ? ['⌘', 'K'] : ['Ctrl', 'K']
 
   return (
     <section className="gb-hero">
@@ -77,20 +63,16 @@ export function HomeHero({ locale = 'fr' }: { locale?: string }) {
         <h1>{t.title}</h1>
         <p className="gb-hero__subtitle">{t.subtitle}</p>
 
-        <button
-          type="button"
-          onClick={trigger}
-          className="gb-hero__search"
-          aria-label={t.placeholder}
-        >
-          <span className="ms gb-hero__search-ic">search</span>
-          <span className="gb-hero__search-ph">{t.placeholder}</span>
-          <span className="gb-hero__kbd" aria-hidden="true">
-            {kbdChars.map((c) => (
-              <span key={c}>{c}</span>
-            ))}
-          </span>
-        </button>
+        <div className="gb-hero__search">
+          <span className="ms gb-hero__search-ic" aria-hidden="true">search</span>
+          <Search
+            className="gb-hero__pagefind"
+            placeholder={t.placeholder}
+            emptyResult={t.empty}
+            loading={t.loading}
+            errorText={t.error}
+          />
+        </div>
 
         <div className="gb-hero__pop">
           {t.popularLabel}{' '}
