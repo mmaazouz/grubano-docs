@@ -1,0 +1,81 @@
+---
+title: "My Account"
+description: "Manage your customer account: contact details, addresses, favorites, reviews, and application language."
+generated: true
+sourceHash: ac1d8fc21a827220
+generator: scripts/generate-feature-page.js
+templateVersion: 5
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# My Account
+
+Manage your contact details, favorite addresses, preferences, and review history all in one place.
+
+<FlowDiagram steps={["Create an account","Complete your profile","Add favorites","Manage security"]} />
+
+## The Essentials
+
+Your Grubano account centralizes all your personal information: name, phone number, notification preferences, favorite delivery addresses, and review history. You control what you share and how you are contacted, with permanent access to your [loyalty rewards](/en/guides/consumer-loyalty/).
+
+## How It Works
+
+Each customer account is based on a verified email address and a secure password. Once created, you can enrich your profile with a phone number to facilitate communication with restaurants and delivery drivers, save multiple delivery addresses to order more quickly, and adjust your notification preferences to receive only the alerts that interest you (orders, reviews, offers, new restaurants).
+
+Your account also gives you access to your order history, your favorite restaurants, and your loyalty points balance. All your data is protected and can be modified at any time.
+
+## Step by Step
+
+<Steps>
+
+### Create Your Account
+
+Go to the registration page (`/eat/auth`). Enter your email address, choose a strong password (minimum 10 characters with uppercase, lowercase, and numbers), and confirm. You will receive a welcome email to confirm the opening of your account.
+
+### Complete Your Profile
+
+In **My Account** (`/eat/account`), add your full name (2 to 80 characters) and your phone number (optional, free format up to 30 characters). This information facilitates exchanges with restaurants and delivery drivers if needed.
+
+### Manage Your Notification Preferences
+
+Access **Notifications** (`/eat/account/notifications`). Enable or disable channels (push notifications, email, SMS) and choose the types of alerts you wish to receive: order tracking, delivery driver messages, review responses, promotional offers, new restaurants, loyalty rewards. You can also activate a silent mode to temporarily disable everything.
+
+### Change Your Email Address
+
+From **Security** (`/eat/account/security`), request an email change. You must first prove your identity by entering a code received at your current address, then confirm the new address via a unique link sent by email. Your old email remains active until final validation.
+
+<Callout type="info">
+Email changes are only available for accounts created directly with a password. Accounts linked to Google or Apple cannot change their email address from the application.
+</Callout>
+
+### Reset Your Password
+
+If you have forgotten your password, click **Forgot Password** on the login page. Enter your email address: you will receive a secure link valid for 24 hours to set a new password.
+
+</Steps>
+
+## Best Practices
+
+- **Complete your profile** upon registration to speed up your first orders and receive the right notifications.
+- **Verify your email** after any address change to avoid losing access to your account.
+- **Enable only useful notifications** to avoid being overwhelmed with alerts: order tracking and delivery driver messages remain essential, promotional offers can be disabled if they do not interest you.
+- **Use a unique password** different from your other online accounts to protect your payment data and loyalty history.
+
+## Common Errors
+
+<Callout type="warning">
+If you attempt to change your email to an address already used by another Grubano account, you receive a generic message indicating that a confirmation email has been sent, but no change is recorded. The address in question receives a security notification. This anti-enumeration measure prevents anyone from verifying whether an email address already has a Grubano account.
+</Callout>
+
+- **Invalid verification code**: one-time codes to prove your identity expire after a few minutes. If yours no longer works, request a new one.
+- **Password too weak**: registration rejects passwords with fewer than 10 characters or without a mix of uppercase, lowercase, and numbers. Choose a robust combination from the start.
+- **Email change blocked**: if your account was created via Google or Apple, or if you manage a restaurant or franchise, email address changes are not available to preserve the integrity of business profiles.
+
+## Going Further
+
+**Understanding the Context**  
+[Customer Guide](/en/guides/consumer/) — overview of the Grubano user experience, from discovering restaurants to order tracking.
+
+**Next Step**  
+[Loyalty Program](/en/guides/consumer-loyalty/) — discover how to earn points on every order and unlock exclusive rewards.

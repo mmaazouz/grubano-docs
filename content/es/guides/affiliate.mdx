@@ -1,0 +1,106 @@
+---
+title: "El programa de afiliación"
+description: "Únase al programa de afiliación: obtenga enlaces y códigos, gane una comisión sobre las ventas que genere, consulte sus ganancias y solicite un retiro."
+generated: true
+sourceHash: 7fe75346a2fa613e
+generator: scripts/generate-feature-page.js
+templateVersion: 5
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# El programa de afiliación
+
+Recomiende Grubano, gane por cada pedido generado — consulte su rendimiento, cobre su comisión.
+
+<FlowDiagram steps={["Postularse","Obtener enlaces y códigos","Generar ventas","Retirar las ganancias"]} />
+
+## Lo esencial
+
+El programa de afiliación le permite recomendar Grubano a través de un enlace o código personal y ganar una comisión sobre los pedidos que genere. Puede consultar sus ganancias en tiempo real y solicitar un retiro en cuanto alcance el umbral.
+
+## Cómo funciona
+
+Grubano remunera a los socios que recomiendan la plataforma: usted comparte su enlace de afiliación en sus redes, su sitio o con su comunidad, y cada nuevo pedido realizado por un cliente que haya llegado a través de su enlace le genera una comisión. El programa está abierto a todos — sin requisitos de tamaño de audiencia ni suscripción.
+
+Obtiene instantáneamente un código corto y un enlace personalizado al inscribirse. La comisión se acredita automáticamente en la entrega de cada pedido y queda disponible después de un período de seguridad. Puede consultar clics, conversiones y ganancias en su panel de control, y solicitar un retiro cuando su saldo alcance el umbral — el pago efectivo llegará próximamente.
+
+Los [influencers verificados](/es/guides/influencer/) — un nivel con audiencia certificada — disfrutan de ventajas adicionales (comisión aumentada, estudio de contenido IA), pero mantienen la misma mecánica de afiliación.
+
+## Paso a paso
+
+<Steps>
+
+### Postularse al programa
+
+Diríjase a la página pública del programa de afiliación. Complete el formulario (nombre, correo electrónico, consentimiento): recibirá un enlace de acceso sin contraseña por correo electrónico.
+
+Si ya posee una cuenta Grubano, inicie sesión directamente — puede unirse al programa con un clic desde su panel de control.
+
+### Obtener sus enlaces y códigos
+
+Desde su primer acceso, el sistema genera automáticamente un **código corto** (por ejemplo, `ALEX9F2K`) y un **enlace personalizado** (`/ref/alex9f2k`). Ambos apuntan a la página de descubrimiento de restaurantes Grubano y atribuyen los pedidos a su cuenta.
+
+Puede consultarlos en cualquier momento en su panel de afiliado. Cópielos, compártalos como desee — redes sociales, sitio personal, boletín, comunidad.
+
+### Compartir y generar ventas
+
+Cada vez que un visitante hace clic en su enlace o utiliza su código en su primer pedido, el sistema registra el vínculo. Si ese cliente realiza un pedido en los próximos 90 días, la comisión se le acredita automáticamente en la entrega.
+
+Puede consultar en tiempo real el número de clics, conversiones y el monto de sus ganancias (en espera o disponibles) en su panel de control. La tasa de conversión se muestra para que pueda ajustar su estrategia.
+
+### Retirar sus ganancias
+
+Tan pronto como su saldo disponible alcance **25 €**, el botón «Retirar» se activa en su panel de control. En el primer retiro, el sistema le pedirá verificar su identidad (procedimiento regulatorio) y completar una declaración fiscal simplificada — no se realizará ningún pago antes de este paso.
+
+Una vez validado, su solicitud queda registrada; el desencadenamiento efectivo de las transferencias llegará próximamente, y su pago se enviará en unos días hábiles. Puede consultar el historial de sus retiros en cualquier momento; cada solicitud es idempotente (hacer doble clic no desencadena dos pagos).
+
+</Steps>
+
+<Callout type="info">
+**Solo nuevos clientes** — la comisión se aplica sobre los pedidos realizados por clientes que nunca habían pedido en Grubano antes de hacer clic en su enlace. Los pedidos de clientes existentes no generan comisión.
+</Callout>
+
+## Ejemplo concreto
+
+Usted comparte su enlace `/ref/alex9f2k` en la historia de Instagram de su cuenta local de comida. Quince personas hacen clic, tres realizan pedidos durante la semana. Cada uno de esos tres pedidos le genera una comisión (calculada sobre las comisiones Grubano del pedido), acreditada automáticamente en la entrega. Verá «15 clics · 3 conversiones · 20 %» en su panel de control, y el monto correspondiente se sumará a su saldo en espera. Treinta días después, ese saldo quedará disponible; si acumula 25 € o más, podrá solicitar el retiro con un solo clic.
+
+## Buenas prácticas
+
+- **Apunte a audiencias locales** — Grubano es un mercado de restaurantes locales: sus recomendaciones son mucho más efectivas si su comunidad vive en una zona cubierta.
+- **Varíe los formatos** — pruebe historia, publicación fija, enlace en biografía, boletín: el panel de control le muestra qué canal convierte mejor (clics vs pedidos).
+- **Destaque un restaurante específico** — puede construir un enlace de afiliado que apunte directamente a la página de un restaurante (`/ref/alex9f2k?restaurant=<id>`) para recomendar un lugar que le guste: la comisión es la misma, la conversión suele aumentar.
+- **Siga su racha** — el panel de control muestra una «racha semanal» (número de semanas consecutivas con al menos un pedido generado) y emblemas de progreso: estas mecánicas de gamificación le ayudan a mantener un ritmo regular.
+
+## Preguntas frecuentes
+
+<Faq items={[
+  {
+    icon: "help",
+    q: "¿Puedo usar mi propio enlace para realizar un pedido?",
+    a: "No. El sistema detecta la autorreferenciación (mismo operador = afiliado y cliente) y no acredita ninguna comisión en ese caso. La comisión solo se aplica a los pedidos de clientes distintos que hayan llegado a través de su enlace."
+  },
+  {
+    icon: "help",
+    q: "¿Cuánto tiempo permanece un cliente vinculado a mi código?",
+    a: "90 días. Si un visitante hace clic en su enlace hoy y realiza un pedido en los próximos 90 días, la comisión se le acredita. Pasado ese plazo, el enlace caduca y el pedido ya no se atribuye."
+  },
+  {
+    icon: "help",
+    q: "¿Qué sucede si un cliente hace clic en dos enlaces diferentes?",
+    a: "El sistema aplica la regla del «primer contacto»: se acredita el primer enlace en el que se hizo clic (dentro de la ventana de 90 días), incluso si el cliente hace clic después en otro enlace de afiliación."
+  },
+  {
+    icon: "help",
+    q: "¿Cuál es la diferencia con el estatus de influencer?",
+    a: "El influencer es un nivel con audiencia verificada del programa de afiliación — misma mecánica (enlace, código, comisión, retiro), pero con ventajas adicionales reservadas para las cuentas cuya audiencia ha sido certificada por el equipo Grubano."
+  }
+]} />
+
+## Para ir más allá
+
+**Estatus de influencer**  
+Si posee una audiencia significativa y verificable, el [estatus de influencer](/es/guides/influencer/) le otorga acceso a una comisión aumentada y a un estudio de contenido IA para generar textos listos para publicar — manteniendo la misma mecánica de afiliación.
+
+**Creadores de recetas**  
+El [rol de creador](/es/guides/creators/) es distinto: usted publica recetas que los restaurantes adoptan y cocinan, y recibe una regalía por cada venta del plato — no es afiliación, sino una colaboración de producto.

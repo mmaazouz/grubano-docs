@@ -1,0 +1,92 @@
+---
+title: "Compensation & Withdrawals"
+description: "Understanding your delivery driver compensation: delivery fees minus a 20% Grubano commission, tips paid out at 100%, maturation upon delivery, and withdrawal from 25 €."
+generated: true
+sourceHash: a90f361581a84dd8
+generator: scripts/generate-feature-page.js
+templateVersion: 5
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# Compensation & Withdrawals
+
+Your compensation is calculated for each delivery: you receive a portion of the delivery fees after Grubano commission, and 100% of tips.
+
+<FlowDiagram steps={["Delivery completed","Fees − 20% commission","Maturation","Withdrawal from 25 €"]} />
+
+## The Essentials
+
+Grubano compensates delivery drivers from two sources: a portion of the delivery fees paid by the customer (after a Grubano commission), and the entirety of the tips given. Your earnings are available for withdrawal as soon as they have matured and your balance reaches 25 €.
+
+## How It Works
+
+Each time you complete a [mission](/en/guides/driver/), the system records two types of earnings: **delivery fees** (the portion that goes to you from the delivery fees charged to the customer, minus a Grubano commission) and **tips** (paid out at 100%, with no commission). These amounts go through three states: **pending** (just after delivery), **matured** (after a 7-day security period, ensuring that the order is paid and not refunded), then **paid** (once you have requested a withdrawal). This cycle protects both the delivery driver and the platform: you are assured of receiving what is owed to you, and Grubano ensures that the transaction is final before paying out.
+
+The **Grubano commission** on delivery fees finances the tools, logistics infrastructure, and support. Tips, however, go to you in full — they directly reward your service.
+
+## Step by Step
+
+<Steps>
+
+### Delivery Completed
+
+As soon as you mark a mission as delivered, the system records two lines of earnings: one for the delivery fees (gross amount − Grubano commission = net amount owed to you) and, if applicable, one for the tip (100% net). These lines appear immediately in your **My Earnings** space, with the status **Pending**.
+
+### Maturation Period
+
+Your earnings remain pending for **7 days** from the delivery date. This delay allows verification that the order is paid and that no full refund has been issued. At the end of this period, if everything is in order, the earnings automatically change to **Matured** status and join your available balance.
+
+### Available Balance
+
+Your available balance corresponds to the sum of all matured earnings that have not yet been paid out. You can check it at any time in **My Earnings**. As soon as this balance reaches or exceeds **25 €**, the **Withdraw** button becomes active.
+
+### Withdrawal Request
+
+Click **Withdraw** to request a transfer of your available balance. The system verifies that your payment details are recorded and validated with our payment provider, then records your request — the actual triggering of transfers is coming soon. Once a transfer is completed, your earnings will change to **Paid** status and appear in the history.
+
+</Steps>
+
+<Callout type="info">
+The withdrawal amount is always calculated by the server — you cannot choose a partial amount. Each withdrawal completely empties your available balance (all earnings matured at that moment).
+</Callout>
+
+## Best Practices
+
+**Check your My Earnings space regularly** to track your income in real time. You will see a clear distinction between earnings still pending (which will mature in a few days) and those already available for withdrawal.
+
+**Anticipate the 25 € threshold**: if you complete few deliveries per week, it may take several days to reach the minimum amount. Plan your withdrawals accordingly to avoid unnecessary waiting.
+
+**Verify your bank account** before your first withdrawal: ensure that your details are correctly recorded and validated with our payment provider. An incomplete profile blocks the transfer — the system will alert you if any information is missing.
+
+**Keep track of your withdrawals**: the history in My Earnings archives each payout with its date, amount, and transfer reference. Useful for your declarations or personal accounting.
+
+## Frequently Asked Questions
+
+<Faq items={[
+  {
+    icon: "help",
+    q: "Why are my earnings pending for 7 days?",
+    a: "This delay ensures that the order is definitively paid and not refunded. It protects both you (you will never receive a cancelled earning) and the platform (no premature payout). After this period, your earnings become available for withdrawal."
+  },
+  {
+    icon: "help",
+    q: "Can I withdraw less than 25 €?",
+    a: "No, the minimum withdrawal threshold is set at 25 €. Below this amount, the Withdraw button remains inactive. This floor reduces bank transaction fees and simplifies management for everyone."
+  },
+  {
+    icon: "help",
+    q: "What happens if an order is refunded after I have been paid?",
+    a: "The 7-day maturation period covers this risk: the system checks the order status before releasing your earnings. If a refund occurs during these 7 days, the corresponding earning changes to cancelled status and never joins your available balance."
+  },
+  {
+    icon: "help",
+    q: "Are tips subject to commission?",
+    a: "No. Tips are paid out to you at 100%, without any commission. Only the delivery fees (the portion of delivery fees) are subject to Grubano commission."
+  }
+]} />
+
+## Going Further
+
+**Next Step**  
+[Driver Guide](/en/guides/driver/) — Discover how to accept missions, organize your routes, and maximize your earnings on Grubano.

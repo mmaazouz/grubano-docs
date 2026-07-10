@@ -1,0 +1,95 @@
+---
+title: "Programa de fidelización"
+description: "Fidelizar a su clientela: 1 punto = 1 € gastado, niveles Bronce/Plata/Oro/Platino, puntos acreditados en la entrega del pedido."
+generated: true
+sourceHash: c0f84754871285ec
+generator: scripts/generate-feature-page.js
+templateVersion: 5
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# Programa de fidelización
+
+Transforme cada euro gastado en puntos de fidelización, con cuatro niveles de recompensa que animan a sus clientes a volver.
+
+<FlowDiagram steps={["Inscribir un cliente","Comprar","Crédito de puntos","Recompensa"]} />
+
+## Lo esencial
+
+El programa de fidelización Grubano recompensa automáticamente a sus clientes: **1 punto = 1 € gastado**. Los puntos se acumulan en cuatro niveles (Bronce, Plata, Oro, Platino) y se convierten en crédito utilizable en su próximo pedido. Los puntos se acreditan en cuanto se entrega el pedido.
+
+## Cómo funciona
+
+Sus clientes habituales merecen un reconocimiento. El programa de fidelización construye una relación duradera: cada compra refuerza el vínculo con su establecimiento, cada nivel alcanzado motiva el siguiente pedido.
+
+El sistema funciona de principio a fin — inscripción rápida (nombre, email, teléfono opcional), validación automática en la entrega, **conversión de los puntos en euros de crédito** que el cliente gasta cuando quiere. Usted hace el seguimiento de la actividad desde su [panel de control](/es/guides/restaurant/): saldo de puntos, nivel actual, historial de los diez últimos pedidos validados.
+
+## Paso a paso
+
+<Steps>
+
+### Inscribir un cliente al programa
+
+Recopile el nombre y el email del cliente (el teléfono es opcional). **Bono de bienvenida: 10 puntos** acreditados inmediatamente en la creación de la cuenta. Cada cliente recibe un código de patrocinio único (ocho caracteres, mayúsculas) que puede compartir.
+
+### Validar un pedido entregado
+
+Cuando un pedido se marca como **entregado**, introduzca el email del cliente, el número de pedido (identificador único — nunca validado dos veces) y el importe con IVA. El sistema atribuye **1 punto por euro gastado** (redondeado al entero inferior) y recalcula el nivel.
+
+### Hacer seguimiento del saldo y el nivel
+
+Cuatro niveles progresivos desbloquean el acceso al crédito:
+
+- **Bronce** — 0 a 99 puntos (nivel de inicio)
+- **Plata** — 100 a 199 puntos
+- **Oro** — 200 a 399 puntos
+- **Platino** — 400 puntos y más
+
+El nivel se actualiza automáticamente en cuanto se alcanza un umbral. El cliente ve su saldo de puntos **convertido en euros de crédito** (tasa de conversión fijada por Grubano) que puede gastar a su antojo.
+
+### Gastar el crédito
+
+El cliente elige aplicar todo o parte de su crédito a la cesta. La reducción se imputa sobre el total del pedido; el saldo de puntos disminuye en consecuencia. Ningún cargo financiero del lado del restaurante — **Grubano financia íntegramente** la reducción aplicada.
+
+</Steps>
+
+## Buenas prácticas
+
+- **Comunique el código de patrocinio** — anime a sus clientes a compartirlo (tarjeta de visita, embalaje, redes sociales). Un cliente patrocinado aporta puntos adicionales al padrino.
+- **Recuerde el saldo** — mencione el número de puntos ganados en el tíquet o en el email de confirmación. Un cliente informado vuelve más rápido.
+- **Apunte a los niveles** — un cliente con 180 puntos sabe que le quedan 20 € por gastar para alcanzar Oro. Este umbral visible desencadena un pedido "de paso".
+- **Valide rápidamente** — los puntos solo se acreditan en la entrega efectiva del pedido. Cuanto más rápida sea la validación, más percibe el cliente la recompensa inmediata.
+
+## Preguntas frecuentes
+
+<Faq items={[
+  {
+    icon: "help",
+    q: "¿Los puntos caducan?",
+    a: "No. El saldo de puntos permanece adquirido mientras la cuenta del cliente esté activa. No se impone ninguna fecha de caducidad."
+  },
+  {
+    icon: "help",
+    q: "¿Quién financia la reducción aplicada a la cesta?",
+    a: "Grubano financia íntegramente el crédito de fidelización gastado por el cliente. Usted recibe el importe total del pedido (menos la comisión habitual del 10 %), sin deducción adicional."
+  },
+  {
+    icon: "help",
+    q: "¿Puedo consultar el historial de un cliente?",
+    a: "Sí. Desde su panel de control, busque el cliente por email: verá su saldo, su nivel actual y los diez últimos pedidos validados (marca, importe, puntos ganados, fecha)."
+  },
+  {
+    icon: "help",
+    q: "¿Qué ocurre si valido dos veces el mismo número de pedido?",
+    a: "El sistema rechaza el segundo intento (error 409) para evitar acreditar los puntos dos veces. Cada número de pedido solo se valida una vez."
+  }
+]} />
+
+<Callout type="info">
+**Comisión sin cambios** — El programa de fidelización no afecta a la comisión del 10 % por pedido. La suscripción Pro (29 €/mes, agregación multiplataforma) sigue siendo opcional y está separada del programa de fidelización.
+</Callout>
+
+## Para ir más lejos
+
+**Panel de control** — Consulte el saldo y el historial de fidelización de sus clientes desde su [panel de control](/es/guides/restaurant/) de restaurante.

@@ -1,0 +1,119 @@
+---
+title: "Finanze e pagamenti"
+description: "Comprendere le vostre finanze Grubano: commissione del 10 % per ordine, calendario dei pagamenti, dettaglio lordo/commissione/netto e dichiarazione DAC7."
+generated: true
+sourceHash: 786e621b2b34ea5c
+generator: scripts/generate-feature-page.js
+templateVersion: 5
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# Finanze e pagamenti
+
+Seguite i vostri ricavi in tempo reale, comprendete la commissione del 10 % e consultate i vostri pagamenti: tutto è trasparente.
+
+<FlowDiagram steps={["Ordine pagato","Commissione 10 %","Pagamento","Estratto conto & DAC7"]} />
+
+## L’essenziale
+
+Ogni ordine pagato genera un pagamento diretto sul vostro conto bancario, previa detrazione della commissione Grubano del 10 %. Potete consultare il dettaglio lordo / commissione / netto nella vostra [dashboard](/it/guides/restaurant/) e ricevere un estratto conto mensile per la vostra contabilità e la dichiarazione DAC7.
+
+## Come funziona
+
+Grubano applica una **commissione unica del 10 %** sul fatturato che realizzate tramite la piattaforma — qualunque sia il canale (sul posto, da asporto, consegna, prenotazione). Questa commissione copre l’infrastruttura tecnica, il marketing, l’elaborazione dei pagamenti e l’assistenza. Il restante 90 % vi viene versato direttamente, giorno dopo giorno, sul conto bancario che avete indicato al momento dell’apertura.
+
+Il modello è semplice: vedete l’importo lordo di ogni ordine, la commissione prelevata e l’importo netto che vi spetta. Nessun costo nascosto, nessuna sorpresa. Rimanete proprietari dei vostri dati clienti e i pagamenti vengono effettuati automaticamente senza alcuna azione da parte vostra.
+
+Alla fine di ogni mese ricevete un estratto conto dettagliato — utile per il vostro commercialista e per adempiere ai vostri obblighi fiscali (in particolare la dichiarazione DAC7 per le piattaforme digitali). Questo estratto conto riepiloga tutte le vostre operazioni, le commissioni, gli eventuali rimborsi e il netto versato.
+
+## Passo dopo passo
+
+<Steps>
+
+### Consultare il riepilogo finanziario
+
+Dalla vostra dashboard, cliccate su **Finanze** nel menu laterale. Vedete immediatamente:
+
+- Il **fatturato lordo** del periodo (ultimi 7 giorni per impostazione predefinita)
+- La **commissione Grubano** (10 % del fatturato)
+- L'**importo netto** versato sul vostro conto
+
+Cambiate periodo (giorno / settimana / mese) per affinare l’analisi.
+
+### Leggere il dettaglio delle operazioni
+
+Scorrete la pagina: ogni riga corrisponde a un’operazione finanziaria (pagamento, rimborso, rettifica). Vedete:
+
+- La data e l’ora
+- Il tipo di operazione (pagamento cliente, acquisizione cauzione prenotazione, rimborso)
+- L’importo lordo incassato
+- La commissione prelevata
+- Il netto accreditato sul vostro conto
+
+Cliccate su una riga per vedere lo scontrino o la prenotazione collegata.
+
+### Seguire i pagamenti
+
+I fondi vengono versati **automaticamente** sul vostro conto bancario, secondo il calendario del vostro fornitore di pagamento (generalmente entro 2-7 giorni lavorativi dopo l’incasso). Non dovete fare alcuna operazione: non appena un ordine viene pagato, il 90 % netto vi è dovuto.
+
+Il dettaglio di ogni pagamento appare nella cronologia delle operazioni, con il riferimento del bonifico (utile per riconciliare i vostri estratti conto bancari).
+
+### Scaricare l’estratto conto mensile
+
+A fine mese viene generato automaticamente un estratto conto in PDF. Riepiloga:
+
+- Il fatturato lordo mensile
+- Le commissioni totali
+- Gli eventuali rimborsi (cancellazioni, gesti commerciali)
+- Il netto versato
+
+Questo documento è conforme ai requisiti della direttiva **DAC7** (dichiarazione dei redditi provenienti da piattaforme digitali). Trasmettetelo al vostro commercialista per la vostra dichiarazione dei redditi.
+
+</Steps>
+
+<Callout type="info">
+**Trasparenza totale** — La commissione del 10 % si applica a *tutti* i vostri canali di vendita su Grubano (sul posto, da asporto, consegna, prenotazione). Non cambierà nemmeno con l’offerta Pro, disponibile prossimamente: Pro (29 €/mese) aggiungerà l’aggregazione delle vostre altre piattaforme (Uber Eats, Deliveroo…) su un’unica dashboard, ma la commissione rimarrà al 10 %.
+</Callout>
+
+## Esempio concreto
+
+Il vostro ristorante incassa **2 000 € di ordini** nella settimana tramite Grubano (150 € sul posto, 850 € da asporto, 1 000 € di consegna). La commissione del 10 % ammonta a **200 €**. Ricevete quindi **1 800 € netti** sul vostro conto bancario. Un cliente annulla un ordine di 25 €: vi vengono rimborsati 22,50 € netti (il 90 % di questo ordine) e anche la commissione di 2,50 € vi viene restituita.
+
+A fine mese l’estratto conto PDF totalizza 8 500 € di fatturato lordo, 850 € di commissione, 7 650 € versati e menziona 3 rimborsi per 75 €. Trasmettete questo estratto conto al vostro commercialista per la dichiarazione annuale.
+
+## Buone pratiche
+
+- **Riconciliate ogni settimana** — Confrontate l’importo netto visualizzato in Grubano con i bonifici ricevuti sul vostro conto bancario. In caso di scostamento, consultate il dettaglio delle operazioni (un rimborso in corso può spiegare una differenza).
+- **Archiviate gli estratti conto mensili** — Conservate ogni PDF: costituiscono il vostro documento giustificativo per l’amministrazione fiscale e semplificano la chiusura contabile annuale.
+- **Monitorate il tasso di rimborso** — Un tasso elevato (> 5 %) può segnalare un problema di qualità o di comunicazione con i clienti. La dashboard visualizza questo rapporto: utilizzatelo come segnale d’allerta.
+
+## Domande frequenti
+
+<Faq items={[
+  {
+    icon: "help",
+    q: "La commissione del 10 % si applica anche alle spese di consegna?",
+    a: "No. La commissione del 10 % è calcolata unicamente sull’importo dei piatti (subtotale). Le spese di consegna vi vengono restituite integralmente (100 %), senza prelievo."
+  },
+  {
+    icon: "help",
+    q: "Posso scegliere la frequenza dei pagamenti?",
+    a: "I pagamenti sono automatici e seguono il calendario del vostro fornitore di pagamento (in generale entro 2-7 giorni dopo ogni incasso). Non potete modificare questa frequenza, ma vedete in tempo reale l’importo netto dovuto nella vostra dashboard."
+  },
+  {
+    icon: "help",
+    q: "Cosa fare se un pagamento è in ritardo o mancante?",
+    a: "Consultate prima il dettaglio delle operazioni nella pagina Finanze: un rimborso recente potrebbe aver ridotto l’importo previsto. Se lo scostamento persiste dopo 7 giorni lavorativi, contattate l’assistenza Grubano con il riferimento dell’operazione in questione."
+  },
+  {
+    icon: "help",
+    q: "L’estratto conto mensile è sufficiente per la mia dichiarazione fiscale?",
+    a: "Sì. L’estratto conto Grubano è conforme alla direttiva DAC7 e riepiloga tutti i vostri redditi provenienti dalla piattaforma. Trasmettetelo al vostro commercialista: contiene tutte le informazioni necessarie (fatturato lordo, commissioni, rimborsi, netto versato)."
+  }
+]} />
+
+## Per saperne di più
+
+- [Dashboard ristorante](/it/guides/restaurant/) — Panoramica della vostra attività, KPI in tempo reale e accesso diretto alla pagina Finanze.
+- [Grubano Pro](/it/guides/pro/) — Prossimamente, ricevete gli ordini di tutte le vostre piattaforme (Uber Eats, Deliveroo…) su un’unica dashboard. La commissione rimarrà al 10 %; Pro sarà un abbonamento mensile di 29 € che si aggiunge, senza impegno.

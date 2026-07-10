@@ -1,0 +1,109 @@
+---
+title: "Pedir y rastrear"
+description: "Encuentre un restaurante local, haga su pedido (entrega a domicilio / recogida / en el local) y siga el progreso en tiempo real."
+generated: true
+sourceHash: bf78b8eca73da5ba
+generator: scripts/generate-feature-page.js
+templateVersion: 5
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# Pedir y rastrear
+
+Encuentre un restaurante cerca de usted, haga su pedido en pocos clics y siga su entrega o recogida en tiempo real.
+
+---
+
+<FlowDiagram steps={["Encontrar un restaurante","Componer","Pagar","Seguir el pedido"]} />
+
+---
+
+## Lo esencial
+
+Usted elige un restaurante local, compone su carrito con los platos y opciones que desea y luego paga en línea. Su pedido se transmite instantáneamente al restaurante, que lo prepara mientras usted sigue su progreso, desde la cocina hasta su puerta o el mostrador de recogida.
+
+---
+
+## Cómo funciona
+
+Grubano conecta directamente los restaurantes locales (que cocinan en su propia cocina) con los clientes. Cada pedido pasa por cuatro etapas: usted encuentra un establecimiento abierto y activo, personaliza sus platos (tamaño, suplementos, exclusiones), paga en línea y luego el restaurante recibe su pedido y lo prepara. Usted elige entre la entrega a domicilio o la recogida en el local; en ambos casos, sabe en tiempo real dónde está su comida.
+
+El programa de [fidelización](/es/guides/consumer-loyalty/) recompensa cada euro gastado (sin contar los gastos) con un punto, que podrá utilizar en sus próximos pedidos. Sus datos se guardan en su [cuenta](/es/guides/consumer-account/) para acelerar sus próximas visitas.
+
+---
+
+## Paso a paso
+
+<Steps>
+
+### Encontrar un restaurante
+
+Explore los restaurantes activos cerca de usted, filtre por tipo de cocina (italiana, asiática, hamburguesas…) o busque por nombre. El mapa muestra la valoración media, el tiempo de preparación y los gastos de envío de cada establecimiento. Un restaurante cerrado fuera de su horario de apertura le indica cuándo volverá a abrir.
+
+### Componer su carrito
+
+Añada los platos que le gusten. Para cada artículo, elija el tamaño (Pequeño, Mediano, Grande), marque los suplementos de pago (queso, bacon, aguacate…), seleccione las exclusiones gratuitas (sin cebolla, sin gluten…) y deje una nota de preparación si es necesario. El total se actualiza en directo; las opciones se guardan línea por línea, así que pedir dos veces el mismo plato con guarniciones diferentes crea dos líneas distintas.
+
+### Elegir entrega o recogida
+
+Cambie entre **Entrega a domicilio** (a su dirección, gastos indicados) y **Recogida en el local** (sin gastos, recogida en el mostrador del restaurante). En recogida, el carrito muestra la dirección del establecimiento y la hora a la que su pedido estará listo; en entrega, introduce su dirección completa. Si la dirección está fuera de la zona de reparto del restaurante, el pedido se rechaza antes del pago.
+
+### Pagar en línea
+
+El resumen detalla el subtotal (sus platos), los gastos de envío (o 0 € en recogida), cualquier descuento activo (código promocional del restaurante, descuento de bienvenida en su primer pedido referenciado) y el importe final. Puede gastar sus puntos de fidelización acumulados: el crédito en euros correspondiente se deduce del total, dentro del límite de un tope que preserva el equilibrio de la plataforma. El pago con tarjeta bancaria activa inmediatamente la transmisión al restaurante; los medios "efectivo" o "monedero" (heredados) también transmiten el pedido sin esperar.
+
+### Seguir el pedido
+
+Desde que se valida el pago, su pedido aparece en el historial con su estado en tiempo real: **Recibido** (el restaurante acaba de ser notificado), **En preparación** (la cocina está trabajando), **Listo** (para recoger o esperando al repartidor), **Recogido** (el repartidor lo ha tomado o usted lo ha recogido) y finalmente **Entregado** (terminado). Un enlace de seguimiento le permite visualizar el progreso; el restaurante actualiza cada etapa desde su panel de control. Recibe una estimación del tiempo de entrega desde la confirmación del pago.
+
+</Steps>
+
+---
+
+## Ejemplo concreto
+
+Busca un restaurante asiático abierto a las 19:30 un martes. Grubano muestra tres establecimientos activos en un radio de 5 km, con sus valoraciones y plazos. Elige uno valorado con 4,6 estrellas, añade un bol de ramen (tamaño Mediano + suplemento huevo marinado + sin cebollas verdes) y un postre mochi. El carrito muestra 16,50 € + 1,99 € de envío. Cambia a **Recogida en el local**: los gastos caen a 0 €, total 16,50 €, listo en 20 minutos. Valida, paga con tarjeta y el pedido pasa instantáneamente al estado "Recibido" del lado del restaurante. Quince minutos más tarde, cambia a "Listo": parte a recogerlo en la dirección indicada, y una vez allí el restaurante lo marca "Recogido" y luego "Entregado" cuando se marcha. Gana 16 puntos de fidelización (uno por euro gastado en los platos y el envío).
+
+---
+
+## Buenas prácticas
+
+- **Verifique los horarios**: un restaurante mostrado como cerrado le indica precisamente cuándo volverá a abrir ("Abre mañana a las 11:30"). Pedir durante un horario de apertura garantiza una preparación inmediata.
+- **Revise sus opciones**: tamaño, suplementos y exclusiones quedan fijos al añadirlos; modificar una línea después requiere eliminarla y recrearla. Tómese el tiempo de marcar todo antes de validar.
+- **Use sus puntos inteligentemente**: el crédito de fidelización se deduce del total final, pero un tope (vinculado al margen neto disponible en este pedido) puede limitar la reducción. En un pedido pequeño, ahorre sus puntos para un carrito más grande para maximizar su valor.
+- **Prefiera la recogida cuando sea posible**: sin gastos de envío, sin tiempo de espera del repartidor y controla la hora de recogida. Ideal para trayectos cortos o pausas para comer.
+
+---
+
+## Preguntas frecuentes
+
+<Faq items={[
+  {
+    icon: "help",
+    q: "¿Puedo cancelar o modificar mi pedido después del pago?",
+    a: "Un pedido pagado se transmite inmediatamente al restaurante, que comienza la preparación. Cualquier cancelación o modificación debe hacerse directamente con el establecimiento (datos de contacto en su historial). Grubano no puede retirar un plato que ya está en la cocina.",
+  },
+  {
+    icon: "help",
+    q: "¿Qué ocurre si el restaurante rechaza mi pedido?",
+    a: "El restaurante puede marcar un pedido como “Cancelado” (rotura de stock, cierre imprevisto). Se le notifica inmediatamente y el importe pagado se reembolsa íntegramente a su medio de pago. Los puntos de fidelización no se debitan en este caso.",
+  },
+  {
+    icon: "help",
+    q: "¿Mis puntos de fidelización se deducen automáticamente?",
+    a: "No. Debe marcar “Usar mis puntos” en el carrito para que se aplique el crédito correspondiente. El servidor calcula el importe máximo utilizable (nunca más que el saldo disponible, ni más que el tope de este pedido) y deduce esta suma del total. Los puntos se debitan de su cuenta únicamente cuando se confirma el pago.",
+  },
+  {
+    icon: "help",
+    q: "¿Por qué mi pedido permanece en estado “En espera de pago”?",
+    a: "Un pedido con tarjeta bancaria se crea en este estado y solo se vuelve visible para el restaurante una vez que el pago es confirmado por Stripe (webhook). Si el pago falla o caduca, el pedido nunca será transmitido. Verifique que su tarjeta es válida y que el importe no ha sido bloqueado; en caso de duda, vuelva a hacer el pedido.",
+  },
+]} />
+
+---
+
+## Para ir más allá
+
+- [Fidelización](/es/guides/consumer-loyalty/) — Acumule y gaste sus puntos en cada pedido, descubra el funcionamiento del programa de recompensas y los topes de crédito.
+- [Cuenta](/es/guides/consumer-account/) — Gestione sus direcciones de entrega registradas, consulte el historial completo de sus pedidos y actualice sus preferencias de pago.

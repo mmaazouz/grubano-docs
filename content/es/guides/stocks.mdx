@@ -1,0 +1,104 @@
+---
+title: "Gestión de inventario"
+description: "Mantén el inventario de una marca actualizado: añade artículos, realiza seguimiento de cantidades y fechas de caducidad, recibe alertas de reabastecimiento y actualiza el stock en lenguaje natural mediante IA."
+generated: true
+sourceHash: 0081a0b9c1238a2c
+generator: scripts/generate-feature-page.js
+templateVersion: 5
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# Gestión de inventario
+
+Mantenga su inventario actualizado en tiempo real, detecte las roturas de stock antes de que afecten a sus ventas y gestione sus reabastecimientos en lenguaje natural.
+
+<FlowDiagram steps={["Añadir un artículo","Definir un umbral mínimo","Alerta de reabastecimiento","Previsión de rotura 7 días"]} />
+
+## Lo esencial
+
+La gestión de inventario le permite realizar un seguimiento de sus cantidades en directo, anticipar las roturas de stock y recibir alertas automáticas cuando un producto pasa por debajo de su umbral de reabastecimiento. Puede añadir o actualizar sus artículos manualmente, o simplemente enviar un mensaje en lenguaje natural — la IA entiende «pollo 3 kg, arroz 5 kg, salsa de tomate terminada» y actualiza el inventario por usted.
+
+## Cómo funciona
+
+Cada marca dispone de su propio inventario: allí lista sus ingredientes, sus cantidades actuales y sus fechas de caducidad. Grubano supervisa continuamente estos datos y le alerta en cuanto un producto alcanza el umbral crítico que usted ha definido. El objetivo: no quedarse nunca sin stock sin que sus clientes lo sepan, y pedir en el momento adecuado.
+
+La actualización mediante IA analiza sus mensajes cortos («2 kg de harina, tomates terminados») y ajusta automáticamente los stocks correspondientes. Si el artículo ya existe, se actualiza su cantidad; en caso contrario, se crea. Como ventaja adicional, obtiene una **previsión de rotura a 7 días**: para cada producto, Grubano estima el número de días restantes en función de un consumo medio diario y le indica la fecha previsible de agotamiento.
+
+<Callout type="info">
+La previsión se basa en promedios por defecto (0,7 kg/día para los kilos, 5 unidades/día para las piezas). Ajuste sus umbrales con el tiempo para adaptarse a su ritmo real de servicio.
+</Callout>
+
+## Paso a paso
+
+<Steps>
+
+### Añadir un artículo
+
+Desde su [panel de control](/es/guides/restaurant/), abra la página **Stocks**. Haga clic en **Añadir un artículo**, complete el nombre del ingrediente, la cantidad actual, la unidad (kg, g, L, mL o u para «unidad») y guarde. El artículo aparece inmediatamente en su inventario.
+
+### Definir un umbral de reabastecimiento
+
+Modifique el artículo e indique el **umbral mínimo** (por ejemplo, 2 kg). En cuanto la cantidad descienda por debajo de este umbral, Grubano mostrará una alerta «stock bajo» en la línea correspondiente. Puede ajustar este umbral en cualquier momento.
+
+### Actualizar en lenguaje natural
+
+En la página Stocks, escriba una frase como «pollo 3 kg, arroz 5 kg, salsa de tomate terminada» en el campo **Actualizar en texto**. Valide: la IA analiza su mensaje, reconoce los ingredientes, actualiza las cantidades (0 si «terminado») y muestra un resumen de los artículos modificados o creados. Sin formulario artículo por artículo.
+
+### Consultar las previsiones
+
+Una vez actualizados los stocks, consulte la tabla de previsión a 7 días. Grubano indica para cada artículo el número de **días restantes**, la **fecha de rotura estimada** y un **estado** (crítico si ≤ 1 día, bajo si ≤ 3 días, ok en caso contrario). Pida con antelación los artículos marcados como «crítico» o «bajo».
+
+### Seguimiento de las fechas de caducidad
+
+Complete una **fecha de caducidad** al crear o modificar un artículo. Los productos próximos a su fecha de caducidad aparecen en la parte superior de la lista para recordarle que debe darles salida prioritariamente o retirarlos del [menú](/es/guides/menu/).
+
+</Steps>
+
+## Buenas prácticas
+
+- **Actualice después de cada entrega**: en cuanto reciba un paquete del proveedor, añada las nuevas cantidades. La previsión solo es fiable si sus stocks están actualizados.
+- **Umbrales realistas**: un umbral demasiado bajo provoca roturas de stock; un umbral demasiado alto inmoviliza tesorería. Observe sus ventas durante una semana y ajuste progresivamente.
+- **Utilice la IA para actualizaciones rápidas**: al final del servicio, dicte o escriba los consumos del día en una frase. Es más rápido que modificar cada línea manualmente.
+- **Vincule stocks y menú**: si un ingrediente clave está agotado, marque el plato correspondiente como agotado desde la página [Menú & Scan IA](/es/guides/menu/) para evitar pedidos que no podrá servir.
+
+## Trucos y consejos
+
+Formule sus mensajes IA como una lista telegráfica: «harina 5 kg, huevos 2 docenas, aceite 3 L». La IA reconoce los sinónimos habituales («docena» → 12 u, «terminado/agotado» → 0) y las unidades abreviadas (kg, L). No necesita frases completas.
+
+<Callout type="warning">
+La actualización mediante IA está sujeta a una cuota mensual por restaurante. Si alcanza el límite, un mensaje de error 429 le invita a esperar hasta el mes siguiente o a cambiar a la entrada manual.
+</Callout>
+
+## Preguntas frecuentes
+
+<Faq items={[
+  {
+    icon: "help",
+    q: "¿Puedo gestionar varias marcas con stocks separados?",
+    a: "Sí. Cada marca (Brand) posee su propio inventario. Seleccione la marca correspondiente en la parte superior de la página Stocks para mostrar y modificar únicamente sus artículos."
+  },
+  {
+    icon: "help",
+    q: "¿Qué ocurre si envío un mensaje IA sin especificar una marca?",
+    a: "La API devuelve una vista previa de los artículos detectados (estado «preview») sin guardarlos. Proporcione un identificador de marca (brandId) para guardar las modificaciones en su inventario."
+  },
+  {
+    icon: "help",
+    q: "¿La previsión de rotura es fiable desde el primer día?",
+    a: "Se basa en promedios por defecto. Después de algunas semanas, ajuste sus umbrales en función de su consumo real para afinar las previsiones."
+  },
+  {
+    icon: "help",
+    q: "¿Puedo eliminar un artículo del inventario?",
+    a: "Actualmente, la API permite crear y actualizar artículos. Para retirar un producto definitivamente, pase su cantidad a cero y su umbral a cero; ya no aparecerá en las alertas."
+  }
+]} />
+
+## Para ir más allá
+
+**Siguiente paso**  
+[Menú & Scan IA](/es/guides/menu/) — Vincule sus stocks a su carta: marque un plato como agotado en cuanto un ingrediente clave esté agotado, para evitar pedidos que no podrá servir.
+
+**Ver también**  
+[Panel de control del restaurante](/es/guides/restaurant/) — Acceda a la página Stocks desde su panel de control y consulte sus alertas de reabastecimiento de un vistazo.

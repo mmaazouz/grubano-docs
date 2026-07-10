@@ -1,0 +1,104 @@
+---
+title: "Panel de control"
+description: "Vea de un vistazo la actividad de su restaurante: pedidos en curso, facturación, alertas — y gestione el servicio desde esta pantalla única."
+generated: true
+sourceHash: 676b23844b8e08c6
+generator: scripts/generate-feature-page.js
+templateVersion: 5
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# Panel de control
+
+Gestione la actividad de su restaurante en tiempo real: pedidos en curso, facturación del día, alertas — una sola pantalla para seguir todo y actuar rápidamente.
+
+<FlowDiagram steps={["Pedidos en curso","Cifras en tiempo real","Alertas","Multimarca"]} />
+
+## Lo esencial
+
+El panel de control centraliza la actividad de su establecimiento en directo: puede ver los pedidos que llegan, la facturación del día, sus clientes fieles y el rendimiento de cada marca. Si gestiona varias marcas, el panel de control las agrupa todas en una sola pantalla.
+
+## Cómo funciona
+
+Cada mañana, el panel de control recupera los pedidos validados del día y calcula cuatro indicadores clave: facturación, número de pedidos, clientes activos en su programa de fidelización y la marca que genera más ingresos. La evolución respecto al día anterior se muestra en porcentaje, lo que le permite detectar rápidamente una bajada o una subida de actividad. Si ha activado varias [marcas](/es/guides/menu/) (por ejemplo, una enseña italiana y una enseña asiática en la misma cuenta), el panel de control suma sus pedidos y le indica qué marca tiene mejor rendimiento — sin que tenga que alternar entre varias interfaces.
+
+Esta gestión en tiempo real le ayuda a anticipar: un pico de pedidos le impulsa a preparar más [existencias](/es/guides/stocks/), una alerta de ruptura le invita a reabastecerse, y la visibilidad sobre las [reservas](/es/guides/reservations/) de la noche le permite ajustar el servicio. El panel de control es la pantalla de inicio de su espacio de restaurador — se actualiza automáticamente con cada nuevo pedido.
+
+<Callout type="info">
+**Grubano Pro** permitirá pronto recibir los pedidos de todas sus otras plataformas (Uber Eats, Deliveroo, Just Eat…) directamente en este panel de control: una sola pantalla para todos sus pedidos, con análisis e informes unificados. La comisión sigue siendo del 10 %; Pro es una cuota de 29 €/mes, sin compromiso, que se añade a la comisión sin reemplazarla.
+</Callout>
+
+## Paso a paso
+
+<Steps>
+
+### Conexión al panel de control
+
+Conéctese a su cuenta de restaurador en [grubano.com/dashboard](https://www.grubano.com/dashboard). El panel de control se muestra automáticamente en la página de inicio.
+
+### Lectura de los indicadores del día
+
+La línea superior presenta cuatro tarjetas: facturación del día, número de pedidos, clientes de fidelización activos, mejor marca. Cada tarjeta muestra la evolución en porcentaje respecto al día anterior (subida en verde, bajada en naranja).
+
+### Seguimiento multimarca
+
+Si gestiona varias marcas, la tarjeta «Mejor marca» indica cuál concentra la mayor facturación hoy, con su porcentaje del total. Haga clic en el nombre de la marca para acceder a su [menú](/es/guides/menu/) y ajustar los platos en stock.
+
+### Acciones rápidas
+
+El menú lateral le da acceso directo a las pantallas operativas: pedidos en curso (para cambiar su estado de «recibido» a «en preparación», «listo», «recogido», «entregado»), [gestión de existencias](/es/guides/stocks/), [reservas](/es/guides/reservations/) y [seguimiento financiero](/es/guides/finances/). Todo permanece al alcance de un clic.
+
+</Steps>
+
+## Ejemplo concreto
+
+Abre el panel de control a las 9 h: cero pedidos, facturación a 0 €. A mediodía, la pantalla indica 12 pedidos por 347 € — un aumento del +8 % respecto a ayer. La tarjeta «Mejor marca» muestra que su enseña italiana capta el 58 % de la facturación, mientras que su enseña de hamburguesas representa el 42 % restante. Observa que tres artículos de la carta italiana están marcados como «stock bajo»: los reabastece con un clic desde la pantalla de [existencias](/es/guides/stocks/), y el servicio de la noche puede comenzar con tranquilidad. Al final del día, el panel muestra 38 pedidos y 1 124 € — compara con la semana pasada y constata una progresión regular.
+
+## Buenas prácticas
+
+- **Consulte el panel de control al inicio del servicio** para anticipar las roturas de stock y ajustar las cantidades antes del pico de trabajo.
+- **Compare la evolución día a día**: una bajada inusual puede señalar un problema de visibilidad, una subida confirma el impacto de una promoción o de un nuevo plato.
+- **Utilice los indicadores multimarca** para equilibrar sus recursos: si una marca tiene bajo rendimiento, pruebe una promoción dirigida o enriquezca su menú.
+- **Active las notificaciones** (configuración de cuenta) para recibir una alerta en cuanto llegue un pedido, incluso si no está frente a la pantalla.
+
+## Trucos y consejos
+
+El panel de control agrega automáticamente los datos de todas sus marcas: no necesita crear una cuenta separada por enseña. Si lanza una segunda marca, aparecerá en las estadísticas desde el primer pedido validado. Piense en actualizar la página durante el servicio para ver los últimos pedidos — el navegador no siempre actualiza las cifras en tiempo real sin una recarga manual.
+
+## Preguntas frecuentes
+
+<Faq items={[
+  {
+    icon: "help",
+    q: "¿Por qué la facturación del día no corresponde con mis transferencias?",
+    a: "El panel de control muestra la facturación bruta del día (total pagado por los clientes). Sus transferencias deducen la comisión del 10 % y llegan en 7 días — consulte la pantalla Finanzas para el detalle de los ingresos."
+  },
+  {
+    icon: "help",
+    q: "¿Puedo filtrar los pedidos por marca?",
+    a: "El panel de control global agrega todas las marcas. Para consultar los pedidos de una marca concreta, acceda a su menú a través del menú lateral, luego haga clic en «Pedidos» en la pestaña de la marca."
+  },
+  {
+    icon: "help",
+    q: "¿Los pedidos cancelados se contabilizan en la facturación del día?",
+    a: "No. Solo los pedidos cuyo estado es «validado», «en preparación», «listo», «recogido» o «entregado» entran en el cálculo de la facturación. Los pedidos cancelados no aparecen ni en la facturación ni en el contador de pedidos."
+  },
+  {
+    icon: "help",
+    q: "¿Cómo acceder a las estadísticas detalladas (horas punta, cesta media)?",
+    a: "La pantalla Analytics (menú lateral) presenta los gráficos de ingresos por día, por marca y por hora. Allí encontrará la cesta media, las horas punta y la distribución de la facturación entre sus marcas durante los últimos 30 días."
+  }
+]} />
+
+## Para ir más lejos
+
+**Pasos siguientes**
+
+- [Gestión del menú](/es/guides/menu/) — añada platos, active la IA para escanear una carta en papel y organice sus marcas.
+- [Gestión de existencias](/es/guides/stocks/) — siga las cantidades en tiempo real y reciba alertas de ruptura para evitar pedidos no cumplidos.
+
+**Ver también**
+
+- [Reservas](/es/guides/reservations/) — gestione las mesas reservadas en sala y sincronícelas con los pedidos para llevar.
+- [Seguimiento financiero](/es/guides/finances/) — consulte sus transferencias, la comisión aplicada y el historial de pagos.

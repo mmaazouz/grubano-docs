@@ -1,8 +1,104 @@
 ---
-title: Restaurant dashboard
-description: Translation in progress
+title: "Dashboard"
+description: "View your restaurant’s activity at a glance: ongoing orders, revenue, alerts — and manage the service from this single screen."
+generated: true
+sourceHash: 676b23844b8e08c6
+generator: scripts/generate-feature-page.js
+templateVersion: 5
 ---
 
-# Restaurant dashboard
+import { Steps, Callout } from 'nextra/components'
 
-> **Translation in progress.** This guide has not yet been translated. See the [French version](/fr/guides/restaurant/) for the current content.
+# Dashboard
+
+Manage your restaurant’s activity in real time: ongoing orders, daily revenue, alerts — a single screen to monitor everything and act quickly.
+
+<FlowDiagram steps={["Ongoing orders","Real-time figures","Alerts","Multi-brand"]} />
+
+## The essentials
+
+The dashboard centralizes your establishment’s live activity: you see incoming orders, daily revenue, your loyal customers, and the performance of each brand. If you manage multiple brands, the dashboard aggregates them all on a single screen.
+
+## How it works
+
+Each morning, the dashboard retrieves validated orders for the day and calculates four key indicators: revenue, number of orders, active customers in your loyalty program, and the brand generating the most revenue. The change from the previous day is displayed as a percentage, allowing you to quickly spot a drop or increase in activity. If you have activated multiple [brands](/en/guides/menu/) (for example, an Italian brand and an Asian brand on the same account), the dashboard adds up their orders and shows you which brand performs best — without you having to juggle between multiple interfaces.
+
+This real-time management helps you anticipate: a spike in orders prompts you to prepare more [stock](/en/guides/stocks/), a shortage alert invites you to replenish, and visibility on evening [reservations](/en/guides/reservations/) allows you to adjust service. The dashboard is the home screen of your restaurant portal — it updates automatically with each new order.
+
+<Callout type="info">
+**Grubano Pro** will soon allow you to receive orders from all your other platforms (Uber Eats, Deliveroo, Just Eat…) directly on this dashboard: a single screen for all your orders, with unified analyses and reports. The commission remains 10 %; Pro is a 29 €/month subscription, with no commitment, which adds to the commission without replacing it.
+</Callout>
+
+## Step by step
+
+<Steps>
+
+### Accessing the dashboard
+
+Log in to your restaurant account at [grubano.com/dashboard](https://www.grubano.com/dashboard). The dashboard is automatically displayed on the home page.
+
+### Reading daily indicators
+
+The top row displays four cards: daily revenue, number of orders, active loyalty customers, top brand. Each card shows the percentage change from the previous day (increase in green, decrease in orange).
+
+### Multi-brand monitoring
+
+If you manage multiple brands, the "Top brand" card indicates which one concentrates the most revenue today, with its percentage of the total. Click on the brand name to access its [menu](/en/guides/menu/) and adjust in-stock dishes.
+
+### Quick actions
+
+The side menu gives you direct access to operational screens: ongoing orders (to change their status from "received" to "preparing", "ready", "picked up", "delivered"), [stock management](/en/guides/stocks/), [reservations](/en/guides/reservations/), and [financial tracking](/en/guides/finances/). Everything remains one click away.
+
+</Steps>
+
+## Concrete example
+
+You open the dashboard at 9 a.m.: zero orders, revenue at 0 €. At noon, the screen shows 12 orders for 347 € — up +8 % from yesterday. The "Top brand" card shows that your Italian brand captures 58 % of revenue, while your burger brand represents the remaining 42 %. You notice that three items from the Italian menu are marked "low stock": you replenish them with one click from the [stock](/en/guides/stocks/) screen, and the evening service can start smoothly. At the end of the day, the dashboard displays 38 orders and 1,124 € — you compare with last week and notice steady growth.
+
+## Best practices
+
+- **Check the dashboard at the beginning of service** to anticipate stock shortages and adjust quantities before the rush.
+- **Compare day-to-day changes**: an unusual drop may signal a visibility problem, an increase confirms the impact of a promotion or a new dish.
+- **Use multi-brand indicators** to balance your resources: if a brand underperforms, test a targeted promotion or enrich its menu.
+- **Enable notifications** (account settings) to receive an alert as soon as an order arrives, even if you are not in front of the screen.
+
+## Tips & advice
+
+The dashboard automatically aggregates data from all your brands: you do not need to create a separate account per brand. If you launch a second brand, it will appear in the statistics as soon as the first order is validated. Remember to refresh the page during service to see the latest orders — the browser does not always update figures in real time without a manual reload.
+
+## Frequently asked questions
+
+<Faq items={[
+  {
+    icon: "help",
+    q: "Why doesn’t today’s revenue match my bank transfers?",
+    a: "The dashboard displays gross daily revenue (total paid by customers). Your transfers deduct the 10 % commission and arrive within 7 days — check the Finances screen for transfer details."
+  },
+  {
+    icon: "help",
+    q: "Can I filter orders by brand?",
+    a: "The global dashboard aggregates all brands. To view orders for a specific brand, access its menu via the side menu, then click on “Orders” in the brand tab."
+  },
+  {
+    icon: "help",
+    q: "Are cancelled orders counted in today’s revenue?",
+    a: "No. Only orders with the status “validated”, “preparing”, “ready”, “picked up” or “delivered” are included in the revenue calculation. Cancelled orders do not appear in the revenue or order count."
+  },
+  {
+    icon: "help",
+    q: "How do I access detailed statistics (peak hours, average basket)?",
+    a: "The Analytics screen (side menu) presents revenue graphs by day, by brand and by hour. You will find the average basket, peak hours and revenue distribution between your brands over the last 30 days."
+  }
+]} />
+
+## Going further
+
+**Next steps**
+
+- [Menu management](/en/guides/menu/) — add dishes, activate AI to scan a paper menu, and organize your brands.
+- [Stock management](/en/guides/stocks/) — track quantities in real time and receive shortage alerts to avoid unfulfilled orders.
+
+**See also**
+
+- [Reservations](/en/guides/reservations/) — manage reserved tables in the dining room and synchronize them with takeout orders.
+- [Financial tracking](/en/guides/finances/) — view your transfers, the commission applied and payment history.

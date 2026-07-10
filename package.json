@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && pagefind --site out --output-subdir _pagefind",
+    "build": "next build && node scripts/fix-html-lang.js && pagefind --site out --output-subdir _pagefind",
     "start": "next start",
     "docs:generate": "node scripts/generate-from-source.js",
     "docs:translate": "node scripts/translate-content.js",

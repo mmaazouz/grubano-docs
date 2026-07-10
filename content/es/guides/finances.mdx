@@ -1,0 +1,119 @@
+---
+title: "Finanzas y pagos"
+description: "Comprenda sus finanzas Grubano: comisión del 10 % por pedido, calendario de pagos, detalle bruto/comisión/neto y declaración DAC7."
+generated: true
+sourceHash: 786e621b2b34ea5c
+generator: scripts/generate-feature-page.js
+templateVersion: 5
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# Finanzas y pagos
+
+Siga sus ingresos en tiempo real, comprenda la comisión del 10 % y consulte sus pagos: todo es transparente.
+
+<FlowDiagram steps={["Pedido pagado","Comisión 10 %","Pago","Estado de cuenta y DAC7"]} />
+
+## Lo esencial
+
+Cada pedido pagado genera un pago directo en su cuenta bancaria, una vez deducida la comisión de Grubano del 10 %. Puede consultar el detalle bruto / comisión / neto en su [panel de control](/es/guides/restaurant/) y recibe un estado de cuenta mensual para su contabilidad y la declaración DAC7.
+
+## Cómo funciona
+
+Grubano aplica una **comisión única del 10 %** sobre la facturación que usted realiza a través de la plataforma, independientemente del canal (en el local, para llevar, entrega a domicilio, reserva). Esta comisión cubre la infraestructura técnica, el marketing, el procesamiento de pagos y el soporte. El 90 % restante se le transfiere directamente, día tras día, a la cuenta bancaria que usted proporcionó durante el registro.
+
+El modelo es simple: usted ve el importe bruto de cada pedido, la comisión deducida y el importe neto que le corresponde. Sin cargos ocultos, sin sorpresas. Usted sigue siendo propietario de los datos de sus clientes y los pagos se realizan automáticamente sin necesidad de intervención por su parte.
+
+Al final de cada mes, recibe un estado de cuenta detallado, útil para su contable y para cumplir con sus obligaciones fiscales (especialmente la declaración DAC7 para plataformas digitales). Este estado recapitula todas sus operaciones, las comisiones, los posibles reembolsos y el neto transferido.
+
+## Paso a paso
+
+<Steps>
+
+### Consultar el resumen financiero
+
+Desde su panel de control, haga clic en **Finanzas** en el menú lateral. Verá de inmediato:
+
+- La **facturación bruta** del periodo (últimos 7 días por defecto)
+- La **comisión Grubano** (10 % de la facturación)
+- El **importe neto** transferido a su cuenta
+
+Cambie de periodo (día / semana / mes) para afinar el análisis.
+
+### Leer el detalle de las operaciones
+
+Desplácese hacia abajo en la página: cada línea corresponde a una operación financiera (pago, reembolso, ajuste). Verá:
+
+- La fecha y hora
+- El tipo de operación (pago de cliente, captura de depósito de reserva, reembolso)
+- El importe bruto cobrado
+- La comisión deducida
+- El neto acreditado en su cuenta
+
+Haga clic en una línea para ver el ticket de caja o la reserva asociada.
+
+### Seguir los pagos
+
+Los fondos se transfieren **automáticamente** a su cuenta bancaria, según el calendario de su proveedor de pagos (generalmente entre 2 y 7 días laborables después del cobro). No tiene que realizar ningún trámite: tan pronto como se paga un pedido, el 90 % neto se le adeuda.
+
+El detalle de cada pago aparece en el historial de operaciones, con la referencia de la transferencia (útil para conciliar sus extractos bancarios).
+
+### Descargar el estado de cuenta mensual
+
+A fin de mes, se genera automáticamente un estado de cuenta en PDF. Este recapitula:
+
+- La facturación bruta mensual
+- Las comisiones totales
+- Los posibles reembolsos (cancelaciones, gestos comerciales)
+- El neto transferido
+
+Este documento cumple con los requisitos de la directiva **DAC7** (declaración de ingresos procedentes de plataformas digitales). Transmítalo a su contable para su declaración de ingresos.
+
+</Steps>
+
+<Callout type="info">
+**Transparencia total** — La comisión del 10 % se aplica a *todos* sus canales de venta en Grubano (en el local, para llevar, entrega a domicilio, reserva). Tampoco cambiará con la oferta Pro, próximamente disponible: Pro (29 €/mes) añadirá la agregación de sus otras plataformas (Uber Eats, Deliveroo…) en un solo panel de control, pero la comisión seguirá siendo del 10 %.
+</Callout>
+
+## Ejemplo concreto
+
+Su restaurante cobra **2000 € de pedidos** durante la semana a través de Grubano (150 € en el local, 850 € para llevar, 1000 € de entrega a domicilio). La comisión del 10 % asciende a **200 €**. Por lo tanto, recibe **1800 € netos** en su cuenta bancaria. Un cliente cancela un pedido de 25 €: se le reembolsan 22,50 € netos (el 90 % de ese pedido) y la comisión de 2,50 € también se le restituye.
+
+A fin de mes, el estado de cuenta en PDF totaliza 8500 € de facturación bruta, 850 € de comisión, 7650 € transferidos y menciona 3 reembolsos por 75 €. Usted transmite este estado de cuenta a su contable para la declaración anual.
+
+## Buenas prácticas
+
+- **Concilie cada semana** — Compare el importe neto mostrado en Grubano con las transferencias recibidas en su cuenta bancaria. En caso de discrepancia, consulte el detalle de las operaciones (un reembolso en curso puede explicar una diferencia).
+- **Archive los estados de cuenta mensuales** — Conserve cada PDF: constituyen su justificante para la administración fiscal y simplifican el cierre contable anual.
+- **Supervise la tasa de reembolso** — Una tasa elevada (> 5 %) puede indicar un problema de calidad o de comunicación con los clientes. El panel de control muestra este ratio: utilícelo como señal de alerta.
+
+## Preguntas frecuentes
+
+<Faq items={[
+  {
+    icon: "help",
+    q: "¿La comisión del 10 % se aplica también a los gastos de entrega?",
+    a: "No. La comisión del 10 % se calcula únicamente sobre el importe de los platos (subtotal). Los gastos de entrega le corresponden íntegramente (100 %), sin deducción."
+  },
+  {
+    icon: "help",
+    q: "¿Puedo elegir la frecuencia de los pagos?",
+    a: "Los pagos son automáticos y siguen el calendario de su proveedor de pagos (en general entre 2 y 7 días después de cada cobro). No puede modificar esta frecuencia, pero puede ver en tiempo real el importe neto adeudado en su panel de control."
+  },
+  {
+    icon: "help",
+    q: "¿Qué hacer si un pago se retrasa o falta?",
+    a: "Consulte primero el detalle de las operaciones en la página Finanzas: un reembolso reciente puede haber reducido el importe esperado. Si la discrepancia persiste después de 7 días laborables, contacte al soporte de Grubano con la referencia de la operación en cuestión."
+  },
+  {
+    icon: "help",
+    q: "¿El estado de cuenta mensual es suficiente para mi declaración fiscal?",
+    a: "Sí. El estado de cuenta de Grubano cumple con la directiva DAC7 y recapitula todos sus ingresos procedentes de la plataforma. Transmítalo a su contable: contiene toda la información necesaria (facturación bruta, comisiones, reembolsos, neto transferido)."
+  }
+]} />
+
+## Para ir más allá
+
+- [Panel de control del restaurante](/es/guides/restaurant/) — Vista general de su actividad, KPI en tiempo real y acceso directo a la página Finanzas.
+- [Grubano Pro](/es/guides/pro/) — Próximamente, reciba los pedidos de todas sus plataformas (Uber Eats, Deliveroo…) en un solo panel de control. La comisión seguirá siendo del 10 %; Pro será una cuota mensual de 29 € que se añade, sin compromiso.

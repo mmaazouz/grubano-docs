@@ -17,9 +17,10 @@ export default withNextra({
   // i18n via Nextra's content/<locale>/ convention. Nextra reads `locales` and
   // `defaultLocale` here, then strips this `i18n` block so Next.js native i18n
   // routing — which is INCOMPATIBLE with output: 'export' — never activates.
-  // Only locales with real content are declared; es/ar/it land in D3.
+  // All five locales carry real content since the GROS LOT étape E run
+  // (guides + home + getting-started translated FR → en/es/ar/it).
   i18n: {
-    locales: ['fr', 'en'],
+    locales: ['fr', 'en', 'es', 'ar', 'it'],
     defaultLocale: 'fr',
   },
 })

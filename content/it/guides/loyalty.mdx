@@ -1,0 +1,95 @@
+---
+title: "Programma fedeltà"
+description: "Fidelizzare la clientela: 1 punto = 1 € speso, livelli Bronze/Silver/Gold/Platinum, punti accreditati alla consegna dell’ordine."
+generated: true
+sourceHash: c0f84754871285ec
+generator: scripts/generate-feature-page.js
+templateVersion: 5
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# Programma fedeltà
+
+Trasformate ogni euro speso in punti fedeltà, con quattro livelli di ricompensa che incoraggiano i vostri clienti a tornare.
+
+<FlowDiagram steps={["Iscrivere un cliente","Acquistare","Accredito punti","Ricompensa"]} />
+
+## L’essenziale
+
+Il programma fedeltà Grubano premia automaticamente i vostri clienti: **1 punto = 1 € speso**. I punti si accumulano su quattro livelli (Bronze, Silver, Gold, Platinum) e si convertono in credito utilizzabile sul prossimo ordine. I punti vengono accreditati non appena l’ordine è consegnato.
+
+## Come funziona
+
+I vostri clienti abituali meritano un riconoscimento. Il programma fedeltà costruisce una relazione duratura: ogni acquisto rafforza l’attaccamento alla vostra insegna, ogni livello raggiunto motiva l’ordine successivo.
+
+Il sistema funziona dall’inizio alla fine — iscrizione rapida (nome, email, telefono opzionale), convalida automatica alla consegna, **conversione dei punti in euro di credito** che il cliente spende quando vuole. Potete monitorare l’attività dalla vostra [dashboard](/it/guides/restaurant/): saldo punti, livello attuale, storico degli ultimi dieci ordini convalidati.
+
+## Passo dopo passo
+
+<Steps>
+
+### Iscrivere un cliente al programma
+
+Raccogliete il nome e l’email del cliente (il telefono è opzionale). **Bonus di benvenuto: 10 punti** accreditati immediatamente alla creazione dell’account. Ogni cliente riceve un codice di referral unico (otto caratteri, maiuscole) che può condividere.
+
+### Convalidare un ordine consegnato
+
+Quando un ordine è contrassegnato come **consegnato**, inserite l’email del cliente, il numero dell’ordine (identificativo unico — mai convalidato due volte) e l’importo IVA inclusa. Il sistema attribuisce **1 punto per euro speso** (arrotondato all’intero inferiore) e ricalcola il livello.
+
+### Monitorare il saldo e il livello
+
+Quattro livelli progressivi sbloccano l’accesso al credito:
+
+- **Bronze** — da 0 a 99 punti (livello di partenza)
+- **Silver** — da 100 a 199 punti
+- **Gold** — da 200 a 399 punti
+- **Platinum** — 400 punti e oltre
+
+Il livello si aggiorna automaticamente non appena viene superata una soglia. Il cliente vede il proprio saldo punti **convertito in euro di credito** (tasso di conversione stabilito da Grubano) che può spendere a suo piacimento.
+
+### Spendere il credito
+
+Il cliente sceglie di applicare tutto o parte del proprio credito al carrello. La riduzione viene imputata sul totale dell’ordine; il saldo punti diminuisce di conseguenza. Nessun prelievo finanziario dal lato del ristorante — **Grubano finanzia integralmente** la riduzione applicata.
+
+</Steps>
+
+## Buone pratiche
+
+- **Comunicate il codice di referral** — incoraggiate i vostri clienti a condividerlo (biglietto da visita, confezione, social network). Un cliente invitato porta punti aggiuntivi al referente.
+- **Ricordate il saldo** — indicate il numero di punti guadagnati sullo scontrino o nell’email di conferma. Un cliente informato ritorna più rapidamente.
+- **Puntate ai livelli** — un cliente con 180 punti sa che gli restano 20 € da spendere per raggiungere il Gold. Questa soglia visibile innesca un ordine "di passaggio".
+- **Convalidate rapidamente** — i punti vengono accreditati solo alla consegna effettiva dell’ordine. Più rapida è la convalida, più il cliente percepisce la ricompensa immediata.
+
+## Domande frequenti
+
+<Faq items={[
+  {
+    icon: "help",
+    q: "I punti scadono?",
+    a: "No. Il saldo punti rimane acquisito finché l’account del cliente è attivo. Non viene imposta alcuna data di scadenza."
+  },
+  {
+    icon: "help",
+    q: "Chi finanzia la riduzione applicata al carrello?",
+    a: "Grubano finanzia integralmente il credito fedeltà speso dal cliente. Ricevete l’importo totale dell’ordine (meno la commissione abituale del 10 %), senza detrazioni aggiuntive."
+  },
+  {
+    icon: "help",
+    q: "Posso consultare lo storico di un cliente?",
+    a: "Sì. Dalla vostra dashboard, cercate il cliente tramite email: vedrete il suo saldo, il livello attuale e gli ultimi dieci ordini convalidati (marca, importo, punti guadagnati, data)."
+  },
+  {
+    icon: "help",
+    q: "Cosa succede se convalido due volte lo stesso numero di ordine?",
+    a: "Il sistema rifiuta il secondo tentativo (errore 409) per evitare di accreditare i punti due volte. Ogni numero di ordine viene convalidato una sola volta."
+  }
+]} />
+
+<Callout type="info">
+**Commissione invariata** — Il programma fedeltà non impatta la commissione del 10 % per ordine. L’abbonamento Pro (29 €/mese, aggregazione multi-piattaforme) rimane opzionale e distinto dal programma fedeltà.
+</Callout>
+
+## Per approfondire
+
+**Dashboard** — Consultate il saldo e lo storico fedeltà dei vostri clienti dalla vostra [dashboard](/it/guides/restaurant/) del ristorante.

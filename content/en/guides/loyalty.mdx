@@ -1,8 +1,95 @@
 ---
-title: Loyalty program
-description: Translation in progress
+title: "Loyalty Program"
+description: "Build customer loyalty: 1 point = 1 € spent, Bronze/Silver/Gold/Platinum tiers, points credited upon order delivery."
+generated: true
+sourceHash: c0f84754871285ec
+generator: scripts/generate-feature-page.js
+templateVersion: 5
 ---
 
-# Loyalty program
+import { Steps, Callout } from 'nextra/components'
 
-> **Translation in progress.** This guide has not yet been translated. See the [French version](/fr/guides/loyalty/) for the current content.
+# Loyalty Program
+
+Turn every euro spent into loyalty points, with four reward tiers that encourage your customers to come back.
+
+<FlowDiagram steps={["Register a customer","Purchase","Point credit","Reward"]} />
+
+## The essentials
+
+Grubano’s loyalty program automatically rewards your customers: **1 point = 1 € spent**. Points accumulate across four tiers (Bronze, Silver, Gold, Platinum) and convert into credit usable on their next order. Points are credited as soon as the order is delivered.
+
+## How it works
+
+Your regular customers deserve recognition. The loyalty program builds a lasting relationship: every purchase strengthens attachment to your brand, every tier reached motivates the next order.
+
+The system works end-to-end — quick registration (name, email, optional phone), automatic validation upon delivery, **conversion of points into euros of credit** that the customer spends whenever they want. You track activity from your [dashboard](/en/guides/restaurant/): point balance, current tier, history of the last ten validated orders.
+
+## Step by step
+
+<Steps>
+
+### Register a customer in the program
+
+Collect the customer’s name and email (phone is optional). **Welcome bonus: 10 points** credited immediately upon account creation. Each customer receives a unique referral code (eight characters, uppercase) they can share.
+
+### Validate a delivered order
+
+When an order is marked **delivered**, enter the customer’s email, order number (unique identifier — never validated twice), and total amount including tax. The system awards **1 point per euro spent** (rounded down to the nearest whole number) and recalculates the tier.
+
+### Track balance and tier
+
+Four progressive tiers unlock access to credit:
+
+- **Bronze** — 0 to 99 points (starting tier)
+- **Silver** — 100 to 199 points
+- **Gold** — 200 to 399 points
+- **Platinum** — 400 points and above
+
+The tier updates automatically as soon as a threshold is crossed. The customer sees their point balance **converted into euros of credit** (conversion rate set by Grubano) that they can spend as they wish.
+
+### Spend the credit
+
+The customer chooses to apply all or part of their credit to the basket. The discount is deducted from the order total; the point balance decreases accordingly. No financial charge on the restaurant side — **Grubano fully finances** the applied discount.
+
+</Steps>
+
+## Best practices
+
+- **Share the referral code** — encourage your customers to share it (business card, packaging, social media). A referred customer earns additional points for the referrer.
+- **Remind about the balance** — mention the number of points earned on the receipt or in the confirmation email. An informed customer comes back faster.
+- **Target the tiers** — a customer with 180 points knows they have 20 € left to spend to reach Gold. This visible threshold triggers a "milestone" order.
+- **Validate quickly** — points are only credited upon actual delivery of the order. The faster the validation, the more the customer perceives the immediate reward.
+
+## Frequently asked questions
+
+<Faq items={[
+  {
+    icon: "help",
+    q: "Do points expire?",
+    a: "No. The point balance remains acquired as long as the customer account is active. No expiration date is imposed."
+  },
+  {
+    icon: "help",
+    q: "Who finances the discount applied to the basket?",
+    a: "Grubano fully finances the loyalty credit spent by the customer. You receive the total order amount (minus the usual 10% commission), with no additional deduction."
+  },
+  {
+    icon: "help",
+    q: "Can I view a customer’s history?",
+    a: "Yes. From your dashboard, search for the customer by email: you see their balance, current tier, and the last ten validated orders (brand, amount, points earned, date)."
+  },
+  {
+    icon: "help",
+    q: "What happens if I validate the same order number twice?",
+    a: "The system rejects the second attempt (409 error) to avoid crediting points twice. Each order number is validated only once."
+  }
+]} />
+
+<Callout type="info">
+**Commission unchanged** — The loyalty program does not impact the 10% commission per order. The Pro subscription (29 €/month, multi-platform aggregation) remains optional and separate from the loyalty program.
+</Callout>
+
+## Going further
+
+**Dashboard** — View the balance and loyalty history of your customers from your restaurant [dashboard](/en/guides/restaurant/).

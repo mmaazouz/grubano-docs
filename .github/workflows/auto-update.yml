@@ -105,26 +105,22 @@ jobs:
           echo "ANTHROPIC_API_KEY secret is not set on this repo."
           echo "Harmonized feature-page generation skipped this run."
 
-      # ── Translation pass — HELD until D3·7 ──────────────────────────────
-      # Cost guardrail (D3·1 directive): do NOT burn the Claude budget
-      # translating throwaway content while D3 still rewrites pages. When
-      # the FR/EN content is final, re-enable by changing `if: false` to
-      # `if: env.ANTHROPIC_API_KEY != ''` (and make sure the
-      # ANTHROPIC_API_KEY secret is configured on this repo).
-      - name: Translate to fr / es / ar / it (HELD — re-enable in D3·7)
+      # ── Translation pass (reactivated — GROS LOT étape E) ───────────────
+      # api/changelog: EN → fr/es/ar/it · guides + racine: FR → en/es/ar/it.
+      # Idempotent via sourceHash — only files whose source changed cost API
+      # calls. Skipped cleanly when the ANTHROPIC_API_KEY secret is absent.
+      - name: Translate (guides FR→en/es/ar/it · api/changelog EN→fr/es/ar/it)
         id: translate
         working-directory: grubano-docs
-        if: false
         continue-on-error: true
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: node scripts/translate-content.js
-
-      - name: Note translation is on hold
         run: |
-          echo "Translation step is currently disabled (if: false)."
-          echo "Re-enable in D3·7 once the FR/EN source content is final."
-          echo "Only content/en is updated by this run."
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "ANTHROPIC_API_KEY secret is not set — translation skipped."
+          else
+            node scripts/translate-content.js
+          fi
 
       - name: Commit & push if changed
         working-directory: grubano-docs

@@ -15,6 +15,21 @@ const COPY: Record<string, { title: string; subtitle: string; button: string }> 
     subtitle: 'Our support team replies in every Grubano language.',
     button: 'Contact support',
   },
+  es: {
+    title: '¿No encuentra su respuesta?',
+    subtitle: 'Nuestro equipo de soporte responde en todos los idiomas de Grubano.',
+    button: 'Contactar con soporte',
+  },
+  ar: {
+    title: 'لم تجد إجابتك؟',
+    subtitle: 'فريق الدعم لدينا يجيبك بجميع لغات Grubano.',
+    button: 'التواصل مع الدعم',
+  },
+  it: {
+    title: 'Non trovi la risposta?',
+    subtitle: 'Il nostro team di supporto risponde in tutte le lingue di Grubano.',
+    button: 'Contattare il supporto',
+  },
 }
 
 export function ContactStrip({ locale = 'fr' }: { locale?: string }) {

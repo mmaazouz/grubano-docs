@@ -1,0 +1,108 @@
+---
+title: "Menú & Escaneo IA"
+description: "Publicar la carta de un restaurante fotografiando simplemente el menú — la IA reconoce los platos, propone nombre, descripción y alérgenos; el restaurador valida."
+generated: true
+sourceHash: ae7086fe57bec1a6
+generator: scripts/generate-feature-page.js
+templateVersion: 5
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# Menú & Escaneo IA
+
+Publique su carta en línea fotografiando simplemente sus platos: la IA reconoce cada receta, propone nombre, descripción y alérgenos, y usted solo tiene que validar.
+
+<FlowDiagram steps={["Escanear la carta","Verificar los platos","Publicar","Actualizar"]} />
+
+## Lo esencial
+
+El escáner IA transforma una foto de menú en ficha de plato estructurada — nombre, descripción apetitosa, alérgenos, calorías estimadas, categoría — en pocos segundos. Usted verifica, ajusta el precio y publica. Ideal para acelerar la publicación de una nueva carta o la adición puntual de un plato del día, sin entrada manual tediosa.
+
+## Cómo funciona
+
+Fotografiar un menú en papel para volver a escribirlo línea por línea consume tiempo y genera errores. El escáner IA lee la imagen, identifica cada plato visible y genera automáticamente una ficha completa en español: nombre comercial, descripción de dos frases, lista de ingredientes, alérgenos estandarizados (Gluten, Lactosa, Huevo, Soja…), rango calórico, categoría (Entrantes, Platos, Postres, Bebidas) y etiquetas sugeridas (Vegetariano, Halal, Sin gluten, Picante). Usted recibe un JSON listo para usar que el [panel de control](/es/guides/restaurant/) integra directamente en su menú: solo queda fijar el precio y validar. El reconocimiento funciona con un modelo Claude Sonnet 4.5 entrenado en cartas de restaurantes — detecta incluso platos manuscritos o en una maquetación densa.
+
+<Callout type="info">
+La IA también propone variantes (tamaño Pequeño/Mediano/Grande, suplementos Queso/Bacon…) y una nota de preparación si detecta una mención especial en la carta. Estas opciones son facultativas: usted las activa o las retira según su oferta real.
+</Callout>
+
+## Paso a paso
+
+<Steps>
+
+### Acceder al escáner
+
+En el [panel de control](/es/guides/restaurant/), sección **Menú**, haga clic en la pestaña **Por adoptar** y luego **Escanear una carta** (icono cámara). Autorice el acceso a la cámara o seleccione una imagen ya tomada.
+
+### Fotografiar el plato
+
+Encuadre el plato o la sección de menú que lo describe. Una iluminación natural y un encuadre recto mejoran el reconocimiento. Valide la toma.
+
+### Verificar la ficha generada
+
+La IA devuelve en ~3 segundos una vista previa estructurada: nombre, descripción, ingredientes, alérgenos, calorías mín–máx, categoría, etiquetas. Relea cada campo — la IA es fiable pero puede confundir un ingrediente raro o mal escrito.
+
+### Ajustar y publicar
+
+Edite el nombre o la descripción si es necesario, introduzca el precio de venta (la IA no lee los importes para evitar errores de moneda), marque **Disponible** y luego **Guardar**. El plato aparece inmediatamente en su carta pública en la categoría detectada.
+
+</Steps>
+
+## Ejemplo concreto
+
+Usted abre un mostrador de hamburguesas y desea publicar en línea diez recetas exclusivas. En lugar de rellenar diez formularios a mano, fotografía su carta impresa sección por sección. Para la **Cheese Deluxe**, la IA propone: «Hamburguesa doble carne picada 180 g, cheddar fundido, pepinillos crujientes, salsa casera en pan brioche.» Identifica los alérgenos Gluten, Lactosa, Huevo (salsa) y Soja (pan), estima 650–750 kcal, clasifica el plato en **Platos** y sugiere la etiqueta **Halal** si su carne lo es. Usted confirma, añade el precio 12,90 € y tres opciones Pequeño/Mediano/Grande. En diez minutos las diez hamburguesas están en línea, frente a una hora de entrada manual.
+
+## Buenas prácticas
+
+- **Fotografíe plato por plato** si su carta es densa: la IA procesa mejor una receta aislada que una página completa con quince entrantes.
+- **Iluminación indirecta**: evite los reflejos en un menú plastificado que ocultan el texto.
+- **Verifique los alérgenos**: la IA se basa en los ingredientes visibles; un condimento oculto (mostaza en una vinagreta) puede pasarle desapercibido. Añada manualmente cualquier alérgeno faltante.
+- **Fije el precio usted mismo**: la IA nunca lee los importes para evitar cualquier confusión entre precio IVA incluido, moneda o promoción. Es el único campo obligatorio a introducir después del escaneo.
+
+<Callout type="warning">
+El escáner IA consume créditos API por foto analizada. Un límite razonable (algunas decenas de escaneos al día) se aplica por defecto para preservar los recursos compartidos. Si alcanza el límite, vuelva a intentarlo unas horas más tarde o contacte al soporte para una cuota ampliada.
+</Callout>
+
+## Errores frecuentes
+
+**«La IA no reconoce mi plato manuscrito.»** — La escritura debe permanecer legible; una caligrafía muy estilizada o un texto demasiado pequeño reducen la precisión. Tome la foto más de cerca o vuelva a escribir el nombre manualmente, luego deje que la IA genere la descripción a partir de ese nombre.
+
+**«Las calorías propuestas parecen falsas.»** — La IA proporciona un rango amplio (ej. 650–750 kcal) basado en las porciones estándar del tipo de plato. Ajuste el valor si conoce el peso exacto de sus porciones o déjelo vacío: la visualización calórica es facultativa del lado del cliente.
+
+**«El plato aparece en la categoría incorrecta.»** — Cambie manualmente la categoría (Entrantes, Platos, Postres, Bebidas) antes de publicar. La IA adivina según el nombre y los ingredientes, pero un «Carpaccio de atún» puede dudar entre Entrantes y Platos según el contexto.
+
+## Trucos y consejos
+
+- **Reutilice las fichas**: una vez escaneada, una receta permanece editable en su menú. Cambie el precio o la disponibilidad sin volver a escanear.
+- **Escanee los platos del día**: fotografíe la pizarra del mediodía, valide las tres sugerencias, publique en dos minutos. Por la noche, desactívelos con un clic en [Gestión de existencias](/es/guides/stocks/) o el panel de control.
+- **Enriquezca la descripción**: la IA produce dos frases genéricas; añada un detalle exclusivo («carne madurada 21 días», «masa hecha en casa») para diferenciarse.
+
+## Preguntas frecuentes
+
+<Faq items={[
+  {
+    icon: 'help',
+    q: '¿El escáner funciona con un menú en otro idioma?',
+    a: "Sí, la IA lee varios idiomas (inglés, español, árabe, italiano) pero siempre devuelve la ficha en español, el idioma por defecto de la plataforma. Relea la traducción propuesta antes de publicar."
+  },
+  {
+    icon: 'help',
+    q: '¿Puedo escanear una carta completa de una vez?',
+    a: "Técnicamente sí, pero la precisión disminuye si más de cinco platos figuran en la imagen. Privilegie una foto por sección (entrantes, platos, postres) para una mejor tasa de reconocimiento."
+  },
+  {
+    icon: 'help',
+    q: '¿Qué sucede si alcanzo el límite de escaneos diarios?',
+    a: "Recibe un error 429 «Límite IA alcanzado». Espere unas horas — la cuota se reinicia automáticamente — o contacte al soporte para solicitar un aumento permanente si gestiona varios establecimientos."
+  },
+  {
+    icon: 'help',
+    q: '¿La IA puede detectar las opciones (tamaño, suplementos)?',
+    a: "Sugiere variantes comunes (Pequeño/Mediano/Grande, Queso/Bacon/Huevo) si el texto de la carta las menciona, pero no crea automáticamente las tablas de precios. Configure las opciones manualmente después de la validación para garantizar la coherencia tarifaria."
+  }
+]} />
+
+## Para ir más allá
+
+Una vez su carta escaneada y publicada, siga las [roturas de stock](/es/guides/stocks/) en tiempo real para desactivar automáticamente los platos agotados. Consulte el [panel de control](/es/guides/restaurant/) operador para gestionar pedidos, reseñas y rendimiento desde una sola pantalla.

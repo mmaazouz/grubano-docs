@@ -22,9 +22,9 @@ type Lang = {
 const LANGS: Lang[] = [
   { code: 'fr', flag: '🇫🇷', name: 'Français', active: true },
   { code: 'en', flag: '🇬🇧', name: 'English',  active: true },
-  { code: 'es', flag: '🇪🇸', name: 'Español',  active: false },
-  { code: 'ar', flag: '🇸🇦', name: 'العربية',   active: false },
-  { code: 'it', flag: '🇮🇹', name: 'Italiano', active: false },
+  { code: 'es', flag: '🇪🇸', name: 'Español',  active: true },
+  { code: 'ar', flag: '🇸🇦', name: 'العربية',   active: true },
+  { code: 'it', flag: '🇮🇹', name: 'Italiano', active: true },
 ]
 
 const SOON: Record<string, string> = { fr: 'à venir', en: 'soon' }

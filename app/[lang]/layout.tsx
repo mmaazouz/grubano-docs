@@ -20,6 +20,18 @@ const UI = {
     toc: { title: 'On this page', backToTop: 'Back to top' },
     home: 'Home',
   },
+  es: {
+    toc: { title: 'En esta página', backToTop: 'Volver arriba' },
+    home: 'Inicio',
+  },
+  ar: {
+    toc: { title: 'في هذه الصفحة', backToTop: 'العودة إلى الأعلى' },
+    home: 'الرئيسية',
+  },
+  it: {
+    toc: { title: 'In questa pagina', backToTop: "Torna all'inizio" },
+    home: 'Home',
+  },
 } as const
 
 type Lang = keyof typeof UI
@@ -53,7 +65,7 @@ export default async function LocaleLayout({
   params: Promise<{ lang: string }>
 }) {
   const { lang } = await params
-  const langKey: Lang = lang === 'en' ? 'en' : 'fr'
+  const langKey: Lang = (lang in UI ? lang : 'fr') as Lang
   const t = UI[langKey]
 
   const pageMap = await getPageMap(`/${lang}`)

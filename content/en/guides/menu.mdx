@@ -1,8 +1,108 @@
 ---
-title: Menu & AI scan
-description: Translation in progress
+title: "Menu & AI Scan"
+description: "Put a restaurant’s menu online by simply photographing it — AI recognizes dishes, suggests name, description, and allergens; the restaurateur validates."
+generated: true
+sourceHash: ae7086fe57bec1a6
+generator: scripts/generate-feature-page.js
+templateVersion: 5
 ---
 
-# Menu & AI scan
+import { Steps, Callout } from 'nextra/components'
 
-> **Translation in progress.** This guide has not yet been translated. See the [French version](/fr/guides/menu/) for the current content.
+# Menu & AI Scan
+
+Put your menu online by simply photographing your dishes: AI recognizes each recipe, suggests name, description, and allergens, and you just need to validate.
+
+<FlowDiagram steps={["Scan the menu","Verify dishes","Publish","Update"]} />
+
+## The essentials
+
+The AI scanner transforms a menu photo into a structured dish card — name, appetizing description, allergens, estimated calories, category — in a few seconds. You verify, adjust the price, and publish. Ideal for accelerating the online launch of a new menu or adding a daily special, without tedious manual entry.
+
+## How it works
+
+Photographing a paper menu to retype it line by line is time-consuming and error-prone. The AI scanner reads the image, identifies each visible dish, and automatically generates a complete card in French: commercial name, two-sentence pitch, ingredient list, standardized allergens (Gluten, Lactose, Egg, Soy…), calorie range, category (Starters, Main courses, Desserts, Drinks), and suggested labels (Vegetarian, Halal, Gluten-free, Spicy). You receive a ready-to-use JSON that the [dashboard](/en/guides/restaurant/) integrates directly into your menu: you only need to set the price and validate. The recognition runs on a Claude Sonnet 4.5 model trained on restaurant menus — it even spots handwritten dishes or dense layouts.
+
+<Callout type="info">
+The AI also suggests variants (Small/Medium/Large size, Cheese/Bacon supplements…) and a preparation note if it detects a special mention on the menu. These options are optional: you activate or remove them according to your actual offering.
+</Callout>
+
+## Step by step
+
+<Steps>
+
+### Access the scanner
+
+In the [dashboard](/en/guides/restaurant/), **Menu** section, click the **To adopt** tab then **Scan a menu** (camera icon). Authorize camera access or select an image already taken.
+
+### Photograph the dish
+
+Frame the dish or menu section describing it. Natural lighting and straight framing improve recognition. Confirm the shot.
+
+### Verify the generated card
+
+The AI returns a structured preview in ~3 seconds: name, description, ingredients, allergens, min–max calories, category, labels. Review each field — the AI is reliable but may confuse a rare or misspelled ingredient.
+
+### Adjust and publish
+
+Edit the name or description if necessary, enter the sale price (the AI doesn’t read amounts to avoid currency errors), check **Available**, then **Save**. The dish appears immediately on your public menu in the detected category.
+
+</Steps>
+
+## Concrete example
+
+You’re opening a burger counter and want to put ten signature recipes online. Rather than filling out ten forms by hand, you photograph your printed menu section by section. For the **Cheese Deluxe**, the AI suggests: "Double burger with 180 g ground beef, melted cheddar, crunchy pickles, house sauce on brioche bun." It identifies the allergens Gluten, Lactose, Egg (sauce), and Soy (bun), estimates 650–750 kcal, classifies the dish under **Main courses**, and suggests the **Halal** label if your meat is. You confirm, add the price €12.90 and three Small/Medium/Large options. In ten minutes, all ten burgers are online, versus an hour of manual entry.
+
+## Best practices
+
+- **Photograph dish by dish** if your menu is dense: the AI processes a single recipe better than a full page with fifteen starters.
+- **Indirect lighting**: avoid reflections on a laminated menu that obscure the text.
+- **Verify allergens**: the AI bases itself on visible ingredients; a hidden condiment (mustard in a vinaigrette) may escape it. Manually add any missing allergen.
+- **Set the price yourself**: the AI never reads amounts to avoid confusion between VAT-inclusive price, currency, or promotion. It’s the only mandatory field to enter after scanning.
+
+<Callout type="warning">
+The AI scanner consumes API credits per analyzed photo. A reasonable limit (a few dozen scans per day) applies by default to preserve shared resources. If you reach the limit, try again in a few hours or contact support for an expanded quota.
+</Callout>
+
+## Common errors
+
+**"The AI doesn’t recognize my handwritten dish."** — The handwriting must remain legible; very stylized calligraphy or text that’s too small reduces accuracy. Take the photo closer or manually retype the name, then let the AI generate the description from that name.
+
+**"The suggested calories seem wrong."** — The AI gives a broad range (e.g., 650–750 kcal) based on standard portions for the dish type. Adjust the value if you know the exact weight of your portions or leave blank: calorie display is optional on the customer side.
+
+**"The dish appears in the wrong category."** — Manually change the category (Starters, Main courses, Desserts, Drinks) before publishing. The AI guesses from the name and ingredients, but a "Tuna Carpaccio" may hesitate between Starters and Main courses depending on context.
+
+## Tips & advice
+
+- **Reuse cards**: once scanned, a recipe remains editable in your menu. Change the price or availability without rescanning.
+- **Scan daily specials**: photograph the lunch board, validate the three suggestions, publish in two minutes. In the evening, deactivate them with one click in [Stock management](/en/guides/stocks/) or the dashboard.
+- **Enrich the description**: the AI produces two generic sentences; add a signature detail ("meat aged 21 days," "homemade dough") to stand out.
+
+## Frequently asked questions
+
+<Faq items={[
+  {
+    icon: 'help',
+    q: 'Does the scanner work with a menu in another language?',
+    a: "Yes, the AI reads several languages (English, Spanish, Arabic, Italian) but always returns the card in French, the platform’s default language. Review the proposed translation before publishing."
+  },
+  {
+    icon: 'help',
+    q: 'Can I scan an entire menu at once?',
+    a: "Technically yes, but accuracy drops if more than five dishes appear in the image. Favor one photo per section (starters, main courses, desserts) for a better recognition rate."
+  },
+  {
+    icon: 'help',
+    q: 'What happens if I reach the daily scan limit?',
+    a: "You receive a 429 error 'AI limit reached.' Wait a few hours — the quota resets automatically — or contact support to request a permanent increase if you manage multiple establishments."
+  },
+  {
+    icon: 'help',
+    q: 'Can the AI detect options (size, supplements)?',
+    a: "It suggests common variants (Small/Medium/Large, Cheese/Bacon/Egg) if the menu text mentions them, but doesn’t automatically create pricing grids. Configure options manually after validation to ensure pricing consistency."
+  }
+]} />
+
+## Going further
+
+Once your menu is scanned and published, track [stock shortages](/en/guides/stocks/) in real time to automatically deactivate sold-out dishes. Check the [operator dashboard](/en/guides/restaurant/) to manage orders, reviews, and performance from a single screen.

@@ -1,0 +1,86 @@
+---
+title: "Gestire la propria rete"
+description: "Gestire una rete di franchising: più punti vendita, monitoraggio delle royalty dovute e reporting consolidato — entro i limiti stabiliti da Grubano."
+generated: true
+sourceHash: 3671b12687b14450
+generator: scripts/generate-feature-page.js
+templateVersion: 5
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# Gestire la propria rete
+
+Monitorate le performance dei vostri punti vendita in franchising, verificate le royalty accumulate e consolidate i vostri report — il tutto da un’unica dashboard.
+
+<FlowDiagram steps={["Punti vendita","Fatturato della rete","Royalties","Reporting"]} />
+
+## L’essenziale
+
+Quando diventate franchisor su Grubano, accedete a una dashboard dedicata che aggrega le vendite di tutti i vostri punti vendita in franchising, calcola le royalty dovute entro i limiti stabiliti da Grubano e vi permette di monitorare lo stato della vostra rete in tempo reale.
+
+## Come funziona
+
+Ogni punto vendita collegato al vostro marchio registra i propri ordini nel sistema Grubano. La dashboard franchisor consolida automaticamente questi dati su una finestra mobile di 30 giorni: fatturato per punto vendita, numero di ordini, royalty accumulate. Vedete così a colpo d’occhio quali punti vendita performano, quanto dovete percepire e dove concentrare il vostro supporto. Le condizioni finanziarie (tasso di royalty, spese di apertura, zone di esclusività) sono stabilite tra le parti interessate; la dashboard applica questi parametri per calcolare gli importi dovuti.
+
+## Passo dopo passo
+
+<Steps>
+
+### Accedete alla dashboard
+
+Collegatevi con il vostro account franchisor, poi andate nella sezione **Franchising** → **Panoramica**. Troverete il riepilogo della rete: numero di punti vendita attivi, città coperte, candidature in attesa.
+
+### Consultate le performance per punto vendita
+
+La sezione "Punti vendita" elenca tutti i punti vendita in franchising: nome, città, fatturato su 30 giorni, numero di ordini. I punti vendita sono classificati per fatturato decrescente, il che fa emergere immediatamente le locomotive della rete e i siti da supportare.
+
+### Verificate le royalty
+
+Il blocco "Royalty" mostra tre importi:  
+— **Accumulate**: la somma totale delle royalty registrate dall’origine;  
+— **In attesa**: quanto non è ancora stato versato;  
+— **Versate**: lo storico dei pagamenti già effettuati.  
+Quando l’interruttore del prelievo automatico è attivato lato piattaforma, queste voci sono calcolate ordine per ordine; in caso contrario, gli importi restano a zero e il monitoraggio avviene manualmente.
+
+### Esplorate l’attività recente
+
+La cronologia in fondo alla pagina elenca gli eventi significativi: aperture di punti vendita, traguardi di fatturato. Vi aiuta a individuare le tendenze (crescita rapida in una zona, rallentamento altrove) e ad anticipare le esigenze di supporto.
+
+</Steps>
+
+## Buone pratiche
+
+**Confrontate le performance sullo stesso orario** — I ristoranti del centro città e quelli di zona periurbana non hanno gli stessi orari di punta; adeguate le vostre aspettative tenendo conto del profilo di ogni punto vendita.
+
+**Identificate le migliori pratiche locali** — Se un punto vendita mostra uno scontrino medio nettamente superiore alla media della rete, analizzate il suo menu o la sua strategia promozionale per replicarla altrove.
+
+**Monitorate le candidature in attesa** — Un tempo di elaborazione troppo lungo può scoraggiare candidati seri; consultate regolarmente il contatore delle candidature e trattatele entro tempi ragionevoli.
+
+## Esempio concreto
+
+Immaginiamo che il vostro marchio conti cinque punti vendita in Vaucluse. La dashboard mostra un fatturato consolidato di 38.500 € sugli ultimi trenta giorni, contro 34.200 € del periodo precedente — ossia una crescita del +12,6 %. Constatate che Avignone genera 14.000 € da solo, mentre Carpentras si ferma a 4.500 €. Approfondendo, scoprite che Carpentras non attiva il ritiro sul posto e chiude la domenica. Chiamate il franchisee per suggerirgli di aprire la domenica a pranzo e di attivare il pickup: due leve semplici che, implementate ad Avignone, hanno proprio fatto decollare il fatturato locale.
+
+## Domande frequenti
+
+<Faq items={[
+  {
+    icon: 'help',
+    q: 'Posso vedere il dettaglio degli ordini di ogni punto vendita?',
+    a: 'No. La dashboard franchisor mostra gli aggregati (fatturato, numero di ordini, royalty) per preservare la riservatezza operativa di ogni franchisee. Se avete bisogno di una diagnosi più approfondita, contattate direttamente l’esercente interessato.'
+  },
+  {
+    icon: 'help',
+    q: 'Cosa succede se un punto vendita chiude temporaneamente?',
+    a: 'Un punto vendita contrassegnato come inattivo scompare dal contatore "punti vendita aperti" ma resta visibile nello storico. I suoi ordini passati continuano a figurare nei totali cumulati; invece, non genera più nuove royalty finché rimane chiuso.'
+  },
+  {
+    icon: 'help',
+    q: 'Le royalty tengono conto dei rimborsi?',
+    a: 'Sì, è previsto: quando il meccanismo delle royalty sarà attivato, ogni ordine rimborsato parzialmente o totalmente vedrà la propria royalty adeguata in proporzione all’importo rimborsato. Il saldo "in attesa" rifletterà così sempre la quota netta dovuta.'
+  }
+]} />
+
+## Per approfondire
+
+**Contesto** — Scoprite come funziona il modello di [franchising](/it/guides/franchise/) su Grubano: apertura di punti vendita, gestione delle candidature, meccanismi di royalty.

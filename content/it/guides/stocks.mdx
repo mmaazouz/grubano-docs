@@ -1,0 +1,104 @@
+---
+title: "Gestione delle scorte"
+description: "Tenere aggiornato l’inventario di un marchio: aggiungere articoli, monitorare le quantità e le date di scadenza, ricevere avvisi di rifornimento e aggiornare le scorte in linguaggio naturale tramite l’IA."
+generated: true
+sourceHash: 0081a0b9c1238a2c
+generator: scripts/generate-feature-page.js
+templateVersion: 5
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# Gestione delle scorte
+
+Tenga aggiornato il suo inventario in tempo reale, rilevi le rotture di stock prima che impattino sulle sue vendite e gestisca i rifornimenti in linguaggio naturale.
+
+<FlowDiagram steps={["Aggiungere un articolo","Definire una soglia minima","Avviso di rifornimento","Previsione rottura 7 gg"]} />
+
+## L’essenziale
+
+La gestione delle scorte le permette di monitorare le sue quantità in tempo reale, anticipare le rotture di stock e ricevere avvisi automatici quando un prodotto scende sotto la sua soglia di rifornimento. Può aggiungere o aggiornare i suoi articoli manualmente, oppure semplicemente inviare un messaggio in linguaggio naturale — l’IA comprende "pollo 3 kg, riso 5 kg, salsa di pomodoro finita" e aggiorna l’inventario per lei.
+
+## Come funziona
+
+Ogni marchio dispone del proprio inventario: vi elenca i suoi ingredienti, le quantità attuali e le date di scadenza. Grubano monitora continuamente questi dati e la avvisa non appena un prodotto raggiunge la soglia critica che ha definito. L’obiettivo: non trovarsi mai in rottura di stock all’insaputa dei suoi clienti e ordinare al momento giusto.
+
+L’aggiornamento tramite IA analizza i suoi messaggi brevi ("2 kg di farina, pomodori finiti") e adatta automaticamente le scorte corrispondenti. Se l’articolo esiste già, la sua quantità viene aggiornata; altrimenti, viene creato. Come bonus, ottiene una **previsione di rottura su 7 giorni**: per ogni prodotto, Grubano stima il numero di giorni rimanenti in base a un consumo medio giornaliero e le indica la data prevista di esaurimento.
+
+<Callout type="info">
+La previsione si basa su medie predefinite (0,7 kg/giorno per i chili, 5 unità/giorno per i pezzi). Affini le sue soglie nel tempo per adattarle al suo ritmo reale di servizio.
+</Callout>
+
+## Passo dopo passo
+
+<Steps>
+
+### Aggiungere un articolo
+
+Dalla sua [dashboard](/it/guides/restaurant/), apra la pagina **Scorte**. Clicchi su **Aggiungi un articolo**, inserisca il nome dell’ingrediente, la quantità attuale, l’unità (kg, g, L, mL o u per "unità"), poi salvi. L’articolo appare immediatamente nel suo inventario.
+
+### Definire una soglia di rifornimento
+
+Modifichi l’articolo e indichi la **soglia minima** (ad esempio 2 kg). Non appena la quantità scende sotto questa soglia, Grubano visualizza un avviso "scorte basse" sulla riga corrispondente. Può regolare questa soglia in qualsiasi momento.
+
+### Aggiornare in linguaggio naturale
+
+Sulla pagina Scorte, digiti una frase come "pollo 3 kg, riso 5 kg, salsa di pomodoro finita" nel campo **Aggiorna in testo**. Confermi: l’IA analizza il suo messaggio, riconosce gli ingredienti, aggiorna le quantità (0 se "finito") e visualizza un riepilogo degli articoli modificati o creati. Nessun modulo articolo per articolo.
+
+### Consultare le previsioni
+
+Una volta aggiornate le scorte, consulti la tabella delle previsioni a 7 giorni. Grubano indica per ogni articolo il numero di **giorni rimanenti**, la **data di rottura stimata** e uno **stato** (critico se ≤ 1 giorno, basso se ≤ 3 giorni, ok altrimenti). Ordini in anticipo gli articoli contrassegnati "critico" o "basso".
+
+### Monitorare le date di scadenza
+
+Inserisca una **data di scadenza** durante la creazione o la modifica di un articolo. I prodotti prossimi alla scadenza appaiono in cima alla lista per ricordarle di consumarli prioritariamente o di rimuoverli dal [menu](/it/guides/menu/).
+
+</Steps>
+
+## Buone pratiche
+
+- **Aggiorni dopo ogni consegna**: non appena riceve un pacco dal fornitore, aggiunga le nuove quantità. La previsione rimane affidabile solo se le sue scorte sono aggiornate.
+- **Soglie realistiche**: una soglia troppo bassa provoca rotture di stock; una soglia troppo alta immobilizza liquidità. Osservi le sue vendite nell’arco di una settimana e regoli progressivamente.
+- **Utilizzi l’IA per gli aggiornamenti rapidi**: a fine servizio, detti o digiti i consumi del giorno in una frase. È più veloce che modificare ogni riga manualmente.
+- **Colleghi scorte e menu**: se un ingrediente chiave è esaurito, contrassegni il piatto corrispondente come non disponibile dalla pagina [Menu & Scan IA](/it/guides/menu/) per evitare ordini impossibili da soddisfare.
+
+## Suggerimenti e consigli
+
+Formuli i suoi messaggi IA come un elenco telegrafico: "farina 5 kg, uova 2 dozzine, olio 3 L". L’IA riconosce i sinonimi comuni ("dozzina" → 12 u, "finito/terminato" → 0) e le unità abbreviate (kg, L). Non servono frasi complete.
+
+<Callout type="warning">
+L’aggiornamento IA è soggetto a una quota mensile per ristorante. Se raggiunge il limite, un messaggio di errore 429 la invita ad attendere fino al mese successivo o a passare all’inserimento manuale.
+</Callout>
+
+## Domande frequenti
+
+<Faq items={[
+  {
+    icon: "help",
+    q: "Posso gestire più marchi con scorte separate?",
+    a: "Sì. Ogni marchio (Brand) possiede il proprio inventario. Selezioni il marchio interessato in alto nella pagina Scorte per visualizzare e modificare solo i suoi articoli."
+  },
+  {
+    icon: "help",
+    q: "Cosa succede se invio un messaggio IA senza specificare un marchio?",
+    a: "L’API restituisce un’anteprima degli articoli rilevati (stato \“preview\”) senza salvarli. Fornisca un identificativo di marchio (brandId) per salvare le modifiche nel suo inventario."
+  },
+  {
+    icon: "help",
+    q: "La previsione di rottura è affidabile dal primo giorno?",
+    a: "Si basa su medie predefinite. Dopo alcune settimane, regoli le sue soglie in base al suo consumo reale per affinare le previsioni."
+  },
+  {
+    icon: "help",
+    q: "Posso eliminare un articolo dall’inventario?",
+    a: "Attualmente, l’API permette di creare e aggiornare gli articoli. Per rimuovere definitivamente un prodotto, porti la sua quantità a zero e la sua soglia a zero; non apparirà più negli avvisi."
+  }
+]} />
+
+## Per approfondire
+
+**Passo successivo**  
+[Menu & Scan IA](/it/guides/menu/) — Colleghi le sue scorte alla sua carta: contrassegni un piatto come non disponibile non appena un ingrediente chiave è esaurito, per evitare ordini che non potrà soddisfare.
+
+**Vedi anche**  
+[Dashboard ristoratore](/it/guides/restaurant/) — Acceda alla pagina Scorte dalla sua dashboard e consulti i suoi avvisi di rifornimento a colpo d’occhio.

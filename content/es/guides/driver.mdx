@@ -1,0 +1,138 @@
+---
+title: "Convertirse en repartidor y misiones"
+description: "Convertirse en repartidor independiente en Grubano: postular (lista de espera y luego validación KYC), ponerse disponible, ver las misiones y realizar un pedido paso a paso."
+generated: true
+sourceHash: f9d62a4d3e81126d
+generator: scripts/generate-feature-page.js
+templateVersion: 5
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# Convertirse en repartidor y misiones
+
+Únase a Grubano como repartidor independiente: postule en pocos minutos, pase la validación automática y luego acepte libremente los pedidos disponibles en su zona.
+
+<FlowDiagram steps={["Postular","Validación / KYC","Ponerse disponible","Realizar un pedido"]} />
+
+## Lo esencial
+
+¿Es usted repartidor independiente o gestiona una flota de reparto? Grubano le permite postular en línea, ser validado automáticamente (sujeto a las verificaciones de identidad y conformidad) y luego aceptar libremente las misiones de reparto que correspondan a sus vehículos y zonas de actividad. Usted sigue siendo dueño de su agenda: se pone disponible cuando lo desea, consulta los pedidos propuestos y elige los que acepta.
+
+## Cómo funciona
+
+Grubano abre progresivamente su red de repartidores para ofrecer una alternativa equitativa a las plataformas clásicas. A diferencia de los modelos con comisión elevada, el sistema se basa en la transparencia y la autonomía: usted declara sus capacidades (tipos de misiones, vehículos, zonas), la plataforma verifica automáticamente su estatus de empresa (SIREN o SIRET) ante el registro oficial y luego accede a un panel de control dedicado donde acepta los pedidos con total libertad, sin penalización en caso de rechazo.
+
+El recorrido está diseñado para ser rápido y seguro: una validación automática basada en datos públicos (sin expediente en papel complejo), un espacio para repartidores sencillo que muestra las misiones disponibles en tiempo real y un seguimiento paso a paso de cada pedido (aceptado → recogido → entregado) directamente desde su móvil.
+
+<Callout type="warning">
+**Lanzamiento progresivo** — La apertura de la red de repartidores está actualmente gestionada por etapas. Su candidatura será colocada en lista de espera mientras Grubano active definitivamente la puesta en contacto. Será notificado por correo electrónico tan pronto como pueda comenzar a aceptar misiones.
+</Callout>
+
+## Paso a paso
+
+<Steps>
+
+### Postule en línea
+
+Complete el formulario de inscripción de repartidor: estatus (independiente o sociedad), nombre de contacto, correo electrónico, teléfono, SIREN o SIRET (9 o 14 dígitos), tipos de misiones aceptadas (comidas, productos de proveedores, B2B, frío), vehículos disponibles (bicicleta, scooter, automóvil, camioneta, frigorífico), zonas de reparto. Valide su consentimiento al tratamiento de datos.
+
+La plataforma activa automáticamente una verificación de identidad de empresa ante el registro oficial: existencia de la empresa, estado de actividad, cotejo del nombre declarado. Se impone un plazo mínimo de 2 segundos para descartar robots.
+
+### Reciba el resultado de la validación
+
+Tres resultados posibles: **activo** (su perfil está validado, accede inmediatamente al espacio de repartidor una vez que la apertura de la red sea efectiva), **en espera** (verificación manual necesaria o inscripción en lista de espera), **rechazado** (empresa no encontrada o dada de baja). El nombre oficial de su empresa (tal como está inscrito en el registro) le será comunicado si su candidatura es aceptada.
+
+Se crea automáticamente una cuenta sin contraseña en su dirección de correo electrónico: recibirá un enlace de conexión mágico cada vez que quiera conectarse. Su perfil permanece modificable en cualquier momento desde la pestaña **Perfil** de su espacio de repartidor (datos de contacto, tipos de misiones, vehículos, zonas).
+
+<Callout type="info">
+**Validación tolerante sobre el nombre** — La verificación automática acepta un nombre de contacto que difiere ligeramente del nombre oficial en el registro (por ejemplo, un nombre comercial o una abreviatura). Solo una empresa no encontrada o dada de baja conlleva un rechazo.
+</Callout>
+
+### Declare sus justificantes de conformidad
+
+Antes de poder aceptar misiones, debe completar su perfil con sus justificantes de seguro: aseguradora de responsabilidad civil de vehículo o actividad, número de póliza, fecha de vencimiento y, si aplica, aseguradora de RC Pro con su número de póliza. Esta información es declarativa (no hay archivo que depositar en esta versión) y será verificada manualmente por el equipo de Grubano.
+
+Su estatus de justificantes pasa de **ninguno** a **enviado** desde el envío, y luego a **verificado** una vez validado por un administrador. Este estatus aparece claramente en su panel de control y condiciona la activación definitiva de su cuenta de repartidor.
+
+### Póngase disponible
+
+Una vez que su perfil esté activo y sus justificantes verificados, active el botón **Disponible** en su espacio de repartidor. Este estatus simple (en línea / fuera de línea) indica a la plataforma que está listo para recibir propuestas de pedido. Puede desactivarlo en cualquier momento sin justificación.
+
+Mientras esté fuera de línea, no se le propondrá ninguna misión. Tan pronto como pase a estar en línea, los pedidos correspondientes a sus criterios (vehículos, zonas, tipos de misiones) aparecerán en la pestaña **Misiones disponibles**.
+
+### Consulte las misiones disponibles
+
+La pestaña **Misiones disponibles** lista en tiempo real los pedidos que puede aceptar: restaurante de partida (nombre, dirección completa), zona de reparto aproximada (barrio o código postal; la dirección exacta del cliente solo se revela una vez aceptada la misión), distancia estimada, tipo de misión, importe del pedido. Solo ve las misiones compatibles con su perfil y que no ha rechazado previamente.
+
+Sin penalización en caso de rechazo: si un pedido no le conviene, simplemente ignórelo. Desaparecerá de su lista pero podrá ser propuesto a otro repartidor. Usted sigue siendo libre de aceptar o no cada misión.
+
+### Acepte un pedido
+
+Haga clic en **Aceptar** en la misión de su elección. La atribución es inmediata y exclusiva: el primer repartidor elegible que acepta obtiene el pedido. Si la misión ya fue tomada por otro repartidor mientras tanto, recibirá un mensaje neutro «Misión no disponible» (no es un error de su parte, solo una carrera normal de selección).
+
+Desde la aceptación, la dirección completa del cliente le es revelada, y la misión aparece en su pestaña **En curso**. Entonces puede dirigirse al punto de partida.
+
+### Recoja el pedido
+
+Una vez en el restaurante, confirme la recogida presionando **Recogido** en la aplicación. El estatus de la misión pasa de **aceptada** a **recogida**. Este paso activa la notificación al cliente (el pedido está en camino) y le permite seguir claramente dónde se encuentra.
+
+Si intenta marcar una etapa en desorden (por ejemplo, entregar antes de haber recogido), la aplicación rechaza la acción con un mensaje explícito. Cada misión sigue un ciclo estricto: aceptada → recogida → entregada.
+
+### Entregue el pedido
+
+Una vez que llegue al domicilio del cliente, confirme la entrega presionando **Entregado**. El estatus de la misión pasa a **entregada**, el pedido se archiva en la pestaña **Terminadas** y su [remuneración](/es/guides/driver-earnings/) queda registrada (el pago efectivo llegará pronto; consulte la ficha Remuneración).
+
+Puede consultar el historial completo de sus pedidos terminados (entregados o cancelados) en la pestaña **Terminadas**: hasta 50 misiones recientes, ordenadas por fecha descendente.
+
+</Steps>
+
+## Buenas prácticas
+
+- **Actualice sus zonas de reparto regularmente**: si amplía su perímetro de intervención o agrega un vehículo nuevo, modifique su perfil inmediatamente para recibir más propuestas adaptadas.
+- **Pase a en línea únicamente cuando esté realmente disponible**: no tiene sentido recibir ofertas si no puede aceptarlas en el momento. El estatus disponible / no disponible está hecho para eso.
+- **Consulte la pestaña Misiones disponibles con frecuencia**: los pedidos se atribuyen al primero que acepta. Cuanto más rápido reaccione, más aumenta sus posibilidades de obtener las misiones interesantes.
+- **No tema rechazar un pedido**: ningún algoritmo le penalizará. Si la distancia no le conviene o el horario no encaja, simplemente ignore la misión.
+
+## Errores frecuentes
+
+<Callout type="warning">
+**Intentar entregar antes de haber recogido** — El ciclo de la misión es estricto: debe primero aceptar, luego marcar **Recogido** en el restaurante y finalmente **Entregado** en el domicilio del cliente. Si intenta saltarse una etapa, la aplicación rechaza la acción (error 422). Respete el orden de las etapas.
+</Callout>
+
+**SIREN o SIRET erróneo durante la postulación** — La validación automática interroga el registro oficial. Si el número es inválido (demasiado corto, demasiado largo o inexistente), su candidatura será rechazada. Verifique su SIREN (9 dígitos) o SIRET (14 dígitos) antes de enviar el formulario.
+
+**Modificar su correo electrónico después de la inscripción** — El correo electrónico declarado en la inscripción es su identificador de conexión definitivo. No puede ser modificado desde el espacio de repartidor (es el ancla de su cuenta multirrol). Si necesita cambiar de correo electrónico, contacte al soporte de Grubano.
+
+## Preguntas frecuentes
+
+<Faq items={[
+  {
+    icon: 'help',
+    q: '¿Puedo acumular el rol de repartidor con otro rol en Grubano (restaurador, creador, afiliado)?',
+    a: 'Sí. Grubano permite la acumulación de roles en una misma cuenta. Su correo electrónico permanece único, y accede a espacios distintos según el rol activo. Por ejemplo, puede gestionar un restaurante y repartir pedidos para otros establecimientos con el mismo identificador.'
+  },
+  {
+    icon: 'help',
+    q: '¿Qué pasa si rechazo sistemáticamente todas las misiones?',
+    a: 'Nada. Grubano nunca penaliza un rechazo de misión. Si ignora un pedido, simplemente desaparece de su lista y puede ser propuesto a otro repartidor. Usted sigue siendo libre de aceptar o no, sin consecuencia sobre su estatus.'
+  },
+  {
+    icon: 'help',
+    q: '¿Cómo puedo seguir mi remuneración?',
+    a: 'Su remuneración por pedido se registra automáticamente tan pronto como marca una misión como entregada. Los detalles de pago (historial, pagos) aparecerán en una sección dedicada de su espacio de repartidor, en curso de despliegue. Consulte la ficha Remuneración de repartidor para saber más.'
+  },
+  {
+    icon: 'help',
+    q: '¿Por qué la dirección completa del cliente solo aparece después de la aceptación?',
+    a: 'Por respeto a la privacidad del cliente (RGPD), la dirección exacta de entrega está oculta mientras la misión es propuesta a un grupo de repartidores elegibles. Solo el barrio o el código postal es visible. Tan pronto como acepta el pedido, se convierte en el repartidor exclusivo y la dirección completa le es revelada.'
+  }
+]} />
+
+## Para ir más allá
+
+**Etapa siguiente**  
+[Remuneración de repartidor](/es/guides/driver-earnings/) — Comprenda cómo se calcula su remuneración por pedido, cuándo y cómo se le paga, y cómo consultar el historial de sus ganancias.
+
+**Vea también**  
+[Seguimiento de posición del repartidor](/es/guides/driver-tracking/) — Descubra cómo funciona el consentimiento al seguimiento de posición en tiempo real durante un pedido, y cómo el cliente puede seguir su progreso (funcionalidad progresiva, sujeta a su acuerdo explícito).

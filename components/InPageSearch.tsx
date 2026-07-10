@@ -17,7 +17,9 @@ import { usePathname } from 'next/navigation'
  * click — keeping the validated orange overlay visual.
  */
 
-const LABELS = {
+type Labels = { placeholder: string; empty: string; hint: string }
+
+const LABELS: Record<string, Labels> = {
   fr: {
     placeholder: 'Rechercher dans cet article…',
     empty: 'Rien trouvé dans cet article.',
@@ -28,7 +30,22 @@ const LABELS = {
     empty: 'Nothing found in this article.',
     hint: 'On-page search',
   },
-} as const
+  es: {
+    placeholder: 'Buscar en este artículo…',
+    empty: 'Nada encontrado en este artículo.',
+    hint: 'Búsqueda en la página',
+  },
+  ar: {
+    placeholder: 'ابحث في هذا المقال…',
+    empty: 'لا شيء في هذا المقال.',
+    hint: 'بحث داخل الصفحة',
+  },
+  it: {
+    placeholder: 'Cerca in questo articolo…',
+    empty: 'Nessun risultato in questo articolo.',
+    hint: 'Ricerca nella pagina',
+  },
+}
 
 type Section = { id: string; title: string; level: number; body: string }
 
@@ -75,7 +92,7 @@ function snippet(text: string, q: string): { before: string; hit: string; after:
 }
 
 export function InPageSearch({ lang = 'fr' }: { lang?: string }) {
-  const t = lang === 'en' ? LABELS.en : LABELS.fr
+  const t = LABELS[lang] ?? LABELS.fr
   const pathname = usePathname()
   const [query, setQuery] = useState('')
   const [open, setOpen] = useState(false)

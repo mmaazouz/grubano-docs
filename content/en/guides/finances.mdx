@@ -1,0 +1,119 @@
+---
+title: "Finances & Payouts"
+description: "Understanding your Grubano finances: 10% commission per order, payout schedule, gross/commission/net breakdown, and DAC7 reporting."
+generated: true
+sourceHash: 786e621b2b34ea5c
+generator: scripts/generate-feature-page.js
+templateVersion: 5
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# Finances & Payouts
+
+Track your revenue in real time, understand the 10% commission, and review your payouts: everything is transparent.
+
+<FlowDiagram steps={["Order paid","10% Commission","Payout","Statement & DAC7"]} />
+
+## The essentials
+
+Every paid order generates a direct payout to your bank account, less the Grubano commission of 10%. You can view the gross / commission / net breakdown in your [dashboard](/en/guides/restaurant/), and you receive a monthly statement for your accounting and DAC7 reporting.
+
+## How it works
+
+Grubano applies a **single commission of 10%** on the revenue you generate through the platform — regardless of the channel (dine-in, takeaway, delivery, reservation). This commission covers the technical infrastructure, marketing, payment processing, and support. The remaining 90% is paid directly to you, day by day, to the bank account you provided when you signed up.
+
+The model is simple: you see the gross amount of each order, the commission deducted, and the net amount paid to you. No hidden fees, no surprises. You remain the owner of your customer data, and payouts are processed automatically without any action required on your part.
+
+At the end of each month, you receive a detailed statement — useful for your accountant and to fulfill your tax obligations (notably the DAC7 declaration for digital platforms). This statement summarizes all your transactions, commissions, any refunds, and the net amount paid out.
+
+## Step by step
+
+<Steps>
+
+### View the financial summary
+
+From your dashboard, click **Finances** in the side menu. You immediately see:
+
+- The **gross revenue** for the period (last 7 days by default)
+- The **Grubano commission** (10% of revenue)
+- The **net amount** transferred to your account
+
+Change the period (day / week / month) to refine your analysis.
+
+### Review the transaction details
+
+Scroll down the page: each line corresponds to a financial transaction (payment, refund, adjustment). You see:
+
+- The date and time
+- The transaction type (customer payment, reservation deposit capture, refund)
+- The gross amount collected
+- The commission deducted
+- The net amount credited to your account
+
+Click on a line to see the related receipt or reservation.
+
+### Track payouts
+
+Funds are transferred **automatically** to your bank account, according to your payment provider’s schedule (typically within 2 to 7 business days after collection). You do not need to take any action: as soon as an order is paid, the 90% net amount is due to you.
+
+The details of each payout appear in the transaction history, with the transfer reference (useful for reconciling your bank statements).
+
+### Download the monthly statement
+
+At the end of each month, a PDF statement is generated automatically. It summarizes:
+
+- The monthly gross revenue
+- Total commissions
+- Any refunds (cancellations, goodwill gestures)
+- The net amount paid out
+
+This document complies with the requirements of the **DAC7** directive (reporting income from digital platforms). Provide it to your accountant for your income tax return.
+
+</Steps>
+
+<Callout type="info">
+**Total transparency** — The 10% commission applies to *all* your sales channels on Grubano (dine-in, takeaway, delivery, reservation). It will not change with the Pro plan, available soon: Pro (€29/month) will add aggregation of your other platforms (Uber Eats, Deliveroo…) on a single dashboard, but the commission will remain 10%.
+</Callout>
+
+## Concrete example
+
+Your restaurant collects **€2,000 in orders** for the week via Grubano (€150 dine-in, €850 takeaway, €1,000 delivery). The 10% commission amounts to **€200**. You therefore receive **€1,800 net** in your bank account. A customer cancels a €25 order: you are refunded €22.50 net (the 90% of that order), and the €2.50 commission is also returned to you.
+
+At the end of the month, the PDF statement totals €8,500 in gross revenue, €850 in commission, €7,650 paid out, and lists 3 refunds for €75. You provide this statement to your accountant for the annual tax return.
+
+## Best practices
+
+- **Reconcile weekly** — Compare the net amount shown in Grubano with the transfers received in your bank account. If there is a discrepancy, review the transaction details (a pending refund may explain a difference).
+- **Archive monthly statements** — Keep each PDF: they constitute your supporting document for the tax authorities and simplify annual accounting close.
+- **Monitor the refund rate** — A high rate (> 5%) may signal a quality or communication issue with customers. The dashboard displays this ratio: use it as an alert signal.
+
+## Frequently asked questions
+
+<Faq items={[
+  {
+    icon: "help",
+    q: "Does the 10% commission also apply to delivery fees?",
+    a: "No. The 10% commission is calculated only on the amount of the dishes (subtotal). Delivery fees are returned to you in full (100%), without any deduction."
+  },
+  {
+    icon: "help",
+    q: "Can I choose the payout frequency?",
+    a: "Payouts are automatic and follow your payment provider’s schedule (typically within 2 to 7 days after each collection). You cannot change this frequency, but you can see in real time the net amount due in your dashboard."
+  },
+  {
+    icon: "help",
+    q: "What should I do if a payout is late or missing?",
+    a: "First check the transaction details in the Finances page: a recent refund may have reduced the expected amount. If the discrepancy persists after 7 business days, contact Grubano support with the reference of the transaction in question."
+  },
+  {
+    icon: "help",
+    q: "Is the monthly statement sufficient for my tax return?",
+    a: "Yes. The Grubano statement complies with the DAC7 directive and summarizes all your income from the platform. Provide it to your accountant: it contains all the necessary information (gross revenue, commissions, refunds, net amount paid out)."
+  }
+]} />
+
+## Going further
+
+- [Restaurant dashboard](/en/guides/restaurant/) — Overview of your activity, real-time KPIs, and direct access to the Finances page.
+- [Grubano Pro](/en/guides/pro/) — Soon, receive orders from all your platforms (Uber Eats, Deliveroo…) on a single dashboard. The commission will remain 10%; Pro will be a monthly subscription of €29 that is added, without commitment.

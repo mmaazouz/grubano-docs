@@ -16,7 +16,17 @@ import { InPageSearch } from './InPageSearch'
  * would be a redundant second global field.
  */
 
-const LABELS = {
+type Labels = {
+  all: string
+  page: string
+  scopeAria: string
+  placeholder: string
+  empty: string
+  loading: string
+  error: string
+}
+
+const LABELS: Record<string, Labels> = {
   fr: {
     all: 'Toute la doc',
     page: 'Cette page',
@@ -35,13 +45,40 @@ const LABELS = {
     loading: 'Loading…',
     error: 'Failed to load the search index.',
   },
-} as const
+  es: {
+    all: 'Toda la doc',
+    page: 'Esta página',
+    scopeAria: 'Ámbito de búsqueda',
+    placeholder: 'Buscar en toda la documentación…',
+    empty: 'Sin resultados',
+    loading: 'Cargando…',
+    error: 'No se pudo cargar el índice de búsqueda.',
+  },
+  ar: {
+    all: 'كل الوثائق',
+    page: 'هذه الصفحة',
+    scopeAria: 'نطاق البحث',
+    placeholder: 'ابحث في كل الوثائق…',
+    empty: 'لا توجد نتائج',
+    loading: 'جارٍ التحميل…',
+    error: 'تعذّر تحميل فهرس البحث.',
+  },
+  it: {
+    all: 'Tutta la doc',
+    page: 'Questa pagina',
+    scopeAria: 'Ambito di ricerca',
+    placeholder: 'Cerca in tutta la documentazione…',
+    empty: 'Nessun risultato',
+    loading: 'Caricamento…',
+    error: 'Impossibile caricare l’indice di ricerca.',
+  },
+}
 
 type Scope = 'all' | 'page'
 const STORE_KEY = 'gb-search-scope'
 
 export function NavbarSearch({ lang = 'fr' }: { lang?: string }) {
-  const t = lang === 'en' ? LABELS.en : LABELS.fr
+  const t = LABELS[lang] ?? LABELS.fr
   const pathname = usePathname() || '/'
   const isHome = /^\/([a-z]{2})\/?$/.test(pathname) || pathname === '/'
 

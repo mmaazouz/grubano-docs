@@ -1,0 +1,101 @@
+---
+title: "Catalogo, zone e ordini"
+description: "Pubblicate il vostro catalogo e i vostri prezzi, definite le vostre zone di consegna e il vostro minimo d’ordine, poi ricevete e gestite gli ordini dei ristoratori."
+generated: true
+sourceHash: b14ffa152f153b7f
+generator: scripts/generate-feature-page.js
+templateVersion: 5
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# Catalogo, zone e ordini
+
+Pubblicate la vostra offerta di prodotti, definite le vostre condizioni di consegna e ricevete gli ordini dei ristoratori in tutta semplicità.
+
+<FlowDiagram steps={["Pubblicare il catalogo","Definire zone e minimo","Ricevere un ordine","Gestire e consegnare"]} />
+
+## L’essenziale
+
+Il vostro catalogo è la vetrina della vostra offerta: ogni prodotto pubblicato diventa visibile ai ristoratori delle vostre zone di consegna. Definite i vostri prezzi (visualizzati in centesimi di euro), le vostre quantità minime e i vostri tempi di consegna, poi ricevete gli ordini direttamente sulla vostra dashboard. Tutto è centralizzato, mantenete il controllo.
+
+## Come funziona
+
+Il catalogo fornitore funziona come un negozio B2B: aggiungete i vostri prodotti (nome, prezzo unitario, confezionamento, allergeni), definite la vostra zona di consegna (città o settori) e fissate il vostro minimo d’ordine. Non appena un ristoratore effettua un ordine, questo appare nella vostra dashboard con il riepilogo delle righe, il totale e i recapiti del cliente.
+
+Questo sistema risolve un problema classico: la dispersione delle richieste per telefono o e-mail. Qui, ogni ordine è registrato, marcato temporalmente, riepilogato riga per riga — sapete sempre chi ha ordinato cosa, quando e per quale data di consegna desiderata. Potete concentrarvi sulla preparazione e sulla logistica, la piattaforma gestisce la tracciabilità.
+
+## Passo dopo passo
+
+<Steps>
+
+### Pubblicate i vostri prodotti
+
+Accedete al vostro spazio fornitore e aggiungete ogni referenza: nome, descrizione, categoria (fresco, carne, pesce, latticini, bevande, drogheria, imballaggi), prezzo unitario in euro, unità di misura (kg, g, L, cL, pezzo, cartone, pacco), confezionamento («cartone da 6», «sacco da 25 kg»), eventuali allergeni. Il prezzo viene convertito automaticamente in centesimi per garantire la precisione. Potete contrassegnare un prodotto come temporaneamente non disponibile senza rimuoverlo dal catalogo.
+
+### Definite le vostre condizioni commerciali
+
+Nel vostro profilo, indicate le vostre zone di consegna (città o codici postali), il vostro importo minimo d’ordine (in euro), il vostro tempo di consegna (in giorni) e le vostre condizioni di pagamento. Queste informazioni sono visibili ai ristoratori prima che effettuino un ordine — sanno immediatamente se si trovano nella vostra zona e se raggiungono il minimo.
+
+### Ricevete gli ordini
+
+Ogni volta che un ristoratore convalida un carrello presso di voi, un nuovo ordine appare nella vostra dashboard con lo stato «Effettuato». Vedete il nome del ristorante, la sua città, l’elenco delle righe (prodotto, quantità, prezzo unitario, subtotale), l’importo totale, eventuali note e la data di consegna desiderata.
+
+### Monitorate i vostri clienti
+
+La scheda «Clienti» aggrega automaticamente tutti i ristoratori che vi hanno ordinato almeno una volta: vedete per ciascuno il numero di ordini, l’importo totale speso (in centesimi) e la data dell’ultimo ordine. Questo vi aiuta a identificare i vostri clienti abituali e ad anticipare le loro esigenze.
+
+</Steps>
+
+<Callout type="info">
+**Prossimamente**: il cambio di stato degli ordini (confermato, in preparazione, consegnato) sarà disponibile direttamente dalla vostra dashboard. Per il momento, gli ordini sono registrati con lo stato «Effettuato» e rimangono visibili in sola lettura.
+</Callout>
+
+## Buone pratiche
+
+**Catalogo aggiornato** — Contrassegnate come «non disponibili» le referenze in rottura temporanea piuttosto che eliminarle: conservate lo storico e potete riattivarle con un clic.
+
+**Confezionamento chiaro** — Precisate sempre il confezionamento («cartone da 12», «sacco da 10 kg»): questo evita malintesi sulle quantità ordinate.
+
+**Zone realistiche** — Elencate solo i settori che potete servire nei tempi annunciati. Un ristoratore che ordina fuori zona rischia di essere deluso se non potete onorare la consegna.
+
+**Minimo coerente** — Fissate un importo minimo che copra i vostri costi di consegna: una soglia troppo bassa può rendere ogni corsa non redditizia, una soglia troppo alta può frenare i piccoli esercizi.
+
+## Errori frequenti
+
+<Callout type="warning">
+**Prezzi in euro, memorizzati in centesimi** — Il modulo richiede euro con decimali (es. 12,50 €), ma la piattaforma memorizza e visualizza gli importi in centesimi (1 250). Non inserite direttamente centesimi nel campo prezzo, la conversione è automatica.
+</Callout>
+
+**Dimenticare gli allergeni** — Se un prodotto contiene un allergene importante (glutine, lattosio, frutta a guscio…), indicatelo sistematicamente. I ristoratori devono poter informare i propri clienti; un’omissione impegna la vostra responsabilità.
+
+**Catalogo vuoto dopo l’iscrizione** — Il vostro profilo è attivo dalla verifica del vostro SIREN, ma rimanete invisibili sul marketplace finché non avete pubblicato alcun prodotto. Aggiungete almeno una referenza per apparire nelle ricerche dei ristoratori.
+
+## Domande frequenti
+
+<Faq items={[
+  {
+    icon: "help",
+    q: "Posso modificare il prezzo di un prodotto già ordinato?",
+    a: "No: ogni riga d’ordine registra il prezzo al momento della convalida (snapshot). Modificare il prezzo a catalogo incide solo sui nuovi ordini. Lo storico rimane congelato per garantire la tracciabilità."
+  },
+  {
+    icon: "help",
+    q: "Come posso sapere se un ordine è stato pagato?",
+    a: "Il pagamento degli ordini fornitori sarà presto attivato tramite un fornitore di servizi di pagamento. Per il momento, gli ordini sono registrati senza transazione finanziaria — le condizioni di pagamento (immediato, 30 giorni…) restano da concordare direttamente con ogni ristorante."
+  },
+  {
+    icon: "help",
+    q: "Un ristoratore fuori dalla mia zona può ordinare?",
+    a: "No: il marketplace propone il vostro catalogo solo ai ristoratori situati nelle zone che avete dichiarato. Se ampliate il vostro perimetro, aggiornate l’elenco nel vostro profilo."
+  },
+  {
+    icon: "help",
+    q: "Cosa succede se elimino un prodotto già ordinato?",
+    a: "Le righe degli ordini passati conservano il nome e l’unità del prodotto (snapshot) anche dopo l’eliminazione dal catalogo. Perdete semplicemente il collegamento diretto alla scheda prodotto, ma lo storico rimane leggibile."
+  }
+]} />
+
+## Per approfondire
+
+**Guida fornitore completa** — Scoprite l’intero percorso fornitore, dall’iscrizione alla gestione dei clienti: [Guida fornitore](/it/guides/supplier/).

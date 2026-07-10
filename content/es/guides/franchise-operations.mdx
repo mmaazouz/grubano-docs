@@ -1,0 +1,86 @@
+---
+title: "Gestionar su red"
+description: "Gestionar una red de franquicia: varios puntos de venta, seguimiento de las regalías adeudadas y reporting consolidado — dentro de los límites fijados por Grubano."
+generated: true
+sourceHash: 3671b12687b14450
+generator: scripts/generate-feature-page.js
+templateVersion: 5
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# Gestionar su red
+
+Siga el rendimiento de sus establecimientos franquiciados, verifique las regalías acumuladas y consolide sus informes — todo desde un solo panel de control.
+
+<FlowDiagram steps={["Puntos de venta","CA de la red","Regalías","Reporting"]} />
+
+## Lo esencial
+
+Cuando se convierte en franquiciador en Grubano, accede a un panel de control dedicado que agrega las ventas de todos sus establecimientos franquiciados, calcula las regalías adeudadas dentro de los límites fijados por Grubano, y le permite seguir la salud de su red en tiempo real.
+
+## Cómo funciona
+
+Cada punto de venta vinculado a su marca registra sus pedidos en el sistema Grubano. El panel de control del franquiciador consolida automáticamente estos datos en una ventana móvil de 30 días: cifra de negocio por establecimiento, número de pedidos, regalías acumuladas. Así puede ver de un vistazo qué establecimientos tienen mejor rendimiento, cuánto debe percibir, y dónde concentrar su acompañamiento. Las condiciones financieras (tasa de regalías, gastos de apertura, zonas de exclusividad) se fijan entre las partes interesadas; el panel de control aplica estos parámetros para calcular los importes adeudados.
+
+## Paso a paso
+
+<Steps>
+
+### Acceda al panel de control
+
+Inicie sesión con su cuenta de franquiciador, luego diríjase al espacio **Franquicia** → **Vista general**. Allí encontrará el resumen de la red: número de establecimientos activos, ciudades cubiertas, candidaturas pendientes.
+
+### Consulte el rendimiento por establecimiento
+
+La sección "Establecimientos" enumera todos los puntos de venta franquiciados: nombre, ciudad, cifra de negocio en 30 días, número de pedidos. Los establecimientos se clasifican por ingresos decrecientes, lo que hace destacar inmediatamente las locomotoras de la red y los sitios que necesitan acompañamiento.
+
+### Verifique las regalías
+
+El bloque "Regalías" muestra tres importes:  
+— **Acumuladas**: la suma total de las regalías registradas desde el origen;  
+— **Pendientes**: lo que aún no se ha abonado;  
+— **Abonadas**: el histórico de los pagos ya efectuados.  
+Cuando el mecanismo de cobro automático está activado en la plataforma, estas líneas se calculan pedido por pedido; en caso contrario, los importes permanecen en cero y el seguimiento se realiza manualmente.
+
+### Explore la actividad reciente
+
+La línea de tiempo en la parte inferior de la página enumera los eventos destacados: aperturas de establecimientos, hitos de cifra de negocio. Le ayuda a identificar las tendencias (crecimiento rápido en una zona, desaceleración en otra parte) y a anticipar las necesidades de acompañamiento.
+
+</Steps>
+
+## Buenas prácticas
+
+**Compare el rendimiento en el mismo horario** — Los restaurantes del centro de la ciudad y los de zona periurbana no tienen las mismas horas punta; ajuste sus expectativas teniendo en cuenta el perfil de cada establecimiento.
+
+**Identifique las mejores prácticas locales** — Si un establecimiento muestra un ticket medio notablemente superior a la media de la red, analice su menú o su estrategia promocional para replicarla en otros lugares.
+
+**Supervise las candidaturas pendientes** — Un tiempo de procesamiento demasiado largo puede desanimar a candidatos serios; consulte regularmente el contador de candidaturas y procéselas en plazos razonables.
+
+## Ejemplo concreto
+
+Imaginemos que su marca cuenta con cinco establecimientos en Vaucluse. El panel de control muestra una cifra de negocio consolidada de 38 500 € en los últimos treinta días, frente a 34 200 € del periodo anterior — es decir, un crecimiento de +12,6 %. Observa que Aviñón genera 14 000 € por sí solo, mientras que Carpentras se estanca en 4 500 €. Al investigar, descubre que Carpentras no activa la recogida en el local y cierra los domingos. Llama al franquiciado para sugerirle abrir el domingo al mediodía y activar el pickup: dos palancas simples que, desplegadas en Aviñón, precisamente impulsaron la cifra de negocio local.
+
+## Preguntas frecuentes
+
+<Faq items={[
+  {
+    icon: 'help',
+    q: '¿Puedo ver el detalle de los pedidos de cada establecimiento?',
+    a: 'No. El panel de control del franquiciador muestra los agregados (CA, número de pedidos, regalías) para preservar la confidencialidad operativa de cada franquiciado. Si necesita un diagnóstico más detallado, contacte directamente con el explotador correspondiente.'
+  },
+  {
+    icon: 'help',
+    q: '¿Qué sucede si un establecimiento cierra temporalmente?',
+    a: 'Un punto de venta marcado como inactivo desaparece del contador "establecimientos abiertos" pero permanece visible en el histórico. Sus pedidos pasados continúan figurando en los totales acumulados; sin embargo, no genera nuevas regalías mientras esté cerrado.'
+  },
+  {
+    icon: 'help',
+    q: '¿Las regalías tienen en cuenta los reembolsos?',
+    a: 'Sí, está previsto: cuando el mecanismo de regalías esté activado, todo pedido reembolsado parcial o totalmente verá su regalía ajustada proporcionalmente al importe reembolsado. El saldo "pendiente" reflejará así siempre la parte neta adeudada.'
+  }
+]} />
+
+## Para ir más allá
+
+**Contexto** — Descubra cómo funciona el modelo de [franquicia](/es/guides/franchise/) en Grubano: apertura de puntos de venta, gestión de candidaturas, mecanismos de regalías.

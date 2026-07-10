@@ -1,8 +1,109 @@
 ---
-title: Order & track
-description: Translation in progress
+title: "Order & Track"
+description: "Find a local restaurant, place an order (delivery / click & collect / dine-in) and track progress in real time."
+generated: true
+sourceHash: bf78b8eca73da5ba
+generator: scripts/generate-feature-page.js
+templateVersion: 5
 ---
 
-# Order & track
+import { Steps, Callout } from 'nextra/components'
 
-> **Translation in progress.** This guide has not yet been translated. See the [French version](/fr/guides/consumer/) for the current content.
+# Order & Track
+
+Find a restaurant near you, place your order in just a few clicks and track your delivery or pickup in real time.
+
+---
+
+<FlowDiagram steps={["Find a restaurant","Build your order","Pay","Track the order"]} />
+
+---
+
+## The essentials
+
+You choose a local restaurant, build your basket with the dishes and options you want, then pay online. Your order is transmitted instantly to the restaurant, which prepares it while you track its progress — from the kitchen to your door or the pickup counter.
+
+---
+
+## How it works
+
+Grubano directly connects local restaurants (which cook in their own kitchens) to customers. Each order goes through four stages: you find an open and active establishment, you customize your dishes (size, extras, exclusions), you pay online, then the restaurant receives your order and prepares it. You choose between home delivery or on-site pickup — in both cases, you know in real time where your meal is.
+
+[Loyalty](/en/guides/consumer-loyalty/) rewards every euro spent (excluding fees) with one point, which you can use on your next orders. Your information is stored in your [account](/en/guides/consumer-account/) to speed up your future visits.
+
+---
+
+## Step by step
+
+<Steps>
+
+### Find a restaurant
+
+Browse active restaurants near you, filter by cuisine (Italian, Asian, burgers…) or search by name. The map displays the average rating, preparation time and delivery fees for each establishment. A restaurant closed outside its opening hours tells you when it will reopen.
+
+### Build your basket
+
+Add the dishes you like. For each item, choose the size (Small, Medium, Large), check the paid extras (cheese, bacon, avocado…), select free exclusions (no onion, gluten-free…) and leave a preparation note if necessary. The total updates live; options are saved line by line, so ordering the same dish twice with different toppings creates two distinct lines.
+
+### Choose delivery or pickup
+
+Switch between **Delivery** (to your address, fees displayed) and **On-site pickup** (no fees, collection at the restaurant counter). For pickup, the basket displays the establishment’s address and the time your order will be ready; for delivery, you enter your full address. If the address is outside the restaurant’s delivery zone, the order is rejected before payment.
+
+### Pay online
+
+The summary details the subtotal (your dishes), delivery fees (or €0 for pickup), any active discount (restaurant promo code, welcome discount on your first referred order) and the final amount. You can spend your accumulated loyalty points — the corresponding euro credit is deducted from the total, within a cap that preserves the platform’s balance. Payment by bank card immediately triggers transmission to the restaurant; "cash" or "wallet" methods (legacy) also transmit the order without delay.
+
+### Track the order
+
+As soon as payment is validated, your order appears in history with its real-time status: **Received** (the restaurant has just been notified), **Preparing** (the kitchen is working), **Ready** (to be picked up or waiting for the delivery driver), **Picked up** (the driver has taken it or you have collected it) and finally **Delivered** (completed). A tracking link lets you visualize progress; the restaurant updates each stage from its dashboard. You receive an estimated delivery time as soon as payment is confirmed.
+
+</Steps>
+
+---
+
+## Concrete example
+
+You are looking for an Asian restaurant open at 7:30 PM on a Tuesday. Grubano displays three active establishments within a 5 km radius, with their ratings and times. You choose one rated 4.6 stars, add a bowl of ramen (Medium size + marinated egg extra + no green onions) and a mochi dessert. The basket shows €16.50 + €1.99 delivery. You switch to **On-site pickup**: fees drop to €0, total €16.50, ready in 20 minutes. You confirm, pay by card, and the order instantly goes to "Received" status on the restaurant side. Fifteen minutes later, it switches to "Ready" — you leave to pick it up at the indicated address, and once there the restaurant marks it "Picked up", then "Delivered" when you leave. You earn 16 loyalty points (one per euro spent on dishes and delivery).
+
+---
+
+## Best practices
+
+- **Check the hours**: a restaurant displayed as closed tells you precisely when it will reopen ("Opens tomorrow at 11:30 AM"). Ordering during an open time slot guarantees immediate preparation.
+- **Review your options**: size, extras and exclusions are fixed when added — modifying a line afterwards requires deleting and recreating it. Take time to check everything before confirming.
+- **Use your points wisely**: loyalty credit is deducted from the final total, but a cap (linked to the net margin available on this order) may limit the discount. On a small order, save your points for a larger basket to maximize their value.
+- **Choose pickup when possible**: no delivery fees, no driver wait time, and you control the collection time. Ideal for short trips or lunch breaks.
+
+---
+
+## Frequently asked questions
+
+<Faq items={[
+  {
+    icon: "help",
+    q: "Can I cancel or modify my order after payment?",
+    a: "A paid order is transmitted immediately to the restaurant, which begins preparation. Any cancellation or modification must be done directly with the establishment (contact details in your history). Grubano cannot remove a dish already in the kitchen.",
+  },
+  {
+    icon: "help",
+    q: "What happens if the restaurant refuses my order?",
+    a: "The restaurant can mark an order as “Cancelled” (out of stock, unexpected closure). You are notified immediately and the amount paid is fully refunded to your payment method. Loyalty points are not debited in this case.",
+  },
+  {
+    icon: "help",
+    q: "Are my loyalty points deducted automatically?",
+    a: "No. You must check “Use my points” in the basket for the corresponding credit to apply. The server calculates the maximum usable amount (never more than the available balance, nor more than this order’s cap) and deducts this amount from the total. Points are debited from your account only when payment is confirmed.",
+  },
+  {
+    icon: "help",
+    q: "Why does my order remain in “Pending payment” status?",
+    a: "An order by bank card is created in this state and only becomes visible to the restaurant once payment is confirmed by Stripe (webhook). If payment fails or expires, the order will never be transmitted. Check that your card is valid and that the amount has not been blocked; if in doubt, reorder.",
+  },
+]} />
+
+---
+
+## Go further
+
+- [Loyalty](/en/guides/consumer-loyalty/) — Accumulate and spend your points on each order, discover how the rewards program works and the credit caps.
+- [Account](/en/guides/consumer-account/) — Manage your saved delivery addresses, view complete order history and update your payment preferences.

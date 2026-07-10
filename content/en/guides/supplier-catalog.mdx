@@ -1,0 +1,101 @@
+---
+title: "Catalog, Zones & Orders"
+description: "Publish your catalog and pricing, define your delivery zones and order minimum, then receive and process orders from restaurants."
+generated: true
+sourceHash: b14ffa152f153b7f
+generator: scripts/generate-feature-page.js
+templateVersion: 5
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# Catalog, Zones & Orders
+
+Publish your product offering, define your delivery terms, and receive restaurant orders with ease.
+
+<FlowDiagram steps={["Publish catalog","Define zones & minimum","Receive an order","Process & deliver"]} />
+
+## The essentials
+
+Your catalog is the showcase of your offering: every published product becomes visible to restaurants in your delivery zones. You set your prices (displayed in euro cents), your minimum quantities and lead times, then receive orders directly on your dashboard. Everything is centralized; you remain in control.
+
+## How it works
+
+The supplier catalog functions like a B2B shop: you add your products (name, unit price, packaging, allergens), define your delivery zone (cities or areas), and set your order minimum. As soon as a restaurant places an order, it appears on your dashboard with a summary of line items, the total, and the customer’s contact details.
+
+This system solves a classic problem: the scattering of requests by phone or email. Here, every order is recorded, timestamped, and summarized line by line — you always know who ordered what, when, and for which desired delivery date. You can focus on preparation and logistics; the platform handles traceability.
+
+## Step by step
+
+<Steps>
+
+### Publish your products
+
+Log in to your supplier space and add each reference: name, description, category (fresh, meat, fish, dairy, beverages, groceries, packaging), unit price in euros, unit of measure (kg, g, L, cL, piece, carton, pack), packaging ("carton of 6," "bag of 25 kg"), possible allergens. The price is automatically converted to cents to ensure precision. You can mark a product temporarily unavailable without removing it from the catalog.
+
+### Define your commercial terms
+
+In your profile, enter your delivery zones (cities or postal codes), your minimum order amount (in euros), your delivery lead time (in days), and your payment terms. This information is visible to restaurants before they place an order — they immediately know whether they are in your zone and whether they meet the minimum.
+
+### Receive orders
+
+Each time a restaurant validates a cart with you, a new order appears on your dashboard with the status "Placed." You see the restaurant name, its city, the list of lines (product, quantity, unit price, subtotal), the total amount, any notes, and the desired delivery date.
+
+### Track your customers
+
+The "Customers" tab automatically aggregates all the restaurants that have ordered from you at least once: for each, you see the number of orders, the total amount spent (in cents), and the date of the last order. This helps you identify your regular customers and anticipate their needs.
+
+</Steps>
+
+<Callout type="info">
+**Coming soon**: changing the status of orders (confirmed, in preparation, delivered) will be available directly from your dashboard. For now, orders are recorded with the status "Placed" and remain visible in read-only mode.
+</Callout>
+
+## Best practices
+
+**Up-to-date catalog** — Mark temporarily out-of-stock references as "unavailable" rather than deleting them: you retain the history and can reactivate them with a single click.
+
+**Clear packaging** — Always specify the packaging ("carton of 12," "bag of 10 kg"): this avoids misunderstandings about the quantities ordered.
+
+**Realistic zones** — List only the areas you can deliver to within the announced lead time. A restaurant that orders outside your zone risks disappointment if you cannot fulfill the delivery.
+
+**Coherent minimum** — Set a minimum amount that covers your delivery costs: a threshold too low can make each trip unprofitable; a threshold too high may discourage small establishments.
+
+## Common mistakes
+
+<Callout type="warning">
+**Prices in euros, stored in cents** — The form expects euros with decimals (e.g., €12.50), but the platform stores and displays amounts in cents (1,250). Do not enter cents directly in the price field; the conversion is automatic.
+</Callout>
+
+**Forgetting allergens** — If a product contains a major allergen (gluten, lactose, tree nuts, etc.), indicate it systematically. Restaurants must be able to inform their own customers; an omission engages your liability.
+
+**Empty catalog after registration** — Your profile is active as soon as your business registration number is verified, but you remain invisible on the marketplace as long as you have not published any product. Add at least one reference to appear in restaurant searches.
+
+## Frequently asked questions
+
+<Faq items={[
+  {
+    icon: "help",
+    q: "Can I change the price of an already ordered product?",
+    a: "No: each order line records the price at the time of validation (snapshot). Changing the catalog price only affects new orders. The history remains frozen to ensure traceability."
+  },
+  {
+    icon: "help",
+    q: "How do I know if an order has been paid?",
+    a: "Payment for supplier orders will soon be activated via a payment provider. For now, orders are recorded without a financial transaction — payment terms (immediate, 30 days, etc.) remain to be agreed directly with each restaurant."
+  },
+  {
+    icon: "help",
+    q: "Can a restaurant outside my zone order?",
+    a: "No: the marketplace only offers your catalog to restaurants located in the zones you have declared. If you expand your area, update the list in your profile."
+  },
+  {
+    icon: "help",
+    q: "What happens if I delete an already ordered product?",
+    a: "Past order lines retain the product name and unit (snapshot) even after deletion from the catalog. You simply lose the direct link to the product sheet, but the history remains readable."
+  }
+]} />
+
+## Going further
+
+**Complete supplier guide** — Discover the entire supplier journey, from registration to customer management: [Supplier Guide](/en/guides/supplier/).
