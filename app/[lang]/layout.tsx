@@ -58,8 +58,10 @@ export default async function LocaleLayout({
 
   const pageMap = await getPageMap(`/${lang}`)
 
-  // Navbar search slot: NavbarSearch renders the per-article in-page search on
-  // doc pages and nothing on the home (the home hero hosts the global search).
+  // Navbar search slot: on doc pages NavbarSearch shows a scope toggle —
+  // « Toute la doc » (global Pagefind, default) ↔ « Cette page » (in-page
+  // section search). On the home it renders nothing (the hero hosts the global
+  // field). This keeps whole-doc search reachable from every article.
   const search = <NavbarSearch lang={lang} />
 
   // Navbar — logo left, search middle (from Layout's search prop),
