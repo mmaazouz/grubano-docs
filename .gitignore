@@ -48,3 +48,6 @@ dev.log
 # Notion source cache (re-fetched on demand via generate-feature-page.js
 # --refresh-notion). Plain-text excerpts of strategy pages we don't commit.
 .notion-cache/
+
+# Local agent preview config
+.claude/
