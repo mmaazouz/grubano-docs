@@ -42,6 +42,25 @@ aside.nextra-sidebar-container {
   border-inline-end: 1px solid var(--gb-border) !important;
 }
 
+/* Gabarit de page (maquette .layout : 266px | 1fr | 232px, max 1320px,
+   header ≈ 61px). Nextra expose navbar-height en var ; le reste en dur. */
+:root,
+html:root {
+  --nextra-navbar-height: 61px;
+  --nextra-content-width: 1320px !important;
+}
+@media (min-width: 768px) {
+  .nextra-sidebar { width: 266px !important; }
+}
+.nextra-toc { width: 232px !important; }
+
+/* Fil d'ariane (maquette .crumb : 12.5px, muted, chevrons 15px). */
+.nextra-breadcrumb {
+  font-size: 12.5px !important;
+  color: var(--gb-muted) !important;
+}
+.nextra-breadcrumb svg { width: 15px; height: 15px; color: var(--gb-muted-2); }
+
 article main h1 {
   font-size: 37px !important;
   font-weight: 800 !important;
