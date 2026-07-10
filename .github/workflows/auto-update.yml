@@ -73,8 +73,20 @@ jobs:
         working-directory: grubano-docs
         run: npm ci
 
-      - name: Generate English source (API + changelog)
+      # ── API reference + changelog : EXCLUS du nightly (LOT article-v5, ét. D)
+      # La section /api est « à venir » côté doc publique (l'espace Développeurs
+      # n'est pas ouvert) : régénérer + traduire ces ~55 pages ×5 langues chaque
+      # nuit coûterait cher pour du contenu non exposé. Les GUIDES restent
+      # entièrement automatisés (génération + traduction ci-dessous).
+      #
+      # POUR RÉACTIVER PLUS TARD (ouverture de l'espace /dev/) :
+      #   1. Remettre `if: false` → supprimer la ligne sur le step ci-dessous.
+      #   2. Dans le step « Translate », retirer TRANSLATE_SECTIONS (le défaut
+      #      couvre api,changelog,guides,root) — le 1er run rattrapera les
+      #      traductions api/changelog (~200 fichiers, prévoir le budget API).
+      - name: Generate English source (API + changelog) — HELD (API « à venir »)
         working-directory: grubano-docs
+        if: false
         env:
           APP_REPO_PATH: ${{ github.workspace }}/grubano-kitchen-hub
         run: node scripts/generate-from-source.js
@@ -105,16 +117,18 @@ jobs:
           echo "ANTHROPIC_API_KEY secret is not set on this repo."
           echo "Harmonized feature-page generation skipped this run."
 
-      # ── Translation pass (reactivated — GROS LOT étape E) ───────────────
-      # api/changelog: EN → fr/es/ar/it · guides + racine: FR → en/es/ar/it.
+      # ── Translation pass — GUIDES + racine uniquement (ét. D : api/changelog
+      # exclus tant que la section API est « à venir » ; voir le step HELD plus
+      # haut pour la marche à suivre de réactivation).
       # Idempotent via sourceHash — only files whose source changed cost API
       # calls. Skipped cleanly when the ANTHROPIC_API_KEY secret is absent.
-      - name: Translate (guides FR→en/es/ar/it · api/changelog EN→fr/es/ar/it)
+      - name: Translate guides (FR → en/es/ar/it)
         id: translate
         working-directory: grubano-docs
         continue-on-error: true
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TRANSLATE_SECTIONS: guides,root
         run: |
           if [ -z "$ANTHROPIC_API_KEY" ]; then
             echo "ANTHROPIC_API_KEY secret is not set — translation skipped."
