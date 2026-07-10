@@ -1,13 +1,86 @@
 ---
 title: "Piloter son réseau"
 description: "Piloter un réseau de franchise : plusieurs points de vente, suivi des royalties dues, et reporting consolidé — dans les limites fixées par Grubano."
-generated: false
+generated: true
+sourceHash: 3671b12687b14450
+generator: scripts/generate-feature-page.js
+templateVersion: 5
 ---
 
-import { Callout } from 'nextra/components'
+import { Steps, Callout } from 'nextra/components'
 
 # Piloter son réseau
 
-<Callout type="info">
-**Contenu en cours de génération.** Cette fiche sera remplie automatiquement depuis le code.
-</Callout>
+Suivez la performance de vos établissements franchisés, vérifiez les redevances accumulées et consolidez vos rapports — le tout depuis un seul tableau de bord.
+
+<FlowDiagram steps={["Points de vente","CA du réseau","Royalties","Reporting"]} />
+
+## L’essentiel
+
+Quand vous devenez franchiseur sur Grubano, vous accédez à un tableau de bord dédié qui agrège les ventes de tous vos établissements franchisés, calcule les redevances dues dans les limites fixées par Grubano, et vous permet de suivre la santé de votre réseau en temps réel.
+
+## Comment ça marche
+
+Chaque point de vente rattaché à votre marque enregistre ses commandes dans le système Grubano. Le tableau de bord franchiseur consolide automatiquement ces données sur une fenêtre glissante de 30 jours : chiffre d’affaires par établissement, nombre de commandes, redevances accumulées. Vous voyez ainsi d’un coup d'œil quels établissements performent, combien vous devez percevoir, et où concentrer votre accompagnement. Les conditions financières (taux de redevance, frais d’ouverture, zones d’exclusivité) sont fixées entre les acteurs concernés ; le tableau de bord applique ces paramètres pour calculer les montants dus.
+
+## Étape par étape
+
+<Steps>
+
+### Accédez au tableau de bord
+
+Connectez-vous avec votre compte franchiseur, puis rendez-vous dans l’espace **Franchise** → **Vue d’ensemble**. Vous y trouverez le récapitulatif du réseau : nombre d’établissements actifs, villes couvertes, candidatures en attente.
+
+### Consultez les performances par établissement
+
+La section « Établissements » liste tous les points de vente franchisés : nom, ville, chiffre d’affaires sur 30 jours, nombre de commandes. Les établissements sont classés par revenu décroissant, ce qui fait ressortir immédiatement les locomotives du réseau et les sites à accompagner.
+
+### Vérifiez les redevances
+
+Le bloc « Redevances » affiche trois montants :  
+— **Accumulées** : la somme totale des redevances enregistrées depuis l’origine ;  
+— **En attente** : ce qui n’a pas encore été versé ;  
+— **Versées** : l’historique des règlements déjà effectués.  
+Lorsque la bascule de prélèvement automatique est activée côté plateforme, ces lignes sont calculées commande par commande ; dans le cas contraire, les montants restent à zéro et le suivi se fait manuellement.
+
+### Explorez l’activité récente
+
+La frise chronologique en bas de page recense les événements marquants : ouvertures d’établissements, jalons de chiffre d’affaires. Elle vous aide à repérer les tendances (croissance rapide dans une zone, ralentissement ailleurs) et à anticiper les besoins d’accompagnement.
+
+</Steps>
+
+## Bonnes pratiques
+
+**Comparez les performances sur un même créneau horaire** — Les restaurants de centre-ville et ceux de zone périurbaine n’ont pas les mêmes heures de pointe ; ajustez vos attentes en tenant compte du profil de chaque établissement.
+
+**Identifiez les meilleures pratiques locales** — Si un établissement affiche un panier moyen nettement supérieur à la moyenne du réseau, analysez son menu ou sa stratégie promotionnelle pour la dupliquer ailleurs.
+
+**Surveillez les candidatures en attente** — Un délai de traitement trop long peut décourager des candidats sérieux ; consultez régulièrement le compteur de candidatures et traitez-les dans des délais raisonnables.
+
+## Exemple concret
+
+Imaginons que votre marque compte cinq établissements en Vaucluse. Le tableau de bord affiche un chiffre d’affaires consolidé de 38 500 € sur les trente derniers jours, contre 34 200 € la période précédente — soit une croissance de +12,6 %. Vous constatez qu’Avignon génère 14 000 € à lui seul, tandis que Carpentras plafonne à 4 500 €. En creusant, vous découvrez que Carpentras n’active pas le retrait sur place et ferme le dimanche. Vous appelez le franchisé pour lui suggérer d’ouvrir le dimanche midi et d’activer le pickup : deux leviers simples qui, déployés à Avignon, ont justement dopé le chiffre d’affaires local.
+
+## Questions fréquentes
+
+<Faq items={[
+  {
+    icon: 'help',
+    q: 'Puis-je voir le détail des commandes de chaque établissement ?',
+    a: 'Non. Le tableau de bord franchiseur affiche les agrégats (CA, nombre de commandes, redevances) pour préserver la confidentialité opérationnelle de chaque franchisé. Si vous avez besoin d’un diagnostic plus fin, contactez directement l’exploitant concerné.'
+  },
+  {
+    icon: 'help',
+    q: 'Que se passe-t-il si un établissement ferme temporairement ?',
+    a: 'Un point de vente marqué inactif disparaît du compteur « établissements ouverts » mais reste visible dans l’historique. Ses commandes passées continuent de figurer dans les totaux cumulés ; en revanche, il ne génère plus de nouvelle redevance tant qu’il est fermé.'
+  },
+  {
+    icon: 'help',
+    q: 'Les redevances tiennent-elles compte des remboursements ?',
+    a: 'Oui, c’est prévu : lorsque le mécanisme de redevances sera activé, toute commande remboursée partiellement ou totalement verra sa redevance ajustée au prorata du montant remboursé. Le solde « en attente » reflétera ainsi toujours la part nette due.'
+  }
+]} />
+
+## Pour aller plus loin
+
+**Contexte** — Découvrez comment fonctionne le modèle de [franchise](/fr/guides/franchise/) sur Grubano : ouverture de points de vente, gestion des candidatures, mécanismes de redevance.

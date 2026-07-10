@@ -1,13 +1,81 @@
 ---
 title: "Mon compte"
 description: "Gérer son compte client : coordonnées, adresses, favoris, avis laissés et langue de l’application."
-generated: false
+generated: true
+sourceHash: ac1d8fc21a827220
+generator: scripts/generate-feature-page.js
+templateVersion: 5
 ---
 
-import { Callout } from 'nextra/components'
+import { Steps, Callout } from 'nextra/components'
 
 # Mon compte
 
+Gérez vos coordonnées, adresses favorites, préférences et l’historique de vos avis en un seul endroit.
+
+<FlowDiagram steps={["Créer un compte","Compléter le profil","Ajouter des favoris","Gérer la sécurité"]} />
+
+## L’essentiel
+
+Votre compte Grubano centralise toutes vos informations personnelles : nom, téléphone, préférences de notification, adresses de livraison favorites et historique de vos avis. Vous contrôlez ce que vous partagez et comment vous êtes contacté, avec un accès permanent à vos [récompenses fidélité](/fr/guides/consumer-loyalty/).
+
+## Comment ça marche
+
+Chaque compte client repose sur une adresse e-mail vérifiée et un mot de passe sécurisé. Une fois créé, vous pouvez enrichir votre profil avec un numéro de téléphone pour faciliter la communication avec les restaurants et les livreurs, enregistrer plusieurs adresses de livraison pour commander plus rapidement, et ajuster vos préférences de notification pour ne recevoir que les alertes qui vous intéressent (commandes, avis, offres, nouveaux restaurants).
+
+Votre compte vous donne également accès à votre historique de commandes, à vos restaurants favoris, et à votre solde de points de fidélité. Toutes vos données sont protégées et modifiables à tout moment.
+
+## Étape par étape
+
+<Steps>
+
+### Créer votre compte
+
+Rendez-vous sur la page d’inscription (`/eat/auth`). Saisissez votre adresse e-mail, choisissez un mot de passe fort (minimum 10 caractères avec majuscules, minuscules et chiffres), et validez. Vous recevez un e-mail de bienvenue pour confirmer l’ouverture de votre compte.
+
+### Compléter votre profil
+
+Dans **Mon compte** (`/eat/account`), ajoutez votre nom complet (2 à 80 caractères) et votre numéro de téléphone (optionnel, format libre jusqu’à 30 caractères). Ces informations facilitent les échanges avec les restaurants et les livreurs en cas de besoin.
+
+### Gérer vos préférences de notification
+
+Accédez à **Notifications** (`/eat/account/notifications`). Activez ou désactivez les canaux (notifications push, e-mail, SMS) et choisissez les types d’alertes que vous souhaitez recevoir : suivi de commande, messages du livreur, réponses aux avis, offres promotionnelles, nouveaux restaurants, récompenses de fidélité. Vous pouvez aussi activer un mode silencieux pour tout désactiver temporairement.
+
+### Modifier votre adresse e-mail
+
+Depuis **Sécurité** (`/eat/account/security`), demandez un changement d’e-mail. Vous devrez d’abord prouver votre identité en saisissant un code reçu sur votre adresse actuelle, puis confirmer la nouvelle adresse via un lien unique envoyé par e-mail. Votre ancien e-mail reste actif jusqu’à la validation finale.
+
 <Callout type="info">
-**Contenu en cours de génération.** Cette fiche sera remplie automatiquement depuis le code.
+Le changement d’e-mail n’est disponible que pour les comptes créés directement avec un mot de passe. Les comptes liés à Google ou Apple ne peuvent pas modifier leur adresse e-mail depuis l’application.
 </Callout>
+
+### Réinitialiser votre mot de passe
+
+Si vous avez oublié votre mot de passe, cliquez sur **Mot de passe oublié** sur la page de connexion. Saisissez votre adresse e-mail : vous recevrez un lien sécurisé valable 24 heures pour définir un nouveau mot de passe.
+
+</Steps>
+
+## Bonnes pratiques
+
+- **Complétez votre profil** dès l’inscription pour accélérer vos premières commandes et recevoir les bonnes notifications.
+- **Vérifiez votre e-mail** après tout changement d’adresse pour éviter de perdre l’accès à votre compte.
+- **Activez uniquement les notifications utiles** pour ne pas être submergé d’alertes : le suivi de commande et les messages du livreur restent essentiels, les offres promotionnelles peuvent être désactivées si elles ne vous intéressent pas.
+- **Utilisez un mot de passe unique** différent de vos autres comptes en ligne pour protéger vos données de paiement et votre historique de fidélité.
+
+## Erreurs fréquentes
+
+<Callout type="warning">
+Si vous tentez de modifier votre e-mail vers une adresse déjà utilisée par un autre compte Grubano, vous recevez un message générique indiquant qu’un e-mail de confirmation a été envoyé, mais aucun changement n’est enregistré. L’adresse en question reçoit une notification de sécurité. Cette mesure anti-énumération empêche quiconque de vérifier si une adresse e-mail possède déjà un compte Grubano.
+</Callout>
+
+- **Code de vérification invalide** : les codes à usage unique pour prouver votre identité expirent après quelques minutes. Si le vôtre ne fonctionne plus, demandez-en un nouveau.
+- **Mot de passe trop faible** : l’inscription refuse les mots de passe de moins de 10 caractères ou sans mélange de majuscules, minuscules et chiffres. Choisissez une combinaison robuste dès le départ.
+- **Changement d’e-mail bloqué** : si votre compte a été créé via Google ou Apple, ou si vous gérez un restaurant ou une franchise, le changement d’adresse e-mail n’est pas disponible pour préserver l’intégrité des profils métier.
+
+## Pour aller plus loin
+
+**Comprendre le contexte**  
+[Guide du client](/fr/guides/consumer/) — vue d’ensemble de l’expérience utilisateur Grubano, de la découverte des restaurants au suivi de commande.
+
+**Étape suivante**  
+[Programme de fidélité](/fr/guides/consumer-loyalty/) — découvrez comment gagner des points sur chaque commande et débloquer des récompenses exclusives.

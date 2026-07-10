@@ -1,58 +1,108 @@
 ---
-title: "Créateurs"
-description: "Deux casquettes côte à côte : (1) proposer une recette qu'un restaurant partenaire pourra adopter et cuisiner sous sa propre enseigne ; (2) recommander des restaurants à votre communauté via un lien d'affiliation. Dans les deux cas vous touchez une commission sur les ventes générées, dans les limites fixées par Grubano."
+title: "Créateur de recettes"
+description: "Soumettre des recettes de plats qu’un restaurant partenaire pourra adopter et cuisiner sous sa propre enseigne ; toucher une commission de 4 % sur les ventes de vos créations, et suivre vos gains."
 generated: true
-sourceHash: bab4a48ea9e2f3be
+sourceHash: df4f83f5c96d31e3
 generator: scripts/generate-feature-page.js
-templateVersion: 4
+templateVersion: 5
 ---
-
 import { Steps, Callout } from 'nextra/components'
 
-# Créateurs
+# Créateur de recettes
 
-Proposez vos recettes aux restaurants partenaires ou recommandez des établissements à votre communauté : deux modèles de rémunération complémentaires, pilotés depuis un seul compte.
+Soumettez vos créations culinaires à un réseau de restaurants locaux ; vos recettes adoptées vous rapportent 4 % de chaque vente, en continu.
 
-<FlowDiagram steps={["Candidater","Recette OU lien","Adoption / partage","Commission sur ventes"]} />
+<FlowDiagram steps={["Candidater","Soumettre une recette","Adoption par un resto","Commission 4 %"]} />
 
-## Ce que ça fait
+## L’essentiel
 
-Le statut Créateur vous ouvre deux leviers de monétisation distincts et cumulables. **Chef créateur** : vous soumettez des recettes originales que les restaurants peuvent adopter et cuisiner sous leur propre enseigne — vous touchez une commission sur chaque vente de votre plat, dans les limites fixées par Grubano. **Influenceur** : vous recommandez des restaurants de la plateforme à votre communauté via un lien d'affiliation personnalisé — chaque [commande](/fr/guides/consumer/) passée par un nouveau client que vous parrainez génère une commission sur la transaction.
+Vous êtes chef, cuisinier ou passionné de cuisine ? Publiez vos recettes sur Grubano. Quand un restaurant partenaire adopte l’une de vos créations et la cuisine sous son enseigne, vous touchez automatiquement 4 % du montant de chaque plat vendu. Votre commission court tant que le plat reste au [menu](/fr/guides/menu/) du restaurant — sans limite de durée ni plafond de gains.
 
-Les deux rôles se complètent : un chef peut également partager son lien pour orienter sa communauté vers les établissements qui adoptent ses créations, tandis qu'un influenceur peut, s'il le souhaite, soumettre ses propres concepts culinaires. Vous choisissez librement d'activer un seul rôle ou les deux au moment de la candidature, et vous pouvez ajuster ce choix à tout moment depuis votre profil. Vos gains cumulés — royalties de recettes et commissions d'affiliation confondues — apparaissent sur un tableau de bord unifié.
+## Comment ça marche
 
-## Comment l'utiliser
+Les restaurants locaux recherchent en permanence de nouveaux concepts pour enrichir leur offre, sans mobiliser de temps de R&D. Votre rôle : leur proposer des recettes prêtes à l’emploi — nom, description, liste d’ingrédients, type de cuisine, photo et prix suggéré. Le restaurant choisit celles qui correspondent à son positionnement, les ajoute à sa carte, et les cuisine dans sa propre cuisine. Vous conservez la paternité intellectuelle de la recette ; le restaurant bénéficie d’un plat testé et validé, vous d’un flux de revenus passif indexé sur les ventes réelles.
+
+La plateforme suit automatiquement chaque vente : dès qu’une commande contient un plat issu de votre recette, 4 % du prix de vente sont portés à votre crédit. Vous visualisez vos gains, le nombre de ventes et les restaurants partenaires depuis votre espace créateur, en temps réel.
+
+## Étape par étape
 
 <Steps>
 
-### Déposez votre candidature
+### Candidater au programme
 
-Rendez-vous sur la page de candidature Créateur et renseignez votre nom, votre adresse e-mail, votre biographie et vos réseaux sociaux (Instagram, TikTok, YouTube). Indiquez le nombre d'abonnés cumulés et cochez le(s) rôle(s) souhaité(s) : **Chef créateur**, **Influenceur**, ou les deux. Si vous activez le rôle Chef, joignez au moins un concept de plat (nom, description, type de cuisine) ; les influenceurs purs peuvent sauter cette étape.
+Rendez-vous sur la page d’inscription créateurs. Renseignez votre nom, adresse e-mail, une courte biographie et vos éventuels comptes de réseaux sociaux (Instagram, TikTok, YouTube). Si vous avez une chaîne YouTube publique, copiez le code de vérification généré dans la description de votre chaîne : la plateforme validera automatiquement votre profil. Présentez jusqu’à trois concepts de plats initiaux pour illustrer votre style culinaire.
 
-### Validez votre identité
+### Soumettre une recette
 
-L'API génère un code de vérification unique à l'issue de votre candidature. Publiez ce code dans la description d'une vidéo YouTube ou dans une story Instagram pour prouver que vous êtes bien le propriétaire du compte. Une fois validé, votre dossier passe en revue manuelle.
+Une fois accepté, connectez-vous à votre espace créateur et cliquez sur **Soumettre une recette**. Complétez le nom du plat, la description (au moins 10 caractères), la liste des ingrédients, le type de cuisine, le prix suggéré et téléchargez une photo. Vous pouvez enregistrer un brouillon (aucune validation automatique) ou soumettre directement : la recette passe alors par une vérification de contenu instantanée — approuvée, elle rejoint immédiatement le catalogue visible des restaurants ; signalée, elle reste en attente de relecture manuelle.
 
-### Attendez l'approbation
+<Callout type="info">
+Vos brouillons restent privés et ne sont jamais visibles des restaurants tant que vous ne les soumettez pas. Profitez-en pour affiner votre présentation avant publication.
+</Callout>
 
-L'équipe Grubano examine votre profil, votre audience et la cohérence de vos concepts (le cas échéant). Si votre candidature est acceptée, vous recevez un code de parrainage unique et un lien `/r/{slug}` personnalisé. Votre compte opérateur est automatiquement créé ou enrichi du rôle `creator` s'il existait déjà.
+### Adoption par un restaurant
 
-### Activez vos leviers
+Les restaurateurs parcourent le catalogue de recettes approuvées, filtrent par type de cuisine et prix, puis adoptent celles qui correspondent à leur offre. L’adoption est instantanée : le plat apparaît dans leur menu avec votre nom de créateur affiché publiquement. Le restaurant fixe librement son prix de vente final (qui peut différer de votre suggestion) ; votre commission de 4 % s’applique sur le prix réellement facturé au client.
 
-**Chef** : soumettez de nouvelles recettes depuis l'éditeur de [menu](/fr/guides/menu/) créateur. Chaque recette approuvée devient disponible dans le catalogue d'adoption ; les restaurants qui la cuisinent génèrent des royalties à chaque vente. **Influenceur** : partagez votre lien d'affiliation sur vos réseaux. Chaque nouveau client qui passe commande après avoir cliqué sur votre lien déclenche une commission, dans les limites fixées par Grubano.
+### Suivre vos gains
+
+Chaque vente génère automatiquement une ligne de commission dans votre tableau de bord. Vous y consultez le nombre de ventes par recette, le chiffre d’affaires généré, vos gains cumulés et la liste des restaurants partenaires. Les montants sont affichés en temps réel, sans décalage. La plateforme prévoit d’ajouter prochainement un système de versement automatique vers votre compte bancaire.
 
 </Steps>
 
-## Bon à savoir
+## Exemple concret
 
-<Callout type="info">
-Les deux rôles partagent le même tableau de bord et le même compte de paiement — vos gains de recettes et d'affiliation sont cumulés dans un solde unique. La commission Grubano reste de **10 %** sur toutes les transactions, quel que soit le modèle (Standard ou Pro à 29 €/mois). Les conditions de rémunération Créateur — royalties de recettes et commission d'affiliation — sont définies avec vous au moment de l'ouverture de votre compte.
+Marco, chef autodidacte, soumet une recette de wrap végétarien revisité — avocat crémeux, pois chiches rôtis aux épices, sauce tahini maison. Un restaurant de quartier l’adopte et le vend 8,50 €. Chaque commande rapporte à Marco 0,34 € (4 % de 8,50 €). Le wrap rencontre un succès immédiat : 180 ventes le premier mois. Marco cumule ainsi 61,20 € de gains sans avoir cuisiné une seule fois, sans investissement matériel ni démarche commerciale. Tant que le restaurant garde le plat à sa carte, les commissions continuent de tomber, mois après mois.
+
+## Bonnes pratiques
+
+**Misez sur la clarté visuelle.** Une photo nette, lumineuse, qui fait saliver, multiplie vos chances d’adoption. Les restaurants jugent d’abord sur l’apparence — un plat appétissant se vend plus facilement et justifie un prix premium.
+
+**Proposez des recettes réalistes.** Privilégiez des ingrédients courants, des techniques maîtrisables par n’importe quel cuisinier de restaurant, et un temps de préparation raisonnable. Une recette trop complexe ou nécessitant un équipement rare sera ignorée ; une recette simple et savoureuse sera adoptée rapidement.
+
+**Jouez sur la variété.** Plutôt que cinq variations de burger, diversifiez les types de cuisine (méditerranéen, asiatique, végétarien, comfort food) et les formats (entrée, plat, dessert). Vous touchez ainsi plusieurs segments de restaurants et multipliez vos sources de revenus.
+
+**Fixez un prix suggéré cohérent.** Un prix trop bas décourage l’adoption (le restaurant doute de la qualité perçue) ; un prix trop élevé limite le volume de ventes. Renseignez-vous sur les prix pratiqués localement pour le type de plat que vous proposez.
+
+## Erreurs fréquentes
+
+<Callout type="warning">
+**Ne soumettez pas de recette identique ou quasi identique à un plat déjà présent dans le catalogue.** La vérification automatique détecte les doublons conceptuels et rejettera votre soumission. Apportez toujours une touche originale — ingrédient signature, technique de cuisson particulière, présentation distinctive.
 </Callout>
+
+**Omettre la déclaration d’allergènes.** Si votre recette contient des allergènes courants (gluten, lactose, fruits à coque, crustacés…), indiquez-les explicitement. Si elle n’en contient aucun, sélectionnez « Aucun allergène » lors de la soumission. Une déclaration manquante bloque la publication.
+
+**Négliger la description.** Une ligne générique (« Un plat délicieux ») ne donne aucune envie. Racontez l’histoire du plat, détaillez les saveurs, évoquez l’expérience gustative. Les restaurants recherchent des créations qu’ils peuvent mettre en valeur auprès de leurs clients — aidez-les en écrivant un texte vendeur.
+
+## Questions fréquentes
+
+<Faq items={[
+  {
+    icon: 'help',
+    q: 'Combien de temps faut-il pour qu’une recette soit approuvée ?',
+    a: 'La vérification automatique de contenu intervient quelques secondes après la soumission. Si elle détecte un problème (doublon, contenu inadapté), la recette reste en attente de relecture manuelle — comptez alors 24 à 48 heures. Les recettes conformes sont approuvées instantanément et rejoignent immédiatement le catalogue visible des restaurants.'
+  },
+  {
+    icon: 'help',
+    q: 'Puis-je modifier une recette déjà adoptée par un restaurant ?',
+    a: 'Vous pouvez créer une nouvelle version de la recette, mais l’adoption en cours reste liée à la version originale. Le restaurant devra adopter à nouveau la version révisée s’il souhaite l’intégrer. Cette règle protège la cohérence du menu côté restaurant et garantit que le plat servi correspond exactement à celui que vous avez soumis.'
+  },
+  {
+    icon: 'help',
+    q: 'Un restaurant peut-il arrêter de servir ma recette sans préavis ?',
+    a: 'Oui. Le restaurant gère librement son menu et peut retirer un plat à tout moment — changement de saison, rotation de l’offre, baisse de popularité. Vos commissions s’arrêtent dès le retrait, mais rien ne vous empêche de soumettre de nouvelles recettes pour compenser. Diversifiez vos créations et multipliez les adoptions pour lisser vos revenus.'
+  },
+  {
+    icon: 'help',
+    q: 'Que se passe-t-il si deux créateurs soumettent la même recette ?',
+    a: 'La vérification automatique compare chaque nouvelle soumission aux recettes déjà présentes dans le catalogue. Si elle détecte une similarité forte (nom, ingrédients, concept), elle rejette la seconde soumission ou la signale pour relecture manuelle. Le premier créateur à avoir publié une recette approuvée conserve la priorité.'
+  }
+]} />
 
 ## Pour aller plus loin
 
-[**Menu & Scan IA**](/fr/guides/menu/)  
-Découvrez comment soumettre vos recettes, compléter la fiche technique et suivre les adoptions par les restaurants partenaires.
+**Étape suivante** — Une fois vos premières recettes soumises, surveillez les adoptions dans votre tableau de bord et consultez la documentation [Gestion du menu](/fr/guides/menu/) pour comprendre comment les restaurants découvrent et intègrent vos créations à leur offre.
 
-[**Commander**](/fr/guides/consumer/)  
-Comprenez le parcours d'achat de vos filleuls : du panier au paiement, en passant par la réduction de bienvenue accordée sur leur première commande.
+<Callout type="info">
+**Deux casquettes complémentaires** — En tant que créateur, vous pouvez également devenir [affilié](/fr/guides/affiliate/) et recommander des restaurants via un lien de parrainage. Les deux rôles se cumulent : vous touchez à la fois les commissions sur vos recettes adoptées (4 %) et les commissions d’affiliation sur les ventes générées par vos recommandations (taux distinct). Consultez la fiche Affiliation pour activer cette source de revenus additionnelle.
+</Callout>

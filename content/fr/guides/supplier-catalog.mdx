@@ -1,13 +1,101 @@
 ---
 title: "Catalogue, zones & commandes"
 description: "Publier votre catalogue et vos prix, définir vos zones de livraison et votre minimum de commande, puis recevoir et traiter les commandes des restaurateurs."
-generated: false
+generated: true
+sourceHash: b14ffa152f153b7f
+generator: scripts/generate-feature-page.js
+templateVersion: 5
 ---
 
-import { Callout } from 'nextra/components'
+import { Steps, Callout } from 'nextra/components'
 
 # Catalogue, zones & commandes
 
+Publiez votre offre de produits, définissez vos conditions de livraison et recevez les commandes des restaurateurs en toute simplicité.
+
+<FlowDiagram steps={["Publier le catalogue","Définir zones & minimum","Recevoir une commande","Traiter & livrer"]} />
+
+## L’essentiel
+
+Votre catalogue est la vitrine de votre offre : chaque produit publié devient visible des restaurateurs de vos zones de livraison. Vous définissez vos prix (affichés en centimes d’euro), vos quantités minimales et vos délais, puis recevez les commandes directement sur votre tableau de bord. Tout est centralisé, vous gardez le contrôle.
+
+## Comment ça marche
+
+Le catalogue fournisseur fonctionne comme une boutique B2B : vous ajoutez vos produits (nom, prix unitaire, conditionnement, allergènes), définissez votre zone de livraison (villes ou secteurs) et fixez votre minimum de commande. Dès qu’un restaurateur passe commande, celle-ci apparaît dans votre tableau de bord avec le récapitulatif des lignes, le total et les coordonnées du client.
+
+Ce système résout un problème classique : la dispersion des demandes par téléphone ou e-mail. Ici, chaque commande est enregistrée, horodatée, récapitulée ligne à ligne — vous savez toujours qui a commandé quoi, quand, et pour quelle date de livraison souhaitée. Vous pouvez vous concentrer sur la préparation et la logistique, la plateforme gère la traçabilité.
+
+## Étape par étape
+
+<Steps>
+
+### Publiez vos produits
+
+Connectez-vous à votre espace fournisseur et ajoutez chaque référence : nom, description, catégorie (frais, viande, poisson, crémerie, boissons, épicerie, emballages), prix unitaire en euros, unité de mesure (kg, g, L, cL, pièce, carton, pack), conditionnement (« carton de 6 », « sac de 25 kg »), allergènes éventuels. Le prix est converti automatiquement en centimes pour garantir la précision. Vous pouvez marquer un produit indisponible temporairement sans le retirer du catalogue.
+
+### Définissez vos conditions commerciales
+
+Dans votre profil, renseignez vos zones de livraison (villes ou codes postaux), votre montant minimum de commande (en euros), votre délai de livraison (en jours) et vos conditions de règlement. Ces informations sont visibles des restaurateurs avant qu’ils ne passent commande — ils savent immédiatement s’ils sont dans votre zone et s’ils atteignent le minimum.
+
+### Recevez les commandes
+
+Chaque fois qu’un restaurateur valide un panier chez vous, une nouvelle commande apparaît dans votre tableau de bord avec le statut « Passée ». Vous voyez le nom du restaurant, sa ville, la liste des lignes (produit, quantité, prix unitaire, sous-total), le montant total, les éventuelles notes et la date de livraison souhaitée.
+
+### Suivez vos clients
+
+L’onglet « Clients » agrège automatiquement tous les restaurateurs qui vous ont commandé au moins une fois : vous voyez pour chacun le nombre de commandes, le montant total dépensé (en centimes) et la date de la dernière commande. Cela vous aide à identifier vos clients réguliers et à anticiper leurs besoins.
+
+</Steps>
+
 <Callout type="info">
-**Contenu en cours de génération.** Cette fiche sera remplie automatiquement depuis le code.
+**Bientôt** : le changement de statut des commandes (confirmée, en préparation, livrée) sera disponible directement depuis votre tableau de bord. Pour l’instant, les commandes sont enregistrées avec le statut « Passée » et restent visibles en lecture seule.
 </Callout>
+
+## Bonnes pratiques
+
+**Catalogue à jour** — Marquez « indisponible » les références en rupture temporaire plutôt que de les supprimer : vous conservez l’historique et pouvez les réactiver en un clic.
+
+**Conditionnement clair** — Précisez toujours le conditionnement (« carton de 12 », « sac de 10 kg ») : cela évite les malentendus sur les quantités commandées.
+
+**Zones réalistes** — Ne listez que les secteurs que vous pouvez livrer dans le délai annoncé. Un restaurateur qui commande hors zone risque d’être déçu si vous ne pouvez pas honorer la livraison.
+
+**Minimum cohérent** — Fixez un montant minimum qui couvre vos frais de livraison : un seuil trop bas peut rendre chaque course non rentable, un seuil trop élevé peut freiner les petits établissements.
+
+## Erreurs fréquentes
+
+<Callout type="warning">
+**Prix en euros, stockés en centimes** — Le formulaire attend des euros avec décimales (ex. 12,50 €), mais la plateforme stocke et affiche les montants en centimes (1 250). N’entrez pas directement des centimes dans le champ prix, la conversion est automatique.
+</Callout>
+
+**Oublier les allergènes** — Si un produit contient un allergène majeur (gluten, lactose, fruits à coque…), indiquez-le systématiquement. Les restaurateurs doivent pouvoir informer leurs propres clients ; une omission engage votre responsabilité.
+
+**Catalogue vide après inscription** — Votre profil est actif dès la vérification de votre SIREN, mais vous restez invisible sur la marketplace tant que vous n’avez publié aucun produit. Ajoutez au moins une référence pour apparaître dans les recherches des restaurateurs.
+
+## Questions fréquentes
+
+<Faq items={[
+  {
+    icon: "help",
+    q: "Puis-je modifier le prix d’un produit déjà commandé ?",
+    a: "Non : chaque ligne de commande enregistre le prix au moment de la validation (snapshot). Modifier le prix catalogue n’affecte que les nouvelles commandes. L’historique reste figé pour garantir la traçabilité."
+  },
+  {
+    icon: "help",
+    q: "Comment savoir si une commande a été payée ?",
+    a: "Le règlement des commandes fournisseurs sera bientôt activé via un prestataire de paiement. Pour l’instant, les commandes sont enregistrées sans transaction financière — les conditions de règlement (immédiat, 30 jours…) restent à convenir directement avec chaque restaurant."
+  },
+  {
+    icon: "help",
+    q: "Un restaurateur hors de ma zone peut-il commander ?",
+    a: "Non : la marketplace ne propose votre catalogue qu’aux restaurateurs situés dans les zones que vous avez déclarées. Si vous élargissez votre périmètre, mettez à jour la liste dans votre profil."
+  },
+  {
+    icon: "help",
+    q: "Que se passe-t-il si je supprime un produit déjà commandé ?",
+    a: "Les lignes de commandes passées conservent le nom et l’unité du produit (snapshot) même après suppression du catalogue. Vous perdez simplement le lien direct vers la fiche produit, mais l’historique reste lisible."
+  }
+]} />
+
+## Pour aller plus loin
+
+**Guide fournisseur complet** — Découvrez l’ensemble du parcours fournisseur, de l’inscription à la gestion des clients : [Guide fournisseur](/fr/guides/supplier/).

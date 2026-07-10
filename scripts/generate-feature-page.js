@@ -552,6 +552,10 @@ Pour \`<Steps>\` et \`<Callout>\`, garde l'import \`nextra/components\`.
   visuels ci-dessus (FlowDiagram, JourneyStrip, RelatedActors, MiniMap,
   Comparison, LearningPath, Faq) sont globaux — NE les importe PAS.
 - N'utilise aucun autre composant React que ceux listés.
+- Dans les props des composants (Faq items, RelatedActors nodes…), délimite
+  les chaînes avec des guillemets DOUBLES "…" et utilise l'apostrophe
+  typographique ’ à l'intérieur (jamais l'apostrophe droite ' dans une chaîne
+  — « l'objet » ' briserait la chaîne et casserait la compilation MDX).
 `
 
 function topicKeyFor(cfg) {
@@ -631,7 +635,10 @@ async function callClaude(prompt, attempt = 1) {
     },
     body: JSON.stringify({
       model: MODEL,
-      max_tokens: 4096,
+      // v5 pages (visuals + conditional blocks) run longer than v4 — 4096 was
+      // hit by one topic and truncated the page mid-JSX. 8192 gives headroom;
+      // typical pages land at 1.5–4k output tokens.
+      max_tokens: 8192,
       messages: [{ role: 'user', content: prompt }],
     }),
   })
@@ -665,19 +672,26 @@ function sanitizeMdxBody(text, topicKey) {
   let body = text.trim()
   let changed = false
 
-  // Full ```mdx ... ``` wrap around the whole body.
-  const fullFence = /^```(?:mdx|md|markdown|jsx|tsx)?\s*\n([\s\S]*?)\n```\s*$/m
+  // Full ```<lang> wrap around the whole body — the model has emitted
+  // ```mdx and ```typescript wraps, so accept any language tag. Anchored to
+  // the true start/end of the body (no m-flag: greedy inner + end-of-string
+  // closer). Only unwrap when the inside is fence-balanced AND still contains
+  // the page's H1 — i.e. it really is a whole-page wrap, not a page that
+  // merely starts and ends with legitimate code blocks.
+  const fullFence = /^```[a-z]*\s*\n([\s\S]*)\n```\s*$/
   const fm = body.match(fullFence)
-  if (fm) {
+  if (fm && (fm[1].match(/```/g) || []).length % 2 === 0 && /^#\s/m.test(fm[1])) {
     body = fm[1].trim()
     changed = true
   }
-  // Orphan LEADING opening fence (the closing was on the trailing
-  // artefact, which the next regex below would strip — strip the
-  // opener too so the body isn't treated as a code block).
-  body = body.replace(/^```(?:mdx|md|markdown|jsx|tsx)?\s*\n/, (m) => {
-    changed = true; return ''
-  }).trim()
+  // Orphan LEADING opening fence (its closer was already lost or sits in the
+  // trailing artefact stripped below) — only when fences are unbalanced, so a
+  // page legitimately starting with a code block is never corrupted.
+  if (((body.match(/```/g) || []).length % 2) === 1) {
+    body = body.replace(/^```[a-z]*\s*\n/, (m) => {
+      changed = true; return ''
+    }).trim()
+  }
   // Trailing `---` separator + a code block that just re-imports nextra
   // components — pure noise.
   body = body.replace(
@@ -698,15 +712,35 @@ function sanitizeMdxBody(text, topicKey) {
     console.log(`[generator] ${topicKey} → sanitized trailing fence/separator artefacts`)
   }
 
-  // If the body uses <Steps> or <Callout> but the import line is missing
-  // (typically because the LLM put it inside the trailing artefact we just
-  // stripped), inject it at the top so MDX prerender doesn't crash on
-  // "component is not defined".
-  const usesNextraComponents = /<(Steps|Callout)[\s/>]/.test(body)
-  const hasImport = /^import\s+\{[^}]+\}\s+from\s+['"]nextra\/components['"]/m.test(body)
-  if (usesNextraComponents && !hasImport) {
-    console.log(`[generator] ${topicKey} → injecting missing nextra/components import`)
-    body = `import { Steps, Callout } from 'nextra/components'\n\n` + body
+  // French elision apostrophes (l'historique, qu'une) inside single-quoted
+  // JSX prop strings terminate the string early → acorn parse error → build
+  // failure. A straight ' between two letters is always an apostrophe, never
+  // a string delimiter (delimiters are preceded by : ( [ , or space). Convert
+  // to the typographic ’ — JS-safe in any quoting and correct FR typography.
+  body = body.replace(/([A-Za-zÀ-ÖØ-öø-ÿ])'([A-Za-zÀ-ÖØ-öø-ÿ])/g, (m, a, b) => {
+    changed = true
+    return `${a}’${b}`
+  })
+
+  // If the body uses <Steps> / <Callout>, the nextra/components import must
+  // COVER every used component — an import of only { Steps } with a <Callout>
+  // in the body crashes prerender just as hard as no import at all. Compute
+  // the used set; if an import exists, widen it in place, else inject one.
+  const used = ['Steps', 'Callout'].filter((c) => new RegExp(`<${c}[\\s/>]`).test(body))
+  if (used.length) {
+    const importRe = /^import\s+\{([^}]+)\}\s+from\s+['"]nextra\/components['"]\s*$/m
+    const im = body.match(importRe)
+    const covered = im ? im[1].split(',').map((s) => s.trim()) : []
+    const missing = used.filter((c) => !covered.includes(c))
+    if (missing.length) {
+      const full = [...new Set([...covered, ...used])].join(', ')
+      console.log(`[generator] ${topicKey} → fixing nextra/components import (adds: ${missing.join(', ')})`)
+      if (im) {
+        body = body.replace(importRe, `import { ${full} } from 'nextra/components'`)
+      } else {
+        body = `import { ${full} } from 'nextra/components'\n\n` + body
+      }
+    }
   }
   return body
 }

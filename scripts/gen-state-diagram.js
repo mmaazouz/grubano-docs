@@ -17,7 +17,7 @@ const fs = require('fs')
 const path = require('path')
 
 // Terminal "negative" states — reachable from any non-terminal step, then end.
-const TERMINAL_RE = /cancel|annul|reject|refus|refund|rembours|expire|failed|echou/i
+const TERMINAL_RE = /cancel|annul|reject|refus|refund|rembours|expire|failed|echou|no_?show|declined/i
 
 /** Extract the ordered enum values from `field  String  ... // a | b | c`. */
 function parseStatusEnum(schemaSrc, modelName, fieldName = 'status') {
@@ -52,6 +52,17 @@ const FR_LABELS = {
   rejected: 'Refusée',
   active: 'Active',
   suspended: 'Suspendue',
+  arrived: 'Arrivée',
+  seated: 'Installée',
+  overrun: 'Dépassement',
+  noshow: 'No-show',
+  no_show: 'No-show',
+  offered: 'Proposée',
+  accepted: 'Acceptée',
+  declined: 'Déclinée',
+  expired: 'Expirée',
+  settling: 'En règlement',
+  settled: 'Réglée',
 }
 function labelFor(token) {
   if (FR_LABELS[token]) return FR_LABELS[token]

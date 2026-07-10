@@ -2,55 +2,107 @@
 title: "Menu & Scan IA"
 description: "Mettre en ligne la carte d’un restaurant en photographiant simplement le menu — l’IA reconnaît les plats, propose nom, description et allergènes ; le restaurateur valide."
 generated: true
-sourceHash: 8ec1122c83e72de6
+sourceHash: ae7086fe57bec1a6
 generator: scripts/generate-feature-page.js
-templateVersion: 4
+templateVersion: 5
 ---
 
 import { Steps, Callout } from 'nextra/components'
 
 # Menu & Scan IA
 
-Mettez en ligne votre carte en photographiant simplement chaque plat : l'intelligence artificielle reconnaît le contenu, propose un nom, une description et les allergènes, puis vous validez.
+Mettez en ligne votre carte en photographiant simplement vos plats : l’IA reconnaît chaque recette, propose nom, description et allergènes, et vous n’avez plus qu’à valider.
 
 <FlowDiagram steps={["Scanner la carte","Vérifier les plats","Publier","Mettre à jour"]} />
 
-## Ce que ça fait
+## L’essentiel
 
-Créer une carte de restaurant complète prend du temps : rédiger les descriptions, lister les allergènes, calculer les calories, trier les plats par catégorie. Le scan IA accélère cette étape : photographiez un plat, l'intelligence artificielle analyse l'image et vous suggère instantanément un nom en français, une description appétissante d'une à deux phrases, la liste des ingrédients détectés, les allergènes probables (gluten, lactose, fruits à coque…), une estimation de calories (fourchette basse/haute), la catégorie (entrées, plats, desserts, boissons) et des labels éventuels (végétarien, halal, sans gluten, épicé).
+Le scanner IA transforme une photo de menu en fiche plat structurée — nom, description appétissante, allergènes, calories estimées, catégorie — en quelques secondes. Vous vérifiez, ajustez le prix et publiez. Idéal pour accélérer la mise en ligne d’une nouvelle carte ou l’ajout ponctuel d’un plat du jour, sans saisie manuelle fastidieuse.
 
-Vous restez maître de chaque information : l'IA ne publie rien automatiquement. Vous relisez, ajustez le prix, complétez la description si nécessaire, puis validez. Une fois publié, le plat apparaît immédiatement sur votre [tableau de bord](/fr/guides/restaurant/) et dans la marketplace Grubano. Vous pouvez ensuite modifier les quantités disponibles via la gestion des [stocks](/fr/guides/stocks/) ou mettre à jour la carte quand votre menu évolue.
+## Comment ça marche
 
-## Comment l'utiliser
+Photographier un menu papier pour le retaper ligne par ligne est chronophage et source d’erreurs. Le scanner IA lit l’image, identifie chaque plat visible et génère automatiquement une fiche complète en français : nom commercial, pitch de deux phrases, liste d’ingrédients, allergènes standardisés (Gluten, Lactose, Œuf, Soja…), fourchette calorique, catégorie (Entrées, Plats, Desserts, Boissons) et labels suggérés (Végétarien, Halal, Sans gluten, Épicé). Vous recevez un JSON prêt à l’emploi que le [tableau de bord](/fr/guides/restaurant/) intègre directement dans votre menu : il ne reste qu’à fixer le prix et valider. La reconnaissance tourne sur un modèle Claude Sonnet 4.5 entraîné sur des cartes de restaurants — elle repère même les plats manuscrits ou dans une mise en page dense.
+
+<Callout type="info">
+L’IA propose aussi des variantes (taille Petite/Moyenne/Grande, suppléments Fromage/Bacon…) et une note de préparation si elle détecte une mention spéciale sur la carte. Ces options sont facultatives : vous les activez ou les retirez selon votre offre réelle.
+</Callout>
+
+## Étape par étape
 
 <Steps>
 
-### Photographiez le plat
+### Accéder au scanner
 
-Depuis votre interface de gestion, ouvrez la création de plat et téléchargez une photo claire du plat fini. Formats acceptés : JPEG, PNG, GIF ou WebP.
+Dans le [tableau de bord](/fr/guides/restaurant/), section **Menu**, cliquez sur l’onglet **À adopter** puis **Scanner une carte** (icône appareil photo). Autorisez l’accès à la caméra ou sélectionnez une image déjà prise.
 
-### Laissez l'IA analyser
+### Photographier le plat
 
-L'intelligence artificielle examine l'image et renvoie une fiche complète en quelques secondes : nom du plat, description, ingrédients, allergènes, fourchette de calories, catégorie suggérée et labels.
+Cadrez le plat ou la section de menu qui le décrit. Un éclairage naturel et un cadrage droit améliorent la reconnaissance. Validez la prise.
 
-### Vérifiez et complétez
+### Vérifier la fiche générée
 
-Relisez chaque champ proposé. Ajustez le nom ou la description si besoin, fixez le prix de vente (obligatoire), validez les allergènes et les labels. Vous pouvez aussi ajouter un temps de préparation estimé et cocher « plat populaire » pour le mettre en avant.
+L’IA renvoie en ~3 secondes un aperçu structuré : nom, description, ingrédients, allergènes, calories min–max, catégorie, labels. Relisez chaque champ — l’IA est fiable mais peut confondre un ingrédient rare ou mal orthographié.
 
-### Publiez
+### Ajuster et publier
 
-Enregistrez le plat : il rejoint instantanément votre [tableau de bord](/fr/guides/restaurant/) et devient visible dans la marketplace. Répétez l'opération pour chaque plat de votre carte.
+Éditez le nom ou la description si nécessaire, saisissez le prix de vente (l’IA ne lit pas les montants pour éviter les erreurs de devise), cochez **Disponible**, puis **Enregistrer**. Le plat apparaît immédiatement sur votre carte publique dans la catégorie détectée.
 
 </Steps>
 
-## Bon à savoir
+## Exemple concret
 
-<Callout type="info">
-La modération des images est automatique : si la photo ne respecte pas les règles de contenu (image floue, texte publicitaire, contenu inapproprié), l'API refuse le téléchargement et vous demande une nouvelle photo. Aucun plat sans photo valide n'est créé dans la base.
+Vous ouvrez un comptoir de burgers et souhaitez mettre en ligne dix recettes signature. Plutôt que de remplir dix formulaires à la main, vous photographiez votre carte imprimée section par section. Pour le **Cheese Deluxe**, l’IA propose : « Burger double steak haché 180 g, cheddar fondu, cornichons croquants, sauce maison sur pain brioché. » Elle identifie les allergènes Gluten, Lactose, Œuf (sauce) et Soja (pain), estime 650–750 kcal, classe le plat en **Plats** et suggère le label **Halal** si votre viande l’est. Vous confirmez, ajoutez le prix 12,90 € et trois options Petite/Moyenne/Grande. En dix minutes les dix burgers sont en ligne, contre une heure de saisie manuelle.
+
+## Bonnes pratiques
+
+- **Photographiez plat par plat** si votre carte est dense : l’IA traite mieux une recette isolée qu’une page complète avec quinze entrées.
+- **Éclairage indirect** : évitez les reflets sur un menu plastifié qui masquent le texte.
+- **Vérifiez les allergènes** : l’IA se base sur les ingrédients visibles ; un condiment caché (moutarde dans une vinaigrette) peut lui échapper. Ajoutez manuellement tout allergène manquant.
+- **Fixez le prix vous-même** : l’IA ne lit jamais les montants pour éviter toute confusion entre prix TTC, devise ou promotion. C’est le seul champ obligatoire à saisir après le scan.
+
+<Callout type="warning">
+Le scanner IA consomme des crédits API par photo analysée. Une limite raisonnable (quelques dizaines de scans par jour) s’applique par défaut pour préserver les ressources partagées. Si vous atteignez la limite, réessayez quelques heures plus tard ou contactez le support pour un quota élargi.
 </Callout>
+
+## Erreurs fréquentes
+
+**« L’IA ne reconnaît pas mon plat manuscrit. »** — L’écriture doit rester lisible ; une calligraphie très stylisée ou un texte trop petit réduisent la précision. Prenez la photo de plus près ou retapez le nom manuellement, puis laissez l’IA générer la description à partir de ce nom.
+
+**« Les calories proposées semblent fausses. »** — L’IA donne une fourchette large (ex. 650–750 kcal) basée sur les portions standard du type de plat. Ajustez la valeur si vous connaissez le poids exact de vos portions ou laissez vide : l’affichage calorique est facultatif côté client.
+
+**« Le plat apparaît dans la mauvaise catégorie. »** — Changez manuellement la catégorie (Entrées, Plats, Desserts, Boissons) avant de publier. L’IA devine d’après le nom et les ingrédients, mais un « Carpaccio de thon » peut hésiter entre Entrées et Plats selon le contexte.
+
+## Astuces & conseils
+
+- **Ré-utilisez les fiches** : une fois scannée, une recette reste modifiable dans votre menu. Changez le prix ou la disponibilité sans re-scanner.
+- **Scannez les plats du jour** : photographiez l’ardoise du midi, validez les trois suggestions, publiez en deux minutes. Le soir, désactivez-les d’un clic dans [Gestion des stocks](/fr/guides/stocks/) ou le tableau de bord.
+- **Enrichissez la description** : l’IA produit deux phrases génériques ; ajoutez un détail signature (« viande maturée 21 jours », « pâte faite maison ») pour vous démarquer.
+
+## Questions fréquentes
+
+<Faq items={[
+  {
+    icon: 'help',
+    q: 'Le scanner fonctionne-t-il avec un menu dans une autre langue ?',
+    a: "Oui, l’IA lit plusieurs langues (anglais, espagnol, arabe, italien) mais renvoie toujours la fiche en français, la langue par défaut de la plateforme. Relisez la traduction proposée avant de publier."
+  },
+  {
+    icon: 'help',
+    q: 'Puis-je scanner une carte entière d’un coup ?',
+    a: "Techniquement oui, mais la précision baisse si plus de cinq plats figurent sur l’image. Privilégiez une photo par section (entrées, plats, desserts) pour un meilleur taux de reconnaissance."
+  },
+  {
+    icon: 'help',
+    q: 'Que se passe-t-il si j’atteins la limite de scans quotidiens ?',
+    a: "Vous recevez une erreur 429 « Limite IA atteinte ». Attendez quelques heures — le quota se réinitialise automatiquement — ou contactez le support pour demander une augmentation permanente si vous gérez plusieurs établissements."
+  },
+  {
+    icon: 'help',
+    q: 'L’IA peut-elle détecter les options (taille, suppléments) ?',
+    a: "Elle suggère des variantes courantes (Petite/Moyenne/Grande, Fromage/Bacon/Œuf) si le texte de la carte les mentionne, mais ne crée pas automatiquement les grilles de prix. Configurez les options manuellement après validation pour garantir la cohérence tarifaire."
+  }
+]} />
 
 ## Pour aller plus loin
 
-**[Gérer les stocks](/fr/guides/stocks/)** — Ajustez en temps réel les quantités disponibles pour chaque plat et évitez les commandes impossibles à honorer.
-
-**[Tableau de bord restaurant](/fr/guides/restaurant/)** — Consultez l'ensemble de votre catalogue, modifiez les prix, les descriptions ou la disponibilité de vos plats en quelques clics.
+Une fois votre carte scannée et publiée, suivez les [ruptures de stock](/fr/guides/stocks/) en temps réel pour désactiver automatiquement les plats épuisés. Consultez le [tableau de bord](/fr/guides/restaurant/) opérateur pour piloter commandes, avis et performances depuis un seul écran.

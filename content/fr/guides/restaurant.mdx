@@ -2,57 +2,103 @@
 title: "Tableau de bord"
 description: "Voir en un coup d’œil l’activité de votre restaurant : commandes en cours, chiffre d’affaires, alertes — et piloter le service depuis cet écran unique."
 generated: true
-sourceHash: 893992d4a25df2a0
+sourceHash: 676b23844b8e08c6
 generator: scripts/generate-feature-page.js
-templateVersion: 4
+templateVersion: 5
 ---
 
 import { Steps, Callout } from 'nextra/components'
 
 # Tableau de bord
 
-Pilotez l'activité de vos restaurants en temps réel — commandes du jour, chiffre d'affaires, répartition par marque — et détectez instantanément les tendances pour ajuster le service.
+Pilotez l’activité de votre restaurant en temps réel : commandes en cours, chiffre d’affaires du jour, alertes — un seul écran pour tout suivre et agir vite.
 
 <FlowDiagram steps={["Commandes en cours","Chiffres temps réel","Alertes","Multi-marques"]} />
 
-## Ce que ça fait
+## L’essentiel
 
-Le tableau de bord regroupe sur un seul écran les indicateurs opérationnels essentiels de la journée en cours : nombre de commandes validées, chiffre d'affaires réalisé, évolution par rapport à la veille et performance de chaque marque. Lorsque vous gérez plusieurs enseignes — une pizzeria, un comptoir de poke bowls, une sandwicherie — vous voyez immédiatement laquelle génère le plus de revenus et dans quelle proportion elle contribue au total.
+Le tableau de bord centralise l’activité de votre établissement en direct : vous voyez les commandes qui arrivent, le chiffre d’affaires du jour, vos clients fidèles, et la performance de chaque marque. Si vous gérez plusieurs marques, le tableau de bord les agrège toutes sur un seul écran.
 
-Les données sont actualisées à chaque rafraîchissement de la page et couvrent exclusivement les commandes fidélité validées (c'est-à-dire encaissées via Grubano). Elles permettent de repérer rapidement un pic de commandes imprévu, d'identifier un jour creux ou de vérifier si un changement de [menu](/fr/guides/menu/) produit l'effet attendu. Le tableau de bord affiche également le nombre total de clients inscrits au programme de fidélité, donnant une vue instantanée de votre base active.
+## Comment ça marche
 
-## Comment l'utiliser
+Chaque matin, le tableau de bord récupère les commandes validées du jour et calcule quatre indicateurs clés : chiffre d’affaires, nombre de commandes, clients actifs dans votre programme de fidélité, et la marque qui génère le plus de revenu. L’évolution par rapport à la veille s’affiche en pourcentage, ce qui vous permet de repérer rapidement une baisse ou une hausse d’activité. Si vous avez activé plusieurs [marques](/fr/guides/menu/) (par exemple une enseigne italienne et une enseigne asiatique sur le même compte), le tableau de bord additionne leurs commandes et vous indique quelle marque performe le mieux — sans que vous ayez à jongler entre plusieurs interfaces.
+
+Ce pilotage en temps réel vous aide à anticiper : un pic de commandes vous pousse à préparer davantage de [stocks](/fr/guides/stocks/), une alerte de rupture vous invite à réapprovisionner, et la visibilité sur les [réservations](/fr/guides/reservations/) du soir vous permet d’ajuster le service. Le tableau de bord est l’écran d’accueil de votre espace restaurateur — il se met à jour automatiquement à chaque nouvelle commande.
+
+<Callout type="info">
+**Grubano Pro** permettra bientôt de recevoir les commandes de toutes vos autres plateformes (Uber Eats, Deliveroo, Just Eat…) directement sur ce tableau de bord : un seul écran pour toutes vos commandes, avec des analyses et rapports unifiés. La commission reste 10 % ; Pro est un forfait de 29 €/mois, sans engagement, qui s’ajoute à la commission sans la remplacer.
+</Callout>
+
+## Étape par étape
 
 <Steps>
 
-### Ouvrez le tableau de bord
+### Connexion au tableau de bord
 
-Connectez-vous à votre espace restaurant ; le tableau de bord est la première page affichée après l'authentification.
+Connectez-vous à votre compte restaurateur sur [grubano.com/dashboard](https://www.grubano.com/dashboard). Le tableau de bord s’affiche automatiquement en page d’accueil.
 
-### Consultez les indicateurs du jour
+### Lecture des indicateurs du jour
 
-Quatre tuiles principales s'affichent en haut de page : **CA du jour** (somme des montants de toutes les commandes validées aujourd'hui), **Nombre de commandes**, **Clients fidélité** (total inscrit au programme) et **Meilleure marque** (celle qui a généré le chiffre d'affaires le plus élevé aujourd'hui, avec son pourcentage de contribution au total).
+La ligne supérieure présente quatre cartes : chiffre d’affaires du jour, nombre de commandes, clients fidélité actifs, meilleure marque. Chaque carte affiche l’évolution en pourcentage par rapport à la veille (hausse en vert, baisse en orange).
 
-### Comparez avec la veille
+### Suivi multi-marques
 
-Une ligne « Évolution » indique le pourcentage de variation du chiffre d'affaires par rapport à la journée précédente — utile pour détecter une baisse soudaine et enquêter (problème de [stocks](/fr/guides/stocks/), changement tarifaire, jour férié non anticipé).
+Si vous gérez plusieurs marques, la carte « Meilleure marque » indique laquelle concentre le plus de chiffre d’affaires aujourd’hui, avec son pourcentage du total. Cliquez sur le nom de la marque pour accéder à son [menu](/fr/guides/menu/) et ajuster les plats en stock.
 
-### Actualisez pour voir les dernières données
+### Actions rapides
 
-Rafraîchissez la page pour mettre à jour les compteurs ; les données sont recalculées à chaque requête en interrogeant les commandes validées entre minuit et l'instant présent.
+Le menu latéral vous donne accès direct aux écrans opérationnels : commandes en cours (pour changer leur statut de « reçue » à « en préparation », « prête », « récupérée », « livrée »), [gestion des stocks](/fr/guides/stocks/), [réservations](/fr/guides/reservations/), et [suivi financier](/fr/guides/finances/). Tout reste à portée de clic.
 
 </Steps>
 
-## Bon à savoir
+## Exemple concret
 
-<Callout type="info">
-Le tableau de bord ne comptabilise **que** les commandes Grubano (celles validées sur la marketplace avec paiement encaissé). Les commandes passées sur d'autres plateformes — Uber Eats, Deliveroo, Just Eat — n'apparaissent pas encore ici. Grubano Pro permettra bientôt de recevoir les commandes de toutes vos autres plateformes directement sur votre tableau de bord Grubano : un seul écran pour toutes vos commandes, avec des analyses et rapports unifiés. La commission ne change pas (10 % en Standard comme en Pro). Pro est un forfait mensuel de 29 €/mois, sans engagement, qui s'ajoute à la commission sans la remplacer.
-</Callout>
+Vous ouvrez le tableau de bord à 9 h : zéro commande, chiffre d’affaires à 0 €. À midi, l’écran indique 12 commandes pour 347 € — en hausse de +8 % par rapport à hier. La carte « Meilleure marque » montre que votre enseigne italienne capte 58 % du chiffre d’affaires, tandis que votre enseigne de burgers représente les 42 % restants. Vous remarquez que trois articles de la carte italienne sont marqués « stock faible » : vous les réapprovisionnez en un clic depuis l’écran [stocks](/fr/guides/stocks/), et le service du soir peut démarrer sereinement. En fin de journée, le tableau affiche 38 commandes et 1 124 € — vous comparez avec la semaine dernière et constatez une progression régulière.
+
+## Bonnes pratiques
+
+- **Consultez le tableau de bord en début de service** pour anticiper les ruptures de stock et ajuster les quantités avant le coup de feu.
+- **Comparez l’évolution jour après jour** : une baisse inhabituelle peut signaler un problème de visibilité, une hausse confirme l’impact d’une promotion ou d’un nouveau plat.
+- **Utilisez les indicateurs multi-marques** pour équilibrer vos ressources : si une marque sous-performe, testez une promotion ciblée ou enrichissez son menu.
+- **Activez les notifications** (paramètres compte) pour recevoir une alerte dès qu’une commande arrive, même si vous n’êtes pas devant l’écran.
+
+## Astuces & conseils
+
+Le tableau de bord agrège automatiquement les données de toutes vos marques : vous n’avez pas besoin de créer un compte séparé par enseigne. Si vous lancez une deuxième marque, elle apparaîtra dans les statistiques dès la première commande validée. Pensez à rafraîchir la page en cours de service pour voir les dernières commandes — le navigateur ne met pas toujours à jour les chiffres en temps réel sans un rechargement manuel.
+
+## Questions fréquentes
+
+<Faq items={[
+  {
+    icon: "help",
+    q: "Pourquoi le chiffre d’affaires du jour ne correspond pas à mes virements ?",
+    a: "Le tableau de bord affiche le chiffre d’affaires brut du jour (total payé par les clients). Vos virements déduisent la commission de 10 % et arrivent sous 7 jours — consultez l’écran Finances pour le détail des versements."
+  },
+  {
+    icon: "help",
+    q: "Puis-je filtrer les commandes par marque ?",
+    a: "Le tableau de bord global agrège toutes les marques. Pour consulter les commandes d’une marque précise, accédez à son menu via le menu latéral, puis cliquez sur « Commandes » dans l’onglet de la marque."
+  },
+  {
+    icon: "help",
+    q: "Les commandes annulées sont-elles comptabilisées dans le CA du jour ?",
+    a: "Non. Seules les commandes dont le statut est « validée », « en préparation », « prête », « récupérée » ou « livrée » entrent dans le calcul du chiffre d’affaires. Les commandes annulées n’apparaissent ni dans le CA ni dans le compteur de commandes."
+  },
+  {
+    icon: "help",
+    q: "Comment accéder aux statistiques détaillées (heures de pointe, panier moyen) ?",
+    a: "L’écran Analytics (menu latéral) présente les graphiques de revenu par jour, par marque et par heure. Vous y trouverez le panier moyen, les heures de pointe et la répartition du chiffre d’affaires entre vos marques sur les 30 derniers jours."
+  }
+]} />
 
 ## Pour aller plus loin
 
-**[Menu & Scan IA](/fr/guides/menu/)** — Ajoutez ou modifiez vos plats pour tester l'impact immédiat sur le tableau de bord du lendemain.
+**Étapes suivantes**
 
-**[Stocks & ruptures](/fr/guides/stocks/)** — Surveillez les alertes de rupture qui peuvent expliquer une baisse soudaine du nombre de commandes.
+- [Gestion du menu](/fr/guides/menu/) — ajoutez des plats, activez l’IA pour scanner une carte papier, et organisez vos marques.
+- [Gestion des stocks](/fr/guides/stocks/) — suivez les quantités en temps réel et recevez des alertes de rupture pour éviter les commandes non honorées.
 
-**[Réservations](/fr/guides/reservations/)** — Croisez les tendances de réservation avec les pics de commandes à emporter pour optimiser la capacité de votre cuisine.
+**Voir aussi**
+
+- [Réservations](/fr/guides/reservations/) — gérez les tables réservées en salle et synchronisez-les avec les commandes à emporter.
+- [Suivi financier](/fr/guides/finances/) — consultez vos virements, la commission appliquée et l’historique des paiements.

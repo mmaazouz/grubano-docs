@@ -2,55 +2,94 @@
 title: "Programme fidélité"
 description: "Fidéliser sa clientèle : 1 point = 1 € dépensé, paliers Bronze/Silver/Gold/Platinum, points crédités à la livraison de la commande."
 generated: true
-sourceHash: 17837239b5631c50
+sourceHash: c0f84754871285ec
 generator: scripts/generate-feature-page.js
-templateVersion: 4
+templateVersion: 5
 ---
 
 import { Steps, Callout } from 'nextra/components'
 
 # Programme fidélité
 
-Transformez chaque commande en relation durable : vos clients accumulent des points à chaque achat et progressent à travers quatre paliers de reconnaissance.
+Transformez chaque euro dépensé en points de fidélité, avec quatre paliers de récompense qui encouragent vos clients à revenir.
 
 <FlowDiagram steps={["Inscrire un client","Acheter","Crédit de points","Récompense"]} />
 
-## Ce que ça fait
+## L’essentiel
 
-Le programme fidélité Grubano crée un lien direct entre vous et vos clients, même lorsqu'ils commandent via des plateformes tierces. Chaque euro dépensé génère automatiquement un point ; ces points s'accumulent sur le compte du client et se transforment en crédit utilisable lors de ses prochaines commandes. Le système distingue quatre paliers — Bronze, Silver, Gold et Platine — qui progressent avec le solde de points et offrent une reconnaissance visible de la fidélité.
+Le programme fidélité Grubano récompense automatiquement vos clients : **1 point = 1 € dépensé**. Les points s’accumulent sur quatre paliers (Bronze, Silver, Gold, Platinum) et se convertissent en crédit utilisable sur leur prochaine commande. Les points sont crédités dès que la commande est livrée.
 
-Concrètement, lorsqu'un client valide une commande livrée, vous enregistrez le numéro de commande et le montant : Grubano crédite instantanément les points correspondants, recalcule le palier et met à jour le portefeuille consultable depuis votre [tableau de bord](/fr/guides/restaurant/). Le client voit son solde croître et peut décider de le dépenser sous forme de crédit euro, sans catalogue figé — l'échelle de conversion est transparente et cohérente.
+## Comment ça marche
 
-## Comment l'utiliser
+Vos clients réguliers méritent une reconnaissance. Le programme fidélité construit une relation durable : chaque achat renforce l’attachement à votre enseigne, chaque palier atteint motive la commande suivante.
+
+Le système fonctionne de bout en bout — inscription rapide (nom, email, téléphone optionnel), validation automatique à la livraison, **conversion des points en euros de crédit** que le client dépense quand il veut. Vous suivez l’activité depuis votre [tableau de bord](/fr/guides/restaurant/) : solde de points, palier actuel, historique des dix dernières commandes validées.
+
+## Étape par étape
 
 <Steps>
 
-### Inscrire un nouveau membre
+### Inscrire un client au programme
 
-Collectez le nom, l'adresse email et éventuellement le téléphone du client. Soumettez ces informations via l'API `/api/loyalty/register` : un compte est créé avec **10 points de bienvenue** et un code de parrainage unique. Si l'email existe déjà, l'inscription est refusée pour éviter les doublons.
+Collectez le nom et l’email du client (le téléphone est optionnel). **Bonus de bienvenue : 10 points** crédités immédiatement à la création du compte. Chaque client reçoit un code de parrainage unique (huit caractères, majuscules) qu’il peut partager.
 
 ### Valider une commande livrée
 
-Après chaque livraison réussie, envoyez à l'API `/api/loyalty/validate` l'email du client, le numéro de commande tiers (par exemple Uber Eats), le montant total et le nom de votre marque. Grubano arrondit le montant à l'entier inférieur pour déterminer les points gagnés (1 € = 1 point), enregistre la transaction et met immédiatement à jour le solde et le palier du client.
+Lorsqu’une commande est marquée **livrée**, renseignez l’email du client, le numéro de commande (identifiant unique — jamais validé deux fois) et le montant TTC. Le système attribue **1 point par euro dépensé** (arrondi à l’entier inférieur) et recalcule le palier.
 
-### Consulter le portefeuille
+### Suivre le solde et le palier
 
-Appelez `/api/loyalty/wallet` avec l'email du client (ou sans paramètre si le client est connecté) pour obtenir son solde de points, sa position dans les paliers (Bronze ≥ 0 pts, Silver ≥ 100, Gold ≥ 200, Platine ≥ 400), le nombre de points manquants jusqu'au palier suivant, son code de parrainage et l'historique de ses dix dernières commandes validées.
+Quatre paliers progressifs débloquent l’accès au crédit :
 
-### Laisser le client dépenser son crédit
+- **Bronze** — 0 à 99 points (palier de départ)
+- **Silver** — 100 à 199 points
+- **Gold** — 200 à 399 points
+- **Platinum** — 400 points et plus
 
-Le solde de points se convertit automatiquement en crédit euro selon le taux fixé par Grubano. Le portefeuille affiche l'équivalent en euros et une échelle de référence (100 pts, 200 pts, 400 pts) pour que le client anticipe la valeur de ses points. Le crédit est déduit au moment du paiement d'une nouvelle commande — aucun catalogue de récompenses nommées à gérer.
+Le palier se met à jour automatiquement dès qu’un seuil est franchi. Le client voit son solde de points **converti en euros de crédit** (taux de conversion fixé par Grubano) qu’il peut dépenser à sa guise.
+
+### Dépenser le crédit
+
+Le client choisit d’appliquer tout ou partie de son crédit au panier. La réduction s’impute sur le total de la commande ; le solde de points diminue en conséquence. Aucun prélèvement financier côté restaurant — **Grubano finance intégralement** la réduction appliquée.
 
 </Steps>
 
-## Bon à savoir
+## Bonnes pratiques
+
+- **Communiquez le code de parrainage** — encouragez vos clients à le partager (carte de visite, emballage, réseaux sociaux). Un client parrainé rapporte des points supplémentaires au parrain.
+- **Rappelez le solde** — mentionnez le nombre de points gagnés sur le ticket ou dans l’email de confirmation. Un client informé revient plus vite.
+- **Visez les paliers** — un client à 180 points sait qu’il lui reste 20 € à dépenser pour atteindre Gold. Ce seuil visible déclenche une commande « de passage ».
+- **Validez rapidement** — les points ne sont crédités qu’à la livraison effective de la commande. Plus la validation est rapide, plus le client perçoit la récompense immédiate.
+
+## Questions fréquentes
+
+<Faq items={[
+  {
+    icon: "help",
+    q: "Les points expirent-ils ?",
+    a: "Non. Le solde de points reste acquis tant que le compte client est actif. Aucune date de péremption n’est imposée."
+  },
+  {
+    icon: "help",
+    q: "Qui finance la réduction appliquée au panier ?",
+    a: "Grubano finance intégralement le crédit fidélité dépensé par le client. Vous recevez le montant total de la commande (moins la commission habituelle de 10 %), sans déduction supplémentaire."
+  },
+  {
+    icon: "help",
+    q: "Puis-je consulter l’historique d’un client ?",
+    a: "Oui. Depuis votre tableau de bord, recherchez le client par email : vous voyez son solde, son palier actuel et les dix dernières commandes validées (marque, montant, points gagnés, date)."
+  },
+  {
+    icon: "help",
+    q: "Que se passe-t-il si je valide deux fois le même numéro de commande ?",
+    a: "Le système rejette la seconde tentative (erreur 409) pour éviter de créditer les points deux fois. Chaque numéro de commande n’est validé qu’une seule fois."
+  }
+]} />
 
 <Callout type="info">
-Les paliers sont calculés automatiquement dès que le solde de points franchit les seuils définis : 100 points pour Silver, 200 pour Gold, 400 pour Platine. Une commande ne peut être validée qu'une seule fois (le numéro de commande tiers sert de garde-fou) et seules les commandes effectivement livrées déclenchent le crédit de points.
+**Commission inchangée** — Le programme fidélité n’impacte pas la commission de 10 % par commande. L’abonnement Pro (29 €/mois, agrégation multi-plateformes) reste optionnel et distinct du programme fidélité.
 </Callout>
 
 ## Pour aller plus loin
 
-**[Guide restaurateur](/fr/guides/restaurant/)** — Découvrez comment piloter l'ensemble de votre activité, y compris le suivi des membres fidélité, depuis un seul écran unifié.
-
-**[Guide consommateur](/fr/guides/consumer/)** — Comprenez l'expérience de vos clients lorsqu'ils consultent leur solde, leurs paliers et leur crédit disponible avant de passer commande.
+**Tableau de bord** — Consultez le solde et l’historique fidélité de vos clients depuis votre [tableau de bord](/fr/guides/restaurant/) restaurant.

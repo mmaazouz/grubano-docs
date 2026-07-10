@@ -1,56 +1,103 @@
 ---
-title: "Franchise"
-description: "Adopter une marque existante du réseau, ou faire entrer la sienne — dans les limites fixées par Grubano."
+title: "La franchise sur Grubano"
+description: "Devenir franchiseur (ouvrir sa marque au réseau) ou franchisé (exploiter une marque existante) — la marque reste au franchiseur, dans les limites fixées par Grubano."
 generated: true
-sourceHash: 2b662c11e9191de7
+sourceHash: dfe7ab844a2ab5e5
 generator: scripts/generate-feature-page.js
-templateVersion: 4
+templateVersion: 5
 ---
 
 import { Steps, Callout } from 'nextra/components'
 
-# Franchise
+# La franchise sur Grubano
 
-Adoptez une marque existante du réseau ou faites entrer la vôtre, sous réserve de validation par Grubano.
+Développez votre marque en réseau ou exploitez une marque existante, dans les limites fixées par Grubano.
 
-<FlowDiagram steps={["Candidater","Validation Grubano","Adopter une marque","Suivre les KPIs"]} />
+<FlowDiagram steps={["Candidater","Validation Grubano","Adopter une marque","Exploiter"]} />
 
-## Ce que ça fait
+## L’essentiel
 
-Le système de franchise vous permet de deux choses : soit ouvrir un point de vente sous une marque déjà présente sur Grubano (vous évitez ainsi de bâtir une réputation depuis zéro et bénéficiez du menu, de la charte visuelle et des standards opératoires de la marque mère), soit proposer votre propre marque pour que d'autres restaurateurs la déploient ailleurs. Dans les deux cas, Grubano valide d'abord votre candidature — siret, motivation, possession d'une cuisine — puis vous donne accès au catalogue de marques ouvertes à la franchise ou active la diffusion de la vôtre.
+La franchise vous permet de devenir **franchiseur** — ouvrir votre marque à d’autres restaurateurs qui l’exploiteront dans leur cuisine — ou **franchisé** — rejoindre une marque existante et cuisiner son menu dans votre établissement. La marque, le menu et les standards restent la propriété du franchiseur ; chaque point de vente opère dans sa propre cuisine.
 
-Ce mécanisme est pensé pour les restaurateurs locaux qui cuisinent dans leur propre cuisine et veulent mutualiser leur savoir-faire ou capitaliser sur une marque qui fonctionne. Grubano ne prélève que sa commission habituelle de 10 % sur chaque commande ; les conditions financières entre franchiseur et franchisé (redevances, frais d'installation) sont définies avec vous au moment de l'ouverture, en fonction de la marque adoptée et de la zone géographique.
+## Comment ça marche
 
-Une fois votre point de vente activé, toutes vos commandes apparaissent dans le [tableau de bord](/fr/guides/restaurant/) unifié, aux côtés de vos éventuels autres restaurants. Vous suivez en temps réel le chiffre d'affaires généré, le nombre de commandes et une estimation des redevances dues, calculée sur une fenêtre glissante de 30 jours.
+Grubano vous offre deux chemins : si vous possédez une marque qui fonctionne bien (note ≥ 4,5 étoiles, volume stable), vous pouvez l’ouvrir au réseau ; à terme, vous percevrez des redevances sur le chiffre d’affaires de chaque franchisé (le calcul et le versement automatisés des redevances arrivent bientôt sur la plateforme). Si vous êtes restaurateur et cherchez un concept éprouvé, vous candidatez pour exploiter une marque ouverte à la franchise — vous cuisinez son menu dans votre cuisine, sous votre responsabilité, et reverserez une redevance au franchiseur.
 
-## Comment l'utiliser
+Ce modèle répond à deux besoins : accélérer la croissance d’une marque à succès sans investir dans de nouveaux locaux, et permettre à un restaurateur de démarrer avec un concept validé plutôt que de créer le sien de zéro. La commission Grubano reste **10 %** par commande, identique pour tous les rôles (Standard comme Pro). Les conditions financières entre franchiseur et franchisé — redevance, frais d’entrée — sont fixées par Grubano au moment de l’ouverture de la marque.
+
+## Étape par étape
+
+### Devenir franchisé (exploiter une marque)
 
 <Steps>
 
-### Déposez une candidature
+### Découvrir les marques ouvertes
 
-Envoyez votre dossier via `POST /api/franchise/apply` avec votre nom, email, siret (facultatif au dépôt), RIB (facultatif), une déclaration de possession de cuisine (`hasKitchen`), le nom de la marque que vous souhaitez adopter ou proposer (`brandName`) et votre motivation. Ville et téléphone ne sont plus demandés à ce stade ; vous les renseignerez plus tard dans votre profil opérateur.
+Rendez-vous sur la page **Franchise** pour voir les marques qui recrutent. Chaque fiche indique la cuisine, le chiffre d’affaires moyen mensuel, les villes disponibles et les plats phares.
 
-### Attendez la validation
+### Candidater
 
-Grubano examine votre candidature (email, nom, siret le cas échéant). La validation reste manuelle et n'est pas déclenchée automatiquement par l'API.
+Cliquez sur **« Candidater »** et remplissez le formulaire : nom, email, SIRET, RIB (optionnels à ce stade), si vous disposez d’une cuisine équipée, et un message de motivation. Votre candidature est enregistrée avec le statut `pending`.
 
-### Choisissez une marque ouverte
+### Attendre la validation
 
-Une fois validé, consultez `GET /api/franchise/brands` pour voir les marques marquées `openToFranchise: true`. Chaque fiche indique le type de cuisine, les plats phares, le chiffre d'affaires mensuel moyen constaté, les frais d'installation (`setupFee`) et les villes disponibles (`franchiseZones`). Le taux de redevance (`royaltyPct`) est affiché mais ne constitue pas la commission Grubano — celle-ci reste 10 % quelle que soit la marque.
+Grubano examine votre dossier. Si la candidature est approuvée (`approved`), un **point de vente** est automatiquement créé et rattaché à la marque. Vous recevez un email de confirmation. Si elle est refusée (`rejected`), vous en êtes informé.
 
-### Suivez vos indicateurs
+### Exploiter
 
-Appelez `GET /api/franchise/my-dashboard` pour obtenir le chiffre d'affaires du mois en cours (fenêtre glissante de 30 jours), celui du mois précédent, le nombre de commandes par point de vente et une estimation des redevances dues, calculée en appliquant le taux propre à chaque marque que vous exploitez. Le tableau de bord retourne également les totaux réels (`royaltiesAccrued`, `royaltiesSettled`, `royaltiesPending`) lorsque le système de retenue est activé ; si `royaltyEnabled` vaut `false`, ces montants restent à zéro et l'estimation est une simple projection.
+Une fois validé, votre point de vente apparaît dans votre espace franchisé. Vous cuisinez le menu de la marque, recevez les commandes sur votre tableau de bord, et suivez vos performances (chiffre d’affaires, nombre de commandes, redevances dues). La marque reste la propriété du franchiseur ; vous en êtes l’exploitant local.
 
 </Steps>
 
-## Bon à savoir
+### Devenir franchiseur (ouvrir sa marque au réseau)
+
+<Steps>
+
+### Préparer votre marque
+
+Assurez-vous que votre restaurant affiche une note ≥ 4,5 étoiles et un volume de commandes stable (≥ 50 par semaine). Ces critères garantissent que votre concept est éprouvé et duplicable.
+
+### Ouvrir la marque à la franchise
+
+Depuis votre compte restaurant, activez l’option **« Ouvrir à la franchise »** sur l’une de vos marques. Grubano fixe avec vous les conditions : redevance (pourcentage du CA), frais d’entrée, zones géographiques disponibles.
+
+### Recevoir les candidatures
+
+Les restaurateurs intéressés postulent via la page publique Franchise. Vous recevez leurs dossiers (nom, email, SIRET, motivation) et décidez d’approuver ou de refuser chaque candidature.
+
+### Piloter votre réseau
+
+Une fois des franchisés validés, vous accédez à un tableau de bord dédié : chiffre d’affaires du réseau, nombre de points de vente actifs, redevances dues, et performances par établissement. Vous gardez le contrôle de la marque (nom, menu, standards) ; chaque franchisé cuisine dans sa propre cuisine.
+
+</Steps>
 
 <Callout type="info">
-La commission Grubano de 10 % s'applique à toutes vos commandes, que vous exploitiez votre propre marque ou une marque du réseau. Les conditions financières entre franchiseurs et franchisés (redevances, royalties) sont définies dans les limites fixées par Grubano et apparaissent dans le catalogue de marques ; elles ne remplacent pas la commission Grubano, elles s'y ajoutent.
+**Bientôt** : Grubano Pro (29 €/mois) vous permettra de recevoir les commandes de toutes vos autres plateformes (Uber Eats, Deliveroo, Just Eat…) directement sur votre tableau de bord Grubano, avec des analyses unifiées. La commission reste 10 %.
 </Callout>
+
+## Exemple concret
+
+Un restaurateur spécialisé dans les wraps végétariens affiche une note de 4,7 étoiles et traite 60 commandes par semaine. Il ouvre sa marque à la franchise dans trois villes de sa région. Un second restaurateur, qui dispose d’une cuisine équipée mais cherche un concept validé, candidate et est approuvé. Le franchisé reçoit le menu complet (recettes, photos, descriptions), cuisine les wraps dans sa propre cuisine. Le franchiseur suit les performances du réseau depuis son tableau de bord ; le versement automatisé des redevances sur le chiffre d’affaires arrive bientôt — chaque montant dû sera alors visible mois par mois.
+
+## Bonnes pratiques
+
+- **Franchiseurs** : n’ouvrez votre marque à la franchise que si vos indicateurs sont solides (note ≥ 4,5, volume régulier). Un concept fragile risque de décevoir les franchisés et de nuire à votre réputation.
+- **Franchisés** : lisez attentivement les conditions (redevance, frais d’entrée, zones) avant de candidater. Assurez-vous que votre cuisine est équipée pour cuisiner le menu de la marque.
+- **Documentation** : tenez un registre des candidatures approuvées et des performances par point de vente. Cela vous aidera à identifier les établissements qui performent et ceux qui nécessitent un accompagnement.
+- **Communication** : restez en contact régulier avec vos franchisés (ou votre franchiseur). Un réseau qui communique bien est un réseau qui dure.
+
+## Erreurs fréquentes
+
+<Callout type="warning">
+**Attention** : candidater à une marque sans disposer d’une cuisine équipée ralentit le processus. Grubano vérifie que vous pouvez cuisiner le menu avant de valider votre candidature.
+</Callout>
+
+**Ouvrir trop tôt** : un franchiseur qui ouvre sa marque avant d’avoir stabilisé son concept (note < 4,5, volume irrégulier) expose ses franchisés à un risque d’échec. Consolidez d’abord votre propre restaurant.
+
+**Ne pas suivre les performances** : un franchiseur qui ne consulte jamais son tableau de bord ignore les signaux faibles (baisse de CA, points de vente inactifs). [Piloter son réseau](/fr/guides/franchise-operations/) vous évite les mauvaises surprises.
 
 ## Pour aller plus loin
 
-- [Tableau de bord restaurant](/fr/guides/restaurant/) : consultez toutes vos commandes et statistiques en un seul endroit, quel que soit le nombre de points de vente ou de marques que vous exploitez.
+**Étape suivante** : une fois votre réseau lancé, consultez [Piloter son réseau de franchise](/fr/guides/franchise-operations/) pour apprendre à suivre les performances, gérer les redevances, et accompagner vos franchisés.
+
+**Voir aussi** : si vous êtes restaurateur et hésitez entre créer votre propre marque ou rejoindre une franchise, lisez [Démarrer en tant que restaurant](/fr/guides/restaurant/) pour comparer les deux approches.

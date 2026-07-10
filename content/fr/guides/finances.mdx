@@ -1,13 +1,119 @@
 ---
 title: "Finances & versements"
 description: "Comprendre vos finances Grubano : commission de 10 % par commande, calendrier des versements, détail brut/commission/net, et déclaration DAC7."
-generated: false
+generated: true
+sourceHash: 786e621b2b34ea5c
+generator: scripts/generate-feature-page.js
+templateVersion: 5
 ---
 
-import { Callout } from 'nextra/components'
+import { Steps, Callout } from 'nextra/components'
 
 # Finances & versements
 
+Suivez vos revenus en temps réel, comprenez la commission de 10 %, et consultez vos versements : tout est transparent.
+
+<FlowDiagram steps={["Commande payée","Commission 10 %","Versement","Relevé & DAC7"]} />
+
+## L’essentiel
+
+Chaque commande payée génère un versement direct sur votre compte bancaire, déduction faite de la commission Grubano de 10 %. Vous consultez le détail brut / commission / net dans votre [tableau de bord](/fr/guides/restaurant/), et recevez un relevé mensuel pour votre comptabilité et la déclaration DAC7.
+
+## Comment ça marche
+
+Grubano applique une **commission unique de 10 %** sur le chiffre d’affaires que vous réalisez via la plateforme — quel que soit le canal (sur place, à emporter, livraison, réservation). Cette commission couvre l’infrastructure technique, le marketing, le traitement des paiements et le support. Les 90 % restants vous sont versés directement, jour après jour, sur le compte bancaire que vous avez renseigné lors de l’ouverture.
+
+Le modèle est simple : vous voyez le montant brut de chaque commande, la commission prélevée, et le montant net qui vous revient. Aucun frais caché, aucune surprise. Vous restez propriétaire de vos données clients, et les versements s’effectuent automatiquement sans action de votre part.
+
+À la fin de chaque mois, vous recevez un relevé détaillé — utile pour votre comptable et pour répondre à vos obligations fiscales (notamment la déclaration DAC7 pour les plateformes numériques). Ce relevé récapitule l’ensemble de vos opérations, les commissions, les remboursements éventuels, et le net versé.
+
+## Étape par étape
+
+<Steps>
+
+### Consulter le résumé financier
+
+Depuis votre tableau de bord, cliquez sur **Finances** dans le menu latéral. Vous voyez immédiatement :
+
+- Le **chiffre d’affaires brut** de la période (7 derniers jours par défaut)
+- La **commission Grubano** (10 % du CA)
+- Le **montant net** viré sur votre compte
+
+Changez de période (jour / semaine / mois) pour affiner l’analyse.
+
+### Lire le détail des opérations
+
+Descendez dans la page : chaque ligne correspond à une opération financière (paiement, remboursement, ajustement). Vous voyez :
+
+- La date et l’heure
+- Le type d’opération (paiement client, capture de caution réservation, remboursement)
+- Le montant brut encaissé
+- La commission prélevée
+- Le net crédité sur votre compte
+
+Cliquez sur une ligne pour voir le ticket de caisse ou la réservation liée.
+
+### Suivre les versements
+
+Les fonds sont versés **automatiquement** sur votre compte bancaire, selon le calendrier de votre prestataire de paiement (généralement sous 2 à 7 jours ouvrés après l’encaissement). Vous n’avez aucune démarche à faire : dès qu’une commande est payée, les 90 % nets vous sont dus.
+
+Le détail de chaque versement apparaît dans l’historique des opérations, avec la référence du virement (utile pour rapprocher vos relevés bancaires).
+
+### Télécharger le relevé mensuel
+
+En fin de mois, un relevé PDF est généré automatiquement. Il récapitule :
+
+- Le CA brut mensuel
+- Les commissions totales
+- Les remboursements éventuels (annulations, gestes commerciaux)
+- Le net versé
+
+Ce document est conforme aux exigences de la directive **DAC7** (déclaration des revenus issus de plateformes numériques). Transmettez-le à votre comptable pour votre déclaration de revenus.
+
+</Steps>
+
 <Callout type="info">
-**Contenu en cours de génération.** Cette fiche sera remplie automatiquement depuis le code.
+**Transparence totale** — La commission de 10 % s’applique à *tous* vos canaux de vente sur Grubano (sur place, à emporter, livraison, réservation). Elle ne changera pas non plus avec l’offre Pro, bientôt disponible : Pro (29 €/mois) ajoutera l’agrégation de vos autres plateformes (Uber Eats, Deliveroo…) sur un seul tableau de bord, mais la commission restera 10 %.
 </Callout>
+
+## Exemple concret
+
+Votre restaurant encaisse **2 000 € de commandes** sur la semaine via Grubano (150 € de sur place, 850 € d’à emporter, 1 000 € de livraison). La commission de 10 % s’élève à **200 €**. Vous recevez donc **1 800 € nets** sur votre compte bancaire. Un client annule une commande de 25 € : vous êtes remboursé de 22,50 € nets (les 90 % de cette commande), et la commission de 2,50 € vous est également restituée.
+
+À la fin du mois, le relevé PDF totalise 8 500 € de CA brut, 850 € de commission, 7 650 € versés, et mentionne 3 remboursements pour 75 €. Vous transmettez ce relevé à votre comptable pour la déclaration annuelle.
+
+## Bonnes pratiques
+
+- **Rapprochez chaque semaine** — Comparez le montant net affiché dans Grubano avec les virements reçus sur votre compte bancaire. En cas d’écart, consultez le détail des opérations (un remboursement en cours peut expliquer une différence).
+- **Archivez les relevés mensuels** — Conservez chaque PDF : ils constituent votre pièce justificative pour l’administration fiscale et simplifient la clôture comptable annuelle.
+- **Surveillez le taux de remboursement** — Un taux élevé (> 5 %) peut signaler un problème qualité ou de communication avec les clients. Le tableau de bord affiche ce ratio : utilisez-le comme signal d’alerte.
+
+## Questions fréquentes
+
+<Faq items={[
+  {
+    icon: "help",
+    q: "La commission de 10 % s’applique-t-elle aussi aux frais de livraison ?",
+    a: "Non. La commission de 10 % est calculée uniquement sur le montant des plats (sous-total). Les frais de livraison vous reviennent intégralement (100 %), sans prélèvement."
+  },
+  {
+    icon: "help",
+    q: "Puis-je choisir la fréquence des versements ?",
+    a: "Les versements sont automatiques et suivent le calendrier de votre prestataire de paiement (en général sous 2 à 7 jours après chaque encaissement). Vous ne pouvez pas modifier cette fréquence, mais vous voyez en temps réel le montant net dû dans votre tableau de bord."
+  },
+  {
+    icon: "help",
+    q: "Que faire si un versement est en retard ou manquant ?",
+    a: "Consultez d’abord le détail des opérations dans la page Finances : un remboursement récent peut avoir réduit le montant attendu. Si l’écart persiste après 7 jours ouvrés, contactez le support Grubano avec la référence de l’opération concernée."
+  },
+  {
+    icon: "help",
+    q: "Le relevé mensuel suffit-il pour ma déclaration fiscale ?",
+    a: "Oui. Le relevé Grubano est conforme à la directive DAC7 et récapitule l’ensemble de vos revenus issus de la plateforme. Transmettez-le à votre comptable : il contient toutes les informations nécessaires (CA brut, commissions, remboursements, net versé)."
+  }
+]} />
+
+## Pour aller plus loin
+
+- [Tableau de bord restaurant](/fr/guides/restaurant/) — Vue d’ensemble de votre activité, KPIs en temps réel et accès direct à la page Finances.
+- [Grubano Pro](/fr/guides/pro/) — Bientôt, recevez les commandes de toutes vos plateformes (Uber Eats, Deliveroo…) sur un seul tableau de bord. La commission restera 10 % ; Pro sera un forfait mensuel de 29 € qui s’ajoute, sans engagement.

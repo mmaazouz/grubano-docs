@@ -1,13 +1,106 @@
 ---
 title: "Le programme d’affiliation"
 description: "Rejoindre le programme d’affiliation : obtenir des liens et des codes, toucher une commission sur les ventes que vous générez, suivre vos gains et demander un retrait."
-generated: false
+generated: true
+sourceHash: 7fe75346a2fa613e
+generator: scripts/generate-feature-page.js
+templateVersion: 5
 ---
 
-import { Callout } from 'nextra/components'
+import { Steps, Callout } from 'nextra/components'
 
 # Le programme d’affiliation
 
+Recommandez Grubano, gagnez sur chaque commande générée — suivez vos performances, touchez votre commission.
+
+<FlowDiagram steps={["Candidater","Obtenir liens & codes","Générer des ventes","Retirer ses gains"]} />
+
+## L’essentiel
+
+Le programme d’affiliation vous permet de recommander Grubano via un lien ou un code personnel et de toucher une commission sur les commandes que vous générez. Vous suivez vos gains en temps réel et demandez un retrait dès que le seuil est atteint.
+
+## Comment ça marche
+
+Grubano rémunère les partenaires qui recommandent la plateforme : vous partagez votre lien d’affiliation sur vos réseaux, votre site ou auprès de votre communauté, et chaque nouvelle commande passée par un client arrivé via votre lien vous rapporte une commission. Le programme est ouvert à tous — pas de prérequis de taille d’audience ni d’abonnement.
+
+Vous obtenez instantanément un code court et un lien personnalisé lors de votre inscription. La commission est créditée automatiquement à la livraison de chaque commande, puis devient disponible après une période de sécurisation. Vous suivez clics, conversions et gains sur votre tableau de bord, et demandez un retrait lorsque votre solde atteint le seuil — le versement effectif arrive bientôt.
+
+Les [influenceurs vérifiés](/fr/guides/influencer/) — un palier à audience certifiée — bénéficient d’avantages supplémentaires (commission majorée, studio de contenu IA), mais conservent la même mécanique d’affiliation.
+
+## Étape par étape
+
+<Steps>
+
+### Candidater au programme
+
+Rendez-vous sur la page publique du programme d’affiliation. Remplissez le formulaire (nom, adresse e-mail, consentement) : vous recevez un lien de connexion sans mot de passe par e-mail.
+
+Si vous possédez déjà un compte Grubano, connectez-vous directement — vous rejoignez le programme en un clic depuis votre tableau de bord.
+
+### Récupérer vos liens et codes
+
+Dès votre première connexion, le système génère automatiquement un **code court** (par exemple `ALEX9F2K`) et un **lien personnalisé** (`/ref/alex9f2k`). Les deux pointent vers la découverte des restaurants Grubano et attribuent les commandes à votre compte.
+
+Vous les retrouvez à tout moment sur votre tableau de bord affilié. Copiez-les, partagez-les comme vous le souhaitez — réseaux sociaux, site personnel, newsletter, communauté.
+
+### Partager et générer des ventes
+
+Chaque fois qu’un visiteur clique sur votre lien ou utilise votre code lors de sa première commande, le système enregistre le lien. Si ce client passe commande dans les 90 jours, la commission vous est créditée automatiquement à la livraison.
+
+Vous suivez en temps réel le nombre de clics, de conversions et le montant de vos gains (en attente ou disponibles) sur votre tableau de bord. Le taux de conversion s’affiche pour ajuster votre stratégie.
+
+### Retirer vos gains
+
+Dès que votre solde disponible atteint **25 €**, le bouton « Retirer » s’active sur votre tableau de bord. Au premier retrait, le système vous demande de vérifier votre identité (procédure réglementaire) et de remplir une déclaration fiscale simplifiée — aucun versement n’a lieu avant cette étape.
+
+Une fois validé, votre demande est enregistrée ; le déclenchement effectif des virements arrive bientôt, et votre versement partira alors sous quelques jours ouvrés. Vous consultez l’historique de vos retraits à tout moment ; chaque demande est idempotente (un double-clic ne déclenche pas deux versements).
+
+</Steps>
+
 <Callout type="info">
-**Contenu en cours de génération.** Cette fiche sera remplie automatiquement depuis le code.
+**Nouveaux clients uniquement** — la commission s’applique sur les commandes passées par des clients qui n’avaient jamais commandé sur Grubano avant de cliquer sur votre lien. Les commandes des clients existants ne génèrent pas de commission.
 </Callout>
+
+## Exemple concret
+
+Vous partagez votre lien `/ref/alex9f2k` dans la story Instagram de votre compte food local. Quinze personnes cliquent, trois passent commande dans la semaine. Chacune de ces trois commandes vous rapporte une commission (calculée sur les frais Grubano de la commande), créditée automatiquement à la livraison. Vous voyez « 15 clics · 3 conversions · 20 % » sur votre tableau de bord, et le montant correspondant s’ajoute à votre solde en attente. Trente jours plus tard, ce solde devient disponible ; si vous cumulez 25 € ou plus, vous demandez le retrait en un clic.
+
+## Bonnes pratiques
+
+- **Ciblez des audiences locales** — Grubano est une marketplace de restaurants locaux : vos recommandations sont d’autant plus efficaces si votre communauté habite dans une zone couverte.
+- **Variez les formats** — testez story, post fixé, lien en bio, newsletter : le tableau de bord vous montre quel canal convertit le mieux (clics vs commandes).
+- **Valorisez un restaurant précis** — vous pouvez construire un lien affilié pointant directement vers la page d’un restaurant (`/ref/alex9f2k?restaurant=<id>`) pour recommander une adresse que vous aimez : la commission reste la même, la conversion monte souvent.
+- **Suivez votre série** — le tableau de bord affiche une « série hebdomadaire » (nombre de semaines consécutives avec au moins une commande générée) et des badges de progression : ces mécaniques de gamification vous aident à garder un rythme régulier.
+
+## Questions fréquentes
+
+<Faq items={[
+  {
+    icon: "help",
+    q: "Puis-je utiliser mon propre lien pour commander ?",
+    a: "Non. Le système détecte l’auto-référencement (même opérateur = affilié et client) et ne crédite aucune commission dans ce cas. La commission ne s’applique que sur les commandes de clients distincts arrivés via votre lien."
+  },
+  {
+    icon: "help",
+    q: "Combien de temps un client reste-t-il lié à mon code ?",
+    a: "90 jours. Si un visiteur clique sur votre lien aujourd’hui et commande dans les 90 jours, la commission vous est créditée. Au-delà, le lien expire et la commande n’est plus attribuée."
+  },
+  {
+    icon: "help",
+    q: "Que se passe-t-il si un client clique sur deux liens différents ?",
+    a: "Le système applique la règle du « premier contact » : c’est le premier lien cliqué (dans la fenêtre de 90 jours) qui est crédité, même si le client clique ensuite sur un autre lien d’affiliation."
+  },
+  {
+    icon: "help",
+    q: "Quelle est la différence avec le statut influenceur ?",
+    a: "L’influenceur est un palier à audience vérifiée du programme d’affiliation — même mécanisme (lien, code, commission, retrait), mais avec des avantages supplémentaires réservés aux comptes dont l’audience a été certifiée par l’équipe Grubano."
+  }
+]} />
+
+## Pour aller plus loin
+
+**Statut influenceur**  
+Si vous possédez une audience significative et vérifiable, le [statut influenceur](/fr/guides/influencer/) vous donne accès à une commission majorée et à un studio de contenu IA pour générer des légendes prêtes à publier — tout en gardant la même mécanique d’affiliation.
+
+**Créateurs de recettes**  
+Le [rôle créateur](/fr/guides/creators/) est distinct : vous publiez des recettes que les restaurants adoptent et cuisinent, et touchez une redevance sur chaque vente du plat — ce n’est pas de l’affiliation, mais une collaboration produit.

@@ -1,13 +1,92 @@
 ---
 title: "Rémunération & retraits"
 description: "Comprendre votre rémunération de livreur : frais de livraison moins une commission Grubano de 20 %, pourboires reversés à 100 %, maturation à la livraison, et retrait à partir de 25 €."
-generated: false
+generated: true
+sourceHash: a90f361581a84dd8
+generator: scripts/generate-feature-page.js
+templateVersion: 5
 ---
 
-import { Callout } from 'nextra/components'
+import { Steps, Callout } from 'nextra/components'
 
 # Rémunération & retraits
 
+Votre rémunération est calculée à chaque livraison : vous touchez une part des frais de livraison après commission Grubano, et 100 % des pourboires.
+
+<FlowDiagram steps={["Course livrée","Frais − commission 20 %","Maturation","Retrait dès 25 €"]} />
+
+## L’essentiel
+
+Grubano rémunère les livreurs sur deux sources : une part des frais de livraison payés par le client (après une commission Grubano), et l’intégralité des pourboires versés. Vos gains sont disponibles au retrait dès qu’ils ont mûri et que le solde atteint 25 €.
+
+## Comment ça marche
+
+Chaque fois que vous livrez une [mission](/fr/guides/driver/), le système enregistre deux types de gains : les **frais de course** (la part qui vous revient sur les frais de livraison facturés au client, moins une commission Grubano) et les **pourboires** (reversés à 100 %, sans commission). Ces montants passent par trois états : **en attente** (juste après la livraison), **mûrs** (après une période de sécurité de 7 jours, garantissant que la commande est payée et non remboursée), puis **payés** (une fois que vous avez demandé un retrait). Ce cycle protège à la fois le livreur et la plateforme : vous êtes assuré de toucher ce qui vous est dû, et Grubano s’assure que la transaction est définitive avant de verser.
+
+La **commission Grubano** sur les frais de course finance les outils, l’infrastructure logistique et le support. Les pourboires, eux, vous reviennent intégralement — ils récompensent directement votre service.
+
+## Étape par étape
+
+<Steps>
+
+### Livraison effectuée
+
+Dès que vous marquez une mission comme livrée, le système enregistre deux lignes de gains : une pour les frais de course (montant brut − commission Grubano = montant net qui vous est dû) et, le cas échéant, une pour le pourboire (100 % net). Ces lignes apparaissent immédiatement dans votre espace **Mes gains**, avec le statut **En attente**.
+
+### Période de maturation
+
+Vos gains restent en attente pendant **7 jours** à compter de la livraison. Ce délai permet de vérifier que la commande est payée et qu’aucun remboursement intégral n’a été émis. Au terme de cette période, si tout est en ordre, les gains passent automatiquement au statut **Matured** (mûrs) et rejoignent votre solde disponible.
+
+### Solde disponible
+
+Votre solde disponible correspond à la somme de tous les gains mûrs qui n’ont pas encore été versés. Vous pouvez le consulter à tout moment dans **Mes gains**. Dès que ce solde atteint ou dépasse **25 €**, le bouton **Retirer** devient actif.
+
+### Demande de retrait
+
+Cliquez sur **Retirer** pour demander un virement de votre solde disponible. Le système vérifie que vos coordonnées de paiement sont enregistrées et validées auprès de notre prestataire, puis enregistre votre demande — le déclenchement effectif des virements arrive bientôt. Une fois un virement effectué, vos gains passeront au statut **Payés** et apparaîtront dans l’historique.
+
+</Steps>
+
 <Callout type="info">
-**Contenu en cours de génération.** Cette fiche sera remplie automatiquement depuis le code.
+Le montant du retrait est toujours calculé par le serveur — vous ne pouvez pas choisir un montant partiel. Chaque retrait vide intégralement votre solde disponible (tous les gains mûrs à cet instant).
 </Callout>
+
+## Bonnes pratiques
+
+**Consultez régulièrement votre espace Mes gains** pour suivre l’évolution de vos revenus en temps réel. Vous y verrez la distinction claire entre les gains encore en attente (qui mûriront dans quelques jours) et ceux déjà disponibles au retrait.
+
+**Anticipez le seuil de 25 €** : si vous effectuez peu de courses par semaine, il peut falloir plusieurs jours pour atteindre le montant minimal. Planifiez vos retraits en conséquence pour éviter d’attendre inutilement.
+
+**Vérifiez votre compte bancaire** avant votre premier retrait : assurez-vous que vos coordonnées sont correctement enregistrées et validées auprès de notre prestataire de paiement. Un profil incomplet bloque le virement — le système vous alertera si une information manque.
+
+**Gardez une trace de vos retraits** : l’historique dans Mes gains archive chaque versement avec sa date, son montant et sa référence de virement. Utile pour vos déclarations ou votre comptabilité personnelle.
+
+## Questions fréquentes
+
+<Faq items={[
+  {
+    icon: "help",
+    q: "Pourquoi mes gains sont-ils en attente 7 jours ?",
+    a: "Ce délai garantit que la commande est définitivement payée et non remboursée. Il protège à la fois vous (vous ne toucherez jamais un gain annulé) et la plateforme (pas de versement prématuré). Passé ce cap, vos gains deviennent disponibles au retrait."
+  },
+  {
+    icon: "help",
+    q: "Puis-je retirer moins de 25 € ?",
+    a: "Non, le seuil minimal de retrait est fixé à 25 €. En dessous, le bouton Retirer reste inactif. Ce plancher réduit les frais de transaction bancaire et simplifie la gestion pour tous."
+  },
+  {
+    icon: "help",
+    q: "Que se passe-t-il si une commande est remboursée après que j’ai été payé ?",
+    a: "La période de maturation de 7 jours couvre ce risque : le système vérifie l’état de la commande avant de libérer vos gains. Si un remboursement survient pendant ces 7 jours, le gain correspondant passe au statut annulé et ne rejoint jamais votre solde disponible."
+  },
+  {
+    icon: "help",
+    q: "Les pourboires sont-ils soumis à commission ?",
+    a: "Non. Les pourboires vous sont reversés à 100 %, sans aucune commission. Seuls les frais de course (la part des frais de livraison) sont soumis à la commission Grubano."
+  }
+]} />
+
+## Pour aller plus loin
+
+**Étape suivante**  
+[Guide du livreur](/fr/guides/driver/) — Découvrez comment accepter des missions, organiser vos tournées et maximiser vos revenus sur Grubano.
