@@ -26,6 +26,23 @@ article main p strong {
   color: var(--gb-text);
   font-weight: 800;
 }
+/* Liens de prose : la maquette n'en contient pas (a{color:inherit}) — choix
+   charte validé par Mohammed : zest souligné discret (fin du bleu Nextra). */
+article main p a,
+article main li a,
+.gbv-qa__a a,
+.nextra-callout a {
+  color: var(--gb-zest-600) !important;
+  text-decoration: underline !important;
+  text-decoration-thickness: from-font !important;
+  text-underline-position: from-font !important;
+}
+article main p a:hover,
+article main li a:hover,
+.gbv-qa__a a:hover,
+.nextra-callout a:hover {
+  text-decoration: none !important;
+}
 article main > ul li,
 article main > ol li {
   font-size: 15.5px;
