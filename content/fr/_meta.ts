@@ -21,7 +21,9 @@ export default {
     },
   },
   'getting-started': 'Découvrir Grubano',
-  guides: 'Guides',
+  // pagination/timestamp Nextra désactivés : remplacés par les cartes
+  // Précédent/Suivant + la meta « Mis à jour le » localisée (article-v5).
+  guides: { title: "Guides", theme: { pagination: false, timestamp: false } },
   api: 'API Reference',
   changelog: 'Changelog',
 } satisfies MetaRecord

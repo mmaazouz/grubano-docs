@@ -10,8 +10,15 @@ import {
   MiniMap,
   LearningPath,
   Comparison,
-  Faq,
 } from '@/components/DocVisuals'
+import { Faq } from '@/components/Faq'
+import {
+  ArticleMeta,
+  Eyebrow,
+  Essentials,
+  Breakdown,
+  RelatedCards,
+} from '@/components/ArticleV5'
 
 // Anything added here becomes usable in .mdx without an explicit import.
 const base = getDocsMDXComponents()
@@ -30,5 +37,11 @@ export const useMDXComponents = ((components?: Record<string, unknown>) => ({
   MiniMap,
   LearningPath,
   Comparison,
-  Faq,
+  Faq, // single-open accordion (article-v5)
+  // article-v5 building blocks (mockup docs/article-v5.html)
+  ArticleMeta,
+  Eyebrow,
+  Essentials,
+  Breakdown,
+  RelatedCards,
 })) as typeof getDocsMDXComponents

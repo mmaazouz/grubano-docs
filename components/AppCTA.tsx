@@ -1,15 +1,13 @@
 import type { ReactNode } from 'react'
 
 /**
- * "Ouvrir dans Grubano" CTA card, mounted at the bottom of guide pages by
- * app/[lang]/[[...mdxPath]]/page.tsx via the wrapper's `bottomContent` slot.
+ * CTA « Ouvrir dans Grubano » — dégradé ink + halo zest, aligné sur le bloc
+ * .cta de docs/article-v5.html. Monté en bas de chaque page de guide par
+ * app/[lang]/[[...mdxPath]]/page.tsx via le slot bottomContent.
  *
- * Cible: la home publique du site applicatif (https://www.grubano.com).
- * Pas de deep-link par page tant que les vraies routes app ne sont pas
- * confirmées et publiées dans docs-map.json (champ `app`).
- *
- * Locale-aware: French / English label tables only — es/ar/it land later.
- * Pure server component, zero client JS, no new deps.
+ * Cible : la home publique (https://www.grubano.com) — pas de deep-link tant
+ * que les routes app ne sont pas publiées dans docs-map.json (champ `app`).
+ * Server component, zéro JS client.
  */
 
 const COPY = {
@@ -23,6 +21,21 @@ const COPY = {
     body: 'Find what you just read inside your Grubano dashboard.',
     cta: 'Open in Grubano',
   },
+  es: {
+    title: '¿Listo para ponerlo en práctica?',
+    body: 'Encuentre lo que acaba de leer en su panel de Grubano.',
+    cta: 'Abrir en Grubano',
+  },
+  ar: {
+    title: 'جاهز للتطبيق؟',
+    body: 'اعثر على ما قرأته للتو في لوحة تحكم Grubano الخاصة بك.',
+    cta: 'افتح في Grubano',
+  },
+  it: {
+    title: 'Pronto a metterlo in pratica?',
+    body: 'Ritrova ciò che hai appena letto nel tuo pannello Grubano.',
+    cta: 'Apri in Grubano',
+  },
 } as const
 
 type Lang = keyof typeof COPY
@@ -31,21 +44,20 @@ export function AppCTA({ lang }: { lang: string }): ReactNode {
   const t = (COPY as Record<string, (typeof COPY)[Lang]>)[lang] ?? COPY.fr
 
   return (
-    <aside className="grubano-app-cta" aria-label={t.cta}>
-      <div className="grubano-app-cta__inner">
-        <div className="grubano-app-cta__text">
-          <p className="grubano-app-cta__title">{t.title}</p>
-          <p className="grubano-app-cta__body">{t.body}</p>
-        </div>
-        <a
-          href="https://www.grubano.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="grubano-app-cta__link"
-        >
-          {t.cta} <span aria-hidden="true">→</span>
-        </a>
+    <aside className="av-cta" aria-label={t.cta}>
+      <div className="av-cta__m">
+        <b>{t.title}</b>
+        <span>{t.body}</span>
       </div>
+      <a
+        className="av-cta__btn"
+        href="https://www.grubano.com"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span className="ms" aria-hidden="true">open_in_new</span>
+        {t.cta}
+      </a>
     </aside>
   )
 }

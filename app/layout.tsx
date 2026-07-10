@@ -1,6 +1,7 @@
 import 'nextra-theme-docs/style.css'
 import './globals.css'
 import './gbv-components.css'
+import './article-v5.css'
 import type { ReactNode } from 'react'
 import { Gabarito, Hanken_Grotesk, JetBrains_Mono } from 'next/font/google'
 

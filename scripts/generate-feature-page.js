@@ -66,7 +66,13 @@ const { parseStatusEnum, buildStateDiagram } = require('./gen-state-diagram.js')
 //        state-diagram), "L'essentiel" beginner block, conditional
 //        Exemple/Bonnes pratiques/Erreurs/Astuces/FAQ/Dépannage blocks,
 //        knowledge-graph "Pour aller plus loin", 3-role partner distinction.
-const TEMPLATE_VERSION = 5
+//   v6 — article-v5.html mockup fidelity: lead + <ArticleMeta> (audience /
+//        reading time / localized updated date), <Eyebrow> section kickers
+//        with the mockup's exact Material glyphs, <Essentials> box, rich
+//        <FlowDiagram> ({icon,title,desc}), <Breakdown> premium table,
+//        callout variant mapping (good/err/tip), <RelatedCards> grid.
+//        CTA / feedback / prev-next stay wrapper-owned.
+const TEMPLATE_VERSION = 6
 
 // ── Paths & Notion ──────────────────────────────────────────────────────────
 
@@ -305,7 +311,10 @@ function relatedDocLinks(relatedKeys, locale) {
   for (const key of relatedKeys || []) {
     const entry = DOCS_MAP.topics[key]
     if (!entry?.doc) continue
-    out.push(`/${locale}${entry.doc}/`)
+    out.push({
+      href: `/${locale}${entry.doc}/`,
+      title: FEATURE_PAGES[key]?.title || key,
+    })
   }
   return out
 }
@@ -438,103 +447,107 @@ PUBLICS RÉCENTS (livreur, fournisseur, franchisé, affilié, influenceur) : dé
 `
 
 const TEMPLATE_INSTRUCTIONS = `
-GABARIT v5 — PAGE D'APPRENTISSAGE, pas fiche technique. Objectif : ÉDUQUER.
-Une page = un parcours du simple au détaillé : le débutant trouve l'essentiel
-en haut, l'expert descend vers les détails. La page se lit EN COUCHES —
-personne n'est perdu, personne ne s'ennuie. Ton chaleureux, clair,
-pédagogique ; on parle au lecteur (« vous ») ; on explique le POURQUOI ;
-zéro jargon inutile. Aéré, premium, calme, de l'air entre les blocs.
+GABARIT v6 — PAGE D'APPRENTISSAGE fidèle à la maquette CD « article-v5 ».
+Objectif : ÉDUQUER, en couches (le débutant lit le haut, l'expert descend).
+Ton chaleureux, clair, pédagogique ; « vous » ; explique le POURQUOI ;
+zéro jargon inutile. Aéré, premium, calme.
 
-── BLOCS OBLIGATOIRES (dans cet ordre) ─────────────────────────────────────
+── STRUCTURE OBLIGATOIRE (ordre et EYEBROWS exacts de la maquette) ──────────
 
-1. **Titre H1** \`# <title>\` + **accroche bénéfice** juste dessous : UNE phrase
-   au présent, orientée résultat, qui donne envie sans survendre.
+1. **Titre H1** \`# <title>\`.
 
-2. **Aperçu visuel** — un schéma qui explique en un coup d'œil, IMMÉDIATEMENT
-   après l'accroche (⚡ il REMPLACE un gros paragraphe). Choisis le visuel le
-   plus adapté au sujet, parmi (détails props plus bas) :
-   • \`<FlowDiagram steps={FLOW_STEPS} />\` ou \`<JourneyStrip …/>\` → une
-     SÉQUENCE d'étapes. Si \`FLOW_STEPS\` est fourni, recopie-le EXACTEMENT.
-   • un bloc \`\`\`mermaid → un CYCLE DE VIE. Si \`STATE_DIAGRAM\` est fourni
-     ci-dessous (non vide), colle-le TEL QUEL dans un bloc mermaid. N'invente
-     jamais d'états ni de transitions.
-   • \`<RelatedActors …/>\` ou \`<MiniMap …/>\` → une RELATION entre acteurs
-     (client, restaurant, livreur, créateur, affilié, influenceur,
-     fournisseur, franchisé). N'emploie QUE des rôles réels de la plateforme.
-   Exactement UN visuel principal ici. Ne fabrique aucune donnée : appuie-toi
-   sur \`FLOW_STEPS\` / \`STATE_DIAGRAM\` / les rôles réels / le code fourni.
+2. **Lead** : UNE à DEUX phrases au présent, orientées résultat (le résumé
+   sous le titre). Puis, ligne suivante, ÉMETS EXACTEMENT :
+   \`<ArticleMeta audience="AUDIENCE_LABEL" minutes={__MINUTES__} updated="__UPDATED__" />\`
+   (recopie les placeholders __MINUTES__ et __UPDATED__ TELS QUELS — je les
+   remplace ; remplace AUDIENCE_LABEL par la valeur fournie plus bas).
 
-3. **L'essentiel** (H2 \`## L'essentiel\`) — niveau DÉBUTANT : 2 à 3 phrases
-   simples : à quoi ça sert, pour qui, ce que ça change concrètement. Pas de
-   détail technique ici.
+3. **Aperçu** — émets :
+   \`<Eyebrow icon="insights">Aperçu</Eyebrow>\` puis un H2 court et imagé
+   (ex. « Le trajet de votre argent »), puis UN visuel :
+   • \`<FlowDiagram steps={[{ icon:"receipt_long", title:"…", desc:"…" }]} />\`
+     → séquence (4 étapes idéalement). Si \`FLOW_STEPS\` est fourni, reprends
+     ses étapes comme titres et AJOUTE icon + desc courte (icônes Material
+     réelles : receipt_long, percent, account_balance, description, payments,
+     storefront, menu_book, sell, two_wheeler, hub, link, campaign…).
+   • OU un bloc \`\`\`mermaid si \`STATE_DIAGRAM\` est fourni (colle-le TEL QUEL).
+   • OU \`<RelatedActors …/>\` / \`<MiniMap …/>\` pour une relation d'acteurs.
 
-4. **Comment ça marche** (H2 \`## Comment ça marche\`) — le PRINCIPE + le
-   contexte métier : le POURQUOI (quel problème c'est résolu, quand l'utiliser),
-   pas seulement le quoi. 1–2 paragraphes vivants. Tisse 1–2 liens
-   \`INLINE_LINKS\` s'ils tombent naturellement.
+4. **L'essentiel** — émets :
+   \`<Eyebrow icon="bolt">L'essentiel</Eyebrow>\` puis \`## En bref\` puis :
+   \`<Essentials title="Si vous ne devez retenir que ça :" items={["…", "…", "…"]} />\`
+   3 puces max, chacune une phrase simple ; **gras** sur le fait clé de chaque
+   puce (les items acceptent du JSX : \`items={[<>Grubano prélève une
+   <b>commission de 10 %</b>…</>, …]}\`).
 
-5. **Étape par étape** (H2 \`## Étape par étape\`) — le guide pratique, orienté
-   action : \`<Steps>\` Nextra (préféré) OU un tableau Markdown (Action / Où /
-   Effet). Repose EXCLUSIVEMENT sur les routes/champs/statuts/unités du code.
-   Chaque étape courte (1–3 phrases), concrète.
+5. **Comment ça marche** — \`<Eyebrow icon="lightbulb">Comment ça marche</Eyebrow>\`
+   puis \`## Le principe (et le pourquoi)\` puis 1–2 paragraphes vivants
+   (le POURQUOI, le contexte métier). Tisse 1–2 liens \`INLINE_LINKS\`.
 
-6. **Pour aller plus loin** (H2 \`## Pour aller plus loin\`) — le knowledge
-   graph : 2 à 4 liens internes pris UNIQUEMENT dans \`RELATED_LINKS\`, chacun
-   avec une phrase descriptive. Quand c'est pertinent, catégorise en une ligne :
-   « À lire avant », « Étape suivante », « Voir aussi » (le pendant du sujet
-   chez un AUTRE public). OMETTRE le bloc si \`RELATED_LINKS\` est vide.
+6. **Étape par étape** — \`<Eyebrow icon="format_list_numbered">Étape par étape</Eyebrow>\`
+   puis un H2 orienté action (ex. « Suivre un versement ») puis \`<Steps>\`
+   Nextra : chaque étape = \`### Titre court\` + 1–2 phrases. EXCLUSIVEMENT
+   d'après les routes/champs/statuts du code fourni.
 
-── BLOCS CONDITIONNELS (n'inclure QUE si tu as de la vraie matière ; sinon
-   OMETTRE — ne meuble jamais) ─────────────────────────────────────────────
+── BLOCS CONDITIONNELS (même mécanique eyebrow + H2 ; n'inclure QUE si tu as
+   de la vraie matière — ne meuble jamais) ───────────────────────────────────
 
-- **Exemple concret** (H2) : un mini-cas réaliste Grubano (générique, sans
-  nom de marque). Idéal pour le niveau intermédiaire.
-- **Bonnes pratiques** (H2) : 2–4 recommandations concrètes (intermédiaire).
-- **Erreurs fréquentes** (H2) : pièges classiques à éviter (avancé). Un
-  \`<Callout type="warning">\` va bien ici.
-- **Astuces & conseils** (H2) : gains de temps. Si une fonction IA existe
-  dans le code du sujet, ajoute 1 conseil pour bien s'en servir.
-- **Questions fréquentes** (H2) : 2 à 4 VRAIES questions via
-  \`<Faq items={[…]} />\`. Réponses courtes, uniquement d'après les sources.
-- **Dépannage** (H2) : seulement si la fonction a des ratés courants
-  démontrables.
+- **Exemple concret** — \`<Eyebrow icon="calculate">Exemple concret</Eyebrow>\`
+  + H2 concret (ex. « Un mois à 2 000 € »). Si l'exemple est CHIFFRÉ et que
+  les taux sont publiables, ajoute le tableau premium :
+  \`<Breakdown title="Décomposition du versement" rows={[
+     { icon:"account_balance_wallet", label:"Chiffre d'affaires encaissé", value:"2 000,00 €" },
+     { icon:"percent", label:"Commission Grubano (10 %)", value:"−200,00 €", variant:"minus" },
+     { icon:"payments", label:"Net reversé", value:"1 800,00 €", variant:"total" }]} />\`
+  et termine par une phrase « cet exemple est illustratif ».
+- **Bonnes pratiques** — \`<Eyebrow icon="check_circle">Bonnes pratiques</Eyebrow>\`
+  + H2 + \`<Callout type="default">\` contenant une liste de 2–4 puces.
+- **Erreurs à éviter** — \`<Eyebrow icon="error">Erreurs à éviter</Eyebrow>\`
+  + H2 (ex. « Les pièges courants ») + \`<Callout type="error">\` avec liste.
+- **Astuce** — \`<Eyebrow icon="lightbulb">Astuce</Eyebrow>\` + H2 (ex.
+  « Gagnez du temps ») + \`<Callout type="info">\` (1 paragraphe). Si une
+  fonction IA existe dans le code, l'astuce la met en avant.
+- **FAQ** — \`<Eyebrow icon="quiz">FAQ</Eyebrow>\` + \`## Questions fréquentes\`
+  + \`<Faq items={[{ icon:"percent", q:"…", a:"…" }]} />\` (2–4 vraies
+  questions, icône Material pertinente par question).
+- **Pour aller plus loin** — \`<Eyebrow icon="menu_book">Pour aller plus loin</Eyebrow>\`
+  + \`## Articles liés\` + \`<RelatedCards items={[{ icon:"…", title:"…",
+  sub:"…", href:"…" }]} />\` : UNIQUEMENT les entrées de \`RELATED_LINKS\`
+  (title fourni, href fourni ; choisis une icône Material et un sous-titre
+  de 3–5 mots). OMETTRE si \`RELATED_LINKS\` est vide.
 
-── COMPOSANTS DISPONIBLES (globaux — AUCUN import à émettre pour eux) ────────
-Émets-les avec des props VALIDES ; ne mets QUE des données réelles.
+── ICÔNES (règle stricte) ───────────────────────────────────────────────────
+UNIQUEMENT des glyphes Material Symbols Rounded, en reprenant la palette de
+la maquette : insights, bolt, lightbulb, format_list_numbered, calculate,
+check_circle, error, quiz, menu_book, receipt_long, percent, account_balance,
+account_balance_wallet, payments, description, schedule, group, update,
+storefront, restaurant, restaurant_menu, local_shipping, two_wheeler, hub,
+link, campaign, sell, gavel, shopping_bag, loyalty, star, code. N'invente pas
+de nom d'icône exotique ; en cas de doute, prends le plus générique.
 
-  <FlowDiagram steps={FLOW_STEPS} />
+── AUTRES COMPOSANTS DISPONIBLES (globaux, props VALIDES, données réelles) ──
   <JourneyStrip title="…" steps={[{ icon:"add", title:"…", desc:"…" }]} />
-      icon = nom d'icône Material Symbols (ex. add, menu_book, payments, check).
   <RelatedActors title="…" nodes={[{ icon:"person", label:"Client",
-      desc:"…", variant:"zest"|"ink", to:"étiquette de la flèche" }]}
-      returnNote={<span>…</span>} />
+      desc:"…", variant:"zest"|"ink", to:"étiquette" }]} returnNote={<span>…</span>} />
   <MiniMap title="…" center={{ icon:"hub", label:"Grubano", desc:"…" }}
       blocks={[{ icon:"person", title:"Client", role:"commande", desc:"…" }]} />
-  <Comparison
-      options={[{ icon:"…", name:"Standard", desc:"…" },
-                { icon:"…", name:"Pro", desc:"…", featured:true, tag:"Pro" }]}
-      rows={[{ label:"…", icon:"…", values:[true,false] }]} />
-      (valeurs = true/false → coche/tiret, ou une courte chaîne. À n'utiliser
-      QUE pour des comparaisons publiables : Standard vs Pro (10 % + 29 €/mois),
-      ou distinctions de rôles issues du catalogue. Jamais de tarif inventé.)
-  <LearningPath title="…" subtitle="…" meta={[{icon:"schedule",text:"10 min"}]}
-      steps={[{ title:"…", note:"…", status:"done"|"current"|"todo",
-                href:"UNE URL de RELATED_LINKS" }]} />
-      (parcours guidé — href UNIQUEMENT depuis RELATED_LINKS, jamais inventé.)
-  <Faq items={[{ icon:"help", q:"…", a:"…" }]} />
+  <Comparison options={[…]} rows={[…]} />  (comparaisons publiables uniquement :
+      Standard vs Pro 10 % + 29 €/mois, ou distinctions de rôles.)
+  <LearningPath … />  (href UNIQUEMENT depuis RELATED_LINKS.)
 
 Pour \`<Steps>\` et \`<Callout>\`, garde l'import \`nextra/components\`.
 
-── CALLOUTS (4 variantes) ───────────────────────────────────────────────────
-\`<Callout type="info">\` astuce / info · \`type="warning"\` attention / « bientôt »
-· \`type="error">\` risque réel · \`type="default">\` bonne pratique. Sans excès :
-1 à 3 sur toute la page, jamais deux collés.
+── CALLOUTS (mapping maquette) ──────────────────────────────────────────────
+\`type="default"\` = bonnes pratiques (vert, liste de coches) · \`type="error"\`
+= erreurs/risques (rouge) · \`type="info"\` = astuce (bleu) · \`type="warning"\`
+= « bientôt » / vigilance (ambre). Sans excès ; jamais deux collés.
 
 ── NE PAS ÉMETTRE ───────────────────────────────────────────────────────────
-- Aucun bloc « Passer à l'action » / « Faites-le dans l'app » ni bouton CTA :
-  un encart CTA premium est ajouté automatiquement au pied par le thème.
-- Aucun pied « Page générée depuis le code » ni horodatage : le thème rend
-  déjà « Modifier cette page » et « last updated ».
+- Aucun bloc CTA (« Ouvrir dans Grubano »), aucun feedback (« Cet article vous
+  a-t-il été utile ? »), aucun Précédent/Suivant : le gabarit les ajoute
+  automatiquement au pied de chaque fiche.
+- Aucun pied « Page générée depuis le code » ni horodatage manuel : la ligne
+  « Mis à jour le … » vient d'<ArticleMeta>.
 
 ── LIENS HYPERTEXTE EN LIGNE ────────────────────────────────────────────────
 - Un terme de \`INLINE_LINKS\` qui apparaît dans la prose → enveloppe-le d'un
@@ -549,8 +562,9 @@ Pour \`<Steps>\` et \`<Callout>\`, garde l'import \`nextra/components\`.
   d'explication avant/après.
 - SEUL import autorisé, si tu utilises <Steps>/<Callout> :
   \`import { Steps, Callout } from 'nextra/components'\`. Tous les composants
-  visuels ci-dessus (FlowDiagram, JourneyStrip, RelatedActors, MiniMap,
-  Comparison, LearningPath, Faq) sont globaux — NE les importe PAS.
+  ci-dessus (ArticleMeta, Eyebrow, Essentials, Breakdown, RelatedCards,
+  FlowDiagram, JourneyStrip, RelatedActors, MiniMap, Comparison, LearningPath,
+  Faq) sont globaux — NE les importe PAS.
 - N'utilise aucun autre composant React que ceux listés.
 - Dans les props des composants (Faq items, RelatedActors nodes…), délimite
   les chaînes avec des guillemets DOUBLES "…" et utilise l'apostrophe
@@ -612,9 +626,10 @@ function buildPrompt(cfg, facts, slices) {
     STRATEGIC_GUARDRAILS,
     TEMPLATE_INSTRUCTIONS,
     `\nVARIABLES À UTILISER :`,
+    `AUDIENCE_LABEL = ${JSON.stringify(cfg.audience || 'Tous les publics')}`,
     `FLOW_STEPS     = ${JSON.stringify(FLOW_STEPS)}`,
     `INLINE_LINKS   = ${JSON.stringify(INLINE_LINKS)}`,
-    `RELATED_LINKS  = ${JSON.stringify(RELATED_LINKS)}`,
+    `RELATED_LINKS  = ${JSON.stringify(RELATED_LINKS)} (objets {href,title} — reprends title tel quel dans RelatedCards)`,
     stateDiagram
       ? `STATE_DIAGRAM  = (cycle de vie « ${stateDiagram.model} » — colle-le TEL QUEL dans un bloc \`\`\`mermaid si tu choisis le visuel cycle de vie)\n\`\`\`mermaid\n${stateDiagram.mermaid}\n\`\`\``
       : `STATE_DIAGRAM  = (aucun cycle de vie pour ce sujet — utilise un autre visuel)`,
@@ -921,7 +936,14 @@ async function generateOne(topicKey, notion) {
     ((usage.input_tokens || 0) / 1_000_000) * 3 +
     ((usage.output_tokens || 0) / 1_000_000) * 15
 
-  const body = sanitizeMdxBody(text, topicKey) + '\n'
+  let body = sanitizeMdxBody(text, topicKey) + '\n'
+  // ArticleMeta placeholders (v6): reading time from the actual body word
+  // count (~200 wpm, floor 1) and today's ISO date for « Mis à jour le ».
+  const words = body.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length
+  const minutes = Math.max(1, Math.round(words / 200))
+  body = body
+    .replaceAll('__MINUTES__', String(minutes))
+    .replaceAll('__UPDATED__', new Date().toISOString().slice(0, 10))
   fs.mkdirSync(path.dirname(targetAbs), { recursive: true })
   fs.writeFileSync(
     targetAbs,

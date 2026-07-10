@@ -1,37 +1,57 @@
 import type { ReactNode } from 'react'
 
 /**
- * Small horizontal flow diagram for feature pages — a row of pill-shaped
- * step boxes connected by orange arrows. Wraps onto multiple lines on
- * narrow viewports; readable as a plain ordered list when CSS is missing.
+ * Horizontal flow diagram for feature pages.
  *
- * Usage in MDX (the component is registered globally via mdx-components.ts,
- * so no import is needed in the page):
- *
- *   <FlowDiagram steps={[
- *     'Ajouter un article',
- *     'Définir un seuil mini',
- *     'Alerte de réappro',
- *     'Prévision 7j',
- *   ]} />
+ * Two input shapes (both registered globally via mdx-components.ts):
+ *   - RICH (article-v5 mockup .flow): steps = [{ icon, title, desc }] →
+ *     card frieze with icon tile + ink number badge + title + description.
+ *   - LEGACY: steps = string[] → the original pill row (kept so the pages
+ *     not yet regenerated keep rendering).
  *
  * Pure server component, zero client JS.
  */
+
+type RichStep = { icon: string; title: string; desc?: string }
+
 export function FlowDiagram({
   steps,
   label,
 }: {
-  steps: string[]
+  steps: (string | RichStep)[]
   label?: string
 }): ReactNode {
   if (!steps?.length) return null
+
+  const rich = typeof steps[0] === 'object'
+  if (rich) {
+    const rs = steps as RichStep[]
+    return (
+      <aside
+        className="avflow"
+        style={{ ['--av-cols' as string]: String(rs.length || 1) }}
+        aria-label={label || 'Schéma de flux'}
+      >
+        {rs.map((s, i) => (
+          <div className="avflow__step" key={i}>
+            <div className="avflow__ic">
+              <span className="ms">{s.icon}</span>
+              <span className="avflow__n">{i + 1}</span>
+            </div>
+            <div className="avflow__m">
+              <div className="avflow__t">{s.title}</div>
+              {s.desc && <div className="avflow__d">{s.desc}</div>}
+            </div>
+          </div>
+        ))}
+      </aside>
+    )
+  }
+
   return (
-    <aside
-      className="grubano-flow"
-      aria-label={label || 'Schéma de flux'}
-    >
+    <aside className="grubano-flow" aria-label={label || 'Schéma de flux'}>
       <ol className="grubano-flow__list">
-        {steps.map((step, i) => (
+        {(steps as string[]).map((step, i) => (
           <li className="grubano-flow__step" key={i}>
             <span className="grubano-flow__index" aria-hidden="true">
               {i + 1}

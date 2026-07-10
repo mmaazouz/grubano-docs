@@ -1,0 +1,575 @@
+/* ────────────────────────────────────────────────────────────────────────
+   Article v5 — fidélité à docs/article-v5.html (maquette CD validée).
+   Composants d'article (av-*) + restyles Nextra (Steps, Callout, TOC).
+   Importé après gbv-components.css.
+   ──────────────────────────────────────────────────────────────────────── */
+
+:root {
+  --gb-warn: #b9740a;
+  --gb-warn-bg: #fff4e0;
+  --gb-warn-bd: #f3dba6;
+}
+
+/* ── Typo d'article (maquette) — le contenu Nextra 4 vit dans article>main */
+article main h1 {
+  font-size: 37px !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.03em !important;
+  line-height: 1.15 !important;
+}
+article main h2 {
+  font-size: 24px !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+}
+@media (max-width: 620px) {
+  article main h1 { font-size: 30px !important; }
+}
+
+/* ── Zone 1 : lead (1er paragraphe sous le H1) + meta ────────────────── */
+article main h1 + p,
+.av-lead {
+  font-size: 17.5px;
+  color: #2c3a4a;
+  margin-top: 14px;
+  line-height: 1.6;
+  max-width: 64ch;
+}
+html.dark article main h1 + p,
+html.dark .av-lead { color: var(--gb-text); }
+.av-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px 18px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--gb-border);
+  font-size: 12.5px;
+  color: var(--gb-muted);
+}
+.av-meta span.av-meta__it { display: inline-flex; align-items: center; gap: 6px; }
+.av-meta .ms { font-size: 16px; color: var(--gb-muted-2); }
+.av-meta b { color: var(--gb-text); font-weight: 700; }
+
+/* ── Eyebrow de section ──────────────────────────────────────────────── */
+.av-k {
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gb-zest-600);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 40px;
+  margin-bottom: -14px; /* pulls the following h2 close, like .sec__k + h2 */
+}
+.av-k .ms { font-size: 16px; }
+.av-k + h2, .av-k + * h2 { margin-top: 10px !important; }
+
+/* ── FlowDiagram riche (icône + n° + titre + desc) ───────────────────── */
+.avflow {
+  display: grid;
+  grid-template-columns: repeat(var(--av-cols, 4), 1fr);
+  gap: 0;
+  background: var(--gb-surface);
+  border: 1px solid var(--gb-border);
+  border-radius: var(--gb-r-xl);
+  box-shadow: var(--gb-shadow);
+  padding: 22px 10px;
+  margin-top: 20px;
+}
+.avflow__step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 9px;
+  padding: 6px 12px;
+}
+.avflow__step::after {
+  content: '';
+  position: absolute;
+  top: 26px;
+  inset-inline-start: calc(50% + 26px);
+  width: calc(100% - 52px);
+  height: 2px;
+  background: var(--gb-border-2);
+}
+.avflow__step:last-child::after { display: none; }
+[dir='rtl'] .avflow__step::after { transform: scaleX(-1); }
+.avflow__ic {
+  width: 52px;
+  height: 52px;
+  border-radius: 15px;
+  background: var(--gb-zest-bg);
+  color: var(--gb-zest-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+.avflow__ic .ms { font-size: 26px; }
+.avflow__n {
+  position: absolute;
+  top: -4px;
+  inset-inline-end: -4px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--gb-ink);
+  color: #fff;
+  font-family: var(--gb-font-display), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  direction: ltr;
+}
+.avflow__t { font-family: var(--gb-font-display), system-ui, sans-serif; font-weight: 700; font-size: 13.5px; color: var(--gb-text); }
+.avflow__d { font-size: 11.5px; color: var(--gb-muted); line-height: 1.4; }
+@media (max-width: 620px) {
+  .avflow { grid-template-columns: 1fr; gap: 4px; padding: 12px; }
+  .avflow__step { flex-direction: row; text-align: start; gap: 14px; padding: 12px 8px; }
+  .avflow__step::after { top: calc(26px + 12px); inset-inline-start: 26px; width: 2px; height: calc(100% - 40px); }
+  .avflow__m { min-width: 0; }
+}
+
+/* ── Encadré « L'essentiel » ─────────────────────────────────────────── */
+.av-ess {
+  display: flex;
+  gap: 14px;
+  background: linear-gradient(135deg, var(--gb-zest-bg), transparent);
+  border: 1px solid #f8dcb4;
+  border-radius: var(--gb-r-lg);
+  padding: 18px 20px;
+  margin-top: 20px;
+}
+.av-ess__ic {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--gb-zest-600);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.av-ess__ic .ms { font-size: 20px; }
+.av-ess__m b.av-ess__t {
+  display: block;
+  font-family: var(--gb-font-display), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  margin-bottom: 5px;
+  color: var(--gb-text);
+}
+.av-ess__m ul { margin: 8px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.av-ess__m li { position: relative; padding-inline-start: 20px; font-size: 14px; color: #2c3a4a; line-height: 1.55; }
+html.dark .av-ess__m li { color: var(--gb-text); }
+.av-ess__m li::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: 4px;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gb-zest-600);
+}
+.av-ess__m li b, .av-ess__m li strong { color: var(--gb-text); font-weight: 800; }
+
+/* ── Nextra <Steps> → look maquette (pastille ink, filets) ───────────── */
+.nextra-steps { margin-top: 12px !important; border-inline-start: none !important; padding-inline-start: 0 !important; margin-inline-start: 0 !important; }
+.nextra-steps > h3, .nextra-steps h3 { margin: 0 !important; }
+.nextra-steps > li {
+  display: flex !important;
+  gap: 15px;
+  padding: 16px 0 !important;
+  border-bottom: 1px solid var(--gb-border);
+  margin: 0 !important;
+  position: relative;
+  counter-increment: step;
+}
+.nextra-steps > li:last-child { border-bottom: none; }
+.nextra-steps > li::before {
+  content: counter(step) !important;
+  position: static !important;
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 50% !important;
+  background: var(--gb-ink) !important;
+  color: #fff !important;
+  font-family: var(--gb-font-display), system-ui, sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 14px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0;
+  border: none !important;
+  box-shadow: none !important;
+  margin-top: 0 !important;
+}
+.nextra-steps > li > div, .nextra-steps > li > p { flex: 1; min-width: 0; }
+
+/* ── Décomposition premium (tableau chiffré) ─────────────────────────── */
+.av-ex {
+  background: var(--gb-surface);
+  border: 1px solid var(--gb-border);
+  border-radius: var(--gb-r-lg);
+  box-shadow: var(--gb-shadow);
+  overflow: hidden;
+  margin-top: 20px;
+}
+.av-ex__hd {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 14px 18px;
+  background: var(--gb-surface-2);
+  border-bottom: 1px solid var(--gb-border);
+  font-family: var(--gb-font-display), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--gb-text);
+}
+.av-ex__hd .ms { font-size: 18px; color: var(--gb-zest-600); }
+.av-ex__rows { padding: 6px 18px; }
+.av-ex__r {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--gb-border);
+  font-size: 14.5px;
+}
+.av-ex__r:last-child { border-bottom: none; }
+.av-ex__r .av-ex__k { color: var(--gb-muted); display: flex; align-items: center; gap: 9px; }
+.av-ex__r .av-ex__kic {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--gb-surface-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.av-ex__r .av-ex__kic .ms { font-size: 16px; color: var(--gb-muted); }
+.av-ex__r .av-ex__v {
+  font-family: var(--gb-font-mono), ui-monospace, monospace;
+  font-weight: 700;
+  font-size: 15px;
+  direction: ltr;
+  unicode-bidi: isolate;
+  color: var(--gb-text);
+}
+.av-ex__r--minus .av-ex__v { color: var(--gb-err); }
+.av-ex__r--total { background: var(--gb-basil-bg); margin: 0 -18px; padding-inline: 18px; }
+.av-ex__r--total .av-ex__k { color: var(--gb-basil-600); font-weight: 800; }
+.av-ex__r--total .av-ex__kic { background: var(--gb-basil); }
+.av-ex__r--total .av-ex__kic .ms { color: #fff; }
+.av-ex__r--total .av-ex__v { color: var(--gb-basil-600); font-weight: 800; font-size: 17px; }
+
+/* ── Callouts Nextra → 4 variantes maquette (chip carré coloré) ──────── */
+.nextra-callout {
+  border-radius: var(--gb-r-lg) !important;
+  padding: 16px 18px !important;
+  margin-top: 20px !important;
+  gap: 13px !important;
+  align-items: flex-start !important;
+}
+.nextra-callout > .ms:first-child,
+.nextra-callout > svg:first-child,
+.nextra-callout > span:first-child {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #fff !important;
+}
+.nextra-callout[data-type='default'] > :first-child { background: var(--gb-basil); }
+.nextra-callout[data-type='info'] > :first-child { background: var(--gb-info); }
+.nextra-callout[data-type='warning'] > :first-child { background: var(--gb-warn); }
+.nextra-callout[data-type='error'] > :first-child,
+.nextra-callout[data-type='important'] > :first-child { background: var(--gb-err); }
+.nextra-callout[data-type='warning'] {
+  background: var(--gb-warn-bg) !important;
+  border-color: var(--gb-warn-bd) !important;
+}
+.nextra-callout p { font-size: 14px; line-height: 1.6; }
+.nextra-callout ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+.nextra-callout li { font-size: 14px; line-height: 1.55; }
+
+/* ── FAQ (gbv-qa, tailles maquette) ──────────────────────────────────── */
+.gbv-qa__q { padding: 15px 16px; font-size: 14.5px; gap: 12px; }
+.gbv-qa__ic { width: 28px; height: 28px; border-radius: 8px; }
+.gbv-qa__ic .ms { font-size: 16px; }
+.gbv-qa__chev { font-size: 21px; }
+.gbv-qa__a { padding: 0 16px 16px 56px; font-size: 14px; }
+[dir='rtl'] .gbv-qa__a { padding: 0 56px 16px 16px; }
+
+/* ── Cartes « articles liés » ────────────────────────────────────────── */
+.av-more { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
+@media (max-width: 560px) { .av-more { grid-template-columns: 1fr; } }
+.av-more a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--gb-surface);
+  border: 1px solid var(--gb-border);
+  border-radius: var(--gb-r-md);
+  padding: 15px 16px;
+  cursor: pointer;
+  transition: border-color 0.15s;
+  text-decoration: none !important;
+  color: inherit;
+}
+.av-more a:hover { border-color: var(--gb-zest); }
+.av-more__ic {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--gb-surface-2);
+  color: var(--gb-zest-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.av-more__ic .ms { font-size: 19px; }
+.av-more__m { flex: 1; min-width: 0; }
+.av-more__m b { display: block; font-family: var(--gb-font-display), system-ui, sans-serif; font-weight: 700; font-size: 14px; color: var(--gb-text); }
+.av-more__m span { font-size: 12px; color: var(--gb-muted); }
+.av-more a > .ms { color: var(--gb-muted-2); font-size: 17px; }
+
+/* ── CTA « Ouvrir dans Grubano » (dégradé ink + radial zest) ─────────── */
+.av-cta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: linear-gradient(120deg, var(--gb-ink), var(--gb-ink-2));
+  color: #fff;
+  border-radius: var(--gb-r-lg);
+  padding: 22px 24px;
+  margin-top: 34px;
+  position: relative;
+  overflow: hidden;
+}
+.av-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 90% 20%, rgba(255, 106, 31, 0.32), transparent 55%);
+}
+.av-cta__m { position: relative; flex: 1; min-width: 0; }
+.av-cta__m b { font-family: var(--gb-font-display), system-ui, sans-serif; font-weight: 800; font-size: 17px; display: block; }
+.av-cta__m span { font-size: 13px; color: rgba(255, 255, 255, 0.75); margin-top: 3px; display: block; }
+.av-cta__btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #ff8a3d, #f2570e);
+  color: #fff !important;
+  border: none;
+  border-radius: var(--gb-r-pill);
+  padding: 13px 22px;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+  text-decoration: none !important;
+}
+.av-cta__btn .ms { font-size: 19px; }
+@media (max-width: 560px) {
+  .av-cta { flex-direction: column; align-items: stretch; text-align: start; }
+  .av-cta__btn { width: 100%; justify-content: center; }
+}
+
+/* ── Feedback « Oui / Non » ──────────────────────────────────────────── */
+.av-fb {
+  margin-top: 34px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--gb-surface-2);
+  border: 1px solid var(--gb-border);
+  border-radius: var(--gb-r-lg);
+  padding: 16px 20px;
+  flex-wrap: wrap;
+}
+.av-fb b { font-size: 14px; font-weight: 700; color: var(--gb-text); }
+.av-fb__btns { margin-inline-start: auto; display: flex; gap: 8px; }
+.av-fb button {
+  background: var(--gb-surface);
+  border: 1px solid var(--gb-border-2);
+  border-radius: var(--gb-r-pill);
+  padding: 8px 16px;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: inherit;
+  color: var(--gb-text);
+}
+.av-fb button:hover { border-color: var(--gb-zest); color: var(--gb-zest-600); }
+.av-fb button .ms { font-size: 16px; }
+.av-fb__thanks { font-size: 13px; font-weight: 700; color: var(--gb-basil-600); margin-inline-start: auto; display: inline-flex; align-items: center; gap: 6px; }
+.av-fb__thanks .ms { font-size: 17px; }
+
+/* ── Précédent / Suivant (cartes) ────────────────────────────────────── */
+.av-pn {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 22px;
+  padding-top: 26px;
+  border-top: 1px solid var(--gb-border);
+}
+.av-pn a {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border: 1px solid var(--gb-border);
+  border-radius: var(--gb-r-lg);
+  padding: 16px 18px;
+  cursor: pointer;
+  transition: border-color 0.15s;
+  text-decoration: none !important;
+  background: var(--gb-surface);
+}
+.av-pn a:hover { border-color: var(--gb-zest); }
+.av-pn a.av-pn--next { text-align: end; align-items: flex-end; }
+.av-pn a.av-pn--ghost { visibility: hidden; }
+.av-pn__l { font-size: 11.5px; font-weight: 700; color: var(--gb-muted-2); display: flex; align-items: center; gap: 5px; }
+.av-pn__l .ms { font-size: 16px; }
+.av-pn__t { font-family: var(--gb-font-display), system-ui, sans-serif; font-weight: 800; font-size: 14.5px; color: var(--gb-text); }
+@media (max-width: 520px) {
+  .av-pn { grid-template-columns: 1fr; }
+  .av-pn a.av-pn--next { text-align: start; align-items: flex-start; }
+  .av-pn a.av-pn--ghost { display: none; }
+}
+
+/* Masque la pagination Nextra native (remplacée par .av-pn) et le
+   « Last updated on » anglais (remplacé par la meta localisée de zone 1). */
+.nextra-content ~ div a[href^='/']:has(> :first-child) { /* no-op guard */ }
+
+/* ── TOC « Sur cette page » (rail droit Nextra) ──────────────────────── */
+.nextra-toc a {
+  font-size: 12.5px !important;
+  color: var(--gb-muted) !important;
+  padding: 6px 10px !important;
+  border-radius: 7px;
+  border-inline-start: 2px solid var(--gb-border);
+  line-height: 1.3;
+}
+.nextra-toc a:hover { color: var(--gb-text) !important; background: var(--gb-surface-2); }
+.nextra-toc a[aria-current='true'],
+.nextra-toc li.active > a {
+  color: var(--gb-zest-600) !important;
+  font-weight: 700;
+  border-inline-start-color: var(--gb-zest);
+}
+
+/* ── Navbar épuré : recherche = champ simple + OVERLAY avec portée ───── */
+.navov { flex: 1; max-width: 420px; margin-inline: auto; position: relative; }
+.navov__field { position: relative; }
+.navov__field > .ms {
+  position: absolute;
+  inset-inline-start: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 19px;
+  color: var(--gb-muted-2);
+  pointer-events: none;
+  z-index: 1;
+}
+.navov__input {
+  width: 100%;
+  border: 1px solid var(--gb-border-2);
+  background: var(--gb-surface);
+  border-radius: var(--gb-r-pill);
+  padding: 10px 14px 10px 38px;
+  font-size: 13.5px;
+  font-family: inherit;
+  color: var(--gb-text);
+  cursor: text;
+  text-align: start;
+}
+[dir='rtl'] .navov__input { padding: 10px 38px 10px 14px; }
+.navov__input::placeholder { color: var(--gb-muted-2); }
+.navov__input:focus { outline: none; border-color: var(--gb-zest); box-shadow: 0 0 0 3px rgba(255, 106, 31, 0.13); }
+.navov__panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  inset-inline: 0;
+  background: var(--gb-surface);
+  border: 1px solid var(--gb-border);
+  border-radius: var(--gb-r-lg);
+  box-shadow: var(--gb-shadow);
+  padding: 10px;
+  z-index: 70;
+}
+.navov__scope {
+  display: flex;
+  gap: 2px;
+  background: var(--gb-surface-2);
+  border: 1px solid var(--gb-border-2);
+  border-radius: var(--gb-r-pill);
+  padding: 2px;
+  margin-bottom: 10px;
+}
+.navov__tab {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: var(--gb-r-pill);
+  padding: 6px 11px;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--gb-muted);
+  white-space: nowrap;
+  transition: background 0.12s, color 0.12s;
+}
+.navov__tab .ms { font-size: 16px; }
+.navov__tab[aria-selected='true'] {
+  background: var(--gb-surface);
+  color: var(--gb-zest-600);
+  box-shadow: 0 1px 2px rgba(15, 39, 66, 0.08);
+}
+/* the widgets inside the panel span it fully; their own dropdown stays inline */
+.navov__panel .nextra-search,
+.navov__panel .inpage { max-width: none; margin-inline: 0; }
+.navov__panel .inpage__results,
+.navov__panel .nextra-search-results {
+  position: static !important;
+  margin-top: 8px;
+  box-shadow: none !important;
+  border: none !important;
+  border-top: 1px solid var(--gb-border) !important;
+  border-radius: 0 !important;
+  max-height: min(56vh, 420px);
+  overflow-y: auto;
+}
+@media (max-width: 760px) { .navov { display: none; } }

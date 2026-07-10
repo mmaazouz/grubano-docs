@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Finances &amp; versements — Centre d'aide Grubano</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@500;600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400..700,0..1,0&display=block" rel="stylesheet">
+<style>
+:root{
+  --gb-zest:#FF6A1F; --gb-zest-600:#F2570E; --gb-zest-bg:#FFF1E7;
+  --gb-basil:#2BA45C; --gb-basil-600:#1E8A4A; --gb-basil-bg:#E8F6EE;
+  --gb-ink:#0F2742; --gb-ink-2:#1B3A5E;
+  --gb-info:#2E78F0; --gb-info-bg:#EAF1FE; --gb-info-bd:#CBDEFB;
+  --gb-warn:#B9740A; --gb-warn-bg:#FFF4E0; --gb-warn-bd:#F3DBA6;
+  --gb-err:#D5372A; --gb-err-bg:#FCEDEA; --gb-err-bd:#F3C9C2;
+  --gb-bg:#FBF8F3; --gb-surface:#FFFFFF; --gb-surface-2:#F5EFE6;
+  --gb-border:#ECE5D8; --gb-border-2:#E0D6C4;
+  --gb-text:#0F2742; --gb-muted:#6B7682; --gb-muted-2:#9AA3AD;
+  --gb-font-display:'Gabarito',system-ui,sans-serif;
+  --gb-font-ui:'Hanken Grotesk',system-ui,sans-serif;
+  --gb-font-mono:'JetBrains Mono',ui-monospace,monospace;
+  --gb-r-md:12px; --gb-r-lg:18px; --gb-r-xl:24px; --gb-r-pill:999px;
+  --gb-shadow:0 2px 8px rgba(15,39,66,.06), 0 12px 30px -14px rgba(15,39,66,.14);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--gb-bg);color:var(--gb-text);font-family:var(--gb-font-ui);-webkit-font-smoothing:antialiased;line-height:1.5}
+.ms{font-family:'Material Symbols Rounded';font-weight:normal;font-style:normal;line-height:1;display:inline-block;-webkit-font-feature-settings:'liga'}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+h1,h2,h3{margin:0;font-family:var(--gb-font-display);letter-spacing:-.02em;line-height:1.15}
+p{margin:0}
+.mono{font-family:var(--gb-font-mono)}
+.flip-rtl{display:inline-block}
+[dir="rtl"] .flip-rtl{transform:scaleX(-1)}
+
+.bar{position:sticky;top:0;z-index:80;display:flex;gap:8px;flex-wrap:wrap;justify-content:center;background:#fff;border-bottom:1px solid var(--gb-border);padding:9px 12px}
+.bar group{display:flex;gap:2px;align-items:center;background:var(--gb-surface-2);border-radius:999px;padding:3px}
+.bar button{border:none;background:none;cursor:pointer;border-radius:999px;padding:6px 12px;font-size:11.5px;font-weight:700;color:var(--gb-muted);font-family:inherit}
+.bar button.on{background:var(--gb-ink);color:#fff}
+.bar .lbl{font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--gb-muted-2);align-self:center;margin-inline-end:2px}
+
+/* header */
+.hd{position:sticky;top:0;z-index:50;background:rgba(251,248,243,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--gb-border)}
+.hd__in{max-width:1320px;margin:0 auto;padding:12px 22px;display:flex;align-items:center;gap:12px}
+.hd__burger{display:none;width:36px;height:36px;border-radius:10px;border:1px solid var(--gb-border-2);background:var(--gb-surface);color:var(--gb-text);align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
+.hd__burger .ms{font-size:20px}
+.hd__brand{display:flex;align-items:center;gap:10px;min-width:0}
+.hd__brand img{height:26px;flex-shrink:0}
+.hd__brand b{font-family:var(--gb-font-display);font-weight:800;font-size:16px;white-space:nowrap}
+.hd__brand span{font-size:12px;color:var(--gb-muted);font-weight:600;padding-inline-start:9px;border-inline-start:1px solid var(--gb-border-2);white-space:nowrap}
+.hd__search{flex:1;max-width:420px;position:relative;margin-inline:auto}
+.hd__search .ms{position:absolute;inset-inline-start:12px;top:50%;transform:translateY(-50%);font-size:19px;color:var(--gb-muted-2)}
+.hd__search input{width:100%;border:1px solid var(--gb-border-2);background:var(--gb-surface);border-radius:var(--gb-r-pill);padding:10px 14px 10px 38px;font-size:13.5px;font-family:inherit;color:var(--gb-text)}
+[dir="rtl"] .hd__search input{padding:10px 38px 10px 14px}
+.hd__search input:focus{outline:none;border-color:var(--gb-zest);box-shadow:0 0 0 3px rgba(255,106,31,.13)}
+.hd__lang{display:inline-flex;align-items:center;gap:6px;background:var(--gb-surface);border:1px solid var(--gb-border-2);border-radius:var(--gb-r-pill);padding:8px 12px;font-size:13px;font-weight:700;cursor:pointer;flex-shrink:0}
+.hd__lang .ms{font-size:17px;color:var(--gb-muted)}
+@media(max-width:980px){ .hd__brand span{display:none} }
+@media(max-width:760px){ .hd__burger{display:flex} .hd__search{display:none} .hd__lang span{display:none} }
+
+/* layout */
+.layout{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:266px minmax(0,1fr) 232px;gap:0}
+@media(max-width:1100px){ .layout{grid-template-columns:266px minmax(0,1fr)} .toc{display:none} }
+@media(max-width:760px){ .layout{grid-template-columns:1fr} }
+
+/* sidebar */
+.side{border-inline-end:1px solid var(--gb-border);padding:26px 16px 40px;position:sticky;top:61px;align-self:start;max-height:calc(100vh - 61px);overflow-y:auto}
+.side__group{margin-bottom:6px}
+.side__gh{display:flex;align-items:center;gap:8px;width:100%;background:none;border:none;font-family:inherit;font-size:12px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;color:var(--gb-muted-2);padding:8px 10px;cursor:pointer;border-radius:8px}
+.side__gh:hover{color:var(--gb-text)}
+.side__gh .ms{font-size:17px;transition:transform .15s}
+.side__gh .ic{font-size:18px;color:var(--gb-muted)}
+.side__gh .tw{flex:1;text-align:start}
+.side__gh .ch{margin-inline-start:auto}
+.side__group.open .side__gh .ch{transform:rotate(90deg)}
+.side__list{display:none;flex-direction:column;padding:2px 0 6px}
+.side__group.open .side__list{display:flex}
+.side__item{display:block;font-size:13.5px;font-weight:600;color:var(--gb-muted);padding:7px 10px 7px 34px;border-radius:8px;cursor:pointer;border-inline-start:2px solid transparent;margin-inline-start:8px}
+[dir="rtl"] .side__item{padding:7px 34px 7px 10px}
+.side__item:hover{color:var(--gb-text);background:var(--gb-surface-2)}
+.side__item.on{color:var(--gb-zest-600);font-weight:800;background:var(--gb-zest-bg);border-inline-start-color:var(--gb-zest)}
+.side__scrim{display:none}
+@media(max-width:760px){
+  .side{position:fixed;top:0;inset-inline-start:0;height:100vh;width:290px;max-height:none;background:var(--gb-surface);z-index:60;transform:translateX(-100%);transition:transform .22s;padding-top:20px;box-shadow:var(--gb-shadow)}
+  [dir="rtl"] .side{transform:translateX(100%)}
+  body.nav-open .side{transform:translateX(0)}
+  body.nav-open .side__scrim{display:block;position:fixed;inset:0;background:rgba(15,39,66,.4);z-index:55}
+}
+
+/* content */
+.content{padding:34px 46px 60px;min-width:0}
+@media(max-width:760px){ .content{padding:26px 20px 50px} }
+.crumb{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:12.5px;color:var(--gb-muted);margin-bottom:16px}
+.crumb a:hover{color:var(--gb-text)}
+.crumb .ms{font-size:15px;color:var(--gb-muted-2)}
+.crumb .cur{color:var(--gb-text);font-weight:700}
+.art h1{font-size:37px;font-weight:800;letter-spacing:-.03em}
+
+/* zone 1 */
+.lead{font-size:17.5px;color:#2C3A4A;margin-top:14px;line-height:1.6;max-width:64ch}
+.meta{display:flex;align-items:center;gap:8px 18px;flex-wrap:wrap;margin-top:16px;padding-bottom:24px;border-bottom:1px solid var(--gb-border);font-size:12.5px;color:var(--gb-muted)}
+.meta span{display:inline-flex;align-items:center;gap:6px}
+.meta .ms{font-size:16px;color:var(--gb-muted-2)}
+.meta b{color:var(--gb-text);font-weight:700}
+
+.sec{margin-top:40px;scroll-margin-top:74px}
+.sec__k{font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--gb-zest-600);display:flex;align-items:center;gap:7px;margin-bottom:10px}
+.sec__k .ms{font-size:16px}
+.sec h2{font-size:24px;font-weight:800}
+.art p.body{font-size:15.5px;line-height:1.72;color:#2C3A4A;margin-top:14px}
+.art p.body b{color:var(--gb-text);font-weight:800}
+
+/* visual overview — workflow frieze */
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:var(--gb-surface);border:1px solid var(--gb-border);border-radius:var(--gb-r-xl);box-shadow:var(--gb-shadow);padding:22px 10px;margin-top:8px}
+.flow__step{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:9px;padding:6px 12px}
+.flow__step::after{content:"";position:absolute;top:26px;inset-inline-start:calc(50% + 26px);width:calc(100% - 52px);height:2px;background:var(--gb-border-2)}
+.flow__step:last-child::after{display:none}
+[dir="rtl"] .flow__step::after{transform:scaleX(-1)}
+.flow__ic{width:52px;height:52px;border-radius:15px;background:var(--gb-zest-bg);color:var(--gb-zest-600);display:flex;align-items:center;justify-content:center;position:relative;z-index:1}
+.flow__ic .ms{font-size:26px}
+.flow__n{position:absolute;top:-4px;inset-inline-end:-4px;width:20px;height:20px;border-radius:50%;background:var(--gb-ink);color:#fff;font-family:var(--gb-font-display);font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;z-index:2}
+.flow__t{font-family:var(--gb-font-display);font-weight:700;font-size:13.5px}
+.flow__d{font-size:11.5px;color:var(--gb-muted);line-height:1.4}
+@media(max-width:620px){
+  .flow{grid-template-columns:1fr;gap:4px;padding:12px}
+  .flow__step{flex-direction:row;text-align:start;gap:14px;padding:12px 8px}
+  .flow__step::after{top:calc(26px + 12px);inset-inline-start:26px;width:2px;height:calc(100% - 40px)}
+  .flow__m{min-width:0}
+}
+
+/* essentials box */
+.ess{display:flex;gap:14px;background:linear-gradient(135deg,var(--gb-zest-bg),transparent);border:1px solid #F8DCB4;border-radius:var(--gb-r-lg);padding:18px 20px;margin-top:8px}
+.ess__ic{width:36px;height:36px;border-radius:10px;background:var(--gb-zest-600);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ess__ic .ms{font-size:20px}
+.ess__m b{display:block;font-family:var(--gb-font-display);font-weight:800;font-size:15px;margin-bottom:5px}
+.ess__m p{font-size:14px;line-height:1.6;color:#2C3A4A}
+.ess__m ul{margin:8px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+.ess__m li{position:relative;padding-inline-start:20px;font-size:14px;color:#2C3A4A}
+.ess__m li::before{content:"";position:absolute;inset-inline-start:4px;top:8px;width:6px;height:6px;border-radius:50%;background:var(--gb-zest-600)}
+
+/* numbered steps */
+.steps{margin-top:12px;display:flex;flex-direction:column;gap:0}
+.step{display:flex;gap:15px;padding:16px 0;border-bottom:1px solid var(--gb-border);position:relative}
+.step:last-child{border-bottom:none}
+.step__n{width:32px;height:32px;border-radius:50%;background:var(--gb-ink);color:#fff;font-family:var(--gb-font-display);font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step__m b{display:block;font-family:var(--gb-font-display);font-weight:700;font-size:15.5px}
+.step__m p{font-size:14.5px;line-height:1.6;color:#2C3A4A;margin-top:4px}
+
+/* example — numbers */
+.ex{background:var(--gb-surface);border:1px solid var(--gb-border);border-radius:var(--gb-r-lg);box-shadow:var(--gb-shadow);overflow:hidden;margin-top:8px}
+.ex__hd{display:flex;align-items:center;gap:9px;padding:14px 18px;background:var(--gb-surface-2);border-bottom:1px solid var(--gb-border);font-family:var(--gb-font-display);font-weight:800;font-size:14px}
+.ex__hd .ms{font-size:18px;color:var(--gb-zest-600)}
+.ex__rows{padding:6px 18px}
+.ex__r{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px 0;border-bottom:1px solid var(--gb-border);font-size:14.5px}
+.ex__r:last-child{border-bottom:none}
+.ex__r .k{color:var(--gb-muted);display:flex;align-items:center;gap:9px}
+.ex__r .k .ic{width:28px;height:28px;border-radius:8px;background:var(--gb-surface-2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ex__r .k .ic .ms{font-size:16px;color:var(--gb-muted)}
+.ex__r .v{font-family:var(--gb-font-mono);font-weight:700;font-size:15px;direction:ltr;unicode-bidi:isolate}
+.ex__r.minus .v{color:var(--gb-err)}
+.ex__r.total{background:var(--gb-basil-bg);margin:0 -18px;padding-inline:18px}
+.ex__r.total .k{color:var(--gb-basil-600);font-weight:800}
+.ex__r.total .k .ic{background:var(--gb-basil);color:#fff}
+.ex__r.total .k .ic .ms{color:#fff}
+.ex__r.total .v{color:var(--gb-basil-600);font-weight:800;font-size:17px}
+
+/* callouts */
+.call{display:flex;gap:13px;border-radius:var(--gb-r-lg);padding:16px 18px;margin-top:8px;border:1px solid;background:var(--gb-surface)}
+.call__ic{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.call__ic .ms{font-size:20px;color:#fff}
+.call__m b{display:block;font-family:var(--gb-font-display);font-weight:800;font-size:14.5px;margin-bottom:5px}
+.call__m p{margin:0;font-size:14px;line-height:1.6;color:#2C3A4A}
+.call__m ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.call__m li{position:relative;padding-inline-start:22px;font-size:14px;line-height:1.55;color:#2C3A4A}
+.call__m li .ms{position:absolute;inset-inline-start:0;top:1px;font-size:16px}
+.call.good{background:var(--gb-basil-bg);border-color:#CDE9D8}
+.call.good .call__ic{background:var(--gb-basil)}
+.call.good .call__m b{color:var(--gb-basil-600)}
+.call.good li .ms{color:var(--gb-basil-600)}
+.call.err{background:var(--gb-err-bg);border-color:var(--gb-err-bd)}
+.call.err .call__ic{background:var(--gb-err)}
+.call.err .call__m b{color:var(--gb-err)}
+.call.err li .ms{color:var(--gb-err)}
+.call.tip{background:var(--gb-info-bg);border-color:var(--gb-info-bd)}
+.call.tip .call__ic{background:var(--gb-info)}
+.call.tip .call__m b{color:#1C4FA6}
+
+/* FAQ */
+.faq{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+.qa{background:var(--gb-surface);border:1px solid var(--gb-border);border-radius:var(--gb-r-md);overflow:hidden}
+.qa.open{border-color:var(--gb-border-2);box-shadow:var(--gb-shadow)}
+.qa__q{list-style:none;cursor:pointer;padding:15px 16px;display:flex;align-items:center;gap:12px;font-family:var(--gb-font-display);font-weight:700;font-size:14.5px}
+.qa__q::-webkit-details-marker{display:none}
+.qa__q .qic{width:28px;height:28px;border-radius:8px;background:var(--gb-zest-bg);color:var(--gb-zest-600);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.qa__q .qic .ms{font-size:16px}
+.qa__q .tw{flex:1;min-width:0}
+.qa__q .chev{color:var(--gb-muted-2);font-size:21px;transition:transform .2s;flex-shrink:0}
+.qa.open .qa__q .chev{transform:rotate(180deg)}
+.qa__a{padding:0 16px 16px 56px;font-size:14px;line-height:1.65;color:#2C3A4A}
+[dir="rtl"] .qa__a{padding:0 56px 16px 16px}
+
+/* further links */
+.more{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px}
+@media(max-width:560px){ .more{grid-template-columns:1fr} }
+.more a{display:flex;align-items:center;gap:12px;background:var(--gb-surface);border:1px solid var(--gb-border);border-radius:var(--gb-r-md);padding:15px 16px;cursor:pointer;transition:border-color .15s}
+.more a:hover{border-color:var(--gb-zest)}
+.more__ic{width:36px;height:36px;border-radius:10px;background:var(--gb-surface-2);color:var(--gb-zest-600);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.more__ic .ms{font-size:19px}
+.more__m{flex:1;min-width:0}
+.more__m b{display:block;font-family:var(--gb-font-display);font-weight:700;font-size:14px}
+.more__m span{font-size:12px;color:var(--gb-muted)}
+.more a>.ms{color:var(--gb-muted-2);font-size:17px}
+
+/* CTA */
+.cta{display:flex;align-items:center;gap:16px;background:linear-gradient(120deg,var(--gb-ink),var(--gb-ink-2));color:#fff;border-radius:var(--gb-r-lg);padding:22px 24px;margin-top:34px;position:relative;overflow:hidden}
+.cta::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 90% 20%,rgba(255,106,31,.32),transparent 55%)}
+.cta__m{position:relative;flex:1;min-width:0}
+.cta__m b{font-family:var(--gb-font-display);font-weight:800;font-size:17px;display:block}
+.cta__m span{font-size:13px;color:rgba(255,255,255,.75);margin-top:3px;display:block}
+.cta__btn{position:relative;display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#FF8A3D,#F2570E);color:#fff;border:none;border-radius:var(--gb-r-pill);padding:13px 22px;font-size:14px;font-weight:800;cursor:pointer;font-family:inherit;white-space:nowrap}
+.cta__btn .ms{font-size:19px}
+@media(max-width:560px){ .cta{flex-direction:column;align-items:stretch;text-align:start} .cta__btn{width:100%;justify-content:center} }
+
+/* feedback */
+.fb{margin-top:34px;display:flex;align-items:center;gap:14px;background:var(--gb-surface-2);border:1px solid var(--gb-border);border-radius:var(--gb-r-lg);padding:16px 20px;flex-wrap:wrap}
+.fb b{font-size:14px;font-weight:700}
+.fb .btns{margin-inline-start:auto;display:flex;gap:8px}
+.fb button{background:var(--gb-surface);border:1px solid var(--gb-border-2);border-radius:var(--gb-r-pill);padding:8px 16px;font-size:12.5px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-family:inherit;color:var(--gb-text)}
+.fb button:hover{border-color:var(--gb-zest);color:var(--gb-zest-600)}
+.fb button .ms{font-size:16px}
+
+/* prev / next */
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px;padding-top:26px;border-top:1px solid var(--gb-border)}
+.pn a{display:flex;flex-direction:column;gap:4px;border:1px solid var(--gb-border);border-radius:var(--gb-r-lg);padding:16px 18px;cursor:pointer;transition:border-color .15s}
+.pn a:hover{border-color:var(--gb-zest)}
+.pn a.next{text-align:end;align-items:flex-end}
+.pn__l{font-size:11.5px;font-weight:700;color:var(--gb-muted-2);display:flex;align-items:center;gap:5px}
+.pn__l .ms{font-size:16px}
+.pn__t{font-family:var(--gb-font-display);font-weight:800;font-size:14.5px;color:var(--gb-text)}
+@media(max-width:520px){ .pn{grid-template-columns:1fr} .pn a.next{text-align:start;align-items:flex-start} }
+
+/* TOC */
+.toc{padding:34px 18px;position:sticky;top:61px;align-self:start;max-height:calc(100vh - 61px);overflow-y:auto}
+.toc__t{font-size:11.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--gb-muted-2);margin-bottom:12px}
+.toc__list{display:flex;flex-direction:column;gap:2px}
+.toc__list a{font-size:12.5px;color:var(--gb-muted);padding:6px 10px;border-radius:7px;border-inline-start:2px solid var(--gb-border);cursor:pointer;line-height:1.3}
+.toc__list a:hover{color:var(--gb-text);background:var(--gb-surface-2)}
+.toc__list a.on{color:var(--gb-zest-600);font-weight:700;border-inline-start-color:var(--gb-zest)}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <group><span class="lbl">Sens</span><button id="dir-ltr" class="on" onclick="setDir('ltr')">LTR</button><button id="dir-rtl" onclick="setDir('rtl')">RTL (AR)</button></group>
+  <group><span class="lbl">Nav mobile</span><button onclick="document.body.classList.toggle('nav-open')">Ouvrir/Fermer</button></group>
+</div>
+
+<header class="hd">
+  <div class="hd__in">
+    <button class="hd__burger" onclick="document.body.classList.toggle('nav-open')"><span class="ms">menu</span></button>
+    <a class="hd__brand" href="home.html"><img src="../assets/grubano-symbol.svg" alt="Grubano"><b>Grubano</b><span>Centre d'aide</span></a>
+    <div class="hd__search"><span class="ms">search</span><input type="text" placeholder="Rechercher…"></div>
+    <button class="hd__lang"><span class="ms">language</span><span>Français</span></button>
+  </div>
+</header>
+
+<div class="layout">
+
+  <div class="side__scrim" onclick="document.body.classList.remove('nav-open')"></div>
+  <aside class="side">
+    <div class="side__group"><button class="side__gh" onclick="tg(this)"><span class="ms ic">restaurant</span><span class="tw">Clients</span><span class="ms ch flip-rtl">chevron_right</span></button></div>
+    <div class="side__group open"><button class="side__gh" onclick="tg(this)"><span class="ms ic">storefront</span><span class="tw">Restaurateurs</span><span class="ms ch flip-rtl">chevron_right</span></button>
+      <div class="side__list">
+        <a class="side__item" href="#">Créer mon établissement</a>
+        <a class="side__item" href="#">Composer ma carte</a>
+        <a class="side__item" href="#">Recevoir des commandes</a>
+        <a class="side__item on">Finances &amp; versements</a>
+        <a class="side__item" href="#">Avis &amp; réputation</a>
+        <a class="side__item" href="#">Analytics</a>
+      </div>
+    </div>
+    <div class="side__group"><button class="side__gh" onclick="tg(this)"><span class="ms ic">local_shipping</span><span class="tw">Fournisseurs</span><span class="ms ch flip-rtl">chevron_right</span></button></div>
+    <div class="side__group"><button class="side__gh" onclick="tg(this)"><span class="ms ic">hub</span><span class="tw">Franchisés</span><span class="ms ch flip-rtl">chevron_right</span></button></div>
+    <div class="side__group"><button class="side__gh" onclick="tg(this)"><span class="ms ic">restaurant_menu</span><span class="tw">Créateurs</span><span class="ms ch flip-rtl">chevron_right</span></button></div>
+    <div class="side__group"><button class="side__gh" onclick="tg(this)"><span class="ms ic">link</span><span class="tw">Affiliés</span><span class="ms ch flip-rtl">chevron_right</span></button></div>
+    <div class="side__group"><button class="side__gh" onclick="tg(this)"><span class="ms ic">two_wheeler</span><span class="tw">Livreurs</span><span class="ms ch flip-rtl">chevron_right</span></button></div>
+    <div class="side__group"><button class="side__gh" onclick="tg(this)"><span class="ms ic">code</span><span class="tw">Développeurs</span><span class="ms ch flip-rtl">chevron_right</span></button></div>
+  </aside>
+
+  <main class="content">
+    <nav class="crumb">
+      <a href="home.html">Accueil</a><span class="ms flip-rtl">chevron_right</span>
+      <a href="space.html">Restaurateurs</a><span class="ms flip-rtl">chevron_right</span>
+      <span class="cur">Finances &amp; versements</span>
+    </nav>
+
+    <article class="art">
+      <!-- 1. H1 -->
+      <h1>Finances &amp; versements</h1>
+
+      <!-- 2. ZONE 1 : résumé + meta -->
+      <p class="lead">Comprenez comment Grubano calcule sa commission, quand vous êtes payé, et ce que vous devez savoir sur la déclaration DAC7. En clair : ce que vous encaissez, ce qui est prélevé, et ce que vous recevez.</p>
+      <div class="meta">
+        <span><span class="ms">group</span>Pour&nbsp;: <b>Restaurateurs</b></span>
+        <span><span class="ms">schedule</span>Lecture&nbsp;: <b>4 min</b></span>
+        <span><span class="ms">update</span>Mis à jour le <b>8 juillet 2026</b></span>
+      </div>
+
+      <!-- 3. APERÇU VISUEL -->
+      <section class="sec" id="s-apercu">
+        <div class="sec__k"><span class="ms">insights</span>Aperçu</div>
+        <h2>Le trajet de votre argent</h2>
+        <div class="flow">
+          <div class="flow__step"><div class="flow__ic"><span class="ms">receipt_long</span><span class="flow__n">1</span></div><div class="flow__m"><div class="flow__t">Commande payée</div><div class="flow__d">Le client règle en ligne</div></div></div>
+          <div class="flow__step"><div class="flow__ic"><span class="ms">percent</span><span class="flow__n">2</span></div><div class="flow__m"><div class="flow__t">Commission</div><div class="flow__d">Grubano prélève 10 %</div></div></div>
+          <div class="flow__step"><div class="flow__ic"><span class="ms">account_balance</span><span class="flow__n">3</span></div><div class="flow__m"><div class="flow__t">Versement</div><div class="flow__d">Net reversé sur votre compte</div></div></div>
+          <div class="flow__step"><div class="flow__ic"><span class="ms">description</span><span class="flow__n">4</span></div><div class="flow__m"><div class="flow__t">Relevé</div><div class="flow__d">Justificatif &amp; DAC7</div></div></div>
+        </div>
+      </section>
+
+      <!-- 4. L'ESSENTIEL -->
+      <section class="sec" id="s-essentiel">
+        <div class="sec__k"><span class="ms">bolt</span>L'essentiel</div>
+        <h2>En bref</h2>
+        <div class="ess">
+          <span class="ess__ic"><span class="ms">bolt</span></span>
+          <div class="ess__m">
+            <b>Si vous ne devez retenir que ça&nbsp;:</b>
+            <ul>
+              <li>Grubano prélève une <b>commission de 10 %</b> sur chaque commande payée.</li>
+              <li>Vous recevez le <b>montant net</b> par virement, selon un calendrier régulier.</li>
+              <li>Un <b>relevé</b> détaillé est disponible chaque mois, et la <b>DAC7</b> est gérée pour vous.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. COMMENT ÇA MARCHE -->
+      <section class="sec" id="s-principe">
+        <div class="sec__k"><span class="ms">lightbulb</span>Comment ça marche</div>
+        <h2>Le principe (et le pourquoi)</h2>
+        <p class="body">À chaque commande payée en ligne, Grubano encaisse le montant pour votre compte, puis prélève une <b>commission de 10 %</b> avant de vous reverser le reste. Cette commission finance la plateforme&nbsp;: le paiement sécurisé, la mise en avant de votre établissement, le support et les outils de gestion.</p>
+        <p class="body">Le reversement est <b>automatique</b>&nbsp;: vous n'avez aucune facture à émettre ni aucun virement à déclencher. Grubano agit comme intermédiaire de paiement, ce qui vous évite la gestion des transactions une par une — et vous garantit d'être payé même en cas de litige résolu en votre faveur.</p>
+      </section>
+
+      <!-- 6. ÉTAPE PAR ÉTAPE -->
+      <section class="sec" id="s-etapes">
+        <div class="sec__k"><span class="ms">format_list_numbered</span>Étape par étape</div>
+        <h2>Suivre un versement</h2>
+        <div class="steps">
+          <div class="step"><span class="step__n">1</span><div class="step__m"><b>Ouvrez « Finances »</b><p>Dans votre tableau de bord restaurateur, la section Finances récapitule votre chiffre d'affaires, la commission et le net à recevoir.</p></div></div>
+          <div class="step"><span class="step__n">2</span><div class="step__m"><b>Vérifiez le prochain versement</b><p>Le bandeau du haut affiche le montant net et la date prévue du prochain virement.</p></div></div>
+          <div class="step"><span class="step__n">3</span><div class="step__m"><b>Consultez le détail</b><p>Chaque versement se décompose en commandes&nbsp;: brut encaissé, commission, net. Tout est horodaté.</p></div></div>
+          <div class="step"><span class="step__n">4</span><div class="step__m"><b>Téléchargez votre relevé</b><p>Un relevé mensuel au format PDF est disponible pour votre comptabilité.</p></div></div>
+        </div>
+      </section>
+
+      <!-- 7. EXEMPLE CONCRET -->
+      <section class="sec" id="s-exemple">
+        <div class="sec__k"><span class="ms">calculate</span>Exemple concret</div>
+        <h2>Un mois à 2 000 €</h2>
+        <p class="body">Imaginons que votre établissement encaisse <b>2 000 €</b> de commandes payées via Grubano sur le mois. Voici le calcul du versement&nbsp;:</p>
+        <div class="ex">
+          <div class="ex__hd"><span class="ms">calculate</span>Décomposition du versement</div>
+          <div class="ex__rows">
+            <div class="ex__r"><span class="k"><span class="ic"><span class="ms">account_balance_wallet</span></span>Chiffre d'affaires encaissé</span><span class="v">2 000,00&nbsp;€</span></div>
+            <div class="ex__r minus"><span class="k"><span class="ic"><span class="ms">percent</span></span>Commission Grubano (10&nbsp;%)</span><span class="v">−200,00&nbsp;€</span></div>
+            <div class="ex__r total"><span class="k"><span class="ic"><span class="ms">payments</span></span>Net reversé</span><span class="v">1 800,00&nbsp;€</span></div>
+          </div>
+        </div>
+        <p class="body">Vous recevez donc <b>1 800 €</b> sur votre compte bancaire. Les montants réels sont toujours calculés par Grubano et affichés dans votre espace — cet exemple est illustratif.</p>
+      </section>
+
+      <!-- 8. BONNES PRATIQUES -->
+      <section class="sec" id="s-bonnes">
+        <div class="sec__k"><span class="ms">check_circle</span>Bonnes pratiques</div>
+        <h2>Pour une compta sereine</h2>
+        <div class="call good">
+          <span class="call__ic"><span class="ms">check_circle</span></span>
+          <div class="call__m">
+            <ul>
+              <li><span class="ms">check</span>Téléchargez votre relevé chaque mois et archivez-le avec votre comptabilité.</li>
+              <li><span class="ms">check</span>Vérifiez que vos coordonnées bancaires sont à jour pour éviter tout retard de versement.</li>
+              <li><span class="ms">check</span>Renseignez vos informations légales (SIRET, TVA) dès l'ouverture&nbsp;: elles conditionnent la DAC7.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9. ERREURS À ÉVITER -->
+      <section class="sec" id="s-erreurs">
+        <div class="sec__k"><span class="ms">error</span>Erreurs à éviter</div>
+        <h2>Les pièges courants</h2>
+        <div class="call err">
+          <span class="call__ic"><span class="ms">error</span></span>
+          <div class="call__m">
+            <ul>
+              <li><span class="ms">close</span>Ne comptez pas la commission comme une perte cachée&nbsp;: elle est visible sur chaque commande.</li>
+              <li><span class="ms">close</span>N'oubliez pas de mettre à jour votre IBAN en cas de changement de banque — un versement échoué est reporté.</li>
+              <li><span class="ms">close</span>Ne négligez pas le seuil DAC7&nbsp;: au-delà, la déclaration est obligatoire (Grubano s'en charge, mais vos infos doivent être exactes).</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10. ASTUCES -->
+      <section class="sec" id="s-astuces">
+        <div class="sec__k"><span class="ms">lightbulb</span>Astuce</div>
+        <h2>Gagnez du temps</h2>
+        <div class="call tip">
+          <span class="call__ic"><span class="ms">lightbulb</span></span>
+          <div class="call__m"><p>Activez les <b>notifications de versement</b> dans vos paramètres&nbsp;: vous recevez une alerte à chaque virement, avec le montant net et la référence — pratique pour rapprocher vos relevés bancaires sans ouvrir l'app.</p></div>
+        </div>
+      </section>
+
+      <!-- 11. FAQ -->
+      <section class="sec" id="s-faq">
+        <div class="sec__k"><span class="ms">quiz</span>FAQ</div>
+        <h2>Questions fréquentes</h2>
+        <div class="faq" id="faq">
+          <details class="qa open" open>
+            <summary class="qa__q"><span class="qic"><span class="ms">percent</span></span><span class="tw">La commission s'applique-t-elle aux frais de livraison ?</span><span class="ms chev">expand_more</span></summary>
+            <div class="qa__a">La commission de 10&nbsp;% porte sur le montant des articles vendus. Les frais de livraison éventuels suivent une règle distincte, détaillée dans votre contrat et sur votre relevé.</div>
+          </details>
+          <details class="qa">
+            <summary class="qa__q"><span class="qic"><span class="ms">schedule</span></span><span class="tw">À quelle fréquence suis-je payé ?</span><span class="ms chev">expand_more</span></summary>
+            <div class="qa__a">Les versements sont réguliers et automatiques. La date du prochain virement est toujours affichée dans votre section Finances.</div>
+          </details>
+          <details class="qa">
+            <summary class="qa__q"><span class="qic"><span class="ms">gavel</span></span><span class="tw">Qu'est-ce que la DAC7 et dois-je faire quelque chose ?</span><span class="ms chev">expand_more</span></summary>
+            <div class="qa__a">La DAC7 est une directive européenne qui oblige les plateformes à déclarer les revenus des vendeurs. Grubano s'en charge pour vous&nbsp;; assurez-vous simplement que vos informations légales sont exactes et à jour.</div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 12. POUR ALLER PLUS LOIN -->
+      <section class="sec" id="s-plus">
+        <div class="sec__k"><span class="ms">menu_book</span>Pour aller plus loin</div>
+        <h2>Articles liés</h2>
+        <div class="more">
+          <a href="#"><span class="more__ic"><span class="ms">account_balance</span></span><div class="more__m"><b>Configurer mes versements</b><span>IBAN &amp; compte bancaire</span></div><span class="ms flip-rtl">arrow_forward</span></a>
+          <a href="#"><span class="more__ic"><span class="ms">description</span></span><div class="more__m"><b>Comprendre mon relevé</b><span>Lire le détail mensuel</span></div><span class="ms flip-rtl">arrow_forward</span></a>
+          <a href="#"><span class="more__ic"><span class="ms">insights</span></span><div class="more__m"><b>Analytics de ventes</b><span>Suivre mon chiffre d'affaires</span></div><span class="ms flip-rtl">arrow_forward</span></a>
+          <a href="#"><span class="more__ic"><span class="ms">gavel</span></span><div class="more__m"><b>Informations légales</b><span>SIRET, TVA &amp; DAC7</span></div><span class="ms flip-rtl">arrow_forward</span></a>
+        </div>
+      </section>
+
+      <!-- 13. CTA -->
+      <div class="cta">
+        <div class="cta__m"><b>Consultez vos finances en direct</b><span>Chiffre d'affaires, commission et prochain versement, en temps réel.</span></div>
+        <button class="cta__btn"><span class="ms">open_in_new</span>Ouvrir dans Grubano</button>
+      </div>
+
+      <!-- 14. FEEDBACK -->
+      <div class="fb">
+        <b>Cet article vous a-t-il été utile ?</b>
+        <div class="btns">
+          <button><span class="ms">thumb_up</span>Oui</button>
+          <button><span class="ms">thumb_down</span>Non</button>
+        </div>
+      </div>
+
+      <!-- 15. PREV / NEXT -->
+      <nav class="pn">
+        <a class="prev"><span class="pn__l"><span class="ms flip-rtl">arrow_back</span>Précédent</span><span class="pn__t">Recevoir des commandes</span></a>
+        <a class="next"><span class="pn__l">Suivant<span class="ms flip-rtl">arrow_forward</span></span><span class="pn__t">Avis &amp; réputation</span></a>
+      </nav>
+    </article>
+  </main>
+
+  <aside class="toc">
+    <div class="toc__t">Sur cette page</div>
+    <nav class="toc__list">
+      <a class="on" href="#s-apercu">Aperçu</a>
+      <a href="#s-essentiel">L'essentiel</a>
+      <a href="#s-principe">Comment ça marche</a>
+      <a href="#s-etapes">Étape par étape</a>
+      <a href="#s-exemple">Exemple concret</a>
+      <a href="#s-bonnes">Bonnes pratiques</a>
+      <a href="#s-erreurs">Erreurs à éviter</a>
+      <a href="#s-astuces">Astuce</a>
+      <a href="#s-faq">FAQ</a>
+      <a href="#s-plus">Pour aller plus loin</a>
+    </nav>
+  </aside>
+
+</div>
+
+<script>
+  function tg(btn){ btn.parentElement.classList.toggle('open'); }
+  var items=[].slice.call(document.querySelectorAll('#faq .qa'));
+  items.forEach(function(d){
+    d.addEventListener('toggle',function(){
+      if(d.open){ items.forEach(function(o){ if(o!==d){ o.open=false; o.classList.remove('open'); } }); d.classList.add('open'); }
+      else { d.classList.remove('open'); }
+    });
+  });
+  function setDir(v){
+    document.documentElement.setAttribute('dir', v);
+    document.getElementById('dir-ltr').classList.toggle('on', v==='ltr');
+    document.getElementById('dir-rtl').classList.toggle('on', v==='rtl');
+  }
+  var links=[].slice.call(document.querySelectorAll('.toc__list a'));
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY+120, i=0;
+    secs.forEach(function(s,idx){ if(s&&s.offsetTop<=y) i=idx; });
+    links.forEach(function(a,idx){ a.classList.toggle('on', idx===i); });
+  },{passive:true});
+</script>
+</body>
+</html>
