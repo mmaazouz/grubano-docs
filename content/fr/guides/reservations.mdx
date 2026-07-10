@@ -2,84 +2,149 @@
 title: "Réservations & sur place"
 description: "Gérer les tables et les créneaux : plan de salle, accepter / refuser une demande, suivre l’occupation en temps réel."
 generated: true
-sourceHash: 799138ecc79c42fc
+sourceHash: f3dc34c0b19e4965
 generator: scripts/generate-feature-page.js
-templateVersion: 5
+templateVersion: 6
 ---
 
 import { Steps, Callout } from 'nextra/components'
 
 # Réservations & sur place
 
-Gérez votre plan de salle, acceptez ou refusez les demandes de table, et suivez l’occupation en temps réel depuis un tableau de bord unifié.
+Pilotez votre salle en temps réel : plan interactif, gestion des demandes, empreinte bancaire, addition numérique — tout l’essentiel pour fluidifier le service et fidéliser vos convives.
 
-```mermaid
-stateDiagram-v2
-  direction LR
-  confirmed: Confirmée
-  arrived: Arrivée
-  overrun: Dépassement
-  cancelled: Annulée
-  noshow: No-show
-  [*] --> confirmed
-  confirmed --> arrived
-  arrived --> overrun
-  overrun --> [*]
-  confirmed --> cancelled
-  arrived --> cancelled
-  cancelled --> [*]
-  confirmed --> noshow
-  arrived --> noshow
-  noshow --> [*]
-```
+<ArticleMeta audience="Restaurateurs" minutes={4} updated="2026-07-10" />
 
-## L’essentiel
+<Eyebrow icon="insights">Aperçu</Eyebrow>
 
-Le module Réservations vous permet de visualiser votre plan de salle, de gérer les tables et leurs créneaux, et d’accepter ou refuser chaque demande. Vous suivez l’état de chaque service en temps réel (confirmée, arrivée, terminée) et anticipez l’affluence grâce à une vue quotidienne.
+## De la demande au service payé
 
-## Comment ça marche
+<FlowDiagram steps={[
+  { icon: "receipt_long", title: "Configurer la salle", desc: "Plan de table + horaires d’ouverture" },
+  { icon: "schedule", title: "Recevoir la demande", desc: "Le client réserve, vous validez" },
+  { icon: "payments", title: "Valider", desc: "Empreinte bancaire si besoin" },
+  { icon: "restaurant", title: "Service", desc: "Addition ouverte dès l’arrivée" }
+]} />
 
-Grubano centralise vos réservations sur un seul écran : vous créez les tables de votre salle, définissez leur capacité (nombre de couverts), puis recevez les demandes — qu’elles viennent d’un client connecté ou d’une prise manuelle. Chaque réservation passe par un cycle de vie simple : **confirmée** dès sa création, **arrivée** quand vous accueillez le client, puis **annulée** ou **no-show** selon le cas. Le système vérifie automatiquement la disponibilité du créneau (aucun chevauchement sur la même table) et vous alerte si la demande tombe en dehors de vos horaires d’ouverture — vous gardez le dernier mot.
+<Eyebrow icon="bolt">L’essentiel</Eyebrow>
 
-L’écran Réservations affiche toutes les tables de votre établissement courant ; si vous exploitez plusieurs établissements (franchise), chaque point de vente a son propre plan et ses propres créneaux. Le [tableau de bord](/fr/guides/restaurant/) regroupe les réservations actives de la journée, avec les prochaines arrivées en haut de liste.
+## En bref
 
-## Étape par étape
+<Essentials 
+  title="Si vous ne devez retenir que ça :" 
+  items={[
+    <>Votre <b>plan de salle</b> est la source unique : ajoutez les tables une fois, Grubano les utilise partout (réservations, additions, occupations).</>,
+    <>L'<b>empreinte bancaire</b> bloque une somme sans la prélever — vous capturez uniquement en cas de no-show, ou annulez si le client arrive.</>,
+    <>L'<b>addition</b> se crée automatiquement quand vous marquez « Arrivée » — le client peut consulter et payer depuis son téléphone, vous encaissez depuis le vôtre.</>
+  ]} 
+/>
+
+<Eyebrow icon="lightbulb">Comment ça marche</Eyebrow>
+
+## Le principe (et le pourquoi)
+
+Grubano relie la réservation, l’empreinte bancaire et l’addition en **une seule fiche par service** : vous réservez une table → le système bloque un acompte si vous l’activez → à l’arrivée du client, l’addition s’ouvre sur cette même table → le paiement libère la table. Tout part du [tableau de bord](/fr/guides/restaurant/) : configurez votre salle et vos horaires une fois, puis laissez Grubano orchestrer les créneaux, surveiller les occupations et détecter les dépassements.
+
+Un seul écran donne la vision complète : tables libres (vert), occupées (orange), en retard (rouge), chacune avec son statut en temps réel. Cliquez sur une réservation pour accepter, refuser, marquer l’arrivée ou encaisser l’addition.
+
+<Eyebrow icon="format_list_numbered">Étape par étape</Eyebrow>
+
+## Gérer une réservation de bout en bout
 
 <Steps>
 
-### Créez votre plan de salle
+### Configurez votre salle
 
-Rendez-vous dans **Réservations** et ajoutez chaque table : attribuez-lui un nom (« Table 1 », « Terrasse 4 »), indiquez le nombre de places assises, et placez-la sur le plan visuel. Une table active apparaît immédiatement disponible à la réservation.
+Depuis le tableau de bord, section **Tables**, ajoutez chaque table (nom, nombre de places, position sur le plan). Le plan sert partout : réservations, additions, vue temps réel. Définissez aussi vos horaires d’ouverture — toute réservation hors plage reçoit un avertissement.
 
-### Recevez une demande
+### Recevez la demande
 
-Un client demande une table pour une date, une heure et un nombre de couverts. Le système vérifie que la table choisie a suffisamment de places et qu’aucune autre réservation n’occupe le créneau ; si tout est libre, la réservation est créée au statut **confirmée**.
+Le client réserve en ligne (un créneau proposé d’après vos horaires et la capacité de la table). La demande arrive dans votre tableau de bord au statut `confirmed` (confirmée). Vous voyez le nom, le nombre de couverts, l’heure, les allergies ou notes éventuelles.
 
-<Callout type="warning">
-Si le créneau tombe en dehors de vos horaires configurés ou pendant une fermeture exceptionnelle, un avertissement s’affiche — vous pouvez tout de même confirmer la réservation (événement privé, service spécial).
-</Callout>
+### Validez ou refusez
 
-### Validez l’arrivée
+Acceptez la réservation telle quelle, ou annulez-la si le créneau ne convient pas (le client reçoit un email automatique). Si vous avez activé l’empreinte bancaire (montant d’acompte + pénalité no-show), Grubano bloque la somme sur la carte du client au moment de la réservation — rien n’est prélevé, la banque gèle juste le montant.
 
-Quand le client se présente, marquez la réservation **arrivée**. Une addition est automatiquement ouverte sur la table, prête à recevoir les commandes. Si une ancienne addition impayée subsiste encore sur cette table, le système vous en avertit — réglez ou annulez l’ancienne note avant d’accueillir le nouveau service.
+### Marquez l’arrivée
 
-### Gérez les absences et annulations
+Le jour J, quand le client se présente, cliquez **Arrivée**. Grubano passe la réservation au statut `arrived`, annule l’empreinte bancaire (le blocage disparaît sous 5–7 jours), et **ouvre automatiquement une addition** sur la table concernée. Le client peut désormais consulter l’addition en scannant le QR code de la table, ou vous la remplissez depuis votre tableau de bord.
 
-Une réservation peut être **annulée** (par vous ou par le client) ou marquée **no-show** si la personne ne vient pas. Dans les deux cas, la table redevient libre pour le créneau. Grubano peut envoyer un e-mail au client pour l’informer de l’annulation côté restaurant (l’adresse e-mail du client ou celle de son compte est utilisée).
+### Encaissez et libérez
+
+Une fois le repas terminé, présentez l’addition (app client ou [tableau de bord](/fr/guides/restaurant/)). Le client règle — carte bancaire, espèces ou autre — et vous validez le paiement. L’addition passe `paid`, la table redevient libre, et le cycle est complet.
 
 </Steps>
 
-## Bonnes pratiques
+<Eyebrow icon="calculate">Exemple concret</Eyebrow>
 
-- **Définissez une durée par défaut** : chaque établissement peut fixer une durée moyenne de service (60, 90 ou 120 minutes) ; le système calcule automatiquement la fin du créneau pour éviter les chevauchements.
-- **Bloquez les créneaux passés** : le serveur refuse toute réservation dont l’heure de début est déjà écoulée (avec une tolérance de 5 minutes pour absorber le décalage d’horloge).
-- **Vérifiez la capacité** : une table de 4 places ne peut accueillir une réservation de 6 couverts — le système bloque la demande et vous demande de choisir une table plus grande ou de combiner plusieurs tables.
-- **Surveillez l’occupation en temps réel** : le tableau de bord affiche le nombre de services actifs et les prochaines arrivées, vous permettant d’anticiper les coups de feu.
+## Un service du midi avec empreinte
 
-## Exemple concret
+Un client réserve une table de 4 pour 12 h 30, avec une empreinte de 20 € et une pénalité no-show de 15 €. Grubano bloque 20 € sur sa carte (rien n’est débité). Le client arrive à l’heure → vous marquez **Arrivée**, l’empreinte est annulée, l’addition s’ouvre. Le repas coûte 68 €, le client paie par carte, vous validez → la table est libérée.
 
-Votre restaurant dispose de 3 tables (2 places, 4 places, 6 places). Un client réserve la table de 4 pour samedi 20h–22h : le système vérifie qu’aucune autre réservation n’occupe ce créneau, confirme la demande, et l’ajoute au planning. Samedi soir, le client arrive à 20h05 : vous passez la réservation en statut **arrivée**, une addition s’ouvre automatiquement sur la table 4, et vous prenez la commande. À 22h15, le service est terminé, l’addition réglée : la table redevient libre pour un éventuel deuxième service.
+**Scénario no-show** : le client ne vient pas et n’annule pas. Vous marquez **No-show** dans le tableau de bord → Grubano capture automatiquement les 15 € de pénalité sur l’empreinte (le reste, 5 €, est annulé). Le client reçoit un email avec le montant prélevé et la procédure de contestation.
 
-## Pour aller plus loin
+<Eyebrow icon="check_circle">Bonnes pratiques</Eyebrow>
 
-- [Tableau de bord restaurant](/fr/guides/restaurant/) — vue d’ensemble des réservations actives et des prochaines arrivées du jour.
+## Tirer le meilleur du système
+
+<Callout type="default">
+
+- **Renseignez vos horaires et fermetures** : Grubano bloque automatiquement les créneaux hors horaires ou pendant les fermetures exceptionnelles (vous pouvez forcer une réservation privée, mais le système vous alerte).
+- **Activez l’empreinte pour les services à forte demande** (vendredi/samedi soir, menus dégustation) : elle réduit drastiquement les no-shows sans effort de votre part.
+- **Marquez "Arrivée" dès que le client s’assoit** : l’addition s’ouvre tout de suite, le client peut la consulter pendant le repas, et vous gagnez du temps à la sortie.
+- **Surveillez le code couleur** : une table orange (occupée) qui passe rouge (dépassement) signale qu’il est temps de proposer l’addition — sans brusquer, juste pour fluidifier la rotation.
+
+</Callout>
+
+<Eyebrow icon="error">Erreurs à éviter</Eyebrow>
+
+## Les pièges courants
+
+<Callout type="error">
+
+- **Oublier de valider l’arrivée** : si vous ne marquez pas « Arrivée », l’addition ne s’ouvre pas automatiquement — le client ne peut ni consulter ni payer en ligne.
+- **Annuler manuellement une empreinte** : Grubano le fait pour vous (arrivée → annulation, no-show → capture) — intervenir directement chez le prestataire de paiement risque de désynchroniser le statut.
+- **Ne pas renseigner le plan de salle** : sans table configurée, vous ne pouvez pas prendre de réservations — la sélection de table est obligatoire.
+- **Capturer l’empreinte sur une arrivée normale** : l’empreinte se capture uniquement en cas de no-show ; une arrivée l’annule toujours (le blocage disparaît sans prélèvement).
+
+</Callout>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
+
+## Questions fréquentes
+
+<Faq items={[
+  {
+    icon: "payments",
+    q: "Combien coûte l’empreinte bancaire ?",
+    a: "Rien. Grubano ne facture aucun frais pour le blocage. Seuls les paiements effectivement capturés (pénalité no-show) supportent les frais habituels de notre prestataire de paiement. Les annulations (client arrivé) n’entraînent aucun coût."
+  },
+  {
+    icon: "schedule",
+    q: "Le client peut-il réserver hors horaires ?",
+    a: "Non par défaut : Grubano ne propose que les créneaux dans vos horaires d’ouverture et en dehors des fermetures exceptionnelles. Vous pouvez forcer une réservation depuis le tableau de bord (événement privé un jour fermé, par exemple) — le système vous alerte mais ne bloque pas."
+  },
+  {
+    icon: "receipt_long",
+    q: "L’addition s’ouvre-t-elle si j’ai oublié de marquer “Arrivée” ?",
+    a: "Non : l’addition automatique ne se crée qu’au passage au statut « Arrivée ». Si vous oubliez, ouvrez-la manuellement depuis l’onglet Tables de votre tableau de bord — sélectionnez la table, cliquez « Nouvelle addition »."
+  },
+  {
+    icon: "error",
+    q: "Que se passe-t-il si une table a déjà une addition impayée ?",
+    a: "Quand vous marquez « Arrivée » sur une réservation, Grubano vérifie si la table porte une addition non réglée d’un service précédent. Si oui, il ne crée PAS de nouvelle addition et vous alerte : réglez ou annulez l’ancienne avant d’accueillir le nouveau service."
+  }
+]} />
+
+<Eyebrow icon="menu_book">Pour aller plus loin</Eyebrow>
+
+## Articles liés
+
+<RelatedCards items={[
+  {
+    icon: "restaurant",
+    title: "Tableau de bord",
+    sub: "Vue d’ensemble de votre activité",
+    href: "/fr/guides/restaurant/"
+  }
+]} />

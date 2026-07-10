@@ -86,11 +86,38 @@ for (const f of files) {
       soft++
     }
   }
-  // Visual present? (v5 requires an "Aperçu visuel" — a component or mermaid.)
+  // Visual present? (v5+ requires an "Aperçu visuel" — a component or mermaid.)
   const hasVisual = /<(FlowDiagram|JourneyStrip|RelatedActors|MiniMap|Comparison|LearningPath)\b/.test(src) || /```mermaid/.test(src)
   if (isGenerated && !hasVisual) {
-    hits.push({ id: 'no-visual', hard: false, why: 'aucun visuel (Aperçu visuel v5 manquant)', at: 1, text: '' })
+    hits.push({ id: 'no-visual', hard: false, why: 'aucun visuel (Aperçu visuel manquant)', at: 1, text: '' })
     soft++
+  }
+  // Unknown JSX components — they compile fine but CRASH at prerender
+  // ("Expected component X to be defined"). Whitelist = registered set.
+  const KNOWN_COMPONENTS = new Set([
+    'Steps', 'Callout', 'FlowDiagram', 'JourneyStrip', 'RelatedActors', 'MiniMap',
+    'LearningPath', 'Comparison', 'Faq', 'ArticleMeta', 'Eyebrow', 'Essentials',
+    'Breakdown', 'RelatedCards', 'HomeHero', 'SpacesGrid', 'QuickStartCards', 'ContactStrip',
+  ])
+  for (const m2 of src.matchAll(/<([A-Z][A-Za-z0-9]*)[\s/>]/g)) {
+    if (!KNOWN_COMPONENTS.has(m2[1])) {
+      hits.push({ id: 'unknown-component', hard: true, why: `composant inconnu <${m2[1]}> (crash au prerender)`, at: line(src, m2.index), text: `<${m2[1]}>` })
+      hard++
+    }
+  }
+
+  // v6 structure: ArticleMeta with substituted placeholders + Eyebrow kickers.
+  if (isGenerated && /templateVersion:\s*6/.test(src)) {
+    if (!/<ArticleMeta\s/.test(src)) {
+      hits.push({ id: 'no-meta', hard: true, why: 'ArticleMeta manquante (zone 1 v6)', at: 1, text: '' }); hard++
+    }
+    if (/__MINUTES__|__UPDATED__/.test(src)) {
+      hits.push({ id: 'placeholder', hard: true, why: 'placeholder __MINUTES__/__UPDATED__ non substitué', at: 1, text: '' }); hard++
+    }
+    const eyebrows = (src.match(/<Eyebrow\s/g) || []).length
+    if (eyebrows < 3) {
+      hits.push({ id: 'few-eyebrows', hard: false, why: `seulement ${eyebrows} <Eyebrow> (structure v6 attendue ≥ 3)`, at: 1, text: '' }); soft++
+    }
   }
 
   if (hits.length) {

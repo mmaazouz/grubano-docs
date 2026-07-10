@@ -185,22 +185,29 @@ html.dark .av-ess__m li { color: var(--gb-text); }
 }
 .av-ess__m li b, .av-ess__m li strong { color: var(--gb-text); font-weight: 800; }
 
-/* ── Nextra <Steps> → look maquette (pastille ink, filets) ───────────── */
-.nextra-steps { margin-top: 12px !important; border-inline-start: none !important; padding-inline-start: 0 !important; margin-inline-start: 0 !important; }
-.nextra-steps > h3, .nextra-steps h3 { margin: 0 !important; }
-.nextra-steps > li {
-  display: flex !important;
-  gap: 15px;
-  padding: 16px 0 !important;
-  border-bottom: 1px solid var(--gb-border);
-  margin: 0 !important;
+/* ── Nextra <Steps> → look maquette (pastille ink 32px, filets) ─────────
+   Nextra 4 : DIV.nextra-steps > H3 (numéro = ::before du H3) + contenus. */
+.nextra-steps {
+  margin-top: 12px !important;
+  margin-inline-start: 0 !important;
+  border-inline-start: none !important;
+  padding-inline-start: 46px !important; /* room for the 32px ink circle */
   position: relative;
-  counter-increment: step;
 }
-.nextra-steps > li:last-child { border-bottom: none; }
-.nextra-steps > li::before {
-  content: counter(step) !important;
-  position: static !important;
+.nextra-steps > h3 {
+  margin: 0 !important;
+  padding: 16px 0 4px !important;
+  border-top: 1px solid var(--gb-border);
+  font-family: var(--gb-font-display), system-ui, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 15.5px !important;
+  position: relative;
+}
+.nextra-steps > h3:first-of-type { border-top: none; padding-top: 4px !important; }
+.nextra-steps > h3::before {
+  position: absolute !important;
+  inset-inline-start: -46px !important;
+  top: 14px;
   width: 32px !important;
   height: 32px !important;
   border-radius: 50% !important;
@@ -212,12 +219,20 @@ html.dark .av-ess__m li { color: var(--gb-text); }
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  flex-shrink: 0;
   border: none !important;
   box-shadow: none !important;
-  margin-top: 0 !important;
+  margin: 0 !important;
+  line-height: 1 !important;
 }
-.nextra-steps > li > div, .nextra-steps > li > p { flex: 1; min-width: 0; }
+.nextra-steps > h3:first-of-type::before { top: 2px; }
+.nextra-steps > p {
+  font-size: 14.5px !important;
+  line-height: 1.6 !important;
+  color: #2c3a4a;
+  margin-top: 4px !important;
+  padding-bottom: 12px;
+}
+html.dark .nextra-steps > p { color: var(--gb-text); }
 
 /* ── Décomposition premium (tableau chiffré) ─────────────────────────── */
 .av-ex {

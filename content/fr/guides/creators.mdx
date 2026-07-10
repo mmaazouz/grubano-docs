@@ -2,107 +2,150 @@
 title: "Créateur de recettes"
 description: "Soumettre des recettes de plats qu’un restaurant partenaire pourra adopter et cuisiner sous sa propre enseigne ; toucher une commission de 4 % sur les ventes de vos créations, et suivre vos gains."
 generated: true
-sourceHash: df4f83f5c96d31e3
+sourceHash: 56002dc06e6c5ebe
 generator: scripts/generate-feature-page.js
-templateVersion: 5
+templateVersion: 6
 ---
+
 import { Steps, Callout } from 'nextra/components'
 
 # Créateur de recettes
 
-Soumettez vos créations culinaires à un réseau de restaurants locaux ; vos recettes adoptées vous rapportent 4 % de chaque vente, en continu.
+Soumettez des recettes de plats qu’un restaurant partenaire pourra adopter et cuisiner sous sa propre enseigne ; touchez une commission de 4 % sur les ventes de vos créations, et suivez vos gains.
 
-<FlowDiagram steps={["Candidater","Soumettre une recette","Adoption par un resto","Commission 4 %"]} />
+<ArticleMeta audience="Créateurs" minutes={4} updated="2026-07-10" />
 
-## L’essentiel
+<Eyebrow icon="insights">Aperçu</Eyebrow>
 
-Vous êtes chef, cuisinier ou passionné de cuisine ? Publiez vos recettes sur Grubano. Quand un restaurant partenaire adopte l’une de vos créations et la cuisine sous son enseigne, vous touchez automatiquement 4 % du montant de chaque plat vendu. Votre commission court tant que le plat reste au [menu](/fr/guides/menu/) du restaurant — sans limite de durée ni plafond de gains.
+## Le parcours d’une recette
 
-## Comment ça marche
+<FlowDiagram steps={[
+  { icon: "menu_book", title: "Candidater", desc: "Postulez avec votre profil et vos concepts de plats" },
+  { icon: "restaurant", title: "Soumettre une recette", desc: "Publiez une recette complète dans votre espace" },
+  { icon: "storefront", title: "Adoption par un resto", desc: "Un restaurant adopte votre plat et le cuisine" },
+  { icon: "payments", title: "Commission 4 %", desc: "Vous touchez 4 % sur chaque vente de votre création" }
+]} />
 
-Les restaurants locaux recherchent en permanence de nouveaux concepts pour enrichir leur offre, sans mobiliser de temps de R&D. Votre rôle : leur proposer des recettes prêtes à l’emploi — nom, description, liste d’ingrédients, type de cuisine, photo et prix suggéré. Le restaurant choisit celles qui correspondent à son positionnement, les ajoute à sa carte, et les cuisine dans sa propre cuisine. Vous conservez la paternité intellectuelle de la recette ; le restaurant bénéficie d’un plat testé et validé, vous d’un flux de revenus passif indexé sur les ventes réelles.
+<Eyebrow icon="bolt">L’essentiel</Eyebrow>
 
-La plateforme suit automatiquement chaque vente : dès qu’une commande contient un plat issu de votre recette, 4 % du prix de vente sont portés à votre crédit. Vous visualisez vos gains, le nombre de ventes et les restaurants partenaires depuis votre espace créateur, en temps réel.
+## En bref
 
-## Étape par étape
+<Essentials title="Si vous ne devez retenir que ça :" items={[
+  <>Vous publiez des <b>recettes de plats</b> ; un restaurant partenaire peut les adopter et les cuisiner dans sa cuisine sous son enseigne.</>,
+  <>Vous touchez une <b>commission de 4 % sur chaque vente</b> de vos créations adoptées.</>,
+  <>Suivez vos <b>gains en temps réel</b> depuis votre espace créateur — le nombre d’adoptions, de ventes et votre revenu par recette.</>
+]} />
+
+<Eyebrow icon="lightbulb">Comment ça marche</Eyebrow>
+
+## Le principe (et le pourquoi)
+
+En tant que créateur de recettes, vous mettez votre savoir-faire culinaire au service de restaurants locaux qui cherchent à enrichir leur [menu](/fr/guides/menu/). Vous gardez la propriété intellectuelle de vos créations ; le restaurant qui adopte votre plat le cuisine dans sa cuisine et le vend sous sa propre enseigne — vous touchez une commission sur chaque vente sans avoir à gérer la production, la logistique ni la livraison.
+
+Vos recettes sont soumises à une validation automatique (vérification du contenu, originalité, pertinence culinaire) avant d’être publiées dans le catalogue visible par les restaurateurs. Une fois adoptée, votre recette entre au menu du restaurant partenaire ; vous percevez 4 % du prix de vente à chaque commande contenant votre plat.
+
+<Eyebrow icon="format_list_numbered">Étape par étape</Eyebrow>
+
+## Publier votre première recette
 
 <Steps>
 
-### Candidater au programme
+### Candidater
 
-Rendez-vous sur la page d’inscription créateurs. Renseignez votre nom, adresse e-mail, une courte biographie et vos éventuels comptes de réseaux sociaux (Instagram, TikTok, YouTube). Si vous avez une chaîne YouTube publique, copiez le code de vérification généré dans la description de votre chaîne : la plateforme validera automatiquement votre profil. Présentez jusqu’à trois concepts de plats initiaux pour illustrer votre style culinaire.
+Déposez votre candidature depuis la page d’accueil du portail créateurs. Renseignez votre profil (nom, bio, réseaux sociaux), indiquez le nombre d’abonnés et proposez jusqu’à trois concepts de plats. Votre demande est examinée automatiquement ; si vous liez une chaîne YouTube, vous devrez coller un code de vérification dans la description de votre chaîne pour prouver que vous en êtes bien le propriétaire.
 
 ### Soumettre une recette
 
-Une fois accepté, connectez-vous à votre espace créateur et cliquez sur **Soumettre une recette**. Complétez le nom du plat, la description (au moins 10 caractères), la liste des ingrédients, le type de cuisine, le prix suggéré et téléchargez une photo. Vous pouvez enregistrer un brouillon (aucune validation automatique) ou soumettre directement : la recette passe alors par une vérification de contenu instantanée — approuvée, elle rejoint immédiatement le catalogue visible des restaurants ; signalée, elle reste en attente de relecture manuelle.
+Une fois votre profil validé, accédez à votre espace créateur et cliquez sur « Soumettre une recette ». Décrivez le plat (nom, description, ingrédients, type de cuisine, prix suggéré), ajoutez une photo et publiez. La recette est validée automatiquement ; si elle est approuvée, elle apparaît immédiatement dans le catalogue des restaurateurs.
 
-<Callout type="info">
-Vos brouillons restent privés et ne sont jamais visibles des restaurants tant que vous ne les soumettez pas. Profitez-en pour affiner votre présentation avant publication.
-</Callout>
+### Suivre les adoptions
 
-### Adoption par un restaurant
+Consultez la section « Mes recettes » de votre tableau de bord pour voir quels restaurants ont adopté vos créations. Chaque adoption indique le nom du restaurant, la ville et le prix de vente pratiqué.
 
-Les restaurateurs parcourent le catalogue de recettes approuvées, filtrent par type de cuisine et prix, puis adoptent celles qui correspondent à leur offre. L’adoption est instantanée : le plat apparaît dans leur menu avec votre nom de créateur affiché publiquement. Le restaurant fixe librement son prix de vente final (qui peut différer de votre suggestion) ; votre commission de 4 % s’applique sur le prix réellement facturé au client.
+### Encaisser vos commissions
 
-### Suivre vos gains
-
-Chaque vente génère automatiquement une ligne de commission dans votre tableau de bord. Vous y consultez le nombre de ventes par recette, le chiffre d’affaires généré, vos gains cumulés et la liste des restaurants partenaires. Les montants sont affichés en temps réel, sans décalage. La plateforme prévoit d’ajouter prochainement un système de versement automatique vers votre compte bancaire.
+Pour chaque commande contenant votre plat, vous touchez 4 % du prix de vente. Vos gains s’affichent en temps réel dans l’onglet « Mes revenus » — le montant total, le détail par recette et le nombre de ventes. Les versements seront bientôt automatisés.
 
 </Steps>
 
-## Exemple concret
+<Eyebrow icon="calculate">Exemple concret</Eyebrow>
 
-Marco, chef autodidacte, soumet une recette de wrap végétarien revisité — avocat crémeux, pois chiches rôtis aux épices, sauce tahini maison. Un restaurant de quartier l’adopte et le vend 8,50 €. Chaque commande rapporte à Marco 0,34 € (4 % de 8,50 €). Le wrap rencontre un succès immédiat : 180 ventes le premier mois. Marco cumule ainsi 61,20 € de gains sans avoir cuisiné une seule fois, sans investissement matériel ni démarche commerciale. Tant que le restaurant garde le plat à sa carte, les commissions continuent de tomber, mois après mois.
+## Une recette à 250 ventes
 
-## Bonnes pratiques
+Vous publiez une recette de wrap ; un restaurant l’adopte et le vend 12 € sur Grubano. Le plat génère 250 ventes dans le mois.
 
-**Misez sur la clarté visuelle.** Une photo nette, lumineuse, qui fait saliver, multiplie vos chances d’adoption. Les restaurants jugent d’abord sur l’apparence — un plat appétissant se vend plus facilement et justifie un prix premium.
+<Breakdown title="Répartition d’une vente" rows={[
+  { icon: "restaurant", label: "Prix de vente", value: "12,00 €" },
+  { icon: "percent", label: "Commission Grubano (10 %)", value: "−1,20 €", variant: "minus" },
+  { icon: "menu_book", label: "Commission créateur (4 %)", value: "0,48 €", variant: "total" },
+  { icon: "storefront", label: "Net restaurant", value: "10,32 €" }
+]} />
 
-**Proposez des recettes réalistes.** Privilégiez des ingrédients courants, des techniques maîtrisables par n’importe quel cuisinier de restaurant, et un temps de préparation raisonnable. Une recette trop complexe ou nécessitant un équipement rare sera ignorée ; une recette simple et savoureuse sera adoptée rapidement.
+Sur 250 ventes, vous encaissez **120 €** (250 × 0,48 €) — le restaurant garde 2 580 €, et Grubano prélève 300 € de commission sur le chiffre d’affaires total. Cet exemple est illustratif ; le taux de 4 % est fixe et garanti par contrat.
 
-**Jouez sur la variété.** Plutôt que cinq variations de burger, diversifiez les types de cuisine (méditerranéen, asiatique, végétarien, comfort food) et les formats (entrée, plat, dessert). Vous touchez ainsi plusieurs segments de restaurants et multipliez vos sources de revenus.
+<Eyebrow icon="check_circle">Bonnes pratiques</Eyebrow>
 
-**Fixez un prix suggéré cohérent.** Un prix trop bas décourage l’adoption (le restaurant doute de la qualité perçue) ; un prix trop élevé limite le volume de ventes. Renseignez-vous sur les prix pratiqués localement pour le type de plat que vous proposez.
+## Maximiser l’adoption de vos recettes
 
-## Erreurs fréquentes
-
-<Callout type="warning">
-**Ne soumettez pas de recette identique ou quasi identique à un plat déjà présent dans le catalogue.** La vérification automatique détecte les doublons conceptuels et rejettera votre soumission. Apportez toujours une touche originale — ingrédient signature, technique de cuisson particulière, présentation distinctive.
+<Callout type="default">
+- **Soignez la présentation** — une belle photo et une description appétissante augmentent vos chances d’être adopté par un restaurant.
+- **Proposez des plats réalistes** — privilégiez des recettes compatibles avec une cuisine professionnelle standard (pas d’équipement trop spécifique) et un coût matière raisonnable.
+- **Variez les types de cuisine** — les restaurants cherchent à diversifier leur offre ; un catalogue éclectique augmente votre surface d’exposition.
+- **Restez actif** — publiez régulièrement de nouvelles recettes pour rester visible dans le catalogue des restaurateurs.
 </Callout>
 
-**Omettre la déclaration d’allergènes.** Si votre recette contient des allergènes courants (gluten, lactose, fruits à coque, crustacés…), indiquez-les explicitement. Si elle n’en contient aucun, sélectionnez « Aucun allergène » lors de la soumission. Une déclaration manquante bloque la publication.
+<Eyebrow icon="error">Erreurs à éviter</Eyebrow>
 
-**Négliger la description.** Une ligne générique (« Un plat délicieux ») ne donne aucune envie. Racontez l’histoire du plat, détaillez les saveurs, évoquez l’expérience gustative. Les restaurants recherchent des créations qu’ils peuvent mettre en valeur auprès de leurs clients — aidez-les en écrivant un texte vendeur.
+## Les pièges courants
+
+<Callout type="error">
+- **Négliger les ingrédients** — une liste vague ou incomplète complique l’adoption ; soyez précis (quantités, marques si pertinent, alternatives possibles).
+- **Ignorer les retours** — si une recette est refusée, lisez attentivement le motif de rejet et ajustez avant de la soumettre à nouveau.
+- **Multiplier les variantes proches** — deux recettes quasi identiques (ex. : « Wrap poulet » et « Wrap poulet épicé ») diluent votre catalogue ; privilégiez la diversité.
+</Callout>
+
+<Eyebrow icon="lightbulb">Astuce</Eyebrow>
+
+## Accélérez la validation
+
+Votre recette passe par une vérification automatique dès la soumission : pertinence culinaire, originalité, absence de contenu inapproprié. Pour maximiser vos chances d’approbation immédiate, rédigez une description structurée (contexte du plat, saveurs principales, suggestion d’accompagnement), listez les ingrédients de manière exhaustive et vérifiez que le prix suggéré est cohérent avec le coût matière. Une recette claire et complète est validée en quelques secondes.
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
 
 ## Questions fréquentes
 
 <Faq items={[
   {
-    icon: 'help',
-    q: 'Combien de temps faut-il pour qu’une recette soit approuvée ?',
-    a: 'La vérification automatique de contenu intervient quelques secondes après la soumission. Si elle détecte un problème (doublon, contenu inadapté), la recette reste en attente de relecture manuelle — comptez alors 24 à 48 heures. Les recettes conformes sont approuvées instantanément et rejoignent immédiatement le catalogue visible des restaurants.'
+    icon: "percent",
+    q: "La commission de 4 % est-elle négociable ?",
+    a: "Non, le taux de 4 % est fixe et s’applique à toutes les recettes adoptées. Il est garanti par contrat et prélevé automatiquement sur chaque vente contenant votre plat."
   },
   {
-    icon: 'help',
-    q: 'Puis-je modifier une recette déjà adoptée par un restaurant ?',
-    a: 'Vous pouvez créer une nouvelle version de la recette, mais l’adoption en cours reste liée à la version originale. Le restaurant devra adopter à nouveau la version révisée s’il souhaite l’intégrer. Cette règle protège la cohérence du menu côté restaurant et garantit que le plat servi correspond exactement à celui que vous avez soumis.'
+    icon: "restaurant",
+    q: "Combien de restaurants peuvent adopter une même recette ?",
+    a: "Une recette peut être adoptée par plusieurs restaurants simultanément — chacun la cuisine dans sa propre cuisine et la vend sous son enseigne. Vous touchez 4 % sur chaque vente, quel que soit le nombre d’adoptants."
   },
   {
-    icon: 'help',
-    q: 'Un restaurant peut-il arrêter de servir ma recette sans préavis ?',
-    a: 'Oui. Le restaurant gère librement son menu et peut retirer un plat à tout moment — changement de saison, rotation de l’offre, baisse de popularité. Vos commissions s’arrêtent dès le retrait, mais rien ne vous empêche de soumettre de nouvelles recettes pour compenser. Diversifiez vos créations et multipliez les adoptions pour lisser vos revenus.'
+    icon: "visibility",
+    q: "Puis-je retirer une recette du catalogue ?",
+    a: "Vous pouvez marquer une recette comme « brouillon » depuis votre espace créateur pour la retirer temporairement du catalogue visible par les restaurateurs. Les adoptions existantes restent actives ; vous continuez à percevoir des commissions tant que le restaurant garde le plat au menu."
   },
   {
-    icon: 'help',
-    q: 'Que se passe-t-il si deux créateurs soumettent la même recette ?',
-    a: 'La vérification automatique compare chaque nouvelle soumission aux recettes déjà présentes dans le catalogue. Si elle détecte une similarité forte (nom, ingrédients, concept), elle rejette la seconde soumission ou la signale pour relecture manuelle. Le premier créateur à avoir publié une recette approuvée conserve la priorité.'
+    icon: "account_balance",
+    q: "Quand suis-je payé ?",
+    a: "Vos gains s’affichent en temps réel dans l’onglet « Mes revenus » de votre espace créateur. Les versements automatisés seront bientôt disponibles ; pour l’instant, vos commissions s’accumulent sur votre compte et vous pouvez suivre le détail par recette."
   }
 ]} />
 
-## Pour aller plus loin
+<Eyebrow icon="menu_book">Pour aller plus loin</Eyebrow>
 
-**Étape suivante** — Une fois vos premières recettes soumises, surveillez les adoptions dans votre tableau de bord et consultez la documentation [Gestion du menu](/fr/guides/menu/) pour comprendre comment les restaurants découvrent et intègrent vos créations à leur offre.
+## Articles liés
 
-<Callout type="info">
-**Deux casquettes complémentaires** — En tant que créateur, vous pouvez également devenir [affilié](/fr/guides/affiliate/) et recommander des restaurants via un lien de parrainage. Les deux rôles se cumulent : vous touchez à la fois les commissions sur vos recettes adoptées (4 %) et les commissions d’affiliation sur les ventes générées par vos recommandations (taux distinct). Consultez la fiche Affiliation pour activer cette source de revenus additionnelle.
-</Callout>
+<RelatedCards items={[
+  {
+    icon: "restaurant",
+    title: "Menu & Scan IA",
+    sub: "Gérer et enrichir votre carte",
+    href: "/fr/guides/menu/"
+  }
+]} />

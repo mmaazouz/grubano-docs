@@ -19,11 +19,15 @@ if (!PAGES.length) throw new Error('audit-docs-v5: empty args — expected [{top
 const GUARDRAILS = `
 RÈGLEMENT DOC GRUBANO — critères d'audit (une page de doc consommateur/partenaire) :
 
-1. ZÉRO TAUX INTERNE. Les SEULS chiffres financiers publiables sont la commission
-   Grubano « 10 % » et l'abonnement « Grubano Pro 29 €/mois ». Tout AUTRE
-   pourcentage ou forfait (commission d'affiliation, redevance/royalties de
-   franchise, taux livreur, marge interne) est CONFIDENTIEL et ne doit PAS
-   apparaître. Un « 20 % », « 6 % », « 40 % », « 15 €/mois »… = VIOLATION.
+1. ZÉRO TAUX INTERNE. Chiffres financiers PUBLIABLES (canoniques, ne PAS les
+   signaler) : commission Grubano « 10 % », abonnement « Grubano Pro
+   29 €/mois », commission créateur « 4 % » sur ses recettes, commission
+   livreur « 20 % » sur les frais de livraison, pourboires « 100 % » au
+   livreur, seuil de retrait « 25 € ». Également ACCEPTABLES : pourcentages
+   ARITHMÉTIQUES dérivés du 10 % (90 % net…), taux de conversion/KPI dans un
+   exemple fictif chiffré cohérent. Tout AUTRE taux/forfait (commission
+   d'affiliation chiffrée, redevance/royalties franchise chiffrée, marge
+   interne) est CONFIDENTIEL = VIOLATION.
 2. PRO — cadrage canonique UNIQUEMENT : Grubano Pro = recevoir les commandes des
    AUTRES plateformes (Uber Eats, Deliveroo, Just Eat…) sur le tableau de bord
    Grubano (agrégation + rapports unifiés), forfait 29 €/mois qui s'AJOUTE à la
@@ -47,9 +51,14 @@ RÈGLEMENT DOC GRUBANO — critères d'audit (une page de doc consommateur/parte
 8. TON PÉDAGOGIQUE v5 : chaleureux, clair, explique le POURQUOI, parle au lecteur
    (« vous »). La page doit ÉDUQUER, pas être une fiche technique sèche. Une page
    plate/purement descriptive = FAIBLESSE (severity low), pas un blocker.
-9. APERÇU VISUEL v5 présent : au moins un composant visuel (<FlowDiagram>,
+9. APERÇU VISUEL présent : au moins un composant visuel (<FlowDiagram>,
    <JourneyStrip>, <RelatedActors>, <MiniMap>, <Comparison>, <LearningPath>) OU
    un bloc \`\`\`mermaid, placé haut dans la page. Absent = FAIBLESSE (severity med).
+10. STRUCTURE v6 (fidélité maquette article-v5) : la page doit contenir
+   <ArticleMeta audience=… minutes=… updated=…/> juste après le lead, et des
+   <Eyebrow icon=…>…</Eyebrow> avant les H2 de section (Aperçu, L'essentiel,
+   Comment ça marche, Étape par étape…). ArticleMeta manquante ou aucune
+   Eyebrow = FAIBLESSE (severity med, rule "10-structure-v6").
 `
 
 const FINDINGS_SCHEMA = {

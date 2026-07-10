@@ -122,9 +122,13 @@ jobs:
       # haut pour la marche à suivre de réactivation).
       # Idempotent via sourceHash — only files whose source changed cost API
       # calls. Skipped cleanly when the ANTHROPIC_API_KEY secret is absent.
+      # ⏸ HOLD TEMPORAIRE (LOT article-v5) : le FR v6 doit être FIGÉ et validé
+      # avant la passe de traduction unique. Retirer `if: false` au moment de
+      # lancer les ×4 (directive Mohammed « on traduira en une seule passe »).
       - name: Translate guides (FR → en/es/ar/it)
         id: translate
         working-directory: grubano-docs
+        if: false
         continue-on-error: true
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}

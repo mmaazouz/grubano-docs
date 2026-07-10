@@ -736,6 +736,24 @@ function sanitizeMdxBody(text, topicKey) {
     changed = true
     return `${a}’${b}`
   })
+  // Straight quotes NESTED inside a "…" prop string (q: "…marquer "Arrivée" ?")
+  // also kill acorn. On `key: "…"` prop lines, curl inner quotes: "x" → “x”.
+  body = body.replace(/^(\s*\w+:\s*")(.*)("\s*,?\s*)$/gm, (m, open, inner, close) => {
+    if (!inner.includes('"')) return m
+    changed = true
+    return open + inner.replace(/"([^"]*)"/g, '“$1”').replace(/"/g, '”') + close
+  })
+  // Consolidate nextra/components imports: the model sometimes drops one
+  // MID-BODY, glued to the next JSX line — an acorn import error. Collect
+  // every occurrence, remove them all, and re-emit ONE import at the top
+  // (the coverage fixer below may still widen it).
+  const importRe = /^[ \t]*import\s+\{([^}]+)\}\s+from\s+['"]nextra\/components['"][ \t]*;?[ \t]*\n?/gm
+  const found = [...body.matchAll(importRe)]
+  if (found.length) {
+    const names = [...new Set(found.flatMap((m) => m[1].split(',').map((s) => s.trim())))]
+    body = body.replace(importRe, () => { changed = true; return '' }).trim()
+    body = `import { ${names.join(', ')} } from 'nextra/components'\n\n` + body
+  }
 
   // If the body uses <Steps> / <Callout>, the nextra/components import must
   // COVER every used component — an import of only { Steps } with a <Callout>
