@@ -1,11 +1,30 @@
 {
-  "_comment": "App↔docs link contract. Maps stable topic keys to documentation paths (locale-relative) and, eventually, to the matching deep-link in the Grubano app. The full doc URL is `${base}/${locale}${doc}` (e.g. https://docs.grubano.com/fr/guides/pro/). The `app` field is null today and will be filled in once the corresponding routes are verified on the app side — do not invent deep links. Doc paths listed here are the public, frozen URLs: do not rename them without bumping `version`. Source of truth lives in this file (https://docs.grubano.com/docs-map.json) — consumers should fetch it at build time or at runtime with a cache.",
-  "version": 1,
+  "_comment": "App↔docs link contract. topic key -> { doc (locale-relative), app (deep-link, null until app routes verified) }. Full URL = base + '/' + locale + doc. Slugs are a public contract: do not rename without bumping version. v2 = extended publics (fournisseurs, affiliés, influenceurs, livreurs, ressources).",
+  "version": 2,
   "base": "https://docs.grubano.com",
-  "locales": ["fr", "en"],
+  "locales": [
+    "fr",
+    "en"
+  ],
   "topics": {
     "intro": {
       "doc": "/getting-started",
+      "app": null
+    },
+    "home": {
+      "doc": "/",
+      "app": null
+    },
+    "consumer.order": {
+      "doc": "/guides/consumer",
+      "app": null
+    },
+    "consumer.loyalty": {
+      "doc": "/guides/consumer-loyalty",
+      "app": null
+    },
+    "consumer.account": {
+      "doc": "/guides/consumer-account",
       "app": null
     },
     "restaurant.quick-start": {
@@ -32,20 +51,64 @@
       "doc": "/guides/reservations",
       "app": null
     },
+    "restaurant.finances": {
+      "doc": "/guides/finances",
+      "app": null
+    },
     "restaurant.pro": {
       "doc": "/guides/pro",
       "app": null
     },
-    "consumer.order": {
-      "doc": "/guides/consumer",
+    "supplier.overview": {
+      "doc": "/guides/supplier",
+      "app": null
+    },
+    "supplier.catalog": {
+      "doc": "/guides/supplier-catalog",
       "app": null
     },
     "franchise": {
       "doc": "/guides/franchise",
       "app": null
     },
+    "franchise.operations": {
+      "doc": "/guides/franchise-operations",
+      "app": null
+    },
     "creators": {
       "doc": "/guides/creators",
+      "app": null
+    },
+    "affiliate.overview": {
+      "doc": "/guides/affiliate",
+      "app": null
+    },
+    "influencer.overview": {
+      "doc": "/guides/influencer",
+      "app": null
+    },
+    "driver.overview": {
+      "doc": "/guides/driver",
+      "app": null
+    },
+    "driver.earnings": {
+      "doc": "/guides/driver-earnings",
+      "app": null
+    },
+    "driver.tracking": {
+      "doc": "/guides/driver-tracking",
+      "app": null
+    },
+    "payments-security": {
+      "doc": "/guides/payments-security",
+      "app": null
+    },
+    "privacy": {
+      "doc": "/guides/privacy",
+      "app": null
+    },
+    "legal": {
+      "doc": "/guides/legal",
       "app": null
     },
     "api": {
