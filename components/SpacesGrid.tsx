@@ -25,14 +25,14 @@ type Space = {
 // their real routes.
 const SPACES: Record<string, Space[]> = {
   fr: [
-    { key: 'clients',      icon: 'restaurant',      title: 'Clients',       subtitle: 'Commander, suivre et payer',              href: '/fr/guides/consumer/' },
-    { key: 'restaurateur', icon: 'storefront',      title: 'Restaurateurs', subtitle: 'Vendre et gérer mon établissement',       href: '/fr/guides/restaurant/' },
-    { key: 'fournisseurs', icon: 'local_shipping',  title: 'Fournisseurs',  subtitle: 'Vendre mes approvisionnements',           href: '/fr/guides/supplier/' },
-    { key: 'franchises',   icon: 'hub',             title: 'Franchisés',    subtitle: 'Exploiter une marque, plusieurs points',  href: '/fr/guides/franchise/' },
+    { key: 'clients',      icon: 'restaurant',      title: 'Clients',       subtitle: 'Commander, suivre et payer',              href: '/fr/guides/espace-clients/' },
+    { key: 'restaurateur', icon: 'storefront',      title: 'Restaurateurs', subtitle: 'Vendre et gérer mon établissement',       href: '/fr/guides/espace-restaurateurs/' },
+    { key: 'fournisseurs', icon: 'local_shipping',  title: 'Fournisseurs',  subtitle: 'Vendre mes approvisionnements',           href: '/fr/guides/espace-fournisseurs/' },
+    { key: 'franchises',   icon: 'hub',             title: 'Franchisés',    subtitle: 'Exploiter une marque, plusieurs points',  href: '/fr/guides/espace-franchises/' },
     { key: 'createurs',    icon: 'restaurant_menu', title: 'Créateurs',     subtitle: 'Proposer mes recettes',                   href: '/fr/guides/creators/' },
     { key: 'affilies',     icon: 'link',            title: 'Affiliés',      subtitle: 'Promouvoir et gagner',                    href: '/fr/guides/affiliate/' },
     { key: 'influenceurs', icon: 'campaign',        title: 'Influenceurs',  subtitle: 'Statut vérifié, gros volumes',            href: '/fr/guides/influencer/' },
-    { key: 'livreurs',     icon: 'two_wheeler',     title: 'Livreurs',      subtitle: 'Livrer et gérer mes courses',             href: '/fr/guides/driver/' },
+    { key: 'livreurs',     icon: 'two_wheeler',     title: 'Livreurs',      subtitle: 'Livrer et gérer mes courses',             href: '/fr/guides/espace-livreurs/' },
     { key: 'developpeurs', icon: 'code',            title: 'Développeurs',  subtitle: 'API & intégrations',                      soon: true },
   ],
   en: [

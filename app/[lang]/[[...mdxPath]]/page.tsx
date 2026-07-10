@@ -40,7 +40,14 @@ export default async function Page(props: {
   // Bottom rail of every guide article (article-v5 order): CTA « Ouvrir dans
   // Grubano » → feedback Oui/Non → cartes Précédent / Suivant. Nextra's own
   // pagination + « Last updated » are disabled via the guides _meta theme.
-  const isGuidePage = (params.mdxPath?.[0] ?? '') === 'guides' && (params.mdxPath?.length ?? 0) > 1
+  // Landings « Démarrer ici » (espace-*) : pas de rail bas — ce sont des
+  // sommaires d'espace, pas des articles (le CTA/feedback/prev-next y serait
+  // du bruit).
+  const slug0 = params.mdxPath?.[1] ?? ''
+  const isGuidePage =
+    (params.mdxPath?.[0] ?? '') === 'guides' &&
+    (params.mdxPath?.length ?? 0) > 1 &&
+    !slug0.startsWith('espace-')
   let bottomContent = undefined
   if (isGuidePage) {
     const order = await guidesOrder(params.lang)

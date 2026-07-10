@@ -19,6 +19,7 @@ import {
   Breakdown,
   RelatedCards,
 } from '@/components/ArticleV5'
+import { SpaceHero, ActionGroup, ActionCards } from '@/components/SpaceLanding'
 
 // Anything added here becomes usable in .mdx without an explicit import.
 const base = getDocsMDXComponents()
@@ -44,4 +45,8 @@ export const useMDXComponents = ((components?: Record<string, unknown>) => ({
   Essentials,
   Breakdown,
   RelatedCards,
+  // landing d'espace « Démarrer ici » (maquette landing-espace)
+  SpaceHero,
+  ActionGroup,
+  ActionCards,
 })) as typeof getDocsMDXComponents
