@@ -40,14 +40,24 @@ const COPY = {
 
 type Lang = keyof typeof COPY
 
-export function AppCTA({ lang }: { lang: string }): ReactNode {
+export function AppCTA({
+  lang,
+  title,
+  body,
+}: {
+  lang: string
+  /** Libellé contextuel par topic (audit fidélité, point 9) — le bouton
+   *  « Ouvrir dans Grubano » reste fixe, comme la maquette. */
+  title?: string
+  body?: string
+}): ReactNode {
   const t = (COPY as Record<string, (typeof COPY)[Lang]>)[lang] ?? COPY.fr
 
   return (
     <aside className="av-cta" aria-label={t.cta}>
       <div className="av-cta__m">
-        <b>{t.title}</b>
-        <span>{t.body}</span>
+        <b>{title ?? t.title}</b>
+        <span>{body ?? t.body}</span>
       </div>
       <a
         className="av-cta__btn"

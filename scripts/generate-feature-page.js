@@ -306,17 +306,30 @@ function gatherFacts(cfg) {
   return facts
 }
 
-function relatedDocLinks(relatedKeys, locale) {
-  const out = []
-  for (const key of relatedKeys || []) {
-    const entry = DOCS_MAP.topics[key]
-    if (!entry?.doc) continue
-    out.push({
-      href: `/${locale}${entry.doc}/`,
-      title: FEATURE_PAGES[key]?.title || key,
-    })
+function relatedDocLinks(relatedKeys, locale, cfg) {
+  // La maquette article-v5 montre 4 cartes « Articles liés » : complète
+  // related avec mirrors puis les topics du même public (même logique que
+  // scripts/fix-related-cards.js).
+  const keys = []
+  const seen = new Set(cfg ? [topicKeyFor(cfg)] : [])
+  const push = (k) => {
+    if (keys.length >= 4 || !k || seen.has(k)) return
+    if (!FEATURE_PAGES[k]?.docPath) return
+    seen.add(k)
+    keys.push(k)
   }
-  return out
+  for (const k of relatedKeys || []) push(k)
+  for (const k of cfg?.mirrors || []) push(k)
+  if (cfg) {
+    for (const [k, t] of Object.entries(FEATURE_PAGES)) {
+      if (keys.length >= 4) break
+      if (t.audience === cfg.audience) push(k)
+    }
+  }
+  return keys.map((key) => ({
+    href: `/${locale}${FEATURE_PAGES[key].docPath}/`,
+    title: FEATURE_PAGES[key].title || key,
+  }))
 }
 
 // ── Notion slicing (per-topic) ──────────────────────────────────────────────
@@ -596,7 +609,7 @@ function computeStateDiagram(cfg, facts) {
 }
 
 function buildPrompt(cfg, facts, slices) {
-  const RELATED_LINKS = relatedDocLinks(cfg.related, cfg.locale)
+  const RELATED_LINKS = relatedDocLinks(cfg.related, cfg.locale, cfg)
   const FLOW_STEPS = cfg.flow || []
   const INLINE_LINKS = cfg.inlineLinks || {}
   const stateDiagram = computeStateDiagram(cfg, facts)

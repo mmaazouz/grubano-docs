@@ -3,6 +3,19 @@ import { getPageMap } from 'nextra/page-map'
 import { useMDXComponents } from '@/mdx-components'
 import { AppCTA } from '@/components/AppCTA'
 import { Feedback, PrevNext } from '@/components/ArticleV5'
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const { FEATURE_PAGES, TOPIC_EXTRAS } = require('@/scripts/feature-pages.config.js') as {
+  FEATURE_PAGES: Record<string, { docPath?: string; locale?: string }>
+  TOPIC_EXTRAS: Record<string, { cta?: { title: string; body: string } }>
+}
+
+/** CTA contextuel du topic dont la fiche FR répond à ce slug (fidélité pt 9). */
+function ctaForSlug(slug: string): { title: string; body: string } | undefined {
+  for (const [key, cfg] of Object.entries(FEATURE_PAGES)) {
+    if (cfg.docPath?.split('/').pop() === slug) return TOPIC_EXTRAS[key]?.cta
+  }
+  return undefined
+}
 
 // Generate every (lang, mdxPath) tuple from content/<lang>/** at build time.
 // `output: 'export'` requires every dynamic route to be statically enumerated.
@@ -55,9 +68,12 @@ export default async function Page(props: {
     const idx = order.findIndex((o) => o.name === slug)
     const prev = idx > 0 ? order[idx - 1] : null
     const next = idx >= 0 && idx < order.length - 1 ? order[idx + 1] : null
+    // Libellé CTA contextuel (FR uniquement tant que les traductions sont
+    // gelées ; les autres locales gardent le libellé générique localisé).
+    const cta = params.lang === 'fr' ? ctaForSlug(slug) : undefined
     bottomContent = (
       <>
-        <AppCTA lang={params.lang} />
+        <AppCTA lang={params.lang} title={cta?.title} body={cta?.body} />
         <Feedback />
         <PrevNext prev={prev} next={next} />
       </>

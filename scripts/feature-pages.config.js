@@ -539,4 +539,32 @@ function buildEditorialPaths() {
 
 const EDITORIAL_PAGES = buildEditorialPaths()
 
-module.exports = { AUDIENCES, EDITORIAL_PAGES, FEATURE_PAGES }
+// ── Extras par topic (audit de fidélité article-v5) ─────────────────────────
+// card : icône Material + sous-ligne des cartes « Articles liés » / landings.
+// cta  : libellé contextuel du bloc CTA de fin d'article (le bouton reste
+//        « Ouvrir dans Grubano », comme la maquette).
+const TOPIC_EXTRAS = {
+  'consumer.order':          { card: { icon: 'shopping_bag',     sub: 'Commander et suivre' },        cta: { title: 'Commandez votre prochain repas',        body: 'Trouvez un restaurant local et suivez votre commande en direct.' } },
+  'consumer.loyalty':        { card: { icon: 'loyalty',          sub: 'Points et parrainage' },        cta: { title: 'Découvrez vos récompenses',             body: 'Points, paliers et parrainage, dans votre espace fidélité.' } },
+  'consumer.account':        { card: { icon: 'person',           sub: 'Profil et adresses' },          cta: { title: 'Gérez votre compte',                    body: 'Profil, adresses et préférences, en quelques clics.' } },
+  'restaurant.dashboard':    { card: { icon: 'insights',         sub: 'Indicateurs en direct' },       cta: { title: 'Pilotez votre activité en direct',      body: 'Chiffre d’affaires, commandes et stocks, sur un seul écran.' } },
+  'restaurant.menu':         { card: { icon: 'menu_book',        sub: 'Carte et Scan IA' },            cta: { title: 'Composez votre carte',                  body: 'Ajoutez un plat en quelques clics ou scannez-le avec l’IA.' } },
+  'restaurant.stocks':       { card: { icon: 'inventory_2',      sub: 'Journal et alertes' },          cta: { title: 'Gérez vos stocks',                      body: 'Journal, seuils d’alerte et suggestions IA.' } },
+  'restaurant.loyalty':      { card: { icon: 'loyalty',          sub: 'Fidéliser vos clients' },       cta: { title: 'Créez votre programme fidélité',        body: 'Points, récompenses et clients réguliers.' } },
+  'restaurant.reservations': { card: { icon: 'table_restaurant', sub: 'Tables et no-show' },           cta: { title: 'Configurez vos réservations',           body: 'Tables, créneaux et empreinte bancaire.' } },
+  'restaurant.finances':     { card: { icon: 'payments',         sub: 'Commission et versements' },    cta: { title: 'Consultez vos finances en direct',      body: 'Chiffre d’affaires, commission et prochain versement, en temps réel.' } },
+  'restaurant.quick-start':  { card: { icon: 'bolt',             sub: 'Prêt en 15 minutes' } },
+  'restaurant.pro':          { card: { icon: 'workspace_premium', sub: 'Agrégation multi-plateformes' } },
+  'supplier.overview':       { card: { icon: 'storefront',       sub: 'Vendre aux restaurants' } },
+  'supplier.catalog':        { card: { icon: 'inventory_2',      sub: 'Catalogue et commandes' },      cta: { title: 'Gérez votre catalogue',                 body: 'Produits, zones de livraison et commandes reçues.' } },
+  'franchise':               { card: { icon: 'hub',              sub: 'Le modèle Grubano' },           cta: { title: 'Découvrez la franchise Grubano',        body: 'Ouvrez votre marque au réseau ou candidatez à un concept éprouvé.' } },
+  'franchise.operations':    { card: { icon: 'insights',         sub: 'Piloter le réseau' },           cta: { title: 'Pilotez votre réseau',                  body: 'Les performances consolidées de vos établissements.' } },
+  'creators':                { card: { icon: 'restaurant_menu',  sub: 'Recettes et commissions' },     cta: { title: 'Créez votre première recette',          body: 'Soumettez un plat — un restaurant l’adopte et le cuisine.' } },
+  'affiliate.overview':      { card: { icon: 'link',             sub: 'Recommander et gagner' },       cta: { title: 'Commencez à recommander',               body: 'Obtenez votre lien de parrainage et suivez vos gains.' } },
+  'influencer.overview':     { card: { icon: 'campaign',         sub: 'Statut vérifié' },              cta: { title: 'Demandez votre vérification',           body: 'Passez au statut influenceur et rejoignez des programmes.' } },
+  'driver.overview':         { card: { icon: 'two_wheeler',      sub: 'Candidature et missions' },     cta: { title: 'Commencez à livrer',                    body: 'Candidatez et recevez vos premières missions.' } },
+  'driver.earnings':         { card: { icon: 'payments',         sub: 'Gains et retraits' },           cta: { title: 'Suivez vos gains',                      body: 'Solde, pourboires et historique de retraits.' } },
+  'driver.tracking':         { card: { icon: 'location_on',      sub: 'Position en direct' } },
+}
+
+module.exports = { AUDIENCES, EDITORIAL_PAGES, FEATURE_PAGES, TOPIC_EXTRAS }
