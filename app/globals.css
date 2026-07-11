@@ -591,6 +591,10 @@ div.nextra-code {
   font-size: 16.5px;
   color: var(--gb-muted);
   margin-top: 14px !important;
+  /* la règle « lead » d'article (h1 + p → max-width 64ch) ne doit pas
+     attraper le sous-titre du hero : maquette = pleine largeur de hero__in
+     (712px utiles) → une seule ligne. */
+  max-width: none !important;
 }
 
 /* Hero GLOBAL search — wraps an embedded Nextra <Search>. The big pill look
@@ -907,6 +911,20 @@ div.nextra-code {
    full width so the hero and spaces grid span edge-to-edge like the mockup. */
 .gb-home { max-width: 100%; }
 .gb-home > * { margin-top: 0 !important; }
+
+/* Largeur ACCUEIL = maquette (au pixel). Nextra réserve le spacer sidebar
+   (256px) et l'aside TOC (232px) même sur la landing type:page → l'article
+   était clippé à ~681px (sous-titre sur 2 lignes, cartes resserrées).
+   Full-bleed sur la home, puis chaque section retrouve le .wrap maquette :
+   max-width 1180px · margin 0 auto · padding 0 24px. */
+body:has(.gb-home) .nextra-toc { display: none !important; width: 0 !important; }
+body:has(.gb-home) [class*='max-xl:hidden'] { display: none !important; }
+body:has(.gb-home) article { padding: 0 !important; max-width: none !important; }
+.gb-sec > * {
+  max-width: 1180px;
+  margin-inline: auto;
+  padding-inline: 24px;
+}
 
 /* ── 17. FlowDiagram — updated to new tokens ──────────────────────────── */
 .grubano-flow {
