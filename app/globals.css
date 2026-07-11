@@ -444,7 +444,9 @@ html.dark .nextra-content p { color: var(--gb-text); }
 .nextra-callout[data-type='warning'] svg { color: var(--gb-warning) !important; }
 
 /* ── 9. Nextra — code blocks ──────────────────────────────────────────── */
-.nextra-code {
+/* ⚠ Nextra 4 pose .nextra-code sur les BLOCS (div>pre) ET le code INLINE :
+   restreint au div pour que les badges inline ne deviennent pas navy. */
+div.nextra-code {
   border-radius: var(--gb-r-lg) !important;
   border: 1px solid var(--gb-ink-2) !important;
   background: var(--gb-ink) !important;
@@ -461,17 +463,8 @@ html.dark .nextra-content p { color: var(--gb-text); }
 }
 .nextra-code code { color: inherit !important; }
 
-/* Inline code inside prose */
-.nextra-content code:not(pre code) {
-  font-family: var(--gb-font-mono), ui-monospace, monospace;
-  font-size: 0.88em;
-  background: var(--gb-surface-2);
-  border: 1px solid var(--gb-border);
-  border-radius: 6px;
-  padding: 1px 6px;
-  color: var(--gb-ink);
-}
-html.dark .nextra-content code:not(pre code) { color: var(--gb-text); }
+/* Inline code inside prose → style « badge neutre surface » dans
+   app/article-v5.css (.nextra-content n'existe plus en Nextra 4). */
 
 /* ── 10. Nextra — cards (used by Nextra <Cards>) ──────────────────────── */
 .nextra-card {

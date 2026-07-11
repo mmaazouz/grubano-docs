@@ -59,6 +59,76 @@ aside.nextra-sidebar-container {
   border-inline-end: 1px solid var(--gb-border) !important;
 }
 
+/* ── Sidebar maquette : catégories directes à icône, dépliables ────────
+   (.side__gh : 12px/800/uppercase/.03em muted-2, icône 18px, chevron ;
+    .side__item : 13.5/600 muted, actif = zest + barre inline-start.) */
+.nextra-sidebar li:has(> .sb-cat),
+.nextra-sidebar li:has(.sb-cat) {
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 8px 10px !important;
+  margin: 0 !important;
+}
+.nextra-sidebar li:has(.sb-cat):hover .sb-cat__t { color: var(--gb-text); }
+.sb-cat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+.sb-cat__ic { font-size: 18px !important; color: var(--gb-muted); }
+.sb-cat__t {
+  flex: 1;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--gb-muted-2);
+}
+.sb-cat__ch {
+  font-size: 17px !important;
+  color: var(--gb-muted-2);
+  transition: transform 0.15s;
+}
+li[data-open='true'] .sb-cat__ch { transform: rotate(90deg); }
+[dir='rtl'] li[data-open='true'] .sb-cat__ch { transform: rotate(90deg) scaleX(-1); }
+/* Articles de catégorie (maquette .side__item) */
+.nextra-sidebar ul a {
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  color: var(--gb-muted) !important;
+  padding: 7px 10px 7px 34px !important;
+  border-radius: 8px;
+  border-inline-start: 2px solid transparent;
+  margin-inline-start: 8px;
+}
+[dir='rtl'] .nextra-sidebar ul a { padding: 7px 34px 7px 10px !important; }
+.nextra-sidebar ul a:hover {
+  color: var(--gb-text) !important;
+  background: var(--gb-surface-2) !important;
+}
+.nextra-sidebar ul a[aria-current],
+.nextra-sidebar ul a[class*='text-primary'] {
+  color: var(--gb-zest-600) !important;
+  font-weight: 800 !important;
+  background: var(--gb-zest-bg) !important;
+  border-inline-start-color: var(--gb-zest) !important;
+}
+
+/* ── Code inline dans la prose → badge « neutre surface » (décision
+   Mohammed — la maquette n'a pas de style dédié ; fini le navy plein). */
+code.nextra-code:not(pre code),
+article main :not(pre) > code {
+  background: var(--gb-surface-2) !important;
+  color: var(--gb-text) !important;
+  border: 1px solid var(--gb-border) !important;
+  font-family: var(--gb-font-mono), ui-monospace, monospace !important;
+  font-size: 13px !important;
+  border-radius: 6px !important;
+  padding: 2px 7px !important;
+  box-shadow: none !important;
+}
+
 /* Gabarit de page (maquette .layout : 266px | 1fr | 232px, max 1320px,
    header ≈ 61px). Nextra expose navbar-height en var ; le reste en dur. */
 :root,

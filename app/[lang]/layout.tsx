@@ -3,6 +3,7 @@ import { Head } from 'nextra/components'
 import { getPageMap } from 'nextra/page-map'
 import type { ReactNode } from 'react'
 import { HtmlLangSync } from '@/components/HtmlLangSync'
+import { SidebarGroups } from '@/components/SidebarGroups'
 import { LangSwitch } from '@/components/LangSwitch'
 import { SiteFooter } from '@/components/SiteFooter'
 import { NavbarSearch } from '@/components/NavbarSearch'
@@ -109,6 +110,7 @@ export default async function LocaleLayout({
         toc={t.toc}
       >
         <HtmlLangSync lang={lang} />
+        <SidebarGroups />
         {children}
       </Layout>
     </>

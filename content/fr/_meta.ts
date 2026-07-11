@@ -20,10 +20,11 @@ export default {
       breadcrumb: false,
     },
   },
-  'getting-started': 'Découvrir Grubano',
+  // hors sidebar (maquette) — atteignable depuis l'accueil « Pour bien démarrer »
+  'getting-started': { title: 'Découvrir Grubano', display: 'hidden' },
   // pagination/timestamp Nextra désactivés : remplacés par les cartes
   // Précédent/Suivant + la meta « Mis à jour le » localisée (article-v5).
-  guides: { title: "Guides", theme: { pagination: false, timestamp: false, copyPage: false } },
+  guides: { title: "Guides", display: 'children', theme: { pagination: false, timestamp: false, copyPage: false } },
   api: 'API Reference',
   changelog: 'Changelog',
 } satisfies MetaRecord

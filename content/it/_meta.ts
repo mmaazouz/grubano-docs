@@ -13,8 +13,9 @@ export default {
       breadcrumb: false,
     },
   },
-  'getting-started': 'Scoprire Grubano',
+  // hors sidebar (maquette) — atteignable depuis l'accueil « Pour bien démarrer »
+  'getting-started': { title: 'Scoprire Grubano', display: 'hidden' },
   // pagination/timestamp Nextra désactivés : remplacés par les cartes
   // Précédent/Suivant + la meta « Mis à jour le » localisée (article-v5).
-  guides: { title: "Guide", theme: { pagination: false, timestamp: false, copyPage: false } },
+  guides: { title: "Guide", display: 'children', theme: { pagination: false, timestamp: false, copyPage: false } },
 } satisfies MetaRecord
