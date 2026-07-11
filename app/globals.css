@@ -634,11 +634,33 @@ div.nextra-code {
   border-color: var(--gb-zest);
   box-shadow: 0 0 0 4px rgba(255, 106, 31, .14), var(--gb-shadow);
 }
-/* Nextra's ⌘K hint sits at the input's trailing edge */
-.gb-hero__pagefind kbd,
-.gb-hero__pagefind .nextra-kbd {
-  inset-inline-end: 18px;
+/* Raccourci ⌘K/CTRL K DANS le champ (maquette .search__kbd) : ancêtre
+   positionné = le champ lui-même, sinon l'absolu de Nextra dérive hors du
+   hero et flotte près de la ligne « Populaire ». Style maquette : mono 11px
+   700 muted-2 sur surface-2, rayon 6, bord border-2. Caché pendant la
+   saisie (focus) et sur mobile. */
+.gb-hero__pagefind { position: relative; }
+.gb-hero__pagefind kbd {
+  position: absolute !important;
+  inset-inline-end: 18px !important;
+  inset-inline-start: auto !important;
+  top: 50% !important;
+  transform: translateY(-50%);
+  margin: 0 !important;
+  height: auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  font-family: var(--gb-font-mono), ui-monospace, monospace !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  color: var(--gb-muted-2) !important;
+  background: var(--gb-surface-2) !important;
+  border: 1px solid var(--gb-border-2) !important;
+  border-radius: 6px !important;
+  padding: 3px 7px !important;
 }
+.gb-hero__search:focus-within .gb-hero__pagefind kbd { opacity: 0 !important; }
+@media (max-width: 640px) { .gb-hero__pagefind kbd { display: none !important; } }
 
 .gb-hero__pop {
   margin-top: 16px;

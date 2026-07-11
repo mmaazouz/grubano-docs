@@ -7,6 +7,7 @@ import { SidebarGroups } from '@/components/SidebarGroups'
 import { LangSwitch } from '@/components/LangSwitch'
 import { SiteFooter } from '@/components/SiteFooter'
 import { NavbarSearch } from '@/components/NavbarSearch'
+import { HeaderAppLink } from '@/components/HeaderAppLink'
 
 // Per-locale UI labels for our own header/footer + the minimal Nextra chrome
 // we keep (the TOC title). editLink / feedback are intentionally NOT configured
@@ -71,22 +72,17 @@ export default async function LocaleLayout({
 
   const pageMap = await getPageMap(`/${lang}`)
 
-  // Navbar search slot: on doc pages NavbarSearch shows a scope toggle —
-  // « Toute la doc » (global Pagefind, default) ↔ « Cette page » (in-page
-  // section search). On the home it renders nothing (the hero hosts the global
-  // field). This keeps whole-doc search reachable from every article.
+  // Navbar search slot: a single global Pagefind search on doc pages;
+  // nothing on the home (the hero hosts the global field).
   const search = <NavbarSearch lang={lang} />
 
-  // Navbar — logo left, search middle (from Layout's search prop),
-  // then children on the right: "Accueil" link + custom LangSwitch.
-  // No projectLink (removes GitHub icon), no i18n (removes Nextra's
-  // LocaleSwitch — replaced by our LangSwitch). Theme switch hidden via CSS.
+  // Navbar — logo left, search middle (from Layout's search prop), then on
+  // the right: « Retour à l'app » on the HOME only (accueil.html), nothing on
+  // articles (article.html), + custom LangSwitch. No projectLink, no i18n
+  // (LangSwitch replaces Nextra's LocaleSwitch), theme switch hidden via CSS.
   const navbar = (
     <Navbar logo={brand}>
-      <a href={`/${lang}/`} className="hd__link" aria-label={t.home}>
-        <span className="ms">home</span>
-        <span>{t.home}</span>
-      </a>
+      <HeaderAppLink lang={lang} />
       <LangSwitch />
     </Navbar>
   )
