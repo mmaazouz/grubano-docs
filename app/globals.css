@@ -158,6 +158,8 @@ html.dark .nextra-navbar nav {
 /* Drop the "Centre d'aide" tag earlier (below ~900px) to keep the lockup
    compact next to the sidebar column; hide entirely on mobile. */
 @media (max-width: 900px) { .grubano-logo__badge { display: none; } }
+/* Cahier responsive : ≤980px le MOT « Grubano » disparaît (symbole gardé). */
+@media (max-width: 980px) { .grubano-logo__wordmark { display: none; } }
 
 /* Right-side "Accueil" link in the header (mockup: .hd__link) */
 .hd__link {
@@ -549,7 +551,11 @@ div.nextra-code {
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid var(--gb-border);
-  margin: -34px calc(-1 * var(--nextra-content-width, 0px)) 0;
+  /* L'article de la home est full-bleed (bloc 9) : plus AUCUNE marge
+     négative. L'ancien hack calc(-1 * --nextra-content-width) projetait le
+     hero à ~3020px → débordement horizontal sur toutes les largeurs. */
+  margin: 0;
+  width: 100%;
 }
 .gb-hero::before {
   content: "";
@@ -586,6 +592,10 @@ div.nextra-code {
   line-height: 1.1;
   color: var(--gb-text);
   margin: 0;
+}
+/* Cahier responsive : ≤640px le H1 du hero passe à 31px (maquette). */
+@media (max-width: 640px) {
+  .gb-hero__in h1 { font-size: 31px !important; }
 }
 .gb-hero__subtitle {
   font-size: 16.5px;

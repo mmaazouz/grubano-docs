@@ -171,6 +171,11 @@ article main h2 {
 @media (max-width: 620px) {
   article main h1 { font-size: 30px !important; }
 }
+/* Mobile principal (≤760, maquette .content) : padding 26px 20px 50px. */
+@media (max-width: 760px) {
+  article main { padding: 26px 20px 50px !important; }
+  body:has(.gb-home) article main { padding: 0 !important; } /* home full-bleed */
+}
 
 /* ── Zone 1 : lead (1er paragraphe sous le H1) + meta ────────────────── */
 article main h1 + p,
