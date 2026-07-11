@@ -2,7 +2,7 @@
 title: "Gestion des stocks"
 description: "Tenir l'inventaire d'une marque à jour : ajouter des articles, suivre les quantités et les DLC, recevoir des alertes de réapprovisionnement, et mettre à jour les stocks en langage naturel via l'IA."
 generated: true
-sourceHash: a432ce8a73cec212
+sourceHash: a743dc4d328bad6d
 generator: scripts/generate-feature-page.js
 templateVersion: 6
 ---
@@ -11,19 +11,19 @@ import { Steps, Callout } from 'nextra/components'
 
 # Gestion des stocks
 
-Tenez l’inventaire de votre marque à jour en temps réel, définissez des seuils de réapprovisionnement et recevez des alertes avant la rupture – ou mettez à jour vos stocks en langage naturel grâce à l’IA.
+Tenez l’inventaire de votre marque à jour en ajoutant des articles, en suivant les quantités et les DLC, en recevant des alertes de réapprovisionnement et en mettant à jour vos stocks en langage naturel grâce à l’IA.
 
-<ArticleMeta audience="Restaurateurs" minutes={4} updated="2026-07-10" />
+<ArticleMeta audience="Restaurateurs" minutes={5} updated="2026-07-11" />
 
 <Eyebrow icon="insights">Aperçu</Eyebrow>
 
-## Le cycle de vie d’un article
+## Le cycle de l’inventaire
 
 <FlowDiagram steps={[
-  { icon: "add", title: "Ajouter un article", desc: "Nom, quantité initiale, unité et seuil minimal" },
-  { icon: "tune", title: "Définir un seuil mini", desc: "Recevez une alerte quand le stock passe en dessous" },
-  { icon: "notifications", title: "Alerte de réappro", desc: "Notification dès qu’un article franchit le seuil" },
-  { icon: "schedule", title: "Prévision de rupture 7 j", desc: "L’IA estime la date de rupture selon votre consommation" }
+  { icon: "add", title: "Ajouter un article", desc: "Créez une fiche pour chaque ingrédient ou fourniture" },
+  { icon: "notifications", title: "Définir un seuil mini", desc: "Fixez la quantité en dessous de laquelle vous souhaitez être alerté" },
+  { icon: "warning", title: "Alerte de réappro", desc: "Grubano vous notifie lorsqu’un article passe sous son seuil" },
+  { icon: "schedule", title: "Prévision de rupture 7 j", desc: "L’IA calcule la date estimée de rupture de stock" }
 ]} />
 
 <Eyebrow icon="bolt">L’essentiel</Eyebrow>
@@ -31,60 +31,71 @@ Tenez l’inventaire de votre marque à jour en temps réel, définissez des seu
 ## En bref
 
 <Essentials title="Si vous ne devez retenir que ça :" items={[
-  <>Chaque article porte un <b>nom, une quantité, une unité</b> (kg, L, u…) et un <b>seuil de réapprovisionnement</b>.</>,
-  <>Une <b>alerte visuelle</b> vous prévient dès qu’un stock passe sous le seuil — et l’IA calcule la date de rupture prévue sur 7 jours glissants.</>,
-  <>L’assistant IA accepte un message en langage naturel (<i>« poulet 3 kg, riz terminé »</i>) et met à jour l’inventaire pour vous.</>
+  <>Chaque article de stock dispose d’un <b>nom, d’une quantité, d’une unité</b> (kg, L, g, mL ou pièces) et d’une <b>DLC optionnelle</b></>,
+  <>Vous définissez un <b>seuil minimal</b> : lorsque le stock tombe en dessous, vous êtes alerté</>,
+  <>L’IA peut <b>mettre à jour vos quantités en langage naturel</b> (« poulet 3 kg, riz terminé, sauce tomate 2 L ») et vous fournir une prévision de rupture sur 7 jours</>
 ]} />
 
 <Eyebrow icon="lightbulb">Comment ça marche</Eyebrow>
 
 ## Le principe (et le pourquoi)
 
-Chaque marque dispose d’un inventaire centralisé : vos ingrédients, vos contenants, tout ce qui entre dans votre production. Vous définissez pour chaque article une **quantité minimale tolérable** ; dès qu’elle est franchie, Grubano vous le signale sur votre [tableau de bord](/fr/guides/restaurant/). L’IA va plus loin : elle observe la vitesse de consommation moyenne de chaque produit et vous indique dans combien de jours vous serez à court – de quoi passer commande auprès de vos fournisseurs avant la panne sèche.
+La gestion des stocks vous permet de piloter votre inventaire depuis le [tableau de bord](/fr/guides/restaurant/) : au lieu de tenir un cahier papier ou une feuille de calcul, vous enregistrez vos ingrédients et fournitures directement dans Grubano. Chaque article porte un nom, une quantité actuelle, une unité de mesure (kilogrammes, litres, grammes, millilitres ou pièces) et, si vous le souhaitez, une date limite de consommation (DLC).
 
-Plutôt que de saisir chaque ligne à la main, vous pouvez aussi envoyer un simple message en français (« j’ai reçu 5 kg de poulet, il reste 2 L de sauce tomate, le riz est fini ») : l’assistant analyse votre texte, identifie les articles et met à jour les quantités dans la foulée. Un gain de temps précieux en plein coup de feu.
+Lorsque vous fixez un seuil minimal — par exemple 2 kg pour la farine —, Grubano vous alerte dès que le stock passe en dessous, vous permettant d’anticiper les commandes auprès de vos fournisseurs. La prévision de rupture calcule, sur la base d’une consommation moyenne, le nombre de jours restants avant épuisement et la date estimée à laquelle l’article sera à zéro. Vous gagnez en visibilité et réduisez les risques de rupture en plein service.
 
 <Eyebrow icon="format_list_numbered">Étape par étape</Eyebrow>
 
-## Créer et suivre un article en stock
+## Ajouter et suivre vos articles
 
 <Steps>
 
-### Ajoutez un nouvel article
+### Créer un nouvel article
 
-Depuis la page Stocks de votre [menu](/fr/guides/menu/), cliquez sur **Ajouter un article**. Renseignez le nom de l’ingrédient (poulet, riz basmati, huile d’olive…), la quantité initiale, l’unité (kg, L, g, mL ou u pour unité/pièce) et le seuil minimal qui déclenchera l’alerte.
+Dans votre [tableau de bord](/fr/guides/restaurant/), cliquez sur « Stocks » puis « Ajouter un article ». Saisissez le nom de l’ingrédient ou de la fourniture (par exemple « Farine T55 »), sa quantité initiale et son unité (kg, L, g, mL ou u pour pièces).
 
-### Définissez le seuil de réapprovisionnement
+### Définir le seuil minimal et la DLC
 
-Le champ **Seuil minimal** correspond au niveau en dessous duquel Grubano vous avertit. Par exemple, si vous saisissez 2 kg pour le poulet, vous recevrez une notification dès que le stock passera sous cette barre.
+Indiquez en dessous de quelle quantité vous souhaitez recevoir une alerte de réapprovisionnement (par exemple 5 kg pour la farine). Si l’article est périssable, renseignez la date limite de consommation : vous serez averti à l’approche de cette date.
 
-### Recevez l’alerte et consultez la prévision
+### Mettre à jour les quantités manuellement
 
-Lorsqu’un article franchit son seuil, une pastille rouge apparaît dans la liste des stocks. L’IA calcule également le **nombre de jours restants avant rupture** en se basant sur votre consommation moyenne récente – un indicateur affiché sous le nom de chaque produit.
+À tout moment, vous pouvez modifier la quantité d’un article existant : sélectionnez-le dans la liste, corrigez la valeur et enregistrez. L’historique de mise à jour conserve la date de dernière modification.
 
-### Mettez à jour les quantités manuellement ou en langage naturel
+### Mettre à jour en langage naturel via l’IA
 
-Vous pouvez modifier la quantité d’un article en cliquant dessus, ou bien utiliser l’assistant IA : tapez « poulet 3 kg, sauce tomate terminée » dans le champ dédié, l’IA met à jour l’inventaire pour vous en une seconde.
+Rédigez une phrase simple décrivant vos stocks actuels — par exemple « poulet 3 kg, riz 5 kg, sauce tomate terminée » — et envoyez-la à l’assistant IA. Grubano reconnaît automatiquement les ingrédients, leurs quantités et leurs unités, puis met à jour ou crée les fiches correspondantes en une seule opération.
+
+### Consulter la prévision de rupture sur 7 jours
+
+Après chaque mise à jour par l’IA, Grubano calcule, pour chacun des articles, le nombre de jours restants avant rupture, la date estimée d’épuisement et un statut (critique si moins de 2 jours, bas si moins de 4 jours, ok au-delà). Cette prévision repose sur une consommation moyenne par défaut et vous aide à planifier vos réapprovisionnements.
 
 </Steps>
 
-<Eyebrow icon="smart_toy">Astuce</Eyebrow>
+<Eyebrow icon="calculate">Exemple concret</Eyebrow>
 
-## Gagnez du temps avec l’assistant IA
+## Une mise à jour express en fin de service
 
-<Callout type="info">
-Au lieu de cliquer sur chaque ligne de stock, dictez votre inventaire en **langage naturel** : « 5 kg de farine, 2 L d’huile, tomates cerises terminées ». L’IA reconnaît automatiquement les ingrédients, les quantités et les unités, puis applique les mises à jour. Idéal pour gagner plusieurs minutes chaque matin.
-</Callout>
+Votre chef écrit « farine 12 kg, huile olive 3 L, tomate concentrée 800 g, œufs 0 » dans le champ de l’assistant IA. Grubano détecte quatre articles :
+
+- **Farine** : 12 kg → stock ok, prévision de rupture dans 17 jours
+- **Huile d’olive** : 3 L → stock ok, prévision de rupture dans 6 jours
+- **Tomate concentrée** : 800 g → stock bas, prévision de rupture dans 1 jour (alerte)
+- **Œufs** : 0 → stock critique, rupture immédiate (alerte)
+
+Les fiches existantes sont mises à jour ; si un article n’existait pas encore, Grubano le crée automatiquement. Vous consultez la liste, identifiez en un coup d'œil les produits à commander et passez votre commande auprès du fournisseur avant le lendemain. Cet exemple est illustratif ; les prévisions reposent sur des consommations moyennes et peuvent varier selon vos usages réels.
 
 <Eyebrow icon="check_circle">Bonnes pratiques</Eyebrow>
 
-## Ce qui fonctionne bien
+## Tirez le meilleur parti de votre inventaire
 
 <Callout type="default">
-- **Seuils réalistes** : fixez le seuil minimal à une valeur qui vous laisse le temps de réapprovisionner (2–3 jours de consommation en général).
-- **Mise à jour quotidienne** : actualisez les quantités chaque matin ou après chaque livraison pour que les prévisions restent fiables.
-- **DLC renseignée** : si un article a une date limite de consommation courte (produits frais), indiquez-la ; Grubano vous rappellera de l’écouler en priorité.
-- **Utilisez l’IA** : elle vous fait gagner plusieurs minutes par jour et réduit les erreurs de saisie.
+
+- **Fixez des seuils réalistes** : un seuil trop haut génère des alertes inutiles, un seuil trop bas vous expose aux ruptures. Ajustez-les après quelques semaines d’observation.
+- **Mettez à jour régulièrement** : une fois par jour, en fin de service ou avant l’ouverture, suffit pour garder une vue fiable de vos stocks.
+- **Utilisez la DLC pour les produits frais** : renseigner la date limite de consommation vous permet d’être alerté avant qu’un ingrédient périsse et de l’utiliser en priorité.
+- **Adoptez l’IA pour gagner du temps** : écrire « poulet 8 kg, crème 1,5 L, beurre terminé » prend quelques secondes et remplace la saisie manuelle de trois fiches distinctes.
+
 </Callout>
 
 <Eyebrow icon="error">Erreurs à éviter</Eyebrow>
@@ -92,9 +103,21 @@ Au lieu de cliquer sur chaque ligne de stock, dictez votre inventaire en **langa
 ## Les pièges courants
 
 <Callout type="error">
-- **Oublier le seuil** : un seuil à zéro ou absent ne déclenche jamais d’alerte – vous risquez la rupture sans avertissement.
-- **Ne pas tenir compte de la prévision** : l’IA vous indique « rupture dans 2 jours » ? Commandez maintenant, pas demain.
-- **Unités incohérentes** : si vous alternez « kg » et « g » pour le même article, créez deux lignes distinctes ou harmonisez l’unité pour suivre correctement les seuils.
+
+- **Mélanger les unités** : ne saisissez pas « 1,5 » pour 1,5 kg puis « 500 » pour 500 g dans la même unité. Choisissez kg ou g et convertissez pour garder la cohérence.
+- **Oublier de soustraire les consommations** : si vous ne mettez à jour qu’à la livraison, votre stock affiché sera toujours trop élevé et les prévisions de rupture seront faussées.
+- **Ne pas vérifier la prévision** : la date de rupture estimée est une aide, pas une certitude. Un coup de feu imprévu peut doubler la consommation quotidienne.
+
+</Callout>
+
+<Eyebrow icon="lightbulb">Astuce</Eyebrow>
+
+## Gagnez du temps avec l’assistant IA
+
+<Callout type="info">
+
+Au lieu de modifier chaque fiche une par une, dictez ou tapez votre inventaire en langage courant : « farine 10 kg, sucre 3 kg, lait 4 L, beurre vide ». L’IA reconnaît automatiquement les ingrédients, leurs quantités et leurs unités, puis met à jour ou crée les fiches correspondantes. Vous obtenez en retour la prévision de rupture sur 7 jours pour chaque article, ce qui vous permet de planifier vos commandes d’un seul coup d'œil.
+
 </Callout>
 
 <Eyebrow icon="quiz">FAQ</Eyebrow>
@@ -103,24 +126,24 @@ Au lieu de cliquer sur chaque ligne de stock, dictez votre inventaire en **langa
 
 <Faq items={[
   {
-    icon: "notifications",
-    q: "Où vois-je les alertes de réapprovisionnement ?",
-    a: "Les articles sous leur seuil apparaissent avec une pastille rouge dans la liste des stocks. Vous les retrouvez également dans la section Stocks bas de votre tableau de bord."
+    icon: "help",
+    q: "Puis-je gérer les stocks de plusieurs marques ?",
+    a: "Oui. Chaque article de stock est rattaché à une marque précise. Si vous gérez plusieurs enseignes, sélectionnez la marque concernée avant d’ajouter ou de mettre à jour vos articles. Chaque inventaire reste indépendant."
   },
   {
     icon: "schedule",
-    q: "Comment l’IA calcule-t-elle la date de rupture ?",
-    a: "Elle observe votre consommation quotidienne moyenne des derniers jours et divise la quantité actuelle par cette vitesse. C’est une estimation qui affine sa précision au fil du temps."
+    q: "Comment la prévision de rupture est-elle calculée ?",
+    a: "Grubano divise la quantité actuelle par une consommation moyenne quotidienne (par défaut : 0,7 kg par jour pour les solides en kg, 0,5 L par jour pour les liquides en L, 500 g par jour pour les solides en g, 300 mL par jour pour les liquides en mL, 5 unités par jour pour les pièces). Le résultat donne le nombre de jours restants et la date estimée de rupture. Cette prévision est indicative ; vos consommations réelles peuvent varier."
   },
   {
-    icon: "smart_toy",
-    q: "L’assistant IA comprend-il tous les ingrédients ?",
-    a: "Oui, tant que vous utilisez un nom courant (poulet, riz, sauce tomate…). Si un terme est ambigu, reformulez : « poulet 3 kg » plutôt que « volaille assortie ». L’IA reconnaît aussi « terminé », « vide » ou « 0 » pour mettre un article à zéro."
+    icon: "sync",
+    q: "Les quantités sont-elles déduites automatiquement des commandes du menu ?",
+    a: "Pour l’instant, non. Vous devez mettre à jour manuellement ou via l’IA les quantités après chaque service ou inventaire. L’intégration automatique entre le menu et les stocks est prévue pour une prochaine mise à jour."
   },
   {
-    icon: "help",
-    q: "Puis-je suivre plusieurs marques dans le même inventaire ?",
-    a: "Chaque marque possède son propre inventaire. Si vous gérez plusieurs enseignes, vous verrez une liste de stocks distincte pour chacune – sélectionnez la marque concernée avant d’ajouter ou de modifier un article."
+    icon: "notifications",
+    q: "Comment suis-je alerté quand un stock passe sous le seuil ?",
+    a: "Lorsqu’un article descend en dessous de son seuil minimal, Grubano l’identifie dans la liste avec un statut « bas » ou « critique ». Les notifications push et email pour les alertes de réapprovisionnement seront déployées prochainement."
   }
 ]} />
 
@@ -129,28 +152,8 @@ Au lieu de cliquer sur chaque ligne de stock, dictez votre inventaire en **langa
 ## Articles liés
 
 <RelatedCards items={[
-  {
-    icon: "menu_book",
-    title: "Menu & Scan IA",
-    sub: "Carte et Scan IA",
-    href: "/fr/guides/menu/"
-  },
-  {
-    icon: "insights",
-    title: "Tableau de bord",
-    sub: "Indicateurs en direct",
-    href: "/fr/guides/restaurant/"
-  },
-  {
-    icon: "inventory_2",
-    title: "Catalogue, zones & commandes",
-    sub: "Catalogue et commandes",
-    href: "/fr/guides/supplier-catalog/"
-  },
-  {
-    icon: "bolt",
-    title: "Démarrer en 15 minutes",
-    sub: "Prêt en 15 minutes",
-    href: "/fr/guides/quick-start/"
-  }
+  { icon: "restaurant_menu", title: "Menu & Scan IA", sub: "Créer et publier votre carte", href: "/fr/guides/menu/" },
+  { icon: "dashboard", title: "Tableau de bord", sub: "Pilotez votre activité", href: "/fr/guides/restaurant/" },
+  { icon: "local_shipping", title: "Catalogue, zones & commandes", sub: "Gérer votre offre fournisseur", href: "/fr/guides/supplier-catalog/" },
+  { icon: "bolt", title: "Démarrer en 15 minutes", sub: "Guide de prise en main", href: "/fr/guides/quick-start/" }
 ]} />

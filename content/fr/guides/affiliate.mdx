@@ -2,7 +2,7 @@
 title: "Le programme d’affiliation"
 description: "Rejoindre le programme d’affiliation : obtenir des liens et des codes, toucher une commission sur les ventes que vous générez, suivre vos gains et demander un retrait."
 generated: true
-sourceHash: 9da2fc4bd1d70627
+sourceHash: 38c82bf2d1f57f2c
 generator: scripts/generate-feature-page.js
 templateVersion: 6
 ---
@@ -11,19 +11,19 @@ import { Steps, Callout } from 'nextra/components'
 
 # Le programme d’affiliation
 
-Recommandez Grubano via un lien ou un code de parrainage, touchez une commission sur les commandes que vous générez et suivez vos gains en temps réel.
+Le programme d’affiliation vous permet de recommander Grubano et de toucher une commission sur les ventes que vous apportez. Vous obtenez un lien et un code personnalisés, suivez vos gains en temps réel, et demandez un retrait dès que votre solde atteint le seuil.
 
-<ArticleMeta audience="Affiliés" minutes={4} updated="2026-07-10" />
+<ArticleMeta audience="Affiliés" minutes={5} updated="2026-07-11" />
 
 <Eyebrow icon="insights">Aperçu</Eyebrow>
 
-## Votre parcours d’affilié
+## De l’inscription au retrait
 
 <FlowDiagram steps={[
-  { icon:"person_add", title:"Candidater", desc:"Rejoignez le programme en quelques clics" },
-  { icon:"link", title:"Obtenir liens & codes", desc:"Vos outils de recommandation uniques" },
-  { icon:"shopping_bag", title:"Générer des ventes", desc:"Partagez et touchez sur chaque commande" },
-  { icon:"payments", title:"Retirer ses gains", desc:"Demande de retrait — versement effectif bientôt" }
+  { icon:"link", title:"Candidater", desc:"Rejoignez le programme instantanément avec votre email" },
+  { icon:"code", title:"Obtenir liens & codes", desc:"Recevez votre lien de parrainage et votre code unique" },
+  { icon:"receipt_long", title:"Générer des ventes", desc:"Partagez et convertissez : chaque commande apportée alimente vos gains" },
+  { icon:"account_balance", title:"Retirer ses gains", desc:"Demandez un virement dès que votre solde dépasse le seuil" }
 ]} />
 
 <Eyebrow icon="bolt">L’essentiel</Eyebrow>
@@ -31,62 +31,84 @@ Recommandez Grubano via un lien ou un code de parrainage, touchez une commission
 ## En bref
 
 <Essentials title="Si vous ne devez retenir que ça :" items={[
-  <>Vous obtenez <b>un lien et un code de parrainage uniques</b> dès votre inscription — aucune vérification préalable requise.</>,
-  <>Vous touchez <b>une commission sur chaque commande</b> passée via votre lien ; les gains sont suivis en temps réel sur votre tableau de bord.</>,
-  <>Vous demanderez un retrait quand votre solde atteindra le seuil minimum — <b>le versement effectif arrive bientôt</b> ; la vérification d’identité (KYC) ne sera déclenchée qu’au premier retrait.</>
+  <>Vous recevez <b>un lien de parrainage et un code uniques</b> dès votre inscription — aucune vérification préalable n’est requise pour rejoindre le programme.</>,
+  <>Vous touchez <b>une commission sur les ventes</b> que vous générez, dans les limites fixées par Grubano. Vos gains apparaissent en temps réel sur votre tableau de bord.</>,
+  <>Un retrait est possible <b>dès que votre solde atteint le seuil</b>. Une vérification d’identité (KYC) et une déclaration fiscale sont déclenchées lors de votre premier retrait.</>
 ]} />
 
 <Eyebrow icon="lightbulb">Comment ça marche</Eyebrow>
 
 ## Le principe (et le pourquoi)
 
-En tant qu’affilié, vous aidez les restaurants locaux à toucher de nouveaux clients. Vous recommandez Grubano — sur vos réseaux, votre blog, auprès de votre communauté — via un lien personnel. Chaque commande passée par quelqu’un qui clique sur votre lien vous rapporte une commission : un modèle gagnant-gagnant qui récompense la recommandation authentique.
+Le programme d’affiliation vous rémunère pour chaque client que vous apportez à Grubano. Lorsqu’un visiteur suit votre lien ou saisit votre code et passe une commande, cette commande vous est attribuée : vous touchez une part de la commission perçue par Grubano. Vos gains mûrissent automatiquement, et vous les retirez quand vous le souhaitez — Grubano ne conserve rien de ce qui vous revient.
 
-Votre rôle est distinct de celui d’un [créateur de recettes](/fr/guides/creators/) : ici, pas de conception de plats — vous partagez simplement l’accès à la plateforme et touchez sur les ventes que vous apportez. Si vous avez une audience vérifiée, découvrez les avantages du statut [influenceur](/fr/guides/influencer/).
+Le modèle est transparent : votre tableau de bord affiche le montant gagné sur chaque commande, l’état de maturation (en attente ou disponible), et le solde cumulé. Si votre audience est vérifiée, vous pouvez même accéder au [studio de contenu pour influenceurs](/fr/guides/influencer/), une aide à la création de légendes et de visuels.
 
 <Eyebrow icon="format_list_numbered">Étape par étape</Eyebrow>
 
-## Rejoindre et obtenir vos outils
+## Rejoindre et partager
 
 <Steps>
 
 ### Candidater au programme
 
-Rendez-vous sur la page d’inscription affilié. Renseignez votre nom et votre adresse e-mail, acceptez les conditions générales. Vous recevez un lien de connexion sans mot de passe par e-mail — cliquez pour accéder à votre tableau de bord.
+Rendez-vous sur la page d’inscription affiliation. Saisissez votre nom et votre email, puis acceptez les conditions. Vous recevez instantanément un lien de connexion sans mot de passe.
 
 ### Récupérer votre lien et votre code
 
-Dès que vous vous connectez pour la première fois, un **lien de parrainage** et un **code unique** vous sont attribués automatiquement. Ces identifiants sont visibles en haut de votre tableau de bord affilié et ne changent jamais.
+Dès votre première connexion, votre tableau de bord affiche votre **lien de parrainage** (format `/ref/<votre-code>`) et votre **code unique** (lettres majuscules). Ces deux éléments sont définitifs — vous les partagez comme vous le souhaitez.
 
-### Partager et suivre
+### Partager et convertir
 
-Copiez votre lien et partagez-le — sur les réseaux sociaux, dans vos contenus, par e-mail. Chaque clic est enregistré ; chaque commande passée via votre lien apparaît dans l’onglet « Parrainages » de votre tableau de bord, avec le montant de votre commission.
+Publiez votre lien sur vos réseaux, dans vos articles, ou communiquez votre code directement. Chaque visiteur qui suit votre lien ou saisit votre code au moment de sa commande est lié à vous : toutes ses commandes durant la période d’attribution alimentent vos gains.
 
-### Demander un retrait
+### Suivre vos conversions
 
-Lorsque votre solde disponible atteint le seuil minimum, un bouton « Retirer » s’affiche sur votre tableau de bord et enregistre votre demande. Au premier retrait, vous devrez compléter une vérification d’identité (exigence réglementaire pour tout transfert d’argent) et renseigner vos informations fiscales. Le déclenchement effectif des virements arrive bientôt : une fois activé, votre versement partira sous quelques jours.
+Votre tableau de bord affiche le nombre de clics enregistrés, le nombre de commandes converties, et le taux de conversion. Vous visualisez chaque commande attribuée : restaurant, montant, commission Grubano prélevée, votre gain, et l’état de maturation (en attente ou disponible).
+
+</Steps>
+
+<Eyebrow icon="account_balance">Étape par étape</Eyebrow>
+
+## Retirer vos gains
+
+<Steps>
+
+### Vérifier votre solde disponible
+
+Le solde **disponible** correspond aux gains mûris (commandes livrées et période de rétractation écoulée) dont aucun retrait n’a encore été effectué. Tant que votre solde reste sous le seuil, aucun retrait n’est possible — laissez vos gains s’accumuler.
+
+### Déclencher la vérification d’identité
+
+Lors de votre **premier retrait**, Grubano déclenche automatiquement la vérification d’identité (KYC) via Stripe Connect. Vous recevez un lien pour compléter le dossier : pièce d’identité, adresse, coordonnées bancaires. Aucun virement n’est effectué tant que ce dossier n’est pas actif.
+
+### Compléter la déclaration fiscale
+
+La première demande de retrait déclenche également la capture de vos informations fiscales (adresse enregistrée, numéro de TVA ou équivalent, date de naissance si vous êtes une personne physique). Ces données sont requises pour la conformité DAC7. Une fois renseignées, le retrait peut avoir lieu.
+
+### Demander le virement
+
+Dès que votre compte Connect est actif et vos informations fiscales complètes, cliquez sur « Demander un retrait ». Le montant viré correspond exactement à votre solde disponible — vous ne saisissez aucun montant. Le virement arrive sous quelques jours sur le compte bancaire déclaré.
 
 </Steps>
 
 <Eyebrow icon="calculate">Exemple concret</Eyebrow>
 
-## Une commande via votre lien
+## Un mois à cinq commandes
 
-Imaginons qu’un client passe une commande de 50 € via votre lien de parrainage. Grubano prélève une commission de 10 % sur cette commande (5 €). Vous touchez une part de cette commission dans les limites fixées par Grubano — le montant exact de votre gain s’affiche immédiatement dans votre tableau de bord, ligne par ligne.
+Vous partagez votre lien sur Instagram. Cinq personnes passent commande dans le mois : quatre commandes de nouveaux clients (bonus inclus) et une commande d’un client revenu. Grubano prélève 10 % sur chacune ; vous touchez une part de cette commission, dans les limites fixées par Grubano. Votre tableau de bord affiche ligne par ligne le restaurant, le total de la commande, la commission Grubano, votre gain, et l’état (en attente jusqu’à livraison, puis disponible après la période de rétractation).
 
-Ce gain reste en statut « en attente » durant la période de sécurité (le temps que la commande soit livrée et confirmée sans litige). Une fois cette période écoulée, il bascule en statut « disponible » et s’ajoute à votre solde retirable.
-
-Cet exemple est illustratif ; les montants réels varient selon les conditions en vigueur au moment de chaque commande.
+Cet exemple est illustratif : les montants réels dépendent du panier moyen de vos conversions et des conditions du programme au moment de la commande.
 
 <Eyebrow icon="check_circle">Bonnes pratiques</Eyebrow>
 
-## Maximiser vos recommandations
+## Maximiser vos conversions
 
 <Callout type="default">
-- **Personnalisez votre discours** : expliquez pourquoi vous recommandez Grubano (variété, commission équitable pour les restaurants, expérience client) plutôt que de partager un lien nu.
-- **Ciblez les nouveaux clients** : les premiers utilisateurs qui découvrent la plateforme via votre lien sont souvent les plus fidèles.
-- **Suivez vos clics** : le tableau de bord vous montre combien de personnes ont cliqué sur votre lien et combien ont commandé — un indicateur précieux pour ajuster votre message.
-- **Restez actif** : un partage régulier (sans spam) maintient votre lien visible et augmente vos chances de conversion.
+- **Contextualisez votre lien** : recommandez un restaurant ou un plat précis plutôt qu’un simple lien générique — la conversion est meilleure quand le visiteur sait ce qu’il va découvrir.
+- **Suivez votre taux de conversion** : si vos clics sont nombreux mais vos commandes rares, testez un message plus ciblé ou un moment de publication différent.
+- **Exploitez le studio de contenu** (réservé aux influenceurs vérifiés) : l’outil génère des légendes optimisées pour vos posts, en français ou dans d’autres langues.
+- **Misez sur la récurrence** : un client que vous apportez reste lié à vous durant toute la période d’attribution — chaque nouvelle commande de ce client alimente vos gains.
 </Callout>
 
 <Eyebrow icon="error">Erreurs à éviter</Eyebrow>
@@ -94,36 +116,42 @@ Cet exemple est illustratif ; les montants réels varient selon les conditions e
 ## Les pièges courants
 
 <Callout type="error">
-- **Promettre des avantages inexistants** : votre lien ne donne pas automatiquement de réduction au client (sauf campagne spéciale) — ne l’annoncez pas comme tel.
-- **Partager le lien d’un autre** : seul votre lien unique vous crédite ; copier celui d’un tiers ne vous rapportera rien.
-- **Ignorer le seuil de retrait** : tant que votre solde est inférieur au minimum, le bouton de retrait reste désactivé — accumulez d’abord suffisamment de commissions.
-- **Négliger la vérification KYC** : au premier retrait, prévoyez quelques minutes pour compléter le formulaire d’identité ; sans cela, aucun versement ne peut être effectué.
+- **Demander un retrait trop tôt** : tant que votre solde est sous le seuil, aucun virement n’est possible — attendez que vos gains s’accumulent.
+- **Négliger la vérification d’identité** : sans un compte Connect actif, aucun retrait ne peut aboutir — complétez le dossier KYC dès la première demande.
+- **Omettre la déclaration fiscale** : les informations DAC7 sont obligatoires avant tout virement — renseignez-les au moment du premier retrait pour éviter un blocage.
+- **Confondre affiliation et création de recettes** : l’affiliation rémunère vos **apports de clients** ; si vous souhaitez monétiser des **recettes**, consultez plutôt la fiche [Créateur de recettes](/fr/guides/creators/).
 </Callout>
+
+<Eyebrow icon="lightbulb">Astuce</Eyebrow>
+
+## Gagnez du temps avec le studio de contenu
+
+Si votre audience est vérifiée (statut [influenceur](/fr/guides/influencer/)), vous accédez au studio de contenu : sélectionnez un restaurant et un plat, choisissez votre langue, et l’outil génère instantanément plusieurs variantes de légende prêtes à publier. Votre lien de parrainage est automatiquement intégré — il ne vous reste qu’à copier-coller et à poster.
 
 <Eyebrow icon="quiz">FAQ</Eyebrow>
 
 ## Questions fréquentes
 
 <Faq items={[
-  {
-    icon:"link",
-    q:"Puis-je modifier mon lien ou mon code de parrainage ?",
-    a:"Non. Votre lien et votre code sont attribués une seule fois, de manière permanente, au moment de votre inscription. Cela garantit la cohérence du suivi de vos commissions."
+  { 
+    icon:"percent", 
+    q:"Quelle commission je touche sur mes ventes ?", 
+    a:"Vous touchez une part de la commission de 10 % que Grubano prélève sur chaque commande apportée, dans les limites fixées par Grubano. Le montant exact apparaît ligne par ligne sur votre tableau de bord."
   },
-  {
-    icon:"schedule",
-    q:"Combien de temps faut-il pour qu’une commission devienne disponible ?",
-    a:"Chaque commission reste « en attente » durant une période de sécurité (quelques jours après la livraison). Une fois cette période écoulée sans litige, elle bascule en statut « disponible » et s’ajoute à votre solde retirable."
+  { 
+    icon:"schedule", 
+    q:"Combien de temps avant que mes gains soient disponibles ?", 
+    a:"Un gain passe de « en attente » à « disponible » dès que la commande est livrée et que la période de rétractation est écoulée. Ce délai protège contre les annulations tardives."
   },
-  {
-    icon:"payments",
-    q:"Quel est le seuil minimum pour demander un retrait ?",
-    a:"Le seuil est fixé par Grubano et affiché sur votre tableau de bord. Tant que votre solde disponible est inférieur à ce montant, le bouton de retrait reste désactivé."
+  { 
+    icon:"account_balance", 
+    q:"Quel est le seuil minimum pour un retrait ?", 
+    a:"Un seuil s’applique : tant que votre solde disponible reste en dessous, aucun retrait n’est possible. Ce seuil est défini avec vous au moment de l’ouverture et apparaît sur votre tableau de bord."
   },
-  {
-    icon:"gavel",
-    q:"Ai-je besoin d’un statut juridique particulier pour être affilié ?",
-    a:"Non. Le programme est ouvert à toute personne majeure disposant d’un compte bancaire. La vérification d’identité et la déclaration fiscale (exigées au premier retrait) relèvent de votre responsabilité personnelle."
+  { 
+    icon:"gavel", 
+    q:"Dois-je déclarer mes gains d’affiliation ?", 
+    a:"Oui. Lors de votre premier retrait, vous complétez une déclaration fiscale (adresse enregistrée, numéro de TVA ou équivalent, date de naissance si vous êtes une personne physique). Ces informations sont requises pour la conformité DAC7."
   }
 ]} />
 
@@ -132,28 +160,6 @@ Cet exemple est illustratif ; les montants réels varient selon les conditions e
 ## Articles liés
 
 <RelatedCards items={[
-  {
-    icon: "campaign",
-    title: "Devenir influenceur",
-    sub: "Statut vérifié",
-    href: "/fr/guides/influencer/"
-  },
-  {
-    icon: "restaurant_menu",
-    title: "Créateur de recettes",
-    sub: "Recettes et commissions",
-    href: "/fr/guides/creators/"
-  },
-  {
-    icon: "shopping_bag",
-    title: "Commander & suivre",
-    sub: "Commander et suivre",
-    href: "/fr/guides/consumer/"
-  },
-  {
-    icon: "loyalty",
-    title: "Fidélité, cagnotte & parrainage",
-    sub: "Points et parrainage",
-    href: "/fr/guides/consumer-loyalty/"
-  }
+  { icon:"campaign", title:"Devenir influenceur", sub:"Accédez au studio de contenu", href:"/fr/guides/influencer/" },
+  { icon:"menu_book", title:"Créateur de recettes", sub:"Monétisez vos concepts culinaires", href:"/fr/guides/creators/" }
 ]} />

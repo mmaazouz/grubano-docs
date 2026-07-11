@@ -2,7 +2,7 @@
 title: "Rémunération & retraits"
 description: "Comprendre votre rémunération de livreur : frais de livraison moins une commission Grubano de 20 %, pourboires reversés à 100 %, maturation à la livraison, et retrait à partir de 25 €."
 generated: true
-sourceHash: 8bcd0a6ba87cfc24
+sourceHash: 1048d645ecb07275
 generator: scripts/generate-feature-page.js
 templateVersion: 6
 ---
@@ -11,38 +11,41 @@ import { Steps, Callout } from 'nextra/components'
 
 # Rémunération & retraits
 
-Suivez vos gains de livraison en temps réel : frais de course moins la commission Grubano, pourboires reversés intégralement, et retirez vos revenus dès que le seuil est atteint.
+Chaque livraison effectuée génère une rémunération que vous pouvez retirer dès que votre solde atteint le seuil minimum.
 
-<ArticleMeta audience="Livreurs" minutes={4} updated="2026-07-10" />
+<ArticleMeta audience="Livreurs" minutes={3} updated="2026-07-11" />
 
 <Eyebrow icon="insights">Aperçu</Eyebrow>
 
 ## Le trajet de votre argent
 
 <FlowDiagram steps={[
-  { icon: "two_wheeler", title: "Course livrée", desc: "Vous effectuez une livraison pour un restaurant partenaire" },
-  { icon: "percent", title: "Frais − commission 20 %", desc: "Les frais de livraison sont répartis entre vous et Grubano" },
-  { icon: "schedule", title: "Maturation", desc: "Vos gains deviennent disponibles après une période de sécurité" },
-  { icon: "payments", title: "Retrait dès 25 €", desc: "Transférez vos revenus vers votre compte bancaire" }
+  { icon: "two_wheeler", title: "Course livrée", desc: "Vous livrez la commande au client" },
+  { icon: "percent", title: "Frais − commission 20 %", desc: "Grubano prélève sa commission" },
+  { icon: "schedule", title: "Maturation", desc: "Votre gain devient disponible après quelques jours" },
+  { icon: "payments", title: "Retrait dès 25 €", desc: "Vous retirez votre solde disponible" }
 ]} />
 
 <Eyebrow icon="bolt">L’essentiel</Eyebrow>
 
 ## En bref
 
-<Essentials title="Si vous ne devez retenir que ça :" items={[
-  <>Vous touchez <b>80 % des frais de livraison</b> que le client paie (Grubano prélève une commission de 20 %) ; les pourboires vous reviennent à <b>100 %</b>.</>,
-  <>Vos gains <b>mûrissent après quelques jours</b> de sécurité (pour garantir qu’aucun remboursement n’annule la commande), puis passent dans votre solde disponible.</>,
-  <>Vous pouvez retirer dès que votre solde atteint <b>25 €</b> ; le virement est effectué sous 1 à 3 jours ouvrés vers votre compte bancaire.</>
-]} />
+<Essentials 
+  title="Si vous ne devez retenir que ça :" 
+  items={[
+    <>Vous touchez les <b>frais de livraison moins une commission Grubano de 20 %</b> sur chaque course</>,
+    <>Les <b>pourboires</b> vous sont reversés <b>intégralement</b>, sans commission</>,
+    <>Vous pouvez demander un retrait <b>dès que votre solde atteint 25 €</b></>
+  ]} 
+/>
 
 <Eyebrow icon="lightbulb">Comment ça marche</Eyebrow>
 
 ## Le principe (et le pourquoi)
 
-Chaque fois que vous livrez une commande, le système enregistre automatiquement votre gain : la part qui vous revient sur les frais de livraison payés par le client, moins la commission Grubano de 20 %. Si le client laisse un pourboire, celui-ci vous est reversé intégralement, sans aucune retenue.
+Votre rémunération repose sur un modèle transparent : chaque course livrée génère un gain net égal aux frais de livraison facturés au client, moins la commission Grubano. Les pourboires vous reviennent intégralement, sans prélèvement.
 
-Pour protéger tous les acteurs, vos gains restent *en attente* pendant une courte période de maturation : cela garantit que la commande a bien été honorée et qu’aucun remboursement exceptionnel ne vient l’annuler. Une fois ce délai écoulé, le montant passe dans votre solde *disponible* et vous pouvez le retirer. Cette mécanique assure la confiance et la transparence entre vous, les restaurants et Grubano.
+Votre solde passe par une phase de maturation — un délai de sécurité pendant lequel le paiement client est confirmé — avant de devenir disponible au retrait. Cette mécanique protège l’ensemble des acteurs contre les incidents de paiement. Consultez vos [missions](/fr/guides/driver/) pour suivre vos gains au fur et à mesure.
 
 <Eyebrow icon="format_list_numbered">Étape par étape</Eyebrow>
 
@@ -52,49 +55,49 @@ Pour protéger tous les acteurs, vos gains restent *en attente* pendant une cour
 
 ### Consultez votre tableau de bord
 
-Connectez-vous à votre espace livreur et accédez à la page « Mes gains ». Vous y verrez trois soldes : *disponible* (ce que vous pouvez retirer immédiatement), *en attente* (les gains en cours de maturation) et *déjà versé* (l’historique de vos retraits).
+Connectez-vous à votre espace livreur. La page « Mes gains » affiche votre solde disponible, vos gains en attente de maturation, et l’historique de vos courses.
 
-### Vérifiez le détail des courses
+### Attendez la maturation
 
-Chaque ligne affiche la course livrée, le montant brut (frais de livraison ou pourboire), la commission Grubano le cas échéant, et le net qui vous revient. Le statut indique si le gain est encore *en attente*, *mûr* (disponible) ou *payé* (déjà viré).
+Chaque gain reste en statut « En attente » pendant quelques jours avant de basculer en « Matured ». Ce délai permet de confirmer le paiement client et de traiter d’éventuels incidents.
 
 ### Demandez un retrait
 
-Dès que votre solde disponible atteint ou dépasse 25 €, le bouton « Retirer » devient actif et enregistre votre demande. Le déclenchement effectif des virements arrive bientôt : une fois activé, le virement partira vers le compte que vous avez enregistré lors de votre inscription, sans frais de retrait.
+Dès que votre solde disponible atteint 25 €, le bouton « Retirer » devient actif. Cliquez pour déclencher le virement vers votre compte bancaire.
 
-### Recevez le virement
+### Complétez votre KYC si nécessaire
 
-Une fois le déclenchement effectif activé, le paiement arrivera sous 1 à 3 jours ouvrés. Vous recevrez une notification par e-mail quand le virement sera parti, puis une seconde quand votre banque l’aura crédité. L’historique conserve la trace de chaque retrait (date, montant, référence de virement).
+Au moment de votre premier retrait, vous devrez vérifier votre identité et renseigner vos coordonnées bancaires. Cette étape est obligatoire et sécurisée.
 
 </Steps>
 
 <Eyebrow icon="calculate">Exemple concret</Eyebrow>
 
-## Une semaine à 8 courses
+## Une semaine de livraisons
 
-Imaginons que vous livrez 8 commandes dans la semaine, avec des frais de livraison moyens de 3,50 € par course et 2 pourboires de 2 € chacun.
+Imaginons une semaine où vous effectuez 15 courses avec des frais de livraison moyens de 4,50 €, et recevez 22 € de pourboires.
 
-<Breakdown title="Décomposition de vos gains hebdomadaires" rows={[
-  { icon: "two_wheeler", label: "Frais de livraison (8 × 3,50 €)", value: "28,00 €" },
-  { icon: "percent", label: "Commission Grubano (20 %)", value: "−5,60 €", variant: "minus" },
-  { icon: "account_balance_wallet", label: "Votre part sur les courses", value: "22,40 €" },
-  { icon: "loyalty", label: "Pourboires (2 × 2 €, 100 %)", value: "+4,00 €", variant: "plus" },
-  { icon: "payments", label: "Total net de la semaine", value: "26,40 €", variant: "total" }
-]} />
+<Breakdown 
+  title="Décomposition de vos gains" 
+  rows={[
+    { icon: "two_wheeler", label: "Frais de livraison (15 × 4,50 €)", value: "67,50 €" },
+    { icon: "percent", label: "Commission Grubano (20 %)", value: "−13,50 €", variant: "minus" },
+    { icon: "loyalty", label: "Pourboires (reversés intégralement)", value: "22,00 €" },
+    { icon: "account_balance_wallet", label: "Gain net", value: "76,00 €", variant: "total" }
+  ]} 
+/>
 
-Une fois la période de maturation écoulée (quelques jours après chaque course), ces 26,40 € passent dans votre solde disponible. Vous dépassez le seuil de 25 € : vous pouvez retirer l’intégralité.
-
-*Cet exemple est illustratif ; les frais de livraison réels varient selon la distance et la configuration de chaque restaurant.*
+Cet exemple est illustratif ; vos gains réels dépendent du nombre de courses effectuées, des frais de livraison pratiqués par les restaurants, et des pourboires laissés par les clients.
 
 <Eyebrow icon="check_circle">Bonnes pratiques</Eyebrow>
 
-## Maximisez vos revenus
+## Maximisez vos gains
 
 <Callout type="default">
-- **Acceptez les missions rapidement** : les créneaux les plus rentables (midi, soir) sont attribués aux livreurs réactifs.
-- **Respectez les délais** : une livraison dans les temps valorise votre profil et peut débloquer davantage de missions.
-- **Vérifiez régulièrement votre solde** : retirez dès que vous atteignez le seuil pour optimiser votre trésorerie.
-- **Gardez vos coordonnées bancaires à jour** : un IBAN valide évite tout retard de virement.
+- **Multipliez les courses** : plus vous livrez, plus votre solde grossit rapidement.
+- **Soignez la relation client** : un service courtois et rapide favorise les pourboires.
+- **Anticipez le seuil** : planifiez vos retraits dès que vous approchez les 25 € pour éviter d’immobiliser votre argent.
+- **Complétez votre KYC en avance** : vérifiez votre identité avant votre premier retrait pour accélérer le processus.
 </Callout>
 
 <Eyebrow icon="error">Erreurs à éviter</Eyebrow>
@@ -102,9 +105,9 @@ Une fois la période de maturation écoulée (quelques jours après chaque cours
 ## Les pièges courants
 
 <Callout type="error">
-- **Ne confondez pas solde « en attente » et solde « disponible »** : seul le second peut être retiré ; l’attente est une période de sécurité légale, pas un blocage arbitraire.
-- **Ne demandez pas plusieurs retraits rapprochés** : si un virement est déjà en cours, le bouton « Retirer » reste grisé jusqu’à ce que le précédent soit finalisé (protection contre les doublons).
-- **N’oubliez pas de valider votre identité** : un compte bancaire vérifié (KYC) est obligatoire avant le premier retrait — complétez cette étape dès votre inscription pour ne pas bloquer vos gains.
+- **Demander un retrait avant maturation** : les gains en attente ne sont pas encore disponibles ; attendez qu’ils basculent en statut « Matured ».
+- **Oublier de compléter votre KYC** : sans vérification d’identité, aucun virement ne peut être effectué.
+- **Accumuler un solde trop important** : retirez régulièrement pour garder la main sur votre trésorerie.
 </Callout>
 
 <Eyebrow icon="quiz">FAQ</Eyebrow>
@@ -113,24 +116,24 @@ Une fois la période de maturation écoulée (quelques jours après chaque cours
 
 <Faq items={[
   {
+    icon: "percent",
+    q: "Pourquoi une commission de 20 % sur les courses ?",
+    a: "Cette commission couvre les frais de plateforme, la gestion des paiements, le support technique, et les outils de suivi en temps réel mis à votre disposition."
+  },
+  {
     icon: "schedule",
-    q: "Combien de temps avant que mes gains soient disponibles ?",
-    a: "Les gains mûrissent quelques jours après la livraison, pour garantir qu’aucun remboursement exceptionnel n’annule la commande. Une fois ce délai écoulé, le montant passe automatiquement dans votre solde disponible et vous pouvez le retirer."
+    q: "Combien de temps dure la maturation ?",
+    a: "Quelques jours en moyenne. Ce délai permet de confirmer le paiement client et de traiter d’éventuels litiges avant de libérer votre gain."
   },
   {
     icon: "payments",
-    q: "Y a-t-il des frais de retrait ?",
-    a: "Non. Grubano ne prélève aucun frais sur vos retraits ; vous recevez 100 % du montant demandé. Le virement bancaire passe par notre prestataire de paiement, sans coût caché."
+    q: "Puis-je retirer moins de 25 € ?",
+    a: "Non, le seuil minimum de retrait est fixé à 25 €. En dessous, le bouton « Retirer » reste inactif."
   },
   {
-    icon: "percent",
-    q: "Pourquoi une commission de 20 % sur les frais de livraison ?",
-    a: "Cette commission couvre les frais de plateforme (technologie, support, assurances) et permet à Grubano de vous proposer un flux régulier de missions. Les pourboires, eux, vous reviennent intégralement."
-  },
-  {
-    icon: "account_balance",
-    q: "Que se passe-t-il si je ne retire jamais mon solde ?",
-    a: "Votre argent reste disponible indéfiniment dans votre compte livreur ; il n’y a ni date limite ni frais de dormance. Vous pouvez retirer quand vous le souhaitez, dès que le seuil de 25 € est atteint."
+    icon: "loyalty",
+    q: "Les pourboires sont-ils vraiment intégraux ?",
+    a: "Oui. Grubano reverse 100 % des pourboires aux livreurs, sans aucune commission."
   }
 ]} />
 
@@ -142,25 +145,19 @@ Une fois la période de maturation écoulée (quelques jours après chaque cours
   {
     icon: "two_wheeler",
     title: "Devenir livreur & missions",
-    sub: "Candidature et missions",
+    sub: "Comment démarrer sur Grubano",
     href: "/fr/guides/driver/"
   },
   {
-    icon: "payments",
+    icon: "account_balance",
     title: "Finances & versements",
-    sub: "Commission et versements",
+    sub: "Mécanismes de versement",
     href: "/fr/guides/finances/"
   },
   {
-    icon: "location_on",
+    icon: "map",
     title: "Suivi de course",
-    sub: "Position en direct",
+    sub: "Gérer vos livraisons en temps réel",
     href: "/fr/guides/driver-tracking/"
-  },
-  {
-    icon: "shopping_bag",
-    title: "Commander & suivre",
-    sub: "Commander et suivre",
-    href: "/fr/guides/consumer/"
   }
 ]} />

@@ -2,7 +2,7 @@
 title: "Devenir livreur & missions"
 description: "Devenir livreur indépendant sur Grubano : candidater (liste d’attente puis validation KYC), se rendre disponible, voir les missions, et réaliser une course étape par étape."
 generated: true
-sourceHash: 359198db7aaf2f80
+sourceHash: 9359011c19fbc509
 generator: scripts/generate-feature-page.js
 templateVersion: 6
 ---
@@ -11,19 +11,19 @@ import { Steps, Callout } from 'nextra/components'
 
 # Devenir livreur & missions
 
-Devenez livreur indépendant sur Grubano : candidatez via la liste d’attente, validez votre identité professionnelle, rendez-vous disponible, consultez les missions proposées et réalisez vos courses étape par étape.
+Devenez livreur indépendant sur Grubano : rejoignez la liste d’attente, complétez votre profil, rendez-vous disponible et réalisez vos premières courses.
 
-<ArticleMeta audience="Livreurs" minutes={4} updated="2026-07-10" />
+<ArticleMeta audience="Livreurs" minutes={6} updated="2026-07-11" />
 
 <Eyebrow icon="insights">Aperçu</Eyebrow>
 
-## Le parcours du livreur
+## Votre parcours, de la candidature à la livraison
 
 <FlowDiagram steps={[
-  { icon:"description", title:"Candidater", desc:"Inscription via la liste d’attente avec validation SIREN/SIRET" },
-  { icon:"gavel", title:"Validation / KYC", desc:"Vérification automatique de votre identité professionnelle" },
-  { icon:"two_wheeler", title:"Se rendre dispo", desc:"Activez votre disponibilité pour recevoir des missions" },
-  { icon:"local_shipping", title:"Réaliser une course", desc:"Acceptez, récupérez et livrez la commande" }
+  { icon:"receipt_long", title:"Candidater", desc:"Inscription avec SIREN/SIRET et vérification automatique" },
+  { icon:"description", title:"Validation / KYC", desc:"Vérification d’identité d’entreprise et justificatifs" },
+  { icon:"two_wheeler", title:"Se rendre dispo", desc:"Activez votre statut en ligne pour recevoir des missions" },
+  { icon:"local_shipping", title:"Réaliser une course", desc:"Acceptez, récupérez et livrez étape par étape" }
 ]} />
 
 <Eyebrow icon="bolt">L’essentiel</Eyebrow>
@@ -31,68 +31,64 @@ Devenez livreur indépendant sur Grubano : candidatez via la liste d’attente, 
 ## En bref
 
 <Essentials title="Si vous ne devez retenir que ça :" items={[
-  <>La candidature est actuellement en <b>liste d’attente</b> : vous pouvez vous inscrire dès maintenant, l’activation sera effective prochainement</>,
-  <>Votre <b>identité professionnelle</b> (SIREN ou SIRET) est vérifiée automatiquement dès l’inscription — un nom de contact différent du nom officiel n’est pas bloquant</>,
-  <>Vous choisissez librement <b>quelles missions accepter</b> : refuser une course n’entraîne aucune pénalité ni note</>
+  <>Grubano vérifie <b>automatiquement votre SIREN/SIRET</b> auprès du registre officiel — une entreprise active et enregistrée accélère votre validation.</>,
+  <>Vous choisissez librement vos missions : <b>aucune pénalité</b> si vous refusez ou passez une offre.</>,
+  <>Les <b>gains par mission</b> apparaîtront bientôt dans votre tableau de bord ; le versement automatique suivra une fois votre compte de paiement configuré.</>
 ]} />
 
 <Eyebrow icon="lightbulb">Comment ça marche</Eyebrow>
 
 ## Le principe (et le pourquoi)
 
-Grubano recherche des livreurs indépendants ou des entreprises de livraison pour assurer les courses de ses restaurants locaux. Vous candidatez avec votre SIREN ou SIRET, précisez vos types de missions (repas, produits fournisseurs, B2B, froid) et vos véhicules disponibles (vélo, scooter, voiture, camionnette, frigorifique). Une fois votre identité professionnelle validée automatiquement, vous recevrez bientôt l’accès à votre tableau de bord.
+Grubano construit un réseau de livreurs indépendants — auto-entrepreneurs ou sociétés — qui assurent les courses pour les restaurants locaux de la plateforme. Chaque livreur reste maître de son planning : vous vous rendez disponible quand vous le souhaitez, vous voyez les missions proposées (repas, produits fournisseurs, froid…) et vous acceptez celles qui vous conviennent. Aucun algorithme ne vous impose une mission, et refuser n’entraîne aucune pénalité.
 
-La validation repose sur une vérification auprès du registre officiel des entreprises : Grubano s’assure que votre SIREN existe et que votre structure est active. Le nom de contact que vous déclarez peut différer du nom officiel de votre entreprise — c’est un simple nom d’affichage, jamais un critère de refus. Une fois actif, vous pourrez vous rendre disponible pour recevoir des propositions de missions, que vous accepterez librement sans aucune obligation. Votre [rémunération](/fr/guides/driver-earnings/) sera versée pour chaque course réalisée.
+Le processus de candidature repose sur une **vérification automatique d’entreprise** : Grubano interroge le registre officiel français pour confirmer que votre SIREN ou SIRET correspond à une société active. Si le nom déclaré diffère légèrement du nom officiel, cela ne bloque pas votre validation — seule l’existence d’une entreprise en règle compte. Cette vérification protège la qualité du réseau tout en gardant l’inscription rapide. Une fois validé et actif, vous configurez vos types de véhicules (vélo, scooter, voiture, camionnette, frigorifique), les types de missions qui vous intéressent et vos zones d’intervention. Le tableau de bord vous présente alors les missions compatibles ; vous n’avez qu’à accepter, récupérer le colis au point de départ et livrer au point d’arrivée en suivant les étapes.
 
 <Eyebrow icon="format_list_numbered">Étape par étape</Eyebrow>
 
-## Candidater et réaliser votre première course
+## Rejoindre Grubano et réaliser votre première course
 
 <Steps>
 
-### Remplissez le formulaire d’inscription
+### Candidater avec votre SIREN ou SIRET
 
-Rendez-vous sur la page d’inscription livreur. Indiquez votre type de partenaire (indépendant ou entreprise), votre nom de contact, votre e-mail, votre téléphone et votre SIREN (9 chiffres) ou SIRET (14 chiffres). Précisez les types de missions que vous souhaitez réaliser et les véhicules dont vous disposez, ainsi que vos zones d’intervention.
+Remplissez le formulaire d’inscription en indiquant votre statut (indépendant ou société), votre nom de contact, votre e-mail et votre numéro SIREN (9 chiffres) ou SIRET (14 chiffres). Grubano vérifie automatiquement auprès du registre officiel que l’entreprise existe et qu’elle est active. Sélectionnez ensuite les types de missions que vous souhaitez assurer (repas, produits fournisseurs, B2B, froid) et les véhicules dont vous disposez (vélo, scooter, voiture, camionnette, frigorifique).
 
-### Validation automatique de votre identité
+### Passer la validation (statut en attente ou actif)
 
-Votre SIREN ou SIRET est vérifié automatiquement auprès du registre officiel des entreprises. Si votre structure existe et est active, votre candidature est validée même si le nom de contact que vous avez déclaré diffère du nom officiel. En cas de structure introuvable ou radiée, la candidature est refusée. Tout incident technique (registre indisponible, vérification impossible) place votre candidature en attente manuelle.
+Si votre SIREN correspond à une entreprise active, votre profil peut être validé automatiquement et passer au statut **actif** — vous recevrez alors un e-mail de confirmation avec un lien de connexion sans mot de passe. Dans certains cas (entreprise non trouvée ou cessée, incident technique), votre candidature reste **en attente** et un membre de l’équipe Grubano la vérifie manuellement. Vous serez notifié par e-mail du résultat. Actuellement, les nouveaux livreurs rejoignent une **liste d’attente** : votre profil est validé, mais vous ne recevrez pas encore de missions — Grubano activera progressivement les comptes en fonction de la demande logistique.
 
-### Patientez sur la liste d’attente
+### Compléter vos justificatifs (assurance et RC Pro)
 
-L’activation des comptes livreurs est actuellement en liste d’attente. Votre candidature a bien été enregistrée ; vous recevrez bientôt un e-mail pour accéder à votre espace et commencer à recevoir des missions. Cette période d’attente permet à Grubano de déployer progressivement le service logistique.
+Une fois votre profil créé, vous devrez déclarer votre assurance responsabilité civile (assureur, numéro de police, date d’expiration) et, si vous opérez en société, votre RC Professionnelle. Ces informations sont vérifiées par l’équipe Grubano avant l’activation définitive de votre compte. Elles garantissent la conformité réglementaire et la sécurité de tous les acteurs du réseau.
 
-### Activez votre disponibilité
+### Se rendre disponible
 
-Une fois votre compte activé, connectez-vous à votre espace livreur et basculez le bouton « Disponible » sur ON. Vous recevrez alors les propositions de missions correspondant à vos critères (zones, types de missions, véhicules).
+Connectez-vous à votre tableau de bord livreur et activez le bouton « En ligne » : vous signalez ainsi que vous êtes prêt à recevoir des missions. Bientôt, seuls les livreurs en ligne recevront des offres de course. Vous pouvez vous rendre indisponible à tout moment sans conséquence.
 
-### Consultez les missions proposées
+### Voir les missions proposées et en accepter une
 
-Les missions qui correspondent à votre profil apparaissent dans l’onglet « Missions disponibles ». Chaque mission indique le restaurant de départ, le quartier de livraison (l’adresse exacte n’est révélée qu’une fois la mission acceptée), le type de course et le montant de votre [rémunération](/fr/guides/driver-earnings/).
+L’onglet **Missions disponibles** liste les courses compatibles avec vos véhicules, vos types de missions et vos zones. Chaque mission affiche le point de départ (restaurant ou fournisseur), le quartier de livraison (l’adresse exacte apparaîtra une fois la mission acceptée), et la rémunération. Vous êtes libre d’accepter ou de refuser : passer une mission ne vous pénalise jamais. Lorsque vous cliquez sur « Accepter », la mission vous est attribuée instantanément si elle est encore disponible ; si un autre livreur l’a prise entre-temps, vous recevez un message neutre et pouvez en choisir une autre.
 
-### Acceptez une mission
+### Récupérer la commande
 
-Cliquez sur « Accepter » sur la mission de votre choix. Si un autre livreur l’a acceptée entre-temps, vous recevez une notification neutre (« Mission déjà attribuée ») sans aucune pénalité. Une fois acceptée, l’adresse complète du client vous est révélée.
+Une fois la mission acceptée, l’adresse complète du point de départ s’affiche. Rendez-vous sur place, récupérez le colis ou les plats préparés, puis confirmez dans l’app que vous avez **récupéré la commande**. Cette confirmation fait passer la mission au statut « En cours de livraison » et informe le client que vous êtes en route.
 
-### Récupérez la commande
+### Livrer au client
 
-Rendez-vous au restaurant indiqué. Une fois sur place, marquez « Commande récupérée » dans l’application. La mission passe à l’étape suivante.
-
-### Livrez la commande
-
-Rendez-vous à l’adresse du client. Une fois la commande remise, marquez « Commande livrée ». La mission est terminée et votre rémunération est enregistrée — le versement effectif arrive bientôt (voir la fiche Rémunération).
+L’adresse exacte du client apparaît désormais dans le détail de la mission. Effectuez la livraison, puis confirmez dans l’app que la commande a été **livrée**. La mission passe au statut « Terminée » et s’archive dans l’onglet **Missions terminées** de votre tableau de bord. Bientôt, vos gains pour cette course seront comptabilisés et versés automatiquement sur votre compte de paiement configuré.
 
 </Steps>
 
 <Eyebrow icon="check_circle">Bonnes pratiques</Eyebrow>
 
-## Maximisez vos missions
+## Optimiser votre activité de livreur
 
 <Callout type="default">
-- **Activez votre disponibilité** dès que vous êtes prêt à recevoir des missions — vous ne recevrez de propositions que si vous êtes en ligne.
-- **Acceptez rapidement** les missions qui vous intéressent : d’autres livreurs voient les mêmes offres et peuvent les prendre en premier.
-- **Marquez chaque étape** (récupération, livraison) dans l’application pour que le restaurant et le client soient informés en temps réel.
-- **Refusez sans crainte** : si une mission ne vous convient pas, ne l’acceptez pas — aucune pénalité, aucune note ne vous sera attribuée.
+- **Déclarez des zones réalistes** : concentrez-vous sur les quartiers que vous connaissez bien — vous serez plus rapide et recevrez des missions pertinentes.
+- **Vérifiez vos justificatifs à l’avance** : une assurance à jour et une RC Pro valide (pour les sociétés) accélèrent votre activation définitive.
+- **Rendez-vous disponible aux heures de pointe** : le midi et le soir, la demande de livraison est plus forte — c’est le moment idéal pour maximiser le nombre de missions.
+- **Refusez sans hésiter** : si une mission ne vous convient pas (trajet trop long, heure tardive…), passez-la — aucun algorithme ne vous sanctionnera.
 </Callout>
 
 <Eyebrow icon="error">Erreurs à éviter</Eyebrow>
@@ -100,17 +96,17 @@ Rendez-vous à l’adresse du client. Une fois la commande remise, marquez « Co
 ## Les pièges courants
 
 <Callout type="error">
-- **Ne restez pas disponible si vous n’êtes pas prêt** : désactivez le bouton « Disponible » dès que vous faites une pause, sinon vous continuerez à recevoir des propositions.
-- **N’oubliez pas de marquer « Récupéré »** : tant que vous ne validez pas cette étape, le restaurant ne sait pas que vous êtes en route.
-- **N’acceptez pas une mission sans vérifier** la zone de livraison : une fois acceptée, vous vous engagez à la réaliser.
+- **Oublier de se rendre indisponible** : si vous restez « En ligne » alors que vous ne pouvez plus livrer, vous risquez de manquer des missions qui auraient pu être attribuées à un collègue actif.
+- **Ne pas confirmer les étapes** : oublier de valider « Récupéré » ou « Livré » dans l’app bloque la mission dans un statut intermédiaire et retarde l’affichage de vos gains.
+- **Accepter une mission hors zone** : si vous acceptez une course dans un quartier que vous ne connaissez pas, vous perdrez du temps — mieux vaut la laisser à un livreur local.
 </Callout>
 
 <Eyebrow icon="lightbulb">Astuce</Eyebrow>
 
-## Préparez votre candidature
+## Gagnez du temps sur la route
 
 <Callout type="info">
-Avant de remplir le formulaire, ayez votre numéro SIREN ou SIRET sous la main (il figure sur votre avis de situation SIRENE, téléchargeable gratuitement sur le site de l’INSEE). Si vous êtes micro-entrepreneur, votre SIRET est identique à votre numéro de sécurité sociale suivi de 5 chiffres. Un SIREN ou SIRET valide et actif accélère votre validation automatique.
+Bientôt, Grubano vous proposera d’activer le **suivi de position en temps réel** pendant vos courses : le client verra votre progression sur une carte, réduisant les appels « Où êtes-vous ? » et améliorant la satisfaction générale. Ce suivi est **strictement optionnel** — vous devrez donner votre consentement explicite, et vous pourrez le révoquer à tout moment. Aucune donnée de localisation n’est collectée tant que vous n’avez pas activé cette option.
 </Callout>
 
 <Eyebrow icon="quiz">FAQ</Eyebrow>
@@ -118,25 +114,25 @@ Avant de remplir le formulaire, ayez votre numéro SIREN ou SIRET sous la main (
 ## Questions fréquentes
 
 <Faq items={[
-  {
-    icon: "schedule",
-    q: "Combien de temps prend la validation ?",
-    a: "La vérification de votre SIREN ou SIRET est automatique et immédiate. Si votre structure est reconnue et active, votre candidature est validée instantanément. Vous êtes ensuite placé sur la liste d’attente en attendant l’activation générale des comptes livreurs."
+  { 
+    icon:"two_wheeler", 
+    q:"Puis-je m’inscrire sans entreprise ?", 
+    a:"Non. Grubano vérifie automatiquement votre SIREN ou SIRET auprès du registre officiel — vous devez disposer d’un statut d’auto-entrepreneur ou d’une société active pour candidater." 
   },
-  {
-    icon: "gavel",
-    q: "Que se passe-t-il si mon nom de contact diffère du nom officiel de mon entreprise ?",
-    a: "Ce n’est pas un problème. Grubano vérifie uniquement que votre SIREN ou SIRET existe et que votre structure est active. Le nom de contact que vous déclarez est un simple nom d’affichage, jamais un critère de refus."
+  { 
+    icon:"schedule", 
+    q:"Que se passe-t-il si je refuse une mission ?", 
+    a:"Rien. Refuser ou passer une mission proposée n’entraîne aucune pénalité, aucune baisse de priorité, aucun score négatif. Vous restez libre de choisir les courses qui vous conviennent." 
   },
-  {
-    icon: "two_wheeler",
-    q: "Puis-je refuser une mission sans pénalité ?",
-    a: "Oui, absolument. Vous acceptez librement les missions qui vous conviennent. Refuser une course n’entraîne aucune pénalité, aucune note et n’affecte pas votre accès aux futures missions."
+  { 
+    icon:"account_balance_wallet", 
+    q:"Quand et comment suis-je payé ?", 
+    a:"Bientôt, vos gains par mission seront comptabilisés dans votre tableau de bord et versés automatiquement sur votre compte de paiement Stripe Connect. La configuration de ce compte et le calendrier des versements seront détaillés dans la rubrique dédiée à la rémunération." 
   },
-  {
-    icon: "local_shipping",
-    q: "Comment sont sélectionnées les missions que je vois ?",
-    a: "Vous recevez les missions correspondant à vos critères (zones d’intervention, types de missions, véhicules disponibles) et à votre statut « Disponible ». Plusieurs livreurs voient les mêmes offres ; le premier qui accepte remporte la mission."
+  { 
+    icon:"receipt_long", 
+    q:"Que signifie « liste d’attente » après ma validation ?", 
+    a:"Actuellement, Grubano active progressivement les comptes livreurs en fonction de la demande logistique. Votre profil est validé et prêt, mais vous ne recevrez des missions qu’une fois votre compte définitivement activé — vous serez prévenu par e-mail." 
   }
 ]} />
 
@@ -145,28 +141,7 @@ Avant de remplir le formulaire, ayez votre numéro SIREN ou SIRET sous la main (
 ## Articles liés
 
 <RelatedCards items={[
-  {
-    icon: "payments",
-    title: "Rémunération & retraits",
-    sub: "Gains et retraits",
-    href: "/fr/guides/driver-earnings/"
-  },
-  {
-    icon: "location_on",
-    title: "Suivi de course",
-    sub: "Position en direct",
-    href: "/fr/guides/driver-tracking/"
-  },
-  {
-    icon: "shopping_bag",
-    title: "Commander & suivre",
-    sub: "Commander et suivre",
-    href: "/fr/guides/consumer/"
-  },
-  {
-    icon: "loyalty",
-    title: "Fidélité, cagnotte & parrainage",
-    sub: "Points et parrainage",
-    href: "/fr/guides/consumer-loyalty/"
-  }
+  { icon:"account_balance_wallet", title:"Rémunération & retraits", sub:"Gains et versements", href:"/fr/guides/driver-earnings/" },
+  { icon:"local_shipping", title:"Suivi de course", sub:"Étapes et notifications", href:"/fr/guides/driver-tracking/" },
+  { icon:"shopping_bag", title:"Commander & suivre", sub:"Parcours client", href:"/fr/guides/consumer/" }
 ]} />

@@ -2,7 +2,7 @@
 title: "Piloter son réseau"
 description: "Piloter un réseau de franchise : plusieurs points de vente, suivi des royalties dues, et reporting consolidé — dans les limites fixées par Grubano."
 generated: true
-sourceHash: 98b8640bcf0a9bc5
+sourceHash: 785e1b6d5c67956d
 generator: scripts/generate-feature-page.js
 templateVersion: 6
 ---
@@ -11,19 +11,19 @@ import { Steps, Callout } from 'nextra/components'
 
 # Piloter son réseau
 
-Suivez votre réseau de franchise — chiffre d’affaires consolidé, royalties dues, et reporting par établissement — dans les limites fixées par Grubano.
+Suivez le chiffre d’affaires de vos établissements franchisés, consultez les royalties dues et pilotez la performance de votre réseau depuis un tableau de bord consolidé.
 
-<ArticleMeta audience="Franchisés" minutes={3} updated="2026-07-10" />
+<ArticleMeta audience="Franchisés" minutes={4} updated="2026-07-11" />
 
 <Eyebrow icon="insights">Aperçu</Eyebrow>
 
-## Le trajet de votre argent
+## Votre réseau en un coup d'œil
 
 <FlowDiagram steps={[
-  { icon: "storefront", title: "Points de vente", desc: "Vos établissements encaissent les commandes" },
-  { icon: "account_balance_wallet", title: "CA du réseau", desc: "Chiffre d’affaires consolidé sur 30 jours glissants" },
-  { icon: "percent", title: "Royalties", desc: "Part prélevée sur le CA de chaque établissement" },
-  { icon: "description", title: "Reporting", desc: "Suivi consolidé et historique des versements" }
+  { icon: "storefront", title: "Points de vente", desc: "Vos établissements franchisés actifs et leur localisation" },
+  { icon: "receipt_long", title: "CA du réseau", desc: "Le chiffre d’affaires consolidé sur 30 jours glissants" },
+  { icon: "percent", title: "Royalties", desc: "Les redevances collectées dans les limites fixées par Grubano" },
+  { icon: "description", title: "Reporting", desc: "Les performances par établissement et les tendances" }
 ]} />
 
 <Eyebrow icon="bolt">L’essentiel</Eyebrow>
@@ -31,51 +31,62 @@ Suivez votre réseau de franchise — chiffre d’affaires consolidé, royalties
 ## En bref
 
 <Essentials title="Si vous ne devez retenir que ça :" items={[
-  <>Le <b>tableau de bord franchise</b> consolide le chiffre d’affaires de tous vos établissements sur une fenêtre glissante de 30 jours</>,
-  <>Les <b>royalties sont calculées</b> automatiquement sur le CA de chaque point de vente, dans les limites fixées par Grubano</>,
-  <>L'<b>historique des versements</b> trace les royalties accumulées, en règlement et réglées, par établissement</>
+  <>Le tableau de bord consolidé affiche le <b>chiffre d’affaires de tous vos établissements franchisés</b> sur une fenêtre glissante de 30 jours, avec les royalties associées.</>,
+  <>Chaque point de vente est suivi individuellement : vous visualisez <b>le classement par performance</b> et suivez l’évolution du réseau (ouvertures, répartition géographique).</>,
+  <>Les <b>royalties dues</b> et réglées sont calculées automatiquement à partir des ventes encaissées, dans les limites fixées par Grubano — sans manipulation manuelle.</>
 ]} />
 
 <Eyebrow icon="lightbulb">Comment ça marche</Eyebrow>
 
 ## Le principe (et le pourquoi)
 
-Lorsque vous gérez plusieurs établissements en [franchise](/fr/guides/franchise/), Grubano agrège les performances de chaque point de vente dans un tableau de bord unique. Vous y voyez le chiffre d’affaires consolidé sur les 30 derniers jours, le nombre de commandes livrées, et le montant de royalties dû. Chaque établissement apparaît avec son nom, sa ville, son CA propre et le détail de ses royalties — vous pouvez ainsi comparer les performances et identifier les points de vente les plus actifs.
+Quand vous développez une [franchise](/fr/guides/franchise/) sur Grubano, vous gérez plusieurs établissements qui exploitent votre enseigne. Le tableau de bord franchiseur vous donne une vision d’ensemble en temps réel : combien d’emplacements sont ouverts, quel chiffre d’affaires génère le réseau, et quelles royalties sont dues ou versées.
 
-Le calcul et le prélèvement automatisés des royalties arrivent bientôt : chaque commande livrée génèrera une redevance selon un taux défini avec vous au moment de l’ouverture. Le tableau de bord trace déjà trois montants distincts : les royalties **accumulées** (le total toutes périodes confondues), **en règlement** (un lot qui sera en cours de transfert) et **réglées** (les versements effectués, une fois le mécanisme activé). Cette séparation garantira qu’aucun montant n’est compté deux fois et que chaque versement reste traçable.
+Grubano consolide automatiquement les données de chaque point de vente franchisé, ce qui vous évite de compiler vous-même des tableaux Excel et vous permet de prendre des décisions éclairées — identifier les établissements performants, accompagner ceux qui démarrent, et piloter la croissance du réseau de manière sereine.
 
 <Eyebrow icon="format_list_numbered">Étape par étape</Eyebrow>
 
-## Consulter le reporting consolidé
+## Consulter la vue d’ensemble du réseau
 
 <Steps>
 
-### Accédez au tableau de bord franchise
+### Accédez au tableau de bord franchiseur
 
-Dans votre espace, cliquez sur **Vue d’ensemble** dans la barre latérale. Vous voyez immédiatement le chiffre d’affaires du réseau sur les 30 derniers jours, comparé à la période précédente (j-60 → j-30).
+Depuis votre espace, le tableau de bord affiche les indicateurs consolidés : nombre d’établissements ouverts, nombre de villes couvertes, et chiffre d’affaires du réseau sur les 30 derniers jours.
 
-### Parcourez la liste de vos établissements
+### Comparez les performances par établissement
 
-Chaque point de vente apparaît avec son nom, sa ville, son chiffre d’affaires sur 30 jours, le nombre de commandes livrées et le montant de royalties correspondant. La liste est triée par date d’ouverture.
+La section « Top établissements » classe vos points de vente par chiffre d’affaires décroissant sur la période. Vous identifiez immédiatement les locomotives de votre réseau et les emplacements en démarrage.
 
-### Consultez le résumé financier
+### Suivez les royalties dans l’onglet Finances
 
-Le bandeau du haut affiche trois totaux : **royalties accumulées** (le cumul depuis le début), **royalties en règlement** (un lot en préparation de transfert) et **royalties réglées** (les versements terminés — les montants resteront à zéro tant que le versement automatisé n’est pas activé).
+L’onglet dédié détaille les royalties cumulées, versées et en attente de règlement. La ventilation par point de vente vous montre précisément la contribution de chaque emplacement au total des redevances.
 
-### Vérifiez l’historique des versements
+### Consultez l’historique des versements
 
-La page **Finances** (accessible depuis la barre latérale) listera chaque versement effectué, avec sa date, son montant et son statut, dès l’activation du versement automatisé (bientôt). Vous y retrouvez dès aujourd’hui la répartition des royalties par établissement.
+La liste chronologique des versements (« Payouts ») affiche les montants réglés, leurs dates et leurs statuts. Chaque ligne correspond à un lot de royalties transférées vers votre compte.
 
 </Steps>
 
+<Eyebrow icon="calculate">Exemple concret</Eyebrow>
+
+## Un réseau de cinq emplacements
+
+Supposons que votre réseau compte cinq points de vente actifs, répartis dans trois villes. Sur les 30 derniers jours, le chiffre d’affaires consolidé atteint 12 000 €. Grubano calcule automatiquement les royalties dues dans les limites fixées, les retient à la source sur chaque commande encaissée, puis les reverse selon le calendrier de règlement.
+
+Dans la vue « Top établissements », vous constatez que deux emplacements génèrent à eux seuls 60 % du chiffre d’affaires total, tandis que les trois autres montent en puissance. Vous décidez d’accompagner les plus récents avec des actions de communication locale, tout en capitalisant sur les bonnes pratiques des meilleurs.
+
+**Cet exemple est illustratif** — vos propres résultats dépendent de la performance de chaque établissement et des conditions spécifiques de votre réseau.
+
 <Eyebrow icon="check_circle">Bonnes pratiques</Eyebrow>
 
-## Optimiser le suivi
+## Pilotez efficacement
 
 <Callout type="default">
-- **Comparez les établissements** — identifiez les points de vente les plus performants et ceux qui nécessitent un accompagnement.
-- **Surveillez les tendances** — le delta entre les deux périodes de 30 jours révèle une croissance ou un ralentissement du réseau.
-- **Vérifiez les versements** — une fois le versement automatisé activé, l’historique des royalties réglées servira de pièce justificative pour votre comptabilité.
+- **Consultez le tableau de bord chaque semaine** : les indicateurs sur 30 jours glissants vous donnent une tendance fiable sans attendre la fin du mois calendaire.
+- **Identifiez les écarts de performance** : si un établissement affiche un chiffre d’affaires nettement inférieur à la moyenne du réseau, accompagnez le franchisé (formation, support opérationnel).
+- **Suivez l’activité récente** : les ouvertures d’établissements apparaissent dans le fil d’activité — vérifiez que les nouveaux points de vente démarrent correctement.
+- **Anticipez la croissance** : le nombre de candidatures en attente vous aide à planifier les prochaines ouvertures et à ajuster votre accompagnement.
 </Callout>
 
 <Eyebrow icon="error">Erreurs à éviter</Eyebrow>
@@ -83,9 +94,9 @@ La page **Finances** (accessible depuis la barre latérale) listera chaque verse
 ## Les pièges courants
 
 <Callout type="error">
-- **Ne confondez pas fenêtre glissante et mois calendaire** — le tableau affiche les 30 derniers jours à partir d’aujourd’hui, pas le mois en cours. Une commande du 5 avril reste comptée jusqu’au 4 mai.
-- **N’additionnez pas accumulées + en règlement + réglées** — ces trois montants sont des étapes d’un même flux ; seules les royalties accumulées représentent le total toutes périodes.
-- **Ne cherchez pas à modifier le taux** — les conditions financières sont fixées entre les acteurs concernés ; contactez Grubano pour toute révision contractuelle.
+- **Comparer des établissements de tailles différentes sans contexte** : un emplacement en centre-ville génère naturellement plus de commandes qu’une zone périphérique — regardez aussi le nombre de commandes et l’évolution dans le temps.
+- **Négliger les établissements en démarrage** : un chiffre d’affaires faible les premières semaines est normal, mais si la courbe stagne après deux mois, c’est un signal d’alerte.
+- **Se focaliser uniquement sur les royalties** : votre rôle de franchiseur est d’abord d’assurer la réussite du réseau — un franchisé performant génère des royalties durables.
 </Callout>
 
 <Eyebrow icon="quiz">FAQ</Eyebrow>
@@ -93,10 +104,26 @@ La page **Finances** (accessible depuis la barre latérale) listera chaque verse
 ## Questions fréquentes
 
 <Faq items={[
-  { icon: "schedule", q: "Pourquoi une fenêtre de 30 jours et pas le mois en cours ?", a: "Une fenêtre glissante lisse les variations liées au calendrier (mois à 28, 30 ou 31 jours, jours fériés) et affiche toujours une période complète, ce qui rend les comparaisons plus fiables." },
-  { icon: "percent", q: "Le taux de royalties est-il le même pour tous mes établissements ?", a: "Cela dépend de votre contrat. Lorsqu’un seul taux s’applique à toutes vos marques franchisées, le tableau de bord l’affiche en haut de page ; s’il varie, un tiret (—) apparaît à la place." },
-  { icon: "payments", q: "Quand les royalties en règlement sont-elles versées ?", a: "Le versement automatisé arrive bientôt. À son activation, les royalties passeront de « accumulées » à « en règlement » lors d’un lot de versement, puis à « réglées » une fois le transfert confirmé, selon les conditions fixées avec Grubano." },
-  { icon: "storefront", q: "Un établissement fermé temporairement apparaît-il dans le tableau ?", a: "Seuls les établissements actifs sont listés dans la vue principale. Vous pouvez consulter le nombre total d’établissements (ouverts + fermés) et la répartition par ville dans les statistiques du réseau." }
+  {
+    icon: "schedule",
+    q: "Quelle période couvre le chiffre d’affaires affiché ?",
+    a: "Le tableau de bord affiche les 30 derniers jours glissants (pas le mois calendaire), ce qui donne une vision en temps réel de l’activité du réseau. Cette fenêtre mobile se décale chaque jour."
+  },
+  {
+    icon: "percent",
+    q: "Comment sont calculées les royalties ?",
+    a: "Grubano calcule automatiquement les royalties sur chaque commande encaissée par un point de vente franchisé, selon les conditions financières fixées entre les acteurs concernés. Le montant retenu à la source apparaît dans l’onglet Finances."
+  },
+  {
+    icon: "storefront",
+    q: "Puis-je voir le détail d’un établissement spécifique ?",
+    a: "La vue consolidée affiche les classements et les totaux ; le détail opérationnel de chaque point de vente (commandes, produits, horaires) reste géré par le franchisé depuis son propre tableau de bord restaurateur."
+  },
+  {
+    icon: "group",
+    q: "Les candidatures franchisés apparaissent-elles dans le tableau de bord ?",
+    a: "Oui, le compteur « Candidatures en attente » affiche le nombre de demandes reçues pour vos enseignes ouvertes à la franchise. Vous traitez ces candidatures depuis l’onglet dédié."
+  }
 ]} />
 
 <Eyebrow icon="menu_book">Pour aller plus loin</Eyebrow>
@@ -104,28 +131,6 @@ La page **Finances** (accessible depuis la barre latérale) listera chaque verse
 ## Articles liés
 
 <RelatedCards items={[
-  {
-    icon: "hub",
-    title: "La franchise sur Grubano",
-    sub: "Le modèle Grubano",
-    href: "/fr/guides/franchise/"
-  },
-  {
-    icon: "payments",
-    title: "Finances & versements",
-    sub: "Commission et versements",
-    href: "/fr/guides/finances/"
-  },
-  {
-    icon: "shopping_bag",
-    title: "Commander & suivre",
-    sub: "Commander et suivre",
-    href: "/fr/guides/consumer/"
-  },
-  {
-    icon: "loyalty",
-    title: "Fidélité, cagnotte & parrainage",
-    sub: "Points et parrainage",
-    href: "/fr/guides/consumer-loyalty/"
-  }
+  { icon: "gavel", title: "La franchise sur Grubano", sub: "Principe et mise en place", href: "/fr/guides/franchise/" },
+  { icon: "account_balance", title: "Finances & versements", sub: "Suivre ses revenus", href: "/fr/guides/finances/" }
 ]} />

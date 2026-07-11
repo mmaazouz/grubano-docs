@@ -2,7 +2,7 @@
 title: "Catalogue, zones & commandes"
 description: "Publier votre catalogue et vos prix, définir vos zones de livraison et votre minimum de commande, puis recevoir et traiter les commandes des restaurateurs."
 generated: true
-sourceHash: c5cfdb6f7cb0bbcf
+sourceHash: 86d52662c515d115
 generator: scripts/generate-feature-page.js
 templateVersion: 6
 ---
@@ -11,19 +11,19 @@ import { Steps, Callout } from 'nextra/components'
 
 # Catalogue, zones & commandes
 
-Publiez votre catalogue et vos prix, définissez vos zones de livraison et votre minimum de commande, puis recevez et traitez les commandes des restaurateurs.
+Publiez vos produits, définissez vos zones de livraison et votre minimum de commande, puis recevez et traitez les commandes des restaurants partenaires.
 
-<ArticleMeta audience="Fournisseurs" minutes={4} updated="2026-07-10" />
+<ArticleMeta audience="Fournisseurs" minutes={4} updated="2026-07-11" />
 
 <Eyebrow icon="insights">Aperçu</Eyebrow>
 
-## Quatre étapes pour vendre en ligne
+## Votre vitrine vers les restaurants
 
 <FlowDiagram steps={[
-  { icon:"menu_book", title:"Publier le catalogue", desc:"Ajoutez vos produits, prix et conditionnements" },
-  { icon:"local_shipping", title:"Définir zones & minimum", desc:"Périmètres de livraison et commande minimale" },
-  { icon:"shopping_bag", title:"Recevoir une commande", desc:"Un restaurateur commande depuis votre catalogue" },
-  { icon:"check_circle", title:"Traiter & livrer", desc:"Préparez la commande et organisez la livraison" }
+  { icon: "menu_book", title: "Publier le catalogue", desc: "Ajoutez vos produits, prix et disponibilités" },
+  { icon: "hub", title: "Définir zones & minimum", desc: "Zones de livraison, délai et seuil minimum" },
+  { icon: "receipt_long", title: "Recevoir une commande", desc: "Un restaurant commande depuis votre catalogue" },
+  { icon: "local_shipping", title: "Traiter & livrer", desc: "Préparez et livrez dans vos délais" }
 ]} />
 
 <Eyebrow icon="bolt">L’essentiel</Eyebrow>
@@ -31,52 +31,52 @@ Publiez votre catalogue et vos prix, définissez vos zones de livraison et votre
 ## En bref
 
 <Essentials title="Si vous ne devez retenir que ça :" items={[
-  <>Votre <b>catalogue</b> est privé : seuls les restaurateurs actifs y accèdent — vous contrôlez vos produits, prix (en centimes) et conditionnements.</>,
-  <>Les <b>zones de livraison</b> et le <b>minimum de commande</b> filtrent les demandes : un restaurateur hors zone ou sous le seuil ne peut pas commander.</>,
-  <>Chaque <b>commande entrante</b> apparaît dans votre espace ; vous voyez le détail des lignes, le total et la date souhaitée — le règlement arrive <b>bientôt</b> (prestataire de paiement en cours d’activation).</>
+  <>Votre <b>catalogue</b> liste tous vos produits avec leurs prix unitaires (en euros, stockés au centime), conditionnements et allergènes — vous seul pouvez le modifier.</>,
+  <>Les <b>zones de livraison</b>, le <b>minimum de commande</b> (en euros) et le <b>délai</b> (en jours) encadrent les commandes que les restaurants peuvent passer — configurez-les dans votre profil.</>,
+  <>Chaque <b>commande reçue</b> vous parvient avec les lignes détaillées, les coordonnées du restaurant acheteur et la date de livraison souhaitée — vous gérez ensuite la préparation et la livraison.</>
 ]} />
 
 <Eyebrow icon="lightbulb">Comment ça marche</Eyebrow>
 
 ## Le principe (et le pourquoi)
 
-Grubano met en relation les fournisseurs d’approvisionnements et les restaurateurs locaux. Contrairement à un catalogue papier ou à un bon de commande par e-mail, votre offre en ligne est **toujours à jour** : quand vous modifiez un prix ou marquez un produit indisponible, tous les restaurateurs le voient immédiatement.
+Grubano met en relation les restaurants avec des fournisseurs locaux. Votre profil fournisseur agit comme une vitrine : les restaurateurs de votre zone consultent votre catalogue, choisissent leurs produits, et passent commande directement. Tout passe par votre tableau de bord : vous contrôlez vos prix, vos stocks, vos zones et vos conditions — le reste est automatique.
 
-Vous définissez vos **conditions commerciales** une seule fois (zones de livraison, minimum de commande, délai de préparation, modalités de paiement) : les restaurateurs savent d’avance s’ils peuvent commander chez vous, et vous ne recevez que des demandes compatibles avec votre organisation. Le règlement des commandes passera par un prestataire de paiement sécurisé — cette brique arrive **bientôt** ; en attendant, vous organisez le paiement directement avec vos clients.
+Publier un catalogue complet et définir des zones claires améliore votre visibilité : un restaurant ne voit que les fournisseurs capables de le livrer et dont le minimum de commande correspond à son besoin. Plus votre offre est précise, plus les commandes sont pertinentes.
 
 <Eyebrow icon="format_list_numbered">Étape par étape</Eyebrow>
 
-## Publier son catalogue et recevoir ses premières commandes
+## Publier votre catalogue et recevoir des commandes
 
 <Steps>
 
-### Construisez votre catalogue
+### Créer votre premier produit
 
-Accédez à votre espace fournisseur. Ajoutez un produit : nom, description (facultative), famille (viande, crémerie, épicerie…), **prix unitaire en euros** (stocké en centimes côté système pour éviter les arrondis), unité (kg, L, pièce, carton…), conditionnement (« carton de 6 », « sac de 5 kg »…). Cochez **Disponible** ; décochez si rupture de stock. Vous pouvez signaler les allergènes (facultatif, norme INCO). Répétez pour chaque référence.
+Ajoutez un produit en indiquant son nom, sa description, sa catégorie (viande, crémerie, épicerie…), son prix unitaire en euros, son unité (kg, L, pièce, carton…), son conditionnement (« carton de 6 », « sachet de 500 g »…) et ses allergènes éventuels. Le prix est stocké au centime pour garantir la précision des totaux. Vous pouvez marquer un produit « indisponible » temporairement sans le supprimer.
 
-### Définissez votre offre commerciale
+### Compléter votre offre
 
-Rendez-vous dans **Profil**. Renseignez vos **zones de livraison** (villes ou secteurs postaux desservis), le **minimum de commande** (montant en euros), le **délai de préparation** (en jours) et vos **modalités de paiement** (texte libre : virement, chèque, délai…). Ces paramètres filtrent les restaurateurs : hors zone ou sous le seuil, ils ne verront pas le bouton « Commander ».
+Renseignez vos **zones de livraison** (villes ou codes postaux), votre **minimum de commande** en euros (le seuil sous lequel vous ne livrez pas), votre **délai de livraison** en jours (le nombre de jours entre la commande et la livraison) et vos **conditions de paiement** en texte libre. Ces paramètres encadrent automatiquement les commandes : un restaurant hors zone ou sous le minimum ne pourra pas commander.
 
-### Recevez une commande
+### Recevoir une commande
 
-Un restaurateur consulte votre catalogue, ajoute des lignes à son panier et valide. Vous recevez la commande dans l’onglet **Commandes** : vous voyez le nom du client, sa ville, les lignes commandées (produit, quantité, prix unitaire capturé au moment de la commande), le total en centimes, la date souhaitée et les éventuelles notes.
+Lorsqu’un restaurant valide son panier, vous recevez une **commande** avec le statut « placée ». La commande liste chaque ligne (nom du produit, quantité, prix unitaire, total), le total général en centimes, les coordonnées du restaurant acheteur, une éventuelle note et la date de livraison souhaitée. Tous ces éléments sont figés au moment de la commande (même si vous modifiez le catalogue ensuite, la commande reste telle quelle).
 
-### Préparez et livrez
+### Préparer et livrer
 
-Préparez la commande selon votre process habituel. Organisez la livraison ou le retrait avec le restaurateur (adresse et contact affichés dans le détail de la commande). Le paiement se règle pour l’instant directement entre vous — la passerelle de règlement sécurisée arrive **bientôt**.
+Vous organisez la préparation et la livraison selon vos propres moyens logistiques. Le système ne pilote pas (encore) le suivi du statut après « placée » — la relation avec le restaurant reste directe. Vous retrouvez l’historique de toutes vos commandes triées par date décroissante, ainsi qu’un répertoire des restaurants ayant déjà commandé chez vous (nom, ville, nombre de commandes, montant total en centimes).
 
 </Steps>
 
 <Eyebrow icon="check_circle">Bonnes pratiques</Eyebrow>
 
-## Conseils pour un catalogue efficace
+## Maximiser la pertinence de votre offre
 
 <Callout type="default">
-- **Descriptions claires** : mentionnez l’origine, le label (bio, AOP…) ou le format (« barquette de 500 g ») pour lever toute ambiguïté.
-- **Catégories cohérentes** : regroupez vos produits par famille (frais, viande, poisson, boissons…) pour faciliter la navigation.
-- **Stock à jour** : décochez **Disponible** dès qu’un produit est en rupture — le restaurateur ne pourra pas l’ajouter au panier et vous évitez les annulations.
-- **Zones réalistes** : ne listez que les secteurs que vous desservez effectivement ; un minimum de commande adapté à vos frais de port réduit les paniers abandonnés.
+- **Catégorisez finement vos produits** : une catégorie claire (« viande », « poisson », « crémerie ») aide les restaurants à trouver ce qu’ils cherchent.
+- **Indiquez le conditionnement** : « carton de 12 », « sachet de 2 kg » — le restaurant anticipe mieux ses besoins et évite les malentendus.
+- **Actualisez la disponibilité en temps réel** : un produit en rupture doit être marqué indisponible plutôt que supprimé — vous pourrez le réactiver plus tard sans le recréer.
+- **Définissez un minimum réaliste** : un seuil trop élevé exclut les petits restaurants ; trop bas, il pèse sur votre rentabilité logistique.
 </Callout>
 
 <Eyebrow icon="error">Erreurs à éviter</Eyebrow>
@@ -84,9 +84,9 @@ Préparez la commande selon votre process habituel. Organisez la livraison ou le
 ## Les pièges courants
 
 <Callout type="error">
-- **Prix en centimes oubliés** : vous saisissez les prix en **euros** dans le formulaire (« 12,50 » pour 12,50 €), mais le système stocke en centimes (1 250) pour garantir la précision — ne multipliez pas manuellement par 100.
-- **Zones floues** : « région parisienne » est trop vague ; préférez « Paris 75001–75020, 92, 93, 94 » ou une liste de villes précise.
-- **Catalogue gelé** : si vous ne mettez jamais à jour vos prix ou disponibilités, les restaurateurs commanderont des produits qui n’existent plus ou à des tarifs périmés.
+- **Publier un catalogue incomplet** : un catalogue avec trois produits décourage les restaurants — attendez d’avoir une offre représentative avant d’activer votre vitrine.
+- **Oublier de mettre à jour les zones** : si vous étendez votre rayon d’action, pensez à ajouter les nouvelles villes — sinon les restaurants éligibles ne vous verront pas.
+- **Changer un prix après une commande validée** : la commande conserve le prix historique, mais le client peut être surpris à la prochaine — prévenez-le si un tarif augmente significativement.
 </Callout>
 
 <Eyebrow icon="quiz">FAQ</Eyebrow>
@@ -95,24 +95,24 @@ Préparez la commande selon votre process habituel. Organisez la livraison ou le
 
 <Faq items={[
   {
-    icon:"percent",
-    q:"Grubano prélève-t-il une commission sur mes ventes ?",
-    a:"Les conditions financières entre fournisseurs et Grubano sont fixées au moment de l’ouverture de votre compte. Le règlement des commandes par les restaurateurs passera par un prestataire de paiement sécurisé — cette fonctionnalité arrive bientôt."
+    icon: "edit",
+    q: "Puis-je modifier le prix d’un produit déjà commandé ?",
+    a: "Vous pouvez modifier le prix dans votre catalogue à tout moment, mais les commandes passées conservent le prix historique (figé au moment de la commande). Le nouveau prix s’applique uniquement aux commandes futures."
   },
   {
-    icon:"local_shipping",
-    q:"Qui s’occupe de la livraison ?",
-    a:"Vous organisez la livraison ou le retrait selon vos conditions commerciales (indiquées dans « Modalités de paiement »). Grubano ne gère pas le transport pour les commandes fournisseurs — vous traitez directement avec le restaurateur."
+    icon: "visibility",
+    q: "Un restaurant peut-il voir mon catalogue avant de commander ?",
+    a: "Oui. Les restaurants de vos zones de livraison consultent votre catalogue complet avec les prix. Ils ne voient que les produits marqués disponibles."
   },
   {
-    icon:"shopping_bag",
-    q:"Un restaurateur peut-il commander en dessous de mon minimum ?",
-    a:"Non : le système compare le montant du panier au minimum que vous avez fixé. Si le total est inférieur, le bouton « Commander » reste désactivé et le restaurateur voit le seuil à atteindre."
+    icon: "local_shipping",
+    q: "Qui gère la livraison ?",
+    a: "Vous organisez vous-même la livraison selon vos moyens (véhicule propre, transporteur…). Le système enregistre la commande et vous fournit les coordonnées du restaurant — la logistique reste de votre côté."
   },
   {
-    icon:"update",
-    q:"Puis-je modifier un prix après qu’un restaurateur a commandé ?",
-    a:"Oui, mais la commande déjà passée conserve le prix capturé au moment de la validation (snapshot). Vos nouveaux tarifs s’appliquent aux prochaines commandes — les lignes d’une commande existante ne changent jamais."
+    icon: "delete",
+    q: "Que se passe-t-il si je supprime un produit commandé ?",
+    a: "Les lignes de commande existantes gardent le nom et le prix du produit (snapshot) même après suppression — l’historique reste intact. Seul le lien technique vers le catalogue est rompu."
   }
 ]} />
 
@@ -124,25 +124,13 @@ Préparez la commande selon votre process habituel. Organisez la livraison ou le
   {
     icon: "storefront",
     title: "Vendre vos approvisionnements",
-    sub: "Vendre aux restaurants",
+    sub: "Devenir fournisseur Grubano",
     href: "/fr/guides/supplier/"
   },
   {
-    icon: "inventory_2",
+    icon: "inventory",
     title: "Gestion des stocks",
-    sub: "Journal et alertes",
+    sub: "Suivre disponibilités et ruptures",
     href: "/fr/guides/stocks/"
-  },
-  {
-    icon: "shopping_bag",
-    title: "Commander & suivre",
-    sub: "Commander et suivre",
-    href: "/fr/guides/consumer/"
-  },
-  {
-    icon: "loyalty",
-    title: "Fidélité, cagnotte & parrainage",
-    sub: "Points et parrainage",
-    href: "/fr/guides/consumer-loyalty/"
   }
 ]} />

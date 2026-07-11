@@ -2,7 +2,7 @@
 title: "Mon compte"
 description: "Gérer son compte client : coordonnées, adresses, favoris, avis laissés et langue de l’application."
 generated: true
-sourceHash: 90f63e626dbe03a7
+sourceHash: 20ac03f3d78aac7f
 generator: scripts/generate-feature-page.js
 templateVersion: 6
 ---
@@ -11,19 +11,19 @@ import { Steps, Callout } from 'nextra/components'
 
 # Mon compte
 
-Gérez vos informations personnelles, vos adresses de livraison, vos restaurants favoris, vos avis et la langue de l’application, le tout depuis un seul endroit.
+Gérez vos coordonnées, vos adresses, vos favoris et les avis que vous avez laissés, et personnalisez votre langue et vos préférences de notifications.
 
-<ArticleMeta audience="Clients" minutes={3} updated="2026-07-10" />
+<ArticleMeta audience="Clients" minutes={3} updated="2026-07-11" />
 
 <Eyebrow icon="insights">Aperçu</Eyebrow>
 
-## Votre identité numérique
+## Votre espace personnel
 
 <FlowDiagram steps={[
-  { icon: "person", title: "Créer un compte", desc: "E-mail et mot de passe ou connexion Google" },
+  { icon: "person", title: "Créer un compte", desc: "Inscription rapide avec e-mail ou fournisseur tiers" },
   { icon: "edit", title: "Compléter le profil", desc: "Nom, téléphone, adresses de livraison" },
-  { icon: "favorite", title: "Ajouter des favoris", desc: "Suivez vos restaurants et plats préférés" },
-  { icon: "lock", title: "Gérer la sécurité", desc: "Changer l’e-mail, les notifications et la langue" }
+  { icon: "favorite", title: "Ajouter des favoris", desc: "Restaurants et plats préférés à portée de main" },
+  { icon: "lock", title: "Gérer la sécurité", desc: "Préférences de notifications et changement d’e-mail" }
 ]} />
 
 <Eyebrow icon="bolt">L’essentiel</Eyebrow>
@@ -31,70 +31,71 @@ Gérez vos informations personnelles, vos adresses de livraison, vos restaurants
 ## En bref
 
 <Essentials title="Si vous ne devez retenir que ça :" items={[
-  <>Votre compte stocke vos <b>coordonnées, adresses, favoris et avis</b> : un seul profil pour toutes vos commandes.</>,
-  <>Vous pouvez changer votre <b>e-mail, téléphone, langue</b> et vos préférences de notifications à tout moment.</>,
-  <>Les points de [fidélité](/fr/guides/consumer-loyalty/) et l’historique de vos commandes sont <b>liés automatiquement</b> à votre compte.</>
+  <>Votre compte regroupe <b>coordonnées, adresses et favoris</b> : tout est modifiable à tout moment depuis l’onglet compte.</>,
+  <>Vous recevez des <b>notifications personnalisables</b> sur l’état de vos commandes, les offres et les nouveautés proches de vous.</>,
+  <>Le changement d’e-mail nécessite une <b>vérification en deux étapes</b> : code reçu sur l’adresse actuelle, puis confirmation sur la nouvelle.</>
 ]} />
 
 <Eyebrow icon="lightbulb">Comment ça marche</Eyebrow>
 
 ## Le principe (et le pourquoi)
 
-Votre compte client est le cœur de votre expérience Grubano : il regroupe vos informations de contact, vos adresses de livraison et de facturation, vos restaurants favoris, vos avis laissés et vos préférences de langue. Chaque commande que vous passez, chaque point de [fidélité](/fr/guides/consumer-loyalty/) que vous gagnez est automatiquement rattaché à votre profil, ce qui vous permet de retrouver votre historique, de recommander facilement vos plats préférés et de bénéficier de vos cagnottes.
+Votre compte Grubano centralise toutes les informations dont vous avez besoin pour commander : nom affiché sur vos commandes, téléphone pour le livreur, adresses enregistrées pour gagner du temps, et historique de vos avis et favoris. Vous choisissez également comment Grubano vous tient informé : par notification push, e-mail ou SMS, selon le type d’événement (statut de commande, récompenses de [fidélité](/fr/guides/consumer-loyalty/), nouvelles ouvertures…).
 
-La section « Mon compte » vous donne un accès direct à toutes ces données. Vous pouvez les consulter, les modifier ou les supprimer à tout moment. Grubano ne partage jamais vos informations personnelles avec les restaurants sans votre consentement explicite : seules les données strictement nécessaires à la livraison (adresse, téléphone) sont transmises au moment de la commande.
+La sécurité est au cœur de votre compte : votre e-mail est votre identifiant unique, et toute modification de cette adresse impose une double vérification — d’abord sur l’adresse actuelle, puis sur la nouvelle — pour éviter toute prise de contrôle.
 
 <Eyebrow icon="format_list_numbered">Étape par étape</Eyebrow>
 
-## Consulter et modifier votre compte
+## Modifier vos coordonnées et préférences
 
 <Steps>
 
-### Accédez à la page Mon compte
+### Accéder à votre compte
 
-Depuis l’application mobile ou le site, appuyez sur l’icône de profil dans la barre de navigation (en bas à droite sur mobile, en haut à droite sur desktop). Sélectionnez **Mon compte**.
+Ouvrez l’application Grubano, puis touchez votre avatar ou l’onglet « Mon compte » en bas de l’écran.
 
-### Consultez vos informations
+### Modifier votre nom ou téléphone
 
-Vous voyez immédiatement votre **nom**, votre **téléphone** et votre **adresse e-mail**. Ces champs sont pré-remplis avec les données que vous avez fournies lors de l’inscription ou de votre dernière mise à jour.
+Touchez « Informations personnelles ». Vous pouvez modifier votre nom (qui apparaîtra sur vos commandes) et votre numéro de téléphone (que le restaurant ou le livreur utiliseront pour vous joindre). Un téléphone vide est autorisé si vous préférez ne pas en renseigner.
 
-### Modifiez vos coordonnées
+### Personnaliser vos notifications
 
-Appuyez sur le champ que vous souhaitez changer (nom ou téléphone), saisissez la nouvelle valeur, puis appuyez sur **Enregistrer**. La modification est appliquée instantanément.
-
-### Changez votre adresse e-mail
-
-Pour des raisons de sécurité, le changement d’e-mail se fait en **deux étapes** : 
-- Appuyez sur **Changer d’e-mail**, saisissez le **code de confirmation** qui a été envoyé à votre adresse actuelle, puis indiquez la **nouvelle adresse**.
-- Un lien de confirmation vous sera envoyé à cette nouvelle adresse ; cliquez dessus pour finaliser le changement. Votre ancienne adresse reste active jusqu’à cette validation.
-
-### Gérez vos adresses de livraison
-
-Appuyez sur **Adresses** pour voir la liste de toutes les adresses enregistrées. Vous pouvez en ajouter une nouvelle, modifier ou supprimer celles existantes. L’adresse marquée comme **principale** sera proposée par défaut lors de vos prochaines commandes.
-
-### Consultez vos favoris
-
-La section **Favoris** affiche les restaurants et les plats que vous avez marqués d’un cœur. Appuyez sur un favori pour accéder directement à sa fiche et commander à nouveau.
-
-### Relisez vos avis
-
-La page **Mes avis** liste tous les commentaires que vous avez laissés sur des restaurants ou des plats. Vous pouvez les modifier ou les supprimer si vous le souhaitez.
-
-### Changez la langue de l’application
-
-Dans les **Réglages**, sélectionnez **Langue** et choisissez parmi les langues disponibles (français, anglais, espagnol, arabe, italien). L’interface est traduite instantanément.
+Dans « Préférences de notifications », activez ou désactivez chaque type de notification : changements de statut de commande, messages du livreur, avis sur vos restaurants favoris, offres promotionnelles, nouveaux restaurants à proximité, récompenses de fidélité. Pour chaque catégorie, choisissez les canaux souhaités (push, e-mail, SMS). Activez « Mode silencieux » pour suspendre toutes les notifications sans perdre vos réglages.
 
 </Steps>
 
+<Eyebrow icon="format_list_numbered">Étape par étape</Eyebrow>
+
+## Changer votre adresse e-mail
+
+<Steps>
+
+### Demander le changement
+
+Depuis « Compte », touchez « Adresse e-mail », puis « Modifier ». Saisissez la nouvelle adresse souhaitée. Grubano vous envoie immédiatement un code de vérification sur votre adresse **actuelle**.
+
+### Prouver que vous contrôlez l’adresse actuelle
+
+Entrez le code reçu sur votre ancienne adresse. Si le code est valide, Grubano envoie un e-mail de confirmation avec un lien unique à votre **nouvelle** adresse.
+
+### Confirmer la nouvelle adresse
+
+Ouvrez l’e-mail reçu sur la nouvelle adresse et cliquez le lien de confirmation. Votre adresse e-mail est instantanément mise à jour ; vous pouvez désormais vous connecter avec elle.
+
+</Steps>
+
+<Callout type="warning">
+Si la nouvelle adresse que vous demandez est déjà associée à un autre compte Grubano, vous recevrez une réponse générique sans détail — et l’adresse en question sera notifiée de la tentative — afin d’empêcher quiconque de deviner quelles adresses e-mail sont déjà inscrites.
+</Callout>
+
 <Eyebrow icon="check_circle">Bonnes pratiques</Eyebrow>
 
-## Gardez votre profil à jour
+## Profitez pleinement de votre compte
 
 <Callout type="default">
-- **Vérifiez votre numéro de téléphone** : les livreurs l’utilisent pour vous contacter en cas de besoin.
-- **Enregistrez plusieurs adresses** si vous commandez régulièrement au bureau, chez vous ou chez des proches : vous gagnerez du temps à chaque commande.
-- **Marquez vos plats favoris** pour les retrouver rapidement et recevoir des recommandations personnalisées.
-- **Laissez des avis constructifs** : ils aident les autres clients à choisir et permettent aux restaurateurs de s’améliorer.
+- **Ajoutez plusieurs adresses de livraison** (domicile, bureau, ami·e) pour commander en un seul toucher sans retaper de coordonnées.
+- **Marquez vos restaurants et plats favoris** : vous les retrouverez instantanément dans l’onglet Favoris, et Grubano vous avertira de leurs offres.
+- **Activez uniquement les notifications qui vous intéressent** : vous gardez le contrôle total du bruit, canal par canal et événement par événement.
 </Callout>
 
 <Eyebrow icon="error">Erreurs à éviter</Eyebrow>
@@ -102,17 +103,9 @@ Dans les **Réglages**, sélectionnez **Langue** et choisissez parmi les langues
 ## Les pièges courants
 
 <Callout type="error">
-- **Ne pas valider le changement d’e-mail** : si vous saisissez une nouvelle adresse mais ne cliquez pas sur le lien de confirmation, votre ancienne adresse reste active et vous risquez de ne plus recevoir les notifications de commande.
-- **Oublier de mettre à jour votre téléphone** après un changement de numéro : le livreur ne pourra pas vous joindre en cas de problème.
-- **Utiliser un e-mail que vous ne consultez plus** : vous manquerez les récapitulatifs de commande et les offres personnalisées.
-</Callout>
-
-<Eyebrow icon="lightbulb">Astuce</Eyebrow>
-
-## Gagnez du temps au moment de commander
-
-<Callout type="info">
-Si vous commandez souvent aux mêmes adresses, enregistrez-les toutes dans votre profil et nommez-les clairement (« Domicile », « Bureau », « Parents »). Au moment de valider votre panier, vous n’aurez qu’à sélectionner l’adresse dans la liste au lieu de la ressaisir à chaque fois.
+- **Ne laissez pas votre téléphone vide si vous commandez régulièrement** : le livreur peut en avoir besoin pour accéder à votre immeuble ou préciser l’emplacement.
+- **N’ignorez pas l’e-mail de confirmation de changement d’adresse** : le lien qu’il contient est à usage unique et expire ; passé ce délai, vous devrez relancer toute la procédure.
+- **Ne partagez jamais vos codes de vérification** : Grubano ne vous demandera jamais ces codes par téléphone ni par message privé.
 </Callout>
 
 <Eyebrow icon="quiz">FAQ</Eyebrow>
@@ -122,23 +115,23 @@ Si vous commandez souvent aux mêmes adresses, enregistrez-les toutes dans votre
 <Faq items={[
   {
     icon: "email",
-    q: "Puis-je utiliser le même e-mail pour plusieurs comptes ?",
-    a: "Non : chaque adresse e-mail ne peut être associée qu’à un seul compte Grubano. Si vous tentez de vous inscrire avec une adresse déjà enregistrée, vous recevrez un message d’erreur. Utilisez la fonction « Mot de passe oublié » pour récupérer l’accès au compte existant."
+    q: "Puis-je changer mon e-mail si je me suis inscrit via Google ou Apple ?",
+    a: "Non. Les comptes créés avec un fournisseur d’identité tiers (Google, Apple…) ne permettent pas de modifier l’e-mail, car celui-ci est lié à votre compte externe. Si vous souhaitez utiliser une autre adresse, créez un nouveau compte Grubano avec cette adresse."
+  },
+  {
+    icon: "notifications",
+    q: "Comment arrêter toutes les notifications sans les désactiver une par une ?",
+    a: "Activez le « Mode silencieux » dans Préférences de notifications : toutes les notifications sont suspendues instantanément, et vos réglages individuels restent sauvegardés. Vous pouvez réactiver le tout d’un seul toucher."
   },
   {
     icon: "lock",
-    q: "Comment changer mon mot de passe ?",
-    a: "Rendez-vous sur la page de connexion et cliquez sur « Mot de passe oublié ». Saisissez votre adresse e-mail : vous recevrez un lien pour réinitialiser votre mot de passe. Cette procédure sécurisée garantit que personne d’autre ne peut modifier votre mot de passe sans accès à votre boîte mail."
+    q: "Le code de vérification sur mon ancienne adresse a expiré : que faire ?",
+    a: "Relancez la procédure depuis « Modifier l’e-mail » : Grubano vous enverra un nouveau code. Chaque code est à usage unique et valable quelques minutes ; utilisez-le dès réception."
   },
   {
-    icon: "delete",
-    q: "Puis-je supprimer mon compte définitivement ?",
-    a: "Oui. Contactez le support via l’application (rubrique Aide) pour demander la suppression de votre compte. Toutes vos données personnelles (coordonnées, historique de commandes, avis) seront effacées de façon irréversible dans les 30 jours suivant votre demande, conformément au RGPD."
-  },
-  {
-    icon: "language",
-    q: "La langue change-t-elle aussi pour les notifications ?",
-    a: "Oui : lorsque vous modifiez la langue de l’application, les e-mails de confirmation de commande, les notifications push et les messages du service client sont automatiquement envoyés dans la langue choisie."
+    icon: "favorite",
+    q: "Mes favoris sont-ils synchronisés si je change d’appareil ?",
+    a: "Oui. Vos favoris, avis, adresses et préférences sont liés à votre compte, pas à votre téléphone : connectez-vous avec le même e-mail sur un autre appareil et vous retrouverez tout."
   }
 ]} />
 
@@ -147,28 +140,6 @@ Si vous commandez souvent aux mêmes adresses, enregistrez-les toutes dans votre
 ## Articles liés
 
 <RelatedCards items={[
-  {
-    icon: "shopping_bag",
-    title: "Commander & suivre",
-    sub: "Commander et suivre",
-    href: "/fr/guides/consumer/"
-  },
-  {
-    icon: "loyalty",
-    title: "Fidélité, cagnotte & parrainage",
-    sub: "Points et parrainage",
-    href: "/fr/guides/consumer-loyalty/"
-  },
-  {
-    icon: "insights",
-    title: "Tableau de bord",
-    sub: "Indicateurs en direct",
-    href: "/fr/guides/restaurant/"
-  },
-  {
-    icon: "menu_book",
-    title: "Menu & Scan IA",
-    sub: "Carte et Scan IA",
-    href: "/fr/guides/menu/"
-  }
+  { icon: "shopping_bag", title: "Commander & suivre", sub: "Panier, paiement et suivi", href: "/fr/guides/consumer/" },
+  { icon: "loyalty", title: "Fidélité, cagnotte & parrainage", sub: "Points, remises et invitations", href: "/fr/guides/consumer-loyalty/" }
 ]} />
