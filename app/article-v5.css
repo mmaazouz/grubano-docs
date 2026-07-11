@@ -585,6 +585,70 @@ html.dark .nextra-callout { color: var(--gb-text) !important; }
   .av-cta__btn { width: 100%; justify-content: center; }
 }
 
+/* ── « Marquer comme terminé » (parcours guidés, progression navigateur) ── */
+.av-md {
+  margin-top: 34px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  background: var(--gb-surface);
+  border: 1px solid var(--gb-border);
+  border-radius: var(--gb-r-lg);
+  padding: 16px 20px;
+  flex-wrap: wrap;
+  transition: border-color 0.2s, background 0.2s;
+}
+.av-md__ic {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--gb-surface-2);
+  color: var(--gb-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px !important;
+  flex-shrink: 0;
+  transition: background 0.2s, color 0.2s;
+}
+.av-md__m { flex: 1; min-width: 200px; }
+.av-md__m b { display: block; font-family: var(--gb-font-display), system-ui, sans-serif; font-weight: 800; font-size: 14.5px; color: var(--gb-text); }
+.av-md__m span { font-size: 12.5px; color: var(--gb-muted); }
+.av-md__m a { color: var(--gb-zest-600) !important; font-weight: 700; }
+.av-md__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--gb-ink);
+  color: #fff;
+  border: none;
+  border-radius: var(--gb-r-pill);
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+  transition: background 0.2s, transform 0.15s;
+}
+.av-md__btn:hover { transform: translateY(-1px); }
+.av-md__btn .ms { font-size: 17px; }
+/* état terminé : vert basil (maquette : done = --gb-basil) */
+.av-md--done {
+  background: var(--gb-basil-bg);
+  border-color: #cde9d8;
+}
+.av-md--done .av-md__ic { background: var(--gb-basil); color: #fff; }
+.av-md--done .av-md__m b { color: var(--gb-basil-600); }
+.av-md--done .av-md__btn { background: var(--gb-surface); color: var(--gb-muted); border: 1px solid var(--gb-border-2); font-weight: 700; }
+/* barre de progression du parcours : transition douce */
+.gbv-lp__bar i { transition: width 0.35s ease; }
+/* prefers-reduced-motion : aucune animation/transition sur la feature */
+@media (prefers-reduced-motion: reduce) {
+  .av-md, .av-md__ic, .av-md__btn, .gbv-lp__bar i { transition: none !important; }
+  .av-md__btn:hover { transform: none; }
+}
+
 /* ── Feedback « Oui / Non » ──────────────────────────────────────────── */
 .av-fb {
   margin-top: 34px;

@@ -5,6 +5,7 @@ import * as path from 'path'
 import { useMDXComponents } from '@/mdx-components'
 import { AppCTA } from '@/components/AppCTA'
 import { Feedback, PrevNext } from '@/components/ArticleV5'
+import { MarkDone } from '@/components/MarkDone'
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const { FEATURE_PAGES, TOPIC_EXTRAS } = require('@/scripts/feature-pages.config.js') as {
   FEATURE_PAGES: Record<string, { docPath?: string; locale?: string }>
@@ -100,6 +101,7 @@ export default async function Page(props: {
     const cta = params.lang === 'fr' ? ctaForSlug(slug) : undefined
     bottomContent = (
       <>
+        <MarkDone slug={slug} />
         <AppCTA lang={params.lang} title={cta?.title} body={cta?.body} />
         <Feedback />
         <PrevNext prev={prev} next={next} />

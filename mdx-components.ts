@@ -8,9 +8,9 @@ import {
   RelatedActors,
   JourneyStrip,
   MiniMap,
-  LearningPath,
   Comparison,
 } from '@/components/DocVisuals'
+import { LearningPath } from '@/components/LearningPath'
 import { Faq } from '@/components/Faq'
 import {
   ArticleMeta,

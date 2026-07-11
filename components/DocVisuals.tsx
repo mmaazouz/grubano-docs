@@ -140,69 +140,6 @@ export function MiniMap({
   )
 }
 
-/* ── LearningPath — "parcours guidé" (série d'articles ordonnés) ───────── */
-export function LearningPath({
-  title,
-  subtitle,
-  meta = [],
-  steps = [],
-}: {
-  title?: string
-  subtitle?: string
-  meta?: { icon: string; text: string }[]
-  steps?: { title: string; note?: string; status?: 'done' | 'current' | 'todo'; href?: string }[]
-}) {
-  const done = steps.filter((s) => s.status === 'done').length
-  const pct = steps.length ? Math.round((done / steps.length) * 100) : 0
-  const next = steps.find((s) => s.status === 'current') || steps.find((s) => s.status === 'todo')
-  return (
-    <aside className="gbv-lp">
-      <div className="gbv-lp__hero">
-        <span className="gbv-lp__eyebrow"><span className="ms">rocket_launch</span>Parcours guidé</span>
-        {title && <h3>{title}</h3>}
-        {subtitle && <p>{subtitle}</p>}
-        {meta.length > 0 && (
-          <div className="gbv-lp__meta">
-            {meta.map((m, i) => (
-              <span className="gbv-lp__it" key={i}><span className="ms">{m.icon}</span>{m.text}</span>
-            ))}
-          </div>
-        )}
-        <div className="gbv-lp__prog">
-          <div className="gbv-lp__prog-top"><span>Votre progression</span><span>{done} / {steps.length} terminé</span></div>
-          <div className="gbv-lp__bar"><i style={{ width: `${pct}%` }} /></div>
-        </div>
-      </div>
-      <div className="gbv-lp__steps">
-        {steps.map((s, i) => {
-          const st = s.status || 'todo'
-          const Tag = (s.href ? 'a' : 'div') as 'a'
-          return (
-            <Tag className={`gbv-lp__step gbv-lp__step--${st}`} href={s.href} key={i}>
-              <span className="gbv-lp__dot">
-                {st === 'done' ? <span className="ms">check</span> : i + 1}
-              </span>
-              <div className="gbv-lp__m">
-                <b>{s.title}</b>
-                {s.note && <span><span className="ms">schedule</span>{s.note}</span>}
-              </div>
-              {st !== 'todo' && (
-                <span className={`gbv-lp__badge gbv-lp__badge--${st}`}>{st === 'done' ? 'Terminé' : 'En cours'}</span>
-              )}
-              <span className="ms gbv-lp__go flip-rtl">arrow_forward</span>
-            </Tag>
-          )
-        })}
-      </div>
-      {next && (
-        <div className="gbv-lp__foot">
-          <div className="gbv-lp__foot-m">Prochaine étape : <b>{next.title}</b></div>
-        </div>
-      )}
-    </aside>
-  )
-}
-
 /* ── Comparison — tableau comparatif (options en colonnes) ─────────────── */
 export function Comparison({
   options = [],
