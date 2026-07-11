@@ -78,16 +78,25 @@ html:root {
 }
 .nextra-breadcrumb svg { width: 15px; height: 15px; color: var(--gb-muted-2); }
 
+/* Maquette : h1,h2,h3 { font-family: Gabarito ; line-height 1.15 } — sans
+   cette règle les headings héritaient Hanken (police du corps). */
+article main h1,
+article main h2,
+article main h3 {
+  font-family: var(--gb-font-display), system-ui, sans-serif !important;
+  line-height: 1.15 !important;
+}
 article main h1 {
   font-size: 37px !important;
   font-weight: 800 !important;
   letter-spacing: -0.03em !important;
-  line-height: 1.15 !important;
 }
 article main h2 {
   font-size: 24px !important;
   font-weight: 800 !important;
   letter-spacing: -0.02em !important;
+  /* ancre sous le header sticky (maquette .sec { scroll-margin-top: 74px }) */
+  scroll-margin-top: 74px;
 }
 @media (max-width: 620px) {
   article main h1 { font-size: 30px !important; }
@@ -577,6 +586,16 @@ html.dark .nextra-callout { color: var(--gb-text) !important; }
 .nextra-content ~ div a[href^='/']:has(> :first-child) { /* no-op guard */ }
 
 /* ── TOC « Sur cette page » (rail droit Nextra) ──────────────────────── */
+/* Titre du sommaire (maquette .toc__t : 11.5px / 800 / uppercase / .05em) */
+.nextra-toc b,
+.nextra-toc p:first-child,
+.nextra-toc [class*='font-semibold'] {
+  font-size: 11.5px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--gb-muted-2) !important;
+}
 .nextra-toc a {
   font-size: 12.5px !important;
   color: var(--gb-muted) !important;

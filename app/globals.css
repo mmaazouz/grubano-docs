@@ -94,6 +94,8 @@ body,
   text-rendering: optimizeLegibility;
 }
 
+html { scroll-behavior: smooth; }
+
 body {
   background: var(--gb-bg);
   color: var(--gb-text);

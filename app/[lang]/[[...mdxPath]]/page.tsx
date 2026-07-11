@@ -1,5 +1,7 @@
 import { generateStaticParamsFor, importPage } from 'nextra/pages'
 import { getPageMap } from 'nextra/page-map'
+import * as fsSync from 'fs'
+import * as path from 'path'
 import { useMDXComponents } from '@/mdx-components'
 import { AppCTA } from '@/components/AppCTA'
 import { Feedback, PrevNext } from '@/components/ArticleV5'
@@ -15,6 +17,31 @@ function ctaForSlug(slug: string): { title: string; body: string } | undefined {
     if (cfg.docPath?.split('/').pop() === slug) return TOPIC_EXTRAS[key]?.cta
   }
   return undefined
+}
+
+type TocEntry = { value: string; id: string; depth: number }
+
+/**
+ * Sommaire fidèle à la maquette : « Sur cette page » liste les EYEBROWS
+ * courts (Aperçu, L'essentiel, …), à plat — pas les titres H2 longs ni les
+ * H3. On lit le MDX brut pour apparier chaque H2 à l'eyebrow qui le précède,
+ * puis on remplace le libellé dans le toc Nextra (les ancres H2 restent).
+ * Fallback : pages sans eyebrows (éditorial) → titres H2 d'origine, à plat.
+ */
+function eyebrowToc(lang: string, mdxPath: string[], toc: TocEntry[]): TocEntry[] {
+  const file = path.join(process.cwd(), 'content', lang, ...mdxPath) + '.mdx'
+  let map: Record<string, string> = {}
+  try {
+    const src = fsSync.readFileSync(file, 'utf8')
+    for (const m of src.matchAll(/<Eyebrow[^>]*>([^<]+)<\/Eyebrow>\s*\n+##\s+(.+)/g)) {
+      map[m[2].trim()] = m[1].trim()
+    }
+  } catch {
+    /* fichier introuvable (route virtuelle) — toc inchangé */
+  }
+  return (toc || [])
+    .filter((t) => t.depth === 2)
+    .map((t) => ({ ...t, value: map[String(t.value).trim()] ?? t.value }))
 }
 
 // Generate every (lang, mdxPath) tuple from content/<lang>/** at build time.
@@ -80,9 +107,15 @@ export default async function Page(props: {
     )
   }
 
+  // Sommaire maquette : eyebrows courts, à plat (guides uniquement — la home
+  // et les landings n'ont pas de TOC).
+  const finalToc = (isGuidePage
+    ? eyebrowToc(params.lang, params.mdxPath!, toc as unknown as TocEntry[])
+    : toc) as typeof toc
+
   return (
     <Wrapper
-      toc={toc}
+      toc={finalToc}
       metadata={metadata}
       sourceCode={sourceCode}
       bottomContent={bottomContent}
