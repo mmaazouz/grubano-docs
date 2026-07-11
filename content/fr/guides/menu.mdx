@@ -2,7 +2,7 @@
 title: "Menu & Scan IA"
 description: "Mettre en ligne la carte d’un restaurant en photographiant simplement le menu — l’IA reconnaît les plats, propose nom, description et allergènes ; le restaurateur valide."
 generated: true
-sourceHash: fecad2a43f7bf919
+sourceHash: a55f2237a4b8af02
 generator: scripts/generate-feature-page.js
 templateVersion: 6
 ---
@@ -11,95 +11,75 @@ import { Steps, Callout } from 'nextra/components'
 
 # Menu & Scan IA
 
-Mettez en ligne la carte de votre restaurant en photographiant simplement chaque plat : l’intelligence artificielle reconnaît le visuel, propose un nom, une description et les allergènes potentiels, puis vous validez avant publication.
+Photographiez votre carte papier : l’IA reconnaît les plats, propose nom, description et allergènes. Vous validez, votre menu est en ligne.
 
-<ArticleMeta audience="Restaurateurs" minutes={4} updated="2026-07-11" />
+<ArticleMeta audience="Restaurateurs" minutes={4} updated="2026-07-10" />
 
 <Eyebrow icon="insights">Aperçu</Eyebrow>
 
-## Du cliché à la carte en ligne
+## Du papier au menu en ligne
 
 <FlowDiagram steps={[
-  { icon: "photo_camera", title: "Scanner la carte", desc: "Photographiez un plat ou une page de menu existante" },
-  { icon: "auto_fix_high", title: "Vérifier les plats", desc: "L’IA propose nom, description, allergènes et catégorie" },
-  { icon: "fact_check", title: "Publier", desc: "Validez ou corrigez chaque champ avant mise en ligne" },
-  { icon: "edit", title: "Mettre à jour", desc: "Modifiez prix, disponibilité et photos à tout moment" }
+  { icon: "photo_camera", title: "Scanner la carte", desc: "Prenez une photo de votre menu papier" },
+  { icon: "auto_awesome", title: "Vérifier les plats", desc: "L’IA extrait nom, description et allergènes" },
+  { icon: "check_circle", title: "Publier", desc: "Validez et ajoutez vos plats au menu" },
+  { icon: "edit", title: "Mettre à jour", desc: "Modifiez prix, catégories et disponibilité" }
 ]} />
 
 <Eyebrow icon="bolt">L’essentiel</Eyebrow>
 
 ## En bref
 
-<Essentials title="Si vous ne devez retenir que ça :" items={[
-  <>L’IA analyse la photo, extrait le nom, la description, les ingrédients et suggère des <b>allergènes standardisés</b> (gluten, lactose, œuf, arachide…).</>,
-  <>Vous <b>validez ou corrigez</b> chaque proposition avant que le plat n’apparaisse sur votre carte en ligne — rien n’est publié automatiquement.</>,
-  <>Une fois en ligne, vous pouvez <b>modifier le prix, les photos et la disponibilité</b> depuis votre tableau de bord à tout moment.</>
-]} />
+<Essentials 
+  title="Si vous ne devez retenir que ça :" 
+  items={[
+    <>L’IA analyse <b>automatiquement</b> les photos de votre carte et extrait nom, description, ingrédients, allergènes et catégorie</>,
+    <>Vous <b>ajustez</b> le prix, vérifiez les suggestions et validez — chaque plat est ajouté à votre marque en un clic</>,
+    <>Le menu reste <b>modifiable</b> depuis votre tableau de bord : prix, disponibilité, catégories, photos — tout se met à jour en temps réel</>
+  ]} 
+/>
 
 <Eyebrow icon="lightbulb">Comment ça marche</Eyebrow>
 
 ## Le principe (et le pourquoi)
 
-Mettre à jour une carte papier ou PDF en ligne, plat par plat, prend du temps et génère des erreurs de frappe. Le scan IA lit votre visuel — photo d’assiette ou capture d’une page de menu — et remplit automatiquement les champs essentiels : nom en français, description appétissante d’une à deux phrases, liste d’ingrédients détectés, fourchette calorique estimée, catégorie (Entrées, Plats, Desserts, Boissons) et allergènes normalisés (Gluten, Lactose, Œuf, Soja, Arachide, Fruits à coque, Poisson, Crustacés, Mollusques, Céleri, Moutarde, Sésame, Sulfites, Lupin).
+Recopier à la main une carte de 30 plats prend du temps — et les erreurs d’allergènes peuvent coûter cher. Le scanner IA lit votre menu papier (ou un PDF), reconnaît chaque plat et pré-remplit les champs : vous n’avez qu’à vérifier et ajuster le prix. Les plats sont ajoutés à votre marque (la Brand propriétaire) et apparaissent immédiatement dans le [tableau de bord](/fr/guides/restaurant/) — disponibles pour vos clients dès la publication.
 
-Vous relisez chaque proposition dans l’interface, modifiez ce qui doit l’être (le modèle peut se tromper ou manquer un ingrédient), fixez le prix et validez. Le plat rejoint alors votre [tableau de bord](/fr/guides/restaurant/) et s’affiche immédiatement sur votre page restaurant. Si un ingrédient est en rupture, vous pouvez basculer le plat en indisponible depuis la gestion des [stocks](/fr/guides/stocks/) sans le supprimer de la carte.
+Le scan utilise un modèle de vision entraîné sur des milliers de cartes de restaurants. Il identifie les allergènes courants (gluten, lactose, œuf, fruits à coque…), estime les calories et classe chaque plat (entrée, plat, dessert, boisson). Vous conservez le contrôle : aucune donnée n’est publiée sans votre validation.
 
 <Eyebrow icon="format_list_numbered">Étape par étape</Eyebrow>
 
-## Ajouter un plat par scan
+## Numériser votre menu
 
 <Steps>
 
+### Accéder au scanner
+
+Depuis `/menu`, cliquez sur l’onglet **Menu & Scan IA**. Vous verrez le bouton « Numériser un plat ».
+
 ### Photographier le plat
 
-Prenez une photo nette de l’assiette dressée ou d’une ligne de votre menu papier. Les formats JPEG, PNG, GIF et WebP sont acceptés.
+Prenez une photo nette de la ligne du menu (ou téléchargez une image depuis votre galerie). Formats acceptés : JPEG, PNG, WebP, GIF. L’IA supporte les menus imprimés, manuscrits et les captures d’écran de PDF.
 
-### Lancer l’analyse
+### Vérifier les suggestions
 
-Dans votre tableau de bord, cliquez sur « Ajouter un plat » puis « Scanner une photo ». Téléversez l’image : l’IA traite le visuel en quelques secondes et retourne un formulaire pré-rempli.
+L’IA renvoie un objet JSON avec `name`, `description`, `ingredients`, `allergens` (liste filtrée : Gluten, Lactose, Œuf, Soja, Arachide, Fruits à coque, Poisson, Crustacés, Mollusques, Céleri, Moutarde, Sésame, Sulfites, Lupin), `calories_min`/`calories_max`, `category` (Entrées, Plats, Desserts, Boissons) et `suggested_labels` (Veggie, Halal, Sans gluten, Épicé). Corrigez les éventuelles approximations.
 
-### Vérifier et corriger
+### Fixer le prix et publier
 
-Relisez le nom, la description, la liste d’ingrédients et les allergènes proposés. Modifiez tout élément incorrect ou incomplet — l’IA fournit une suggestion de départ, la vérité métier reste la vôtre.
-
-### Fixer le prix et la catégorie
-
-Saisissez le prix de vente, ajustez la catégorie si nécessaire (l’IA propose une catégorie par défaut) et cochez les labels optionnels (Veggie, Halal, Sans gluten, Épicé).
-
-### Publier
-
-Cliquez sur « Enregistrer » : le plat apparaît immédiatement sur votre page restaurant. Vous pouvez le modifier ou le marquer indisponible à tout instant depuis le tableau de bord.
+Le scan ne devine pas les prix — entrez le montant TTC. Cliquez sur « Ajouter au menu » : le plat est créé dans votre marque (champ `brandId`) avec `available: true` par défaut. Il apparaît aussitôt sur votre page restaurant.
 
 </Steps>
-
-<Eyebrow icon="calculate">Exemple concret</Eyebrow>
-
-## Un tartare de saumon
-
-Vous photographiez l’assiette. L’IA retourne :
-
-- **Nom** : Tartare de saumon aux agrumes  
-- **Description** : Saumon frais coupé au couteau, assaisonné de citron vert et pamplemousse, servi sur lit de roquette.  
-- **Ingrédients** : saumon, citron vert, pamplemousse, roquette, huile d’olive, sel, poivre  
-- **Allergènes** : Poisson  
-- **Calories** : 180–220 kcal  
-- **Catégorie** : Entrées
-
-Vous constatez que l’échalote manque dans la liste d’ingrédients et que la fourchette calorique vous semble basse. Vous ajoutez l’échalote, ajustez les calories à 220–260 kcal, fixez le prix à 14,50 € et publiez. Le plat est en ligne ; si le saumon vient à manquer, vous le marquez indisponible sans le retirer de la carte.
-
-<Callout type="info">
-Cet exemple est illustratif — la précision de l’analyse dépend de la netteté de la photo et de la complexité du plat.
-</Callout>
 
 <Eyebrow icon="check_circle">Bonnes pratiques</Eyebrow>
 
 ## Optimiser la reconnaissance
 
 <Callout type="default">
-- **Photographiez en bonne lumière** : un visuel net et bien éclairé améliore la détection des ingrédients.  
-- **Relisez systématiquement les allergènes** : l’IA propose une liste de départ, mais vous seul connaissez la composition exacte (traces éventuelles, contamination croisée).  
-- **Complétez la description** : ajoutez une touche personnelle (origine d’un produit, savoir-faire de la maison) pour rendre le plat plus attractif.  
-- **Mettez à jour régulièrement** : si une recette évolue ou qu’un ingrédient change, modifiez la fiche plutôt que d’en créer une nouvelle.
+- **Photo cadrée** : isolez un plat à la fois — si la carte en contient 10, scannez-les un par un. La reconnaissance est plus fiable sur une seule ligne.
+- **Lumière et contraste** : évitez les reflets et les ombres portées. Un fond clair et un texte noir donnent les meilleurs résultats.
+- **Vérifiez toujours les allergènes** : l’IA les extrait de la description visible, mais si un ingrédient n’est pas mentionné sur la carte, elle ne peut pas le deviner. Complétez manuellement si besoin.
+- **Catégories cohérentes** : le champ `category` est trimmé côté serveur pour éviter les doublons (« Boissons » vs «  Boissons  »). Conservez les mêmes intitulés pour regrouper vos plats proprement.
 </Callout>
 
 <Eyebrow icon="error">Erreurs à éviter</Eyebrow>
@@ -107,17 +87,17 @@ Cet exemple est illustratif — la précision de l’analyse dépend de la nette
 ## Les pièges courants
 
 <Callout type="error">
-- **Publier sans relecture** : l’IA peut confondre un ingrédient ou manquer un allergène critique — validez toujours avant mise en ligne.  
-- **Oublier de fixer le prix** : un plat sans prix ne peut être commandé ; vérifiez que le champ est rempli avant d’enregistrer.  
-- **Supprimer un plat en rupture** : préférez le marquer indisponible depuis les stocks pour conserver l’historique et le réactiver rapidement.
+- **Valider sans relire** : l’IA fait des suggestions, pas des certitudes. Un allergène manqué ou un prix mal lu peut générer une réclamation client.
+- **Scanner une carte entière** : envoyer une photo de plusieurs plats en une fois produit un JSON unique avec des données mélangées. Résultat : vous devrez tout corriger à la main.
+- **Oublier les photos finales** : le scan analyse l’image de la carte, mais ne la stocke pas comme photo du plat. Ajoutez une vraie photo culinaire depuis le formulaire d’édition pour séduire vos clients.
 </Callout>
 
 <Eyebrow icon="lightbulb">Astuce</Eyebrow>
 
-## Gagnez du temps avec les catégories
+## Gagnez du temps avec le lot
 
 <Callout type="info">
-L’IA propose une catégorie par défaut (Entrées, Plats, Desserts, Boissons) en fonction du contenu de la photo. Si vous ajoutez plusieurs plats d’une même catégorie à la suite, la dernière catégorie utilisée reste sélectionnée dans le formulaire : photographiez vos entrées en série, puis vos plats, pour minimiser les clics.
+Si vous avez 20 plats à numériser, préparez toutes vos photos en amont (une par plat, bien cadrées). Scannez-les d’affilée : l’interface garde le focus sur le scanner, vous n’avez qu’à charger l’image suivante, vérifier, ajuster le prix et valider. En 10 minutes, votre menu est complet.
 </Callout>
 
 <Eyebrow icon="quiz">FAQ</Eyebrow>
@@ -126,24 +106,24 @@ L’IA propose une catégorie par défaut (Entrées, Plats, Desserts, Boissons) 
 
 <Faq items={[
   {
-    icon: "auto_fix_high",
-    q: "L’IA peut-elle scanner une page de menu papier complète ?",
-    a: "Oui : photographiez la page et l’IA tentera d’extraire chaque plat lisible. La qualité du résultat dépend de la netteté du texte et de la mise en page — une photo par plat reste plus fiable."
+    icon: "photo_camera",
+    q: "L’IA reconnaît-elle les menus manuscrits ?",
+    a: "Oui, tant que l’écriture est lisible. Les menus imprimés ou tapés donnent les meilleurs résultats, mais une belle écriture à la main fonctionne aussi."
   },
   {
-    icon: "language",
-    q: "Les noms et descriptions sont-ils toujours en français ?",
-    a: "L’IA génère systématiquement les propositions en français, quelle que soit la langue d’origine du menu photographié."
+    icon: "translate",
+    q: "Puis-je scanner un menu en anglais ou en arabe ?",
+    a: "Le modèle est entraîné sur plusieurs langues, mais renvoie toujours name et description en français (prompt système). Si votre carte est en langue étrangère, l’IA traduit automatiquement — vérifiez les nuances."
   },
   {
-    icon: "verified",
-    q: "Qui valide les allergènes avant publication ?",
-    a: "Vous : l’IA fournit une liste de départ à partir de la nomenclature européenne standard, mais la responsabilité légale de l’exactitude vous incombe. Relisez et complétez systématiquement."
+    icon: "receipt_long",
+    q: "Que se passe-t-il si je scanne deux fois le même plat ?",
+    a: "Aucun anti-doublon automatique : chaque scan crée un nouveau MenuItem avec un id distinct. Si vous validez deux fois, vous aurez deux entrées dans votre menu — supprimez le doublon depuis l’onglet « Plats »."
   },
   {
-    icon: "schedule",
-    q: "Combien de temps prend une analyse ?",
-    a: "Quelques secondes par photo. Si la charge serveur est élevée ou votre quota IA temporaire atteint, un message vous invite à réessayer plus tard."
+    icon: "warning",
+    q: "L’IA peut-elle se tromper sur les allergènes ?",
+    a: "Oui. Elle extrait les allergènes des ingrédients visibles dans la description, mais ne devine pas ce qui n’est pas écrit. Relisez toujours la liste avant de publier — c’est votre responsabilité légale."
   }
 ]} />
 
@@ -152,8 +132,28 @@ L’IA propose une catégorie par défaut (Entrées, Plats, Desserts, Boissons) 
 ## Articles liés
 
 <RelatedCards items={[
-  { icon: "inventory_2", title: "Gestion des stocks", sub: "Disponibilité en temps réel", href: "/fr/guides/stocks/" },
-  { icon: "dashboard", title: "Tableau de bord", sub: "Pilotez votre activité", href: "/fr/guides/restaurant/" },
-  { icon: "menu_book", title: "Créateur de recettes", sub: "Publier et monétiser un concept", href: "/fr/guides/creators/" },
-  { icon: "rocket_launch", title: "Démarrer en 15 minutes", sub: "Votre première commande", href: "/fr/guides/quick-start/" }
+  {
+    icon: "inventory_2",
+    title: "Gestion des stocks",
+    sub: "Journal et alertes",
+    href: "/fr/guides/stocks/"
+  },
+  {
+    icon: "insights",
+    title: "Tableau de bord",
+    sub: "Indicateurs en direct",
+    href: "/fr/guides/restaurant/"
+  },
+  {
+    icon: "restaurant_menu",
+    title: "Créateur de recettes",
+    sub: "Recettes et commissions",
+    href: "/fr/guides/creators/"
+  },
+  {
+    icon: "bolt",
+    title: "Démarrer en 15 minutes",
+    sub: "Prêt en 15 minutes",
+    href: "/fr/guides/quick-start/"
+  }
 ]} />

@@ -98,10 +98,16 @@ jobs:
       # itself across the 30 k-token-per-minute rate window. continue-on-error
       # so a transient Claude/Notion hiccup doesn't fail the whole workflow —
       # the API ref + changelog from the previous step still ship.
+      # ⏸ HOLD TEMPORAIRE (audit de fidélité) : le FR v6 audité est EN COURS DE
+      # VALIDATION par Mohammed — le nightly du 11/07 l'a régénéré dans son dos
+      # (le --refresh-notion change les slices inbox → sourceHash → régé) et a
+      # écrasé les corrections d'audit (reverté). Retirer `if: false` UNIQUEMENT
+      # après validation FR + passe de traduction. Problème de fond à trancher :
+      # exclure l'inbox (qui bouge à chaque rapport) du sourceHash.
       - name: Generate harmonized feature pages
         id: feature-pages
         working-directory: grubano-docs
-        if: env.ANTHROPIC_API_KEY != ''
+        if: false
         continue-on-error: true
         env:
           APP_REPO_PATH: ${{ github.workspace }}/grubano-kitchen-hub

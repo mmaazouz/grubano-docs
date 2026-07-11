@@ -2,7 +2,7 @@
 title: "Programme fidélité"
 description: "Fidéliser sa clientèle : 1 point = 1 € dépensé, paliers Bronze/Silver/Gold/Platinum, points crédités à la livraison de la commande."
 generated: true
-sourceHash: 8a7a5b9b6eb013b7
+sourceHash: f6487d5df238e96b
 generator: scripts/generate-feature-page.js
 templateVersion: 6
 ---
@@ -11,19 +11,19 @@ import { Steps, Callout } from 'nextra/components'
 
 # Programme fidélité
 
-Transformez chaque commande en relation durable : vos clients accumulent automatiquement 1 point par euro dépensé, franchissent des paliers Bronze/Silver/Gold/Platine et débloquent un crédit en euros utilisable sur leur prochaine commande.
+Créez un lien durable avec vos clients : chaque euro dépensé génère un point, des paliers Bronze à Platine débloquent des avantages, et les points se transforment en crédit utilisable sur la prochaine commande.
 
-<ArticleMeta audience="Restaurateurs" minutes={5} updated="2026-07-11" />
+<ArticleMeta audience="Restaurateurs" minutes={4} updated="2026-07-10" />
 
 <Eyebrow icon="insights">Aperçu</Eyebrow>
 
-## Le cycle de la fidélité
+## Le parcours client
 
 <FlowDiagram steps={[
-  { icon: "person_add", title: "Inscrire un client", desc: "Nom, email — 10 points offerts à l’inscription" },
-  { icon: "shopping_bag", title: "Acheter", desc: "Le client commande chez vous via Uber Eats ou une autre plateforme" },
-  { icon: "loyalty", title: "Crédit de points", desc: "1 € dépensé = 1 point ajouté à la livraison, tier recalculé" },
-  { icon: "sell", title: "Récompense", desc: "Le solde de points se convertit en crédit euro dépensable" }
+  { icon: "person_add", title: "Inscription", desc: "Le client rejoint le programme (email + nom)" },
+  { icon: "shopping_bag", title: "Commande", desc: "Chaque euro dépensé = 1 point crédité" },
+  { icon: "loyalty", title: "Accumulation", desc: "Les points débloquent Bronze, Silver, Gold ou Platine" },
+  { icon: "payments", title: "Récompense", desc: "Le client dépense son crédit sur une commande" }
 ]} />
 
 <Eyebrow icon="bolt">L’essentiel</Eyebrow>
@@ -31,62 +31,74 @@ Transformez chaque commande en relation durable : vos clients accumulent automat
 ## En bref
 
 <Essentials title="Si vous ne devez retenir que ça :" items={[
-  <>Chaque client inscrit démarre avec <b>10 points de bienvenue</b> et gagne <b>1 point par euro dépensé</b> à la livraison de sa commande.</>,
-  <>Quatre paliers automatiques — <b>Bronze (0 pts), Silver (100 pts), Gold (200 pts), Platine (400 pts)</b> — motivent les achats répétés et renforcent l’appartenance.</>,
-  <>Le solde de points se transforme en <b>crédit en euros</b> que le client dépense librement sur sa prochaine commande, sans contrainte de catalogue fixe.</>
+  <>Les clients gagnent <b>1 point par euro</b> dépensé, crédité dès la livraison de la commande</>,
+  <>Quatre paliers automatiques — <b>Bronze</b> (0 pts), <b>Silver</b> (100 pts), <b>Gold</b> (200 pts), <b>Platine</b> (400 pts) — débloquent des avantages progressifs</>,
+  <>Le solde de points se convertit en <b>crédit euro</b> que le client utilise librement sur sa prochaine commande</>
 ]} />
 
 <Eyebrow icon="lightbulb">Comment ça marche</Eyebrow>
 
 ## Le principe (et le pourquoi)
 
-La fidélité classique — tampon papier, carte perforée — fonctionne mal dans une marketplace multi-restaurants : le client commande via Uber Eats, Deliveroo ou Just Eat, jamais directement chez vous, et vous ne contrôlez ni l’email ni le paiement. Grubano résout cela en créant un **compte fidélité unique** par email client : vous l’inscrivez une fois (nom, email, téléphone optionnel), puis chaque commande que vous validez — quelle que soit la plateforme d’origine — alimente automatiquement son compteur de points.
-
-Un euro dépensé crédite un point à la livraison ; le solde franchit des paliers visibles (Bronze → Silver → Gold → Platine) qui donnent au client une raison claire de revenir chez vous plutôt que chez le concurrent. Le solde se convertit ensuite en crédit euro — le client choisit librement comment le dépenser, aucun catalogue rigide de « dessert gratuit » ou « boisson offerte » ne vient compliquer la gestion. Vous gardez la maîtrise de la relation sans ajouter une seule ligne de paperasse dans votre [tableau de bord](/fr/guides/restaurant/).
+Un client qui revient coûte moins cher à acquérir qu’un nouveau : le programme fidélité transforme un achat ponctuel en habitude. Chaque euro dépensé génère automatiquement un point, visible en temps réel sur le [tableau de bord](/fr/guides/restaurant/) du client. Les paliers Bronze, Silver, Gold et Platine se débloquent sans action manuelle — plus le client commande, plus son statut monte et plus les avantages augmentent. Le solde de points devient un crédit en euros, dépensable sur n’importe quelle commande : le client choisit quand et comment l’utiliser, vous gardez le contrôle de votre marge.
 
 <Eyebrow icon="format_list_numbered">Étape par étape</Eyebrow>
 
-## Inscrire un client et créditer ses commandes
+## Inscrire un client au programme
 
 <Steps>
 
-### Créer le compte fidélité
+### Collecter les informations
 
-Rendez-vous dans votre tableau de bord Grubano, section **Fidélité**, et cliquez sur **Nouveau client**. Saisissez le nom, l’email (obligatoire, identifiant unique du compte) et le téléphone si vous l’avez. Le système crédite automatiquement **10 points de bienvenue** et attribue le palier Bronze au compte fraîchement créé.
+Le client fournit son nom, son email et éventuellement son téléphone via la route **POST /api/loyalty/register**. Un bonus de bienvenue de 10 points est automatiquement crédité lors de l’inscription ; le palier initial est Bronze.
 
-### Valider une commande livrée
+### Vérifier l’unicité
 
-Après avoir préparé et envoyé une commande (Uber Eats, Deliveroo, Just Eat…), ouvrez la fiche de cette commande dans Grubano et cliquez sur **Valider la fidélité**. Collez le numéro de commande externe (celui que vous lisez sur la tablette Uber, par exemple), saisissez le montant TTC et confirmez. Grubano vérifie que la commande n’a pas déjà été validée, ajoute **1 point par euro** au solde du client et recalcule immédiatement son palier.
+Le système détecte les doublons d’email : si un compte existe déjà, l’inscription retourne une erreur 409 avec le message « Un compte existe déjà avec cet email ». Le client reçoit immédiatement son code de parrainage unique (8 premiers caractères du `referralCode`, en majuscules).
 
-### Consulter le solde et l’historique
+### Consulter le portefeuille
 
-Le client reçoit un code de parrainage unique (8 caractères) qu’il peut partager ; vous voyez dans sa fiche le **solde de points**, le **palier actuel** (bronze, silver, gold, platine), le **nombre de points jusqu’au palier suivant** et les **10 dernières commandes** avec le nom de votre marque, le montant et les points gagnés à chaque fois.
+La route **GET /api/loyalty/wallet** (authentifiée, rôle `restaurant` ou `admin`) affiche le solde de points, le palier actuel, les points manquants pour atteindre le palier suivant, et les 10 dernières commandes validées. Un consommateur connecté peut consulter son propre portefeuille sans paramètre `?email=`.
 
-### Laisser le client dépenser son crédit
+</Steps>
 
-Le solde de points se convertit en **crédit en euros** (le taux de conversion est géré par Grubano et s’affiche dans l’interface client). Lors de sa prochaine commande, le client peut choisir d’appliquer tout ou partie de ce crédit — aucune intervention manuelle de votre part, le système déduit automatiquement les points correspondants une fois la commande livrée.
+<Eyebrow icon="format_list_numbered">Étape par étape</Eyebrow>
+
+## Valider une commande et créditer des points
+
+<Steps>
+
+### Enregistrer la commande
+
+Après livraison, utilisez **POST /api/loyalty/validate** avec l’email du client, le numéro de commande (`uberOrderNumber`), le montant total et le nom de la marque. Le système arrondit le montant à l’entier inférieur pour calculer les points (exemple : 23,80 € = 23 points).
+
+### Éviter les doublons
+
+Chaque `uberOrderNumber` est unique : si la commande a déjà été validée, l’API retourne une erreur 409. Le client ne peut pas cumuler deux fois les mêmes points sur une seule commande.
+
+### Mettre à jour le palier
+
+Le système recalcule automatiquement le palier en fonction du nouveau solde : 0–99 pts = Bronze, 100–199 = Silver, 200–399 = Gold, 400+ = Platine. La réponse JSON indique les points gagnés, le nouveau solde, le palier actuel et l’identifiant de la commande.
 
 </Steps>
 
 <Eyebrow icon="calculate">Exemple concret</Eyebrow>
 
-## Un client régulier après trois mois
+## Parcours d’un client fidèle
 
-Mathilde a commandé huit fois chez vous depuis janvier : pizzas, pâtes, desserts. Le montant cumulé de ses huit commandes atteint **285 €**. Elle a donc accumulé **285 points** (1 € = 1 pt) + les **10 points de bienvenue**, soit **295 points au total**. Son solde franchit le seuil de 200 points : Grubano la fait passer automatiquement au palier **Gold** et lui indique qu’il reste **105 points** avant le palier Platine (400 pts).
-
-Avec 295 points, Mathilde dispose d’un **crédit de 14,75 €** (le taux de conversion actuel transforme 100 points en 5 € de crédit). Lors de sa prochaine commande de 22 €, elle décide d’utiliser 10 € de crédit ; Grubano déduit **200 points** de son solde, qui retombe à **95 points** (palier Silver). Elle ne paie que 12 € et conserve un reliquat de **95 points** pour plus tard.
-
-> Cet exemple est illustratif : le taux de conversion points → euros est fixé par Grubano et peut évoluer ; consultez toujours l’interface client pour le taux en vigueur.
+Marie rejoint le programme et reçoit **10 points** de bienvenue (palier Bronze). Elle commande pour **45 €** chez votre marque : 45 points sont crédités, son solde passe à **55 points** (reste Bronze). Deux semaines plus tard, elle dépense **72 €** : +72 points, solde **127 points** → elle passe automatiquement **Silver**. Après six commandes sur trois mois, elle atteint **420 points** (palier Platine) et décide d’utiliser **200 points** en crédit sur sa prochaine commande ; son solde redescend à **220 points** mais elle conserve le statut Gold.
 
 <Eyebrow icon="check_circle">Bonnes pratiques</Eyebrow>
 
-## Tirer le meilleur parti du programme
+## Maximiser l’engagement
 
 <Callout type="default">
-- **Inscrivez systématiquement les nouveaux clients réguliers** : un email suffit, les 10 points de bienvenue créent immédiatement un lien et incitent à commander une deuxième fois.
-- **Validez chaque commande le jour même de la livraison** : les points s’affichent aussitôt dans l’appli client, renforçant la perception de valeur et la motivation à revenir.
-- **Mentionnez le palier atteint dans vos messages de remerciement** : « Félicitations, vous êtes passé Gold ! » humanise la relation et valorise la fidélité sans effort supplémentaire.
-- **Ne créez pas de doublon d’email** : un client = un email unique ; si quelqu’un commande depuis plusieurs adresses, demandez-lui quelle adresse consolider pour éviter de diluer son solde.
+
+- **Communiquez le solde** : affichez le nombre de points et le palier actuel sur chaque confirmation de commande (email ou notification).
+- **Rappelez les seuils** : « Plus que 18 points pour devenir Silver ! » incite à recommander rapidement.
+- **Valorisez le crédit** : exprimez le solde en euros (« 240 pts = 12 € de crédit ») pour rendre l’avantage tangible.
+- **Encouragez le parrainage** : le code de parrainage unique (8 caractères) permet au client de faire découvrir votre marque à ses proches ; prévoyez un bonus pour le parrain et le filleul (mécanisme `referredBy` présent dans le modèle).
+
 </Callout>
 
 <Eyebrow icon="error">Erreurs à éviter</Eyebrow>
@@ -94,9 +106,21 @@ Avec 295 points, Mathilde dispose d’un **crédit de 14,75 €** (le taux de co
 ## Les pièges courants
 
 <Callout type="error">
-- **Valider deux fois la même commande** : le système bloque les doublons par numéro de commande externe, mais si vous changez le numéro par erreur, vous créditez des points non mérités — vérifiez toujours le numéro avant de confirmer.
-- **Oublier de valider les commandes** : un client qui commande régulièrement mais ne voit jamais ses points augmenter perd confiance et abandonne le programme ; la validation doit devenir un réflexe.
-- **Promettre un catalogue de récompenses fixes** : le système fonctionne désormais en crédit euro libre, pas en « dessert gratuit » ou « boisson offerte » ; annoncer des lots figés crée de la confusion et de la déception.
+
+- **Valider une commande annulée** : ne créditez des points que si la commande a effectivement été livrée ; un remboursement ultérieur nécessite un ajustement manuel du solde.
+- **Oublier de renseigner la marque** : le champ `brandName` doit correspondre exactement au nom enregistré dans la table `Brand` (recherche par `contains` insensible à la casse, mais une faute de frappe bloque la validation).
+- **Créditer en double** : l’unicité sur `uberOrderNumber` protège contre les doublons côté serveur, mais vérifiez que votre intégration n’appelle pas deux fois l’API en cas d’erreur réseau temporaire.
+
+</Callout>
+
+<Eyebrow icon="lightbulb">Astuce</Eyebrow>
+
+## Automatisez le crédit de points
+
+<Callout type="info">
+
+Connectez le webhook de livraison de votre plateforme (Uber Eats, Deliveroo…) à **POST /api/loyalty/validate** : dès qu’une commande passe au statut « livrée », l’API crédite automatiquement les points sans intervention manuelle. Le client voit son solde augmenter en temps réel, et vous réduisez le risque d’oubli ou de retard.
+
 </Callout>
 
 <Eyebrow icon="quiz">FAQ</Eyebrow>
@@ -106,23 +130,23 @@ Avec 295 points, Mathilde dispose d’un **crédit de 14,75 €** (le taux de co
 <Faq items={[
   {
     icon: "loyalty",
-    q: "Pourquoi 1 point = 1 euro, et pas 10 points = 1 euro comme ailleurs ?",
-    a: "Un ratio simple (1 pt = 1 €) rend le programme immédiatement lisible : le client voit « 240 points » et comprend « j’ai commandé pour 240 € ». Les paliers (100, 200, 400) restent accessibles sans calcul mental, ce qui maximise l’engagement."
+    q: "Que se passe-t-il si un client change d’email ?",
+    a: "Le programme fidélité est lié à l’email : si le client crée un nouveau compte avec une adresse différente, il repart de zéro (10 points de bienvenue). Pour transférer l’historique, contactez le support technique avec les deux adresses ; un administrateur pourra fusionner les comptes manuellement."
   },
   {
-    icon: "sell",
-    q: "Le client peut-il dépenser ses points chez n’importe quel restaurant de la plateforme ?",
-    a: "Non : le compte fidélité est lié à VOTRE marque (ou groupe de marques si vous en gérez plusieurs). Les points gagnés chez vous ne se dépensent que chez vous, ce qui concentre la fidélité et protège votre investissement."
-  },
-  {
-    icon: "schedule",
-    q: "À quel moment les points sont-ils crédités : commande passée, préparée ou livrée ?",
-    a: "Les points s’ajoutent au solde uniquement lorsque vous validez la commande dans Grubano APRÈS livraison. Cela évite de créditer des points pour une commande annulée ou remboursée et garantit que seul l’argent réellement encaissé compte."
+    icon: "percent",
+    q: "Quelle est la valeur d’un point en euros ?",
+    a: "La conversion est définie dans lib/loyalty.ts (fonction centsPerPoint) et peut évoluer selon la stratégie de Grubano. Le client consulte l’équivalent euro de son solde via GET /api/loyalty/wallet (champ balanceEuros) ; le taux exact appliqué lors d’une commande reste côté serveur pour garantir la cohérence."
   },
   {
     icon: "star",
-    q: "Les paliers Silver/Gold/Platine débloquent-ils des avantages spécifiques ?",
-    a: "Aujourd’hui, les paliers servent principalement de jalon psychologique : franchir Gold motive à viser Platine. Grubano prévoit d’ajouter bientôt des avantages différenciés par palier (livraison prioritaire, offres exclusives) ; pour l’instant, concentrez-vous sur la mécanique de points = crédit euro."
+    q: "Les paliers offrent-ils des avantages différenciés ?",
+    a: "Oui : les paliers Silver, Gold et Platine peuvent débloquer des promotions exclusives, des remises sur les frais de livraison ou un accès prioritaire aux nouveautés de votre carte. La logique métier de ces avantages est configurée côté restaurant ; le système fidélité fournit le palier (`tier`), vous décidez de l’avantage associé."
+  },
+  {
+    icon: "code",
+    q: "Comment fonctionne le code de parrainage ?",
+    a: "Chaque client reçoit un referralCode unique (8 premiers caractères en majuscules, visibles dans GET /api/loyalty/wallet). Le champ referredBy du modèle LoyaltyCustomer permet de tracer qui a parrainé qui ; vous pouvez ensuite récompenser le parrain (bonus de points) et le filleul (remise de bienvenue) via une logique métier personnalisée."
   }
 ]} />
 
@@ -132,27 +156,27 @@ Avec 295 points, Mathilde dispose d’un **crédit de 14,75 €** (le taux de co
 
 <RelatedCards items={[
   {
-    icon: "dashboard",
+    icon: "insights",
     title: "Tableau de bord",
-    sub: "Toutes vos commandes en un coup d'œil",
+    sub: "Indicateurs en direct",
     href: "/fr/guides/restaurant/"
   },
   {
     icon: "loyalty",
     title: "Fidélité, cagnotte & parrainage",
-    sub: "Le point de vue client",
+    sub: "Points et parrainage",
     href: "/fr/guides/consumer-loyalty/"
   },
   {
     icon: "bolt",
     title: "Démarrer en 15 minutes",
-    sub: "Votre première commande sur Grubano",
+    sub: "Prêt en 15 minutes",
     href: "/fr/guides/quick-start/"
   },
   {
-    icon: "restaurant_menu",
+    icon: "menu_book",
     title: "Menu & Scan IA",
-    sub: "Numérisez votre carte en quelques secondes",
+    sub: "Carte et Scan IA",
     href: "/fr/guides/menu/"
   }
 ]} />

@@ -2,7 +2,7 @@
 title: "Fidélité, cagnotte & parrainage"
 description: "Cumuler des points et gravir les paliers, suivre sa cagnotte, et parrainer des proches via un code de parrainage pour gagner des avantages."
 generated: true
-sourceHash: 0bc550c8b1ce352f
+sourceHash: 8fc1abe56c0ec31d
 generator: scripts/generate-feature-page.js
 templateVersion: 6
 ---
@@ -11,19 +11,19 @@ import { Steps, Callout } from 'nextra/components'
 
 # Fidélité, cagnotte & parrainage
 
-Cumulez des points à chaque commande, suivez votre cagnotte en euros, et partagez votre code de parrainage pour faire découvrir Grubano à vos proches.
+Cumulez des points à chaque commande, gravissez les paliers de fidélité et parrainez vos proches pour leur offrir une réduction de bienvenue tout en gagnant des avantages.
 
-<ArticleMeta audience="Clients" minutes={5} updated="2026-07-11" />
+<ArticleMeta audience="Clients" minutes={5} updated="2026-07-10" />
 
 <Eyebrow icon="insights">Aperçu</Eyebrow>
 
 ## Votre parcours fidélité
 
 <FlowDiagram steps={[
-  { icon: "receipt_long", title: "Commander", desc: "Gagnez des points sur chaque commande validée" },
-  { icon: "loyalty", title: "Cumuler des points", desc: "Votre solde augmente et se convertit en euros" },
-  { icon: "star", title: "Gravir un palier", desc: "Bronze, Silver, Gold, Platine selon vos points" },
-  { icon: "code", title: "Parrainer", desc: "Partagez votre code pour faire profiter vos proches" }
+  { icon: "receipt_long", title: "Commander", desc: "Passez commande dans un restaurant du réseau" },
+  { icon: "loyalty", title: "Cumuler des points", desc: "Gagnez automatiquement des points sur chaque achat" },
+  { icon: "star", title: "Gravir un palier", desc: "Progressez de Bronze à Platine au fil de vos points" },
+  { icon: "code", title: "Parrainer", desc: "Invitez vos proches avec votre code personnel" }
 ]} />
 
 <Eyebrow icon="bolt">L’essentiel</Eyebrow>
@@ -31,96 +31,88 @@ Cumulez des points à chaque commande, suivez votre cagnotte en euros, et partag
 ## En bref
 
 <Essentials title="Si vous ne devez retenir que ça :" items={[
-  <>Vous recevez <b>10 points de bienvenue</b> à l’inscription, puis des points sur chaque commande validée — votre solde se convertit en euros de crédit utilisables sur votre prochaine commande.</>,
-  <>Vous gravissez <b>quatre paliers</b> (Bronze, Silver, Gold, Platine) au fil de vos points cumulés — votre palier reflète votre fidélité.</>,
-  <>Votre <b>code de parrainage personnel</b> permet à vos proches de bénéficier d’une réduction de bienvenue — vous suivez votre cagnotte et votre historique dans votre compte.</>
+  <>Chaque commande livrée vous rapporte <b>des points automatiquement</b> — votre solde se transforme en crédit € que vous dépensez lors d’une prochaine commande.</>,
+  <>Vous progressez de <b>Bronze à Platine</b> (paliers à 100, 200 puis 400 points) — votre palier actuel est affiché sur votre compte.</>,
+  <>Votre code de parrainage offre une <b>réduction de bienvenue</b> à vos proches lors de leur première commande et vous fait gagner des avantages sur leurs achats.</>
 ]} />
 
 <Eyebrow icon="lightbulb">Comment ça marche</Eyebrow>
 
 ## Le principe (et le pourquoi)
 
-Chaque fois que vous [commandez](/fr/guides/consumer/) sur Grubano, vous gagnez des points de fidélité. Ces points s’accumulent dans votre cagnotte et se convertissent en euros : un solde réel que vous pouvez dépenser lors de votre prochaine commande. Plus vous commandez, plus vous montez de palier (Bronze → Silver → Gold → Platine) et plus votre solde grandit.
+Chaque fois que vous [commandez](/fr/guides/consumer/) et que le restaurant livre, Grubano enregistre votre commande dans votre historique de fidélité et crédite votre solde de points. Ces points se transforment ensuite en crédit en euros — un vrai pouvoir d’achat que vous utilisez pour réduire le montant d’une future commande, sans condition.
 
-Parallèlement, vous disposez d’un code de parrainage unique. Lorsqu’un proche l’utilise pour passer sa première commande, il reçoit une réduction de bienvenue — une façon simple de faire découvrir Grubano autour de vous. Votre cagnotte, vos paliers et votre code sont visibles en permanence dans votre compte.
+Vous cumulez aussi de l’ancienneté : plus votre solde augmente, plus vous gravissez les paliers (Bronze → Silver → Gold → Platine). Votre progression est visible à tout moment sur votre compte, avec la distance qui vous sépare du palier suivant.
+
+Enfin, vous disposez d’un code de parrainage personnel : partagez-le avec vos proches pour leur offrir une réduction de bienvenue lors de leur première commande. Grubano enregistre le lien entre vous et la personne parrainée, ce qui vous ouvre des avantages au fil de ses commandes.
 
 <Eyebrow icon="format_list_numbered">Étape par étape</Eyebrow>
 
-## Consulter votre cagnotte et votre palier
+## Suivre vos points et votre palier
 
 <Steps>
 
-### Accédez à votre compte
+### Consultez votre solde
 
-Une fois connecté, rendez-vous dans la rubrique « Mon compte » de l’application. Votre solde de points s’affiche en euros (le montant de crédit dont vous disposez), ainsi que votre palier actuel (Bronze, Silver, Gold ou Platine).
+Rendez-vous sur votre page de compte (accessibles depuis l’icône utilisateur en haut de l’application). Votre solde de points actuel s’affiche en haut, avec sa contre-valeur en crédit €.
 
-### Suivez votre progression
+### Découvrez votre palier
 
-L’interface vous indique le nombre de points qu’il vous reste à cumuler pour atteindre le palier suivant. Par exemple, si vous êtes Bronze (0–99 points) et que vous avez 75 points, il vous en manque 25 pour passer Silver (100 points).
+Juste en dessous, vous voyez votre palier actuel (Bronze, Silver, Gold ou Platine) et le nombre de points qu’il vous reste à cumuler pour atteindre le suivant. Les paliers sont franchis à 100, 200 et 400 points.
 
-### Consultez votre historique de points
+### Vérifiez l’échelle de crédit
 
-La section « Historique » détaille tous vos mouvements de points : les points gagnés lors de chaque commande validée, les points dépensés (quand vous utilisez votre crédit) et, le cas échéant, les points recrédités en cas d’annulation. Chaque ligne indique la date, le type de mouvement et l’équivalent en euros.
+Une grille présente les montants de crédit correspondant à 100, 200 et 400 points. Ces repères vous aident à visualiser le pouvoir d’achat que représente votre solde.
+
+### Consultez l’historique de vos mouvements
+
+Une section affiche vos dernières transactions de points : commandes qui ont rapporté des points, utilisations de crédit lors d’un achat, ou re-créditations en cas d’annulation. Chaque ligne porte un signe (+ gagné, − dépensé) et la contre-valeur en euros du mouvement.
 
 </Steps>
 
 <Eyebrow icon="format_list_numbered">Étape par étape</Eyebrow>
 
-## Parrainer vos proches
+## Parrainer un proche
 
 <Steps>
 
-### Récupérez votre code de parrainage
+### Retrouvez votre code
 
-Dans votre compte, votre code de parrainage personnel apparaît sous forme d’une chaîne courte (8 caractères en majuscules). Ce code est unique et permanent.
+Sur votre page de compte, une section « Parrainage » affiche votre code personnel (huit caractères en majuscules). Ce code est unique et permanent.
 
 ### Partagez-le
 
-Communiquez ce code à un proche qui n’a jamais commandé sur Grubano. Lorsqu’il passera sa première commande et saisira votre code, il bénéficiera d’une réduction de bienvenue (le montant exact de cette réduction est défini dans la configuration de parrainage en vigueur).
+Communiquez ce code à vos proches par le canal de votre choix (message, email, réseaux sociaux). Ils devront le saisir ou suivre un lien contenant ce code lorsqu’ils passeront leur première commande.
 
-### Le parrainage est automatique
+### Votre filleul bénéficie d’une réduction de bienvenue
 
-Dès que votre proche valide sa commande avec votre code, le système enregistre le lien de parrainage. Vous n’avez aucune autre action à effectuer : le mécanisme est transparent et l’application garde la trace de la relation.
+Lorsque la personne parrainée valide sa première commande avec votre code, Grubano applique automatiquement une réduction sur le montant du panier (pourcentage plafonné, dans les limites fixées par Grubano). Cette réduction s’affiche dans le récapitulatif avant paiement.
+
+### Vous êtes crédité
+
+Une fois la commande livrée, Grubano enregistre le lien de parrainage entre vous et votre filleul. Les conditions financières de ce parrainage sont fixées entre les acteurs concernés ; vous verrez vos avantages apparaître au fil des commandes de votre filleul.
 
 </Steps>
 
 <Eyebrow icon="calculate">Exemple concret</Eyebrow>
 
-## Barème de conversion points → euros
+## Un parcours de 240 points
 
-Votre solde de points se convertit en euros de crédit selon un taux fixe. Par exemple, avec le barème actuel :
+Vous avez cumulé 240 points au fil de vos commandes. Votre solde se convertit en 12 € de crédit (le taux de conversion est défini par Grubano). Vous êtes au palier Gold (franchi à 200 points) et il vous reste 160 points à gagner pour atteindre Platine (400 points). Lors de votre prochaine commande, vous pourrez choisir d’utiliser tout ou partie de ces 12 € pour réduire le montant à payer — le crédit non utilisé reste disponible.
 
-- **100 points** = 5 € de crédit
-- **200 points** = 10 € de crédit
-- **400 points** = 20 € de crédit
-
-Si vous avez 240 points, vous disposez de 12 € de crédit utilisables sur votre prochaine commande. Le montant exact de votre solde en euros est affiché en temps réel dans votre compte — vous n’avez pas à calculer.
-
-<Callout type="info">
-Le taux de conversion est géré par Grubano et s’applique automatiquement. Lorsque vous choisissez d’utiliser votre crédit au moment de payer, le système déduit le montant correspondant de votre panier et ajuste votre solde de points en conséquence.
+<Callout type="default">
+Cet exemple est illustratif. Le taux de conversion des points en euros et les seuils de paliers sont configurés par Grubano et s’appliquent uniformément à tous les clients.
 </Callout>
-
-<Eyebrow icon="lightbulb">Comment ça marche</Eyebrow>
-
-## Les quatre paliers de fidélité
-
-Votre palier reflète le total de points que vous avez cumulés depuis votre inscription. Les seuils sont les suivants :
-
-- **Bronze** : de 0 à 99 points (palier de départ)
-- **Silver** : à partir de 100 points
-- **Gold** : à partir de 200 points
-- **Platine** : à partir de 400 points
-
-Votre palier monte automatiquement dès que vous franchissez un seuil. Il ne redescend jamais, même si vous dépensez des points : seul le total cumulé compte. Le palier est un indicateur de fidélité visible dans votre compte.
 
 <Eyebrow icon="check_circle">Bonnes pratiques</Eyebrow>
 
-## Tirer le meilleur parti de votre cagnotte
+## Tirer le meilleur de votre fidélité
 
 <Callout type="default">
-- **Consultez régulièrement votre solde** avant de commander : vous saurez si vous disposez d’un crédit suffisant pour couvrir tout ou partie de votre panier.
-- **Partagez votre code de parrainage** avec des personnes qui n’ont jamais utilisé Grubano — le code ne fonctionne que pour une première commande.
-- **Vérifiez votre historique de points** si vous constatez un écart : chaque mouvement (gain, dépense, recrédit) y figure avec sa date et son montant.
+- **Commandez régulièrement** — chaque commande livrée alimente votre solde, même les petits montants comptent.
+- **Surveillez vos seuils** — si vous êtes proche d’un nouveau palier, une commande supplémentaire peut suffire à le franchir.
+- **Partagez votre code largement** — plus vous parrainez de personnes, plus vous multipliez les occasions de bénéficier d’avantages sur leurs commandes.
+- **Utilisez votre crédit quand cela vous arrange** — vous n’êtes jamais obligé de tout dépenser en une seule fois ; le solde reste disponible tant que votre compte est actif.
 </Callout>
 
 <Eyebrow icon="error">Erreurs à éviter</Eyebrow>
@@ -128,9 +120,9 @@ Votre palier monte automatiquement dès que vous franchissez un seuil. Il ne red
 ## Les pièges courants
 
 <Callout type="error">
-- **Ne partagez pas votre code à quelqu’un qui a déjà commandé** : la réduction de bienvenue ne s’applique qu’à la toute première commande d’un nouveau client.
-- **Ne confondez pas points et euros** : votre solde de points se convertit en crédit euro selon le barème affiché dans votre compte — ne tentez pas de calculer vous-même un taux différent.
-- **N’utilisez pas votre propre code de parrainage** : le système détecte et bloque les tentatives d’auto-parrainage (même adresse e-mail).
+- **Ne pas vérifier son solde avant de commander** — vous risquez de payer plein tarif alors que vous disposiez d’un crédit mobilisable.
+- **Partager un code qui n’est pas le vôtre** — seul votre code personnel vous rapporte des avantages ; diffuser le code d’un tiers ne vous crédite rien.
+- **Oublier de saisir un code de parrainage à votre première commande** — la réduction de bienvenue ne s’applique qu’une seule fois, lors de la toute première commande ; vous ne pourrez pas la réclamer rétroactivement.
 </Callout>
 
 <Eyebrow icon="quiz">FAQ</Eyebrow>
@@ -140,23 +132,23 @@ Votre palier monte automatiquement dès que vous franchissez un seuil. Il ne red
 <Faq items={[
   {
     icon: "loyalty",
-    q: "Mes points expirent-ils ?",
-    a: "Non. Les points que vous gagnez restent dans votre cagnotte sans limite de durée. Seul le lien de parrainage (la réduction de bienvenue pour votre filleul) peut avoir une date d’expiration définie dans la configuration de parrainage."
+    q: "Combien de points gagne-t-on par commande ?",
+    a: "Le nombre de points dépend du montant de votre commande et des règles de fidélité définies par Grubano. Chaque commande livrée crédite automatiquement votre compte ; vous voyez le détail dans l’historique de vos mouvements."
   },
   {
     icon: "star",
-    q: "Puis-je redescendre de palier ?",
-    a: "Non. Votre palier (Bronze, Silver, Gold, Platine) ne baisse jamais, même si vous dépensez des points. Seul le total de points cumulés depuis votre inscription détermine votre palier."
+    q: "Que m’apportent les paliers Bronze, Silver, Gold et Platine ?",
+    a: "Les paliers jalonnent votre progression : vous franchissez Silver à 100 points, Gold à 200 et Platine à 400. Votre palier actuel est un repère visuel de votre ancienneté et de votre activité ; Grubano peut y associer des avantages ou des offres spécifiques."
+  },
+  {
+    icon: "payments",
+    q: "Comment utiliser mon crédit € lors d’une commande ?",
+    a: "Bientôt, vous pourrez choisir directement dans votre panier de mobiliser tout ou partie de votre crédit. Le montant déduit apparaîtra dans le récapitulatif avant paiement. Pour le moment, le crédit est calculé et affiché côté serveur ; l’interface de sélection manuelle sera ajoutée dans une prochaine mise à jour."
   },
   {
     icon: "code",
-    q: "Combien de fois puis-je utiliser mon code de parrainage ?",
-    a: "Autant de fois que vous le souhaitez : chaque nouveau client qui utilise votre code pour sa première commande bénéficie de la réduction de bienvenue. Il n’y a pas de limite au nombre de parrainages."
-  },
-  {
-    icon: "account_balance_wallet",
-    q: "Comment utiliser mon crédit en euros ?",
-    a: "Lors du paiement de votre commande, l’application vous propose d’appliquer votre crédit disponible. Le montant est alors déduit de votre panier et votre solde de points ajusté automatiquement."
+    q: "Puis-je parrainer quelqu’un qui a déjà commandé ?",
+    a: "Non. La réduction de bienvenue et l’enregistrement du lien de parrainage ne s’appliquent que lors de la toute première commande de votre filleul. Si la personne a déjà commandé sans code, vous ne pouvez plus la parrainer rétroactivement."
   }
 ]} />
 
@@ -168,19 +160,25 @@ Votre palier monte automatiquement dès que vous franchissez un seuil. Il ne red
   {
     icon: "shopping_bag",
     title: "Commander & suivre",
-    sub: "Passer une commande",
+    sub: "Commander et suivre",
     href: "/fr/guides/consumer/"
   },
   {
-    icon: "account_circle",
+    icon: "person",
     title: "Mon compte",
-    sub: "Gérer vos informations",
+    sub: "Profil et adresses",
     href: "/fr/guides/consumer-account/"
   },
   {
     icon: "loyalty",
     title: "Programme fidélité",
-    sub: "Vue d’ensemble complète",
+    sub: "Fidéliser vos clients",
     href: "/fr/guides/loyalty/"
+  },
+  {
+    icon: "insights",
+    title: "Tableau de bord",
+    sub: "Indicateurs en direct",
+    href: "/fr/guides/restaurant/"
   }
 ]} />
