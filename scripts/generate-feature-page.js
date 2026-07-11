@@ -131,6 +131,7 @@ const ARG_ALL = argv.includes('--all')
 const ARG_FORCE = argv.includes('--force')
 const ARG_DRY = argv.includes('--dry-run')
 const ARG_REFRESH = argv.includes('--refresh-notion')
+const ARG_REHASH = argv.includes('--rehash')
 const topicArg = argv.find((a) => !a.startsWith('--'))
 
 // ── Notion fetcher (minimal, paginated, one level of children) ──────────────
@@ -922,13 +923,19 @@ async function generateOne(topicKey, notion) {
   }
   const slices = buildContextSlices(topicKey, cfg, notion)
 
+  // L'INBOX est volontairement EXCLUE du hash (décision Mohammed 11/07) :
+  // elle change à chaque rapport d'agent, donc la garder déclenchait une
+  // régénération en boucle à chaque nightly (incident b3cb963 : les 17 fiches
+  // FR réécrites pendant la fenêtre de validation). Elle reste fournie au
+  // PROMPT comme contexte — seuls le code, le règlement et le cerveau
+  // (sources stables et canoniques) décident d'une régé.
   const sourceHash = sha(
     JSON.stringify({
       topic: topicKey,
       template: TEMPLATE_VERSION,
       intent: cfg.intent,
       facts,
-      slices, // règlement + cerveau + inbox slices participate in the hash
+      slices: { reglement: slices.reglement, cerveau: slices.cerveau },
     }),
   )
 
@@ -1021,6 +1028,42 @@ async function main() {
         .filter(([, v]) => v.status === 'generated')
         .map(([k]) => k)
     : [topicArg]
+
+  // --rehash : réaligne le sourceHash STOCKÉ de chaque fiche sur la formule
+  // courante SANS régénérer (0 appel API). À lancer après tout changement de
+  // la formule de hash (ex. exclusion de l'inbox) pour que la prochaine
+  // levée de gel du nightly ne redéclenche pas une régé de tout le corpus.
+  if (ARG_REHASH) {
+    let patched = 0
+    for (const t of topics) {
+      const cfg = FEATURE_PAGES[t]
+      if (!cfg || cfg.status !== 'generated') continue
+      const targetAbs = targetPathFor(cfg)
+      if (!fs.existsSync(targetAbs)) continue
+      const facts = gatherFacts(cfg)
+      const slices = buildContextSlices(t, cfg, notion)
+      const newHash = sha(
+        JSON.stringify({
+          topic: t,
+          template: TEMPLATE_VERSION,
+          intent: cfg.intent,
+          facts,
+          slices: { reglement: slices.reglement, cerveau: slices.cerveau },
+        }),
+      )
+      const src = fs.readFileSync(targetAbs, 'utf8')
+      const next = src.replace(/^sourceHash:\s*[a-f0-9]+\s*$/m, `sourceHash: ${newHash}`)
+      if (next !== src) {
+        fs.writeFileSync(targetAbs, next)
+        patched++
+        console.log(`[generator] rehash ${t} → ${newHash}`)
+      } else {
+        console.log(`[generator] rehash ${t} → inchangé`)
+      }
+    }
+    console.log(`[generator] rehash terminé : ${patched} fiche(s) mises à jour`)
+    return
+  }
 
   console.log(
     `[generator] ${topics.length} topic(s) — model=${MODEL} dry=${ARG_DRY} force=${ARG_FORCE} refreshNotion=${ARG_REFRESH}`,
