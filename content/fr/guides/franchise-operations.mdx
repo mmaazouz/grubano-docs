@@ -11,7 +11,7 @@ import { Steps, Callout } from 'nextra/components'
 
 # Piloter son réseau
 
-Suivez votre réseau de franchise — chiffre d’affaires consolidé, royalties dues, et reporting par établissement — dans les limites fixées par Grubano.
+Suivez votre réseau de franchise — chiffre d’affaires consolidé, royalties dues, et reporting par restaurant — dans les limites fixées par Grubano.
 
 <ArticleMeta audience="Franchisés" minutes={3} updated="2026-07-10" />
 
@@ -20,9 +20,9 @@ Suivez votre réseau de franchise — chiffre d’affaires consolidé, royalties
 ## Le trajet de votre argent
 
 <FlowDiagram steps={[
-  { icon: "storefront", title: "Points de vente", desc: "Vos établissements encaissent les commandes" },
+  { icon: "storefront", title: "Points de vente", desc: "Vos restaurants encaissent les commandes" },
   { icon: "account_balance_wallet", title: "CA du réseau", desc: "Chiffre d’affaires consolidé sur 30 jours glissants" },
-  { icon: "percent", title: "Royalties", desc: "Part prélevée sur le CA de chaque établissement" },
+  { icon: "percent", title: "Royalties", desc: "Part prélevée sur le CA de chaque restaurant" },
   { icon: "description", title: "Reporting", desc: "Suivi consolidé et historique des versements" }
 ]} />
 
@@ -31,16 +31,16 @@ Suivez votre réseau de franchise — chiffre d’affaires consolidé, royalties
 ## En bref
 
 <Essentials title="Si vous ne devez retenir que ça :" items={[
-  <>Le <b>tableau de bord franchise</b> consolide le chiffre d’affaires de tous vos établissements sur une fenêtre glissante de 30 jours</>,
+  <>Le <b>tableau de bord franchise</b> consolide le chiffre d’affaires de tous vos restaurants sur une fenêtre glissante de 30 jours</>,
   <>Les <b>royalties sont calculées</b> automatiquement sur le CA de chaque point de vente, dans les limites fixées par Grubano</>,
-  <>L'<b>historique des versements</b> trace les royalties accumulées, en règlement et réglées, par établissement</>
+  <>L’<b>historique des versements</b> trace les royalties accumulées, en règlement et réglées, par restaurant</>
 ]} />
 
 <Eyebrow icon="lightbulb">Comment ça marche</Eyebrow>
 
 ## Le principe (et le pourquoi)
 
-Lorsque vous gérez plusieurs établissements en [franchise](/fr/guides/franchise/), Grubano agrège les performances de chaque point de vente dans un tableau de bord unique. Vous y voyez le chiffre d’affaires consolidé sur les 30 derniers jours, le nombre de commandes livrées, et le montant de royalties dû. Chaque établissement apparaît avec son nom, sa ville, son CA propre et le détail de ses royalties — vous pouvez ainsi comparer les performances et identifier les points de vente les plus actifs.
+Lorsque vous gérez plusieurs restaurants en [franchise](/fr/guides/franchise/), Grubano agrège les performances de chaque point de vente dans un tableau de bord unique. Vous y voyez le chiffre d’affaires consolidé sur les 30 derniers jours, le nombre de commandes livrées, et le montant de royalties dû. Chaque restaurant apparaît avec son nom, sa ville, son CA propre et le détail de ses royalties — vous pouvez ainsi comparer les performances et identifier les points de vente les plus actifs.
 
 Le calcul et le prélèvement automatisés des royalties arrivent bientôt : chaque commande livrée génèrera une redevance selon un taux défini avec vous au moment de l’ouverture. Le tableau de bord trace déjà trois montants distincts : les royalties **accumulées** (le total toutes périodes confondues), **en règlement** (un lot qui sera en cours de transfert) et **réglées** (les versements effectués, une fois le mécanisme activé). Cette séparation garantira qu’aucun montant n’est compté deux fois et que chaque versement reste traçable.
 
@@ -54,7 +54,7 @@ Le calcul et le prélèvement automatisés des royalties arrivent bientôt : cha
 
 Dans votre espace, cliquez sur **Vue d’ensemble** dans la barre latérale. Vous voyez immédiatement le chiffre d’affaires du réseau sur les 30 derniers jours, comparé à la période précédente (j-60 → j-30).
 
-### Parcourez la liste de vos établissements
+### Parcourez la liste de vos restaurants
 
 Chaque point de vente apparaît avec son nom, sa ville, son chiffre d’affaires sur 30 jours, le nombre de commandes livrées et le montant de royalties correspondant. La liste est triée par date d’ouverture.
 
@@ -64,7 +64,7 @@ Le bandeau du haut affiche trois totaux : **royalties accumulées** (le cumul de
 
 ### Vérifiez l’historique des versements
 
-La page **Finances** (accessible depuis la barre latérale) listera chaque versement effectué, avec sa date, son montant et son statut, dès l’activation du versement automatisé (bientôt). Vous y retrouvez dès aujourd’hui la répartition des royalties par établissement.
+La page **Finances** (accessible depuis la barre latérale) listera chaque versement effectué, avec sa date, son montant et son statut, dès l’activation du versement automatisé (bientôt). Vous y retrouvez dès aujourd’hui la répartition des royalties par restaurant.
 
 </Steps>
 
@@ -73,7 +73,7 @@ La page **Finances** (accessible depuis la barre latérale) listera chaque verse
 ## Optimiser le suivi
 
 <Callout type="default">
-- **Comparez les établissements** — identifiez les points de vente les plus performants et ceux qui nécessitent un accompagnement.
+- **Comparez les restaurants** — identifiez les points de vente les plus performants et ceux qui nécessitent un accompagnement.
 - **Surveillez les tendances** — le delta entre les deux périodes de 30 jours révèle une croissance ou un ralentissement du réseau.
 - **Vérifiez les versements** — une fois le versement automatisé activé, l’historique des royalties réglées servira de pièce justificative pour votre comptabilité.
 </Callout>
@@ -94,9 +94,9 @@ La page **Finances** (accessible depuis la barre latérale) listera chaque verse
 
 <Faq items={[
   { icon: "schedule", q: "Pourquoi une fenêtre de 30 jours et pas le mois en cours ?", a: "Une fenêtre glissante lisse les variations liées au calendrier (mois à 28, 30 ou 31 jours, jours fériés) et affiche toujours une période complète, ce qui rend les comparaisons plus fiables." },
-  { icon: "percent", q: "Le taux de royalties est-il le même pour tous mes établissements ?", a: "Cela dépend de votre contrat. Lorsqu’un seul taux s’applique à toutes vos marques franchisées, le tableau de bord l’affiche en haut de page ; s’il varie, un tiret (—) apparaît à la place." },
+  { icon: "percent", q: "Le taux de royalties est-il le même pour tous mes restaurants ?", a: "Cela dépend de votre contrat. Lorsqu’un seul taux s’applique à toutes vos marques franchisées, le tableau de bord l’affiche en haut de page ; s’il varie, un tiret (—) apparaît à la place." },
   { icon: "payments", q: "Quand les royalties en règlement sont-elles versées ?", a: "Le versement automatisé arrive bientôt. À son activation, les royalties passeront de « accumulées » à « en règlement » lors d’un lot de versement, puis à « réglées » une fois le transfert confirmé, selon les conditions fixées avec Grubano." },
-  { icon: "storefront", q: "Un établissement fermé temporairement apparaît-il dans le tableau ?", a: "Seuls les établissements actifs sont listés dans la vue principale. Vous pouvez consulter le nombre total d’établissements (ouverts + fermés) et la répartition par ville dans les statistiques du réseau." }
+  { icon: "storefront", q: "Un restaurant fermé temporairement apparaît-il dans le tableau ?", a: "Seuls les restaurants actifs sont listés dans la vue principale. Vous pouvez consulter le nombre total de restaurants (ouverts + fermés) et la répartition par ville dans les statistiques du réseau." }
 ]} />
 
 <Eyebrow icon="menu_book">Pour aller plus loin</Eyebrow>

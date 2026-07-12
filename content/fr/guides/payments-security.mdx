@@ -1,11 +1,161 @@
 ---
 title: "Paiements & sécurité"
+description: "Comment Grubano sécurise les paiements, protège les données bancaires, et gère remboursements et litiges — en toute transparence."
 ---
 
-import { Callout } from 'nextra/components'
+import { Steps, Callout } from 'nextra/components'
 
 # Paiements & sécurité
 
-<Callout type="warning">
-**Page en cours de rédaction.** Ce guide arrive bientôt.
+Comment Grubano sécurise les paiements, protège les données bancaires, et gère remboursements et litiges — en toute transparence.
+
+<ArticleMeta audience="Restaurateurs" minutes={4} updated="2026-07-12" />
+
+<Eyebrow icon="insights">Aperçu</Eyebrow>
+
+## Le paiement, de la commande au versement
+
+Le client règle sa commande **en ligne, par carte**, au moment de la valider. La transaction est traitée par **Stripe**, notre prestataire de paiement : elle est chiffrée et protégée par l’authentification forte **3D Secure**. Grubano encaisse pour le compte de votre restaurant, prélève la commission selon le **mode** de la commande (voir la [grille par mode](/fr/guides/finances/)), puis vous reverse le net automatiquement. Vous n’avez **aucun impayé à gérer** : une commande n’existe qu’une fois son paiement confirmé.
+
+<FlowDiagram steps={[
+  { icon: "shopping_bag", title: "Commande payée", desc: "Le client valide et paie par carte" },
+  { icon: "lock", title: "3D Secure / Stripe", desc: "Transaction chiffrée et authentifiée" },
+  { icon: "percent", title: "Commission par mode", desc: "12, 8, 5 ou 0 % selon le mode" },
+  { icon: "account_balance", title: "Net reversé", desc: "Versement automatique au restaurant" }
+]} />
+
+<Eyebrow icon="bolt">L’essentiel</Eyebrow>
+
+## En bref
+
+<Essentials title="Si vous ne devez retenir que ça :" items={[
+  <>Les paiements passent par <b>Stripe</b>, certifié PCI-DSS : les numéros de carte ne sont <b>jamais stockés</b> chez Grubano</>,
+  <>Grubano <b>encaisse et vous reverse le net</b> automatiquement : zéro impayé à gérer de votre côté</>,
+  <>Commande remboursée = <b>commission restituée</b> : Grubano ne garde rien sur une commande remboursée</>
+]} />
+
+<Eyebrow icon="lock">Sécurité</Eyebrow>
+
+## Sécurité des données bancaires
+
+La conformité **PCI-DSS** (le standard de sécurité de l’industrie des cartes de paiement) est assurée par Stripe. Concrètement :
+
+- Grubano **ne voit ni ne stocke jamais les numéros de carte**. Quand le client saisit sa carte, les données partent directement chez Stripe, sans transiter en clair par nos serveurs.
+- Les cartes enregistrées par les clients sont conservées **côté Stripe, sous forme tokenisée** : Grubano ne manipule qu’un jeton technique, jamais le numéro de carte.
+- Les **coordonnées bancaires des partenaires** (celles qui servent aux versements, dont les vôtres) sont elles aussi gérées par le prestataire de paiement — jamais stockées par Grubano.
+
+<Callout type="info">
+Ni vous ni Grubano n’avez donc de données bancaires sensibles à protéger : elles ne quittent jamais l’infrastructure certifiée de Stripe.
 </Callout>
+
+<Eyebrow icon="undo">Remboursements</Eyebrow>
+
+## Remboursements
+
+Trois principes s’appliquent à toute commande remboursée, quel qu’en soit le motif :
+
+- **La commission Grubano est restituée au prorata** du montant remboursé. Grubano ne garde rien sur une commande remboursée — remboursement total, commission entièrement rendue ; remboursement partiel, commission rendue dans la même proportion.
+- **Le montant est borné** : il est impossible de rembourser plus que ce que le client a réellement payé.
+- **Pas de double remboursement** : chaque montant remboursé est tracé, un euro déjà rendu ne peut pas l’être une seconde fois.
+
+Côté client, le remboursement apparaît sur son compte **sous quelques jours ouvrés, selon sa banque** (délais interbancaires standards).
+
+<Callout type="info">
+Le parcours de remboursement en libre-service depuis votre tableau de bord arrive **bientôt**. Les principes ci-dessus s’y appliqueront à l’identique.
+</Callout>
+
+<Eyebrow icon="block">Annulations</Eyebrow>
+
+## Annulations
+
+Une commande peut être annulée **à tout stade avant la livraison**, par **le restaurant** ou par le **support Grubano** uniquement. Le client ne peut pas annuler lui-même depuis l’application : il contacte le restaurant ou passe par l’aide. Une fois la commande **livrée**, elle ne peut plus être annulée.
+
+Toute annulation entraîne le **remboursement du client**, selon les principes détaillés ci-dessus — commission restituée incluse.
+
+<Eyebrow icon="balance">Litiges</Eyebrow>
+
+## Litiges & contestations bancaires
+
+<Callout type="info">
+Grubano vous accompagnera en cas de **contestation bancaire** (chargeback) : centralisation des justificatifs et réponse à la banque — **bientôt**.
+</Callout>
+
+<Eyebrow icon="event_seat">Réservations</Eyebrow>
+
+## Réservations : l’empreinte bancaire
+
+Pour protéger vos services contre les no-shows, les [réservations](/fr/guides/reservations/) peuvent être garanties par une **empreinte bancaire**. C’est une fonctionnalité **disponible et optionnelle** : c’est vous qui l’activez, en fixant le montant de la pénalité no-show. Par défaut, ce montant est à **0 €** — l’empreinte reste désactivée tant que vous ne fixez pas de montant.
+
+<Steps>
+
+### À la réservation
+
+La banque du client **autorise** le montant de l’empreinte. Rien n’est prélevé : le client ne paie rien à ce stade.
+
+### À l’arrivée du client
+
+L’empreinte est **libérée**. La réservation honorée ne coûte rien au client, et l’autorisation disparaît de son compte.
+
+### En cas de no-show
+
+Vous pouvez **capturer la pénalité** : le montant de l’empreinte, celui que vous avez configuré, est alors prélevé.
+
+</Steps>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
+
+## Questions fréquentes
+
+<Faq items={[
+  {
+    icon: "credit_card",
+    q: "Grubano stocke-t-il les numéros de carte ?",
+    a: "Non. Les paiements sont traités par Stripe, certifié PCI-DSS : les numéros de carte ne transitent jamais en clair par Grubano, et les cartes enregistrées sont tokenisées côté Stripe."
+  },
+  {
+    icon: "percent",
+    q: "Grubano garde-t-il sa commission sur une commande remboursée ?",
+    a: "Non. La commission est restituée au prorata du montant remboursé : sur une commande intégralement remboursée, Grubano ne garde rien."
+  },
+  {
+    icon: "schedule",
+    q: "Quand le client voit-il son remboursement ?",
+    a: "Sous quelques jours ouvrés, selon sa banque : une fois le remboursement déclenché, le délai d’apparition sur le compte dépend des circuits interbancaires standards."
+  },
+  {
+    icon: "block",
+    q: "Un client peut-il annuler sa commande lui-même ?",
+    a: "Non. L’annulation passe par le restaurant ou le support Grubano, à tout stade avant la livraison. Une commande livrée ne peut plus être annulée ; toute commande annulée est remboursée."
+  }
+]} />
+
+<Eyebrow icon="menu_book">Pour aller plus loin</Eyebrow>
+
+## Articles liés
+
+<RelatedCards items={[
+  {
+    icon: "payments",
+    title: "Finances & versements",
+    sub: "Commission par mode et versements",
+    href: "/fr/guides/finances/"
+  },
+  {
+    icon: "event_seat",
+    title: "Réservations & sur place",
+    sub: "Tables, empreinte et no-show",
+    href: "/fr/guides/reservations/"
+  },
+  {
+    icon: "insights",
+    title: "Tableau de bord",
+    sub: "Indicateurs en direct",
+    href: "/fr/guides/restaurant/"
+  },
+  {
+    icon: "shopping_bag",
+    title: "Commander & suivre",
+    sub: "Le parcours côté client",
+    href: "/fr/guides/consumer/"
+  }
+]} />

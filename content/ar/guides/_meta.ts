@@ -47,6 +47,4 @@ export default {
 
   '-- resources': { type: 'separator', title: cat('folder_open', 'الموارد') },
   'payments-security': 'المدفوعات والأمان',
-  privacy: 'الخصوصية والبيانات',
-  legal: 'الإشعارات القانونية والشروط',
 } satisfies MetaRecord

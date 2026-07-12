@@ -46,6 +46,4 @@ export default {
 
   '-- resources': { type: 'separator', title: cat('folder_open', 'Risorse') },
   'payments-security': 'Pagamenti e sicurezza',
-  privacy: 'Privacy e dati',
-  legal: 'Note legali e condizioni',
 } satisfies MetaRecord

@@ -34,7 +34,22 @@ const RULES = [
   { id: 'commission-unique', hard: true, why: 'formulation interdite v6 (« 10 % unique »)',
     re: /commission\s+unique|10\s?%[^.]{0,60}quel\s+que\s+soit/gi },
   { id: 'data-appartient', hard: true, why: 'formulation données interdite v6',
-    re: /(données[^.]{0,40}appartiennent|100\s?%\s?data|propriétaire\s+de\s+vos\s+données)/gi },
+    re: /(données[^.]{0,40}appartiennent|100\s?%\s?data|propriétaire\s+de\s+vos\s+données|propriété\s+du\s+restaurant|ma[iî]trise\s+de\s+(leur|votre)\s+client[eè]le|(leurs|vos)\s+données\s+de\s+commande)/gi },
+  // Lexique canonique (Règlement 12/07/2026, FAIT FOI) — variantes interdites
+  // en prose. Les valeurs techniques (enum `pickup`, routes /api/dashboard,
+  // champs referralCode) restent légitimes : lookbehind/lookahead les excluent.
+  { id: 'lex-canal-emporter', hard: true, why: 'lexique : « à emporter » interdit (canal = click & collect)',
+    re: /\b[àa] emporter\b/gi },
+  { id: 'lex-canal-pickup', hard: true, why: 'lexique : « pickup » interdit en prose (canal = click & collect)',
+    re: /(?<![`/\w.-])pickup(?![`\w])/gi },
+  { id: 'lex-canal-dinein', hard: true, why: 'lexique : « dine-in » interdit (canal = sur place)',
+    re: /\bdine[- ]in\b/gi },
+  { id: 'lex-frais-plateforme', hard: true, why: 'lexique : « frais de plateforme » interdit (= commission)',
+    re: /frais\s+de\s+plateforme/gi },
+  { id: 'lex-dashboard', hard: true, why: 'lexique : « dashboard »/« back-office » interdit en prose (= tableau de bord)',
+    re: /(?<![`/\w.-])(dashboard|back[- ]office)(?![`\w/])/gi },
+  { id: 'lex-referral', hard: true, why: 'lexique : « referral » interdit en prose (= parrainage)',
+    re: /(?<![`\w])referral(?![`\w])/gi },
   { id: 'tutoiement', hard: false, why: 'tutoiement possible (vérifier — « vous » requis)',
     re: /\b(tu\s+(peux|dois|as|es|veux|vas|fais|trouves|cliques|gagnes)|n['’]h[eé]site\s+pas\s+[aà]\s+te\b)/gi },
 ]

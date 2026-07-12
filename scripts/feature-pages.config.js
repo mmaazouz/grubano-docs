@@ -507,20 +507,6 @@ const FEATURE_PAGES = {
     docPath: '/guides/payments-security',
     title: 'Paiements & sécurité',
   },
-  'privacy': {
-    audience: 'Ressources',
-    status: 'editorial',
-    locale: 'fr',
-    docPath: '/guides/privacy',
-    title: 'Confidentialité & vos données',
-  },
-  'legal': {
-    audience: 'Ressources',
-    status: 'editorial',
-    locale: 'fr',
-    docPath: '/guides/legal',
-    title: 'Mentions légales & CGU',
-  },
 }
 
 // Editorial paths (relative to repo root) — derived from the catalog above so

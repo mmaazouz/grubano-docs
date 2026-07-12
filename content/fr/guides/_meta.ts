@@ -55,6 +55,4 @@ export default {
 
   '-- resources': { type: 'separator', title: cat('folder_open', 'Ressources') },
   'payments-security': 'Paiements & sécurité',
-  privacy: 'Confidentialité & données',
-  legal: 'Mentions légales & CGU',
 } satisfies MetaRecord

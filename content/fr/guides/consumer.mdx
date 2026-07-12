@@ -11,7 +11,7 @@ import { Steps, Callout } from 'nextra/components'
 
 # Commander & suivre
 
-Trouvez un restaurant près de chez vous, composez votre commande (livraison, retrait ou sur place) et suivez-la en temps réel jusqu’à réception.
+Trouvez un restaurant près de chez vous, composez votre commande (livraison, click & collect ou sur place) et suivez-la en temps réel jusqu’à réception.
 
 <ArticleMeta audience="Clients" minutes={4} updated="2026-07-12" />
 
@@ -20,7 +20,7 @@ Trouvez un restaurant près de chez vous, composez votre commande (livraison, re
 ## Le parcours de votre commande
 
 <FlowDiagram steps={[
-  { icon: "search", title: "Trouver un resto", desc: "Parcourez les restaurants locaux qui livrent chez vous ou proposent le retrait" },
+  { icon: "search", title: "Trouver un restaurant", desc: "Parcourez les restaurants locaux qui livrent chez vous ou proposent le click & collect" },
   { icon: "restaurant_menu", title: "Composer", desc: "Ajoutez vos plats, personnalisez les options et choisissez votre mode de réception" },
   { icon: "payments", title: "Payer", desc: "Réglez en ligne par carte — votre argent est sécurisé jusqu’à la livraison" },
   { icon: "two_wheeler", title: "Suivre la commande", desc: "Recevez les notifications en temps réel : acceptée, en préparation, en route" }
@@ -31,7 +31,7 @@ Trouvez un restaurant près de chez vous, composez votre commande (livraison, re
 ## En bref
 
 <Essentials title="Si vous ne devez retenir que ça :" items={[
-  <>Grubano prélève une <b>commission de 5 à 12 % selon le mode</b> (sur place 5 %, retrait 8 %, livraison 12 %), jamais sur les frais de livraison ni les pourboires</>,
+  <>Grubano prélève une <b>commission de 5 à 12 % selon le mode</b> (sur place 5 %, click & collect 8 %, livraison 12 %), jamais sur les frais de livraison ni les pourboires</>,
   <>Vous suivez votre commande <b>en temps réel</b> — de l’acceptation par le restaurant jusqu’à la livraison, avec un lien de suivi unique</>,
   <>Paiement sécurisé en ligne : <b>votre argent reste bloqué</b> jusqu’à la confirmation de livraison — vous ne payez que ce que vous recevez</>
 ]} />
@@ -40,7 +40,7 @@ Trouvez un restaurant près de chez vous, composez votre commande (livraison, re
 
 ## Le principe (et le pourquoi)
 
-Grubano connecte les restaurants **locaux** — ceux qui cuisinent dans leur propre cuisine — aux clients de leur quartier. Vous commandez directement auprès du restaurateur, qui garde [sa relation client et sa fidélité](/fr/guides/consumer-loyalty/) dans l’app. Le suivi en temps réel fonctionne pour les trois modes : **livraison** (un coursier vous apporte la commande), **retrait sur place** (vous la récupérez au restaurant), ou **sur place** (vous mangez à table). Chaque mode a sa propre commission — le restaurateur encaisse le reste.
+Grubano connecte les restaurants **locaux** — ceux qui cuisinent dans leur propre cuisine — aux clients de leur quartier. Vous commandez directement auprès du restaurateur, qui garde [sa relation client et sa fidélité](/fr/guides/consumer-loyalty/) dans l’app. Le suivi en temps réel fonctionne pour les trois modes : **livraison** (un livreur vous apporte la commande), **click & collect** (vous la récupérez au restaurant), ou **sur place** (vous mangez à table). Chaque mode a sa propre commission — le restaurateur encaisse le reste.
 
 La transparence des statuts (reçue, en préparation, prête, en route, livrée) garantit que vous êtes toujours informé. Si un restaurant est fermé au moment où vous commandez, l’app vous indique la prochaine ouverture et bloque la validation — vous ne pouvez jamais passer commande dans le vide.
 
@@ -52,7 +52,7 @@ La transparence des statuts (reçue, en préparation, prête, en route, livrée)
 
 ### Trouvez un restaurant
 
-Parcourez la carte ou la liste des établissements ouverts. Les restaurants affichent leur **temps de livraison estimé**, leur **note** et leur **minimum de commande**. Vous pouvez filtrer par type de cuisine et trier par note ou délai.
+Parcourez la carte ou la liste des restaurants ouverts. Ils affichent leur **temps de livraison estimé**, leur **note** et leur **minimum de commande**. Vous pouvez filtrer par type de cuisine et trier par note ou délai.
 
 ### Composez votre panier
 
@@ -60,7 +60,7 @@ Ajoutez les plats qui vous plaisent. Pour chaque plat, personnalisez les **optio
 
 ### Choisissez votre mode de réception
 
-En haut du panier, basculez entre **🛵 Livraison** et **🥡 Retrait sur place**. Le retrait annule les frais de livraison et affiche l’adresse du restaurant. La livraison affiche votre adresse enregistrée — modifiez-la si besoin dans [votre compte](/fr/guides/consumer-account/).
+En haut du panier, basculez entre **🛵 Livraison** et **🥡 Click & collect**. Le click & collect annule les frais de livraison et affiche l’adresse du restaurant. La livraison affiche votre adresse enregistrée — modifiez-la si besoin dans [votre compte](/fr/guides/consumer-account/).
 
 ### Payez en ligne
 
@@ -68,7 +68,7 @@ Validez le panier. Votre carte est débitée immédiatement, mais l’argent res
 
 ### Suivez en temps réel
 
-Dès que le restaurant accepte, vous recevez une notification. Les statuts s’enchaînent : **En préparation** → **Prête** → **En route** (livraison) ou **Récupérée** (retrait) → **Livrée**. Un lien de suivi unique vous permet de rafraîchir la page à tout moment.
+Dès que le restaurant accepte, vous recevez une notification. Les statuts s’enchaînent : **En préparation** → **Prête** → **En route** (livraison) ou **Récupérée** (click & collect) → **Livrée**. Un lien de suivi unique vous permet de rafraîchir la page à tout moment.
 
 ### Confirmez la réception
 
@@ -88,7 +88,7 @@ Imaginons que vous commandez pour 25 € de plats chez un restaurant local, en *
   { icon: "payments", label: "Total à payer", value: "26,99 €", variant: "total" }
 ]} />
 
-Côté coulisses, Grubano prélève **12 % de commission sur les 25 € de plats** (soit 3 €), jamais sur les frais de livraison. Le restaurant encaisse donc **22 € + 1,99 € = 23,99 €** net. Si vous aviez choisi le **retrait**, la commission aurait été de 8 % (2 €) et les frais de livraison à 0 €, pour un total de **25 € à payer** et **23 € net** pour le restaurant. Les pourboires coursier sont reversés à **100 %**.
+Côté coulisses, Grubano prélève **12 % de commission sur les 25 € de plats** (soit 3 €), jamais sur les frais de livraison. Le restaurant encaisse donc **22 € + 1,99 € = 23,99 €** net. Si vous aviez choisi le **click & collect**, la commission aurait été de 8 % (2 €) et les frais de livraison à 0 €, pour un total de **25 € à payer** et **23 € net** pour le restaurant. Les pourboires livreur sont reversés à **100 %**.
 
 Cet exemple est illustratif — chaque restaurant fixe son propre minimum de commande et ses frais de livraison.
 
@@ -99,8 +99,8 @@ Cet exemple est illustratif — chaque restaurant fixe son propre minimum de com
 <Callout type="default">
 
 - **Vérifiez les horaires** — l’app affiche la prochaine ouverture si le restaurant est fermé, mais vous gagnez du temps en consultant les plages avant de composer.
-- **Comparez livraison et retrait** — le retrait annule les frais de livraison et réduit la commission (donc soutient davantage le restaurateur).
-- **Utilisez vos points** — 1 point = 1 centime de crédit. Si vous en avez assez, activez « Utiliser mes points » au panier pour réduire le montant final.
+- **Comparez livraison et click & collect** — le click & collect annule les frais de livraison et réduit la commission (donc soutient davantage le restaurateur).
+- **Utilisez vos points** — 1 point = 1 centime de cagnotte. Si vous en avez assez, activez « Utiliser mes points » au panier pour réduire le montant final.
 - **Laissez des notes claires** — précisez vos exclusions (« sans oignon ») ou vos préférences dans la zone de texte libre du plat — le restaurant les verra.
 
 </Callout>
@@ -111,7 +111,7 @@ Cet exemple est illustratif — chaque restaurant fixe son propre minimum de com
 
 <Callout type="error">
 
-- **Commander en dessous du minimum** — si le sous-total ne franchit pas le seuil du restaurant, la validation est bloquée. Ajoutez un plat ou choisissez un autre établissement.
+- **Commander en dessous du minimum** — si le sous-total ne franchit pas le seuil du restaurant, la validation est bloquée. Ajoutez un plat ou choisissez un autre restaurant.
 - **Modifier l’adresse après validation** — une fois la commande partie, vous ne pouvez plus changer la destination. Vérifiez **avant** de payer.
 - **Ignorer les statuts** — si une commande reste bloquée en « Reçue » pendant longtemps, contactez le restaurant (numéro affiché sur la fiche). Le suivi est là pour vous alerter.
 

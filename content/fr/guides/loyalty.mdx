@@ -11,7 +11,7 @@ import { Steps, Callout } from 'nextra/components'
 
 # Programme fidélité
 
-Créez un lien durable avec vos clients : chaque euro dépensé génère un point, des paliers Bronze à Platine débloquent des avantages, et les points se transforment en crédit utilisable sur la prochaine commande.
+Créez un lien durable avec vos clients : chaque euro dépensé génère un point, des paliers Bronze à Platine débloquent des avantages, et les points se transforment en cagnotte utilisable sur la prochaine commande.
 
 <ArticleMeta audience="Restaurateurs" minutes={4} updated="2026-07-10" />
 
@@ -23,7 +23,7 @@ Créez un lien durable avec vos clients : chaque euro dépensé génère un poin
   { icon: "person_add", title: "Inscription", desc: "Le client rejoint le programme (email + nom)" },
   { icon: "shopping_bag", title: "Commande", desc: "Chaque euro dépensé = 1 point crédité" },
   { icon: "loyalty", title: "Accumulation", desc: "Les points débloquent Bronze, Silver, Gold ou Platine" },
-  { icon: "payments", title: "Récompense", desc: "Le client dépense son crédit sur une commande" }
+  { icon: "payments", title: "Récompense", desc: "Le client dépense sa cagnotte sur une commande" }
 ]} />
 
 <Eyebrow icon="bolt">L’essentiel</Eyebrow>
@@ -33,14 +33,14 @@ Créez un lien durable avec vos clients : chaque euro dépensé génère un poin
 <Essentials title="Si vous ne devez retenir que ça :" items={[
   <>Les clients gagnent <b>1 point par euro</b> dépensé, crédité dès la livraison de la commande</>,
   <>Quatre paliers automatiques — <b>Bronze</b> (0 pts), <b>Silver</b> (100 pts), <b>Gold</b> (200 pts), <b>Platine</b> (400 pts) — débloquent des avantages progressifs</>,
-  <>Le solde de points se convertit en <b>crédit euro</b> que le client utilise librement sur sa prochaine commande</>
+  <>Le solde de points se convertit en <b>cagnotte (€)</b> que le client utilise librement sur sa prochaine commande</>
 ]} />
 
 <Eyebrow icon="lightbulb">Comment ça marche</Eyebrow>
 
 ## Le principe (et le pourquoi)
 
-Un client qui revient coûte moins cher à acquérir qu’un nouveau : le programme fidélité transforme un achat ponctuel en habitude. Chaque euro dépensé génère automatiquement un point, visible en temps réel sur le [tableau de bord](/fr/guides/restaurant/) du client. Les paliers Bronze, Silver, Gold et Platine se débloquent sans action manuelle — plus le client commande, plus son statut monte et plus les avantages augmentent. Le solde de points devient un crédit en euros, dépensable sur n’importe quelle commande : le client choisit quand et comment l’utiliser, vous gardez le contrôle de votre marge.
+Un client qui revient coûte moins cher à acquérir qu’un nouveau : le programme fidélité transforme un achat ponctuel en habitude. Chaque euro dépensé génère automatiquement un point, visible en temps réel sur le [tableau de bord](/fr/guides/restaurant/) du client. Les paliers Bronze, Silver, Gold et Platine se débloquent sans action manuelle — plus le client commande, plus son statut monte et plus les avantages augmentent. Le solde de points devient une cagnotte en euros, dépensable sur n’importe quelle commande : le client choisit quand et comment l’utiliser, vous gardez le contrôle de votre marge.
 
 <Eyebrow icon="format_list_numbered">Étape par étape</Eyebrow>
 
@@ -58,7 +58,7 @@ Le système détecte les doublons d’email : si un compte existe déjà, l’in
 
 ### Consulter le portefeuille
 
-La route **GET /api/loyalty/wallet** (authentifiée, rôle `restaurant` ou `admin`) affiche le solde de points, le palier actuel, les points manquants pour atteindre le palier suivant, et les 10 dernières commandes validées. Un consommateur connecté peut consulter son propre portefeuille sans paramètre `?email=`.
+La route **GET /api/loyalty/wallet** (authentifiée, rôle `restaurant` ou `admin`) affiche le solde de points, le palier actuel, les points manquants pour atteindre le palier suivant, et les 10 dernières commandes validées. Un client connecté peut consulter son propre portefeuille sans paramètre `?email=`.
 
 </Steps>
 
@@ -86,7 +86,7 @@ Le système recalcule automatiquement le palier en fonction du nouveau solde : 0
 
 ## Parcours d’un client fidèle
 
-Marie rejoint le programme et reçoit **10 points** de bienvenue (palier Bronze). Elle commande pour **45 €** chez votre marque : 45 points sont crédités, son solde passe à **55 points** (reste Bronze). Deux semaines plus tard, elle dépense **72 €** : +72 points, solde **127 points** → elle passe automatiquement **Silver**. Après six commandes sur trois mois, elle atteint **420 points** (palier Platine) et décide d’utiliser **200 points** en crédit sur sa prochaine commande ; son solde redescend à **220 points** mais elle conserve le statut Gold.
+Marie rejoint le programme et reçoit **10 points** de bienvenue (palier Bronze). Elle commande pour **45 €** chez votre marque : 45 points sont crédités, son solde passe à **55 points** (reste Bronze). Deux semaines plus tard, elle dépense **72 €** : +72 points, solde **127 points** → elle passe automatiquement **Silver**. Après six commandes sur trois mois, elle atteint **420 points** (palier Platine) et décide d’utiliser **200 points** en cagnotte sur sa prochaine commande ; son solde redescend à **220 points** mais elle conserve le statut Gold.
 
 <Eyebrow icon="check_circle">Bonnes pratiques</Eyebrow>
 
@@ -96,7 +96,7 @@ Marie rejoint le programme et reçoit **10 points** de bienvenue (palier Bronze)
 
 - **Communiquez le solde** : affichez le nombre de points et le palier actuel sur chaque confirmation de commande (email ou notification).
 - **Rappelez les seuils** : « Plus que 18 points pour devenir Silver ! » incite à recommander rapidement.
-- **Valorisez le crédit** : exprimez le solde en euros (« 240 pts = 12 € de crédit ») pour rendre l’avantage tangible.
+- **Valorisez la cagnotte** : exprimez le solde en euros (« 240 pts = 12 € de cagnotte ») pour rendre l’avantage tangible.
 - **Encouragez le parrainage** : le code de parrainage unique (8 caractères) permet au client de faire découvrir votre marque à ses proches ; prévoyez un bonus pour le parrain et le filleul (mécanisme `referredBy` présent dans le modèle).
 
 </Callout>
@@ -119,7 +119,7 @@ Marie rejoint le programme et reçoit **10 points** de bienvenue (palier Bronze)
 
 <Callout type="info">
 
-Connectez le webhook de livraison de votre plateforme (Uber Eats, Deliveroo…) à **POST /api/loyalty/validate** : dès qu’une commande passe au statut « livrée », l’API crédite automatiquement les points sans intervention manuelle. Le client voit son solde augmenter en temps réel, et vous réduisez le risque d’oubli ou de retard.
+Connectez le webhook de livraison de votre plateforme partenaire à **POST /api/loyalty/validate** : dès qu’une commande passe au statut « livrée », l’API crédite automatiquement les points sans intervention manuelle. Le client voit son solde augmenter en temps réel, et vous réduisez le risque d’oubli ou de retard.
 
 </Callout>
 

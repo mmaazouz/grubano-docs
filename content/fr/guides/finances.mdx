@@ -11,7 +11,7 @@ import { Steps, Callout } from 'nextra/components'
 
 # Finances & versements
 
-Suivez vos encaissements en temps réel, comprenez la commission par canal et consultez l’historique de chaque opération monétaire.
+Suivez vos encaissements en temps réel, comprenez la commission par mode et consultez l’historique de chaque opération monétaire.
 
 <ArticleMeta audience="Restaurateurs" minutes={5} updated="2026-07-12" />
 
@@ -21,7 +21,7 @@ Suivez vos encaissements en temps réel, comprenez la commission par canal et co
 
 <FlowDiagram steps={[
   { icon: "receipt_long", title: "Commande payée", desc: "Le client paie sa commande par carte" },
-  { icon: "percent", title: "Commission prélevée", desc: "5 à 12 % selon le canal" },
+  { icon: "percent", title: "Commission prélevée", desc: "5 à 12 % selon le mode" },
   { icon: "account_balance", title: "Versement automatique", desc: "Virement sous 2 à 7 jours" },
   { icon: "description", title: "Relevé & DAC7", desc: "Reporting fiscal consolidé" }
 ]} />
@@ -31,7 +31,7 @@ Suivez vos encaissements en temps réel, comprenez la commission par canal et co
 ## En bref
 
 <Essentials title="Si vous ne devez retenir que ça :" items={[
-  <>Grubano prélève une <b>commission par canal</b> : 5 % sur place, 8 % en click & collect, 12 % en livraison, 0 % sur les réservations</>,
+  <>Grubano prélève une <b>commission par mode</b> : 5 % sur place, 8 % en click & collect, 12 % en livraison, 0 % sur les réservations</>,
   <>Les versements sont <b>automatiques</b> sous 2 à 7 jours vers votre compte bancaire, sans seuil minimum</>,
   <>Le <b>relevé détaillé</b> liste chaque opération (encaissements, remboursements, frais de traitement absorbés par Grubano) et alimente la déclaration DAC7</>
 ]} />
@@ -40,7 +40,7 @@ Suivez vos encaissements en temps réel, comprenez la commission par canal et co
 
 ## Le principe (et le pourquoi)
 
-Chaque paiement client — commande en livraison, retrait sur place, ticket table ou dépôt de réservation — génère une **ligne comptable** dans votre registre financier, horodatée et enrichie du canal (sur place, retrait, livraison, réservation). La commission Grubano est prélevée **à la source** selon le mode de la commande, avant que l’argent ne parte vers votre compte bancaire.
+Chaque paiement client — commande en livraison, click & collect, ticket table ou dépôt de réservation — génère une **ligne comptable** dans votre registre financier, horodatée et enrichie du mode (sur place, click & collect, livraison, réservation). La commission Grubano est prélevée **à la source** selon le mode de la commande, avant que l’argent ne parte vers votre compte bancaire.
 
 Les **versements** sont automatiques : dès qu’un paiement est confirmé par Stripe (quelques secondes), le montant net vous est transféré dans un délai de 2 à 7 jours ouvrés, sans seuil ni action manuelle. Vous consultez l’état en temps réel depuis votre [tableau de bord](/fr/guides/restaurant/).
 
@@ -64,11 +64,11 @@ Trois boutons vous permettent de basculer entre **Aujourd’hui** (depuis minuit
 
 ### Parcourez l’historique des opérations
 
-Plus bas, un tableau liste chaque **ligne comptable** : type (`payment` pour un encaissement, `refund` pour un remboursement, `deposit_capture` pour un dépôt réservation capturé), date et heure, montant brut, commission, net, et le canal (sur place, retrait, livraison, réservation) si renseigné. Les lignes sont classées de la plus récente à la plus ancienne.
+Plus bas, un tableau liste chaque **ligne comptable** : type (`payment` pour un encaissement, `refund` pour un remboursement, `deposit_capture` pour un dépôt réservation capturé), date et heure, montant brut, commission, net, et le mode (sur place, click & collect, livraison, réservation) si renseigné. Les lignes sont classées de la plus récente à la plus ancienne.
 
 ### Identifiez l’origine d’une opération
 
-Chaque ligne indique soit un **ticket table** (nom de la table + statut), soit une **réservation** (nom du client + statut du dépôt), soit une **commande** (retrait ou livraison, avec statut de paiement). Vous savez d’un coup d'œil quelle vente a généré l’argent.
+Chaque ligne indique soit un **ticket table** (nom de la table + statut), soit une **réservation** (nom du client + statut du dépôt), soit une **commande** (click & collect ou livraison, avec statut de paiement). Vous savez d’un coup d’œil quelle vente a généré l’argent.
 
 ### Repérez les remboursements
 
@@ -80,19 +80,19 @@ Les lignes de type `refund` apparaissent en **montant négatif** : elles représ
 
 ## Un mois à 4 000 € d’encaissements
 
-Imaginons un établissement qui encaisse 4 000 € sur 30 jours : 1 500 € en livraison (commission 12 %), 1 800 € en retrait (commission 8 %), 700 € en sur place (commission 5 %).
+Imaginons un restaurant qui encaisse 4 000 € sur 30 jours : 1 500 € en livraison (commission 12 %), 1 800 € en click & collect (commission 8 %), 700 € en sur place (commission 5 %).
 
 <Breakdown title="Décomposition du versement" rows={[
   { icon: "account_balance_wallet", label: "Brut encaissé — livraison", value: "1 500,00 €" },
   { icon: "percent", label: "Commission livraison (12 %)", value: "−180,00 €", variant: "minus" },
-  { icon: "account_balance_wallet", label: "Brut encaissé — retrait", value: "1 800,00 €" },
-  { icon: "percent", label: "Commission retrait (8 %)", value: "−144,00 €", variant: "minus" },
+  { icon: "account_balance_wallet", label: "Brut encaissé — click & collect", value: "1 800,00 €" },
+  { icon: "percent", label: "Commission click & collect (8 %)", value: "−144,00 €", variant: "minus" },
   { icon: "account_balance_wallet", label: "Brut encaissé — sur place", value: "700,00 €" },
   { icon: "percent", label: "Commission sur place (5 %)", value: "−35,00 €", variant: "minus" },
   { icon: "payments", label: "Net reversé au total", value: "3 641,00 €", variant: "total" }
 ]} />
 
-Les **frais de traitement Stripe** (environ 1,4 % + 0,25 € par transaction carte) sont **absorbés par Grubano** : ils n’apparaissent pas dans votre décompte, vous recevez bien le net affiché. Cet exemple est illustratif ; vos chiffres réels dépendent de votre mix de canaux.
+Les **frais de traitement Stripe** (environ 1,4 % + 0,25 € par transaction carte) sont **absorbés par Grubano** : ils n’apparaissent pas dans votre décompte, vous recevez bien le net affiché. Cet exemple est illustratif ; vos chiffres réels dépendent de votre mix de modes.
 
 <Eyebrow icon="check_circle">Bonnes pratiques</Eyebrow>
 
@@ -100,7 +100,7 @@ Les **frais de traitement Stripe** (environ 1,4 % + 0,25 € par transaction car
 
 <Callout type="default">
 - **Consultez la page Finances chaque lundi** pour vérifier que les versements de la semaine passée sont bien partis.
-- **Comparez les canaux** : si le retrait (8 %) représente 60 % de votre chiffre d’affaires, votre commission moyenne sera bien plus basse que 12 %.
+- **Comparez les modes** : si le click & collect (8 %) représente 60 % de votre chiffre d’affaires, votre commission moyenne sera bien plus basse que 12 %.
 - **Rapprochez avec votre relevé bancaire** : les virements arrivent sous 2 à 7 jours ; un décalage de quelques jours entre la date de commande et le crédit sur votre compte est normal.
 - **Gardez un œil sur le taux de remboursement** : un indicateur au-dessus de 5 % peut signaler un problème de qualité ou de communication avec les clients.
 </Callout>
@@ -113,7 +113,7 @@ Les **frais de traitement Stripe** (environ 1,4 % + 0,25 € par transaction car
 - **Confondre brut et net** : le chiffre en haut de page est le brut *avant* commission ; ne budgétez que sur le net reversé.
 - **Oublier que les frais Stripe sont absorbés** : contrairement à d’autres plateformes, Grubano ne vous refacture pas les frais bancaires — le net affiché est ce que vous recevez réellement.
 - **Chercher un seuil minimum de versement** : il n’y en a pas. Même 10 € partent automatiquement vers votre banque.
-- **Ignorer le canal de la commande** : une réservation ne génère *aucune* commission (0 %) ; si vous oubliez de l’activer, vous passez à côté d’encaissements sans frais.
+- **Ignorer le mode de la commande** : une réservation ne génère *aucune* commission (0 %) ; si vous oubliez de l’activer, vous passez à côté d’encaissements sans frais.
 </Callout>
 
 <Eyebrow icon="lightbulb">Astuce</Eyebrow>
@@ -121,7 +121,7 @@ Les **frais de traitement Stripe** (environ 1,4 % + 0,25 € par transaction car
 ## Téléchargez votre relevé mensuel
 
 <Callout type="info">
-Un bouton **Télécharger le relevé** (visible sur la page mais non câblé à ce jour) vous permettra bientôt d’obtenir un PDF récapitulatif au format comptable, prêt pour votre expert-comptable. Le relevé consolidera tous les paiements, remboursements et ajustements de la période, ventilés par canal, et intégrera les éléments requis pour la déclaration DAC7 (directive européenne sur les plateformes).
+Un bouton **Télécharger le relevé** (visible sur la page mais non câblé à ce jour) vous permettra bientôt d’obtenir un PDF récapitulatif au format comptable, prêt pour votre expert-comptable. Le relevé consolidera tous les paiements, remboursements et ajustements de la période, ventilés par mode, et intégrera les éléments requis pour la déclaration DAC7 (directive européenne sur les plateformes).
 </Callout>
 
 <Eyebrow icon="quiz">FAQ</Eyebrow>
@@ -132,7 +132,7 @@ Un bouton **Télécharger le relevé** (visible sur la page mais non câblé à 
   {
     icon: "percent",
     q: "La commission change-t-elle si je passe en Pro ?",
-    a: "Non. L’abonnement Pro (29 €/mois, bientôt disponible) agrégera vos commandes Uber Eats, Deliveroo et Just Eat sur un seul tableau de bord, mais la grille de commission par canal (5/8/12/0 %) reste strictement identique en Standard comme en Pro."
+    a: "Non. L’abonnement Pro (29 €/mois, bientôt disponible) agrégera vos commandes Uber Eats, Deliveroo et Just Eat sur un seul tableau de bord, mais la grille de commission par mode (5/8/12/0 %) reste strictement identique en Standard comme en Pro."
   },
   {
     icon: "schedule",
