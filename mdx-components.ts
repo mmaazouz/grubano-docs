@@ -21,6 +21,7 @@ import {
 } from '@/components/ArticleV5'
 import { SpaceHero, ActionGroup, ActionCards } from '@/components/SpaceLanding'
 import { HeroStats } from '@/components/HeroStats'
+import { KdsBoard } from '@/components/KdsBoard'
 
 // Anything added here becomes usable in .mdx without an explicit import.
 const base = getDocsMDXComponents()
@@ -52,4 +53,6 @@ export const useMDXComponents = ((components?: Record<string, unknown>) => ({
   ActionCards,
   // page éditoriale « Découvrir Grubano » (maquette discover.html)
   HeroStats,
+  // illustration « écran cuisine » (maquette component-kds.html)
+  KdsBoard,
 })) as typeof getDocsMDXComponents

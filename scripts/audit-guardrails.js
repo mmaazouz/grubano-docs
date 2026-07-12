@@ -110,7 +110,7 @@ for (const f of files) {
     }
   }
   // Visual present? (v5+ requires an "Aperçu visuel" — a component or mermaid.)
-  const hasVisual = /<(FlowDiagram|JourneyStrip|RelatedActors|MiniMap|Comparison|LearningPath)\b/.test(src) || /```mermaid/.test(src)
+  const hasVisual = /<(FlowDiagram|JourneyStrip|RelatedActors|MiniMap|Comparison|LearningPath|KdsBoard)\b/.test(src) || /```mermaid/.test(src)
   if (isGenerated && !hasVisual) {
     hits.push({ id: 'no-visual', hard: false, why: 'aucun visuel (Aperçu visuel manquant)', at: 1, text: '' })
     soft++
@@ -121,7 +121,7 @@ for (const f of files) {
     'Steps', 'Callout', 'FlowDiagram', 'JourneyStrip', 'RelatedActors', 'MiniMap',
     'LearningPath', 'Comparison', 'Faq', 'ArticleMeta', 'Eyebrow', 'Essentials',
     'Breakdown', 'RelatedCards', 'HomeHero', 'SpacesGrid', 'QuickStartCards', 'ContactStrip',
-    'SpaceHero', 'ActionGroup', 'ActionCards', 'HeroStats',
+    'SpaceHero', 'ActionGroup', 'ActionCards', 'HeroStats', 'KdsBoard',
   ])
   for (const m2 of src.matchAll(/<([A-Z][A-Za-z0-9]*)[\s/>]/g)) {
     if (!KNOWN_COMPONENTS.has(m2[1])) {
