@@ -1,0 +1,168 @@
+---
+title: "Commander chez ses fournisseurs"
+description: "Trouver un fournisseur sur la place de marché Grubano, remplir son panier jusqu’au minimum de commande, passer commande sans paiement en ligne et suivre chaque étape jusqu’à la livraison."
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# Commander chez ses fournisseurs
+
+Approvisionnez votre restaurant depuis la place de marché Grubano : recherchez un fournisseur par produit ou par zone, remplissez votre panier jusqu’au minimum de commande, puis suivez chaque commande de l’envoi à la livraison.
+
+<ArticleMeta audience="Restaurateurs" minutes={4} updated="2026-07-12" />
+
+<Eyebrow icon="insights">Aperçu</Eyebrow>
+
+## De la recherche à la livraison
+
+<FlowDiagram steps={[
+  { icon: "storefront", title: "Trouver un fournisseur", desc: "Recherche par produit, zone et minimum" },
+  { icon: "shopping_cart", title: "Remplir le panier", desc: "Progression vers le minimum de commande" },
+  { icon: "send", title: "Passer commande", desc: "Date souhaitée et notes, sans paiement en ligne" },
+  { icon: "local_shipping", title: "Suivre la livraison", desc: "Timeline de l’envoi à la réception" }
+]} />
+
+<Eyebrow icon="bolt">L’essentiel</Eyebrow>
+
+## En bref
+
+<Essentials title="Si vous ne devez retenir que ça :" items={[
+  <>La <b>place de marché fournisseurs</b> est réservée aux restaurateurs : vous n’y voyez que des fournisseurs actifs et des articles disponibles, avec ville, minimum de commande et délai affichés d’avance</>,
+  <>Le <b>panier</b> se remplit fournisseur par fournisseur dans votre navigateur ; rien n’est commandé ni débité tant que vous n’avez pas validé — les prix qui font foi sont toujours ceux du serveur</>,
+  <>Le <b>minimum de commande</b> est vérifié deux fois (à l’écran et par le serveur) et chaque commande suit une timeline — envoyée, confirmée, en préparation, livrée — annulable tant qu’elle n’est pas confirmée</>
+]} />
+
+<Eyebrow icon="lightbulb">Comment ça marche</Eyebrow>
+
+## Le principe (et le pourquoi)
+
+La place de marché fournisseurs est un circuit d’approvisionnement **professionnel**, distinct de votre annuaire de fournisseurs privé et des commandes de vos clients. Elle n’affiche que des fournisseurs **actifs** au catalogue vérifié, et uniquement leurs articles **disponibles**. Chaque carte annonce la ville, les familles de produits, le nombre de produits, le délai de livraison et le minimum de commande ; les zones de livraison détaillées s’affichent en ouvrant la fiche du fournisseur.
+
+Au moment de la validation, votre navigateur n’envoie **aucun montant** : le serveur recalcule tout à partir des prix du catalogue et fige chaque ligne (nom, unité, prix en centimes) dans un instantané immuable. Le passage de commande ne déclenche aucun paiement en ligne, et ce circuit n’active ni points de fidélité, ni promotions, ni parrainage — c’est un flux séparé du parcours client.
+
+<Eyebrow icon="format_list_numbered">Étape par étape</Eyebrow>
+
+## Passer sa première commande fournisseur
+
+<Steps>
+
+### Ouvrez la place de marché
+
+Depuis votre [tableau de bord](/fr/guides/restaurant/), ouvrez la **place de marché fournisseurs**. Chaque carte affiche le nom du fournisseur, sa ville, ses familles de produits, son nombre de produits, son délai de livraison et — s’il en a fixé un — son minimum de commande.
+
+### Cherchez par produit
+
+Le champ de recherche filtre la liste aux fournisseurs qui proposent un **article disponible** correspondant à votre saisie (« mozzarella », « farine »…). Les articles trouvés s’affichent directement sur la carte du fournisseur concerné, ce qui vous évite d’ouvrir chaque catalogue.
+
+### Parcourez le catalogue
+
+Ouvrez la fiche d’un fournisseur pour consulter son catalogue complet. Un badge **« Livre dans votre zone »** apparaît quand la ville de votre restaurant correspond aux zones de livraison déclarées par le fournisseur. Les articles momentanément indisponibles sont grisés et ne peuvent pas être ajoutés au panier.
+
+### Remplissez votre panier
+
+Ajustez les quantités avec les boutons + / −, filtrez par recherche ou par famille de produits. Une barre en bas d’écran suit votre **progression vers le minimum de commande** et affiche le montant restant à atteindre : le bouton « Voir le panier » ne s’active que lorsque le panier contient au moins un article **et** atteint le minimum. Le panier est conservé dans votre navigateur, fournisseur par fournisseur — vous pouvez revenir plus tard sans rien perdre.
+
+### Validez la commande
+
+L’écran panier recharge les prix **depuis le serveur** (ce sont eux qui font foi) et récapitule vos lignes. Choisissez une **date de livraison souhaitée** parmi cinq jours consécutifs — la première proposition part d’aujourd’hui plus le délai de préparation du fournisseur — et ajoutez si besoin une **note** (créneau, accès, consignes… 1 000 caractères maximum). À la validation, la commande est créée au statut **« envoyée »**, sans aucun paiement en ligne.
+
+### Suivez, annulez ou recommandez
+
+La page **Commandes** liste vos commandes fournisseurs avec des onglets par statut (toutes, envoyées, confirmées, en préparation, livrées) et leurs compteurs. Ouvrez une commande pour voir sa timeline, ses lignes et son total. Tant qu’elle est « envoyée », vous pouvez l’**annuler** ; « Recommander » recharge les mêmes lignes dans votre panier ; « Contacter » ouvre directement le téléphone ou l’e-mail du fournisseur.
+
+</Steps>
+
+<Eyebrow icon="calculate">Exemple concret</Eyebrow>
+
+## Une commande chez un primeur
+
+Imaginons un fournisseur de fruits et légumes avec un minimum de commande de 120 € et un délai de préparation de 2 jours. Vous remplissez votre panier :
+
+<Breakdown title="Récapitulatif du panier" rows={[
+  { icon: "shopping_basket", label: "Légumes de saison — 12 kg", value: "54,00 €" },
+  { icon: "shopping_basket", label: "Herbes fraîches — 20 bottes", value: "24,00 €" },
+  { icon: "shopping_basket", label: "Agrumes — carton de 10 kg", value: "48,00 €" },
+  { icon: "payments", label: "Total — minimum de 120 € atteint", value: "126,00 €", variant: "total" }
+]} />
+
+À 96 €, la barre de progression vous aurait indiqué le montant manquant ; à 126 €, le bouton s’active. Nous sommes mercredi : avec un délai de 2 jours, les dates proposées vont de vendredi à mardi. À la validation, chaque ligne est figée : si le fournisseur change ses tarifs jeudi, votre commande n’en tient pas compte, et la timeline affichera votre date souhaitée comme date « prévue » de livraison. Cet exemple est illustratif ; vos montants réels dépendent du catalogue de chaque fournisseur.
+
+<Eyebrow icon="check_circle">Bonnes pratiques</Eyebrow>
+
+## Commandez sans friction
+
+<Callout type="default">
+- **Vérifiez les zones et le minimum avant de remplir le panier** : la carte fournisseur les affiche d’emblée, et le badge « Livre dans votre zone » confirme la correspondance avec la ville de votre restaurant.
+- **Utilisez la note de commande** pour vos consignes de réception (créneau horaire, accès, quai…) : elle est transmise au fournisseur avec la commande.
+- **Passez par « Recommander »** pour vos achats récurrents : les lignes de la commande précédente sont rechargées dans le panier, et les prix comme les disponibilités sont revérifiés au moment de la nouvelle validation.
+- **Groupez vos besoins** chez un même fournisseur pour atteindre le minimum en une seule commande, et rapprochez vos réceptions de votre [gestion des stocks](/fr/guides/stocks/) pour garder un journal à jour.
+</Callout>
+
+<Eyebrow icon="error">Erreurs à éviter</Eyebrow>
+
+## Les pièges courants
+
+<Callout type="error">
+- **Confondre panier et commande** : le panier vit dans votre navigateur ; tant que vous n’avez pas validé, rien n’est envoyé au fournisseur — et vous ne le retrouverez pas sur un autre appareil.
+- **Attendre pour annuler** : l’annulation n’est possible que tant que la commande est « envoyée » ; dès que le fournisseur confirme, passez par le bouton « Contacter » pour vous arranger directement.
+- **Chercher un horodatage à chaque étape** : seule l’étape « Commande envoyée » porte une heure réelle ; les étapes suivantes indiquent le statut atteint, et la livraison affiche votre date souhaitée comme date prévue.
+- **Compter sur des points de fidélité** : les commandes fournisseurs sont un circuit professionnel séparé — aucun point, aucune promotion, aucun parrainage ne s’y applique.
+</Callout>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
+
+## Questions fréquentes
+
+<Faq items={[
+  {
+    icon: "schedule",
+    q: "Pourquoi seules certaines dates de livraison me sont-elles proposées ?",
+    a: "Les propositions de date partent d’aujourd’hui plus le délai de préparation déclaré par le fournisseur, sur cinq jours consécutifs. Les jours de fermeture du fournisseur ne sont pas pris en compte à ce stade : si une contrainte existe (marché, tournée…), précisez-la dans la note de commande."
+  },
+  {
+    icon: "cancel",
+    q: "Puis-je annuler une commande déjà confirmée ?",
+    a: "Non. Vous pouvez annuler tant que la commande est au statut « envoyée ». Une fois confirmée par le fournisseur, l’annulation directe n’est plus possible : utilisez le bouton « Contacter » (téléphone ou e-mail) pour trouver un arrangement. Le fournisseur peut de son côté décliner une commande envoyée."
+  },
+  {
+    icon: "sell",
+    q: "Les prix peuvent-ils changer entre ma commande et la livraison ?",
+    a: "Non. À la validation, chaque ligne est figée dans un instantané immuable : nom du produit, unité et prix en centimes. Les changements de tarif ultérieurs du fournisseur ne s’appliquent qu’aux commandes suivantes — et si un article devient indisponible avant votre validation, le serveur refuse la commande pour que vous ajustiez le panier."
+  },
+  {
+    icon: "payments",
+    q: "Comment se passe le règlement ?",
+    a: "La validation de la commande ne déclenche aucun paiement en ligne : vous réglez votre fournisseur selon ses modalités habituelles. Le règlement en ligne sécurisé arrivera bientôt."
+  }
+]} />
+
+<Eyebrow icon="menu_book">Pour aller plus loin</Eyebrow>
+
+## Articles liés
+
+<RelatedCards items={[
+  {
+    icon: "inventory_2",
+    title: "Gestion des stocks",
+    sub: "Journal et alertes",
+    href: "/fr/guides/stocks/"
+  },
+  {
+    icon: "storefront",
+    title: "Tableau de bord",
+    sub: "Indicateurs en direct",
+    href: "/fr/guides/restaurant/"
+  },
+  {
+    icon: "account_balance",
+    title: "Finances & versements",
+    sub: "Versements et relevés",
+    href: "/fr/guides/finances/"
+  },
+  {
+    icon: "menu_book",
+    title: "Menu & Scan IA",
+    sub: "Créer votre carte",
+    href: "/fr/guides/menu/"
+  }
+]} />

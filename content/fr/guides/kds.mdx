@@ -1,0 +1,151 @@
+---
+title: "Écran cuisine (KDS)"
+description: "Suivre et faire avancer les commandes en cuisine : trois colonnes en temps réel, minuteur par ticket, un seul geste pour passer à l’étape suivante."
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# Écran cuisine (KDS)
+
+L’écran cuisine affiche en temps réel les commandes à préparer, colonne par colonne : un coup d’œil pour prioriser, un geste pour faire avancer chaque ticket.
+
+<ArticleMeta audience="Restaurateurs" minutes={3} updated="2026-07-12" />
+
+<Eyebrow icon="skillet">Aperçu</Eyebrow>
+
+## Du ticket à l’assiette
+
+<FlowDiagram steps={[
+  { icon: "receipt_long", title: "Commande reçue", desc: "Le ticket apparaît dans « Nouvelles »" },
+  { icon: "skillet", title: "Commencer", desc: "Le ticket passe « En préparation »" },
+  { icon: "check_circle", title: "Prêt", desc: "Le plat attend sa remise" },
+  { icon: "moped", title: "Remise", desc: "Suivie depuis la page Commandes" }
+]} />
+
+<Eyebrow icon="bolt">L’essentiel</Eyebrow>
+
+## En bref
+
+<Essentials title="Si vous ne devez retenir que ça :" items={[
+  <>L’écran <b>Cuisine</b> ne montre que les commandes à préparer, réparties en trois colonnes : <b>Nouvelles</b>, <b>En préparation</b>, <b>Prêtes</b> — ce qui est remis, livré ou annulé disparaît automatiquement</>,
+  <>Chaque ticket porte un <b>minuteur</b> calé sur l’heure réelle de la commande : la couleur change à 10 puis 20 minutes pour prioriser d’un coup d’œil</>,
+  <>Un seul bouton par ticket (<b>Commencer</b> puis <b>Prêt</b>) : le geste est instantané, sans retour en arrière, et ne touche jamais à l’argent</>
+]} />
+
+<Eyebrow icon="lightbulb">Comment ça marche</Eyebrow>
+
+## Le principe (et le pourquoi)
+
+L’écran cuisine est accessible via l’entrée **Cuisine** du menu de votre [tableau de bord](/fr/guides/restaurant/), juste sous **Commandes**. Il filtre votre flux de commandes pour n’afficher que la **tranche cuisine** : les commandes reçues, en préparation ou prêtes. Tout ce qui est déjà récupéré, livré ou annulé sort de l’écran automatiquement — la brigade ne voit que ce qui reste à faire.
+
+L’affichage se **rafraîchit tout seul toutes les 8 secondes** tant que l’écran est visible, et se recharge immédiatement quand vous revenez sur l’onglet. Chaque ticket indique son mode — **Livraison**, **Click & collect** ou **Sur place** — avec une icône dédiée, pour dresser et emballer en conséquence.
+
+Cuisine et Commandes travaillent sur le **même flux** : un ticket passé « Prêt » côté cuisine se reflète sur la page Commandes (et inversement), chacun ne voyant que les commandes de son propre restaurant.
+
+<Eyebrow icon="format_list_numbered">Étape par étape</Eyebrow>
+
+## Faire avancer un ticket
+
+<Steps>
+
+### Ouvrez l’écran Cuisine
+
+Depuis le menu latéral de votre tableau de bord, cliquez sur **Cuisine**. Le badge **En direct** dans le titre confirme que l’écran s’actualise automatiquement — aucun rechargement manuel nécessaire.
+
+### Lisez le bandeau de synthèse
+
+Trois indicateurs en haut de page : **Tickets en cours** (nouvelles commandes + en préparation), **Temps moyen en cuisine**, et **Ticket le plus ancien** — ce dernier passe en alerte dès 20 minutes d’attente.
+
+### Repérez les tickets urgents
+
+Chaque carte affiche le numéro court de la commande (ses 5 derniers caractères, en majuscules), le mode, le minuteur, puis le détail des articles : quantité, nom, taille, suppléments, exclusions (« sans oignons ») et note du client. La couleur suit l’attente réelle : normale sous 10 minutes, vigilance entre 10 et 19, alerte à 20 minutes et plus.
+
+### Lancez la préparation
+
+Touchez **Commencer** sur un ticket de la colonne **Nouvelles** : il bascule aussitôt **En préparation** — le changement est immédiat à l’écran, puis confirmé par le serveur. En cas d’échec (réseau, par exemple), un message « Impossible de mettre à jour le ticket. Réessayez. » s’affiche et l’écran se resynchronise.
+
+### Marquez le plat prêt
+
+Quand le plat est dressé, touchez **Prêt** : le ticket rejoint la colonne **Prêtes**, avec un tag « Prêt » à la place du bouton. À ce stade, le rôle de la cuisine est terminé : la remise au [client](/fr/guides/consumer/) ou au livreur se pilote depuis la page **Commandes**.
+
+</Steps>
+
+<Eyebrow icon="check_circle">Bonnes pratiques</Eyebrow>
+
+## En plein service
+
+<Callout type="default">
+- **Laissez l’écran affiché en continu** : l’actualisation automatique ne tourne que lorsque l’onglet est visible. Si l’écran a été masqué, tout se recharge dès votre retour.
+- **Traitez d’abord le ticket le plus ancien** : l’indicateur du bandeau vous le désigne en permanence, et sa mise en alerte à 20 minutes est votre garde-fou contre les commandes oubliées.
+- **Touchez « Commencer » au vrai départ de la préparation** : les colonnes refléteront fidèlement la réalité de la cuisine, pour vous comme pour l’équipe en salle.
+- **Lisez les exclusions et notes avant de lancer** : elles sont affichées directement sur le ticket (« sans… », note du client) — pas besoin d’ouvrir la commande ailleurs.
+</Callout>
+
+<Eyebrow icon="error">Erreurs à éviter</Eyebrow>
+
+## Les pièges courants
+
+<Callout type="error">
+- **Chercher un bouton « Retour »** : l’écran cuisine avance toujours vers l’avant. Un ticket passé « En préparation » ne peut pas revenir en « Nouvelles » — le serveur refuse ce type de changement.
+- **Confondre « Prêt » et « Remis »** : marquer un plat prêt ne clôt pas la commande. Le ticket reste dans la colonne **Prêtes** jusqu’à sa remise, suivie depuis la page Commandes.
+- **S’inquiéter pour l’encaissement** : aucun geste de l’écran cuisine ne touche au paiement — marquer « Prêt » n’encaisse rien et ne crédite aucun point de fidélité (les points partent uniquement une fois la commande livrée).
+- **Piloter la cuisine depuis la seule page Commandes** : possible, mais moins réactif — l’écran Cuisine s’actualise toutes les 8 secondes (contre 15 pour Commandes) et ne montre que ce qui concerne la brigade.
+</Callout>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
+
+## Questions fréquentes
+
+<Faq items={[
+  {
+    icon: "undo",
+    q: "Puis-je annuler ou revenir en arrière depuis l’écran cuisine ?",
+    a: "Non. Le passage Nouvelles → En préparation → Prêtes est à sens unique, et le serveur rejette toute marche arrière. En cas d’erreur de doigt, laissez le ticket poursuivre son chemin : la préparation réelle en cuisine reste sous votre contrôle."
+  },
+  {
+    icon: "schedule",
+    q: "Le minuteur reste-t-il juste si l’écran passe en veille ?",
+    a: "Oui. Le minuteur est calculé à partir de l’heure de création de la commande côté serveur — ce n’est pas un compteur local. Même après une longue absence, il affiche l’attente réelle dès votre retour sur l’écran, qui se recharge alors immédiatement."
+  },
+  {
+    icon: "visibility_off",
+    q: "Pourquoi une commande a-t-elle disparu de l’écran ?",
+    a: "Parce qu’elle a quitté la tranche cuisine : dès qu’une commande est récupérée, livrée ou annulée, elle sort de l’écran Cuisine. Vous la retrouvez sur la page Commandes, qui affiche l’ensemble du flux."
+  },
+  {
+    icon: "lock",
+    q: "Qui peut faire avancer les tickets ?",
+    a: "Uniquement un compte connecté de votre restaurant (ou un administrateur Grubano). Chaque changement est vérifié côté serveur : personne ne peut voir ni modifier les commandes d’un autre restaurant."
+  }
+]} />
+
+<Eyebrow icon="menu_book">Pour aller plus loin</Eyebrow>
+
+## Articles liés
+
+<RelatedCards items={[
+  {
+    icon: "receipt_long",
+    title: "Commander & suivre",
+    sub: "Le parcours côté client",
+    href: "/fr/guides/consumer/"
+  },
+  {
+    icon: "storefront",
+    title: "Tableau de bord",
+    sub: "Indicateurs en direct",
+    href: "/fr/guides/restaurant/"
+  },
+  {
+    icon: "event_seat",
+    title: "Réservations & sur place",
+    sub: "Salle et créneaux",
+    href: "/fr/guides/reservations/"
+  },
+  {
+    icon: "menu_book",
+    title: "Menu & Scan IA",
+    sub: "Votre carte, vos plats",
+    href: "/fr/guides/menu/"
+  }
+]} />

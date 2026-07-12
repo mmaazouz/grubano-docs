@@ -276,6 +276,41 @@ const FEATURE_PAGES = {
   },
 
   // ── Fournisseurs ‹NOUVEAU› ────────────────────────────────────────────
+  'restaurant.promotions': {
+    audience: 'Restaurateurs',
+    status: 'editorial',
+    locale: 'fr',
+    docPath: '/guides/promotions',
+    title: 'Promotions & offres',
+  },
+  'restaurant.supplier-orders': {
+    audience: 'Restaurateurs',
+    status: 'editorial',
+    locale: 'fr',
+    docPath: '/guides/supplier-orders',
+    title: 'Commander chez ses fournisseurs',
+  },
+  'restaurant.analytics': {
+    audience: 'Restaurateurs',
+    status: 'editorial',
+    locale: 'fr',
+    docPath: '/guides/analytics',
+    title: 'Analyses & briefing IA',
+  },
+  'restaurant.kds': {
+    audience: 'Restaurateurs',
+    status: 'editorial',
+    locale: 'fr',
+    docPath: '/guides/kds',
+    title: 'Écran cuisine (KDS)',
+  },
+  'restaurant.reviews': {
+    audience: 'Restaurateurs',
+    status: 'editorial',
+    locale: 'fr',
+    docPath: '/guides/reviews',
+    title: 'Avis clients',
+  },
   'supplier.overview': {
     audience: 'Fournisseurs',
     status: 'editorial',
@@ -536,6 +571,11 @@ const TOPIC_EXTRAS = {
   'restaurant.dashboard':    { card: { icon: 'insights',         sub: 'Indicateurs en direct' },       cta: { title: 'Pilotez votre activité en direct',      body: 'Chiffre d’affaires, commandes et stocks, sur un seul écran.' } },
   'restaurant.menu':         { card: { icon: 'menu_book',        sub: 'Carte et Scan IA' },            cta: { title: 'Composez votre carte',                  body: 'Ajoutez un plat en quelques clics ou scannez-le avec l’IA.' } },
   'restaurant.stocks':       { card: { icon: 'inventory_2',      sub: 'Journal et alertes' },          cta: { title: 'Gérez vos stocks',                      body: 'Journal, seuils d’alerte et suggestions IA.' } },
+  'restaurant.promotions':      { card: { icon: 'percent',        sub: 'Remises, codes & cumul' },        cta: { title: 'Lancez une promotion',        body: 'Remises et codes appliqués au panier, en temps réel.' } },
+  'restaurant.supplier-orders': { card: { icon: 'local_shipping', sub: 'Sourcing & réappro B2B' },        cta: { title: 'Commandez vos approvisionnements', body: 'Catalogue fournisseurs, panier et suivi de commande.' } },
+  'restaurant.analytics':       { card: { icon: 'monitoring',     sub: 'KPIs & briefing du matin' },      cta: { title: 'Pilotez avec vos chiffres',   body: 'CA, heures de pointe et briefing IA quotidien.' } },
+  'restaurant.kds':             { card: { icon: 'skillet',        sub: 'Tickets cuisine temps réel' },    cta: { title: 'Ouvrez l’écran cuisine',      body: 'Les commandes arrivent en cuisine, bump au doigt.' } },
+  'restaurant.reviews':         { card: { icon: 'star',           sub: 'Lire & répondre aux avis' },      cta: { title: 'Répondez à vos avis',         body: 'Brouillons de réponse générés par l’IA.' } },
   'restaurant.loyalty':      { card: { icon: 'loyalty',          sub: 'Fidéliser vos clients' },       cta: { title: 'Créez votre programme fidélité',        body: 'Points, récompenses et clients réguliers.' } },
   'restaurant.reservations': { card: { icon: 'table_restaurant', sub: 'Tables et no-show' },           cta: { title: 'Configurez vos réservations',           body: 'Tables, créneaux et empreinte bancaire.' } },
   'restaurant.finances':     { card: { icon: 'payments',         sub: 'Commission et versements' },    cta: { title: 'Consultez vos finances en direct',      body: 'Chiffre d’affaires, commission et prochain versement, en temps réel.' } },

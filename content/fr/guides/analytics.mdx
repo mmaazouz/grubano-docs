@@ -1,0 +1,172 @@
+---
+title: "Analyses & briefing IA"
+description: "Suivez vos ventes en temps réel : courbe sur 7 jours, heures de pointe, classement de vos marques — et un briefing IA chaque matin avec les chiffres et alertes du jour."
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# Analyses & briefing IA
+
+Deux pages pour piloter votre activité : **Analyses** pour la vue d’ensemble de vos ventes, et le **Briefing** pour démarrer chaque matinée avec les chiffres, les alertes et les priorités du jour — le tout calculé automatiquement.
+
+<ArticleMeta audience="Restaurateurs" minutes={4} updated="2026-07-12" />
+
+<Eyebrow icon="insights">Aperçu</Eyebrow>
+
+## De la vente à la décision
+
+<FlowDiagram steps={[
+  { icon: "receipt_long", title: "Ventes validées", desc: "Chaque commande alimente vos statistiques" },
+  { icon: "monitoring", title: "Analyses", desc: "Courbe 7 jours, marques, heures de pointe" },
+  { icon: "auto_awesome", title: "Briefing IA", desc: "Synthèse du matin et alertes du jour" },
+  { icon: "checklist", title: "Checklist", desc: "Vos priorités, cochées au fil de la journée" }
+]} />
+
+<Eyebrow icon="bolt">L’essentiel</Eyebrow>
+
+## En bref
+
+<Essentials title="Si vous ne devez retenir que ça :" items={[
+  <>La page <b>Analyses</b> affiche vos ventes réelles : courbe des 7 derniers jours, chiffre d’affaires par période, classement de vos marques et heures de pointe</>,
+  <>Le <b>Briefing</b> résume chaque matin votre journée : chiffre d’affaires validé, commandes, réservations, couverts attendus et alertes stock — avec une courte synthèse rédigée par l’IA</>,
+  <>Tout est <b>calculé automatiquement</b> à partir de vos ventes validées et de vos réservations : aucune saisie de votre part</>
+]} />
+
+<Eyebrow icon="lightbulb">Comment ça marche</Eyebrow>
+
+## Deux pages, deux horizons
+
+La page **Analyses** prend du recul : elle agrège vos ventes validées sur les 7 ou 30 derniers jours et en tire une courbe d’évolution, des indicateurs clés et un classement de vos marques. Les chiffres sont recalculés à chaque ouverture de la page.
+
+Le **Briefing** regarde la journée qui commence : il rassemble vos chiffres du jour (chiffre d’affaires validé, commandes, [réservations](/fr/guides/reservations/), couverts attendus), détecte les points d’attention ([stock bas](/fr/guides/stocks/), réservations à confirmer, gros groupes) et confie le tout à l’IA, qui rédige une courte synthèse affichée en haut de page.
+
+<Comparison options={[
+  { icon: "monitoring", name: "Analyses", desc: "La vue d’ensemble" },
+  { icon: "auto_awesome", name: "Briefing IA", desc: "Le point du matin" }
+]} rows={[
+  { icon: "date_range", label: "Période couverte", values: ["7 ou 30 derniers jours", "La journée en cours"] },
+  { icon: "insights", label: "Indicateurs", values: ["CA total, commandes, panier moyen, marques", "CA validé, commandes, réservations, couverts"] },
+  { icon: "notifications", label: "Alertes", values: ["—", "Stock bas, réservations à confirmer, gros groupes"] },
+  { icon: "auto_awesome", label: "IA", values: ["—", "Synthèse du matin rédigée automatiquement"] }
+]} />
+
+<Eyebrow icon="format_list_numbered">Étape par étape</Eyebrow>
+
+## Lire vos analyses
+
+<Steps>
+
+### Ouvrez la page Analyses
+
+Depuis le menu latéral de votre [tableau de bord](/fr/guides/restaurant/), cliquez sur **Analyses**. La vue par défaut couvre les **30 derniers jours**.
+
+### Lisez les indicateurs clés
+
+Le **CA total** suit la période sélectionnée (7 ou 30 jours). **Commandes** et **Panier moyen** sont calculés sur 30 jours uniquement : en vue 7 jours, ils affichent « — » avec la note « Sur 30 j uniquement ». Le pavé **Couverts** porte encore un tag « Bientôt », et les badges de tendance (comparaison avec la période précédente) arriveront bientôt eux aussi.
+
+### Changez de période si besoin
+
+Deux boutons basculent entre **7 jours** et **30 jours** ; les totaux se recalculent instantanément. Le bouton **Personnalisée** (dates personnalisées) est pour l’instant désactivé (tag « Bientôt »).
+
+### Suivez l’évolution des ventes
+
+La courbe retrace vos ventes des **7 derniers jours**, jour par jour, avec le **Total 7 jours** et le **Meilleur jour** calculés juste au-dessus. La comparaison avec la semaine précédente sera ajoutée bientôt — le graphe l’annonce honnêtement plutôt que d’afficher une courbe fictive.
+
+### Repérez vos heures de pointe
+
+Une bande d’intensité montre votre activité **heure par heure** (de 10 h à 23 h, sur 6 niveaux d’intensité), calculée sur les 7 derniers jours. Votre heure la plus chargée est mise en avant — « Pic à 19h », par exemple. Le détail croisé jour × heure arrivera bientôt.
+
+### Consultez le classement de vos marques
+
+Le chiffre d’affaires et le nombre de commandes de chacune de vos marques sur **30 jours**, triés du plus gros CA au plus petit (top 5 affiché). Le classement des plats les plus vendus arrivera bientôt.
+
+</Steps>
+
+<Eyebrow icon="auto_awesome">Briefing</Eyebrow>
+
+## Votre point du matin
+
+Chaque matin, la page **Briefing** vous accueille par votre prénom et affiche les chiffres réels du jour :
+
+- **Chiffre d’affaires validé** et **commandes du jour** ;
+- **Réservations du jour** et **couverts attendus** (somme des couverts réservés) ;
+- **Alertes** : articles de [stock](/fr/guides/stocks/) proches de leur seuil minimal, réservations encore à confirmer, gros groupes (6 couverts et plus).
+
+En haut de page, la **synthèse IA** met ces chiffres en mots : un court texte rédigé automatiquement à partir de vos données du jour (chiffre d’affaires, commandes, réservations, couverts, stock bas) et affiché tel quel. Plus bas, la **checklist du matin** reprend vos alertes réelles et y ajoute les contrôles de routine (frigos, équipements) : cochez chaque point, le compteur fait/total suit votre progression.
+
+<Eyebrow icon="check_circle">Bonnes pratiques</Eyebrow>
+
+## Prenez le rythme
+
+<Callout type="default">
+- **Ouvrez le Briefing en arrivant le matin** : les alertes stock et les réservations à confirmer se traitent mieux avant le service qu’en plein rush.
+- **Calez vos plannings sur les heures de pointe** : si le pic est à 19 h, renforcez l’équipe en cuisine dès 18 h 30.
+- **Comparez vos marques sur 30 jours** : le classement montre où concentrer vos efforts — et quelle [carte](/fr/guides/menu/) mérite un rafraîchissement.
+- **Passez en vue 30 jours pour le panier moyen** : c’est la seule période où cet indicateur est calculé.
+</Callout>
+
+<Eyebrow icon="update">Bientôt</Eyebrow>
+
+## Ce qui arrive ensuite
+
+<Callout type="info">
+Plusieurs enrichissements sont déjà annoncés dans l’interface par un tag « Bientôt » : la **comparaison avec la période précédente** (badges de tendance sur les indicateurs, semaine précédente sur la courbe), le compteur de **couverts** dans les Analyses, le **détail jour × heure** des heures de pointe, le **classement des plats**, les **dates personnalisées**, ainsi que — côté Briefing — la **météo et son impact livraison**, la **note moyenne** de vos avis et les **recommandations IA proactives**. Ces dernières sont distinctes de la synthèse du matin, qui, elle, est déjà active.
+</Callout>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
+
+## Questions fréquentes
+
+<Faq items={[
+  {
+    icon: "database",
+    q: "D’où viennent les chiffres ?",
+    a: "Ils sont calculés automatiquement à partir de vos ventes validées : la courbe et les heures de pointe agrègent les 7 derniers jours, le classement des marques et le panier moyen portent sur 30 jours. Le Briefing, lui, se limite à la journée en cours. Aucune saisie manuelle n’est nécessaire."
+  },
+  {
+    icon: "calendar_view_week",
+    q: "Pourquoi « Commandes » et « Panier moyen » affichent « — » en vue 7 jours ?",
+    a: "Ces deux indicateurs sont calculés sur 30 jours uniquement. En vue 7 jours, la page l’indique honnêtement (« Sur 30 j uniquement ») plutôt que d’afficher un chiffre approximatif. Repassez en vue 30 jours pour les consulter."
+  },
+  {
+    icon: "auto_awesome",
+    q: "Ma synthèse IA affiche « arrive bientôt », c’est normal ?",
+    a: "C’est un message de repli, affiché seulement quand la synthèse n’est pas encore disponible. En temps normal, elle est générée automatiquement à partir de vos chiffres réels du jour et s’affiche telle quelle en haut du Briefing."
+  },
+  {
+    icon: "trending_up",
+    q: "Puis-je comparer avec la semaine précédente ?",
+    a: "Pas encore : la courbe affiche la mention « Semaine précédente — bientôt » et chaque indicateur porte un badge « Tendance bientôt ». La comparaison de périodes fait partie des enrichissements prévus."
+  }
+]} />
+
+<Eyebrow icon="menu_book">Pour aller plus loin</Eyebrow>
+
+## Articles liés
+
+<RelatedCards items={[
+  {
+    icon: "storefront",
+    title: "Tableau de bord",
+    sub: "Vos indicateurs en direct",
+    href: "/fr/guides/restaurant/"
+  },
+  {
+    icon: "account_balance",
+    title: "Finances & versements",
+    sub: "Commission et virements",
+    href: "/fr/guides/finances/"
+  },
+  {
+    icon: "inventory_2",
+    title: "Gestion des stocks",
+    sub: "Journal et alertes",
+    href: "/fr/guides/stocks/"
+  },
+  {
+    icon: "loyalty",
+    title: "Programme fidélité",
+    sub: "Points et récompenses",
+    href: "/fr/guides/loyalty/"
+  }
+]} />

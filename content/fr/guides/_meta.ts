@@ -23,6 +23,11 @@ export default {
   stocks: 'Gestion des stocks',
   loyalty: 'Programme fidélité',
   reservations: 'Réservations & sur place',
+  promotions: 'Promotions & offres',
+  kds: 'Écran cuisine (KDS)',
+  reviews: 'Avis clients',
+  analytics: 'Analyses & briefing IA',
+  'supplier-orders': 'Commander chez ses fournisseurs',
   finances: 'Finances & versements',
   pro: 'Passer en Pro',
 

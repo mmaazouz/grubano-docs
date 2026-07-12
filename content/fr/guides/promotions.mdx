@@ -1,0 +1,174 @@
+---
+title: "Promotions & offres"
+description: "Créer et piloter vos promotions : quatre types d’offres, ciblage par plats et par mode, application automatique de la meilleure remise et impact sur la commission."
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# Promotions & offres
+
+Créez des offres ciblées — pourcentage, montant fixe, 2ᵉ article ou palier — appliquées automatiquement au panier du client, sans code à saisir.
+
+<ArticleMeta audience="Restaurateurs" minutes={4} updated="2026-07-12" />
+
+<Eyebrow icon="insights">Aperçu</Eyebrow>
+
+## De votre écran au panier du client
+
+<FlowDiagram steps={[
+  { icon: "sell", title: "Vous créez l’offre", desc: "Type, valeur, fenêtre de validité, ciblage" },
+  { icon: "shopping_cart", title: "Le client commande", desc: "Rien à saisir, aucun code requis" },
+  { icon: "auto_awesome", title: "La meilleure promo s’applique", desc: "Une seule offre par commande, résolue côté serveur" },
+  { icon: "percent", title: "Commission sur le montant payé", desc: "La remise réduit la base de commission" }
+]} />
+
+<Eyebrow icon="bolt">L’essentiel</Eyebrow>
+
+## En bref
+
+<Essentials title="Si vous ne devez retenir que ça :" items={[
+  <>Quatre types d’offres : <b>pourcentage</b>, <b>montant fixe</b>, <b>2ᵉ article à −X %</b> et <b>palier</b> (remise ou article offert dès un montant atteint)</>,
+  <>L’application est <b>automatique</b> : au paiement, la meilleure promotion active de votre marque est appliquée au panier — <b>une seule offre par commande</b>, jamais de cumul</>,
+  <>La remise <b>réduit la base de commission</b> : Grubano prélève sa commission sur le montant réellement payé (sous-total − remise), pas sur le prix d’origine</>
+]} />
+
+<Eyebrow icon="lightbulb">Comment ça marche</Eyebrow>
+
+## Le principe (et le pourquoi)
+
+Chaque promotion est rattachée à une **marque** et décrit une remise selon l’un des quatre types. Le **pourcentage** applique un taux entier — entre 1 et 90 — au panier concerné. Le **montant fixe** déduit une somme en euros, plafonnée au panier — jamais de total négatif. Le **2ᵉ article à −X %** remise la seule unité la moins chère du panier concerné, et uniquement à partir de 2 unités éligibles. Le **palier** se déclenche quand le sous-total atteint le seuil que vous fixez : la récompense est soit un pourcentage sur le sous-total, soit un **article offert** (l’unité la moins chère parmi les plats que vous avez choisis).
+
+Vous pouvez affiner chaque offre avec des conditions optionnelles : un **minimum de panier** (évalué sur le sous-total *avant* remise), des **plats ciblés** (la remise ne porte alors que sur ces plats de votre [carte](/fr/guides/menu/)) et les **modes concernés** (Livraison, Click & collect). Une **fenêtre de validité** début/fin est obligatoire : hors fenêtre, l’offre ne s’applique pas.
+
+Côté client, tout est automatique : au moment de la commande, le serveur résout les promotions actives de la marque et applique **la plus avantageuse** — à remise égale, la plus ancienne gagne, pour rester prévisible. Le client ne saisit jamais de code ni de montant : le calcul est fait à 100 % côté serveur. La promotion est par ailleurs **exclusive** de la remise de [parrainage](/fr/guides/consumer-loyalty/) (si une remise de parrainage s’applique, la promotion est écartée) et des points [fidélité](/fr/guides/loyalty/), qui ne se combinent ni avec une promotion ni avec le parrainage.
+
+Enfin, côté finances : la [commission par mode](/fr/guides/finances/) est calculée sur le **montant payé** (sous-total − remise). La remise que vous consentez réduit donc aussi la commission prélevée — elle n’est jamais à votre seule charge côté frais.
+
+<Eyebrow icon="format_list_numbered">Étape par étape</Eyebrow>
+
+## Créer une promotion
+
+<Steps>
+
+### Ouvrez l’écran Promotions
+
+Depuis votre [tableau de bord](/fr/guides/restaurant/), ouvrez l’écran **Promotions** et sélectionnez la **marque** concernée : chaque offre est rattachée à une marque précise.
+
+### Nommez l’offre et choisissez le type
+
+Donnez un nom (au moins 2 caractères) et choisissez parmi les quatre types proposés : **Pourcentage**, **Montant fixe**, **2ᵉ article** ou **Palier**.
+
+### Réglez la valeur
+
+Pour un pourcentage ou un 2ᵉ article : un entier entre **1 et 90**. Pour un montant fixe : une somme en euros **supérieure à 0**. Pour un palier : un **seuil en euros supérieur à 0**, puis la récompense — un pourcentage (entre 1 et 90) ou un article offert, avec **au moins un plat** dans la liste des articles offerts (le formulaire l’exige, pour protéger votre marge).
+
+### Définissez la fenêtre de validité
+
+Dates et heures de **début et de fin obligatoires**, la fin strictement après le début. C’est ce qui vous permet de programmer des offres limitées dans le temps.
+
+### Affinez le ciblage si besoin
+
+Ajoutez un **minimum de panier**, sélectionnez des **plats ciblés** dans votre propre carte (un plat hors de votre carte est refusé) et limitez l’offre à certains **modes** (Livraison, Click & collect).
+
+### Activez, suivez, désactivez
+
+L’écran distingue les **remises automatiques** (pourcentage, montant fixe) des **offres** (2ᵉ article, palier). Une promotion se **désactive** d’un clic mais ne se supprime jamais : les commandes passées y font référence.
+
+</Steps>
+
+<Eyebrow icon="calculate">Exemple concret</Eyebrow>
+
+## Une promo −20 % sur une commande en livraison
+
+Imaginons un panier de 30 € en livraison, avec une promotion **−20 %** active sur toute la carte.
+
+<Breakdown title="Décomposition de la commande" rows={[
+  { icon: "shopping_cart", label: "Sous-total du panier", value: "30,00 €" },
+  { icon: "sell", label: "Promotion −20 %", value: "−6,00 €", variant: "minus" },
+  { icon: "payments", label: "Montant payé par le client", value: "24,00 €" },
+  { icon: "percent", label: "Commission livraison (12 % de 24 €)", value: "−2,88 €", variant: "minus" },
+  { icon: "account_balance", label: "Net reversé", value: "21,12 €", variant: "total" }
+]} />
+
+La commission est bien calculée sur les **24 € payés**, pas sur les 30 € d’origine : sans cette règle, la commission aurait été de 3,60 €. Cet exemple est illustratif ; vos chiffres réels dépendent du mode et du type d’offre.
+
+<Eyebrow icon="check_circle">Bonnes pratiques</Eyebrow>
+
+## Des offres qui rapportent
+
+<Callout type="default">
+- **Écoulez vos stocks en 1 clic** : le raccourci « stock à écouler » crée directement une promotion en pourcentage ciblée sur les plats concernés, avec une fenêtre allant de maintenant à la date de péremption et une suggestion de −30 % que vous pouvez ajuster. Pratique avec votre suivi de [stocks](/fr/guides/stocks/).
+- **Testez le palier avec article offert** pour faire grimper le panier moyen : « dès 25 €, un accompagnement offert » incite à compléter la commande.
+- **Utilisez la fenêtre de validité** pour des offres flash courtes plutôt que des remises permanentes qui rognent la marge.
+- **Pensez aux campagnes de [créateurs](/fr/guides/creators/)** : quand vous adoptez un plat de campagne, une promotion en pourcentage liée à la campagne peut être créée dans la foulée, bornée par les dates de la campagne.
+</Callout>
+
+<Eyebrow icon="error">Erreurs à éviter</Eyebrow>
+
+## Les pièges courants
+
+<Callout type="error">
+- **Attendre un cumul** : une seule promotion s’applique par commande — la meilleure. Inutile d’empiler trois offres actives sur la même marque, une note dans l’écran vous le rappelle.
+- **Confondre minimum de panier et montant après remise** : le minimum s’évalue sur le sous-total *avant* remise.
+- **Créer un palier « article offert » sans choisir les plats** : impossible — au moins un plat offert est exigé à la création.
+- **Chercher à supprimer une promotion** : on ne supprime pas, on désactive. Une promotion désactivée cesse immédiatement de s’appliquer.
+- **Croire que toutes les offres sont mises en avant côté client** : seules les promotions en pourcentage et en montant fixe remontent dans la vitrine publique ; les offres 2ᵉ article et palier s’appliquent bien au panier, mais sans mise en avant dédiée.
+</Callout>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
+
+## Questions fréquentes
+
+<Faq items={[
+  {
+    icon: "qr_code",
+    q: "Le client doit-il saisir un code promo ?",
+    a: "Non. Au moment du paiement, le serveur résout les promotions actives de votre marque et applique automatiquement la meilleure au panier. Le client n’a rien à saisir, et aucun montant de remise ne provient de son appareil : tout est calculé côté serveur."
+  },
+  {
+    icon: "layers",
+    q: "Puis-je cumuler plusieurs promotions ?",
+    a: "Non. Une seule promotion s’applique par commande : la plus avantageuse gagne (à remise égale, la plus ancienne, pour rester prévisible). La promotion est aussi exclusive de la remise de parrainage et des points fidélité : si une remise de parrainage s’applique, la promotion est écartée."
+  },
+  {
+    icon: "percent",
+    q: "La commission est-elle calculée avant ou après la remise ?",
+    a: "Après. La commission par mode porte sur le montant réellement payé par le client (sous-total − remise). Une remise de 6 € réduit donc aussi la commission prélevée sur la commande."
+  },
+  {
+    icon: "toggle_off",
+    q: "Comment supprimer une promotion terminée ?",
+    a: "On ne supprime jamais une promotion : les commandes passées y font référence. Vous la désactivez d’un clic — elle cesse immédiatement de s’appliquer — et pouvez la réactiver plus tard si besoin."
+  }
+]} />
+
+<Eyebrow icon="menu_book">Pour aller plus loin</Eyebrow>
+
+## Articles liés
+
+<RelatedCards items={[
+  {
+    icon: "menu_book",
+    title: "Menu & Scan IA",
+    sub: "Vos plats, vos prix",
+    href: "/fr/guides/menu/"
+  },
+  {
+    icon: "account_balance",
+    title: "Finances & versements",
+    sub: "Commission par mode",
+    href: "/fr/guides/finances/"
+  },
+  {
+    icon: "storefront",
+    title: "Tableau de bord",
+    sub: "Indicateurs en direct",
+    href: "/fr/guides/restaurant/"
+  },
+  {
+    icon: "loyalty",
+    title: "Programme fidélité",
+    sub: "Points et récompenses",
+    href: "/fr/guides/loyalty/"
+  }
+]} />

@@ -1,0 +1,146 @@
+---
+title: "Avis clients"
+description: "Consultez les avis publiés par vos clients, suivez votre note moyenne et préparez vos réponses avec un brouillon rédigé par IA, adapté à la note."
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# Avis clients
+
+Lisez tous les avis publiés par vos clients, suivez votre note moyenne et préparez vos réponses avec un brouillon rédigé par IA.
+
+<ArticleMeta audience="Restaurateurs" minutes={3} updated="2026-07-12" />
+
+<Eyebrow icon="reviews">Aperçu</Eyebrow>
+
+## Le trajet d’un avis
+
+<FlowDiagram steps={[
+  { icon: "rate_review", title: "Avis publié", desc: "Un client note votre restaurant et rédige son avis" },
+  { icon: "storefront", title: "Visible dans votre espace", desc: "L’avis apparaît sur la page Avis de votre tableau de bord" },
+  { icon: "auto_awesome", title: "Brouillon par IA", desc: "Générez une proposition de réponse, puis retouchez-la" },
+  { icon: "schedule", title: "Envoi de la réponse", desc: "Bientôt disponible, directement depuis la page" }
+]} />
+
+<Eyebrow icon="bolt">L’essentiel</Eyebrow>
+
+## En bref
+
+<Essentials title="Si vous ne devez retenir que ça :" items={[
+  <>Chaque client connecté peut publier <b>un avis par restaurant</b> (note de 1 à 5 étoiles obligatoire), qu’il peut modifier ensuite — pas de doublons</>,
+  <>Votre page Avis affiche la <b>note moyenne</b> (une décimale), la <b>répartition par étoile</b> et les 50 avis publiés les plus récents</>,
+  <>Le bouton <b>Générer</b> rédige un brouillon de réponse par IA, adapté à la note de l’avis et librement modifiable — l’envoi de la réponse arrive bientôt</>
+]} />
+
+<Eyebrow icon="lightbulb">Comment ça marche</Eyebrow>
+
+## Le principe (et le pourquoi)
+
+Les avis viennent directement de vos clients : depuis la fiche de votre restaurant sur l’app, un client connecté peut noter son expérience et rédiger un commentaire — un seul avis par client et par restaurant, qu’il peut modifier à tout moment (le nouvel avis remplace l’ancien). Seuls les avis **publiés** apparaissent sur votre page Avis, classés du plus récent au plus ancien. Vous gardez ainsi votre relation client : les retours arrivent chez vous, au même endroit que vos [commandes et indicateurs](/fr/guides/restaurant/).
+
+Pour protéger la vie privée de vos clients, seul le **prénom** de l’auteur est affiché à côté de son avis. Chaque avis porte aussi un badge de **source** — « Grubano » aujourd’hui, la seule source d’avis sur la plateforme. Votre **note moyenne** est calculée à partir de la répartition par étoile (moyenne pondérée de 1 à 5) et affichée avec une décimale, accompagnée des étoiles correspondantes.
+
+<Eyebrow icon="format_list_numbered">Étape par étape</Eyebrow>
+
+## Préparer une réponse avec l’IA
+
+<Steps>
+
+### Ouvrez la page Avis
+
+Depuis le menu latéral de votre tableau de bord, cliquez sur **Avis**. La page charge automatiquement les avis du restaurant courant (celui sélectionné dans votre tableau de bord).
+
+### Lisez la synthèse en haut de page
+
+La note moyenne, la répartition des notes de 1 à 5 étoiles et le nombre total d’avis vous donnent la température générale en un coup d’œil.
+
+### Parcourez les avis
+
+Les 50 avis publiés les plus récents s’affichent du plus récent au plus ancien : prénom de l’auteur, note, texte, date et badge de source.
+
+### Générez un brouillon de réponse
+
+Ouvrez la fenêtre de réponse d’un avis et cliquez sur **Générer**. L’IA rédige une proposition en français, courte (moins de trois phrases) et signée « L’équipe Grubano », avec un ton adapté à la note.
+
+### Relisez et personnalisez
+
+Le brouillon s’affiche dans une zone de texte librement modifiable : ajustez-le avec vos mots, un détail du service ou un geste commercial. Le bouton **Envoyer** est encore inactif — l’envoi arrivera bientôt ; en attendant, vous pouvez copier votre texte pour le réutiliser où vous le souhaitez.
+
+</Steps>
+
+<Eyebrow icon="check_circle">Bonnes pratiques</Eyebrow>
+
+## Tirez le meilleur des brouillons IA
+
+<Callout type="default">
+- **Laissez l’IA s’adapter à la note** : le ton du brouillon est choisi automatiquement — empathique avec des excuses pour un avis à 1 ou 2 étoiles, nuancé à 3 étoiles, enthousiaste à partir de 4.
+- **Personnalisez toujours** : le brouillon est un point de départ ; un détail concret (le plat commandé, le soir de l’incident) rend la réponse bien plus crédible.
+- **Surveillez la répartition par étoile** : une montée des avis à 1 ou 2 étoiles se voit dans la répartition avant de peser sur la moyenne.
+- **Restez sobre** : les brouillons font moins de trois phrases, c’est voulu — une réponse courte et sincère vaut mieux qu’un long plaidoyer.
+</Callout>
+
+<Eyebrow icon="schedule">Bientôt</Eyebrow>
+
+## Ce qui arrive ensuite
+
+<Callout type="info">
+Trois évolutions sont déjà visibles dans l’interface et arriveront prochainement : l’**envoi des réponses** directement depuis la fenêtre de rédaction (le bouton Envoyer est affiché mais encore inactif), l’**import des avis d’autres plateformes** (Google, TripAdvisor…) pour tout centraliser au même endroit, et le suivi **À répondre / Répondus** — les réponses n’étant pas encore enregistrées, l’onglet Répondus affiche 0 pour l’instant et tous les avis restent classés « À répondre ».
+</Callout>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
+
+## Questions fréquentes
+
+<Faq items={[
+  {
+    icon: "person",
+    q: "Qui peut publier un avis sur mon restaurant ?",
+    a: "Tout client connecté à son compte, avec une note obligatoire de 1 à 5 étoiles. Chaque client ne peut publier qu’un seul avis par restaurant : s’il le modifie, la nouvelle version remplace la précédente. Seuls les avis publiés apparaissent sur votre page."
+  },
+  {
+    icon: "smart_toy",
+    q: "Comment l’IA choisit-elle le ton de la réponse ?",
+    a: "Le ton est dérivé automatiquement de la note de l’avis : empathique avec des excuses jusqu’à 2 étoiles, nuancé à 3 étoiles, enthousiaste à partir de 4. Un quota d’utilisation par compte s’applique : si vous le dépassez, patientez un peu avant de générer un nouveau brouillon."
+  },
+  {
+    icon: "star",
+    q: "La note affichée sur ma fiche côté clients est-elle recalculée à partir de ces avis ?",
+    a: "Pas encore : la note globale de votre fiche est gérée séparément et n’est pas recalculée automatiquement à partir des avis publiés sur Grubano. Ce raccordement est à l’étude."
+  },
+  {
+    icon: "lock",
+    q: "Le nom complet de mes clients est-il visible ?",
+    a: "Non. Par respect de la vie privée, seul le prénom de l’auteur est affiché à côté de son avis — aussi bien sur votre page Avis que côté public."
+  }
+]} />
+
+<Eyebrow icon="menu_book">Pour aller plus loin</Eyebrow>
+
+## Articles liés
+
+<RelatedCards items={[
+  {
+    icon: "sentiment_satisfied",
+    title: "Commander & suivre",
+    sub: "Le parcours côté client",
+    href: "/fr/guides/consumer/"
+  },
+  {
+    icon: "storefront",
+    title: "Tableau de bord",
+    sub: "Indicateurs en direct",
+    href: "/fr/guides/restaurant/"
+  },
+  {
+    icon: "loyalty",
+    title: "Programme fidélité",
+    sub: "Points et récompenses",
+    href: "/fr/guides/loyalty/"
+  },
+  {
+    icon: "monitoring",
+    title: "Analyses & briefing IA",
+    sub: "Vos chiffres décryptés",
+    href: "/fr/guides/analytics/"
+  }
+]} />
