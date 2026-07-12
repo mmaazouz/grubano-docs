@@ -18,7 +18,9 @@ export default {
       breadcrumb: false,
     },
   },
-  'getting-started': { title: 'Quick start', theme: { toc: false, copyPage: false, timestamp: false, pagination: false } },
+  // Format ARTICLE (maquette discover v2) : TOC actif, pagination Nextra
+  // remplacée par les cartes Précédent/Suivant custom (comme guides).
+  'getting-started': { title: 'Quick start', theme: { copyPage: false, timestamp: false, pagination: false } },
   // pagination/timestamp Nextra désactivés : remplacés par les cartes
   // Précédent/Suivant + la meta « Mis à jour le » localisée (article-v5).
   guides: { title: "Guides", display: 'children', theme: { pagination: false, timestamp: false, copyPage: false } },

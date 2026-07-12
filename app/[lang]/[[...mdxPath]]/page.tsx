@@ -89,6 +89,12 @@ export default async function Page(props: {
     (params.mdxPath?.[0] ?? '') === 'guides' &&
     (params.mdxPath?.length ?? 0) > 1 &&
     !slug0.startsWith('espace-')
+  // Page éditoriale « Découvrir Grubano » (format article, maquette discover
+  // v2) : même sommaire eyebrows + cartes Précédent / Suivant que les guides,
+  // mais un rail bas réduit (pas de MarkDone/CTA/feedback — le CTA vit dans
+  // le corps de l'article, comme la maquette).
+  const isDiscoverPage =
+    (params.mdxPath?.length ?? 0) === 1 && params.mdxPath?.[0] === 'getting-started'
   let bottomContent = undefined
   if (isGuidePage) {
     const order = await guidesOrder(params.lang)
@@ -107,11 +113,27 @@ export default async function Page(props: {
         <PrevNext prev={prev} next={next} />
       </>
     )
+  } else if (isDiscoverPage) {
+    // Précédent → accueil du centre d'aide · Suivant → « Démarrer en
+    // 15 minutes » — titres LOCALISÉS depuis la page map (même source que
+    // les cartes des guides), aucune chaîne en dur.
+    const pageMap = await getPageMap(`/${params.lang}`)
+    type Item = { name?: string; route?: string; title?: string; children?: Item[] }
+    const items = pageMap as Item[]
+    const home = items.find((i) => i.name === 'index')
+    const quickStart = items
+      .find((i) => i.name === 'guides')
+      ?.children?.find((c) => c.name === 'quick-start')
+    const asCard = (it?: Item) =>
+      it?.route && it.title
+        ? { title: it.title, href: it.route.endsWith('/') ? it.route : `${it.route}/` }
+        : null
+    bottomContent = <PrevNext prev={asCard(home)} next={asCard(quickStart)} />
   }
 
-  // Sommaire maquette : eyebrows courts, à plat (guides uniquement — la home
+  // Sommaire maquette : eyebrows courts, à plat (guides + Découvrir — la home
   // et les landings n'ont pas de TOC).
-  const finalToc = (isGuidePage
+  const finalToc = (isGuidePage || isDiscoverPage
     ? eyebrowToc(params.lang, params.mdxPath!, toc as unknown as TocEntry[])
     : toc) as typeof toc
 

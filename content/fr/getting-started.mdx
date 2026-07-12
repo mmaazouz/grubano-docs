@@ -3,19 +3,19 @@ title: Découvrir Grubano
 description: "Ce qu’est Grubano et comment marche son modèle : une commission par mode de commande — livraison 12 %, click & collect 8 %, sur place 5 %, réservation 0 % — et par où commencer selon votre profil."
 ---
 
-import { Callout } from 'nextra/components'
-
-<Eyebrow icon="explore">Comprendre l’essentiel</Eyebrow>
-
 # Découvrir Grubano
 
-**Grubano est une marketplace de food locale** qui reconnecte les restaurants
-indépendants et leurs clients du quartier — sans la commission étouffante des
-plateformes historiques.
+Grubano est une **marketplace de food locale** qui reconnecte les restaurants indépendants et leurs clients du quartier — **sans la commission étouffante** des plateformes historiques.
+
+<ArticleMeta audience="Tous" minutes={4} updated="2026-07-12" />
+
+<Eyebrow icon="insights">Aperçu</Eyebrow>
+
+## Grubano en trois chiffres
 
 <HeroStats items={[
-  { value: "à partir de 5 %", label: "de commission" },
-  { value: "3 modes", label: "de commande" },
+  { value: "dès 5 %", label: "de commission par commande" },
+  { value: "3", label: "modes de commande" },
   { value: "0 €", label: "d’abonnement obligatoire" }
 ]} />
 
@@ -23,125 +23,121 @@ plateformes historiques.
 
 ## Une plateforme, deux côtés
 
-Côté client, une façon simple de commander local. Côté restaurant, un outil
-unique qui remplace l’empilement de logiciels — et qui vous laisse cultiver
-votre propre clientèle.
+<p className="disc-lead">Côté restaurant, un seul outil remplace l’empilement de logiciels. Côté client, une façon simple de commander local.</p>
 
-**Pour commander local.** Trouvez les restaurants indépendants près de chez
-vous et commandez au mode qui vous arrange :
+<div className="disc-two">
+  <div className="disc-panel">
+    <div className="disc-panel__h"><span className="disc-panel__ic disc-panel__ic--b"><span className="ms">storefront</span></span><b>Pour le restaurant</b></div>
+    <ul>
+      <li><span className="ms">check_circle</span><span>Commandes, menu &amp; paiement</span></li>
+      <li><span className="ms">check_circle</span><span>Fidélité &amp; base clients</span></li>
+      <li><span className="ms">check_circle</span><span>Stocks &amp; analyses</span></li>
+    </ul>
+  </div>
+  <div className="disc-panel">
+    <div className="disc-panel__h"><span className="disc-panel__ic"><span className="ms">smartphone</span></span><b>Pour commander local</b></div>
+    <ul>
+      <li><span className="ms">local_shipping</span><span><b>Livraison à domicile</b></span></li>
+      <li><span className="ms">shopping_bag</span><span><b>Click &amp; collect</b></span></li>
+      <li><span className="ms">restaurant</span><span><b>Réservation de table</b></span></li>
+    </ul>
+  </div>
+</div>
 
-- **Livraison à domicile** — le plat arrive chez vous.
-- **Click & collect** — vous récupérez au comptoir.
-- **Réservation de table** — vous mangez sur place.
-
-**Pour le restaurant.** Un seul outil réunit tout ce qu’il faut pour vendre
-et gérer : commande, livraison, réservation, menu, paiement, fidélité, stocks
-et analyses.
-
-<MiniMap
-  center={{ icon: "storefront", label: "Votre restaurant", desc: "Un seul outil pour tout piloter" }}
-  blocks={[
-    { icon: "receipt_long", title: "Commande" },
-    { icon: "local_shipping", title: "Livraison" },
-    { icon: "table_restaurant", title: "Réservation" },
-    { icon: "menu_book", title: "Menu" },
-    { icon: "payments", title: "Paiement" },
-    { icon: "loyalty", title: "Fidélité" },
-    { icon: "inventory_2", title: "Stocks" },
-    { icon: "insights", title: "Analyses" }
-  ]}
-/>
-
-<Callout type="info">
-  **Vous gardez votre relation client et votre fidélité.** Grubano est conçu
-  pour renforcer le lien direct entre votre établissement et vos habitués :
-  votre programme de fidélité et vos promotions travaillent pour votre
-  restaurant, pas pour une plateforme tierce.
-</Callout>
+<div className="disc-call">
+  <span className="disc-call__ic"><span className="ms">favorite</span></span>
+  <div className="disc-call__m"><b>Vous gardez votre relation client et votre fidélité</b><p>Historique, préférences et programme de fidélité restent attachés à votre établissement — pas noyés dans un agrégateur.</p></div>
+</div>
 
 <Eyebrow icon="balance">Le modèle</Eyebrow>
 
-## Une commission juste, assumée
+## Une commission juste, par mode
 
-Là où les plateformes historiques prélèvent souvent autour de **30 %** par
-commande, Grubano applique une commission basse, transparente et adaptée à
-chaque mode. Pas de coût caché, pas d’abonnement obligatoire.
+<p className="disc-lead">La commission dépend du mode de commande — la plus basse pour ce qui vous coûte le moins. Loin des ~30 % du marché historique.</p>
 
-<Breakdown title="La commission, mode par mode" icon="percent" rows={[
-  { icon: "local_shipping", label: "Livraison", value: "12 %" },
-  { icon: "shopping_bag", label: "Click & collect", value: "8 %" },
-  { icon: "restaurant", label: "Sur place", value: "5 %" },
-  { icon: "table_restaurant", label: "Réservation", value: "0 %" }
-]} />
+<div className="disc-model">
+  <div className="disc-model__row disc-model__head">
+    <div className="disc-model__cell disc-model__cell--mode">Mode de commande</div>
+    <div className="disc-model__cell disc-model__cell--gb"><span className="ms">verified</span>Grubano</div>
+    <div className="disc-model__cell disc-model__cell--hist">Marché</div>
+  </div>
+  <div className="disc-model__row">
+    <div className="disc-model__cell disc-model__cell--mode"><span className="ms">local_shipping</span>Livraison</div>
+    <div className="disc-model__cell disc-model__cell--gb"><span className="disc-model__big">12 %</span></div>
+    <div className="disc-model__cell disc-model__cell--hist"><span className="disc-model__big">~30 %</span></div>
+  </div>
+  <div className="disc-model__row">
+    <div className="disc-model__cell disc-model__cell--mode"><span className="ms">shopping_bag</span>Click &amp; collect</div>
+    <div className="disc-model__cell disc-model__cell--gb"><span className="disc-model__big">8 %</span></div>
+    <div className="disc-model__cell disc-model__cell--hist"><span className="disc-model__big">~30 %</span></div>
+  </div>
+  <div className="disc-model__row">
+    <div className="disc-model__cell disc-model__cell--mode"><span className="ms">restaurant</span>Sur place</div>
+    <div className="disc-model__cell disc-model__cell--gb"><span className="disc-model__big">5 %</span></div>
+    <div className="disc-model__cell disc-model__cell--hist"><span className="disc-model__big">~30 %</span></div>
+  </div>
+  <div className="disc-model__row">
+    <div className="disc-model__cell disc-model__cell--mode"><span className="ms">event_seat</span>Réservation de table</div>
+    <div className="disc-model__cell disc-model__cell--gb"><span className="disc-model__big">0 %</span></div>
+    <div className="disc-model__cell disc-model__cell--hist"><span className="disc-model__big">~30 %</span></div>
+  </div>
+</div>
 
-La commission se calcule toujours au plus juste :
+<ul className="disc-notes">
+  <li><span className="ms">check</span><span>Les <b>frais de livraison</b> ne sont pas commissionnés.</span></li>
+  <li><span className="ms">check</span><span>Les <b>pourboires</b> reviennent à 100 % au livreur.</span></li>
+  <li><span className="ms">check</span><span>Les <b>remises</b> sont déduites avant le calcul de la commission.</span></li>
+  <li><span className="ms">check</span><span>Les <b>frais de paiement</b> sont absorbés par Grubano.</span></li>
+</ul>
 
-- les **frais de livraison** ne sont jamais commissionnés ;
-- les **pourboires** reviennent à 100 % au livreur ;
-- les **remises** sont déduites avant le calcul de la commission ;
-- les **frais de paiement** sont absorbés par Grubano.
-
-Pour les établissements présents sur plusieurs plateformes, un abonnement
-optionnel Grubano Pro (29 €/mois) permettra bientôt d’agréger vos autres
-canaux de commande au même endroit — la commission Grubano, elle, reste
-inchangée.
-
-<Callout type="info">
-  **Affiliation & franchise.** Les conditions entre acteurs — commissions
-  d’apport, redevances de réseau — sont fixées librement entre les intéressés,
-  dans les limites définies par Grubano.
-</Callout>
+<div className="disc-pro"><span className="ms">rocket_launch</span><span><b>Grubano Pro</b> (29 €/mois, optionnel) — bientôt.</span></div>
 
 <Eyebrow icon="groups">Les acteurs</Eyebrow>
 
-## Qui fait quoi dans l’écosystème
+## Qui fait quoi
 
-Pas besoin de schéma compliqué : deux groupes suffisent à tout comprendre —
-ce que le client vit, et les coulisses qui font la réussite du restaurant.
+<p className="disc-lead">Deux groupes suffisent&nbsp;: ce que le client vit, et les coulisses qui font la réussite du restaurant.</p>
 
-### Ce que le client vit
+<div className="disc-grp disc-grp--scene">
+  <div className="disc-grp__h"><span className="ms">sentiment_satisfied</span><b>Ce que le client vit</b><span className="disc-grp__tag">La scène</span></div>
+  <div className="disc-actors">
+    <div className="disc-actor"><span className="disc-actor__ic"><span className="ms">sentiment_satisfied</span></span><b>Client</b><span>Commande, savoure et fidélise son restaurant.</span></div>
+    <div className="disc-actor"><span className="disc-actor__ic"><span className="ms">storefront</span></span><b>Restaurant</b><span>Le cœur&nbsp;: prépare, sert et fait revenir.</span></div>
+    <div className="disc-actor"><span className="disc-actor__ic"><span className="ms">two_wheeler</span></span><b>Livreur</b><span>Apporte la commande, chaud et à l’heure.</span></div>
+  </div>
+  <div className="disc-modes">
+    <span className="disc-chip"><span className="ms">local_shipping</span>Livraison</span>
+    <span className="disc-chip"><span className="ms">restaurant</span>Sur place</span>
+    <span className="disc-chip"><span className="ms">shopping_bag</span>À emporter</span>
+  </div>
+</div>
 
-<RelatedActors
-  nodes={[
-    { icon: "sentiment_satisfied", label: "Client", desc: "Commande, savoure et fidélise son restaurant.", variant: "ink", to: "commande" },
-    { icon: "storefront", label: "Restaurant", desc: "Le cœur : prépare, sert et fait revenir.", to: "confie la course" },
-    { icon: "two_wheeler", label: "Livreur", desc: "Apporte la commande, chaude et à l’heure.", variant: "ink" }
-  ]}
-  returnNote="Le plat arrive, le client revient : la fidélité fait le reste."
-/>
-
-### Les coulisses
-
-Autour du restaurant, cinq partenaires font tourner l’écosystème :
-
-- **Fournisseur** — approvisionne le restaurant en produits et ingrédients.
-- **Créateur** — propose des recettes qui inspirent la carte et touche 2 %
-  sur les ventes de ses plats.
-- **Affilié** — fait connaître les restaurants et gagne une commission
-  d’apport.
-- **Influenceur** — donne de la visibilité à grande échelle.
-- **Franchiseur** — porte la marque et son réseau d’établissements.
+<div className="disc-grp disc-grp--back">
+  <div className="disc-grp__h"><span className="ms">eco</span><b>Les coulisses</b><span className="disc-grp__tag">La réussite du resto</span></div>
+  <div className="disc-actors">
+    <div className="disc-actor"><span className="disc-actor__ic"><span className="ms">local_shipping</span></span><b>Fournisseur</b><span>Approvisionne le restaurant en produits.</span></div>
+    <div className="disc-actor"><span className="disc-actor__ic"><span className="ms">restaurant_menu</span></span><b>Créateur</b><span>Propose des recettes qui inspirent la carte.</span></div>
+    <div className="disc-actor"><span className="disc-actor__ic"><span className="ms">link</span></span><b>Affilié</b><span>Fait connaître les restaurants et gagne à l’apport.</span></div>
+    <div className="disc-actor"><span className="disc-actor__ic"><span className="ms">campaign</span></span><b>Influenceur</b><span>Donne de la visibilité à grande échelle.</span></div>
+    <div className="disc-actor"><span className="disc-actor__ic"><span className="ms">hub</span></span><b>Franchiseur</b><span>Porte la marque et son réseau d’établissements.</span></div>
+  </div>
+</div>
 
 <Eyebrow icon="apps">Par où commencer</Eyebrow>
 
 ## Les 4 façons d’utiliser Grubano
 
-<ActionCards items={[
-  { icon: "storefront", title: "Restaurateur", sub: "Commandes, carte, paiement et fidélité au même endroit", href: "/fr/guides/espace-restaurateurs/" },
-  { icon: "restaurant", title: "Client", sub: "Livraison, à emporter ou table près de chez vous", href: "/fr/guides/espace-clients/" },
-  { icon: "hub", title: "Franchisé", sub: "Plusieurs points de vente, une console unique", href: "/fr/guides/espace-franchises/" },
-  { icon: "restaurant_menu", title: "Créateur", sub: "Vos recettes, votre audience, vos gains", href: "/fr/guides/creators/" }
-]} />
+<div className="disc-ways">
+  <a className="disc-way" href="/fr/guides/espace-restaurateurs/"><span className="disc-way__ic"><span className="ms">storefront</span></span><b>Restaurateur</b><p>Ouvrez votre établissement et gérez commandes, carte, paiement et fidélité au même endroit.</p><span className="disc-way__go">Espace Restaurateurs<span className="ms flip-rtl">arrow_forward</span></span></a>
+  <a className="disc-way" href="/fr/guides/espace-clients/"><span className="disc-way__ic"><span className="ms">restaurant</span></span><b>Client</b><p>Commandez local en livraison, à emporter ou réservez une table près de chez vous.</p><span className="disc-way__go">Espace Clients<span className="ms flip-rtl">arrow_forward</span></span></a>
+  <a className="disc-way" href="/fr/guides/espace-franchises/"><span className="disc-way__ic"><span className="ms">hub</span></span><b>Franchisé</b><p>Exploitez une marque et pilotez plusieurs points de vente depuis une console unique.</p><span className="disc-way__go">Espace Franchisés<span className="ms flip-rtl">arrow_forward</span></span></a>
+  <a className="disc-way" href="/fr/guides/creators/"><span className="disc-way__ic"><span className="ms">restaurant_menu</span></span><b>Créateur</b><p>Proposez vos recettes, développez votre audience et suivez vos gains d’affiliation.</p><span className="disc-way__go">Espace Créateurs<span className="ms flip-rtl">arrow_forward</span></span></a>
+</div>
 
-<Eyebrow icon="rocket_launch">Prochain pas</Eyebrow>
-
-## Vous êtes restaurateur et voulez démarrer ?
-
-Mettez votre établissement en ligne et prenez vos premières commandes le jour
-même : le guide pas à pas vous emmène de la création du compte à votre
-première commande.
-
-<ActionCards items={[
-  { icon: "bolt", title: "Démarrer en 15 minutes", sub: "De l’inscription à la première commande", href: "/fr/guides/quick-start/" },
-  { icon: "rocket_launch", title: "Suivre le parcours guidé", sub: "5 articles · ≈ 30 min", href: "/fr/guides/parcours-restaurateur/" }
-]} />
+<aside className="av-cta">
+  <div className="av-cta__m">
+    <b>Vous êtes restaurateur&nbsp;?</b>
+    <span>Mettez votre établissement en ligne et prenez vos premières commandes le jour même.</span>
+  </div>
+  <a className="av-cta__btn" href="/fr/guides/quick-start/"><span className="ms">rocket_launch</span>Démarrer en 15 minutes</a>
+</aside>

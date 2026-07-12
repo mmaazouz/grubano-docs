@@ -106,7 +106,7 @@ for (const f of files) {
     'Steps', 'Callout', 'FlowDiagram', 'JourneyStrip', 'RelatedActors', 'MiniMap',
     'LearningPath', 'Comparison', 'Faq', 'ArticleMeta', 'Eyebrow', 'Essentials',
     'Breakdown', 'RelatedCards', 'HomeHero', 'SpacesGrid', 'QuickStartCards', 'ContactStrip',
-    'SpaceHero', 'ActionGroup', 'ActionCards',
+    'SpaceHero', 'ActionGroup', 'ActionCards', 'HeroStats',
   ])
   for (const m2 of src.matchAll(/<([A-Z][A-Za-z0-9]*)[\s/>]/g)) {
     if (!KNOWN_COMPONENTS.has(m2[1])) {
