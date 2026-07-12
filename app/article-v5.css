@@ -860,3 +860,7 @@ html.dark .nextra-callout { color: var(--gb-text) !important; }
   color: var(--gb-muted);
   margin-top: 5px;
 }
+
+/* Landing Découvrir : pas de rail TOC (maquette discover) — l aside vide
+   réservait 232px même avec toc:false. */
+body:has(.av-stats) .nextra-toc { display: none !important; width: 0 !important; }
