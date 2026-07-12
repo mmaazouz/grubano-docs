@@ -31,6 +31,10 @@ const RULES = [
   { id: 'pro-affiliation', hard: true, why: 'Pro décrit comme accès affiliation (interdit)',
     re: /(d[eé]bloque[rz]?\s+l['’]affiliation|acc[eè]s\s+[aà]\s+l['’]affiliation)/gi },
   // Tutoiement (French UI must vouvoie). Word-boundary "tu/ton/tes/toi/ta".
+  { id: 'commission-unique', hard: true, why: 'formulation interdite v6 (« 10 % unique »)',
+    re: /commission\s+unique|10\s?%[^.]{0,60}quel\s+que\s+soit/gi },
+  { id: 'data-appartient', hard: true, why: 'formulation données interdite v6',
+    re: /(données[^.]{0,40}appartiennent|100\s?%\s?data|propriétaire\s+de\s+vos\s+données)/gi },
   { id: 'tutoiement', hard: false, why: 'tutoiement possible (vérifier — « vous » requis)',
     re: /\b(tu\s+(peux|dois|as|es|veux|vas|fais|trouves|cliques|gagnes)|n['’]h[eé]site\s+pas\s+[aà]\s+te\b)/gi },
 ]
@@ -67,12 +71,16 @@ for (const f of files) {
     }
   }
   // Percentages ≠ 10
+  // Canoniques v6 : 12/8/5/0 par mode, 2 créateur, 20 livreur, 100 pourboires,
+  // 10 filleul (cap 5 €), 30 comparaison marché. « 10 % » SEUL reste listé pour
+  // revue humaine (l'ancien « unique 10 % » est désormais interdit).
+  const OK_PCT = new Set(['12', '8', '5', '0', '2', '20', '100', '30'])
   PCT_RE.lastIndex = 0
   let pm
   while ((pm = PCT_RE.exec(src))) {
     const val = pm[1].replace(',', '.')
-    if (val !== '10') {
-      hits.push({ id: 'pct', hard: false, why: `pourcentage « ${pm[0]} » ≠ 10 % — taux interne ?`, at: line(src, pm.index), text: pm[0] })
+    if (!OK_PCT.has(val)) {
+      hits.push({ id: 'pct', hard: false, why: `pourcentage « ${pm[0]} » hors grille v6 — taux interne ou 10 % legacy ?`, at: line(src, pm.index), text: pm[0] })
       soft++
     }
   }

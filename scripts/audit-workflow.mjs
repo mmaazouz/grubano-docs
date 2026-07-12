@@ -19,19 +19,22 @@ if (!PAGES.length) throw new Error('audit-docs-v5: empty args — expected [{top
 const GUARDRAILS = `
 RÈGLEMENT DOC GRUBANO — critères d'audit (une page de doc consommateur/partenaire) :
 
-1. ZÉRO TAUX INTERNE. Chiffres financiers PUBLIABLES (canoniques, ne PAS les
-   signaler) : commission Grubano « 10 % », abonnement « Grubano Pro
-   29 €/mois », commission créateur « 4 % » sur ses recettes, commission
-   livreur « 20 % » sur les frais de livraison, pourboires « 100 % » au
-   livreur, seuil de retrait « 25 € ». Également ACCEPTABLES : pourcentages
-   ARITHMÉTIQUES dérivés du 10 % (90 % net…), taux de conversion/KPI dans un
-   exemple fictif chiffré cohérent. Tout AUTRE taux/forfait (commission
-   d'affiliation chiffrée, redevance/royalties franchise chiffrée, marge
-   interne) est CONFIDENTIEL = VIOLATION.
+1. GRILLE v6 (fait foi) — chiffres PUBLIABLES : commission PAR MODE livraison
+   12 % / click & collect 8 % / sur place 5 % / réservation 0 % ; Pro 29 €/mois
+   (« bientôt ») ; créateur 2 % (⛔ 4 % = bug app, interdit) ; petit panier 1 € ;
+   livraison défaut 1,99 € ; filleul −10 % cap 5 € ; livreur 20 %/pourboires
+   100 %/retrait 25 € ; « ~30 % ailleurs » (comparaison marché) ; dérivés
+   arithmétiques de la grille. ⛔ « 10 % » unique ou « commission unique quel
+   que soit le canal » = VIOLATION. Tout AUTRE taux (parts internes Grubano sur
+   affiliation/franchise/fournisseur) = CONFIDENTIEL = VIOLATION.
+   ⛔ DONNÉES : « les données appartiennent au restaurant », « 100 % data »,
+   promesse d'accès aux emails/téléphones/adresses, « masquées » = VIOLATION
+   (formulation cible : « le restaurant garde sa relation client et sa
+   fidélité »).
 2. PRO — cadrage canonique UNIQUEMENT : Grubano Pro = recevoir les commandes des
    AUTRES plateformes (Uber Eats, Deliveroo, Just Eat…) sur le tableau de bord
    Grubano (agrégation + rapports unifiés), forfait 29 €/mois qui s'AJOUTE à la
-   commission 10 % (inchangée), au FUTUR / « bientôt ». INTERDIT de présenter Pro
+   grille de commission par mode (inchangée), au FUTUR / « bientôt ». INTERDIT de présenter Pro
    comme : visibilité/mise en avant/priorité dans la découverte, statistiques
    avancées, support prioritaire, accès à l'affiliation. = VIOLATION.
 3. PAS de framing « dark kitchen » / « ghost kitchen » / « cuisine fantôme ».
@@ -102,7 +105,7 @@ const results = await pipeline(
   // Stage 1 — audit one page against the guardrails.
   (p) =>
     agent(
-      `Tu es l'auditeur qualité de la doc Grubano. Lis INTÉGRALEMENT le fichier \`${p.file}\` (topic « ${p.topic} ») avec l'outil Read, puis audite-le STRICTEMENT contre le règlement ci-dessous. Ne signale QUE ce qui viole réellement une règle — cite le texte fautif EXACT. Une valeur "10 %" ou "29 €/mois" est AUTORISÉE (ne la signale pas). Sois précis, pas zélé.\n\n${GUARDRAILS}\n\nRends l'objet structuré : visualPresent (un visuel v5 est-il présent ?), toneOk (ton pédagogique « vous » ?), roleDistinctionOk (les rôles ne sont pas confondus ?), et la liste des violations (vide si la page est conforme).`,
+      `Tu es l'auditeur qualité de la doc Grubano. Lis INTÉGRALEMENT le fichier \`${p.file}\` (topic « ${p.topic} ») avec l'outil Read, puis audite-le STRICTEMENT contre le règlement ci-dessous. Ne signale QUE ce qui viole réellement une règle — cite le texte fautif EXACT. Les valeurs de la grille v6 (12/8/5/0 %, 2 %, 29 €/mois…) sont AUTORISÉES ; « 10 % » présenté comme commission unique est INTERDIT. Sois précis, pas zélé.\n\n${GUARDRAILS}\n\nRends l'objet structuré : visualPresent (un visuel v5 est-il présent ?), toneOk (ton pédagogique « vous » ?), roleDistinctionOk (les rôles ne sont pas confondus ?), et la liste des violations (vide si la page est conforme).`,
       { label: `audit:${p.topic}`, phase: 'Audit', schema: FINDINGS_SCHEMA },
     ),
   // Stage 2 — adversarially verify each flagged violation (kill false positives).

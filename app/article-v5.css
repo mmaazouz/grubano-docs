@@ -828,3 +828,35 @@ html.dark .nextra-callout { color: var(--gb-text) !important; }
 .avsp-card__m span { display: block; font-size: 12px; color: var(--gb-muted); margin-top: 2px; line-height: 1.4; }
 .avsp-card > .ms { color: var(--gb-muted-2); font-size: 18px; flex-shrink: 0; }
 .avsp-card:hover > .ms { color: var(--gb-zest-600); }
+
+/* ── HeroStats — chiffres clés sous le pitch (maquette discover.html,
+   .hero__stats / .stat : cartes surface, chiffre display zest, libellé
+   muted). Utilisé par la page éditoriale « Découvrir Grubano ». ─────────── */
+.av-stats {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+.av-stats__it {
+  background: var(--gb-surface);
+  border: 1px solid var(--gb-border);
+  border-radius: 18px;
+  padding: 14px 20px;
+  min-width: 130px;
+}
+.av-stats__it b {
+  display: block;
+  font-family: var(--gb-font-display), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 1.15;
+  color: var(--gb-zest-600);
+}
+.av-stats__it span {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--gb-muted);
+  margin-top: 5px;
+}

@@ -11,19 +11,19 @@ import { Steps, Callout } from 'nextra/components'
 
 # Commander & suivre
 
-Trouvez un restaurant proche de chez vous, passez votre commande en livraison ou à emporter, et suivez sa préparation en temps réel depuis l’application.
+Trouvez un restaurant près de chez vous, composez votre commande (livraison, retrait ou sur place) et suivez-la en temps réel jusqu’à réception.
 
-<ArticleMeta audience="Clients" minutes={4} updated="2026-07-10" />
+<ArticleMeta audience="Clients" minutes={4} updated="2026-07-12" />
 
 <Eyebrow icon="insights">Aperçu</Eyebrow>
 
-## De la recherche à la livraison
+## Le parcours de votre commande
 
 <FlowDiagram steps={[
-  { icon: "search", title: "Trouver un resto", desc: "Parcourez les restaurants à proximité, filtrez par cuisine ou distance" },
-  { icon: "restaurant_menu", title: "Composer", desc: "Choisissez vos plats, personnalisez les options, ajoutez au panier" },
-  { icon: "payments", title: "Payer", desc: "Validez votre commande par carte bancaire — paiement sécurisé" },
-  { icon: "two_wheeler", title: "Suivre", desc: "Suivez la préparation en direct et recevez votre commande" }
+  { icon: "search", title: "Trouver un resto", desc: "Parcourez les restaurants locaux qui livrent chez vous ou proposent le retrait" },
+  { icon: "restaurant_menu", title: "Composer", desc: "Ajoutez vos plats, personnalisez les options et choisissez votre mode de réception" },
+  { icon: "payments", title: "Payer", desc: "Réglez en ligne par carte — votre argent est sécurisé jusqu’à la livraison" },
+  { icon: "two_wheeler", title: "Suivre la commande", desc: "Recevez les notifications en temps réel : acceptée, en préparation, en route" }
 ]} />
 
 <Eyebrow icon="bolt">L’essentiel</Eyebrow>
@@ -31,18 +31,18 @@ Trouvez un restaurant proche de chez vous, passez votre commande en livraison ou
 ## En bref
 
 <Essentials title="Si vous ne devez retenir que ça :" items={[
-  <>Grubano prélève une <b>commission de 10 %</b> aux restaurants — vous payez le prix affiché, sans supplément caché</>,
-  <>Vous choisissez votre <b>mode de retrait</b> : livraison à domicile ou retrait sur place (sans frais de livraison)</>,
-  <>Votre commande est <b>suivie en temps réel</b> — vous savez exactement quand elle sera prête</>
+  <>Grubano prélève une <b>commission de 5 à 12 % selon le mode</b> (sur place 5 %, retrait 8 %, livraison 12 %), jamais sur les frais de livraison ni les pourboires</>,
+  <>Vous suivez votre commande <b>en temps réel</b> — de l’acceptation par le restaurant jusqu’à la livraison, avec un lien de suivi unique</>,
+  <>Paiement sécurisé en ligne : <b>votre argent reste bloqué</b> jusqu’à la confirmation de livraison — vous ne payez que ce que vous recevez</>
 ]} />
 
 <Eyebrow icon="lightbulb">Comment ça marche</Eyebrow>
 
 ## Le principe (et le pourquoi)
 
-Grubano connecte les restaurants locaux qui cuisinent dans leur propre cuisine avec les clients de leur quartier. Vous commandez directement auprès du restaurant — pas d’intermédiaire qui prend 30 % de commission. Le restaurateur reçoit votre commande instantanément et vous suivez chaque étape de la préparation, de la validation à la livraison.
+Grubano connecte les restaurants **locaux** — ceux qui cuisinent dans leur propre cuisine — aux clients de leur quartier. Vous commandez directement auprès du restaurateur, qui garde [sa relation client et sa fidélité](/fr/guides/consumer-loyalty/) dans l’app. Le suivi en temps réel fonctionne pour les trois modes : **livraison** (un coursier vous apporte la commande), **retrait sur place** (vous la récupérez au restaurant), ou **sur place** (vous mangez à table). Chaque mode a sa propre commission — le restaurateur encaisse le reste.
 
-Vous gagnez des [points de fidélité](/fr/guides/consumer-loyalty/) à chaque commande : 1 point par euro dépensé, utilisables sur vos prochaines commandes. Votre [compte](/fr/guides/consumer-account/) centralise votre historique, vos adresses favorites et vos moyens de paiement enregistrés.
+La transparence des statuts (reçue, en préparation, prête, en route, livrée) garantit que vous êtes toujours informé. Si un restaurant est fermé au moment où vous commandez, l’app vous indique la prochaine ouverture et bloque la validation — vous ne pouvez jamais passer commande dans le vide.
 
 <Eyebrow icon="format_list_numbered">Étape par étape</Eyebrow>
 
@@ -50,37 +50,59 @@ Vous gagnez des [points de fidélité](/fr/guides/consumer-loyalty/) à chaque c
 
 <Steps>
 
-### Rechercher un restaurant
+### Trouvez un restaurant
 
-Ouvrez l’application et laissez-vous géolocaliser : Grubano affiche les restaurants à proximité, triés par distance. Filtrez par type de cuisine (italien, asiatique, burger…) ou recherchez un nom précis. La carte indique le délai de livraison estimé, la note moyenne et le montant minimum de commande.
+Parcourez la carte ou la liste des établissements ouverts. Les restaurants affichent leur **temps de livraison estimé**, leur **note** et leur **minimum de commande**. Vous pouvez filtrer par type de cuisine et trier par note ou délai.
 
-### Composer votre panier
+### Composez votre panier
 
-Parcourez le menu du restaurant, ajoutez les plats qui vous tentent. Personnalisez chaque plat : choisissez la taille, ajoutez ou retirez des ingrédients, précisez vos allergies ou préférences dans la note. Le prix s’actualise en temps réel. Le panier affiche le sous-total des plats, les frais de livraison (ou 0 € en retrait) et le total définitif.
+Ajoutez les plats qui vous plaisent. Pour chaque plat, personnalisez les **options** (taille, suppléments, exclusions) et laissez une **note** si besoin. Le panier calcule le total en temps réel — sous-total des plats, frais de livraison et remises éventuelles.
 
-### Choisir le mode de retrait
+### Choisissez votre mode de réception
 
-En haut du panier, basculez entre **Livraison** (🛵) et **Retrait sur place** (🥡). La livraison applique les frais du restaurant (affichés sur sa fiche). Le retrait sur place annule les frais — vous récupérez votre commande à l’adresse indiquée, à l’heure estimée.
+En haut du panier, basculez entre **🛵 Livraison** et **🥡 Retrait sur place**. Le retrait annule les frais de livraison et affiche l’adresse du restaurant. La livraison affiche votre adresse enregistrée — modifiez-la si besoin dans [votre compte](/fr/guides/consumer-account/).
 
-### Valider et payer
+### Payez en ligne
 
-Vérifiez votre adresse de livraison (ou l’adresse de retrait du restaurant). Confirmez votre commande : le paiement par carte bancaire est traité immédiatement. Vous recevez une confirmation par email et l’application affiche l’heure de livraison estimée.
+Validez le panier. Votre carte est débitée immédiatement, mais l’argent reste **bloqué** jusqu’à la confirmation de livraison — c’est une garantie de sécurité. Si la commande est annulée, vous êtes **remboursé intégralement**.
 
-### Suivre la préparation
+### Suivez en temps réel
 
-Votre commande passe par plusieurs étapes, visibles en temps réel dans l’application : **Reçue** (le restaurant a accepté), **En préparation** (les plats sont en cours), **Prête** (emballée, en attente du livreur ou prête au retrait), **Récupérée** (le livreur est en route ou vous avez récupéré sur place), **Livrée** (terminée). À chaque changement de statut, vous êtes notifié.
+Dès que le restaurant accepte, vous recevez une notification. Les statuts s’enchaînent : **En préparation** → **Prête** → **En route** (livraison) ou **Récupérée** (retrait) → **Livrée**. Un lien de suivi unique vous permet de rafraîchir la page à tout moment.
+
+### Confirmez la réception
+
+Quand le statut passe à **Livrée**, l’argent est libéré au restaurateur. Vous gagnez des **points de fidélité** (1 point par euro dépensé) que vous pourrez dépenser sur vos prochaines commandes.
 
 </Steps>
 
+<Eyebrow icon="calculate">Exemple concret</Eyebrow>
+
+## Une commande de 25 € en livraison
+
+Imaginons que vous commandez pour 25 € de plats chez un restaurant local, en **livraison**. Le restaurant affiche des frais de livraison de 1,99 €. Aucune promotion active.
+
+<Breakdown title="Décomposition de la commande" rows={[
+  { icon: "restaurant_menu", label: "Plats commandés", value: "25,00 €" },
+  { icon: "local_shipping", label: "Frais de livraison", value: "1,99 €" },
+  { icon: "payments", label: "Total à payer", value: "26,99 €", variant: "total" }
+]} />
+
+Côté coulisses, Grubano prélève **12 % de commission sur les 25 € de plats** (soit 3 €), jamais sur les frais de livraison. Le restaurant encaisse donc **22 € + 1,99 € = 23,99 €** net. Si vous aviez choisi le **retrait**, la commission aurait été de 8 % (2 €) et les frais de livraison à 0 €, pour un total de **25 € à payer** et **23 € net** pour le restaurant. Les pourboires coursier sont reversés à **100 %**.
+
+Cet exemple est illustratif — chaque restaurant fixe son propre minimum de commande et ses frais de livraison.
+
 <Eyebrow icon="check_circle">Bonnes pratiques</Eyebrow>
 
-## Profiter pleinement de votre commande
+## Commandez malin
 
 <Callout type="default">
-- **Ajoutez plusieurs adresses** dans votre compte : domicile, bureau, adresse temporaire. Vous basculez d’une adresse à l’autre en un clic au moment du paiement.
-- **Consultez les avis** avant de commander — la note moyenne et le nombre d’évaluations vous aident à découvrir les pépites du quartier.
-- **Passez en retrait sur place** si vous êtes mobile : vous économisez les frais de livraison et récupérez votre commande dès qu’elle est prête.
-- **Cumulez vos points de fidélité** : chaque euro dépensé = 1 point. Utilisez-les pour réduire le montant de vos prochaines commandes.
+
+- **Vérifiez les horaires** — l’app affiche la prochaine ouverture si le restaurant est fermé, mais vous gagnez du temps en consultant les plages avant de composer.
+- **Comparez livraison et retrait** — le retrait annule les frais de livraison et réduit la commission (donc soutient davantage le restaurateur).
+- **Utilisez vos points** — 1 point = 1 centime de crédit. Si vous en avez assez, activez « Utiliser mes points » au panier pour réduire le montant final.
+- **Laissez des notes claires** — précisez vos exclusions (« sans oignon ») ou vos préférences dans la zone de texte libre du plat — le restaurant les verra.
+
 </Callout>
 
 <Eyebrow icon="error">Erreurs à éviter</Eyebrow>
@@ -88,17 +110,11 @@ Votre commande passe par plusieurs étapes, visibles en temps réel dans l’app
 ## Les pièges courants
 
 <Callout type="error">
-- **Ne commandez pas en dessous du minimum** : chaque restaurant fixe un montant minimum de commande (affiché sur sa fiche). Si votre panier est en dessous, la validation est bloquée.
-- **Vérifiez l’heure d’ouverture** : certains restaurants configurent leurs horaires d’ouverture. Si vous commandez pendant une fermeture, le système vous indique la prochaine ouverture — vous ne pouvez pas valider avant.
-- **Ne vous trompez pas d’adresse** : en livraison, vérifiez toujours l’adresse de livraison avant de payer. Une erreur d’adresse peut annuler la commande ou retarder la livraison.
-</Callout>
 
-<Eyebrow icon="lightbulb">Astuce</Eyebrow>
+- **Commander en dessous du minimum** — si le sous-total ne franchit pas le seuil du restaurant, la validation est bloquée. Ajoutez un plat ou choisissez un autre établissement.
+- **Modifier l’adresse après validation** — une fois la commande partie, vous ne pouvez plus changer la destination. Vérifiez **avant** de payer.
+- **Ignorer les statuts** — si une commande reste bloquée en « Reçue » pendant longtemps, contactez le restaurant (numéro affiché sur la fiche). Le suivi est là pour vous alerter.
 
-## Gagnez du temps
-
-<Callout type="info">
-**Enregistrez vos restaurants favoris** dans l’application (icône ⭐ sur la fiche du restaurant). Vous retrouvez leur menu en un clic, sans rechercher à chaque fois. Vos plats habituels sont mémorisés dans l’historique de commandes : repassez la même commande en deux taps.
 </Callout>
 
 <Eyebrow icon="quiz">FAQ</Eyebrow>
@@ -107,24 +123,24 @@ Votre commande passe par plusieurs étapes, visibles en temps réel dans l’app
 
 <Faq items={[
   {
-    icon: "payments",
-    q: "Quels moyens de paiement acceptez-vous ?",
-    a: "Grubano accepte les paiements par carte bancaire (Visa, Mastercard, American Express) via un tunnel de paiement sécurisé. Le montant est débité immédiatement à la validation de la commande. Les paiements en espèces ou par portefeuille numérique ne sont pas encore activés."
-  },
-  {
     icon: "schedule",
-    q: "Puis-je annuler ou modifier une commande ?",
-    a: "Une fois validée et payée, la commande est transmise instantanément au restaurant. Vous ne pouvez pas l’annuler vous-même depuis l’application. Contactez directement le restaurant par téléphone (numéro affiché sur sa fiche) si vous devez modifier ou annuler — le restaurateur peut accepter ou refuser selon l’avancement de la préparation."
+    q: "Puis-je commander pour plus tard ?",
+    a: "Pas encore — toutes les commandes sont préparées immédiatement. La planification horaire (« Livrer à 19h30 ») arrivera bientôt."
   },
   {
-    icon: "two_wheeler",
-    q: "Comment fonctionne le suivi de livraison ?",
-    a: "Dès que le restaurant accepte votre commande, vous voyez son statut en temps réel : « Reçue », « En préparation », « Prête », « Récupérée » (le livreur est en route), « Livrée ». Chaque changement déclenche une notification. Le délai estimé affiché au moment de la commande est indicatif — il peut varier selon l’affluence du restaurant."
+    icon: "payments",
+    q: "Quand suis-je débité ?",
+    a: "Votre carte est débitée dès la validation, mais l’argent reste bloqué jusqu’à ce que le restaurant confirme la livraison. En cas d’annulation, vous êtes remboursé intégralement."
   },
   {
     icon: "loyalty",
-    q: "Comment utiliser mes points de fidélité ?",
-    a: "Vous cumulez 1 point par euro dépensé (hors frais de livraison). Au moment du paiement, activez l’option « Utiliser mes points » : le système calcule automatiquement le crédit que vous pouvez déduire de votre commande. Le crédit est plafonné pour que Grubano reste viable — vous ne pouvez pas payer 100 % d’une commande en points."
+    q: "Combien de points je gagne ?",
+    a: "1 point par euro réellement dépensé (sur le total après remises). Les frais de livraison comptent aussi. Les points apparaissent dans votre solde dès la confirmation de livraison."
+  },
+  {
+    icon: "local_shipping",
+    q: "Le restaurant peut-il annuler ma commande ?",
+    a: "Oui, si un plat est en rupture ou si un imprévu survient. Vous êtes remboursé aussitôt et notifié par l’app. Le statut passe à « Annulée »."
   }
 ]} />
 
@@ -136,25 +152,19 @@ Votre commande passe par plusieurs étapes, visibles en temps réel dans l’app
   {
     icon: "loyalty",
     title: "Fidélité, cagnotte & parrainage",
-    sub: "Points et parrainage",
+    sub: "Gagnez et dépensez des points",
     href: "/fr/guides/consumer-loyalty/"
   },
   {
-    icon: "person",
+    icon: "account_circle",
     title: "Mon compte",
-    sub: "Profil et adresses",
+    sub: "Gérez vos adresses et préférences",
     href: "/fr/guides/consumer-account/"
   },
   {
-    icon: "insights",
+    icon: "storefront",
     title: "Tableau de bord",
-    sub: "Indicateurs en direct",
+    sub: "Vue opérateur (restaurateurs)",
     href: "/fr/guides/restaurant/"
-  },
-  {
-    icon: "menu_book",
-    title: "Menu & Scan IA",
-    sub: "Carte et Scan IA",
-    href: "/fr/guides/menu/"
   }
 ]} />

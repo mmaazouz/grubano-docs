@@ -1,79 +1,147 @@
 ---
 title: Découvrir Grubano
-description: La marketplace qui reconnecte les restaurants locaux et leurs clients — comment Grubano fonctionne, à qui elle s'adresse, et comment commencer.
+description: "Ce qu’est Grubano et comment marche son modèle : une commission par mode de commande — livraison 12 %, click & collect 8 %, sur place 5 %, réservation 0 % — et par où commencer selon votre profil."
 ---
 
-import { Cards, Callout } from 'nextra/components'
+import { Callout } from 'nextra/components'
+
+<Eyebrow icon="explore">Comprendre l’essentiel</Eyebrow>
 
 # Découvrir Grubano
 
 **Grubano est une marketplace de food locale** qui reconnecte les restaurants
-indépendants et leurs clients du quartier — sans la commission étouffante
-qu'imposent les plateformes historiques.
+indépendants et leurs clients du quartier — sans la commission étouffante des
+plateformes historiques.
 
-## Ce qu'est Grubano
+<HeroStats items={[
+  { value: "à partir de 5 %", label: "de commission" },
+  { value: "3 modes", label: "de commande" },
+  { value: "0 €", label: "d’abonnement obligatoire" }
+]} />
 
-Une seule plateforme pour **commander local** :
+<Eyebrow icon="lightbulb">Ce qu’est Grubano</Eyebrow>
 
-- **Livraison à domicile** depuis les restaurants à proximité
-- **Click & collect** (commande en ligne, retrait sur place)
-- **Réservation de table** quand vous préférez manger sur place
+## Une plateforme, deux côtés
 
-Côté restaurant, Grubano remplace l'agglomération d'outils habituelle : prise
-de commande, menu, paiement, fidélité, stocks, analyses — le tout connecté à
-**la base clients du restaurant**, pas à celle d'un agrégateur.
+Côté client, une façon simple de commander local. Côté restaurant, un outil
+unique qui remplace l’empilement de logiciels — et qui vous laisse cultiver
+votre propre clientèle.
+
+**Pour commander local.** Trouvez les restaurants indépendants près de chez
+vous et commandez au mode qui vous arrange :
+
+- **Livraison à domicile** — le plat arrive chez vous.
+- **Click & collect** — vous récupérez au comptoir.
+- **Réservation de table** — vous mangez sur place.
+
+**Pour le restaurant.** Un seul outil réunit tout ce qu’il faut pour vendre
+et gérer : commande, livraison, réservation, menu, paiement, fidélité, stocks
+et analyses.
+
+<MiniMap
+  center={{ icon: "storefront", label: "Votre restaurant", desc: "Un seul outil pour tout piloter" }}
+  blocks={[
+    { icon: "receipt_long", title: "Commande" },
+    { icon: "local_shipping", title: "Livraison" },
+    { icon: "table_restaurant", title: "Réservation" },
+    { icon: "menu_book", title: "Menu" },
+    { icon: "payments", title: "Paiement" },
+    { icon: "loyalty", title: "Fidélité" },
+    { icon: "inventory_2", title: "Stocks" },
+    { icon: "insights", title: "Analyses" }
+  ]}
+/>
 
 <Callout type="info">
-  **Les données clients appartiennent au restaurant.** Coordonnées, historique
-  d'achat, préférences, points de fidélité : tout reste la propriété du
-  restaurant qui les a collectés. Grubano les héberge, ne les revend pas.
+  **Vous gardez votre relation client et votre fidélité.** Grubano est conçu
+  pour renforcer le lien direct entre votre établissement et vos habitués :
+  votre programme de fidélité et vos promotions travaillent pour votre
+  restaurant, pas pour une plateforme tierce.
 </Callout>
 
-## Le modèle, côté utilisateur
+<Eyebrow icon="balance">Le modèle</Eyebrow>
 
-Grubano publie deux promesses claires :
+## Une commission juste, assumée
 
-| | Promesse Grubano | Marché historique |
-|---|---|---|
-| **Commission par commande** | **10 %** | ~30 % en moyenne |
-| **Abonnement** | **29 €/mois** — optionnel, _Grubano Pro_ | variable, souvent obligatoire |
+Là où les plateformes historiques prélèvent souvent autour de **30 %** par
+commande, Grubano applique une commission basse, transparente et adaptée à
+chaque mode. Pas de coût caché, pas d’abonnement obligatoire.
 
-L'abonnement **Grubano Pro** est facultatif. **Bientôt**, il vous permettra
-de recevoir les commandes de toutes vos autres plateformes (Uber Eats,
-Deliveroo, Just Eat…) directement sur votre tableau de bord Grubano : un
-seul écran pour toutes vos commandes, avec des analyses et rapports unifiés.
-La commission ne change pas — elle reste à **10 %** en Standard comme en Pro.
+<Breakdown title="La commission, mode par mode" icon="percent" rows={[
+  { icon: "local_shipping", label: "Livraison", value: "12 %" },
+  { icon: "shopping_bag", label: "Click & collect", value: "8 %" },
+  { icon: "restaurant", label: "Sur place", value: "5 %" },
+  { icon: "table_restaurant", label: "Réservation", value: "0 %" }
+]} />
+
+La commission se calcule toujours au plus juste :
+
+- les **frais de livraison** ne sont jamais commissionnés ;
+- les **pourboires** reviennent à 100 % au livreur ;
+- les **remises** sont déduites avant le calcul de la commission ;
+- les **frais de paiement** sont absorbés par Grubano.
+
+Pour les établissements présents sur plusieurs plateformes, un abonnement
+optionnel Grubano Pro (29 €/mois) permettra bientôt d’agréger vos autres
+canaux de commande au même endroit — la commission Grubano, elle, reste
+inchangée.
 
 <Callout type="info">
-  **Affiliation et franchise.** Les conditions financières — commission
-  d'affiliation, royalties de franchise — sont fixées entre les acteurs
-  concernés (créateur ↔ restaurant pour l'affiliation, marque ↔ restaurant
-  pour la franchise), dans les limites fixées par Grubano. Le détail de
-  chaque mécanisme se trouve dans les guides correspondants.
+  **Affiliation & franchise.** Les conditions entre acteurs — commissions
+  d’apport, redevances de réseau — sont fixées librement entre les intéressés,
+  dans les limites définies par Grubano.
 </Callout>
 
-## Les quatre façons d'utiliser Grubano
+<Eyebrow icon="groups">Les acteurs</Eyebrow>
 
-<Cards>
-  <Cards.Card title="🏪 Restaurateur" href="/fr/guides/restaurant/" arrow>
-    Vendez en direct, gardez vos marges. Menu, commandes, stocks, fidélité,
-    abonnement Pro optionnel.
-  </Cards.Card>
-  <Cards.Card title="🍽️ Client" href="/fr/guides/consumer/" arrow>
-    Commandez local — en livraison, à emporter ou en réservant votre table.
-  </Cards.Card>
-  <Cards.Card title="🤝 Franchisé" href="/fr/guides/franchise/" arrow>
-    Adoptez une marque qui marche, ou ouvrez la vôtre à la franchise.
-  </Cards.Card>
-  <Cards.Card title="🎬 Créateur" href="/fr/guides/creators/" arrow>
-    Recommandez vos restos préférés et touchez une commission sur les ventes.
-  </Cards.Card>
-</Cards>
+## Qui fait quoi dans l’écosystème
 
-## Prochain pas
+Pas besoin de schéma compliqué : deux groupes suffisent à tout comprendre —
+ce que le client vit, et les coulisses qui font la réussite du restaurant.
 
-Vous êtes restaurateur et vous voulez démarrer&nbsp;? Le guide
-[Démarrer en 15 minutes](/fr/guides/quick-start/) vous emmène de la création
-du compte à votre première commande pas à pas — puis le [Tableau de bord
-restaurateur](/fr/guides/restaurant/) prend le relais (KPIs temps réel,
-multi-marques, briefing IA matinal).
+### Ce que le client vit
+
+<RelatedActors
+  nodes={[
+    { icon: "sentiment_satisfied", label: "Client", desc: "Commande, savoure et fidélise son restaurant.", variant: "ink", to: "commande" },
+    { icon: "storefront", label: "Restaurant", desc: "Le cœur : prépare, sert et fait revenir.", to: "confie la course" },
+    { icon: "two_wheeler", label: "Livreur", desc: "Apporte la commande, chaude et à l’heure.", variant: "ink" }
+  ]}
+  returnNote="Le plat arrive, le client revient : la fidélité fait le reste."
+/>
+
+### Les coulisses
+
+Autour du restaurant, cinq partenaires font tourner l’écosystème :
+
+- **Fournisseur** — approvisionne le restaurant en produits et ingrédients.
+- **Créateur** — propose des recettes qui inspirent la carte et touche 2 %
+  sur les ventes de ses plats.
+- **Affilié** — fait connaître les restaurants et gagne une commission
+  d’apport.
+- **Influenceur** — donne de la visibilité à grande échelle.
+- **Franchiseur** — porte la marque et son réseau d’établissements.
+
+<Eyebrow icon="apps">Par où commencer</Eyebrow>
+
+## Les 4 façons d’utiliser Grubano
+
+<ActionCards items={[
+  { icon: "storefront", title: "Restaurateur", sub: "Commandes, carte, paiement et fidélité au même endroit", href: "/fr/guides/espace-restaurateurs/" },
+  { icon: "restaurant", title: "Client", sub: "Livraison, à emporter ou table près de chez vous", href: "/fr/guides/espace-clients/" },
+  { icon: "hub", title: "Franchisé", sub: "Plusieurs points de vente, une console unique", href: "/fr/guides/espace-franchises/" },
+  { icon: "restaurant_menu", title: "Créateur", sub: "Vos recettes, votre audience, vos gains", href: "/fr/guides/creators/" }
+]} />
+
+<Eyebrow icon="rocket_launch">Prochain pas</Eyebrow>
+
+## Vous êtes restaurateur et voulez démarrer ?
+
+Mettez votre établissement en ligne et prenez vos premières commandes le jour
+même : le guide pas à pas vous emmène de la création du compte à votre
+première commande.
+
+<ActionCards items={[
+  { icon: "bolt", title: "Démarrer en 15 minutes", sub: "De l’inscription à la première commande", href: "/fr/guides/quick-start/" },
+  { icon: "rocket_launch", title: "Suivre le parcours guidé", sub: "5 articles · ≈ 30 min", href: "/fr/guides/parcours-restaurateur/" }
+]} />

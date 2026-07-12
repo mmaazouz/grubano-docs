@@ -419,7 +419,8 @@ function buildContextSlices(topicKey, cfg, notion) {
 const STRATEGIC_GUARDRAILS = `
 GARDE-FOUS STRATÉGIQUES (impératifs) :
 - Documenter UNIQUEMENT ce qui est démontrable dans les sources fournies (routes + modèles Prisma). N'invente JAMAIS de fonctionnalité, de champ, de statut, de route, de bouton UI, ni de page d'app.
-- Économie côté utilisateur uniquement : commission 10 % et abonnement Pro 29 €/mois sont les SEULES données financières publiables. N'INVENTE PAS d'autres tarifs, ni de commission d'affiliation, ni de royalties de franchise, ni la marge interne que Grubano garde sur ces flux (= confidentiel).
+- Économie côté utilisateur uniquement. GRILLE OFFICIELLE (Règlement v6, fait foi) : commission PAR MODE — livraison 12 %, click & collect 8 %, sur place 5 %, réservation 0 %. ⛔ INTERDIT d'écrire « 10 % » ou « commission unique quel que soit le canal » ; en accroche, « à partir de 5 % » ou « 5 à 12 % selon le mode ». Assiette = sous-total des plats après remises promo ; frais de livraison NON commissionnés ; pourboires 100 % livreur ; frais de paiement absorbés par Grubano. Autres chiffres publiables : Pro 29 €/mois (« bientôt », discret), créateur 2 % (JAMAIS 4 %), petit panier 1 € (<12 €), livraison défaut 1,99 €, filleul −10 % plafonné 5 €, livreur 20 %/pourboires 100 %/retrait 25 €. N'INVENTE PAS d'autres tarifs, ni la part interne Grubano sur affiliation/franchise/fournisseur (= confidentiel).
+- DONNÉES CLIENTS (v6) : formulation cible « le restaurant garde SA relation client et sa fidélité, dans Grubano ». ⛔ NE JAMAIS écrire « les données appartiennent au restaurant », « 100 % data », ni promettre l'accès/export des emails/téléphones/adresses, ni dire qu'elles sont « masquées ».
 - Fonctionnalité visiblement prévue dans le code mais non livrée → formuler au FUTUR avec « bientôt ».
 - Ne nomme JAMAIS de marques (Gnocchi Bar, Pasta Fresca, etc.) — utiliser des descriptions génériques (« votre marque principale »).
 - Pas de framing « dark kitchens » / « ghost kitchens » — Grubano = marketplace de restaurants LOCAUX qui cuisinent dans LEUR cuisine.
@@ -430,9 +431,9 @@ DÉFINITION CANONIQUE de Grubano Pro (la SEULE description acceptable de Pro, à
 > plateformes (Uber Eats, Deliveroo, Just Eat…) directement sur votre
 > tableau de bord Grubano : un seul écran pour toutes vos commandes,
 > avec des analyses et rapports unifiés. La commission ne change pas
-> (10 % en Standard comme en Pro). Pro est un forfait mensuel de
-> 29 €/mois, sans engagement, qui s'ajoute à la commission sans la
-> remplacer.
+> (la grille par mode reste identique en Standard comme en Pro). Pro est
+> un forfait mensuel de 29 €/mois, sans engagement, qui s'ajoute à la
+> commission sans la remplacer.
 
 FORMULATIONS INTERDITES pour décrire Pro (n'écris JAMAIS ces phrases, ni leurs synonymes proches) :
 - « accélérer la visibilité » / « visibilité accrue » / « boost de visibilité »
@@ -441,7 +442,7 @@ FORMULATIONS INTERDITES pour décrire Pro (n'écris JAMAIS ces phrases, ni leurs
 - « statistiques avancées » présentées comme une feature Pro distincte (cohortes, rétention, panier moyen, comparatifs marques, heures de pointe — n'invente AUCUNE de ces features Pro)
 - « support prioritaire » comme feature Pro
 
-Si la fonctionnalité que tu décris ne touche PAS à l'agrégation multi-plateformes, ne mentionne Pro QUE pour rappeler la commission identique 10 % ; ne décris pas le contenu de Pro hors du périmètre canonique ci-dessus.
+Si la fonctionnalité que tu décris ne touche PAS à l'agrégation multi-plateformes, ne mentionne Pro QUE pour rappeler que la grille de commission par mode est identique ; ne décris pas le contenu de Pro hors du périmètre canonique ci-dessus.
 
 ⛔ ZÉRO TAUX INTERNE PUBLIÉ — TRÈS IMPORTANT :
 Le code te montre peut-être des constantes ou des valeurs par défaut pour la commission d'affiliation, le taux de redevance de franchise, les royalties, ou tout autre prélèvement interne. **Tu ne dois JAMAIS publier ces chiffres**, même s'ils apparaissent littéralement dans une ligne comme \`FRANCHISE_DEFAULT_FEE = 0.06\` ou \`AFFILIATE_RATE = 0.20\`. Ces valeurs sont **confidentielles** (Mohammed peut les ajuster).
@@ -449,10 +450,10 @@ Remplace toute valeur interne par l'une des formulations suivantes :
 - « dans les limites fixées par Grubano »
 - « défini avec vous au moment de l'ouverture »
 - « les conditions financières sont fixées entre les acteurs concernés »
-Les SEULS chiffres financiers publiables sont la commission Grubano de **10 %** et l'abonnement Pro de **29 €/mois**. Tout autre pourcentage, tout autre forfait, toute autre commission = ne PAS écrire.
+Les chiffres financiers publiables sont EXACTEMENT ceux de la grille v6 ci-dessus (12/8/5/0 % par mode, 29 €/mois Pro, 2 % créateur, 1 €, 1,99 €, −10 % cap 5 €, 20 %/100 %/25 € livreur). Tout autre pourcentage ou forfait = ne PAS écrire.
 
 TROIS RÔLES PARTENAIRES DISTINCTS (ne jamais les confondre) :
-- **Créateur** = chef / cuisinier qui publie des recettes et concepts de plats. Rémunéré sur l'usage de ses recettes. NE PAS le décrire comme un influenceur ni un affilié.
+- **Créateur** = chef / cuisinier qui publie des recettes et concepts de plats. Rémunéré 2 % par vente de plat adopté. NE PAS le décrire comme un influenceur ni un affilié.
 - **Affilié** = partenaire qui recommande Grubano via un lien/code de parrainage et touche sur les commandes apportées. NE PAS le décrire comme un créateur de recettes.
 - **Influenceur** = un PALIER de l'affilié à audience vérifiée (pas un rôle séparé) : mêmes mécaniques d'affiliation, statut vérifié en plus. NE PAS l'ériger en 4ᵉ métier ni le confondre avec le créateur.
 Quand une page parle de l'un, ne lui prête pas les fonctions d'un autre. En cas de doute, reste générique et renvoie vers la fiche du bon public via « Voir aussi ».

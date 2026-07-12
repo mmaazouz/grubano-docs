@@ -11,83 +11,89 @@ import { Steps, Callout } from 'nextra/components'
 
 # Tableau de bord
 
-Pilotez votre restaurant en temps réel : commandes en cours, chiffre d’affaires du jour, alertes de stock et vue d’ensemble multi-marques depuis un seul écran unifié.
+Pilotez votre restaurant depuis un écran unique : commandes en temps réel, chiffre d’affaires du jour, alertes de stocks et vue d’ensemble multi-marques.
 
-<ArticleMeta audience="Restaurateurs" minutes={4} updated="2026-07-10" />
+<ArticleMeta audience="Restaurateurs" minutes={3} updated="2026-07-12" />
 
 <Eyebrow icon="insights">Aperçu</Eyebrow>
 
-## Quatre piliers en un coup d'œil
+## Votre cockpit opérationnel
 
 <FlowDiagram steps={[
-  { icon: "receipt_long", title: "Commandes en cours", desc: "Suivez les préparations et livraisons en temps réel" },
-  { icon: "payments", title: "Chiffres temps réel", desc: "Chiffre d’affaires et commandes du jour, évolution J-1" },
-  { icon: "notifications", title: "Alertes", desc: "Stocks faibles, avis clients, pics d’activité" },
-  { icon: "storefront", title: "Multi-marques", desc: "Comparez la performance de chaque enseigne" }
+  { icon: "receipt_long", title: "Commandes en cours", desc: "Nouveaux ordres et préparations en direct" },
+  { icon: "payments", title: "Chiffres temps réel", desc: "CA du jour et évolution vs veille" },
+  { icon: "error", title: "Alertes", desc: "Stocks bas, retards, points d’attention" },
+  { icon: "storefront", title: "Multi-marques", desc: "Vue agrégée de toutes vos enseignes" }
 ]} />
 
 <Eyebrow icon="bolt">L’essentiel</Eyebrow>
 
 ## En bref
 
-<Essentials
-  title="Si vous ne devez retenir que ça :"
-  items={[
-    <>Le tableau de bord affiche en <b>temps réel</b> votre chiffre d’affaires du jour, le nombre de commandes et l’évolution par rapport à la veille.</>,
-    <>Vous identifiez d’un coup d'œil votre <b>marque la plus performante</b> (part du CA journalier) et vos clients fidélité actifs.</>,
-    <>Les alertes (stocks, avis) et les graphiques de tendance (7 derniers jours, heures de pointe) vous permettent d'<b>anticiper</b> plutôt que de réagir.</>
-  ]}
-/>
+<Essentials title="Si vous ne devez retenir que ça :" items={[
+  <>Le tableau de bord affiche en <b>temps réel</b> le chiffre d’affaires du jour, le nombre de commandes et les clients fidélité</>,
+  <>Vous voyez d’un coup d'œil votre <b>meilleure marque</b> (celle qui génère le plus de CA aujourd’hui) et son poids dans le total</>,
+  <>L'<b>évolution vs veille</b> vous montre si le service accélère ou ralentit — utile pour ajuster équipes et stocks</>
+]} />
 
 <Eyebrow icon="lightbulb">Comment ça marche</Eyebrow>
 
 ## Le principe (et le pourquoi)
 
-Lorsque vous ouvrez votre tableau de bord, Grubano agrège instantanément toutes les données de votre restaurant : commandes validées aujourd’hui, chiffre d’affaires cumulé, clients qui ont scanné leur carte fidélité, et performances par marque si vous en exploitez plusieurs. L’objectif est simple : **remplacer une dizaine d’onglets et de tableurs par un seul écran**, rafraîchi en continu.
+Le tableau de bord agrège automatiquement toutes les commandes validées dans la journée, quel que soit leur mode (livraison, retrait, sur place). Il calcule le chiffre d’affaires total, compte les clients inscrits au programme de fidélité et identifie votre marque la plus performante.
 
-Les chiffres affichés ne sont pas de simples totaux : ils sont mis en contexte — évolution par rapport à la veille, part de chaque marque dans le CA, heures creuses et heures de pointe — pour vous permettre de prendre les bonnes décisions au bon moment. Besoin de renforcer l’équipe un samedi soir ? Les statistiques d’affluence vous le suggèrent dès le lundi. Un plat épuise vos [stocks](/fr/guides/stocks/) plus vite que prévu ? Une pastille orange vous avertit avant la rupture.
+Chaque indicateur se rafraîchit dès qu’une nouvelle commande arrive, vous offrant une vision toujours à jour sans recharger la page. L’évolution par rapport à la veille vous aide à anticiper : un pic soudain peut signaler une promotion efficace ou un événement local, tandis qu’une baisse vous invite à vérifier vos [stocks](/fr/guides/stocks/) ou à relancer une action marketing.
 
 <Eyebrow icon="format_list_numbered">Étape par étape</Eyebrow>
 
-## Lire votre tableau de bord
+## Consulter vos indicateurs du jour
 
 <Steps>
 
-### Chiffre d’affaires du jour
+### Accédez au tableau de bord
 
-En haut à gauche, le montant encaissé depuis minuit s’affiche en euros, accompagné du nombre de commandes. Une pastille verte (↗) ou rouge (↘) indique l’évolution en pourcentage par rapport à la veille.
+Connectez-vous à votre compte restaurant sur `grubano.com/dashboard`. La page d’accueil affiche immédiatement les quatre grandes métriques : CA du jour, nombre de commandes, clients fidélité et meilleure marque.
 
-### Clients fidélité actifs
+### Lisez le chiffre d’affaires
 
-Le compteur affiche le nombre total de clients inscrits à votre programme de fidélité. Ce chiffre augmente automatiquement lorsqu’un nouveau client scanne sa carte lors du paiement.
+La première carte indique le montant total encaissé depuis minuit. Si vous avez plusieurs enseignes (multi-marques), ce total les agrège toutes.
 
-### Meilleure marque
+### Identifiez votre meilleure marque
 
-Si vous exploitez plusieurs enseignes (par exemple une pizzeria et un restaurant de burgers sous deux marques distinctes), cette carte met en avant celle qui génère la plus grande part du chiffre d’affaires du jour, avec son pourcentage.
+La carte « Meilleure marque » affiche le nom de l’enseigne qui génère le plus de revenu aujourd’hui, accompagné de son pourcentage du CA global. Cet indicateur vous aide à comprendre où concentrer vos efforts.
 
-### Évolution et alertes
+### Comparez avec la veille
 
-Le tableau de bord affiche les variations jour après jour (commandes, CA) et des pastilles de notification lorsque des stocks tombent sous le seuil critique ou qu’un nouvel avis client nécessite votre attention.
+Le pourcentage d’évolution (en vert si positif, en rouge si négatif) compare le CA d’aujourd’hui à celui d’hier. Un écart important peut révéler un changement de tendance ou un événement ponctuel.
 
 </Steps>
 
 <Eyebrow icon="calculate">Exemple concret</Eyebrow>
 
-## Un mardi à 18 h
+## Une journée type à deux marques
 
-Vous ouvrez votre tableau de bord et constatez : **320 € de CA** sur 14 commandes depuis ce matin, soit **+18 %** par rapport au mardi précédent. Votre marque principale — votre enseigne italienne, par exemple — représente **58 % du CA**, tandis que votre seconde enseigne monte doucement. Vous avez **142 clients fidélité** inscrits, et une pastille orange signale qu’il reste 8 portions de burrata en stock — juste assez pour la soirée, mais une commande fournisseur s’impose demain matin.
+Imaginons que vous exploitez deux marques : une pizzeria et un comptoir de poke bowls. À 14 h, le tableau de bord affiche :
 
-Grâce à ces informations agrégées, vous **anticipez** : vous passez la commande de burrata dans la foulée, consultez les [réservations](/fr/guides/reservations/) du soir pour ajuster les quantités, et notez mentalement que votre seconde marque gagne du terrain — peut-être le moment d’enrichir son [menu](/fr/guides/menu/) avec un nouveau plat vedette.
+<Breakdown title="Indicateurs du jour" rows={[
+  { icon: "account_balance_wallet", label: "Chiffre d’affaires", value: "847,50 €" },
+  { icon: "receipt_long", label: "Commandes validées", value: "34" },
+  { icon: "loyalty", label: "Clients fidélité", value: "128" },
+  { icon: "storefront", label: "Meilleure marque", value: "Pizzeria (62 % du CA)", variant: "total" }
+]} />
+
+L’évolution affiche **+18 %** par rapport à la veille : hier à la même heure, vous étiez à 718 €. Ce bond vous indique que le service du midi fonctionne mieux aujourd’hui — peut-être grâce à une météo favorable ou à la promotion « Midi Express » que vous avez lancée ce matin.
+
+Cet exemple est illustratif et peut varier selon votre activité, votre localisation et vos actions marketing.
 
 <Eyebrow icon="check_circle">Bonnes pratiques</Eyebrow>
 
-## Tirer le meilleur parti du dashboard
+## Tirer le meilleur parti du tableau de bord
 
 <Callout type="default">
-- **Consultez-le dès l’ouverture** : un coup d'œil matinal sur l’évolution J-1 et les stocks vous évite les surprises en plein service.
-- **Comparez vos marques** : si l’une d’elles décroche, interrogez-vous sur son menu, ses prix ou sa visibilité plutôt que d’attendre la fin du mois.
-- **Croisez avec les graphiques analytics** : le dashboard affiche l’instantané ; la page Analytics détaille les tendances sur 7 ou 30 jours — utilisez les deux en tandem pour repérer les cycles (weekend, jours fériés).
-- **Activez les notifications** : le dashboard ne vous enverra pas d’e-mail ; pensez à le rafraîchir régulièrement ou à jeter un œil aux pastilles de notification dans le menu latéral.
+- **Consultez-le plusieurs fois par jour** : un coup d'œil à 11 h, 14 h et 19 h vous donne trois instantanés du service et vous permet d’anticiper les pics.
+- **Croisez avec les [stocks](/fr/guides/stocks/)** : si une marque décolle, vérifiez que vous avez assez d’ingrédients pour tenir la soirée.
+- **Notez les événements** : une évolution inhabituelle (match, grève, météo) mérite une note mentale pour ajuster vos prévisions futures.
+- **Comparez sur plusieurs jours** : un seul écart ne fait pas une tendance — observez la semaine entière avant de modifier vos horaires ou vos [menus](/fr/guides/menu/).
 </Callout>
 
 <Eyebrow icon="error">Erreurs à éviter</Eyebrow>
@@ -95,18 +101,10 @@ Grâce à ces informations agrégées, vous **anticipez** : vous passez la comma
 ## Les pièges courants
 
 <Callout type="error">
-- **Comparer les jours de la semaine** : un lundi à 150 € n’est pas alarmant si les lundis précédents affichaient aussi 150 € — c’est le samedi qui génère le gros du CA.
-- **Négliger les heures de pointe** : le dashboard vous montre le total journalier, mais c’est le graphique d’affluence (page Analytics) qui révèle à quelle heure vous êtes saturé — ne manquez pas cette information pour planifier vos équipes.
-- **Ignorer la répartition multi-marques** : si votre seconde enseigne stagne à 10 % du CA depuis des semaines, c’est peut-être le signe qu’elle mérite un repositionnement ou une campagne spécifique.
+- **Ne pas réagir aux alertes** : si le tableau de bord signale un stock bas ou un retard de livraison, cliquer dessus et traiter le problème immédiatement évite les ruptures en plein service.
+- **Comparer des jours non comparables** : un dimanche vs un lundi, ou un jour férié vs un jour ouvré, fausse l’analyse — privilégiez la comparaison semaine N vs semaine N-1.
+- **Ignorer la meilleure marque** : si une enseigne sous-performe durablement, creusez les raisons (prix, délais, avis) plutôt que de vous concentrer uniquement sur la gagnante.
 </Callout>
-
-<Eyebrow icon="lightbulb">Astuce</Eyebrow>
-
-## Un coup d'œil depuis votre mobile
-
-Le tableau de bord est conçu pour s’afficher correctement sur smartphone : même depuis la salle ou en déplacement, vous pouvez vérifier vos chiffres en quelques secondes. Gardez l’URL **www.grubano.com/dashboard** en favori dans votre navigateur mobile — aucune application séparée n’est nécessaire.
-
-Si vous exploitez plusieurs restaurants ou points de vente, pensez à basculer entre vos établissements via le sélecteur en haut de page (lorsque cette fonctionnalité multi-établissement sera activée pour votre compte).
 
 <Eyebrow icon="quiz">FAQ</Eyebrow>
 
@@ -115,23 +113,23 @@ Si vous exploitez plusieurs restaurants ou points de vente, pensez à basculer e
 <Faq items={[
   {
     icon: "schedule",
-    q: "À quelle fréquence les chiffres sont-ils actualisés ?",
-    a: "En temps réel : dès qu’une commande est validée ou qu’un client scanne sa carte fidélité, le compteur se met à jour. Si vous gardez l’onglet ouvert, rechargez la page pour voir les dernières données (un rafraîchissement automatique toutes les 30 secondes sera ajouté prochainement)."
-  },
-  {
-    icon: "percent",
-    q: "Le CA affiché est-il brut ou net de commission ?",
-    a: "Le tableau de bord affiche le chiffre d’affaires brut encaissé auprès de vos clients (montant des commandes). Le détail de la commission Grubano (10 % par commande) et des versements nets figure sur la page Finances & versements."
+    q: "À quelle heure le compteur du jour redémarre-t-il ?",
+    a: "Chaque jour à minuit (00:00), les indicateurs CA et commandes repartent de zéro. Les clients fidélité, eux, représentent le total cumulé depuis l’ouverture de votre compte."
   },
   {
     icon: "storefront",
-    q: "Comment ajouter une seconde marque pour voir la comparaison ?",
-    a: "Rendez-vous dans la section Marques (menu latéral) et créez une nouvelle enseigne. Dès qu’elle aura enregistré des commandes, elle apparaîtra automatiquement dans le tableau de bord avec sa part du CA."
+    q: "Comment la « meilleure marque » est-elle calculée ?",
+    a: "Grubano additionne le CA de chaque marque depuis minuit et classe par montant décroissant. La marque en tête s’affiche, avec son pourcentage du CA total. Si deux marques sont à égalité, la première par ordre alphabétique l’emporte."
   },
   {
-    icon: "notifications",
-    q: "Puis-je recevoir les alertes de stock par e-mail ?",
-    a: "Pas encore : les alertes apparaissent uniquement sous forme de pastilles dans le dashboard et la page Stocks. Une option de notification par e-mail ou SMS sera ajoutée prochainement."
+    icon: "update",
+    q: "Les chiffres se mettent-ils à jour automatiquement ?",
+    a: "Oui, le tableau de bord interroge le serveur toutes les quelques secondes. Dès qu’une nouvelle commande est validée, le CA, le nombre de commandes et la meilleure marque se recalculent sans que vous rechargiez la page."
+  },
+  {
+    icon: "error",
+    q: "Que faire si le tableau de bord affiche zéro partout ?",
+    a: "Cela peut arriver si aucune commande n’a encore été validée aujourd’hui, ou si la base de données n’est pas joignable. Vérifiez votre connexion internet et contactez le support si le problème persiste au-delà de quelques minutes."
   }
 ]} />
 
@@ -140,28 +138,8 @@ Si vous exploitez plusieurs restaurants ou points de vente, pensez à basculer e
 ## Articles liés
 
 <RelatedCards items={[
-  {
-    icon: "menu_book",
-    title: "Menu & Scan IA",
-    sub: "Carte et Scan IA",
-    href: "/fr/guides/menu/"
-  },
-  {
-    icon: "inventory_2",
-    title: "Gestion des stocks",
-    sub: "Journal et alertes",
-    href: "/fr/guides/stocks/"
-  },
-  {
-    icon: "table_restaurant",
-    title: "Réservations & sur place",
-    sub: "Tables et no-show",
-    href: "/fr/guides/reservations/"
-  },
-  {
-    icon: "payments",
-    title: "Finances & versements",
-    sub: "Commission et versements",
-    href: "/fr/guides/finances/"
-  }
+  { icon: "restaurant_menu", title: "Menu & Scan IA", sub: "Gérer votre carte en un clic", href: "/fr/guides/menu/" },
+  { icon: "inventory", title: "Gestion des stocks", sub: "Anticiper les ruptures", href: "/fr/guides/stocks/" },
+  { icon: "table_bar", title: "Réservations & sur place", sub: "Piloter votre salle", href: "/fr/guides/reservations/" },
+  { icon: "account_balance", title: "Finances & versements", sub: "Suivre vos encaissements", href: "/fr/guides/finances/" }
 ]} />
