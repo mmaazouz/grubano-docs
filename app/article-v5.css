@@ -973,6 +973,12 @@ html.dark .disc-model__cell--mode { color: var(--gb-text); }
   .disc-model__cell--hist { text-align: start; align-items: flex-start; }
   .disc-model__cell--gb::before { content: 'Grubano'; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; color: var(--gb-zest-600); }
   .disc-model__cell--hist::before { content: 'Marché'; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; color: var(--gb-muted-2); }
+  /* « Grubano » = nom propre (inchangé) ; « Marché » localisé par langue
+     (fix-html-lang.js pose <html lang>). */
+  html[lang='en'] .disc-model__cell--hist::before { content: 'Market'; }
+  html[lang='es'] .disc-model__cell--hist::before { content: 'Mercado'; }
+  html[lang='ar'] .disc-model__cell--hist::before { content: 'السوق'; }
+  html[lang='it'] .disc-model__cell--hist::before { content: 'Mercato'; }
   .disc-model__head { display: none; }
 }
 
@@ -1390,15 +1396,20 @@ html.dark .anav { --anav-danger: #f8766b; --anav-danger-bg: rgba(213, 55, 42, 0.
 }
 .anav-u { font-size: 16px; font-weight: 700; color: var(--gb-muted); }
 .anav-tile__foot { display: flex; align-items: center; gap: 7px; margin-top: 11px; }
-.anav-chip {
-  display: inline-flex; align-items: center; gap: 3px;
-  font-size: 11.5px; font-weight: 800; border-radius: 999px; padding: 3px 8px;
-  direction: ltr; unicode-bidi: isolate;
+/* nombres toujours en LTR (lisibles en RTL/arabe) */
+.anav-num { direction: ltr; unicode-bidi: isolate; }
+/* badge « bientôt » neutre (remplace les badges de variation, non-live) */
+.anav-soon {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 11px; font-weight: 800; border-radius: 999px; padding: 3px 9px;
+  background: var(--gb-surface-2); color: var(--gb-muted);
+  border: 1px solid var(--gb-border);
 }
-.anav-chip .ms { font-size: 14px; }
-.anav-chip--up { background: var(--gb-basil-bg); color: var(--gb-basil-600); }
-.anav-chip--down { background: var(--anav-danger-bg); color: var(--anav-danger); }
-.anav-tile__cmp { font-size: 11px; color: var(--gb-muted-2); }
+.anav-soon .ms { font-size: 13px; }
+/* tuile « à venir » (Note moyenne) : atténuée */
+.anav-tile--soon { background: var(--gb-surface-2); }
+.anav-tile__ic--soon { background: var(--gb-border) !important; color: var(--gb-muted-2) !important; }
+.anav-tile__v--soon { color: var(--gb-muted-2); }
 
 /* sparkline row */
 .anav-spark-row { display: grid; grid-template-columns: 1.5fr 1fr; gap: 12px; margin-top: 12px; }
