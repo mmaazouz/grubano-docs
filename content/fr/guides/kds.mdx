@@ -22,7 +22,7 @@ L’écran cuisine affiche en temps réel les commandes à préparer, colonne pa
 ## En bref
 
 <Essentials title="Si vous ne devez retenir que ça :" items={[
-  <>L’écran <b>Cuisine</b> ne montre que les commandes à préparer, réparties en trois colonnes : <b>Nouvelles</b>, <b>En préparation</b>, <b>Prêtes</b> — ce qui est remis, livré ou annulé disparaît automatiquement</>,
+  <>L’écran <b>Cuisine</b> ne montre que les commandes à préparer, réparties en trois colonnes : <b>À préparer</b>, <b>En préparation</b>, <b>Prêt</b> — ce qui est remis, livré ou annulé disparaît automatiquement</>,
   <>Chaque ticket porte un <b>minuteur</b> calé sur l’heure réelle de la commande : la couleur change à 10 puis 20 minutes pour prioriser d’un coup d’œil</>,
   <>Un seul bouton par ticket (<b>Commencer</b> puis <b>Prêt</b>) : le geste est instantané, sans retour en arrière, et ne touche jamais à l’argent</>
 ]} />
@@ -49,7 +49,7 @@ Depuis le menu latéral de votre tableau de bord, cliquez sur **Cuisine**. Le ba
 
 ### Lisez le bandeau de synthèse
 
-Trois indicateurs en haut de page : **Tickets en cours** (nouvelles commandes + en préparation), **Temps moyen en cuisine**, et **Ticket le plus ancien** — ce dernier passe en alerte dès 20 minutes d’attente.
+Trois indicateurs en haut de page : **Tickets en cours** (commandes à préparer + en préparation), **Temps moyen en cuisine**, et **Ticket le plus ancien** — ce dernier passe en alerte dès 20 minutes d’attente.
 
 ### Repérez les tickets urgents
 
@@ -57,11 +57,11 @@ Chaque carte affiche le numéro court de la commande (ses 5 derniers caractères
 
 ### Lancez la préparation
 
-Touchez **Commencer** sur un ticket de la colonne **Nouvelles** : il bascule aussitôt **En préparation** — le changement est immédiat à l’écran, puis confirmé par le serveur. En cas d’échec (réseau, par exemple), un message « Impossible de mettre à jour le ticket. Réessayez. » s’affiche et l’écran se resynchronise.
+Touchez **Commencer** sur un ticket de la colonne **À préparer** : il bascule aussitôt **En préparation** — le changement est immédiat à l’écran, puis confirmé par le serveur. En cas d’échec (réseau, par exemple), un message « Impossible de mettre à jour le ticket. Réessayez. » s’affiche et l’écran se resynchronise.
 
 ### Marquez le plat prêt
 
-Quand le plat est dressé, touchez **Prêt** : le ticket rejoint la colonne **Prêtes**, avec un tag « Prêt » à la place du bouton. À ce stade, le rôle de la cuisine est terminé : la remise au [client](/fr/guides/consumer/) ou au livreur se pilote depuis la page **Commandes**.
+Quand le plat est dressé, touchez **Prêt** : le ticket rejoint la colonne **Prêt**, avec un tag « Prêt » à la place du bouton. À ce stade, le rôle de la cuisine est terminé : la remise au [client](/fr/guides/consumer/) ou au livreur se pilote depuis la page **Commandes**.
 
 </Steps>
 
@@ -81,8 +81,8 @@ Quand le plat est dressé, touchez **Prêt** : le ticket rejoint la colonne **Pr
 ## Les pièges courants
 
 <Callout type="error">
-- **Chercher un bouton « Retour »** : l’écran cuisine avance toujours vers l’avant. Un ticket passé « En préparation » ne peut pas revenir en « Nouvelles » — le serveur refuse ce type de changement.
-- **Confondre « Prêt » et « Remis »** : marquer un plat prêt ne clôt pas la commande. Le ticket reste dans la colonne **Prêtes** jusqu’à sa remise, suivie depuis la page Commandes.
+- **Chercher un bouton « Retour »** : l’écran cuisine avance toujours vers l’avant. Un ticket passé « En préparation » ne peut pas revenir en « À préparer » — le serveur refuse ce type de changement.
+- **Confondre « Prêt » et « Remis »** : marquer un plat prêt ne clôt pas la commande. Le ticket reste dans la colonne **Prêt** jusqu’à sa remise, suivie depuis la page Commandes.
 - **S’inquiéter pour l’encaissement** : aucun geste de l’écran cuisine ne touche au paiement — marquer « Prêt » n’encaisse rien et ne crédite aucun point de fidélité (les points partent uniquement une fois la commande livrée).
 - **Piloter la cuisine depuis la seule page Commandes** : possible, mais moins réactif — l’écran Cuisine s’actualise toutes les 8 secondes (contre 15 pour Commandes) et ne montre que ce qui concerne la brigade.
 </Callout>
@@ -95,7 +95,7 @@ Quand le plat est dressé, touchez **Prêt** : le ticket rejoint la colonne **Pr
   {
     icon: "undo",
     q: "Puis-je annuler ou revenir en arrière depuis l’écran cuisine ?",
-    a: "Non. Le passage Nouvelles → En préparation → Prêtes est à sens unique, et le serveur rejette toute marche arrière. En cas d’erreur de doigt, laissez le ticket poursuivre son chemin : la préparation réelle en cuisine reste sous votre contrôle."
+    a: "Non. Le passage À préparer → En préparation → Prêt est à sens unique, et le serveur rejette toute marche arrière. En cas d’erreur de doigt, laissez le ticket poursuivre son chemin : la préparation réelle en cuisine reste sous votre contrôle."
   },
   {
     icon: "schedule",
