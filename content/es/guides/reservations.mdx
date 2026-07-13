@@ -1,85 +1,168 @@
 ---
-title: "Reservas y presencial"
-description: "Gestionar las mesas y los turnos: plano de sala, aceptar / rechazar una solicitud, seguir la ocupación en tiempo real."
+title: "Reservas y en sala"
+description: "Gestionar las mesas y las franjas horarias: plano de sala, aceptar / rechazar una solicitud, seguir la ocupación en tiempo real."
 generated: true
-sourceHash: 799138ecc79c42fc
+sourceHash: 93436a2f9e62949f
 generator: scripts/generate-feature-page.js
-templateVersion: 5
+templateVersion: 6
 ---
 
 import { Steps, Callout } from 'nextra/components'
 
-# Reservas y presencial
+# Reservas y en sala
 
-Gestione su plano de sala, acepte o rechace las solicitudes de mesa, y siga la ocupación en tiempo real desde un panel unificado.
+Controle su sala en tiempo real: plano interactivo, gestión de solicitudes, preautorización bancaria, cuenta digital — todo lo esencial para agilizar el servicio y fidelizar a sus comensales.
 
-```mermaid
-stateDiagram-v2
-  direction LR
-  confirmed: Confirmada
-  arrived: Llegada
-  overrun: Retraso
-  cancelled: Cancelada
-  noshow: No presentado
-  [*] --> confirmed
-  confirmed --> arrived
-  arrived --> overrun
-  overrun --> [*]
-  confirmed --> cancelled
-  arrived --> cancelled
-  cancelled --> [*]
-  confirmed --> noshow
-  arrived --> noshow
-  noshow --> [*]
-```
+<ArticleMeta audience="Restaurantes" minutes={4} updated="2026-07-10" />
 
-## Lo esencial
+<Eyebrow icon="insights">Visión general</Eyebrow>
 
-El módulo Reservas le permite visualizar su plano de sala, gestionar las mesas y sus turnos, y aceptar o rechazar cada solicitud. Sigue el estado de cada servicio en tiempo real (confirmada, llegada, finalizada) y anticipa la afluencia gracias a una vista diaria.
+## De la solicitud al servicio pagado
 
-## Cómo funciona
+<FlowDiagram steps={[
+  { icon: "receipt_long", title: "Configurar la sala", desc: "Plano de mesas + horarios de apertura" },
+  { icon: "schedule", title: "Recibir la solicitud", desc: "El cliente reserva, usted valida" },
+  { icon: "payments", title: "Validar", desc: "Preautorización bancaria si es necesario" },
+  { icon: "restaurant", title: "Servicio", desc: "Cuenta abierta desde la llegada" }
+]} />
 
-Grubano centraliza sus reservas en una sola pantalla: crea las mesas de su sala, define su capacidad (número de cubiertos), y luego recibe las solicitudes — tanto si provienen de un cliente conectado como de una toma manual. Cada reserva pasa por un ciclo de vida sencillo: **confirmada** desde su creación, **llegada** cuando acoge al cliente, y luego **cancelada** o **no presentado** según el caso. El sistema verifica automáticamente la disponibilidad del turno (ningún solapamiento en la misma mesa) y le alerta si la solicitud cae fuera de sus horarios de apertura — usted tiene la última palabra.
+<Eyebrow icon="bolt">Lo esencial</Eyebrow>
 
-La pantalla Reservas muestra todas las mesas de su establecimiento actual; si gestiona varios establecimientos (franquicia), cada punto de venta tiene su propio plano y sus propios turnos. El [panel de control](/es/guides/restaurant/) agrupa las reservas activas del día, con las próximas llegadas en la parte superior de la lista.
+## En resumen
 
-## Paso a paso
+<Essentials 
+  title="Si solo debe recordar esto:" 
+  items={[
+    <>Su <b>plano de sala</b> es la fuente única: añada las mesas una vez y Grubano las usa en todas partes (reservas, cuentas, ocupaciones).</>,
+    <>La <b>preautorización bancaria</b> bloquea un importe sin cobrarlo — usted lo captura únicamente en caso de no-show, o lo anula si el cliente llega.</>,
+    <>La <b>cuenta</b> se crea automáticamente cuando marca «Llegada» — el cliente puede consultarla y pagarla desde su teléfono, y usted cobra desde el suyo.</>
+  ]} 
+/>
+
+<Eyebrow icon="lightbulb">Cómo funciona</Eyebrow>
+
+## El principio (y el porqué)
+
+Grubano vincula la reserva, la preautorización bancaria y la cuenta en **una sola ficha por servicio**: usted reserva una mesa → el sistema bloquea un depósito si lo activa → cuando el cliente llega, la cuenta se abre en esa misma mesa → el pago libera la mesa. Todo parte del [panel de control](/es/guides/restaurant/): configure su sala y sus horarios una vez, y luego deje que Grubano orqueste las franjas horarias, vigile las ocupaciones y detecte los excesos de tiempo.
+
+Una sola pantalla ofrece la visión completa: mesas libres (verde), ocupadas (naranja), con retraso (rojo), cada una con su estado en tiempo real. Haga clic en una reserva para aceptar, rechazar, marcar la llegada o cobrar la cuenta.
+
+<Eyebrow icon="format_list_numbered">Paso a paso</Eyebrow>
+
+## Gestionar una reserva de principio a fin
 
 <Steps>
 
-### Cree su plano de sala
+### Configure su sala
 
-Diríjase a **Reservas** y añada cada mesa: asígnele un nombre ("Mesa 1", "Terraza 4"), indique el número de plazas sentadas, y colóquela en el plano visual. Una mesa activa aparece inmediatamente disponible para reserva.
+Desde el panel de control, sección **Mesas**, añada cada mesa (nombre, número de plazas, posición en el plano). El plano sirve en todas partes: reservas, cuentas, vista en tiempo real. Defina también sus horarios de apertura — toda reserva fuera de horario recibe un aviso.
 
-### Reciba una solicitud
+### Reciba la solicitud
 
-Un cliente solicita una mesa para una fecha, una hora y un número de cubiertos. El sistema verifica que la mesa elegida tiene suficientes plazas y que ninguna otra reserva ocupa el turno; si todo está libre, la reserva se crea con el estado **confirmada**.
+El cliente reserva en línea (una franja horaria propuesta según sus horarios y la capacidad de la mesa). La solicitud llega a su panel de control con el estado `confirmed` (confirmada). Verá el nombre, el número de comensales, la hora y las alergias o notas si las hay.
 
-<Callout type="warning">
-Si el turno cae fuera de sus horarios configurados o durante un cierre excepcional, se muestra una advertencia — puede confirmar la reserva de todas formas (evento privado, servicio especial).
-</Callout>
+### Valide o rechace
 
-### Valide la llegada
+Acepte la reserva tal cual, o anúlela si la franja horaria no le conviene (el cliente recibe un email automático). Si ha activado la preautorización bancaria (importe del depósito + penalización por no-show), Grubano bloquea el importe en la tarjeta del cliente en el momento de la reserva — no se cobra nada, el banco solo congela el importe.
 
-Cuando el cliente se presenta, marque la reserva como **llegada**. Se abre automáticamente una cuenta en la mesa, lista para recibir los pedidos. Si aún subsiste una antigua cuenta impagada en esta mesa, el sistema le avisa — regularice o cancele la antigua nota antes de acoger el nuevo servicio.
+### Marque la llegada
 
-### Gestione las ausencias y cancelaciones
+El día señalado, cuando el cliente se presenta, haga clic en **Llegada**. Grubano pasa la reserva al estado `arrived`, anula la preautorización bancaria (el bloqueo desaparece en 5–7 días) y **abre automáticamente una cuenta** en la mesa correspondiente. El cliente ya puede consultar la cuenta escaneando el código QR de la mesa, o usted la rellena desde su panel de control.
 
-Una reserva puede ser **cancelada** (por usted o por el cliente) o marcada como **no presentado** si la persona no acude. En ambos casos, la mesa vuelve a estar libre para el turno. Grubano puede enviar un correo electrónico al cliente para informarle de la cancelación por parte del restaurante (se utiliza la dirección de correo electrónico del cliente o la de su cuenta).
+### Cobre y libere
+
+Una vez terminada la comida, presente la cuenta (app del cliente o [panel de control](/es/guides/restaurant/)). El cliente paga — tarjeta bancaria, efectivo u otro medio — y usted valida el pago. La cuenta pasa a `paid`, la mesa vuelve a quedar libre y el ciclo se completa.
 
 </Steps>
 
-## Buenas prácticas
+<Eyebrow icon="calculate">Ejemplo concreto</Eyebrow>
 
-- **Defina una duración por defecto**: cada establecimiento puede fijar una duración media de servicio (60, 90 o 120 minutos); el sistema calcula automáticamente el fin del turno para evitar solapamientos.
-- **Bloquee los turnos pasados**: el servidor rechaza cualquier reserva cuya hora de inicio ya haya transcurrido (con una tolerancia de 5 minutos para absorber el desfase del reloj).
-- **Verifique la capacidad**: una mesa de 4 plazas no puede acoger una reserva de 6 cubiertos — el sistema bloquea la solicitud y le pide elegir una mesa más grande o combinar varias mesas.
-- **Vigile la ocupación en tiempo real**: el panel de control muestra el número de servicios activos y las próximas llegadas, permitiéndole anticipar los momentos de máxima afluencia.
+## Un servicio de mediodía con preautorización
 
-## Ejemplo concreto
+Un cliente reserva una mesa para 4 a las 12:30, con una preautorización de 20 € y una penalización por no-show de 15 €. Grubano bloquea 20 € en su tarjeta (no se cobra nada). El cliente llega a tiempo → usted marca **Llegada**, la preautorización se anula, la cuenta se abre. La comida cuesta 68 €, el cliente paga con tarjeta, usted valida → la mesa queda libre.
 
-Su restaurante dispone de 3 mesas (2 plazas, 4 plazas, 6 plazas). Un cliente reserva la mesa de 4 para el sábado de 20h a 22h: el sistema verifica que ninguna otra reserva ocupa ese turno, confirma la solicitud y la añade a la planificación. El sábado por la noche, el cliente llega a las 20h05: cambia la reserva al estado **llegada**, se abre automáticamente una cuenta en la mesa 4, y toma el pedido. A las 22h15, el servicio ha finalizado, la cuenta está pagada: la mesa vuelve a estar libre para un eventual segundo servicio.
+**Escenario no-show**: el cliente no viene y no anula. Usted marca **No-show** en el panel de control → Grubano captura automáticamente los 15 € de penalización de la preautorización (el resto, 5 €, se anula). El cliente recibe un email con el importe cobrado y el procedimiento de reclamación.
 
-## Para ir más allá
+<Eyebrow icon="check_circle">Buenas prácticas</Eyebrow>
 
-- [Panel de control restaurante](/es/guides/restaurant/) — vista general de las reservas activas y las próximas llegadas del día.
+## Sacar el máximo partido del sistema
+
+<Callout type="default">
+
+- **Indique sus horarios y cierres**: Grubano bloquea automáticamente las franjas horarias fuera de horario o durante los cierres excepcionales (puede forzar una reserva privada, pero el sistema le avisa).
+- **Active la preautorización para los servicios de gran demanda** (viernes/sábado por la noche, menús de degustación): reduce drásticamente los no-shows sin esfuerzo por su parte.
+- **Marque «Llegada» en cuanto el cliente se sienta**: la cuenta se abre de inmediato, el cliente puede consultarla durante la comida y usted gana tiempo a la salida.
+- **Vigile el código de color**: una mesa naranja (ocupada) que pasa a rojo (exceso de tiempo) indica que es hora de ofrecer la cuenta — sin apresurar, solo para agilizar la rotación.
+
+</Callout>
+
+<Eyebrow icon="error">Errores que evitar</Eyebrow>
+
+## Los errores más comunes
+
+<Callout type="error">
+
+- **Olvidar validar la llegada**: si no marca «Llegada», la cuenta no se abre automáticamente — el cliente no puede ni consultarla ni pagar en línea.
+- **Anular manualmente una preautorización**: Grubano lo hace por usted (llegada → anulación, no-show → captura) — intervenir directamente en el proveedor de pagos puede desincronizar el estado.
+- **No indicar el plano de sala**: sin ninguna mesa configurada, no puede aceptar reservas — la selección de mesa es obligatoria.
+- **Capturar la preautorización en una llegada normal**: la preautorización se captura únicamente en caso de no-show; una llegada siempre la anula (el bloqueo desaparece sin cobro).
+
+</Callout>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
+
+## Preguntas frecuentes
+
+<Faq items={[
+  {
+    icon: "payments",
+    q: "¿Cuánto cuesta la preautorización bancaria?",
+    a: "Nada. Grubano no cobra ningún cargo por el bloqueo. Solo los pagos efectivamente capturados (penalización por no-show) soportan las comisiones habituales de nuestro proveedor de pagos. Las anulaciones (cliente que llega) no generan ningún coste."
+  },
+  {
+    icon: "schedule",
+    q: "¿Puede el cliente reservar fuera de horario?",
+    a: "No por defecto: Grubano solo propone las franjas horarias dentro de sus horarios de apertura y fuera de los cierres excepcionales. Puede forzar una reserva desde el panel de control (un evento privado un día de cierre, por ejemplo) — el sistema le avisa pero no lo bloquea."
+  },
+  {
+    icon: "receipt_long",
+    q: "¿Se abre la cuenta si he olvidado marcar «Llegada»?",
+    a: "No: la cuenta automática solo se crea al pasar al estado «Llegada». Si lo olvida, ábrala manualmente desde la pestaña Mesas de su panel de control — seleccione la mesa y haga clic en «Nueva cuenta»."
+  },
+  {
+    icon: "error",
+    q: "¿Qué ocurre si una mesa ya tiene una cuenta sin pagar?",
+    a: "Cuando marca «Llegada» en una reserva, Grubano comprueba si la mesa tiene una cuenta sin liquidar de un servicio anterior. Si es así, NO crea una nueva cuenta y le avisa: liquide o anule la anterior antes de acoger el nuevo servicio."
+  }
+]} />
+
+<Eyebrow icon="menu_book">Para profundizar</Eyebrow>
+
+## Artículos relacionados
+
+<RelatedCards items={[
+  {
+    icon: "insights",
+    title: "Panel de control",
+    sub: "Indicadores en directo",
+    href: "/es/guides/restaurant/"
+  },
+  {
+    icon: "shopping_bag",
+    title: "Pedir y seguir",
+    sub: "Pedir y seguir",
+    href: "/es/guides/consumer/"
+  },
+  {
+    icon: "bolt",
+    title: "Empezar en 15 minutos",
+    sub: "Listo en 15 minutos",
+    href: "/es/guides/quick-start/"
+  },
+  {
+    icon: "menu_book",
+    title: "Menú y escaneo IA",
+    sub: "Carta y escaneo IA",
+    href: "/es/guides/menu/"
+  }
+]} />

@@ -1,92 +1,166 @@
 ---
-title: "Compensation & Withdrawals"
-description: "Understanding your delivery driver compensation: delivery fees minus a 20% Grubano commission, tips paid out at 100%, maturation upon delivery, and withdrawal from 25 €."
+title: "Earnings & withdrawals"
+description: "Understand your courier earnings: delivery fees minus a 20% Grubano commission, tips paid out at 100%, maturation on delivery, and withdrawal from 25 €."
 generated: true
-sourceHash: a90f361581a84dd8
+sourceHash: 80bf12c90b9e3ced
 generator: scripts/generate-feature-page.js
-templateVersion: 5
+templateVersion: 6
 ---
 
 import { Steps, Callout } from 'nextra/components'
 
-# Compensation & Withdrawals
+# Earnings & withdrawals
 
-Your compensation is calculated for each delivery: you receive a portion of the delivery fees after Grubano commission, and 100% of tips.
+Track your delivery earnings in real time: ride fees minus the Grubano commission, tips paid out in full, and withdraw your income as soon as the threshold is reached.
 
-<FlowDiagram steps={["Delivery completed","Fees − 20% commission","Maturation","Withdrawal from 25 €"]} />
+<ArticleMeta audience="Couriers" minutes={4} updated="2026-07-10" />
 
-## The Essentials
+<Eyebrow icon="insights">Overview</Eyebrow>
 
-Grubano compensates delivery drivers from two sources: a portion of the delivery fees paid by the customer (after a Grubano commission), and the entirety of the tips given. Your earnings are available for withdrawal as soon as they have matured and your balance reaches 25 €.
+## Where your money travels
 
-## How It Works
+<FlowDiagram steps={[
+  { icon: "two_wheeler", title: "Ride delivered", desc: "You complete a delivery for a partner restaurant" },
+  { icon: "percent", title: "Fees − 20% commission", desc: "The delivery fees are split between you and Grubano" },
+  { icon: "schedule", title: "Maturation", desc: "Your earnings become available after a security period" },
+  { icon: "payments", title: "Withdrawal from 25 €", desc: "Transfer your income to your bank account" }
+]} />
 
-Each time you complete a [mission](/en/guides/driver/), the system records two types of earnings: **delivery fees** (the portion that goes to you from the delivery fees charged to the customer, minus a Grubano commission) and **tips** (paid out at 100%, with no commission). These amounts go through three states: **pending** (just after delivery), **matured** (after a 7-day security period, ensuring that the order is paid and not refunded), then **paid** (once you have requested a withdrawal). This cycle protects both the delivery driver and the platform: you are assured of receiving what is owed to you, and Grubano ensures that the transaction is final before paying out.
+<Eyebrow icon="bolt">The essentials</Eyebrow>
 
-The **Grubano commission** on delivery fees finances the tools, logistics infrastructure, and support. Tips, however, go to you in full — they directly reward your service.
+## In short
 
-## Step by Step
+<Essentials title="If you only remember one thing:" items={[
+  <>You earn <b>80% of the delivery fees</b> the customer pays (Grubano takes a 20% commission); tips come back to you at <b>100%</b>.</>,
+  <>Your earnings <b>mature after a few days</b> of security (to guarantee that no refund cancels the order), then move into your available balance.</>,
+  <>You can withdraw as soon as your balance reaches <b>25 €</b>; the transfer is made within 1 to 3 business days to your bank account.</>
+]} />
+
+<Eyebrow icon="lightbulb">How it works</Eyebrow>
+
+## The principle (and the why)
+
+Every time you deliver an order, the system automatically records your earning: the share of the delivery fees paid by the customer that comes back to you, minus the 20% Grubano commission. If the customer leaves a tip, it is paid out to you in full, with no deduction whatsoever.
+
+To protect everyone involved, your earnings stay *pending* for a short maturation period: this guarantees that the order was properly fulfilled and that no exceptional refund cancels it. Once this delay has passed, the amount moves into your *available* balance and you can withdraw it. This mechanism ensures trust and transparency between you, the restaurants, and Grubano.
+
+<Eyebrow icon="format_list_numbered">Step by step</Eyebrow>
+
+## Track and withdraw your earnings
 
 <Steps>
 
-### Delivery Completed
+### Check your dashboard
 
-As soon as you mark a mission as delivered, the system records two lines of earnings: one for the delivery fees (gross amount − Grubano commission = net amount owed to you) and, if applicable, one for the tip (100% net). These lines appear immediately in your **My Earnings** space, with the status **Pending**.
+Log in to your courier space and go to the "My earnings" page. There you will see three balances: *available* (what you can withdraw right away), *pending* (earnings still maturing), and *already paid out* (the history of your withdrawals).
 
-### Maturation Period
+### Review the ride details
 
-Your earnings remain pending for **7 days** from the delivery date. This delay allows verification that the order is paid and that no full refund has been issued. At the end of this period, if everything is in order, the earnings automatically change to **Matured** status and join your available balance.
+Each line shows the ride delivered, the gross amount (delivery fee or tip), the Grubano commission where applicable, and the net that comes back to you. The status shows whether the earning is still *pending*, *matured* (available), or *paid* (already transferred).
 
-### Available Balance
+### Request a withdrawal
 
-Your available balance corresponds to the sum of all matured earnings that have not yet been paid out. You can check it at any time in **My Earnings**. As soon as this balance reaches or exceeds **25 €**, the **Withdraw** button becomes active.
+As soon as your available balance reaches or exceeds 25 €, the "Withdraw" button becomes active and records your request. The actual triggering of transfers is coming soon: once enabled, the transfer will go to the account you registered when you signed up, with no withdrawal fees.
 
-### Withdrawal Request
+### Receive the transfer
 
-Click **Withdraw** to request a transfer of your available balance. The system verifies that your payment details are recorded and validated with our payment provider, then records your request — the actual triggering of transfers is coming soon. Once a transfer is completed, your earnings will change to **Paid** status and appear in the history.
+Once actual triggering is enabled, the payment will arrive within 1 to 3 business days. You will get an email notification when the transfer has been sent, then a second one when your bank has credited it. The history keeps a record of every withdrawal (date, amount, transfer reference).
 
 </Steps>
 
-<Callout type="info">
-The withdrawal amount is always calculated by the server — you cannot choose a partial amount. Each withdrawal completely empties your available balance (all earnings matured at that moment).
+<Eyebrow icon="calculate">A concrete example</Eyebrow>
+
+## A week of 8 rides
+
+Let's imagine you deliver 8 orders in the week, with average delivery fees of 3,50 € per ride and 2 tips of 2 € each.
+
+<Breakdown title="Breakdown of your weekly earnings" rows={[
+  { icon: "two_wheeler", label: "Delivery fees (8 × 3,50 €)", value: "28,00 €" },
+  { icon: "percent", label: "Grubano commission (20%)", value: "−5,60 €", variant: "minus" },
+  { icon: "account_balance_wallet", label: "Your share on the rides", value: "22,40 €" },
+  { icon: "loyalty", label: "Tips (2 × 2 €, 100%)", value: "+4,00 €", variant: "plus" },
+  { icon: "payments", label: "Total net for the week", value: "26,40 €", variant: "total" }
+]} />
+
+Once the maturation period has passed (a few days after each ride), these 26,40 € move into your available balance. You are over the 25 € threshold: you can withdraw the full amount.
+
+*This example is illustrative; actual delivery fees vary depending on distance and the setup of each restaurant.*
+
+<Eyebrow icon="check_circle">Best practices</Eyebrow>
+
+## Maximize your income
+
+<Callout type="default">
+- **Accept missions quickly**: the most profitable time slots (lunch, evening) go to responsive couriers.
+- **Meet the deadlines**: an on-time delivery boosts your profile and can unlock more missions.
+- **Check your balance regularly**: withdraw as soon as you reach the threshold to optimize your cash flow.
+- **Keep your bank details up to date**: a valid IBAN prevents any transfer delay.
 </Callout>
 
-## Best Practices
+<Eyebrow icon="error">Mistakes to avoid</Eyebrow>
 
-**Check your My Earnings space regularly** to track your income in real time. You will see a clear distinction between earnings still pending (which will mature in a few days) and those already available for withdrawal.
+## Common pitfalls
 
-**Anticipate the 25 € threshold**: if you complete few deliveries per week, it may take several days to reach the minimum amount. Plan your withdrawals accordingly to avoid unnecessary waiting.
+<Callout type="error">
+- **Don't confuse the "pending" balance with the "available" balance**: only the latter can be withdrawn; the wait is a legal security period, not an arbitrary hold.
+- **Don't request several withdrawals in quick succession**: if a transfer is already in progress, the "Withdraw" button stays greyed out until the previous one is finalized (protection against duplicates).
+- **Don't forget to verify your identity**: a verified bank account (KYC) is required before the first withdrawal — complete this step as soon as you sign up so your earnings don't get blocked.
+</Callout>
 
-**Verify your bank account** before your first withdrawal: ensure that your details are correctly recorded and validated with our payment provider. An incomplete profile blocks the transfer — the system will alert you if any information is missing.
+<Eyebrow icon="quiz">FAQ</Eyebrow>
 
-**Keep track of your withdrawals**: the history in My Earnings archives each payout with its date, amount, and transfer reference. Useful for your declarations or personal accounting.
-
-## Frequently Asked Questions
+## Frequently asked questions
 
 <Faq items={[
   {
-    icon: "help",
-    q: "Why are my earnings pending for 7 days?",
-    a: "This delay ensures that the order is definitively paid and not refunded. It protects both you (you will never receive a cancelled earning) and the platform (no premature payout). After this period, your earnings become available for withdrawal."
+    icon: "schedule",
+    q: "How long before my earnings are available?",
+    a: "Earnings mature a few days after delivery, to guarantee that no exceptional refund cancels the order. Once this delay has passed, the amount automatically moves into your available balance and you can withdraw it."
   },
   {
-    icon: "help",
-    q: "Can I withdraw less than 25 €?",
-    a: "No, the minimum withdrawal threshold is set at 25 €. Below this amount, the Withdraw button remains inactive. This floor reduces bank transaction fees and simplifies management for everyone."
+    icon: "payments",
+    q: "Are there any withdrawal fees?",
+    a: "No. Grubano charges no fees on your withdrawals; you receive 100% of the amount requested. The bank transfer goes through our payment provider, with no hidden cost."
   },
   {
-    icon: "help",
-    q: "What happens if an order is refunded after I have been paid?",
-    a: "The 7-day maturation period covers this risk: the system checks the order status before releasing your earnings. If a refund occurs during these 7 days, the corresponding earning changes to cancelled status and never joins your available balance."
+    icon: "percent",
+    q: "Why a 20% commission on delivery fees?",
+    a: "This commission covers the platform's costs (technology, support, insurance) and lets Grubano offer you a steady flow of missions. Tips, on the other hand, come back to you in full."
   },
   {
-    icon: "help",
-    q: "Are tips subject to commission?",
-    a: "No. Tips are paid out to you at 100%, without any commission. Only the delivery fees (the portion of delivery fees) are subject to Grubano commission."
+    icon: "account_balance",
+    q: "What happens if I never withdraw my balance?",
+    a: "Your money stays available indefinitely in your courier account; there is no deadline and no dormancy fee. You can withdraw whenever you like, as soon as the 25 € threshold is reached."
   }
 ]} />
 
-## Going Further
+<Eyebrow icon="menu_book">Go further</Eyebrow>
 
-**Next Step**  
-[Driver Guide](/en/guides/driver/) — Discover how to accept missions, organize your routes, and maximize your earnings on Grubano.
+## Related articles
+
+<RelatedCards items={[
+  {
+    icon: "two_wheeler",
+    title: "Become a courier & missions",
+    sub: "Application and missions",
+    href: "/en/guides/driver/"
+  },
+  {
+    icon: "payments",
+    title: "Finances & payouts",
+    sub: "Commission and payouts",
+    href: "/en/guides/finances/"
+  },
+  {
+    icon: "location_on",
+    title: "Ride tracking",
+    sub: "Live position",
+    href: "/en/guides/driver-tracking/"
+  },
+  {
+    icon: "shopping_bag",
+    title: "Order & track",
+    sub: "Order and track",
+    href: "/en/guides/consumer/"
+  }
+]} />

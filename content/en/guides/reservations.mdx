@@ -1,85 +1,168 @@
 ---
-title: "Reservations & Dine-In"
-description: "Manage tables and time slots: floor plan, accept/decline requests, track real-time occupancy."
+title: "Reservations & Dine-in"
+description: "Manage tables and time slots: floor plan, accept / decline a request, track occupancy in real time."
 generated: true
-sourceHash: 799138ecc79c42fc
+sourceHash: 93436a2f9e62949f
 generator: scripts/generate-feature-page.js
-templateVersion: 5
+templateVersion: 6
 ---
 
 import { Steps, Callout } from 'nextra/components'
 
-# Reservations & Dine-In
+# Reservations & Dine-in
 
-Manage your floor plan, accept or decline table requests, and track occupancy in real time from a unified dashboard.
+Run your dining room in real time: interactive floor plan, request management, card hold, digital bill — everything you need to keep service flowing and keep your guests coming back.
 
-```mermaid
-stateDiagram-v2
-  direction LR
-  confirmed: Confirmed
-  arrived: Arrived
-  overrun: Overrun
-  cancelled: Cancelled
-  noshow: No-show
-  [*] --> confirmed
-  confirmed --> arrived
-  arrived --> overrun
-  overrun --> [*]
-  confirmed --> cancelled
-  arrived --> cancelled
-  cancelled --> [*]
-  confirmed --> noshow
-  arrived --> noshow
-  noshow --> [*]
-```
+<ArticleMeta audience="Restaurants" minutes={4} updated="2026-07-10" />
 
-## The Essentials
+<Eyebrow icon="insights">Overview</Eyebrow>
 
-The Reservations module lets you visualize your floor plan, manage tables and their time slots, and accept or decline each request. You track the status of each service in real time (confirmed, arrived, completed) and anticipate traffic thanks to a daily view.
+## From request to paid service
 
-## How It Works
+<FlowDiagram steps={[
+  { icon: "receipt_long", title: "Set up your dining room", desc: "Floor plan + opening hours" },
+  { icon: "schedule", title: "Receive the request", desc: "The customer books, you confirm" },
+  { icon: "payments", title: "Confirm", desc: "Card hold if needed" },
+  { icon: "restaurant", title: "Service", desc: "Bill opened on arrival" }
+]} />
 
-Grubano centralizes your reservations on a single screen: you create the tables in your dining area, define their capacity (number of covers), then receive requests—whether from a logged-in customer or a manual entry. Each reservation goes through a simple lifecycle: **confirmed** upon creation, **arrived** when you welcome the guest, then **cancelled** or **no-show** depending on the case. The system automatically verifies time slot availability (no overlap on the same table) and alerts you if the request falls outside your opening hours—you have the final say.
+<Eyebrow icon="bolt">The essentials</Eyebrow>
 
-The Reservations screen displays all the tables for your current establishment; if you operate multiple locations (franchise), each point of sale has its own floor plan and time slots. The [dashboard](/en/guides/restaurant/) groups the day’s active reservations, with upcoming arrivals at the top of the list.
+## In short
 
-## Step by Step
+<Essentials 
+  title="If you only remember one thing:" 
+  items={[
+    <>Your <b>floor plan</b> is the single source of truth: add your tables once, and Grubano uses them everywhere (reservations, bills, occupancy).</>,
+    <>A <b>card hold</b> blocks an amount without charging it — you only capture it in case of a no-show, or release it when the customer arrives.</>,
+    <>The <b>bill</b> is created automatically when you mark "Arrival" — the customer can view and pay from their phone, and you collect from yours.</>
+  ]} 
+/>
+
+<Eyebrow icon="lightbulb">How it works</Eyebrow>
+
+## The idea (and the why)
+
+Grubano links the reservation, the card hold and the bill into **a single record per service**: you book a table → the system blocks a deposit if you enable it → when the customer arrives, the bill opens on that same table → payment frees the table. It all starts from the [dashboard](/en/guides/restaurant/): set up your dining room and hours once, then let Grubano orchestrate time slots, monitor occupancy and detect overruns.
+
+A single screen gives you the full picture: free tables (green), occupied (orange), running late (red), each with its real-time status. Click a reservation to accept, decline, mark arrival or collect the bill.
+
+<Eyebrow icon="format_list_numbered">Step by step</Eyebrow>
+
+## Manage a reservation end to end
 
 <Steps>
 
-### Create Your Floor Plan
+### Set up your dining room
 
-Go to **Reservations** and add each table: assign it a name ("Table 1," "Patio 4"), indicate the number of seats, and place it on the visual plan. An active table immediately becomes available for reservation.
+From the dashboard, in the **Tables** section, add each table (name, number of seats, position on the plan). The plan is used everywhere: reservations, bills, real-time view. Also set your opening hours — any reservation outside those windows gets a warning.
 
-### Receive a Request
+### Receive the request
 
-A customer requests a table for a date, time, and number of covers. The system verifies that the chosen table has enough seats and that no other reservation occupies the time slot; if everything is free, the reservation is created with a **confirmed** status.
+The customer books online (a time slot suggested based on your hours and the table's capacity). The request lands in your dashboard with the `confirmed` status. You see the name, number of covers, time, and any allergies or notes.
 
-<Callout type="warning">
-If the time slot falls outside your configured hours or during an exceptional closure, a warning appears—you can still confirm the reservation (private event, special service).
-</Callout>
+### Confirm or decline
 
-### Validate Arrival
+Accept the reservation as is, or cancel it if the time slot doesn't work (the customer receives an automatic email). If you've enabled the card hold (deposit amount + no-show penalty), Grubano blocks the amount on the customer's card at the time of booking — nothing is charged, the bank just freezes the amount.
 
-When the customer arrives, mark the reservation as **arrived**. A bill is automatically opened on the table, ready to receive orders. If an old unpaid bill still exists on that table, the system alerts you—settle or cancel the old bill before welcoming the new service.
+### Mark the arrival
 
-### Handle Absences and Cancellations
+On the day, when the customer shows up, click **Arrival**. Grubano moves the reservation to the `arrived` status, releases the card hold (the block clears within 5–7 days), and **automatically opens a bill** on that table. The customer can now view the bill by scanning the table's QR code, or you fill it in from your dashboard.
 
-A reservation can be **cancelled** (by you or by the customer) or marked as a **no-show** if the person doesn’t come. In both cases, the table becomes free again for the time slot. Grubano can send an email to the customer to inform them of the restaurant-side cancellation (the customer’s email address or their account email is used).
+### Collect and free the table
+
+Once the meal is over, present the bill (customer app or [dashboard](/en/guides/restaurant/)). The customer pays — card, cash or otherwise — and you confirm the payment. The bill moves to `paid`, the table becomes free again, and the cycle is complete.
 
 </Steps>
 
-## Best Practices
+<Eyebrow icon="calculate">A concrete example</Eyebrow>
 
-- **Set a default duration**: each establishment can set an average service duration (60, 90, or 120 minutes); the system automatically calculates the end of the time slot to avoid overlaps.
-- **Block past time slots**: the server refuses any reservation whose start time has already passed (with a 5-minute tolerance to absorb clock drift).
-- **Verify capacity**: a 4-seat table cannot accommodate a 6-cover reservation—the system blocks the request and asks you to choose a larger table or combine multiple tables.
-- **Monitor occupancy in real time**: the dashboard displays the number of active services and upcoming arrivals, allowing you to anticipate busy periods.
+## A lunch service with a card hold
 
-## Concrete Example
+A customer books a table for 4 at 12:30 PM, with a 20 € hold and a 15 € no-show penalty. Grubano blocks 20 € on their card (nothing is charged). The customer arrives on time → you mark **Arrival**, the hold is released, the bill opens. The meal comes to 68 €, the customer pays by card, you confirm → the table is freed.
 
-Your restaurant has 3 tables (2 seats, 4 seats, 6 seats). A customer reserves the 4-seat table for Saturday 8:00 PM–10:00 PM: the system verifies that no other reservation occupies that time slot, confirms the request, and adds it to the schedule. Saturday evening, the customer arrives at 8:05 PM: you change the reservation to **arrived** status, a bill automatically opens on table 4, and you take the order. At 10:15 PM, service is complete, the bill is paid: the table becomes free again for a potential second seating.
+**No-show scenario**: the customer doesn't come and doesn't cancel. You mark **No-show** in the dashboard → Grubano automatically captures the 15 € penalty from the hold (the rest, 5 €, is released). The customer receives an email with the amount charged and the dispute procedure.
 
-## Going Further
+<Eyebrow icon="check_circle">Best practices</Eyebrow>
 
-- [Restaurant Dashboard](/en/guides/restaurant/) — overview of active reservations and the day’s upcoming arrivals.
+## Getting the most out of the system
+
+<Callout type="default">
+
+- **Fill in your hours and closures**: Grubano automatically blocks time slots outside your hours or during special closures (you can force a private reservation, but the system alerts you).
+- **Enable the card hold for high-demand services** (Friday/Saturday nights, tasting menus): it drastically reduces no-shows with no effort on your part.
+- **Mark "Arrival" as soon as the customer sits down**: the bill opens right away, the customer can view it during the meal, and you save time at checkout.
+- **Watch the color code**: an orange table (occupied) turning red (overrun) signals it's time to offer the bill — no rushing, just to keep the turnover flowing.
+
+</Callout>
+
+<Eyebrow icon="error">Mistakes to avoid</Eyebrow>
+
+## Common pitfalls
+
+<Callout type="error">
+
+- **Forgetting to confirm the arrival**: if you don't mark "Arrival," the bill won't open automatically — the customer can neither view nor pay online.
+- **Manually releasing a hold**: Grubano does it for you (arrival → release, no-show → capture) — stepping in directly with the payment provider risks desyncing the status.
+- **Not filling in the floor plan**: without a configured table, you can't take reservations — selecting a table is mandatory.
+- **Capturing the hold on a normal arrival**: the hold is only captured in case of a no-show; an arrival always releases it (the block clears with no charge).
+
+</Callout>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
+
+## Frequently asked questions
+
+<Faq items={[
+  {
+    icon: "payments",
+    q: "How much does the card hold cost?",
+    a: "Nothing. Grubano charges no fee for the hold. Only payments that are actually captured (no-show penalty) incur the usual fees from our payment provider. Releases (customer arrived) cost nothing."
+  },
+  {
+    icon: "schedule",
+    q: "Can a customer book outside opening hours?",
+    a: "Not by default: Grubano only offers time slots within your opening hours and outside special closures. You can force a reservation from the dashboard (a private event on a closed day, for example) — the system alerts you but doesn't block it."
+  },
+  {
+    icon: "receipt_long",
+    q: "Does the bill open if I forgot to mark 'Arrival'?",
+    a: "No: the automatic bill is only created when the status changes to 'Arrival.' If you forget, open it manually from the Tables tab of your dashboard — select the table, then click 'New bill.'"
+  },
+  {
+    icon: "error",
+    q: "What happens if a table already has an unpaid bill?",
+    a: "When you mark 'Arrival' on a reservation, Grubano checks whether the table carries an unsettled bill from a previous service. If so, it does NOT create a new bill and alerts you: settle or cancel the old one before welcoming the new service."
+  }
+]} />
+
+<Eyebrow icon="menu_book">Going further</Eyebrow>
+
+## Related articles
+
+<RelatedCards items={[
+  {
+    icon: "insights",
+    title: "Dashboard",
+    sub: "Live metrics",
+    href: "/en/guides/restaurant/"
+  },
+  {
+    icon: "shopping_bag",
+    title: "Order & track",
+    sub: "Order and track",
+    href: "/en/guides/consumer/"
+  },
+  {
+    icon: "bolt",
+    title: "Get started in 15 minutes",
+    sub: "Ready in 15 minutes",
+    href: "/en/guides/quick-start/"
+  },
+  {
+    icon: "menu_book",
+    title: "Menu & AI Scan",
+    sub: "Menu and AI Scan",
+    href: "/en/guides/menu/"
+  }
+]} />

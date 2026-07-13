@@ -1,106 +1,171 @@
 ---
-title: "The Affiliate Program"
-description: "Join the affiliate program: get links and codes, earn commission on the sales you generate, track your earnings and request a withdrawal."
+title: "The affiliate program"
+description: "Join the affiliate program: get links and codes, earn a commission on the sales you generate, track your earnings and request a withdrawal."
 generated: true
-sourceHash: 7fe75346a2fa613e
+sourceHash: 057cea20ecdd8502
 generator: scripts/generate-feature-page.js
-templateVersion: 5
+templateVersion: 6
 ---
 
 import { Steps, Callout } from 'nextra/components'
 
-# The Affiliate Program
+# The affiliate program
 
-Recommend Grubano, earn on every order you generate — track your performance, collect your commission.
+Recommend Grubano through a referral link or code, earn a commission on the sales you generate, track your earnings in real time and withdraw your money.
 
-<FlowDiagram steps={["Apply","Get links & codes","Generate sales","Withdraw earnings"]} />
+<ArticleMeta audience="Affiliates" minutes={5} updated="2026-07-12" />
 
-## The Essentials
+<Eyebrow icon="insights">Overview</Eyebrow>
 
-The affiliate program allows you to recommend Grubano through a personal link or code and earn commission on the orders you generate. You track your earnings in real time and request a withdrawal once the threshold is reached.
+## The affiliate journey
 
-## How It Works
+<FlowDiagram steps={[
+  { icon: "person_add", title: "Apply", desc: "Join the program in a few clicks" },
+  { icon: "link", title: "Get links & codes", desc: "Receive your personalized link and unique code" },
+  { icon: "campaign", title: "Generate sales", desc: "Share your links, earn a commission per order" },
+  { icon: "account_balance_wallet", title: "Withdraw your earnings", desc: "Request a transfer from 25 € of matured earnings" }
+]} />
 
-Grubano compensates partners who recommend the platform: you share your affiliate link on your networks, your site or with your community, and every new order placed by a customer who arrived via your link earns you a commission. The program is open to everyone — no audience size requirement or subscription prerequisite.
+<Eyebrow icon="bolt">The essentials</Eyebrow>
 
-You instantly receive a short code and a personalized link when you sign up. Commission is credited automatically upon delivery of each order, then becomes available after a security period. You track clicks, conversions and earnings on your dashboard, and request a withdrawal when your balance reaches the threshold — actual payment arrives soon.
+## In brief
 
-[Verified influencers](/en/guides/influencer/) — a tier with certified audience — enjoy additional benefits (increased commission, AI content studio), but keep the same affiliate mechanics.
+<Essentials title="If you remember just one thing:" items={[
+  <>You earn <b>a commission on each order generated</b> through your referral link or code, within the limits set by Grubano.</>,
+  <>Earnings are <b>tracked in real time</b>: each attributed order appears on your dashboard with its status (pending or matured).</>,
+  <>You withdraw <b>from 25 € of matured earnings</b>; identity verification (KYC) and tax reporting are triggered on your first withdrawal.</>
+]} />
 
-## Step by Step
+<Eyebrow icon="lightbulb">How it works</Eyebrow>
+
+## The principle (and the why)
+
+The affiliate program lets you recommend Grubano restaurants to your audience and earn a commission on every order generated. Unlike the [recipe creator](/en/guides/creators/) role, who publishes dishes adopted by restaurants, the affiliate shares a **referral link or code** and is paid on the **sales** they bring in, without creating any culinary content.
+
+As soon as you sign up, a **personalized link** and a **unique code** are generated automatically: share them wherever you like (social media, blog, newsletter). Every order placed through your link is recorded, tracked and credited to your balance. Affiliates with a **verified audience** ([influencer](/en/guides/influencer/) status) enjoy extra benefits, but the underlying mechanism stays the same for everyone.
+
+<Eyebrow icon="format_list_numbered">Step by step</Eyebrow>
+
+## Join the program and share your links
 
 <Steps>
 
-### Apply to the Program
+### Apply to the program
 
-Visit the public affiliate program page. Fill out the form (name, email address, consent): you will receive a passwordless login link by email.
+Head to the affiliate sign-up page (or use the "Become an affiliate" button if you're already logged in). Enter your name, email address and accept the terms. An affiliate account is created immediately: you receive a **unique referral code** (for example `ALEX9F2K`) and a **personalized link** (for example `/ref/alex9f2k`) shown on your dashboard.
 
-If you already have a Grubano account, log in directly — you join the program with one click from your dashboard.
+### Get and share your links
 
-### Get Your Links and Codes
+Your affiliate dashboard shows your **referral link** and your **code**. You can copy the full link (which redirects to the Grubano home page) or build a direct link to a specific restaurant (the `/ref/<your-slug>` structure + restaurant parameter is generated automatically). Share these links on your social channels, in your content or by private message.
 
-As soon as you first log in, the system automatically generates a **short code** (for example `ALEX9F2K`) and a **personalized link** (`/ref/alex9f2k`). Both point to Grubano restaurant discovery and attribute orders to your account.
+### Track your clicks and conversions
 
-You can find them at any time on your affiliate dashboard. Copy them, share them as you wish — social networks, personal site, newsletter, community.
+Every click on your link is recorded (anonymously, without any of the visitor's personal data). Your dashboard shows a **conversion funnel**: total number of clicks, number of attributed orders, conversion rate. This view helps you measure how effective your shares are.
 
-### Share and Generate Sales
+### Check your earnings
 
-Every time a visitor clicks on your link or uses your code during their first order, the system records the connection. If that customer places an order within 90 days, commission is automatically credited to you upon delivery.
+Every order generated through your link appears in the "Earnings" tab with the **commission amount**, the **status** (pending or matured) and the date. **Pending** earnings become **matured** once the order is confirmed (after the cancellation window has passed); only matured earnings can be withdrawn. Your available balance is calculated automatically: matured earnings − amounts already paid out.
 
-You track in real time the number of clicks, conversions and the amount of your earnings (pending or available) on your dashboard. The conversion rate is displayed to adjust your strategy.
+### Request a withdrawal
 
-### Withdraw Your Earnings
-
-As soon as your available balance reaches **€25**, the "Withdraw" button activates on your dashboard. On your first withdrawal, the system asks you to verify your identity (regulatory procedure) and complete a simplified tax declaration — no payment occurs before this step.
-
-Once validated, your request is recorded; actual trigger of transfers arrives soon, and your payment will then be sent within a few business days. You can view the history of your withdrawals at any time; each request is idempotent (a double-click does not trigger two payments).
+As soon as your balance reaches **25 €**, the "Withdraw" button becomes active on your dashboard. On your **first withdrawal**, you'll need to complete **identity verification** (Stripe Connect KYC, individual) and provide your **tax information** (address, tax number, date of birth) before the transfer is triggered. Subsequent withdrawals are automatic (the amount paid = your available balance, no manual entry). The transfer history appears below the withdraw button.
 
 </Steps>
 
-<Callout type="info">
-**New customers only** — commission applies to orders placed by customers who had never ordered on Grubano before clicking on your link. Orders from existing customers do not generate commission.
+<Eyebrow icon="calculate">A concrete example</Eyebrow>
+
+## A month at 300 € in commissions
+
+Marie shares her Grubano affiliate link on Instagram and generates 15 orders over the month. Grubano takes a commission on each order (5 to 12% depending on the order mode); Marie earns a percentage of that commission, within the limits set by Grubano. By the end of the month, her dashboard shows **300 € in matured earnings**. She clicks "Withdraw": it's her first withdrawal, so she first completes Stripe identity verification (ID document) and fills in the tax form (address, French tax number). Once validated, the 300 € transfer is triggered to her bank account within a few days. Subsequent withdrawals will be instant (no new verification).
+
+<Callout type="default">
+This example is illustrative; actual commissions depend on the volume and order mode (delivery, click & collect, dine-in).
 </Callout>
 
-## Concrete Example
+<Eyebrow icon="check_circle">Best practices</Eyebrow>
 
-You share your link `/ref/alex9f2k` in the Instagram story of your local food account. Fifteen people click, three place orders within the week. Each of these three orders earns you a commission (calculated on Grubano fees for the order), credited automatically upon delivery. You see "15 clicks · 3 conversions · 20%" on your dashboard, and the corresponding amount is added to your pending balance. Thirty days later, this balance becomes available; if you have accumulated €25 or more, you request withdrawal with one click.
+## Maximize your conversions
 
-## Best Practices
+<Callout type="default">
+- **Feature a specific restaurant** rather than the generic link: a `/ref/<your-slug>?restaurant=<id>` link points straight to the restaurant page and converts better than a link to the home page.
+- **Mention your code** in your posts: some customers prefer to enter a code at checkout rather than click a link.
+- **Track your stats** every week: the clicks → orders conversion rate tells you which content performs best.
+- **Vary your formats**: story, post, short video — test what resonates with your audience.
+</Callout>
 
-- **Target local audiences** — Grubano is a marketplace of local restaurants: your recommendations are all the more effective if your community lives in a covered area.
-- **Vary formats** — try story, pinned post, link in bio, newsletter: the dashboard shows you which channel converts best (clicks vs orders).
-- **Highlight a specific restaurant** — you can build an affiliate link pointing directly to a restaurant’s page (`/ref/alex9f2k?restaurant=<id>`) to recommend an address you love: commission stays the same, conversion often increases.
-- **Track your streak** — the dashboard displays a "weekly streak" (number of consecutive weeks with at least one generated order) and progress badges: these gamification mechanics help you maintain a regular rhythm.
+<Eyebrow icon="error">Mistakes to avoid</Eyebrow>
 
-## Frequently Asked Questions
+## Common pitfalls
+
+<Callout type="error">
+- **Sharing a broken link**: always check that your link redirects correctly before publishing it widely.
+- **Requesting a withdrawal too early**: as long as your balance is below 25 €, the button stays inactive; wait until you reach the threshold.
+- **Neglecting identity verification**: on your first withdrawal, missing KYC blocks the transfer — have your ID document ready in advance.
+- **Forgetting tax reporting**: even if identity verification is validated, the transfer won't go through without complete tax information.
+</Callout>
+
+<Eyebrow icon="lightbulb">Tip</Eyebrow>
+
+## Save time with the content studio
+
+<Callout type="info">
+Affiliates with a **verified audience** (influencer status) get access to the **content studio**: select a restaurant or a dish, and the AI automatically generates several ready-to-publish captions (Instagram, TikTok, story) with your link built in. You copy, you publish — guaranteed time savings. The studio is available in the "Content" tab of your dashboard as soon as your audience is verified.
+</Callout>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
+
+## Frequently asked questions
 
 <Faq items={[
   {
-    icon: "help",
-    q: "Can I use my own link to place an order?",
-    a: "No. The system detects self-referral (same operator = affiliate and customer) and does not credit any commission in this case. Commission only applies to orders from distinct customers who arrived via your link."
+    icon: "percent",
+    q: "What commission rate do I earn?",
+    a: "You earn a percentage of the commission Grubano takes on each order, within the limits set by Grubano. The exact rate isn't published here; it appears on your dashboard once you've signed up. Affiliates with a verified audience (influencers) benefit from an enhanced rate."
   },
   {
-    icon: "help",
-    q: "How long does a customer remain linked to my code?",
-    a: "90 days. If a visitor clicks on your link today and orders within 90 days, commission is credited to you. Beyond that, the link expires and the order is no longer attributed."
+    icon: "schedule",
+    q: "How long before my earnings are matured?",
+    a: "Earnings go from 'pending' to 'matured' once the order is confirmed (after the cancellation window has passed, usually a few days). Only matured earnings can be withdrawn."
   },
   {
-    icon: "help",
-    q: "What happens if a customer clicks on two different links?",
-    a: "The system applies the 'first contact' rule: it is the first link clicked (within the 90-day window) that is credited, even if the customer later clicks on another affiliate link."
+    icon: "account_balance",
+    q: "Can I withdraw any amount?",
+    a: "No: the amount paid out is automatically equal to your available balance (matured earnings − amounts already paid out). You don't enter an amount; you click 'Withdraw' as soon as the balance reaches 25 €, and the whole balance is transferred."
   },
   {
-    icon: "help",
-    q: "What is the difference with influencer status?",
-    a: "Influencer is a verified-audience tier of the affiliate program — same mechanism (link, code, commission, withdrawal), but with additional benefits reserved for accounts whose audience has been certified by the Grubano team."
+    icon: "gavel",
+    q: "Do I have to declare this income for tax?",
+    a: "Yes: affiliate commissions are taxable. On your first withdrawal, you provide your tax information (tax number, address); Grubano issues the regulatory reports (DAC7). Consult a tax advisor if needed."
   }
 ]} />
 
-## Going Further
+<Eyebrow icon="menu_book">Go further</Eyebrow>
 
-**Influencer Status**  
-If you have a significant and verifiable audience, [influencer status](/en/guides/influencer/) gives you access to an increased commission and an AI content studio to generate ready-to-publish captions — while keeping the same affiliate mechanics.
+## Related articles
 
-**Recipe Creators**  
-The [creator role](/en/guides/creators/) is distinct: you publish recipes that restaurants adopt and cook, and earn royalties on each sale of the dish — this is not affiliation, but a product collaboration.
+<RelatedCards items={[
+  {
+    icon: "campaign",
+    title: "Become an influencer",
+    sub: "Verified status",
+    href: "/en/guides/influencer/"
+  },
+  {
+    icon: "restaurant_menu",
+    title: "Recipe creator",
+    sub: "Recipes and commissions",
+    href: "/en/guides/creators/"
+  },
+  {
+    icon: "shopping_bag",
+    title: "Order & track",
+    sub: "Order and track",
+    href: "/en/guides/consumer/"
+  },
+  {
+    icon: "loyalty",
+    title: "Loyalty, credit & referral",
+    sub: "Points and referral",
+    href: "/en/guides/consumer-loyalty/"
+  }
+]} />

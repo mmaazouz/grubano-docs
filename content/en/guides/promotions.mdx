@@ -1,0 +1,174 @@
+---
+title: "Promotions & offers"
+description: "Create and manage your promotions: four offer types, targeting by dish and by mode, automatic application of the best discount, and impact on the commission."
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# Promotions & offers
+
+Create targeted offers — percentage, fixed amount, 2nd item or threshold — applied automatically to the customer's cart, with no code to enter.
+
+<ArticleMeta audience="Restaurants" minutes={4} updated="2026-07-12" />
+
+<Eyebrow icon="insights">Overview</Eyebrow>
+
+## From your screen to the customer's cart
+
+<FlowDiagram steps={[
+  { icon: "sell", title: "You create the offer", desc: "Type, value, validity window, targeting" },
+  { icon: "shopping_cart", title: "The customer orders", desc: "Nothing to enter, no code required" },
+  { icon: "auto_awesome", title: "The best promo applies", desc: "One offer per order, resolved server-side" },
+  { icon: "percent", title: "Commission on the amount paid", desc: "The discount lowers the commission base" }
+]} />
+
+<Eyebrow icon="bolt">The essentials</Eyebrow>
+
+## In short
+
+<Essentials title="If you only remember one thing:" items={[
+  <>Four offer types: <b>percentage</b>, <b>fixed amount</b>, <b>2nd item at −X%</b> and <b>threshold</b> (discount or free item once an amount is reached)</>,
+  <>Application is <b>automatic</b>: at payment, the best active promotion for your brand is applied to the cart — <b>one offer per order</b>, never stacked</>,
+  <>The discount <b>lowers the commission base</b>: Grubano charges its commission on the amount actually paid (subtotal − discount), not on the original price</>
+]} />
+
+<Eyebrow icon="lightbulb">How it works</Eyebrow>
+
+## The principle (and the why)
+
+Each promotion is attached to a **brand** and describes a discount following one of the four types. The **percentage** applies a whole-number rate — between 1 and 90 — to the relevant cart. The **fixed amount** deducts a sum in euros, capped at the cart value — never a negative total. The **2nd item at −X%** discounts only the single cheapest unit in the relevant cart, and only from 2 eligible units onward. The **threshold** triggers when the subtotal reaches the level you set: the reward is either a percentage on the subtotal, or a **free item** (the cheapest unit among the dishes you selected).
+
+You can refine each offer with optional conditions: a **cart minimum** (evaluated on the subtotal *before* discount), **targeted dishes** (the discount then applies only to those dishes on your [menu](/en/guides/menu/)) and the **modes concerned** (Delivery, Click & collect). A start/end **validity window** is required: outside the window, the offer does not apply.
+
+On the customer side, everything is automatic: at the time of the order, the server resolves the brand's active promotions and applies **the most advantageous one** — with equal discounts, the oldest wins, to stay predictable. The customer never enters a code or an amount: the calculation is done 100% server-side. The promotion is also **mutually exclusive** with the [referral](/en/guides/consumer-loyalty/) discount (if a referral discount applies, the promotion is set aside) and with [loyalty](/en/guides/loyalty/) points, which combine neither with a promotion nor with a referral.
+
+Finally, on the finance side: the [commission by mode](/en/guides/finances/) is calculated on the **amount paid** (subtotal − discount). The discount you grant therefore also reduces the commission charged — it is never yours alone to bear on the fee side.
+
+<Eyebrow icon="format_list_numbered">Step by step</Eyebrow>
+
+## Create a promotion
+
+<Steps>
+
+### Open the Promotions page
+
+From your [dashboard](/en/guides/restaurant/), open the **Promotions** page and select the relevant **brand**: each offer is attached to a specific brand.
+
+### Name the offer and choose the type
+
+Give it a name (at least 2 characters) and choose from the four available types: **Percentage**, **Fixed amount**, **2nd item** or **Threshold**.
+
+### Set the value
+
+For a percentage or a 2nd item: a whole number between **1 and 90**. For a fixed amount: a sum in euros **greater than 0**. For a threshold: a **threshold in euros greater than 0**, then the reward — a percentage (between 1 and 90) or a free item, with **at least one dish** in the list of free items (the form requires it, to protect your margin).
+
+### Set the validity window
+
+**Required start and end** dates and times, with the end strictly after the start. This is what lets you schedule time-limited offers.
+
+### Fine-tune targeting if needed
+
+Add a **cart minimum**, select **targeted dishes** from your own menu (a dish outside your menu is rejected) and restrict the offer to certain **modes** (Delivery, Click & collect).
+
+### Activate, monitor, deactivate
+
+The page distinguishes **automatic discounts** (percentage, fixed amount) from **offers** (2nd item, threshold). A promotion is **deactivated** with a single click but is never deleted: past orders reference it.
+
+</Steps>
+
+<Eyebrow icon="calculate">A concrete example</Eyebrow>
+
+## A −20% promo on a delivery order
+
+Imagine a 30 € cart on delivery, with a **−20%** promotion active across the whole menu.
+
+<Breakdown title="Order breakdown" rows={[
+  { icon: "shopping_cart", label: "Cart subtotal", value: "30,00 €" },
+  { icon: "sell", label: "Promotion −20%", value: "−6,00 €", variant: "minus" },
+  { icon: "payments", label: "Amount paid by the customer", value: "24,00 €" },
+  { icon: "percent", label: "Delivery commission (12% of 24 €)", value: "−2,88 €", variant: "minus" },
+  { icon: "account_balance", label: "Net paid out", value: "21,12 €", variant: "total" }
+]} />
+
+The commission is indeed calculated on the **24 € paid**, not on the original 30 €: without this rule, the commission would have been 3,60 €. This example is illustrative; your actual figures depend on the mode and the offer type.
+
+<Eyebrow icon="check_circle">Best practices</Eyebrow>
+
+## Offers that pay off
+
+<Callout type="default">
+- **Clear your stock in one click**: the 'clear stock' shortcut directly creates a percentage promotion targeted at the relevant dishes, with a window running from now until the expiry date and a suggested −30% you can adjust. Handy alongside your [stock](/en/guides/stocks/) tracking.
+- **Try the threshold with a free item** to push up the average cart: 'spend 25 €, get a free side' encourages customers to complete their order.
+- **Use the validity window** for short flash offers rather than permanent discounts that eat into your margin.
+- **Think about [creator](/en/guides/creators/) campaigns**: when you adopt a campaign dish, a percentage promotion tied to the campaign can be created right away, bounded by the campaign's dates.
+</Callout>
+
+<Eyebrow icon="error">Mistakes to avoid</Eyebrow>
+
+## Common pitfalls
+
+<Callout type="error">
+- **Expecting stacking**: only one promotion applies per order — the best one. No point piling three active offers on the same brand; a note on the page reminds you.
+- **Confusing the cart minimum with the amount after discount**: the minimum is evaluated on the subtotal *before* discount.
+- **Creating a 'free item' threshold without choosing the dishes**: not possible — at least one free dish is required at creation.
+- **Trying to delete a promotion**: you don't delete, you deactivate. A deactivated promotion immediately stops applying.
+- **Assuming every offer is showcased on the customer side**: only percentage and fixed-amount promotions surface in the public storefront; 2nd item and threshold offers do apply to the cart, but without dedicated visibility.
+</Callout>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
+
+## Frequently asked questions
+
+<Faq items={[
+  {
+    icon: "qr_code",
+    q: "Does the customer have to enter a promo code?",
+    a: "No. At payment, the server resolves your brand's active promotions and automatically applies the best one to the cart. The customer has nothing to enter, and no discount amount comes from their device: everything is calculated server-side."
+  },
+  {
+    icon: "layers",
+    q: "Can I stack several promotions?",
+    a: "No. Only one promotion applies per order: the most advantageous one wins (with equal discounts, the oldest, to stay predictable). The promotion is also mutually exclusive with the referral discount and loyalty points: if a referral discount applies, the promotion is set aside."
+  },
+  {
+    icon: "percent",
+    q: "Is the commission calculated before or after the discount?",
+    a: "After. The commission by mode applies to the amount actually paid by the customer (subtotal − discount). A 6 € discount therefore also reduces the commission charged on the order."
+  },
+  {
+    icon: "toggle_off",
+    q: "How do I delete a finished promotion?",
+    a: "You never delete a promotion: past orders reference it. You deactivate it with a single click — it immediately stops applying — and can reactivate it later if needed."
+  }
+]} />
+
+<Eyebrow icon="menu_book">Going further</Eyebrow>
+
+## Related articles
+
+<RelatedCards items={[
+  {
+    icon: "menu_book",
+    title: "Menu & AI Scan",
+    sub: "Your dishes, your prices",
+    href: "/en/guides/menu/"
+  },
+  {
+    icon: "account_balance",
+    title: "Finances & payouts",
+    sub: "Commission by mode",
+    href: "/en/guides/finances/"
+  },
+  {
+    icon: "storefront",
+    title: "Dashboard",
+    sub: "Live indicators",
+    href: "/en/guides/restaurant/"
+  },
+  {
+    icon: "loyalty",
+    title: "Loyalty program",
+    sub: "Points and rewards",
+    href: "/en/guides/loyalty/"
+  }
+]} />

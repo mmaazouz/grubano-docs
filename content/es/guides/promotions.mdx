@@ -1,0 +1,174 @@
+---
+title: "Promociones y ofertas"
+description: "Cree y gestione sus promociones: cuatro tipos de ofertas, segmentación por platos y por modo, aplicación automática del mejor descuento e impacto en la comisión."
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# Promociones y ofertas
+
+Cree ofertas segmentadas — porcentaje, importe fijo, 2.º artículo o tramo — aplicadas automáticamente al carrito del cliente, sin código que introducir.
+
+<ArticleMeta audience="Restaurantes" minutes={4} updated="2026-07-12" />
+
+<Eyebrow icon="insights">Visión general</Eyebrow>
+
+## De su pantalla al carrito del cliente
+
+<FlowDiagram steps={[
+  { icon: "sell", title: "Usted crea la oferta", desc: "Tipo, valor, ventana de validez, segmentación" },
+  { icon: "shopping_cart", title: "El cliente pide", desc: "Nada que introducir, ningún código necesario" },
+  { icon: "auto_awesome", title: "Se aplica la mejor promoción", desc: "Una sola oferta por pedido, resuelta en el servidor" },
+  { icon: "percent", title: "Comisión sobre el importe pagado", desc: "El descuento reduce la base de comisión" }
+]} />
+
+<Eyebrow icon="bolt">Lo esencial</Eyebrow>
+
+## En resumen
+
+<Essentials title="Si solo debe recordar esto:" items={[
+  <>Cuatro tipos de ofertas: <b>porcentaje</b>, <b>importe fijo</b>, <b>2.º artículo con −X %</b> y <b>tramo</b> (descuento o artículo gratis al alcanzar un importe)</>,
+  <>La aplicación es <b>automática</b>: al pagar, la mejor promoción activa de su marca se aplica al carrito — <b>una sola oferta por pedido</b>, nunca acumulación</>,
+  <>El descuento <b>reduce la base de comisión</b>: Grubano cobra su comisión sobre el importe realmente pagado (subtotal − descuento), no sobre el precio original</>
+]} />
+
+<Eyebrow icon="lightbulb">Cómo funciona</Eyebrow>
+
+## El principio (y el porqué)
+
+Cada promoción está vinculada a una **marca** y describe un descuento según uno de los cuatro tipos. El **porcentaje** aplica una tasa entera — entre 1 y 90 — al carrito correspondiente. El **importe fijo** deduce una suma en euros, limitada al carrito — nunca un total negativo. El **2.º artículo con −X %** descuenta únicamente la unidad más barata del carrito correspondiente, y solo a partir de 2 unidades elegibles. El **tramo** se activa cuando el subtotal alcanza el umbral que usted fija: la recompensa es o bien un porcentaje sobre el subtotal, o bien un **artículo gratis** (la unidad más barata entre los platos que haya elegido).
+
+Puede afinar cada oferta con condiciones opcionales: un **mínimo de carrito** (evaluado sobre el subtotal *antes* del descuento), **platos segmentados** (el descuento se aplica entonces solo a esos platos de su [carta](/es/guides/menu/)) y los **modos afectados** (Entrega, Click & collect). Una **ventana de validez** inicio/fin es obligatoria: fuera de la ventana, la oferta no se aplica.
+
+Del lado del cliente, todo es automático: en el momento del pedido, el servidor resuelve las promociones activas de la marca y aplica **la más ventajosa** — a igual descuento, gana la más antigua, para seguir siendo previsible. El cliente nunca introduce ningún código ni importe: el cálculo se realiza al 100 % en el servidor. La promoción es además **excluyente** con el descuento de [recomendación](/es/guides/consumer-loyalty/) (si se aplica un descuento de recomendación, la promoción se descarta) y con los puntos de [fidelidad](/es/guides/loyalty/), que no se combinan ni con una promoción ni con la recomendación.
+
+Por último, del lado de las finanzas: la [comisión por modo](/es/guides/finances/) se calcula sobre el **importe pagado** (subtotal − descuento). El descuento que usted concede reduce por tanto también la comisión cobrada — nunca corre únicamente por su cuenta en cuanto a gastos.
+
+<Eyebrow icon="format_list_numbered">Paso a paso</Eyebrow>
+
+## Crear una promoción
+
+<Steps>
+
+### Abra la pantalla Promociones
+
+Desde su [panel de control](/es/guides/restaurant/), abra la pantalla **Promociones** y seleccione la **marca** correspondiente: cada oferta está vinculada a una marca concreta.
+
+### Nombre la oferta y elija el tipo
+
+Ponga un nombre (al menos 2 caracteres) y elija entre los cuatro tipos propuestos: **Porcentaje**, **Importe fijo**, **2.º artículo** o **Tramo**.
+
+### Ajuste el valor
+
+Para un porcentaje o un 2.º artículo: un entero entre **1 y 90**. Para un importe fijo: una suma en euros **superior a 0**. Para un tramo: un **umbral en euros superior a 0**, luego la recompensa — un porcentaje (entre 1 y 90) o un artículo gratis, con **al menos un plato** en la lista de artículos gratis (el formulario lo exige, para proteger su margen).
+
+### Defina la ventana de validez
+
+Fechas y horas de **inicio y de fin obligatorias**, con el fin estrictamente posterior al inicio. Esto es lo que le permite programar ofertas limitadas en el tiempo.
+
+### Afine la segmentación si hace falta
+
+Añada un **mínimo de carrito**, seleccione **platos segmentados** en su propia carta (un plato fuera de su carta se rechaza) y limite la oferta a ciertos **modos** (Entrega, Click & collect).
+
+### Active, siga, desactive
+
+La pantalla distingue los **descuentos automáticos** (porcentaje, importe fijo) de las **ofertas** (2.º artículo, tramo). Una promoción se **desactiva** con un clic pero nunca se elimina: los pedidos ya realizados hacen referencia a ella.
+
+</Steps>
+
+<Eyebrow icon="calculate">Ejemplo concreto</Eyebrow>
+
+## Una promoción −20 % en un pedido en entrega
+
+Imaginemos un carrito de 30 € en entrega, con una promoción **−20 %** activa en toda la carta.
+
+<Breakdown title="Desglose del pedido" rows={[
+  { icon: "shopping_cart", label: "Subtotal del carrito", value: "30,00 €" },
+  { icon: "sell", label: "Promoción −20 %", value: "−6,00 €", variant: "minus" },
+  { icon: "payments", label: "Importe pagado por el cliente", value: "24,00 €" },
+  { icon: "percent", label: "Comisión de entrega (12 % de 24 €)", value: "−2,88 €", variant: "minus" },
+  { icon: "account_balance", label: "Neto transferido", value: "21,12 €", variant: "total" }
+]} />
+
+La comisión se calcula efectivamente sobre los **24 € pagados**, no sobre los 30 € originales: sin esta regla, la comisión habría sido de 3,60 €. Este ejemplo es ilustrativo; sus cifras reales dependen del modo y del tipo de oferta.
+
+<Eyebrow icon="check_circle">Buenas prácticas</Eyebrow>
+
+## Ofertas que rinden
+
+<Callout type="default">
+- **Dé salida a su stock en 1 clic**: el acceso directo «stock por liquidar» crea directamente una promoción en porcentaje segmentada sobre los platos afectados, con una ventana que va desde ahora hasta la fecha de caducidad y una sugerencia de −30 % que puede ajustar. Práctico con su seguimiento de [stock](/es/guides/stocks/).
+- **Pruebe el tramo con artículo gratis** para subir el carrito medio: «a partir de 25 €, un acompañamiento gratis» anima a completar el pedido.
+- **Use la ventana de validez** para ofertas flash cortas en lugar de descuentos permanentes que reducen el margen.
+- **Piense en las campañas de [creadores](/es/guides/creators/)**: cuando adopta un plato de campaña, se puede crear a continuación una promoción en porcentaje vinculada a la campaña, limitada por las fechas de la campaña.
+</Callout>
+
+<Eyebrow icon="error">Errores a evitar</Eyebrow>
+
+## Los errores más comunes
+
+<Callout type="error">
+- **Esperar una acumulación**: solo se aplica una promoción por pedido — la mejor. No sirve de nada apilar tres ofertas activas en la misma marca, una nota en la pantalla se lo recuerda.
+- **Confundir el mínimo de carrito con el importe tras el descuento**: el mínimo se evalúa sobre el subtotal *antes* del descuento.
+- **Crear un tramo «artículo gratis» sin elegir los platos**: imposible — se exige al menos un plato gratis en la creación.
+- **Intentar eliminar una promoción**: no se elimina, se desactiva. Una promoción desactivada deja de aplicarse de inmediato.
+- **Creer que todas las ofertas se destacan del lado del cliente**: solo las promociones en porcentaje y en importe fijo aparecen en el escaparate público; las ofertas de 2.º artículo y de tramo sí se aplican al carrito, pero sin destacarse de forma dedicada.
+</Callout>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
+
+## Preguntas frecuentes
+
+<Faq items={[
+  {
+    icon: "qr_code",
+    q: "¿Debe el cliente introducir un código promocional?",
+    a: "No. En el momento del pago, el servidor resuelve las promociones activas de su marca y aplica automáticamente la mejor al carrito. El cliente no tiene nada que introducir, y ningún importe de descuento proviene de su dispositivo: todo se calcula en el servidor."
+  },
+  {
+    icon: "layers",
+    q: "¿Puedo acumular varias promociones?",
+    a: "No. Solo se aplica una promoción por pedido: gana la más ventajosa (a igual descuento, la más antigua, para seguir siendo previsible). La promoción también es excluyente con el descuento de recomendación y con los puntos de fidelidad: si se aplica un descuento de recomendación, la promoción se descarta."
+  },
+  {
+    icon: "percent",
+    q: "¿La comisión se calcula antes o después del descuento?",
+    a: "Después. La comisión por modo se aplica sobre el importe realmente pagado por el cliente (subtotal − descuento). Un descuento de 6 € reduce por tanto también la comisión cobrada sobre el pedido."
+  },
+  {
+    icon: "toggle_off",
+    q: "¿Cómo eliminar una promoción finalizada?",
+    a: "Nunca se elimina una promoción: los pedidos ya realizados hacen referencia a ella. La desactiva con un clic — deja de aplicarse de inmediato — y puede reactivarla más tarde si hace falta."
+  }
+]} />
+
+<Eyebrow icon="menu_book">Para ir más allá</Eyebrow>
+
+## Artículos relacionados
+
+<RelatedCards items={[
+  {
+    icon: "menu_book",
+    title: "Menú y escaneo IA",
+    sub: "Sus platos, sus precios",
+    href: "/es/guides/menu/"
+  },
+  {
+    icon: "account_balance",
+    title: "Finanzas y pagos",
+    sub: "Comisión por modo",
+    href: "/es/guides/finances/"
+  },
+  {
+    icon: "storefront",
+    title: "Panel de control",
+    sub: "Indicadores en directo",
+    href: "/es/guides/restaurant/"
+  },
+  {
+    icon: "loyalty",
+    title: "Programa de fidelidad",
+    sub: "Puntos y recompensas",
+    href: "/es/guides/loyalty/"
+  }
+]} />

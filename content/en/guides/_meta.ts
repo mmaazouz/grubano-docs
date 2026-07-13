@@ -19,6 +19,11 @@ export default {
   stocks: 'Stock management',
   loyalty: 'Loyalty program',
   reservations: 'Reservations & dine-in',
+  promotions: 'Promotions & offers',
+  kds: 'Kitchen screen (KDS)',
+  reviews: 'Customer reviews',
+  analytics: 'Analytics & AI briefing',
+  'supplier-orders': 'Ordering from your suppliers',
   finances: 'Finances & payouts',
   pro: 'Go Pro',
 

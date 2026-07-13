@@ -1,106 +1,171 @@
 ---
 title: "Il programma di affiliazione"
-description: "Iscriversi al programma di affiliazione: ottenere link e codici, guadagnare una commissione sulle vendite generate, monitorare i propri guadagni e richiedere un prelievo."
+description: "Aderire al programma di affiliazione: ottenere link e codici, guadagnare una commissione sulle vendite che generi, monitorare i tuoi guadagni e richiedere un prelievo."
 generated: true
-sourceHash: 7fe75346a2fa613e
+sourceHash: 057cea20ecdd8502
 generator: scripts/generate-feature-page.js
-templateVersion: 5
+templateVersion: 6
 ---
 
 import { Steps, Callout } from 'nextra/components'
 
 # Il programma di affiliazione
 
-Consiglia Grubano, guadagna su ogni ordine generato — monitora le tue performance, riscuoti la tua commissione.
+Consiglia Grubano tramite un link o un codice referral, guadagna una commissione sulle vendite che generi, monitora i tuoi guadagni in tempo reale e preleva il tuo denaro.
 
-<FlowDiagram steps={["Candidarsi","Ottenere link e codici","Generare vendite","Prelevare i guadagni"]} />
+<ArticleMeta audience="Affiliati" minutes={5} updated="2026-07-12" />
 
-## L’essenziale
+<Eyebrow icon="insights">Panoramica</Eyebrow>
 
-Il programma di affiliazione Le consente di consigliare Grubano tramite un link o un codice personale e di guadagnare una commissione sugli ordini che genera. Monitora i Suoi guadagni in tempo reale e richiede un prelievo non appena raggiunge la soglia.
+## Il percorso dell’affiliato
 
-## Come funziona
+<FlowDiagram steps={[
+  { icon: "person_add", title: "Candidarsi", desc: "Aderisci al programma in pochi clic" },
+  { icon: "link", title: "Ottenere link e codici", desc: "Ricevi il tuo link personalizzato e il tuo codice univoco" },
+  { icon: "campaign", title: "Generare vendite", desc: "Condividi i tuoi link, guadagna una commissione per ogni ordine" },
+  { icon: "account_balance_wallet", title: "Prelevare i guadagni", desc: "Richiedi un bonifico a partire da 25 € di guadagni maturati" }
+]} />
 
-Grubano remunera i partner che consigliano la piattaforma: condivide il Suo link di affiliazione sui Suoi social, sul Suo sito o presso la Sua comunità, e ogni nuovo ordine effettuato da un cliente arrivato tramite il Suo link Le fa guadagnare una commissione. Il programma è aperto a tutti — nessun prerequisito di dimensione del pubblico né di abbonamento.
+<Eyebrow icon="bolt">L’essenziale</Eyebrow>
 
-Ottiene istantaneamente un codice breve e un link personalizzato al momento dell’iscrizione. La commissione viene accreditata automaticamente alla consegna di ogni ordine, poi diventa disponibile dopo un periodo di sicurezza. Monitora clic, conversioni e guadagni sul Suo cruscotto e richiede un prelievo quando il Suo saldo raggiunge la soglia — il versamento effettivo arriverà presto.
+## In breve
 
-Gli [influencer verificati](/it/guides/influencer/) — un livello con pubblico certificato — beneficiano di vantaggi supplementari (commissione maggiorata, studio di contenuti IA), ma mantengono la stessa meccanica di affiliazione.
+<Essentials title="Se devi ricordare solo questo:" items={[
+  <>Guadagni <b>una commissione per ogni ordine generato</b> tramite il tuo link o codice referral, entro i limiti stabiliti da Grubano.</>,
+  <>I guadagni sono <b>monitorati in tempo reale</b>: ogni ordine attribuito compare sul tuo pannello di controllo con il relativo stato (in attesa o maturato).</>,
+  <>Prelevi <b>a partire da 25 € di guadagni maturati</b>; la verifica dell’identità (KYC) e la dichiarazione fiscale vengono avviate al primo prelievo.</>
+]} />
 
-## Passo dopo passo
+<Eyebrow icon="lightbulb">Come funziona</Eyebrow>
+
+## Il principio (e il perché)
+
+Il programma di affiliazione ti permette di consigliare i ristoranti Grubano al tuo pubblico e di guadagnare una commissione su ogni ordine generato. A differenza del ruolo di [creatore di ricette](/it/guides/creators/), che pubblica piatti adottati dai ristoranti, l’affiliato condivide un **link o un codice referral** ed è remunerato sulle **vendite** che porta, senza creare contenuti culinari.
+
+Al momento dell’iscrizione, un **link personalizzato** e un **codice univoco** vengono generati automaticamente: li condividi dove preferisci (social network, blog, newsletter). Ogni ordine effettuato tramite il tuo link viene registrato, monitorato e accreditato sul tuo saldo. Gli affiliati con **pubblico verificato** (status [influencer](/it/guides/influencer/)) beneficiano di vantaggi aggiuntivi, ma il meccanismo di base resta identico per tutti.
+
+<Eyebrow icon="format_list_numbered">Passo dopo passo</Eyebrow>
+
+## Aderire al programma e condividere i tuoi link
 
 <Steps>
 
 ### Candidarsi al programma
 
-Si rechi sulla pagina pubblica del programma di affiliazione. Compili il modulo (nome, indirizzo e-mail, consenso): riceverà un link di accesso senza password via e-mail.
+Vai alla pagina di iscrizione affiliato (oppure usa il pulsante «Diventa affiliato» se hai già effettuato l’accesso). Inserisci il tuo nome, il tuo indirizzo e‑mail e accetta le condizioni. Un account affiliato viene creato immediatamente: ricevi un **codice referral univoco** (ad esempio `ALEX9F2K`) e un **link personalizzato** (ad esempio `/ref/alex9f2k`) mostrati sul tuo pannello di controllo.
 
-Se possiede già un account Grubano, acceda direttamente — si iscrive al programma con un clic dal Suo cruscotto.
+### Ottenere e condividere i tuoi link
 
-### Recuperare i Suoi link e codici
+Il tuo pannello di controllo affiliato mostra il tuo **link referral** e il tuo **codice**. Puoi copiare il link completo (che reindirizza alla home page di Grubano) oppure costruire un link diretto verso un ristorante specifico (la struttura `/ref/<il-tuo-slug>` + parametro ristorante viene generata automaticamente). Condividi questi link sui tuoi social, nei tuoi contenuti o tramite messaggio privato.
 
-Dal Suo primo accesso, il sistema genera automaticamente un **codice breve** (ad esempio `ALEX9F2K`) e un **link personalizzato** (`/ref/alex9f2k`). Entrambi rimandano alla scoperta dei ristoranti Grubano e attribuiscono gli ordini al Suo account.
+### Monitorare i tuoi clic e le tue conversioni
 
-Li ritrova in qualsiasi momento sul Suo cruscotto affiliato. Li copi, li condivida come desidera — social network, sito personale, newsletter, comunità.
+Ogni clic sul tuo link viene registrato (in modo anonimo, senza dati personali del visitatore). Il tuo pannello di controllo mostra un **imbuto di conversione**: numero totale di clic, numero di ordini attribuiti, tasso di conversione. Questa vista ti aiuta a misurare l’efficacia delle tue condivisioni.
 
-### Condividere e generare vendite
+### Consultare i tuoi guadagni
 
-Ogni volta che un visitatore clicca sul Suo link o utilizza il Suo codice durante il suo primo ordine, il sistema registra il collegamento. Se questo cliente effettua un ordine entro 90 giorni, la commissione Le viene accreditata automaticamente alla consegna.
+Ogni ordine generato tramite il tuo link compare nella scheda «Guadagni» con l’**importo della commissione**, lo **stato** (in attesa o maturato) e la data. I guadagni **in attesa** diventano **maturati** dopo la conferma dell’ordine (trascorso il periodo di recesso); solo i guadagni maturati sono prelevabili. Il saldo disponibile viene calcolato automaticamente: guadagni maturati − importi già versati.
 
-Monitora in tempo reale il numero di clic, di conversioni e l’importo dei Suoi guadagni (in attesa o disponibili) sul Suo cruscotto. Il tasso di conversione viene visualizzato per adattare la Sua strategia.
+### Richiedere un prelievo
 
-### Prelevare i Suoi guadagni
-
-Non appena il Suo saldo disponibile raggiunge **25 €**, il pulsante "Preleva" si attiva sul Suo cruscotto. Al primo prelievo, il sistema Le chiede di verificare la Sua identità (procedura regolamentare) e di compilare una dichiarazione fiscale semplificata — nessun versamento avviene prima di questa fase.
-
-Una volta convalidata, la Sua richiesta viene registrata; l’avvio effettivo dei bonifici arriverà presto, e il Suo versamento partirà quindi entro alcuni giorni lavorativi. Consulta lo storico dei Suoi prelievi in qualsiasi momento; ogni richiesta è idempotente (un doppio clic non attiva due versamenti).
+Non appena il tuo saldo raggiunge **25 €**, il pulsante «Preleva» si attiva sul tuo pannello di controllo. Al **primo prelievo**, dovrai completare la **verifica dell’identità** (KYC Stripe Connect, privato) e fornire le tue **informazioni fiscali** (indirizzo, codice fiscale, data di nascita) prima che il bonifico venga avviato. I prelievi successivi sono automatici (l’importo versato = il tuo saldo disponibile, nessun inserimento manuale). Lo storico dei bonifici compare sotto il pulsante di prelievo.
 
 </Steps>
 
-<Callout type="info">
-**Solo nuovi clienti** — la commissione si applica sugli ordini effettuati da clienti che non avevano mai ordinato su Grubano prima di cliccare sul Suo link. Gli ordini dei clienti esistenti non generano commissioni.
+<Eyebrow icon="calculate">Esempio concreto</Eyebrow>
+
+## Un mese da 300 € di commissioni
+
+Marie condivide il suo link affiliato Grubano su Instagram e genera 15 ordini nel mese. Grubano trattiene una commissione su ogni ordine (dal 5 al 12 % a seconda della modalità d’ordine); Marie guadagna una percentuale di questa commissione, entro i limiti stabiliti da Grubano. Alla fine del mese, il suo pannello di controllo mostra **300 € di guadagni maturati**. Fa clic su «Preleva»: è il suo primo prelievo, quindi completa prima la verifica dell’identità Stripe (documento d’identità) e compila il modulo fiscale (indirizzo, codice fiscale). Una volta convalidato, il bonifico di 300 € viene avviato verso il suo conto bancario in pochi giorni. I prelievi successivi saranno istantanei (nessuna nuova verifica).
+
+<Callout type="default">
+Questo esempio è illustrativo; le commissioni reali dipendono dal volume e dalla modalità d’ordine (consegna, click & collect, al tavolo).
 </Callout>
 
-## Esempio concreto
+<Eyebrow icon="check_circle">Buone pratiche</Eyebrow>
 
-Condivide il Suo link `/ref/alex9f2k` nella storia Instagram del Suo account food locale. Quindici persone cliccano, tre effettuano un ordine nella settimana. Ognuno di questi tre ordini Le fa guadagnare una commissione (calcolata sulle commissioni Grubano dell’ordine), accreditata automaticamente alla consegna. Vede "15 clic · 3 conversioni · 20 %" sul Suo cruscotto, e l’importo corrispondente si aggiunge al Suo saldo in attesa. Trenta giorni dopo, questo saldo diventa disponibile; se accumula 25 € o più, richiede il prelievo con un clic.
+## Massimizzare le tue conversioni
 
-## Buone pratiche
+<Callout type="default">
+- **Presenta un ristorante specifico** invece del link generico: un link `/ref/<il-tuo-slug>?restaurant=<id>` porta direttamente alla scheda del ristorante e converte meglio di un link verso la home.
+- **Menziona il tuo codice** nelle tue pubblicazioni: alcuni clienti preferiscono inserire un codice al momento dell’ordine invece di fare clic su un link.
+- **Monitora le tue statistiche** ogni settimana: il tasso di conversione clic → ordini ti indica quali contenuti funzionano meglio.
+- **Varia i tuoi formati**: story, post, video breve — prova ciò che risuona con il tuo pubblico.
+</Callout>
 
-- **Miri a pubblici locali** — Grubano è un marketplace di ristoranti locali: le Sue raccomandazioni sono tanto più efficaci se la Sua comunità abita in una zona coperta.
-- **Vari i formati** — provi storia, post fisso, link in bio, newsletter: il cruscotto Le mostra quale canale converte meglio (clic vs ordini).
-- **Valorizzi un ristorante specifico** — può costruire un link affiliato che punta direttamente alla pagina di un ristorante (`/ref/alex9f2k?restaurant=<id>`) per consigliare un indirizzo che ama: la commissione rimane la stessa, la conversione spesso aumenta.
-- **Segua la Sua serie** — il cruscotto visualizza una "serie settimanale" (numero di settimane consecutive con almeno un ordine generato) e badge di progressione: queste meccaniche di gamification La aiutano a mantenere un ritmo regolare.
+<Eyebrow icon="error">Errori da evitare</Eyebrow>
+
+## Le insidie più comuni
+
+<Callout type="error">
+- **Condividere un link non funzionante**: verifica sempre che il tuo link reindirizzi correttamente prima di pubblicarlo su larga scala.
+- **Richiedere un prelievo troppo presto**: finché il tuo saldo è inferiore a 25 €, il pulsante resta inattivo; attendi di raggiungere la soglia.
+- **Trascurare la verifica dell’identità**: al primo prelievo, l’assenza del KYC blocca il bonifico — prepara il tuo documento d’identità in anticipo.
+- **Dimenticare la dichiarazione fiscale**: anche se la verifica dell’identità è convalidata, il bonifico non partirà senza le informazioni fiscali complete.
+</Callout>
+
+<Eyebrow icon="lightbulb">Suggerimento</Eyebrow>
+
+## Risparmia tempo con lo studio di contenuti
+
+<Callout type="info">
+Gli affiliati con **pubblico verificato** (status influencer) accedono allo **studio di contenuti**: seleziona un ristorante o un piatto, l’IA genera automaticamente diverse didascalie pronte da pubblicare (Instagram, TikTok, story), con il tuo link integrato. Copi, pubblichi — risparmio di tempo garantito. Lo studio è disponibile nella scheda «Contenuti» del tuo pannello di controllo non appena il tuo pubblico è verificato.
+</Callout>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
 
 ## Domande frequenti
 
 <Faq items={[
   {
-    icon: "help",
-    q: "Posso utilizzare il mio link per ordinare?",
-    a: "No. Il sistema rileva l’auto-referenziamento (stesso operatore = affiliato e cliente) e non accredita alcuna commissione in questo caso. La commissione si applica solo sugli ordini di clienti distinti arrivati tramite il Suo link."
+    icon: "percent",
+    q: "Qual è il tasso di commissione che guadagno?",
+    a: "Guadagni una percentuale della commissione che Grubano trattiene su ogni ordine, entro i limiti stabiliti da Grubano. Il tasso esatto non è pubblicato qui; compare sul tuo pannello di controllo una volta effettuata l’iscrizione. Gli affiliati con pubblico verificato (influencer) beneficiano di un tasso maggiorato."
   },
   {
-    icon: "help",
-    q: "Per quanto tempo un cliente rimane collegato al mio codice?",
-    a: "90 giorni. Se un visitatore clicca sul Suo link oggi e ordina entro 90 giorni, la commissione Le viene accreditata. Oltre questo termine, il link scade e l’ordine non viene più attribuito."
+    icon: "schedule",
+    q: "Quanto tempo prima che i miei guadagni siano maturati?",
+    a: "I guadagni passano da « in attesa » a « maturati » dopo la conferma dell’ordine (trascorso il periodo di recesso, generalmente qualche giorno). Solo i guadagni maturati sono prelevabili."
   },
   {
-    icon: "help",
-    q: "Cosa succede se un cliente clicca su due link diversi?",
-    a: "Il sistema applica la regola del “primo contatto”: è il primo link cliccato (nella finestra di 90 giorni) che viene accreditato, anche se il cliente clicca successivamente su un altro link di affiliazione."
+    icon: "account_balance",
+    q: "Posso prelevare qualsiasi importo?",
+    a: "No: l’importo versato è automaticamente pari al tuo saldo disponibile (guadagni maturati − importi già versati). Non inserisci un importo; fai clic su « Preleva » non appena il saldo raggiunge 25 €, e tutto il saldo viene bonificato."
   },
   {
-    icon: "help",
-    q: "Qual è la differenza con lo status di influencer?",
-    a: "L’influencer è un livello con pubblico verificato del programma di affiliazione — stessa meccanica (link, codice, commissione, prelievo), ma con vantaggi supplementari riservati agli account il cui pubblico è stato certificato dal team Grubano."
+    icon: "gavel",
+    q: "Devo dichiarare questi redditi al fisco?",
+    a: "Sì: le commissioni di affiliazione sono imponibili. Al primo prelievo, fornisci le tue informazioni fiscali (codice fiscale, indirizzo); Grubano emette le dichiarazioni regolamentari (DAC7). Consulta un consulente fiscale se necessario."
   }
 ]} />
 
-## Per andare oltre
+<Eyebrow icon="menu_book">Per approfondire</Eyebrow>
 
-**Status di influencer**  
-Se possiede un pubblico significativo e verificabile, lo [status di influencer](/it/guides/influencer/) Le dà accesso a una commissione maggiorata e a uno studio di contenuti IA per generare didascalie pronte da pubblicare — mantenendo la stessa meccanica di affiliazione.
+## Articoli correlati
 
-**Creatori di ricette**  
-Il [ruolo di creatore](/it/guides/creators/) è distinto: pubblica ricette che i ristoranti adottano e cucinano, e guadagna una royalty su ogni vendita del piatto — non è affiliazione, ma una collaborazione di prodotto.
+<RelatedCards items={[
+  {
+    icon: "campaign",
+    title: "Diventare influencer",
+    sub: "Status verificato",
+    href: "/it/guides/influencer/"
+  },
+  {
+    icon: "restaurant_menu",
+    title: "Creatore di ricette",
+    sub: "Ricette e commissioni",
+    href: "/it/guides/creators/"
+  },
+  {
+    icon: "shopping_bag",
+    title: "Ordinare e seguire",
+    sub: "Ordinare e seguire",
+    href: "/it/guides/consumer/"
+  },
+  {
+    icon: "loyalty",
+    title: "Fedeltà, credito e passaparola",
+    sub: "Punti e passaparola",
+    href: "/it/guides/consumer-loyalty/"
+  }
+]} />

@@ -1,0 +1,146 @@
+---
+title: "Pantalla de cocina (KDS)"
+description: "Seguir y hacer avanzar los pedidos en cocina: tres columnas en tiempo real, temporizador por ticket, un solo gesto para pasar a la siguiente etapa."
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# Pantalla de cocina (KDS)
+
+La pantalla de cocina muestra en tiempo real los pedidos por preparar, columna por columna: un vistazo para priorizar, un gesto para hacer avanzar cada ticket.
+
+<ArticleMeta audience="Restaurantes" minutes={3} updated="2026-07-12" />
+
+<Eyebrow icon="skillet">Vista general</Eyebrow>
+
+## Del ticket al plato
+
+<KdsBoard />
+
+<Eyebrow icon="bolt">Lo esencial</Eyebrow>
+
+## En resumen
+
+<Essentials title="Si solo debe quedarse con esto:" items={[
+  <>La pantalla de <b>Cocina</b> solo muestra los pedidos por preparar, repartidos en tres columnas: <b>Por preparar</b>, <b>En preparación</b>, <b>Listo</b> — lo que se entrega, se reparte o se cancela desaparece automáticamente</>,
+  <>Cada ticket lleva un <b>temporizador</b> ajustado a la hora real del pedido: el color cambia a los 10 y luego a los 20 minutos para priorizar de un vistazo</>,
+  <>Un solo botón por ticket (<b>Empezar</b> y luego <b>Listo</b>): el gesto es instantáneo, sin marcha atrás, y nunca toca el dinero</>
+]} />
+
+<Eyebrow icon="lightbulb">Cómo funciona</Eyebrow>
+
+## El principio (y el porqué)
+
+Puede acceder a la pantalla de cocina desde la entrada **Cocina** del menú de su [panel de control](/es/guides/restaurant/), justo debajo de **Pedidos**. Filtra su flujo de pedidos para mostrar únicamente la **franja de cocina**: los pedidos recibidos, en preparación o listos. Todo lo que ya se ha recogido, repartido o cancelado sale de la pantalla automáticamente — la brigada solo ve lo que queda por hacer.
+
+La visualización se **actualiza sola cada 8 segundos** mientras la pantalla esté visible, y se recarga de inmediato cuando vuelve a la pestaña. Cada ticket indica su modo — **Entrega**, **Click & collect** o **En el local** — con un icono dedicado, para emplatar y empaquetar en consecuencia.
+
+Cocina y Pedidos trabajan sobre el **mismo flujo**: un ticket marcado «Listo» en cocina se refleja en la página Pedidos (y a la inversa), y cada uno solo ve los pedidos de su propio restaurante.
+
+<Eyebrow icon="format_list_numbered">Paso a paso</Eyebrow>
+
+## Hacer avanzar un ticket
+
+<Steps>
+
+### Abra la pantalla de Cocina
+
+Desde el menú lateral de su panel de control, haga clic en **Cocina**. La etiqueta **En directo** en el título confirma que la pantalla se actualiza automáticamente — no hace falta ninguna recarga manual.
+
+### Lea la barra de resumen
+
+Tres indicadores en la parte superior de la página: **Tickets en curso** (pedidos por preparar + en preparación), **Tiempo medio en cocina** y **Ticket más antiguo** — este último pasa a alerta a partir de los 20 minutos de espera.
+
+### Detecte los tickets urgentes
+
+Cada tarjeta muestra el número corto del pedido (sus 5 últimos caracteres, en mayúsculas), el modo, el temporizador y luego el detalle de los artículos: cantidad, nombre, tamaño, extras, exclusiones («sin cebolla») y la nota del cliente. El color sigue la espera real: normal por debajo de los 10 minutos, atención entre 10 y 19, alerta a los 20 minutos o más.
+
+### Inicie la preparación
+
+Toque **Empezar** en un ticket de la columna **Por preparar**: pasa de inmediato a **En preparación** — el cambio es instantáneo en la pantalla y luego lo confirma el servidor. Si algo falla (la red, por ejemplo), aparece un mensaje «No se pudo actualizar el ticket. Inténtelo de nuevo.» y la pantalla se resincroniza.
+
+### Marque el plato como listo
+
+Cuando el plato está emplatado, toque **Listo**: el ticket pasa a la columna **Listo**, con una etiqueta «Listo» en lugar del botón. En este punto, el papel de la cocina ha terminado: la entrega al [cliente](/es/guides/consumer/) o al repartidor se gestiona desde la página **Pedidos**.
+
+</Steps>
+
+<Eyebrow icon="check_circle">Buenas prácticas</Eyebrow>
+
+## En pleno servicio
+
+<Callout type="default">
+- **Deje la pantalla visible en todo momento**: la actualización automática solo funciona cuando la pestaña está visible. Si la pantalla ha estado oculta, todo se recarga en cuanto vuelve.
+- **Atienda primero el ticket más antiguo**: el indicador de la barra se lo señala en todo momento, y su paso a alerta a los 20 minutos es su protección contra los pedidos olvidados.
+- **Toque «Empezar» en el inicio real de la preparación**: las columnas reflejarán fielmente la realidad de la cocina, tanto para usted como para el equipo de sala.
+- **Lea las exclusiones y notas antes de empezar**: aparecen directamente en el ticket («sin…», la nota del cliente) — no hace falta abrir el pedido en otro sitio.
+</Callout>
+
+<Eyebrow icon="error">Errores que evitar</Eyebrow>
+
+## Las trampas habituales
+
+<Callout type="error">
+- **Buscar un botón «Atrás»**: la pantalla de cocina siempre avanza hacia adelante. Un ticket que ha pasado a «En preparación» no puede volver a «Por preparar» — el servidor rechaza este tipo de cambio.
+- **Confundir «Listo» y «Entregado»**: marcar un plato como listo no cierra el pedido. El ticket permanece en la columna **Listo** hasta su entrega, que se sigue desde la página Pedidos.
+- **Preocuparse por el cobro**: ningún gesto de la pantalla de cocina toca el pago — marcar «Listo» no cobra nada ni acredita ningún punto de fidelidad (los puntos se otorgan únicamente una vez entregado el pedido).
+- **Gestionar la cocina solo desde la página Pedidos**: es posible, pero menos reactivo — la pantalla de Cocina se actualiza cada 8 segundos (frente a 15 de Pedidos) y solo muestra lo que concierne a la brigada.
+</Callout>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
+
+## Preguntas frecuentes
+
+<Faq items={[
+  {
+    icon: "undo",
+    q: "¿Puedo cancelar o volver atrás desde la pantalla de cocina?",
+    a: "No. El paso Por preparar → En preparación → Listo es unidireccional, y el servidor rechaza cualquier marcha atrás. Si se equivoca al tocar, deje que el ticket siga su camino: la preparación real en la cocina sigue bajo su control."
+  },
+  {
+    icon: "schedule",
+    q: "¿El temporizador sigue siendo exacto si la pantalla se pone en reposo?",
+    a: "Sí. El temporizador se calcula a partir de la hora de creación del pedido en el servidor — no es un contador local. Incluso tras una larga ausencia, muestra la espera real en cuanto vuelve a la pantalla, que entonces se recarga de inmediato."
+  },
+  {
+    icon: "visibility_off",
+    q: "¿Por qué ha desaparecido un pedido de la pantalla?",
+    a: "Porque ha salido de la franja de cocina: en cuanto un pedido se recoge, se reparte o se cancela, sale de la pantalla de Cocina. Lo vuelve a encontrar en la página Pedidos, que muestra el conjunto del flujo."
+  },
+  {
+    icon: "lock",
+    q: "¿Quién puede hacer avanzar los tickets?",
+    a: "Únicamente una cuenta conectada de su restaurante (o un administrador de Grubano). Cada cambio se verifica en el servidor: nadie puede ver ni modificar los pedidos de otro restaurante."
+  }
+]} />
+
+<Eyebrow icon="menu_book">Para saber más</Eyebrow>
+
+## Artículos relacionados
+
+<RelatedCards items={[
+  {
+    icon: "receipt_long",
+    title: "Pedir y seguir",
+    sub: "El recorrido del cliente",
+    href: "/es/guides/consumer/"
+  },
+  {
+    icon: "storefront",
+    title: "Panel de control",
+    sub: "Indicadores en directo",
+    href: "/es/guides/restaurant/"
+  },
+  {
+    icon: "event_seat",
+    title: "Reservas y en sala",
+    sub: "Sala y franjas horarias",
+    href: "/es/guides/reservations/"
+  },
+  {
+    icon: "menu_book",
+    title: "Menú y escaneo IA",
+    sub: "Su carta, sus platos",
+    href: "/es/guides/menu/"
+  }
+]} />

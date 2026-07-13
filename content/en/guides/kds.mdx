@@ -1,0 +1,146 @@
+---
+title: "Kitchen screen (KDS)"
+description: "Track and move orders through the kitchen: three real-time columns, a timer per ticket, one gesture to move to the next step."
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# Kitchen screen (KDS)
+
+The kitchen screen shows the orders to prepare in real time, column by column: a glance to prioritize, a gesture to move each ticket forward.
+
+<ArticleMeta audience="Restaurants" minutes={3} updated="2026-07-12" />
+
+<Eyebrow icon="skillet">Overview</Eyebrow>
+
+## From ticket to plate
+
+<KdsBoard />
+
+<Eyebrow icon="bolt">The essentials</Eyebrow>
+
+## In short
+
+<Essentials title="If you only remember one thing:" items={[
+  <>The <b>Kitchen</b> screen only shows the orders to prepare, split into three columns: <b>To prepare</b>, <b>In progress</b>, <b>Ready</b> — anything handed over, delivered or cancelled disappears automatically</>,
+  <>Each ticket carries a <b>timer</b> anchored to the order's real time: the color changes at 10 then 20 minutes so you can prioritize at a glance</>,
+  <>A single button per ticket (<b>Start</b> then <b>Ready</b>): the action is instant, with no going back, and never touches money</>
+]} />
+
+<Eyebrow icon="lightbulb">How it works</Eyebrow>
+
+## The principle (and the why)
+
+The kitchen screen is reachable through the **Kitchen** entry in your [dashboard](/en/guides/restaurant/) menu, right below **Orders**. It filters your order flow to show only the **kitchen slice**: orders that are received, in progress or ready. Anything already picked up, delivered or cancelled leaves the screen automatically — the kitchen team only sees what's left to do.
+
+The display **refreshes on its own every 8 seconds** as long as the screen is visible, and reloads immediately when you come back to the tab. Each ticket shows its mode — **Delivery**, **Click & collect** or **Dine-in** — with a dedicated icon, so you can plate and pack accordingly.
+
+Kitchen and Orders work on the **same flow**: a ticket marked "Ready" on the kitchen side is reflected on the Orders page (and vice versa), each one seeing only the orders from its own restaurant.
+
+<Eyebrow icon="format_list_numbered">Step by step</Eyebrow>
+
+## Moving a ticket forward
+
+<Steps>
+
+### Open the Kitchen screen
+
+From the side menu of your dashboard, click **Kitchen**. The **Live** badge in the title confirms that the screen updates automatically — no manual reload needed.
+
+### Read the summary bar
+
+Three indicators at the top of the page: **Tickets in progress** (orders to prepare + in progress), **Average time in the kitchen**, and **Oldest ticket** — this last one turns to alert as soon as it has waited 20 minutes.
+
+### Spot the urgent tickets
+
+Each card shows the order's short number (its last 5 characters, in uppercase), the mode, the timer, then the item details: quantity, name, size, add-ons, exclusions ("no onions") and the customer's note. The color follows the real wait: normal under 10 minutes, caution between 10 and 19, alert at 20 minutes and beyond.
+
+### Start the preparation
+
+Tap **Start** on a ticket in the **To prepare** column: it switches to **In progress** right away — the change is immediate on screen, then confirmed by the server. If it fails (a network issue, for example), a "Couldn't update the ticket. Try again." message appears and the screen resyncs.
+
+### Mark the dish ready
+
+When the dish is plated, tap **Ready**: the ticket moves to the **Ready** column, with a "Ready" tag in place of the button. At this point, the kitchen's job is done: handing it over to the [customer](/en/guides/consumer/) or the courier is managed from the **Orders** page.
+
+</Steps>
+
+<Eyebrow icon="check_circle">Best practices</Eyebrow>
+
+## In the thick of service
+
+<Callout type="default">
+- **Keep the screen displayed at all times**: the automatic refresh only runs when the tab is visible. If the screen was hidden, everything reloads the moment you return.
+- **Handle the oldest ticket first**: the summary-bar indicator points it out at all times, and its switch to alert at 20 minutes is your safeguard against forgotten orders.
+- **Tap "Start" at the real start of preparation**: the columns will faithfully reflect what's happening in the kitchen, both for you and for the front-of-house team.
+- **Read the exclusions and notes before you start**: they're shown right on the ticket ("no…", the customer's note) — no need to open the order somewhere else.
+</Callout>
+
+<Eyebrow icon="error">Mistakes to avoid</Eyebrow>
+
+## Common pitfalls
+
+<Callout type="error">
+- **Looking for a "Back" button**: the kitchen screen always moves forward. A ticket that has gone to "In progress" can't return to "To prepare" — the server refuses that kind of change.
+- **Confusing "Ready" and "Handed over"**: marking a dish ready doesn't close the order. The ticket stays in the **Ready** column until it's handed over, which is tracked from the Orders page.
+- **Worrying about payment collection**: no action on the kitchen screen touches payment — marking "Ready" charges nothing and credits no loyalty points (points are only sent once the order is delivered).
+- **Running the kitchen from the Orders page alone**: possible, but less responsive — the Kitchen screen refreshes every 8 seconds (versus 15 for Orders) and shows only what concerns the kitchen team.
+</Callout>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
+
+## Frequently asked questions
+
+<Faq items={[
+  {
+    icon: "undo",
+    q: "Can I cancel or go back from the kitchen screen?",
+    a: "No. The move To prepare → In progress → Ready is one-way, and the server rejects any step backward. If you tap by mistake, let the ticket carry on its way: the real preparation in the kitchen stays under your control."
+  },
+  {
+    icon: "schedule",
+    q: "Does the timer stay accurate if the screen goes to sleep?",
+    a: "Yes. The timer is computed from the order's creation time on the server side — it isn't a local counter. Even after a long absence, it shows the real wait as soon as you return to the screen, which then reloads immediately."
+  },
+  {
+    icon: "visibility_off",
+    q: "Why has an order disappeared from the screen?",
+    a: "Because it left the kitchen slice: as soon as an order is picked up, delivered or cancelled, it leaves the Kitchen screen. You'll find it again on the Orders page, which shows the whole flow."
+  },
+  {
+    icon: "lock",
+    q: "Who can move the tickets forward?",
+    a: "Only a signed-in account from your restaurant (or a Grubano administrator). Every change is verified on the server side: no one can see or modify another restaurant's orders."
+  }
+]} />
+
+<Eyebrow icon="menu_book">Go further</Eyebrow>
+
+## Related articles
+
+<RelatedCards items={[
+  {
+    icon: "receipt_long",
+    title: "Order & track",
+    sub: "The customer journey",
+    href: "/en/guides/consumer/"
+  },
+  {
+    icon: "storefront",
+    title: "Dashboard",
+    sub: "Live indicators",
+    href: "/en/guides/restaurant/"
+  },
+  {
+    icon: "event_seat",
+    title: "Reservations & dine-in",
+    sub: "Dining room and time slots",
+    href: "/en/guides/reservations/"
+  },
+  {
+    icon: "menu_book",
+    title: "Menu & AI Scan",
+    sub: "Your menu, your dishes",
+    href: "/en/guides/menu/"
+  }
+]} />

@@ -2,103 +2,144 @@
 title: "Panel de control"
 description: "Vea de un vistazo la actividad de su restaurante: pedidos en curso, facturación, alertas — y gestione el servicio desde esta pantalla única."
 generated: true
-sourceHash: 676b23844b8e08c6
+sourceHash: 13f402ced5fc146f
 generator: scripts/generate-feature-page.js
-templateVersion: 5
+templateVersion: 6
 ---
 
 import { Steps, Callout } from 'nextra/components'
 
 # Panel de control
 
-Gestione la actividad de su restaurante en tiempo real: pedidos en curso, facturación del día, alertas — una sola pantalla para seguir todo y actuar rápidamente.
+Gestione su restaurante desde una sola pantalla: pedidos en tiempo real, facturación del día, alertas de stock y visión de conjunto multimarca.
 
-<FlowDiagram steps={["Pedidos en curso","Cifras en tiempo real","Alertas","Multimarca"]} />
+<ArticleMeta audience="Restaurantes" minutes={3} updated="2026-07-12" />
 
-## Lo esencial
+<Eyebrow icon="insights">Resumen</Eyebrow>
 
-El panel de control centraliza la actividad de su establecimiento en directo: puede ver los pedidos que llegan, la facturación del día, sus clientes fieles y el rendimiento de cada marca. Si gestiona varias marcas, el panel de control las agrupa todas en una sola pantalla.
+## Su centro de mando operativo
 
-## Cómo funciona
+<FlowDiagram steps={[
+  { icon: "receipt_long", title: "Pedidos en curso", desc: "Nuevos pedidos y preparaciones en directo" },
+  { icon: "payments", title: "Cifras en tiempo real", desc: "Facturación del día y evolución vs. víspera" },
+  { icon: "error", title: "Alertas", desc: "Stock bajo, retrasos, puntos de atención" },
+  { icon: "storefront", title: "Multimarca", desc: "Vista agregada de todas sus marcas" }
+]} />
 
-Cada mañana, el panel de control recupera los pedidos validados del día y calcula cuatro indicadores clave: facturación, número de pedidos, clientes activos en su programa de fidelización y la marca que genera más ingresos. La evolución respecto al día anterior se muestra en porcentaje, lo que le permite detectar rápidamente una bajada o una subida de actividad. Si ha activado varias [marcas](/es/guides/menu/) (por ejemplo, una enseña italiana y una enseña asiática en la misma cuenta), el panel de control suma sus pedidos y le indica qué marca tiene mejor rendimiento — sin que tenga que alternar entre varias interfaces.
+<Eyebrow icon="bolt">Lo esencial</Eyebrow>
 
-Esta gestión en tiempo real le ayuda a anticipar: un pico de pedidos le impulsa a preparar más [existencias](/es/guides/stocks/), una alerta de ruptura le invita a reabastecerse, y la visibilidad sobre las [reservas](/es/guides/reservations/) de la noche le permite ajustar el servicio. El panel de control es la pantalla de inicio de su espacio de restaurador — se actualiza automáticamente con cada nuevo pedido.
+## En resumen
 
-<Callout type="info">
-**Grubano Pro** permitirá pronto recibir los pedidos de todas sus otras plataformas (Uber Eats, Deliveroo, Just Eat…) directamente en este panel de control: una sola pantalla para todos sus pedidos, con análisis e informes unificados. La comisión sigue siendo del 10 %; Pro es una cuota de 29 €/mes, sin compromiso, que se añade a la comisión sin reemplazarla.
-</Callout>
+<Essentials title="Si solo debe recordar esto:" items={[
+  <>El panel de control muestra en <b>tiempo real</b> la facturación del día, el número de pedidos y los clientes de fidelidad</>,
+  <>Ve de un vistazo su <b>mejor marca</b> (la que genera más facturación hoy) y su peso en el total</>,
+  <>La <b>evolución vs. víspera</b> le muestra si el servicio acelera o se ralentiza — útil para ajustar equipos y stock</>
+]} />
 
-## Paso a paso
+<Eyebrow icon="lightbulb">Cómo funciona</Eyebrow>
+
+## El principio (y el porqué)
+
+El panel de control agrega automáticamente todos los pedidos validados durante el día, sea cual sea su modo (entrega, Click & collect, en el local). Calcula la facturación total, cuenta los clientes inscritos en el programa de fidelidad e identifica su marca con mejor rendimiento.
+
+Cada indicador se actualiza en cuanto llega un nuevo pedido, ofreciéndole una visión siempre al día sin recargar la página. La evolución respecto a la víspera le ayuda a anticiparse: un pico repentino puede indicar una promoción eficaz o un evento local, mientras que una bajada le invita a revisar su [stock](/es/guides/stocks/) o a reactivar una acción de marketing.
+
+<Eyebrow icon="format_list_numbered">Paso a paso</Eyebrow>
+
+## Consultar sus indicadores del día
 
 <Steps>
 
-### Conexión al panel de control
+### Acceda al panel de control
 
-Conéctese a su cuenta de restaurador en [grubano.com/dashboard](https://www.grubano.com/dashboard). El panel de control se muestra automáticamente en la página de inicio.
+Conéctese a su cuenta de restaurante en `grubano.com/dashboard`. La página de inicio muestra inmediatamente las cuatro grandes métricas: facturación del día, número de pedidos, clientes de fidelidad y mejor marca.
 
-### Lectura de los indicadores del día
+### Lea la facturación
 
-La línea superior presenta cuatro tarjetas: facturación del día, número de pedidos, clientes de fidelización activos, mejor marca. Cada tarjeta muestra la evolución en porcentaje respecto al día anterior (subida en verde, bajada en naranja).
+La primera tarjeta indica el importe total ingresado desde medianoche. Si tiene varias marcas (multimarca), este total las agrega todas.
 
-### Seguimiento multimarca
+### Identifique su mejor marca
 
-Si gestiona varias marcas, la tarjeta «Mejor marca» indica cuál concentra la mayor facturación hoy, con su porcentaje del total. Haga clic en el nombre de la marca para acceder a su [menú](/es/guides/menu/) y ajustar los platos en stock.
+La tarjeta «Mejor marca» muestra el nombre de la marca que genera más ingresos hoy, junto con su porcentaje de la facturación global. Este indicador le ayuda a entender dónde concentrar sus esfuerzos.
 
-### Acciones rápidas
+### Compare con la víspera
 
-El menú lateral le da acceso directo a las pantallas operativas: pedidos en curso (para cambiar su estado de «recibido» a «en preparación», «listo», «recogido», «entregado»), [gestión de existencias](/es/guides/stocks/), [reservas](/es/guides/reservations/) y [seguimiento financiero](/es/guides/finances/). Todo permanece al alcance de un clic.
+El porcentaje de evolución (en verde si es positivo, en rojo si es negativo) compara la facturación de hoy con la de ayer. Una diferencia importante puede revelar un cambio de tendencia o un evento puntual.
 
 </Steps>
 
-## Ejemplo concreto
+<Eyebrow icon="calculate">Ejemplo concreto</Eyebrow>
 
-Abre el panel de control a las 9 h: cero pedidos, facturación a 0 €. A mediodía, la pantalla indica 12 pedidos por 347 € — un aumento del +8 % respecto a ayer. La tarjeta «Mejor marca» muestra que su enseña italiana capta el 58 % de la facturación, mientras que su enseña de hamburguesas representa el 42 % restante. Observa que tres artículos de la carta italiana están marcados como «stock bajo»: los reabastece con un clic desde la pantalla de [existencias](/es/guides/stocks/), y el servicio de la noche puede comenzar con tranquilidad. Al final del día, el panel muestra 38 pedidos y 1 124 € — compara con la semana pasada y constata una progresión regular.
+## Un día típico con dos marcas
 
-## Buenas prácticas
+Imaginemos que gestiona dos marcas: una pizzería y un puesto de poke bowls. A las 14 h, el panel de control muestra:
 
-- **Consulte el panel de control al inicio del servicio** para anticipar las roturas de stock y ajustar las cantidades antes del pico de trabajo.
-- **Compare la evolución día a día**: una bajada inusual puede señalar un problema de visibilidad, una subida confirma el impacto de una promoción o de un nuevo plato.
-- **Utilice los indicadores multimarca** para equilibrar sus recursos: si una marca tiene bajo rendimiento, pruebe una promoción dirigida o enriquezca su menú.
-- **Active las notificaciones** (configuración de cuenta) para recibir una alerta en cuanto llegue un pedido, incluso si no está frente a la pantalla.
+<Breakdown title="Indicadores del día" rows={[
+  { icon: "account_balance_wallet", label: "Facturación", value: "847,50 €" },
+  { icon: "receipt_long", label: "Pedidos validados", value: "34" },
+  { icon: "loyalty", label: "Clientes de fidelidad", value: "128" },
+  { icon: "storefront", label: "Mejor marca", value: "Pizzería (62 % de la facturación)", variant: "total" }
+]} />
 
-## Trucos y consejos
+La evolución muestra un **+18 %** respecto a la víspera: ayer a la misma hora estaba en 718 €. Este salto le indica que el servicio del mediodía funciona mejor hoy — quizás gracias a un clima favorable o a la promoción «Mediodía Exprés» que lanzó esta mañana.
 
-El panel de control agrega automáticamente los datos de todas sus marcas: no necesita crear una cuenta separada por enseña. Si lanza una segunda marca, aparecerá en las estadísticas desde el primer pedido validado. Piense en actualizar la página durante el servicio para ver los últimos pedidos — el navegador no siempre actualiza las cifras en tiempo real sin una recarga manual.
+Este ejemplo es ilustrativo y puede variar según su actividad, su ubicación y sus acciones de marketing.
+
+<Eyebrow icon="check_circle">Buenas prácticas</Eyebrow>
+
+## Sacar el máximo partido al panel de control
+
+<Callout type="default">
+- **Consúltelo varias veces al día**: un vistazo a las 11 h, 14 h y 19 h le da tres instantáneas del servicio y le permite anticiparse a los picos.
+- **Cruce con el [stock](/es/guides/stocks/)**: si una marca despega, compruebe que tiene suficientes ingredientes para aguantar la noche.
+- **Anote los eventos**: una evolución inusual (un partido, una huelga, el clima) merece una nota mental para ajustar sus previsiones futuras.
+- **Compare a lo largo de varios días**: una sola diferencia no marca una tendencia — observe la semana entera antes de modificar sus horarios o sus [menús](/es/guides/menu/).
+</Callout>
+
+<Eyebrow icon="error">Errores a evitar</Eyebrow>
+
+## Los errores frecuentes
+
+<Callout type="error">
+- **No reaccionar a las alertas**: si el panel de control señala un stock bajo o un retraso en la entrega, hacer clic en ella y tratar el problema de inmediato evita las roturas en pleno servicio.
+- **Comparar días no comparables**: un domingo frente a un lunes, o un festivo frente a un día laborable, falsea el análisis — dé prioridad a la comparación semana N frente a semana N-1.
+- **Ignorar la mejor marca**: si una marca rinde por debajo de lo esperado de forma duradera, indague las razones (precios, plazos, reseñas) en lugar de centrarse únicamente en la ganadora.
+</Callout>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
 
 ## Preguntas frecuentes
 
 <Faq items={[
   {
-    icon: "help",
-    q: "¿Por qué la facturación del día no corresponde con mis transferencias?",
-    a: "El panel de control muestra la facturación bruta del día (total pagado por los clientes). Sus transferencias deducen la comisión del 10 % y llegan en 7 días — consulte la pantalla Finanzas para el detalle de los ingresos."
+    icon: "schedule",
+    q: "¿A qué hora se reinicia el contador del día?",
+    a: "Cada día a medianoche (00:00), los indicadores de facturación y de pedidos vuelven a cero. Los clientes de fidelidad, en cambio, representan el total acumulado desde la apertura de su cuenta."
   },
   {
-    icon: "help",
-    q: "¿Puedo filtrar los pedidos por marca?",
-    a: "El panel de control global agrega todas las marcas. Para consultar los pedidos de una marca concreta, acceda a su menú a través del menú lateral, luego haga clic en «Pedidos» en la pestaña de la marca."
+    icon: "storefront",
+    q: "¿Cómo se calcula la «mejor marca»?",
+    a: "Grubano suma la facturación de cada marca desde medianoche y las clasifica por importe descendente. La marca en cabeza se muestra, con su porcentaje de la facturación total. Si dos marcas empatan, gana la primera por orden alfabético."
   },
   {
-    icon: "help",
-    q: "¿Los pedidos cancelados se contabilizan en la facturación del día?",
-    a: "No. Solo los pedidos cuyo estado es «validado», «en preparación», «listo», «recogido» o «entregado» entran en el cálculo de la facturación. Los pedidos cancelados no aparecen ni en la facturación ni en el contador de pedidos."
+    icon: "update",
+    q: "¿Las cifras se actualizan automáticamente?",
+    a: "Sí, el panel de control consulta el servidor cada pocos segundos. En cuanto se valida un nuevo pedido, la facturación, el número de pedidos y la mejor marca se recalculan sin que recargue la página."
   },
   {
-    icon: "help",
-    q: "¿Cómo acceder a las estadísticas detalladas (horas punta, cesta media)?",
-    a: "La pantalla Analytics (menú lateral) presenta los gráficos de ingresos por día, por marca y por hora. Allí encontrará la cesta media, las horas punta y la distribución de la facturación entre sus marcas durante los últimos 30 días."
+    icon: "error",
+    q: "¿Qué hacer si el panel de control muestra cero en todo?",
+    a: "Puede ocurrir si aún no se ha validado ningún pedido hoy, o si la base de datos no está accesible. Compruebe su conexión a internet y contacte con el soporte si el problema persiste más allá de unos minutos."
   }
 ]} />
 
-## Para ir más lejos
+<Eyebrow icon="menu_book">Para ir más allá</Eyebrow>
 
-**Pasos siguientes**
+## Artículos relacionados
 
-- [Gestión del menú](/es/guides/menu/) — añada platos, active la IA para escanear una carta en papel y organice sus marcas.
-- [Gestión de existencias](/es/guides/stocks/) — siga las cantidades en tiempo real y reciba alertas de ruptura para evitar pedidos no cumplidos.
-
-**Ver también**
-
-- [Reservas](/es/guides/reservations/) — gestione las mesas reservadas en sala y sincronícelas con los pedidos para llevar.
-- [Seguimiento financiero](/es/guides/finances/) — consulte sus transferencias, la comisión aplicada y el historial de pagos.
+<RelatedCards items={[
+  { icon: "restaurant_menu", title: "Menú y escaneo IA", sub: "Gestione su carta con un clic", href: "/es/guides/menu/" },
+  { icon: "inventory", title: "Gestión de stock", sub: "Anticipe las roturas", href: "/es/guides/stocks/" },
+  { icon: "table_bar", title: "Reservas y en sala", sub: "Gestione su sala", href: "/es/guides/reservations/" },
+  { icon: "account_balance", title: "Finanzas y pagos", sub: "Siga sus ingresos", href: "/es/guides/finances/" }
+]} />

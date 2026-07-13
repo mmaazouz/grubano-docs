@@ -1,114 +1,184 @@
 ---
-title: "Fidelidad, monedero y recomendación"
-description: "Acumular puntos y ascender de nivel, seguir tu monedero, y recomendar a conocidos mediante un código de recomendación para obtener ventajas."
+title: "Fidelidad, saldo y recomendación"
+description: "Acumular puntos y subir de nivel, seguir tu monedero y recomendar a tus allegados mediante un código de recomendación para ganar ventajas."
 generated: true
-sourceHash: 6bb0d2e960459b52
+sourceHash: a2559e49548f4d15
 generator: scripts/generate-feature-page.js
-templateVersion: 5
+templateVersion: 6
 ---
 
 import { Steps, Callout } from 'nextra/components'
 
-# Fidelidad, monedero y recomendación
+# Fidelidad, saldo y recomendación
 
-Acumule puntos en cada pedido, ascienda de nivel de fidelidad y comparta su código de recomendación para convertir sus compras en ventajas concretas.
+Acumula puntos con cada pedido, asciende por los niveles de fidelidad y recomienda a tus allegados para ofrecerles un descuento de bienvenida mientras ganas ventajas.
 
-<FlowDiagram steps={["Pedir","Acumular puntos","Ascender de nivel","Recomendar"]} />
+<ArticleMeta audience="Clientes" minutes={5} updated="2026-07-10" />
 
-## Lo esencial
+<Eyebrow icon="insights">Resumen</Eyebrow>
 
-El programa de fidelidad Grubano recompensa cada pedido: usted gana puntos que se transforman en crédito en euros, utilizable en sus próximos pedidos. Cuanto más pide, más asciende en los niveles (Bronze, Silver, Gold, Platine) y más crece su monedero. También puede [recomendar](RELATED_LINKS[0]) a sus conocidos gracias a su código personal: ellos se benefician de un descuento de bienvenida, y usted acumula puntos con sus compras.
+## Tu recorrido de fidelidad
 
-## Cómo funciona
+<FlowDiagram steps={[
+  { icon: "receipt_long", title: "Pedir", desc: "Haz un pedido en un restaurante de la red" },
+  { icon: "loyalty", title: "Acumular puntos", desc: "Gana puntos automáticamente con cada compra" },
+  { icon: "star", title: "Subir de nivel", desc: "Progresa de Bronce a Platino a medida que acumulas puntos" },
+  { icon: "code", title: "Recomendar", desc: "Invita a tus allegados con tu código personal" }
+]} />
 
-Cada vez que [realiza un pedido](/es/guides/consumer/), su cuenta de fidelidad acumula puntos proporcionales al importe gastado. Estos puntos alimentan su **monedero**: un crédito en euros que usted gasta libremente en sus próximas compras. No hay recompensas fijas ni catálogo de regalos — su saldo de puntos se convierte en euros según una tasa transparente, y usted elige cuándo utilizarlo.
+<Eyebrow icon="bolt">Lo esencial</Eyebrow>
 
-Los **niveles de fidelidad** (Bronze, Silver, Gold, Platine) reflejan su historial acumulado: cuanto más pide, más progresa. Cada nivel marca una etapa visible de su compromiso, sin que esto cambie la tasa de conversión — todos los clientes se benefician del mismo crédito por punto.
+## En resumen
 
-La **recomendación** completa el programa: usted recibe un código personal único que comparte con sus conocidos. Cuando un recomendado realiza su primer pedido con su código, obtiene un descuento de bienvenida, y usted gana puntos con sus futuras compras durante un período definido. Es un círculo virtuoso: sus amigos descubren Grubano con una ventaja inmediata, y usted es recompensado por el boca a boca.
+<Essentials title="Si solo debes quedarte con esto:" items={[
+  <>Cada pedido entregado te aporta <b>puntos automáticamente</b> — tu saldo se convierte en un monedero (€) que gastas en un próximo pedido.</>,
+  <>Progresas de <b>Bronce a Platino</b> (niveles en 100, 200 y luego 400 puntos) — tu nivel actual se muestra en tu cuenta.</>,
+  <>Tu código de recomendación ofrece un <b>descuento de bienvenida</b> a tus allegados en su primer pedido y te hace ganar ventajas con sus compras.</>
+]} />
 
-## Paso a paso
+<Eyebrow icon="lightbulb">Cómo funciona</Eyebrow>
+
+## El principio (y el porqué)
+
+Cada vez que [haces un pedido](/es/guides/consumer/) y el restaurante lo entrega, Grubano registra tu pedido en tu historial de fidelidad y acredita tu saldo de puntos. Estos puntos se transforman luego en un monedero en euros — un verdadero poder de compra que utilizas para reducir el importe de un pedido futuro, sin condiciones.
+
+También acumulas antigüedad: cuanto más aumenta tu saldo, más subes de nivel (Bronce → Plata → Oro → Platino). Tu progreso es visible en todo momento en tu cuenta, con la distancia que te separa del siguiente nivel.
+
+Por último, dispones de un código de recomendación personal: compártelo con tus allegados para ofrecerles un descuento de bienvenida en su primer pedido. Grubano registra el vínculo entre tú y la persona recomendada, lo que te abre ventajas a medida que hace pedidos.
+
+<Eyebrow icon="format_list_numbered">Paso a paso</Eyebrow>
+
+## Seguir tus puntos y tu nivel
 
 <Steps>
 
-### Acumule puntos en cada pedido
+### Consulta tu saldo
 
-En cada pedido validado, su cuenta de fidelidad recibe automáticamente puntos proporcionales al importe gastado. No se requiere ninguna acción — el sistema registra sus ganancias desde la entrega o la recogida efectuadas.
+Ve a tu página de cuenta (accesible desde el icono de usuario en la parte superior de la aplicación). Tu saldo de puntos actual se muestra arriba, con su equivalente en monedero (€).
 
-### Consulte su monedero
+### Descubre tu nivel
 
-Acceda a su página **Cuenta** en la aplicación: allí verá su saldo de puntos, el crédito en euros correspondiente y la escala de conversión (por ejemplo 100 puntos = 5 €, 200 puntos = 10 €, 400 puntos = 20 €). El historial de sus movimientos — puntos ganados, créditos gastados, reembolsos — es accesible en tiempo real.
+Justo debajo, ves tu nivel actual (Bronce, Plata, Oro o Platino) y el número de puntos que te quedan por acumular para alcanzar el siguiente. Los niveles se alcanzan en 100, 200 y 400 puntos.
 
-### Ascienda de nivel
+### Comprueba la escala del monedero
 
-Su total acumulado de puntos le hace progresar en los niveles: **Bronze** (0+), **Silver** (100+), **Gold** (200+), **Platine** (400+). La página Cuenta muestra su nivel actual y el número de puntos restantes hasta el siguiente. El nivel es un marcador de fidelidad — la tasa de conversión sigue siendo idéntica para todos.
+Una tabla presenta los importes del monedero correspondientes a 100, 200 y 400 puntos. Estas referencias te ayudan a visualizar el poder de compra que representa tu saldo.
 
-### Recomiende a sus conocidos
+### Consulta el historial de tus movimientos
 
-Copie su código de recomendación desde la página Cuenta y compártalo por mensaje, red social o enlace. Cuando un recomendado se registra y pide con ese código, recibe un descuento en su primer pedido, y usted gana puntos con sus compras durante un período determinado (generalmente 90 días). Cada recomendado activo alimenta su monedero.
-
-### Gaste su crédito
-
-Al finalizar un pedido, el carrito le propone aplicar todo o parte de su crédito de fidelidad. Seleccione el importe a utilizar — el total del pedido se reduce en esa cantidad. Su saldo de puntos disminuye en consecuencia, y la operación aparece en su historial.
+Una sección muestra tus últimas transacciones de puntos: pedidos que aportaron puntos, usos del monedero en una compra o reabonos en caso de cancelación. Cada línea lleva un signo (+ ganado, − gastado) y el equivalente en euros del movimiento.
 
 </Steps>
 
-<Callout type="info">
-El crédito de fidelidad es financiado por Grubano: cuando usted gasta sus puntos, es Grubano quien asume el descuento, no el restaurante. Los puntos no expiran mientras usted permanezca activo en la plataforma.
+<Eyebrow icon="format_list_numbered">Paso a paso</Eyebrow>
+
+## Recomendar a un allegado
+
+<Steps>
+
+### Encuentra tu código
+
+En tu página de cuenta, una sección «Recomendación» muestra tu código personal (ocho caracteres en mayúsculas). Este código es único y permanente.
+
+### Compártelo
+
+Comunica este código a tus allegados por el canal que prefieras (mensaje, email, redes sociales). Deberán introducirlo o seguir un enlace que contenga este código cuando hagan su primer pedido.
+
+### Tu recomendado se beneficia de un descuento de bienvenida
+
+Cuando la persona recomendada valida su primer pedido con tu código, Grubano aplica automáticamente un descuento sobre el importe del carrito (porcentaje limitado, dentro de los límites fijados por Grubano). Este descuento se muestra en el resumen antes del pago.
+
+### Se te acredita
+
+Una vez entregado el pedido, Grubano registra el vínculo de recomendación entre tú y tu recomendado. Las condiciones financieras de esta recomendación se fijan entre las partes implicadas; verás aparecer tus ventajas a medida que tu recomendado hace pedidos.
+
+</Steps>
+
+<Eyebrow icon="calculate">Ejemplo concreto</Eyebrow>
+
+## Un recorrido de 240 puntos
+
+Has acumulado 240 puntos a lo largo de tus pedidos. Tu saldo se convierte en un monedero de 12 € (la tasa de conversión la define Grubano). Estás en el nivel Oro (alcanzado en 200 puntos) y te quedan 160 puntos por ganar para alcanzar Platino (400 puntos). En tu próximo pedido, podrás elegir usar la totalidad o una parte de esos 12 € para reducir el importe a pagar — el monedero no utilizado permanece disponible.
+
+<Callout type="default">
+Este ejemplo es ilustrativo. La tasa de conversión de puntos a euros y los umbrales de niveles los configura Grubano y se aplican de manera uniforme a todos los clientes.
 </Callout>
 
-## Buenas prácticas
+<Eyebrow icon="check_circle">Buenas prácticas</Eyebrow>
 
-- **Consulte regularmente su historial**: cada ganancia y gasto de puntos está registrado con la referencia del pedido asociado. Así mantiene una visión clara de la evolución de su monedero.
-- **Comparta su código desde el registro de sus conocidos**: el descuento de bienvenida solo se aplica al primer pedido del recomendado. Piense en transmitirle el código antes de que cree su cuenta.
-- **Utilice su crédito estratégicamente**: nada le obliga a gastar todos sus puntos de una vez. Guarde su crédito para un pedido grande o fracciónelo según sus necesidades — usted decide.
-- **Verifique la elegibilidad de la recomendación**: el descuento de bienvenida se aplica únicamente a nuevos clientes que nunca han pedido en Grubano. Un amigo ya registrado no podrá beneficiarse de su código.
+## Sacar el máximo partido a tu fidelidad
 
-## Errores frecuentes
-
-<Callout type="warning">
-**Puntos no acreditados**: si no ve sus puntos después de un pedido, verifique que este esté marcado como «entregado» o «recogido» en su historial. Los puntos solo se acreditan una vez finalizado el pedido, nunca en el momento del pago.
+<Callout type="default">
+- **Pide con regularidad** — cada pedido entregado alimenta tu saldo, incluso los importes pequeños cuentan.
+- **Vigila tus umbrales** — si estás cerca de un nuevo nivel, un pedido adicional puede bastar para alcanzarlo.
+- **Comparte tu código ampliamente** — cuantas más personas recomiendes, más multiplicas las ocasiones de beneficiarte de ventajas con sus pedidos.
+- **Usa tu monedero cuando te convenga** — nunca estás obligado a gastarlo todo de una sola vez; el saldo permanece disponible mientras tu cuenta esté activa.
 </Callout>
 
-**Código de recomendación no reconocido**: el código debe introducirse **antes** del primer pedido del recomendado. Si su amigo ya ha pedido una vez sin código, ya no podrá beneficiarse del descuento de bienvenida — el sistema solo permite una recomendación por cuenta.
+<Eyebrow icon="error">Errores que evitar</Eyebrow>
 
-**Confusión nivel / crédito**: ascender de nivel (Bronze → Silver) no cambia la tasa de conversión puntos/euros. El nivel es un marcador de progresión, no un multiplicador de valor — todos los clientes convierten sus puntos a la misma tasa.
+## Los errores más comunes
 
-## Trucos y consejos
+<Callout type="error">
+- **No comprobar tu saldo antes de pedir** — te arriesgas a pagar el precio completo cuando disponías de un monedero utilizable.
+- **Compartir un código que no es el tuyo** — solo tu código personal te aporta ventajas; difundir el código de un tercero no te acredita nada.
+- **Olvidar introducir un código de recomendación en tu primer pedido** — el descuento de bienvenida solo se aplica una vez, en el primer pedido; no podrás reclamarlo retroactivamente.
+</Callout>
 
-- **Siga su progresión hacia el siguiente nivel**: la página Cuenta muestra cuántos puntos le quedan por acumular antes de Silver, Gold o Platine. Es un buen indicador para saber dónde se encuentra en su fidelidad.
-- **Comparta su enlace personalizado**: en lugar de copiar/pegar un código bruto, utilice el enlace de recomendación generado automáticamente — sus amigos hacen clic, se registran, y el código se aplica sin esfuerzo.
-- **Combine crédito de fidelidad y promociones**: el crédito de fidelidad se aplica al total de su carrito después de los descuentos del restaurante. Por tanto, puede acumular una promoción del restaurante y su crédito Grubano en el mismo pedido.
+<Eyebrow icon="quiz">Preguntas frecuentes</Eyebrow>
 
 ## Preguntas frecuentes
 
 <Faq items={[
   {
-    icon: "help",
-    q: "¿Expiran mis puntos?",
-    a: "No. Mientras permanezca activo en Grubano, su saldo de puntos se conserva indefinidamente. Solo una cuenta inactiva prolongada (varios meses sin pedidos) podría conllevar una revisión — pero no se aplica ninguna expiración automática en condiciones normales."
+    icon: "loyalty",
+    q: "¿Cuántos puntos se ganan por pedido?",
+    a: "El número de puntos depende del importe de tu pedido y de las reglas de fidelidad definidas por Grubano. Cada pedido entregado acredita automáticamente tu cuenta; ves el detalle en el historial de tus movimientos."
   },
   {
-    icon: "help",
-    q: "¿Puedo acumular varios códigos de recomendación?",
-    a: "No. Una cuenta de cliente solo puede estar vinculada a un único recomendador. El primer código válido utilizado durante el registro bloquea el vínculo de recomendación — no puede aplicar un segundo posteriormente."
+    icon: "star",
+    q: "¿Qué me aportan los niveles Bronce, Plata, Oro y Platino?",
+    a: "Los niveles jalonan tu progreso: alcanzas Plata en 100 puntos, Oro en 200 y Platino en 400. Tu nivel actual es una referencia visual de tu antigüedad y de tu actividad; Grubano puede asociarle ventajas u ofertas específicas."
   },
   {
-    icon: "help",
-    q: "¿Cómo saber cuántos puntos vale mi pedido?",
-    a: "El número de puntos ganados es proporcional al importe gastado. Después de validar el pedido, consulte su historial de fidelidad: cada línea muestra los puntos acreditados y su equivalente en euros."
+    icon: "payments",
+    q: "¿Cómo usar mi monedero (€) en un pedido?",
+    a: "Pronto podrás elegir directamente en tu carrito usar la totalidad o una parte de tu monedero. El importe deducido aparecerá en el resumen antes del pago. Por el momento, el monedero se calcula y se muestra en el servidor; la interfaz de selección manual se añadirá en una próxima actualización."
   },
   {
-    icon: "help",
-    q: "¿Qué ocurre si cancelo un pedido después de haber utilizado mi crédito?",
-    a: "Si el pedido se cancela o reembolsa, los puntos gastados se vuelven a acreditar en su cuenta. La operación aparece en su historial con el tipo «reembolso» y la referencia del pedido correspondiente."
+    icon: "code",
+    q: "¿Puedo recomendar a alguien que ya ha pedido?",
+    a: "No. El descuento de bienvenida y el registro del vínculo de recomendación solo se aplican en el primer pedido de tu recomendado. Si la persona ya ha pedido sin código, ya no puedes recomendarla retroactivamente."
   }
 ]} />
 
-## Para ir más allá
+<Eyebrow icon="menu_book">Para saber más</Eyebrow>
 
-**Lectura previa**  
-[Pedir en Grubano](/es/guides/consumer/) — Descubra el recorrido completo del pedido, desde la elección del restaurante hasta el seguimiento de la entrega. El programa de fidelidad se activa automáticamente en cada pedido finalizado.
+## Artículos relacionados
 
-**Gestionar su cuenta**  
-[Mi cuenta de cliente](/es/guides/consumer-account/) — Consulte su información personal, sus direcciones registradas y su historial de pedidos. También es allí donde encontrará su código de recomendación y su saldo de puntos en tiempo real.
+<RelatedCards items={[
+  {
+    icon: "shopping_bag",
+    title: "Pedir y seguir",
+    sub: "Pedir y seguir",
+    href: "/es/guides/consumer/"
+  },
+  {
+    icon: "person",
+    title: "Mi cuenta",
+    sub: "Perfil y direcciones",
+    href: "/es/guides/consumer-account/"
+  },
+  {
+    icon: "loyalty",
+    title: "Programa de fidelidad",
+    sub: "Fidelizar a tus clientes",
+    href: "/es/guides/loyalty/"
+  },
+  {
+    icon: "insights",
+    title: "Panel de control",
+    sub: "Indicadores en directo",
+    href: "/es/guides/restaurant/"
+  }
+]} />

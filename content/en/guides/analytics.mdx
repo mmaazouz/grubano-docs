@@ -1,0 +1,167 @@
+---
+title: "Analytics & AI briefing"
+description: "Track your sales in real time: a 7-day chart, peak hours, your brand ranking — plus an AI briefing every morning with the day's figures and alerts."
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# Analytics & AI briefing
+
+Two pages to run your business: **Analytics** for the big picture of your sales, and the **Briefing** to start every morning with the day's figures, alerts and priorities — all calculated automatically.
+
+<ArticleMeta audience="Restaurants" minutes={4} updated="2026-07-12" />
+
+<Eyebrow icon="insights">Overview</Eyebrow>
+
+## Your numbers, at a glance
+
+<AnalyticsBoard />
+
+<Eyebrow icon="bolt">The essentials</Eyebrow>
+
+## In brief
+
+<Essentials title="If you only remember one thing:" items={[
+  <>The <b>Analytics</b> page shows your real sales: a chart of the last 7 days, revenue by period, your brand ranking and peak hours</>,
+  <>The <b>Briefing</b> sums up your day every morning: validated revenue, orders, reservations, expected covers and stock alerts — with a short summary written by the AI</>,
+  <>Everything is <b>calculated automatically</b> from your validated sales and your reservations: no data entry on your part</>
+]} />
+
+<Eyebrow icon="lightbulb">How it works</Eyebrow>
+
+## Two pages, two horizons
+
+The **Analytics** page takes a step back: it aggregates your validated sales over the last 7 or 30 days and derives a trend chart, key metrics and a ranking of your brands. The figures are recalculated each time you open the page.
+
+The **Briefing** looks at the day ahead: it gathers your figures for the day (validated revenue, orders, [reservations](/en/guides/reservations/), expected covers), spots the points that need attention ([low stock](/en/guides/stocks/), reservations to confirm, large groups) and hands it all to the AI, which writes a short summary displayed at the top of the page.
+
+<Comparison options={[
+  { icon: "monitoring", name: "Analytics", desc: "The big picture" },
+  { icon: "auto_awesome", name: "AI briefing", desc: "Your morning check-in" }
+]} rows={[
+  { icon: "date_range", label: "Period covered", values: ["Last 7 or 30 days", "The current day"] },
+  { icon: "insights", label: "Metrics", values: ["Total revenue, orders, average order value, brands", "Validated revenue, orders, reservations, covers"] },
+  { icon: "notifications", label: "Alerts", values: ["—", "Low stock, reservations to confirm, large groups"] },
+  { icon: "auto_awesome", label: "AI", values: ["—", "Morning summary written automatically"] }
+]} />
+
+<Eyebrow icon="format_list_numbered">Step by step</Eyebrow>
+
+## Reading your analytics
+
+<Steps>
+
+### Open the Analytics page
+
+From the side menu of your [dashboard](/en/guides/restaurant/), click **Analytics**. The default view covers the **last 30 days**.
+
+### Read the key metrics
+
+**Total revenue** follows the selected period (7 or 30 days). **Orders** and **Average order value** are calculated over 30 days only: in the 7-day view, they show “—” with the note “30-day only”. The **Covers** tile still carries a “Coming soon” tag, and the trend badges (comparison with the previous period) will arrive soon too.
+
+### Change the period if needed
+
+Two buttons toggle between **7 days** and **30 days**; the totals recalculate instantly. The **Custom** button (custom dates) is disabled for now (“Coming soon” tag).
+
+### Track your sales trend
+
+The chart traces your sales over the **last 7 days**, day by day, with the **7-day total** and the **Best day** calculated just above. The comparison with the previous week will be added soon — the graph says so honestly rather than showing a fictitious curve.
+
+### Spot your peak hours
+
+An intensity band shows your activity **hour by hour** (from 10 AM to 11 PM, across 6 intensity levels), calculated over the last 7 days. Your busiest hour is highlighted — “Peak at 7 PM”, for example. The cross day × hour breakdown will arrive soon.
+
+### Check your brand ranking
+
+The revenue and number of orders for each of your brands over **30 days**, sorted from highest to lowest revenue (top 5 shown). The ranking of best-selling dishes will arrive soon.
+
+</Steps>
+
+<Eyebrow icon="auto_awesome">Briefing</Eyebrow>
+
+## Your morning check-in
+
+Every morning, the **Briefing** page greets you by your first name and displays the day's real figures:
+
+- **Validated revenue** and **orders for the day**;
+- **Reservations for the day** and **expected covers** (sum of reserved covers);
+- **Alerts**: [stock](/en/guides/stocks/) items close to their minimum threshold, reservations still to confirm, large groups (6 covers and up).
+
+At the top of the page, the **AI summary** puts these figures into words: a short text written automatically from your data for the day (revenue, orders, reservations, covers, low stock) and displayed as-is. Further down, the **morning checklist** picks up your real alerts and adds routine checks (fridges, equipment): tick off each item, and the done/total counter follows your progress.
+
+<Eyebrow icon="check_circle">Best practices</Eyebrow>
+
+## Get into the rhythm
+
+<Callout type="default">
+- **Open the Briefing when you arrive in the morning**: stock alerts and reservations to confirm are best handled before service rather than in the middle of the rush.
+- **Align your schedules with peak hours**: if the peak is at 7 PM, bring in extra kitchen staff from 6:30 PM.
+- **Compare your brands over 30 days**: the ranking shows where to focus your efforts — and which [menu](/en/guides/menu/) deserves a refresh.
+- **Switch to the 30-day view for the average order value**: it's the only period where this metric is calculated.
+</Callout>
+
+<Eyebrow icon="update">Coming soon</Eyebrow>
+
+## What's coming next
+
+<Callout type="info">
+Several enhancements are already announced in the interface with a “Coming soon” tag: the **comparison with the previous period** (trend badges on the metrics, previous week on the chart), the **covers** counter in Analytics, the **day × hour breakdown** of peak hours, the **dish ranking**, **custom dates**, as well as — on the Briefing side — **weather and its delivery impact**, the **average rating** from your reviews, and **proactive AI recommendations**. These last ones are distinct from the morning summary, which is already active.
+</Callout>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
+
+## Frequently asked questions
+
+<Faq items={[
+  {
+    icon: "database",
+    q: "Where do the figures come from?",
+    a: "They are calculated automatically from your validated sales: the chart and peak hours aggregate the last 7 days, while the brand ranking and average order value cover 30 days. The Briefing, for its part, is limited to the current day. No manual entry is needed."
+  },
+  {
+    icon: "calendar_view_week",
+    q: "Why do “Orders” and “Average order value” show “—” in the 7-day view?",
+    a: "These two metrics are calculated over 30 days only. In the 7-day view, the page says so honestly (“30-day only”) rather than displaying an approximate figure. Switch back to the 30-day view to see them."
+  },
+  {
+    icon: "auto_awesome",
+    q: "My AI summary shows “coming soon” — is that normal?",
+    a: "It's a fallback message, shown only when the summary isn't yet available. Normally, it is generated automatically from your real figures for the day and displays as-is at the top of the Briefing."
+  },
+  {
+    icon: "trending_up",
+    q: "Can I compare with the previous week?",
+    a: "Not yet: the chart shows the label “Previous week — coming soon” and each metric carries a “Trend coming soon” badge. Period comparison is one of the planned enhancements."
+  }
+]} />
+
+<Eyebrow icon="menu_book">Going further</Eyebrow>
+
+## Related articles
+
+<RelatedCards items={[
+  {
+    icon: "storefront",
+    title: "Dashboard",
+    sub: "Your live indicators",
+    href: "/en/guides/restaurant/"
+  },
+  {
+    icon: "account_balance",
+    title: "Finances & payouts",
+    sub: "Commission and transfers",
+    href: "/en/guides/finances/"
+  },
+  {
+    icon: "inventory_2",
+    title: "Stock management",
+    sub: "Journal and alerts",
+    href: "/en/guides/stocks/"
+  },
+  {
+    icon: "loyalty",
+    title: "Loyalty program",
+    sub: "Points and rewards",
+    href: "/en/guides/loyalty/"
+  }
+]} />

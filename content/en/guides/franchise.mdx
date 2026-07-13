@@ -1,103 +1,148 @@
 ---
-title: "Franchise on Grubano"
-description: "Become a franchisor (open your brand to the network) or a franchisee (operate an existing brand) — the brand remains with the franchisor, within the limits set by Grubano."
+title: "Franchising on Grubano"
+description: "Become a franchisor (open your brand to the network) or a franchisee (run an existing brand) — the brand stays with the franchisor, within the limits set by Grubano."
 generated: true
-sourceHash: dfe7ab844a2ab5e5
+sourceHash: 40b52c90577fa7c7
 generator: scripts/generate-feature-page.js
-templateVersion: 5
+templateVersion: 6
 ---
 
 import { Steps, Callout } from 'nextra/components'
 
-# Franchise on Grubano
+# Franchising on Grubano
 
-Grow your brand through a network or operate an existing brand, within the limits set by Grubano.
+Franchising lets you become a franchisor (open your brand to the network) or a franchisee (run an existing brand) — you keep the customer relationship and the visibility of your brand, within the limits set by Grubano.
 
-<FlowDiagram steps={["Apply","Grubano Validation","Adopt a Brand","Operate"]} />
+<ArticleMeta audience="Franchisees" minutes={3} updated="2026-07-12" />
 
-## The Essentials
+<Eyebrow icon="insights">Overview</Eyebrow>
 
-The franchise allows you to become a **franchisor** — open your brand to other restaurateurs who will operate it in their kitchen — or a **franchisee** — join an existing brand and cook its menu in your establishment. The brand, menu, and standards remain the property of the franchisor; each outlet operates in its own kitchen.
+## Two paths, one tool
 
-## How It Works
+<FlowDiagram steps={[
+  { icon: "storefront", title: "Apply", desc: "Choose a brand open to the network or propose your own" },
+  { icon: "description", title: "Grubano review", desc: "Your application is reviewed (kitchen, SIRET, motivation)" },
+  { icon: "restaurant", title: "Adopt a brand", desc: "Become the operator of an approved brand" },
+  { icon: "two_wheeler", title: "Operate", desc: "Receive your orders and run your restaurants" }
+]} />
 
-Grubano offers you two paths: if you own a brand that performs well (rating ≥ 4.5 stars, stable volume), you can open it to the network; eventually, you will receive royalties on the revenue of each franchisee (automated royalty calculation and payment are coming soon to the platform). If you are a restaurateur looking for a proven concept, you apply to operate a brand open to franchising — you cook its menu in your kitchen, under your responsibility, and will pay a royalty to the franchisor.
+<Eyebrow icon="bolt">The essentials</Eyebrow>
 
-This model addresses two needs: accelerate the growth of a successful brand without investing in new premises, and allow a restaurateur to start with a validated concept rather than creating one from scratch. The Grubano commission remains **10%** per order, identical for all roles (Standard and Pro). The financial terms between franchisor and franchisee — royalty, entry fees — are set by Grubano when the brand is opened.
+## In short
 
-## Step by Step
+<Essentials title="If you only remember one thing:" items={[
+  <>Two possible roles: <b>franchisor</b> (open your brand to the network) or <b>franchisee</b> (run an existing brand) — you keep your customer relationship and the visibility of your brand.</>,
+  <>The Grubano commission stays the same — <b>5 to 12% depending on the order mode</b> (dine-in 5%, click & collect 8%, delivery 12%, reservation 0%) — whatever your status.</>,
+  <>The financial terms between franchisor and franchisee (royalty, entry fees, territories) are <b>defined with you at the time of opening</b>, within the limits set by Grubano.</>
+]} />
 
-### Becoming a Franchisee (Operating a Brand)
+<Eyebrow icon="lightbulb">How it works</Eyebrow>
 
-<Steps>
+## The principle (and the why)
 
-### Discover Open Brands
+Grubano lets restaurant owners duplicate their concept (franchisor) or join a proven network (franchisee), while keeping their customer relationship and loyalty, inside Grubano. You keep your unified dashboard, your sales analytics and your independence — the brand stays with the franchisor, the customer link with the point of sale.
 
-Visit the **Franchise** page to see brands that are recruiting. Each listing shows the cuisine, average monthly revenue, available cities, and signature dishes.
+If you run several restaurants, you can [run your network](/en/guides/franchise-operations/) from a single account and track the performance of each brand.
 
-### Apply
+<Eyebrow icon="format_list_numbered">Step by step</Eyebrow>
 
-Click **"Apply"** and fill out the form: name, email, business registration number, bank details (optional at this stage), whether you have an equipped kitchen, and a motivation message. Your application is recorded with the status `pending`.
-
-### Wait for Validation
-
-Grubano reviews your application. If the application is approved (`approved`), an **outlet** is automatically created and linked to the brand. You receive a confirmation email. If it is rejected (`rejected`), you are notified.
-
-### Operate
-
-Once validated, your outlet appears in your franchisee space. You cook the brand’s menu, receive orders on your dashboard, and track your performance (revenue, number of orders, royalties owed). The brand remains the property of the franchisor; you are the local operator.
-
-</Steps>
-
-### Becoming a Franchisor (Opening Your Brand to the Network)
+## Submitting an application
 
 <Steps>
 
-### Prepare Your Brand
+### Fill out the application form
 
-Ensure that your restaurant displays a rating ≥ 4.5 stars and stable order volume (≥ 50 per week). These criteria guarantee that your concept is proven and replicable.
+Go to the public `/franchise` page and click "Apply". You will need to provide your name, email, motivation and indicate whether you have an equipped kitchen. The SIRET and bank details (RIB) are optional at this stage.
 
-### Open the Brand to Franchising
+### Select a brand (franchisee) or propose your own (franchisor)
 
-From your restaurant account, activate the **"Open to Franchising"** option on one of your brands. Grubano sets the terms with you: royalty (percentage of revenue), entry fees, available geographic areas.
+If you apply as a franchisee, choose a brand open to the network from the displayed list (cuisine, average revenue, available cities). If you want to become a franchisor, enter your brand name in the `brandName` field.
 
-### Receive Applications
+### Wait for Grubano's review
 
-Interested restaurateurs apply via the public Franchise page. You receive their applications (name, email, business registration, motivation) and decide to approve or reject each application.
+Your application moves to `pending` status in the database. The Grubano team reviews your file (presence of a kitchen, project consistency, SIRET if provided) before approving it (`approved`) or rejecting it (`rejected`).
 
-### Manage Your Network
+### Access your franchisee area
 
-Once franchisees are validated, you access a dedicated dashboard: network revenue, number of active outlets, royalties owed, and performance by establishment. You maintain control of the brand (name, menu, standards); each franchisee cooks in their own kitchen.
+Once approved, you receive an account with the `franchise` role. You can then log in and access `/franchise/dashboard` to track your points of sale, your orders and your revenue.
 
 </Steps>
 
-<Callout type="info">
-**Coming Soon**: Grubano Pro (€29/month) will allow you to receive orders from all your other platforms (Uber Eats, Deliveroo, Just Eat…) directly on your Grubano dashboard, with unified analytics. The commission remains 10%.
+<Eyebrow icon="check_circle">Best practices</Eyebrow>
+
+## Maximizing your chances of approval
+
+<Callout type="default">
+- **Enter your SIRET right from the application** — it speeds up administrative review and proves that you are already registered.
+- **Detail your motivation** — explain why this brand (or your own concept) fits your project and your geographic area.
+- **Make sure you have an equipped kitchen** — on Grubano, every restaurant cooks in its own premises.
+- **Complete your operator profile after approval** — city and phone can be edited later via `PATCH /api/franchise/profile` (these fields do not block approval).
 </Callout>
 
-## Concrete Example
+<Eyebrow icon="error">Mistakes to avoid</Eyebrow>
 
-A restaurateur specializing in vegetarian wraps displays a 4.7-star rating and processes 60 orders per week. He opens his brand to franchising in three cities in his region. A second restaurateur, who has an equipped kitchen but is looking for a validated concept, applies and is approved. The franchisee receives the complete menu (recipes, photos, descriptions), cooks the wraps in their own kitchen. The franchisor tracks the network’s performance from their dashboard; automated royalty payment on revenue is coming soon — each amount owed will then be visible month by month.
+## Common pitfalls
 
-## Best Practices
-
-- **Franchisors**: only open your brand to franchising if your indicators are solid (rating ≥ 4.5, regular volume). A fragile concept risks disappointing franchisees and harming your reputation.
-- **Franchisees**: carefully read the terms (royalty, entry fees, areas) before applying. Ensure that your kitchen is equipped to cook the brand’s menu.
-- **Documentation**: keep a record of approved applications and performance by outlet. This will help you identify establishments that perform well and those that need support.
-- **Communication**: stay in regular contact with your franchisees (or your franchisor). A network that communicates well is a network that lasts.
-
-## Common Mistakes
-
-<Callout type="warning">
-**Caution**: applying to a brand without having an equipped kitchen slows down the process. Grubano verifies that you can cook the menu before validating your application.
+<Callout type="error">
+- **Applying without a kitchen** — if you check `hasKitchen: false`, your application may be rejected immediately (Grubano requires every point of sale to cook on site).
+- **Sending multiple applications for the same brand** — the `FranchiseeApplication` model enforces a uniqueness constraint on `(restaurantId, brandId)`; a second request for the same pair will fail.
+- **Confusing franchising and affiliation** — affiliation (creators / influencers) earns a commission on sales brought in by a referral link; franchising operates a brand and pays a royalty to the franchisor, within the limits set by Grubano.
 </Callout>
 
-**Opening Too Early**: a franchisor who opens their brand before stabilizing their concept (rating < 4.5, irregular volume) exposes their franchisees to a risk of failure. Consolidate your own restaurant first.
+<Eyebrow icon="quiz">FAQ</Eyebrow>
 
-**Not Tracking Performance**: a franchisor who never consults their dashboard misses weak signals (declining revenue, inactive outlets). [Managing your franchise network](/en/guides/franchise-operations/) helps you avoid unpleasant surprises.
+## Frequently asked questions
 
-## Going Further
+<Faq items={[
+  {
+    icon: "percent",
+    q: "What is the Grubano commission as a franchisee?",
+    a: "The commission is identical to that of an independent restaurant: 5 to 12% depending on the order mode (dine-in 5%, click & collect 8%, delivery 12%, reservation 0%). The royalty paid to the franchisor is defined with you at the time of opening, within the limits set by Grubano."
+  },
+  {
+    icon: "storefront",
+    q: "Can I operate several points of sale under the same brand?",
+    a: "Yes. Each point of sale is registered as a separate `PointOfSale`, attached to the same `Brand`. You manage everything from your franchisee dashboard, with statistics per restaurant."
+  },
+  {
+    icon: "gavel",
+    q: "Who sets the financial terms of the franchise?",
+    a: "The terms (royalty, entry fees, exclusivity territories) are defined between the franchisor and you at the time of opening, within the limits set by Grubano. The royalty rate can be configured per brand (`royaltyPct` field on the `Brand` model)."
+  },
+  {
+    icon: "account_balance",
+    q: "How are royalties calculated?",
+    a: "The franchisee dashboard displays an estimate (revenue × the brand's royalty rate) and, soon, the actual amount withheld on each order (via the `FranchiseRoyalty` model). Payments are traced in the table and visible in your area."
+  }
+]} />
 
-**Next Step**: once your network is launched, consult [Managing Your Franchise Network](/en/guides/franchise-operations/) to learn how to track performance, manage royalties, and support your franchisees.
+<Eyebrow icon="menu_book">Learn more</Eyebrow>
 
-**See Also**: if you are a restaurateur and are hesitating between creating your own brand or joining a franchise, read [Getting Started as a Restaurant](/en/guides/restaurant/) to compare the two approaches.
+## Related articles
+
+<RelatedCards items={[
+  {
+    icon: "insights",
+    title: "Run your network",
+    sub: "Manage the network",
+    href: "/en/guides/franchise-operations/"
+  },
+  {
+    icon: "insights",
+    title: "Dashboard",
+    sub: "Live metrics",
+    href: "/en/guides/restaurant/"
+  },
+  {
+    icon: "shopping_bag",
+    title: "Order & track",
+    sub: "Order and track",
+    href: "/en/guides/consumer/"
+  },
+  {
+    icon: "loyalty",
+    title: "Loyalty, credit & referral",
+    sub: "Points and referral",
+    href: "/en/guides/consumer-loyalty/"
+  }
+]} />

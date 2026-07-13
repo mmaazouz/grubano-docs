@@ -1,86 +1,131 @@
 ---
-title: "Manage Your Network"
-description: "Manage a franchise network: multiple outlets, tracking of royalties owed, and consolidated reporting — within the limits set by Grubano."
+title: "Run your network"
+description: "Run a franchise network: multiple locations, tracking the royalties owed, and consolidated reporting — within the limits set by Grubano."
 generated: true
-sourceHash: 3671b12687b14450
+sourceHash: f763ab5bbbf6c698
 generator: scripts/generate-feature-page.js
-templateVersion: 5
+templateVersion: 6
 ---
 
 import { Steps, Callout } from 'nextra/components'
 
-# Manage Your Network
+# Run your network
 
-Track the performance of your franchised outlets, verify accumulated royalties, and consolidate your reports — all from a single dashboard.
+Track your franchise network — consolidated revenue, royalties owed, and per-restaurant reporting — within the limits set by Grubano.
 
-<FlowDiagram steps={["Outlets","Network Revenue","Royalties","Reporting"]} />
+<ArticleMeta audience="Franchisees" minutes={3} updated="2026-07-10" />
 
-## The Essentials
+<Eyebrow icon="insights">Overview</Eyebrow>
 
-When you become a franchisor on Grubano, you gain access to a dedicated dashboard that aggregates sales from all your franchised outlets, calculates royalties owed within the limits set by Grubano, and allows you to monitor your network’s health in real time.
+## Where your money goes
 
-## How It Works
+<FlowDiagram steps={[
+  { icon: "storefront", title: "Locations", desc: "Your restaurants take in the orders" },
+  { icon: "account_balance_wallet", title: "Network revenue", desc: "Consolidated revenue over a rolling 30 days" },
+  { icon: "percent", title: "Royalties", desc: "The share taken from each restaurant's revenue" },
+  { icon: "description", title: "Reporting", desc: "Consolidated tracking and payout history" }
+]} />
 
-Each outlet linked to your brand records its orders in the Grubano system. The franchisor dashboard automatically consolidates this data over a rolling 30-day window: revenue per outlet, number of orders, accumulated royalties. You can thus see at a glance which outlets are performing, how much you should receive, and where to focus your support. Financial terms (royalty rate, opening fees, exclusivity zones) are set between the parties concerned; the dashboard applies these parameters to calculate the amounts due.
+<Eyebrow icon="bolt">The essentials</Eyebrow>
 
-## Step by Step
+## In short
+
+<Essentials title="If you only remember one thing:" items={[
+  <>The <b>franchise dashboard</b> consolidates the revenue of all your restaurants over a rolling 30-day window</>,
+  <><b>Royalties are calculated</b> automatically on each location's revenue, within the limits set by Grubano</>,
+  <>The <b>payout history</b> tracks royalties accrued, in settlement and settled, per restaurant</>
+]} />
+
+<Eyebrow icon="lightbulb">How it works</Eyebrow>
+
+## The principle (and the why)
+
+When you run several restaurants under [franchise](/en/guides/franchise/), Grubano aggregates each location's performance into a single dashboard. There you see the consolidated revenue over the last 30 days, the number of delivered orders, and the amount of royalties owed. Each restaurant appears with its name, its city, its own revenue and a breakdown of its royalties — so you can compare performance and spot the most active locations.
+
+Automated royalty calculation and collection are coming soon: each delivered order will generate a fee based on a rate agreed with you when it opens. The dashboard already tracks three distinct amounts: royalties **accrued** (the total across all periods), **in settlement** (a batch that will be in transfer) and **settled** (the payouts made, once the mechanism is live). This separation will guarantee that no amount is counted twice and that every payout stays traceable.
+
+<Eyebrow icon="format_list_numbered">Step by step</Eyebrow>
+
+## View the consolidated reporting
 
 <Steps>
 
-### Access the Dashboard
+### Open the franchise dashboard
 
-Log in with your franchisor account, then go to the **Franchise** → **Overview** space. There you will find the network summary: number of active outlets, cities covered, pending applications.
+In your workspace, click **Overview** in the sidebar. You immediately see the network's revenue over the last 30 days, compared with the previous period (D-60 → D-30).
 
-### Review Performance by Outlet
+### Browse your list of restaurants
 
-The "Outlets" section lists all franchised outlets: name, city, revenue over 30 days, number of orders. Outlets are ranked by revenue in descending order, which immediately highlights the network’s drivers and sites that need support.
+Each location appears with its name, its city, its 30-day revenue, the number of delivered orders and the corresponding royalty amount. The list is sorted by opening date.
 
-### Verify Royalties
+### Check the financial summary
 
-The "Royalties" block displays three amounts:  
-— **Accumulated**: the total sum of royalties recorded since inception;  
-— **Pending**: what has not yet been paid;  
-— **Paid**: the history of payments already made.  
-When the automatic deduction toggle is activated on the platform side, these lines are calculated order by order; otherwise, the amounts remain at zero and tracking is done manually.
+The top banner shows three totals: **royalties accrued** (the running total since the start), **royalties in settlement** (a batch being prepared for transfer) and **royalties settled** (the completed payouts — the amounts will stay at zero until automated payout is enabled).
 
-### Explore Recent Activity
+### Check the payout history
 
-The timeline at the bottom of the page lists significant events: outlet openings, revenue milestones. It helps you spot trends (rapid growth in one area, slowdown elsewhere) and anticipate support needs.
+The **Finances** page (available from the sidebar) will list every payout made, with its date, amount and status, as soon as automated payout is enabled (coming soon). Today you'll already find the breakdown of royalties per restaurant there.
 
 </Steps>
 
-## Best Practices
+<Eyebrow icon="check_circle">Best practices</Eyebrow>
 
-**Compare Performance During the Same Time Slot** — City-center restaurants and those in suburban areas do not have the same peak hours; adjust your expectations by taking into account each outlet’s profile.
+## Get the most out of tracking
 
-**Identify Local Best Practices** — If an outlet displays an average basket significantly higher than the network average, analyze its menu or promotional strategy to replicate it elsewhere.
+<Callout type="default">
+- **Compare restaurants** — identify the best-performing locations and those that need support.
+- **Watch the trends** — the delta between the two 30-day periods reveals whether the network is growing or slowing down.
+- **Check the payouts** — once automated payout is enabled, the history of settled royalties will serve as supporting evidence for your accounting.
+</Callout>
 
-**Monitor Pending Applications** — An overly long processing time can discourage serious candidates; regularly check the application counter and process them within reasonable timeframes.
+<Eyebrow icon="error">Mistakes to avoid</Eyebrow>
 
-## Concrete Example
+## Common pitfalls
 
-Imagine your brand has five outlets in Vaucluse. The dashboard displays consolidated revenue of €38,500 over the last thirty days, compared to €34,200 the previous period — a growth of +12.6%. You notice that Avignon alone generates €14,000, while Carpentras caps at €4,500. Digging deeper, you discover that Carpentras does not activate pickup on-site and closes on Sundays. You call the franchisee to suggest opening on Sunday lunchtime and activating pickup: two simple levers that, when deployed in Avignon, precisely boosted local revenue.
+<Callout type="error">
+- **Don't confuse the rolling window with the calendar month** — the dashboard shows the last 30 days from today, not the current month. An order from 5 April stays counted until 4 May.
+- **Don't add up accrued + in settlement + settled** — these three amounts are stages of a single flow; only royalties accrued represent the all-time total.
+- **Don't try to change the rate** — the financial terms are set between the parties involved; contact Grubano for any contractual revision.
+</Callout>
 
-## Frequently Asked Questions
+<Eyebrow icon="quiz">FAQ</Eyebrow>
+
+## Frequently asked questions
 
 <Faq items={[
-  {
-    icon: 'help',
-    q: 'Can I see the order details for each outlet?',
-    a: 'No. The franchisor dashboard displays aggregates (revenue, number of orders, royalties) to preserve the operational confidentiality of each franchisee. If you need a more detailed diagnosis, contact the operator concerned directly.'
-  },
-  {
-    icon: 'help',
-    q: 'What happens if an outlet temporarily closes?',
-    a: 'An outlet marked inactive disappears from the "open outlets" counter but remains visible in the history. Its past orders continue to appear in cumulative totals; however, it no longer generates new royalties as long as it is closed.'
-  },
-  {
-    icon: 'help',
-    q: 'Do royalties account for refunds?',
-    a: 'Yes, this is planned: when the royalty mechanism is activated, any order partially or fully refunded will have its royalty adjusted in proportion to the refunded amount. The "pending" balance will thus always reflect the net amount due.'
-  }
+  { icon: "schedule", q: "Why a 30-day window and not the current month?", a: "A rolling window smooths out calendar-related swings (months of 28, 30 or 31 days, public holidays) and always shows a full period, which makes comparisons more reliable." },
+  { icon: "percent", q: "Is the royalty rate the same for all my restaurants?", a: "It depends on your contract. When a single rate applies to all your franchised brands, the dashboard shows it at the top of the page; if it varies, a dash (—) appears instead." },
+  { icon: "payments", q: "When are royalties in settlement paid out?", a: "Automated payout is coming soon. Once it's enabled, royalties will move from “accrued” to “in settlement” during a payout batch, then to “settled” once the transfer is confirmed, according to the terms set with Grubano." },
+  { icon: "storefront", q: "Does a temporarily closed restaurant appear in the dashboard?", a: "Only active restaurants are listed in the main view. You can check the total number of restaurants (open + closed) and the breakdown by city in the network statistics." }
 ]} />
 
-## Going Further
+<Eyebrow icon="menu_book">Go further</Eyebrow>
 
-**Context** — Discover how the [franchise](/en/guides/franchise/) model works on Grubano: opening outlets, managing applications, royalty mechanisms.
+## Related articles
+
+<RelatedCards items={[
+  {
+    icon: "hub",
+    title: "Franchising on Grubano",
+    sub: "The Grubano model",
+    href: "/en/guides/franchise/"
+  },
+  {
+    icon: "payments",
+    title: "Finances & payouts",
+    sub: "Commission and payouts",
+    href: "/en/guides/finances/"
+  },
+  {
+    icon: "shopping_bag",
+    title: "Order & track",
+    sub: "Order and track",
+    href: "/en/guides/consumer/"
+  },
+  {
+    icon: "loyalty",
+    title: "Loyalty, credit & referral",
+    sub: "Points and referral",
+    href: "/en/guides/consumer-loyalty/"
+  }
+]} />

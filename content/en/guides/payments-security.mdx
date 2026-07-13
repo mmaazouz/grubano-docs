@@ -1,12 +1,161 @@
 ---
-sourceHash: 0981d7ffcb3791c4
-title: "Payments & Security"
+title: "Payments & security"
+description: "How Grubano secures payments, protects banking data, and handles refunds and disputes — with full transparency."
 ---
 
-import { Callout } from 'nextra/components'
+import { Steps, Callout } from 'nextra/components'
 
-# Payments & Security
+# Payments & security
 
-<Callout type="warning">
-**Page under construction.** This guide is coming soon.
+How Grubano secures payments, protects banking data, and handles refunds and disputes — with full transparency.
+
+<ArticleMeta audience="Restaurants" minutes={4} updated="2026-07-12" />
+
+<Eyebrow icon="insights">Overview</Eyebrow>
+
+## Payment, from order to payout
+
+The customer pays for their order **online, by card**, at the moment they confirm it. The transaction is processed by **Stripe**, our payment provider: it is encrypted and protected by **3D Secure** strong authentication. Grubano collects on behalf of your restaurant, deducts the commission based on the order's **mode** (see the [commission by mode](/en/guides/finances/)), then pays out the net to you automatically. You have **no unpaid orders to chase**: an order only exists once its payment is confirmed.
+
+<FlowDiagram steps={[
+  { icon: "shopping_bag", title: "Order paid", desc: "The customer confirms and pays by card" },
+  { icon: "lock", title: "3D Secure / Stripe", desc: "Encrypted, authenticated transaction" },
+  { icon: "percent", title: "Commission by mode", desc: "12, 8, 5 or 0% depending on the mode" },
+  { icon: "account_balance", title: "Net paid out", desc: "Automatic payout to the restaurant" }
+]} />
+
+<Eyebrow icon="bolt">The essentials</Eyebrow>
+
+## In short
+
+<Essentials title="If you only remember one thing:" items={[
+  <>Payments go through <b>Stripe</b>, PCI-DSS certified: card numbers are <b>never stored</b> by Grubano</>,
+  <>Grubano <b>collects and pays out the net to you</b> automatically: zero unpaid orders to chase on your side</>,
+  <>Refunded order = <b>commission returned</b>: Grubano keeps nothing on a refunded order</>
+]} />
+
+<Eyebrow icon="lock">Security</Eyebrow>
+
+## Banking data security
+
+**PCI-DSS** compliance (the security standard of the payment card industry) is handled by Stripe. In practice:
+
+- Grubano **never sees or stores card numbers**. When the customer enters their card, the data goes directly to Stripe, without passing through our servers in clear text.
+- Cards saved by customers are kept **on Stripe's side, in tokenized form**: Grubano only handles a technical token, never the card number.
+- The **partners' bank details** (those used for payouts, including yours) are also managed by the payment provider — never stored by Grubano.
+
+<Callout type="info">
+So neither you nor Grubano has any sensitive banking data to protect: it never leaves Stripe's certified infrastructure.
 </Callout>
+
+<Eyebrow icon="undo">Refunds</Eyebrow>
+
+## Refunds
+
+Three principles apply to any refunded order, whatever the reason:
+
+- **The Grubano commission is returned pro rata** to the refunded amount. Grubano keeps nothing on a refunded order — full refund, commission returned in full; partial refund, commission returned in the same proportion.
+- **The amount is capped**: it is impossible to refund more than what the customer actually paid.
+- **No double refund**: every refunded amount is tracked; a euro already returned cannot be returned a second time.
+
+On the customer's side, the refund appears in their account **within a few business days, depending on their bank** (standard interbank delays).
+
+<Callout type="info">
+The self-service refund flow from your dashboard is coming **soon**. The principles above will apply to it identically.
+</Callout>
+
+<Eyebrow icon="block">Cancellations</Eyebrow>
+
+## Cancellations
+
+An order can be cancelled **at any stage before delivery**, by **the restaurant** or by **Grubano support** only. The customer cannot cancel it themselves from the app: they contact the restaurant or go through help. Once the order is **delivered**, it can no longer be cancelled.
+
+Any cancellation triggers a **refund to the customer**, following the principles detailed above — returned commission included.
+
+<Eyebrow icon="balance">Disputes</Eyebrow>
+
+## Disputes & chargebacks
+
+<Callout type="info">
+Grubano will support you in the event of a **payment dispute** (chargeback): centralizing supporting documents and responding to the bank — **soon**.
+</Callout>
+
+<Eyebrow icon="event_seat">Reservations</Eyebrow>
+
+## Reservations: the card hold
+
+To protect your table service against no-shows, [reservations](/en/guides/reservations/) can be secured with a **card hold**. It's an **available and optional** feature: you're the one who turns it on, by setting the no-show penalty amount. By default, this amount is **0 €** — the hold stays disabled until you set an amount.
+
+<Steps>
+
+### When the reservation is made
+
+The customer's bank **authorizes** the hold amount. Nothing is charged: the customer pays nothing at this stage.
+
+### When the customer arrives
+
+The hold is **released**. An honored reservation costs the customer nothing, and the authorization disappears from their account.
+
+### In case of a no-show
+
+You can **capture the penalty**: the hold amount, the one you configured, is then charged.
+
+</Steps>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
+
+## Frequently asked questions
+
+<Faq items={[
+  {
+    icon: "credit_card",
+    q: "Does Grubano store card numbers?",
+    a: "No. Payments are processed by Stripe, PCI-DSS certified: card numbers never pass through Grubano in clear text, and saved cards are tokenized on Stripe's side."
+  },
+  {
+    icon: "percent",
+    q: "Does Grubano keep its commission on a refunded order?",
+    a: "No. The commission is returned pro rata to the refunded amount: on a fully refunded order, Grubano keeps nothing."
+  },
+  {
+    icon: "schedule",
+    q: "When does the customer see their refund?",
+    a: "Within a few business days, depending on their bank: once the refund is triggered, how quickly it appears in the account depends on standard interbank channels."
+  },
+  {
+    icon: "block",
+    q: "Can a customer cancel their order themselves?",
+    a: "No. Cancellation goes through the restaurant or Grubano support, at any stage before delivery. A delivered order can no longer be cancelled; every cancelled order is refunded."
+  }
+]} />
+
+<Eyebrow icon="menu_book">Going further</Eyebrow>
+
+## Related articles
+
+<RelatedCards items={[
+  {
+    icon: "payments",
+    title: "Finances & payouts",
+    sub: "Commission by mode and payouts",
+    href: "/en/guides/finances/"
+  },
+  {
+    icon: "event_seat",
+    title: "Reservations & dine-in",
+    sub: "Tables, card hold and no-show",
+    href: "/en/guides/reservations/"
+  },
+  {
+    icon: "insights",
+    title: "Dashboard",
+    sub: "Live metrics",
+    href: "/en/guides/restaurant/"
+  },
+  {
+    icon: "shopping_bag",
+    title: "Order & track",
+    sub: "The customer journey",
+    href: "/en/guides/consumer/"
+  }
+]} />

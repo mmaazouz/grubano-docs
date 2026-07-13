@@ -1,85 +1,168 @@
 ---
-title: "Prenotazioni & sul posto"
-description: "Gestire i tavoli e le fasce orarie: planimetria della sala, accettare / rifiutare una richiesta, seguire l’occupazione in tempo reale."
+title: "Prenotazioni e al tavolo"
+description: "Gestire i tavoli e le fasce orarie: planimetria della sala, accettare / rifiutare una richiesta, seguire l'occupazione in tempo reale."
 generated: true
-sourceHash: 799138ecc79c42fc
+sourceHash: 93436a2f9e62949f
 generator: scripts/generate-feature-page.js
-templateVersion: 5
+templateVersion: 6
 ---
 
 import { Steps, Callout } from 'nextra/components'
 
-# Prenotazioni & sul posto
+# Prenotazioni e al tavolo
 
-Gestisca la planimetria della sua sala, accetti o rifiuti le richieste di tavolo, e segua l’occupazione in tempo reale da un cruscotto unificato.
+Gestisci la tua sala in tempo reale: planimetria interattiva, gestione delle richieste, impronta bancaria, conto digitale — tutto l'essenziale per rendere fluido il servizio e fidelizzare i tuoi commensali.
 
-```mermaid
-stateDiagram-v2
-  direction LR
-  confirmed: Confermata
-  arrived: Arrivata
-  overrun: Superamento
-  cancelled: Annullata
-  noshow: No-show
-  [*] --> confirmed
-  confirmed --> arrived
-  arrived --> overrun
-  overrun --> [*]
-  confirmed --> cancelled
-  arrived --> cancelled
-  cancelled --> [*]
-  confirmed --> noshow
-  arrived --> noshow
-  noshow --> [*]
-```
+<ArticleMeta audience="Ristoratori" minutes={4} updated="2026-07-10" />
 
-## L’essenziale
+<Eyebrow icon="insights">Panoramica</Eyebrow>
 
-Il modulo Prenotazioni le permette di visualizzare la planimetria della sua sala, di gestire i tavoli e le loro fasce orarie, e di accettare o rifiutare ogni richiesta. Segua lo stato di ogni servizio in tempo reale (confermata, arrivata, terminata) e anticipi l’affluenza grazie a una vista giornaliera.
+## Dalla richiesta al servizio pagato
 
-## Come funziona
+<FlowDiagram steps={[
+  { icon: "receipt_long", title: "Configurare la sala", desc: "Planimetria dei tavoli + orari di apertura" },
+  { icon: "schedule", title: "Ricevere la richiesta", desc: "Il cliente prenota, tu convalidi" },
+  { icon: "payments", title: "Convalidare", desc: "Impronta bancaria se necessario" },
+  { icon: "restaurant", title: "Servizio", desc: "Conto aperto all'arrivo" }
+]} />
 
-Grubano centralizza le sue prenotazioni su un’unica schermata: crei i tavoli della sua sala, definisca la loro capacità (numero di coperti), poi riceva le richieste — che provengano da un cliente connesso o da una presa manuale. Ogni prenotazione passa attraverso un ciclo di vita semplice: **confermata** dalla sua creazione, **arrivata** quando accoglie il cliente, poi **annullata** o **no-show** secondo il caso. Il sistema verifica automaticamente la disponibilità della fascia oraria (nessuna sovrapposizione sullo stesso tavolo) e la avverte se la richiesta cade al di fuori dei suoi orari di apertura — lei mantiene l’ultima parola.
+<Eyebrow icon="bolt">L'essenziale</Eyebrow>
 
-La schermata Prenotazioni visualizza tutti i tavoli del suo esercizio corrente; se gestisce più esercizi (franchising), ogni punto vendita ha la propria planimetria e le proprie fasce orarie. Il [cruscotto](/it/guides/restaurant/) raggruppa le prenotazioni attive della giornata, con i prossimi arrivi in cima alla lista.
+## In breve
 
-## Passo dopo passo
+<Essentials 
+  title="Se devi ricordare solo questo:" 
+  items={[
+    <>La tua <b>planimetria della sala</b> è la fonte unica: aggiungi i tavoli una volta sola e Grubano li utilizza ovunque (prenotazioni, conti, occupazioni).</>,
+    <>L'<b>impronta bancaria</b> blocca una somma senza prelevarla — la acquisisci solo in caso di no-show, oppure la rilasci se il cliente arriva.</>,
+    <>Il <b>conto</b> si crea automaticamente quando contrassegni «Arrivo» — il cliente può consultarlo e pagarlo dal suo telefono, tu incassi dal tuo.</>
+  ]} 
+/>
+
+<Eyebrow icon="lightbulb">Come funziona</Eyebrow>
+
+## Il principio (e il perché)
+
+Grubano collega la prenotazione, l'impronta bancaria e il conto in **un'unica scheda per servizio**: prenoti un tavolo → il sistema blocca un acconto se lo attivi → all'arrivo del cliente, il conto si apre su quello stesso tavolo → il pagamento libera il tavolo. Tutto parte dal [pannello di controllo](/it/guides/restaurant/): configura la tua sala e i tuoi orari una volta sola, poi lascia che Grubano orchestri le fasce orarie, sorvegli le occupazioni e rilevi i superamenti.
+
+Un'unica schermata offre la visione completa: tavoli liberi (verde), occupati (arancione), in ritardo (rosso), ciascuno con il proprio stato in tempo reale. Clicca su una prenotazione per accettare, rifiutare, contrassegnare l'arrivo o incassare il conto.
+
+<Eyebrow icon="format_list_numbered">Passo dopo passo</Eyebrow>
+
+## Gestire una prenotazione dall'inizio alla fine
 
 <Steps>
 
-### Crei la planimetria della sua sala
+### Configura la tua sala
 
-Si rechi in **Prenotazioni** e aggiunga ogni tavolo: gli attribuisca un nome ("Tavolo 1", "Terrazza 4"), indichi il numero di posti a sedere, e lo posizioni sulla planimetria visuale. Un tavolo attivo appare immediatamente disponibile per la prenotazione.
+Dal pannello di controllo, sezione **Tavoli**, aggiungi ogni tavolo (nome, numero di posti, posizione sulla planimetria). La planimetria serve ovunque: prenotazioni, conti, vista in tempo reale. Definisci anche i tuoi orari di apertura — ogni prenotazione fuori orario riceve un avviso.
 
-### Riceva una richiesta
+### Ricevi la richiesta
 
-Un cliente richiede un tavolo per una data, un orario e un numero di coperti. Il sistema verifica che il tavolo scelto abbia abbastanza posti e che nessun’altra prenotazione occupi la fascia oraria; se tutto è libero, la prenotazione viene creata con lo stato **confermata**.
+Il cliente prenota online (una fascia oraria proposta in base ai tuoi orari e alla capacità del tavolo). La richiesta arriva nel tuo pannello di controllo con lo stato `confirmed` (confermata). Vedi il nome, il numero di coperti, l'orario, eventuali allergie o note.
 
-<Callout type="warning">
-Se la fascia oraria cade al di fuori dei suoi orari configurati o durante una chiusura eccezionale, viene visualizzato un avviso — può comunque confermare la prenotazione (evento privato, servizio speciale).
-</Callout>
+### Convalida o rifiuta
 
-### Convalidi l’arrivo
+Accetta la prenotazione così com'è, oppure annullala se la fascia oraria non va bene (il cliente riceve un'e-mail automatica). Se hai attivato l'impronta bancaria (importo dell'acconto + penale no-show), Grubano blocca la somma sulla carta del cliente al momento della prenotazione — nulla viene prelevato, la banca congela soltanto l'importo.
 
-Quando il cliente si presenta, contrassegni la prenotazione come **arrivata**. Un conto viene automaticamente aperto sul tavolo, pronto a ricevere le comande. Se un vecchio conto non pagato sussiste ancora su questo tavolo, il sistema la avverte — regoli o annulli il vecchio conto prima di accogliere il nuovo servizio.
+### Contrassegna l'arrivo
 
-### Gestisca le assenze e cancellazioni
+Il giorno stesso, quando il cliente si presenta, clicca **Arrivo**. Grubano porta la prenotazione allo stato `arrived`, rilascia l'impronta bancaria (il blocco scompare entro 5–7 giorni) e **apre automaticamente un conto** sul tavolo interessato. Il cliente può ora consultare il conto scansionando il codice QR del tavolo, oppure lo compili tu dal tuo pannello di controllo.
 
-Una prenotazione può essere **annullata** (da lei o dal cliente) o contrassegnata come **no-show** se la persona non si presenta. In entrambi i casi, il tavolo diventa nuovamente libero per la fascia oraria. Grubano può inviare un’e-mail al cliente per informarlo della cancellazione da parte del ristorante (viene utilizzato l’indirizzo e-mail del cliente o quello del suo account).
+### Incassa e libera
+
+Una volta terminato il pasto, presenta il conto (app cliente o [pannello di controllo](/it/guides/restaurant/)). Il cliente paga — carta, contanti o altro — e tu convalidi il pagamento. Il conto passa a `paid`, il tavolo torna libero e il ciclo è completo.
 
 </Steps>
 
-## Buone pratiche
+<Eyebrow icon="calculate">Esempio concreto</Eyebrow>
 
-- **Definisca una durata predefinita**: ogni esercizio può fissare una durata media di servizio (60, 90 o 120 minuti); il sistema calcola automaticamente la fine della fascia oraria per evitare sovrapposizioni.
-- **Blocchi le fasce orarie passate**: il server rifiuta qualsiasi prenotazione il cui orario di inizio sia già trascorso (con una tolleranza di 5 minuti per assorbire lo sfasamento dell’orologio).
-- **Verifichi la capacità**: un tavolo da 4 posti non può accogliere una prenotazione di 6 coperti — il sistema blocca la richiesta e le chiede di scegliere un tavolo più grande o di combinare più tavoli.
-- **Sorvegli l’occupazione in tempo reale**: il cruscotto visualizza il numero di servizi attivi e i prossimi arrivi, permettendole di anticipare i momenti di punta.
+## Un servizio a pranzo con impronta
 
-## Esempio concreto
+Un cliente prenota un tavolo da 4 per le 12:30, con un'impronta di 20 € e una penale no-show di 15 €. Grubano blocca 20 € sulla sua carta (nulla viene addebitato). Il cliente arriva in orario → contrassegni **Arrivo**, l'impronta viene rilasciata, il conto si apre. Il pasto costa 68 €, il cliente paga con carta, tu convalidi → il tavolo viene liberato.
 
-Il suo ristorante dispone di 3 tavoli (2 posti, 4 posti, 6 posti). Un cliente prenota il tavolo da 4 per sabato ore 20–22: il sistema verifica che nessun’altra prenotazione occupi questa fascia oraria, conferma la richiesta, e l’aggiunge al planning. Sabato sera, il cliente arriva alle 20:05: lei passa la prenotazione allo stato **arrivata**, un conto si apre automaticamente sul tavolo 4, e prende la comanda. Alle 22:15, il servizio è terminato, il conto regolato: il tavolo diventa nuovamente libero per un eventuale secondo servizio.
+**Scenario no-show**: il cliente non si presenta e non annulla. Contrassegni **No-show** nel pannello di controllo → Grubano acquisisce automaticamente i 15 € di penale sull'impronta (il resto, 5 €, viene rilasciato). Il cliente riceve un'e-mail con l'importo prelevato e la procedura di contestazione.
 
-## Per andare oltre
+<Eyebrow icon="check_circle">Buone pratiche</Eyebrow>
 
-- [Cruscotto ristorante](/it/guides/restaurant/) — vista d’insieme delle prenotazioni attive e dei prossimi arrivi del giorno.
+## Ottenere il meglio dal sistema
+
+<Callout type="default">
+
+- **Inserisci i tuoi orari e le chiusure**: Grubano blocca automaticamente le fasce orarie fuori orario o durante le chiusure eccezionali (puoi forzare una prenotazione privata, ma il sistema ti avvisa).
+- **Attiva l'impronta per i servizi a forte richiesta** (venerdì/sabato sera, menù degustazione): riduce drasticamente i no-show senza alcuno sforzo da parte tua.
+- **Contrassegna «Arrivo» non appena il cliente si siede**: il conto si apre subito, il cliente può consultarlo durante il pasto e tu risparmi tempo all'uscita.
+- **Sorveglia il codice colore**: un tavolo arancione (occupato) che diventa rosso (superamento) segnala che è ora di proporre il conto — senza forzare, solo per rendere fluida la rotazione.
+
+</Callout>
+
+<Eyebrow icon="error">Errori da evitare</Eyebrow>
+
+## Le insidie più comuni
+
+<Callout type="error">
+
+- **Dimenticare di convalidare l'arrivo**: se non contrassegni «Arrivo», il conto non si apre automaticamente — il cliente non può né consultarlo né pagarlo online.
+- **Annullare manualmente un'impronta**: Grubano lo fa per te (arrivo → rilascio, no-show → acquisizione) — intervenire direttamente presso il fornitore di pagamento rischia di disallineare lo stato.
+- **Non compilare la planimetria della sala**: senza tavoli configurati, non puoi accettare prenotazioni — la selezione del tavolo è obbligatoria.
+- **Acquisire l'impronta su un arrivo normale**: l'impronta si acquisisce solo in caso di no-show; un arrivo la rilascia sempre (il blocco scompare senza prelievo).
+
+</Callout>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
+
+## Domande frequenti
+
+<Faq items={[
+  {
+    icon: "payments",
+    q: "Quanto costa l'impronta bancaria?",
+    a: "Nulla. Grubano non addebita alcun costo per il blocco. Solo i pagamenti effettivamente acquisiti (penale no-show) sono soggetti alle commissioni abituali del nostro fornitore di pagamento. I rilasci (cliente arrivato) non comportano alcun costo."
+  },
+  {
+    icon: "schedule",
+    q: "Il cliente può prenotare fuori orario?",
+    a: "No per impostazione predefinita: Grubano propone solo le fasce orarie all'interno dei tuoi orari di apertura e al di fuori delle chiusure eccezionali. Puoi forzare una prenotazione dal pannello di controllo (un evento privato in un giorno di chiusura, ad esempio) — il sistema ti avvisa ma non blocca."
+  },
+  {
+    icon: "receipt_long",
+    q: "Il conto si apre se ho dimenticato di contrassegnare «Arrivo»?",
+    a: "No: il conto automatico si crea solo al passaggio allo stato «Arrivo». Se te ne dimentichi, aprilo manualmente dalla scheda Tavoli del tuo pannello di controllo — seleziona il tavolo, clicca «Nuovo conto»."
+  },
+  {
+    icon: "error",
+    q: "Cosa succede se un tavolo ha già un conto non pagato?",
+    a: "Quando contrassegni «Arrivo» su una prenotazione, Grubano verifica se il tavolo ha un conto non saldato di un servizio precedente. In tal caso, NON crea un nuovo conto e ti avvisa: salda o annulla quello vecchio prima di accogliere il nuovo servizio."
+  }
+]} />
+
+<Eyebrow icon="menu_book">Per approfondire</Eyebrow>
+
+## Articoli correlati
+
+<RelatedCards items={[
+  {
+    icon: "insights",
+    title: "Pannello di controllo",
+    sub: "Indicatori in tempo reale",
+    href: "/it/guides/restaurant/"
+  },
+  {
+    icon: "shopping_bag",
+    title: "Ordinare e seguire",
+    sub: "Ordinare e seguire",
+    href: "/it/guides/consumer/"
+  },
+  {
+    icon: "bolt",
+    title: "Iniziare in 15 minuti",
+    sub: "Pronto in 15 minuti",
+    href: "/it/guides/quick-start/"
+  },
+  {
+    icon: "menu_book",
+    title: "Menù e scansione IA",
+    sub: "Carta e scansione IA",
+    href: "/it/guides/menu/"
+  }
+]} />

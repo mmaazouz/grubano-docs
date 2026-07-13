@@ -1,92 +1,166 @@
 ---
-title: "Compenso e prelievi"
-description: "Comprendere il compenso del corriere: spese di consegna meno una commissione Grubano del 20 %, mance versate al 100 %, maturazione alla consegna e prelievo a partire da 25 €."
+title: "Compensi e prelievi"
+description: "Comprendere il vostro compenso da rider: spese di consegna meno una commissione Grubano del 20 %, mance riversate al 100 %, maturazione alla consegna e prelievo a partire da 25 €."
 generated: true
-sourceHash: a90f361581a84dd8
+sourceHash: 80bf12c90b9e3ced
 generator: scripts/generate-feature-page.js
-templateVersion: 5
+templateVersion: 6
 ---
 
 import { Steps, Callout } from 'nextra/components'
 
-# Compenso e prelievi
+# Compensi e prelievi
 
-Il suo compenso è calcolato ad ogni consegna: riceve una parte delle spese di consegna al netto della commissione Grubano e il 100 % delle mance.
+Seguite i vostri guadagni di consegna in tempo reale: le spese di consegna meno la commissione Grubano, mance riversate integralmente, e prelevate i vostri guadagni non appena viene raggiunta la soglia.
 
-<FlowDiagram steps={["Corsa consegnata","Spese − commissione 20 %","Maturazione","Prelievo da 25 €"]} />
+<ArticleMeta audience="Rider" minutes={4} updated="2026-07-10" />
 
-## L’essenziale
+<Eyebrow icon="insights">Panoramica</Eyebrow>
 
-Grubano remunera i corrieri su due fonti: una parte delle spese di consegna pagate dal cliente (al netto di una commissione Grubano) e l’intero importo delle mance versate. I suoi guadagni sono disponibili per il prelievo non appena sono maturati e il saldo raggiunge i 25 €.
+## Il percorso del vostro denaro
 
-## Come funziona
+<FlowDiagram steps={[
+  { icon: "two_wheeler", title: "Corsa consegnata", desc: "Effettuate una consegna per un ristorante partner" },
+  { icon: "percent", title: "Spese − commissione 20 %", desc: "Le spese di consegna sono ripartite tra voi e Grubano" },
+  { icon: "schedule", title: "Maturazione", desc: "I vostri guadagni diventano disponibili dopo un periodo di sicurezza" },
+  { icon: "payments", title: "Prelievo da 25 €", desc: "Trasferite i vostri guadagni sul vostro conto bancario" }
+]} />
 
-Ogni volta che consegna una [missione](/it/guides/driver/), il sistema registra due tipi di guadagni: le **spese di corsa** (la parte che le spetta sulle spese di consegna fatturate al cliente, meno una commissione Grubano) e le **mance** (versate al 100 %, senza commissione). Questi importi passano attraverso tre stati: **in attesa** (subito dopo la consegna), **maturi** (dopo un periodo di sicurezza di 7 giorni, che garantisce che l’ordine sia pagato e non rimborsato), poi **pagati** (una volta che ha richiesto un prelievo). Questo ciclo protegge sia il corriere che la piattaforma: ha la certezza di ricevere quanto le è dovuto e Grubano si assicura che la transazione sia definitiva prima di effettuare il versamento.
+<Eyebrow icon="bolt">L’essenziale</Eyebrow>
 
-La **commissione Grubano** sulle spese di corsa finanzia gli strumenti, l’infrastruttura logistica e l’assistenza. Le mance, invece, le vengono interamente riconosciute — ricompensano direttamente il suo servizio.
+## In breve
 
-## Passo dopo passo
+<Essentials title="Se dovete ricordare solo questo:" items={[
+  <>Ricevete l’<b>80 % delle spese di consegna</b> che il cliente paga (Grubano preleva una commissione del 20 %); le mance vi spettano al <b>100 %</b>.</>,
+  <>I vostri guadagni <b>maturano dopo qualche giorno</b> di sicurezza (per garantire che nessun rimborso annulli l’ordine), poi passano nel vostro saldo disponibile.</>,
+  <>Potete prelevare non appena il vostro saldo raggiunge <b>25 €</b>; il bonifico viene effettuato entro 1-3 giorni lavorativi sul vostro conto bancario.</>
+]} />
+
+<Eyebrow icon="lightbulb">Come funziona</Eyebrow>
+
+## Il principio (e il perché)
+
+Ogni volta che consegnate un ordine, il sistema registra automaticamente il vostro guadagno: la parte che vi spetta sulle spese di consegna pagate dal cliente, meno la commissione Grubano del 20 %. Se il cliente lascia una mancia, questa vi viene riversata integralmente, senza alcuna trattenuta.
+
+Per proteggere tutti gli attori, i vostri guadagni restano *in attesa* durante un breve periodo di maturazione: questo garantisce che l’ordine sia stato effettivamente onorato e che nessun rimborso eccezionale venga ad annullarlo. Una volta trascorso questo termine, l’importo passa nel vostro saldo *disponibile* e potete prelevarlo. Questo meccanismo assicura la fiducia e la trasparenza tra voi, i ristoranti e Grubano.
+
+<Eyebrow icon="format_list_numbered">Passo dopo passo</Eyebrow>
+
+## Seguire e prelevare i vostri guadagni
 
 <Steps>
 
-### Consegna effettuata
+### Consultate il vostro pannello di controllo
 
-Non appena contrassegna una missione come consegnata, il sistema registra due righe di guadagni: una per le spese di corsa (importo lordo − commissione Grubano = importo netto che le è dovuto) e, se presente, una per la mancia (100 % netto). Queste righe compaiono immediatamente nel suo spazio **I miei guadagni**, con lo stato **In attesa**.
+Accedete al vostro spazio rider e aprite la pagina « I miei guadagni ». Vi troverete tre saldi: *disponibile* (ciò che potete prelevare immediatamente), *in attesa* (i guadagni in corso di maturazione) e *già versato* (lo storico dei vostri prelievi).
 
-### Periodo di maturazione
+### Verificate il dettaglio delle corse
 
-I suoi guadagni restano in attesa per **7 giorni** dalla consegna. Questo lasso di tempo permette di verificare che l’ordine sia pagato e che non sia stato emesso alcun rimborso integrale. Al termine di questo periodo, se tutto è in regola, i guadagni passano automaticamente allo stato **Matured** (maturi) e vengono aggiunti al suo saldo disponibile.
+Ogni riga mostra la corsa consegnata, l’importo lordo (spese di consegna o mancia), la commissione Grubano se applicabile, e il netto che vi spetta. Lo stato indica se il guadagno è ancora *in attesa*, *maturo* (disponibile) o *pagato* (già bonificato).
 
-### Saldo disponibile
+### Richiedete un prelievo
 
-Il suo saldo disponibile corrisponde alla somma di tutti i guadagni maturi che non sono ancora stati versati. Può consultarlo in qualsiasi momento in **I miei guadagni**. Non appena questo saldo raggiunge o supera i **25 €**, il pulsante **Preleva** diventa attivo.
+Non appena il vostro saldo disponibile raggiunge o supera i 25 €, il pulsante « Preleva » diventa attivo e registra la vostra richiesta. L’attivazione effettiva dei bonifici arriverà presto: una volta attiva, il bonifico partirà verso il conto che avete registrato al momento dell’iscrizione, senza spese di prelievo.
 
-### Richiesta di prelievo
+### Ricevete il bonifico
 
-Clicchi su **Preleva** per richiedere un bonifico del suo saldo disponibile. Il sistema verifica che le sue coordinate di pagamento siano registrate e validate presso il nostro fornitore di servizi, quindi registra la sua richiesta — l’attivazione effettiva dei bonifici arriverà a breve. Una volta effettuato un bonifico, i suoi guadagni passeranno allo stato **Pagati** e appariranno nello storico.
+Una volta reso operativo l’invio effettivo dei bonifici, il pagamento arriverà entro 1-3 giorni lavorativi. Riceverete una notifica via e-mail quando il bonifico sarà partito, poi una seconda quando la vostra banca l’avrà accreditato. Lo storico conserva la traccia di ogni prelievo (data, importo, riferimento del bonifico).
 
 </Steps>
 
-<Callout type="info">
-L’importo del prelievo è sempre calcolato dal server — non può scegliere un importo parziale. Ogni prelievo svuota integralmente il suo saldo disponibile (tutti i guadagni maturi in quel momento).
+<Eyebrow icon="calculate">Esempio concreto</Eyebrow>
+
+## Una settimana con 8 corse
+
+Immaginiamo che consegniate 8 ordini nella settimana, con spese di consegna medie di 3,50 € per corsa e 2 mance da 2 € ciascuna.
+
+<Breakdown title="Scomposizione dei vostri guadagni settimanali" rows={[
+  { icon: "two_wheeler", label: "Spese di consegna (8 × 3,50 €)", value: "28,00 €" },
+  { icon: "percent", label: "Commissione Grubano (20 %)", value: "−5,60 €", variant: "minus" },
+  { icon: "account_balance_wallet", label: "La vostra parte sulle corse", value: "22,40 €" },
+  { icon: "loyalty", label: "Mance (2 × 2 €, 100 %)", value: "+4,00 €", variant: "plus" },
+  { icon: "payments", label: "Totale netto della settimana", value: "26,40 €", variant: "total" }
+]} />
+
+Una volta trascorso il periodo di maturazione (qualche giorno dopo ogni corsa), questi 26,40 € passano nel vostro saldo disponibile. Superate la soglia di 25 €: potete prelevare l’intero importo.
+
+*Questo esempio è illustrativo; le spese di consegna reali variano in base alla distanza e alla configurazione di ogni ristorante.*
+
+<Eyebrow icon="check_circle">Buone pratiche</Eyebrow>
+
+## Massimizzate i vostri guadagni
+
+<Callout type="default">
+- **Accettate le missioni rapidamente**: le fasce orarie più redditizie (pranzo, sera) sono attribuite ai rider reattivi.
+- **Rispettate i tempi**: una consegna puntuale valorizza il vostro profilo e può sbloccare più missioni.
+- **Verificate regolarmente il vostro saldo**: prelevate non appena raggiungete la soglia per ottimizzare la vostra liquidità.
+- **Tenete aggiornate le vostre coordinate bancarie**: un IBAN valido evita ogni ritardo del bonifico.
 </Callout>
 
-## Buone pratiche
+<Eyebrow icon="error">Errori da evitare</Eyebrow>
 
-**Consulti regolarmente il suo spazio I miei guadagni** per seguire l’evoluzione dei suoi redditi in tempo reale. Vi troverà la distinzione chiara tra i guadagni ancora in attesa (che matureranno tra qualche giorno) e quelli già disponibili per il prelievo.
+## Le trappole più comuni
 
-**Anticipi la soglia di 25 €**: se effettua poche corse a settimana, potrebbero volerci diversi giorni per raggiungere l’importo minimo. Pianifichi i suoi prelievi di conseguenza per evitare di attendere inutilmente.
+<Callout type="error">
+- **Non confondete il saldo « in attesa » con il saldo « disponibile »**: solo il secondo può essere prelevato; l’attesa è un periodo di sicurezza legale, non un blocco arbitrario.
+- **Non richiedete più prelievi ravvicinati**: se un bonifico è già in corso, il pulsante « Preleva » resta disattivato finché il precedente non è finalizzato (protezione contro i duplicati).
+- **Non dimenticate di convalidare la vostra identità**: un conto bancario verificato (KYC) è obbligatorio prima del primo prelievo — completate questo passaggio fin dall’iscrizione per non bloccare i vostri guadagni.
+</Callout>
 
-**Verifichi il suo conto bancario** prima del primo prelievo: si assicuri che le sue coordinate siano correttamente registrate e validate presso il nostro fornitore di servizi di pagamento. Un profilo incompleto blocca il bonifico — il sistema la avviserà se manca un’informazione.
-
-**Conservi traccia dei suoi prelievi**: lo storico in I miei guadagni archivia ogni versamento con la sua data, il suo importo e il suo riferimento di bonifico. Utile per le sue dichiarazioni o la sua contabilità personale.
+<Eyebrow icon="quiz">FAQ</Eyebrow>
 
 ## Domande frequenti
 
 <Faq items={[
   {
-    icon: "help",
-    q: "Perché i miei guadagni sono in attesa per 7 giorni?",
-    a: "Questo termine garantisce che l’ordine sia definitivamente pagato e non rimborsato. Protegge sia lei (non riceverà mai un guadagno annullato) che la piattaforma (nessun versamento prematuro). Superato questo periodo, i suoi guadagni diventano disponibili per il prelievo."
+    icon: "schedule",
+    q: "Quanto tempo prima che i miei guadagni siano disponibili?",
+    a: "I guadagni maturano qualche giorno dopo la consegna, per garantire che nessun rimborso eccezionale annulli l’ordine. Una volta trascorso questo termine, l’importo passa automaticamente nel vostro saldo disponibile e potete prelevarlo."
   },
   {
-    icon: "help",
-    q: "Posso prelevare meno di 25 €?",
-    a: "No, la soglia minima di prelievo è fissata a 25 €. Al di sotto, il pulsante Preleva resta inattivo. Questa soglia riduce le spese di transazione bancaria e semplifica la gestione per tutti."
+    icon: "payments",
+    q: "Ci sono spese di prelievo?",
+    a: "No. Grubano non preleva alcuna spesa sui vostri prelievi; ricevete il 100 % dell’importo richiesto. Il bonifico bancario passa attraverso il nostro fornitore di pagamento, senza costi nascosti."
   },
   {
-    icon: "help",
-    q: "Cosa succede se un ordine viene rimborsato dopo che sono stato pagato?",
-    a: "Il periodo di maturazione di 7 giorni copre questo rischio: il sistema verifica lo stato dell’ordine prima di liberare i suoi guadagni. Se un rimborso si verifica durante questi 7 giorni, il guadagno corrispondente passa allo stato annullato e non entra mai nel suo saldo disponibile."
+    icon: "percent",
+    q: "Perché una commissione del 20 % sulle spese di consegna?",
+    a: "Questa commissione copre i costi della piattaforma (tecnologia, assistenza, assicurazioni) e permette a Grubano di proporvi un flusso regolare di missioni. Le mance, invece, vi spettano integralmente."
   },
   {
-    icon: "help",
-    q: "Le mance sono soggette a commissione?",
-    a: "No. Le mance le sono versate al 100 %, senza alcuna commissione. Solo le spese di corsa (la parte delle spese di consegna) sono soggette alla commissione Grubano."
+    icon: "account_balance",
+    q: "Cosa succede se non prelevo mai il mio saldo?",
+    a: "Il vostro denaro resta disponibile indefinitamente nel vostro account rider; non c’è né data limite né spese di inattività. Potete prelevare quando volete, non appena viene raggiunta la soglia di 25 €."
   }
 ]} />
 
-## Per andare oltre
+<Eyebrow icon="menu_book">Per approfondire</Eyebrow>
 
-**Passo successivo**  
-[Guida del corriere](/it/guides/driver/) — Scopra come accettare missioni, organizzare i suoi giri e massimizzare i suoi ricavi su Grubano.
+## Articoli correlati
+
+<RelatedCards items={[
+  {
+    icon: "two_wheeler",
+    title: "Diventare rider e missioni",
+    sub: "Candidatura e missioni",
+    href: "/it/guides/driver/"
+  },
+  {
+    icon: "payments",
+    title: "Finanze e versamenti",
+    sub: "Commissione e versamenti",
+    href: "/it/guides/finances/"
+  },
+  {
+    icon: "location_on",
+    title: "Tracciamento della corsa",
+    sub: "Posizione in tempo reale",
+    href: "/it/guides/driver-tracking/"
+  },
+  {
+    icon: "shopping_bag",
+    title: "Ordinare e seguire",
+    sub: "Ordinare e seguire",
+    href: "/it/guides/consumer/"
+  }
+]} />

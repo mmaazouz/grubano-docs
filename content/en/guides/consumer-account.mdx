@@ -1,81 +1,174 @@
 ---
-title: "My Account"
-description: "Manage your customer account: contact details, addresses, favorites, reviews, and application language."
+title: "My account"
+description: "Manage your customer account: contact details, addresses, favorites, reviews left, and the app language."
 generated: true
-sourceHash: ac1d8fc21a827220
+sourceHash: 7a8de1503219cc08
 generator: scripts/generate-feature-page.js
-templateVersion: 5
+templateVersion: 6
 ---
 
 import { Steps, Callout } from 'nextra/components'
 
-# My Account
+# My account
 
-Manage your contact details, favorite addresses, preferences, and review history all in one place.
+Manage your personal information, your delivery addresses, your favorite restaurants, your reviews, and the app language, all from a single place.
 
-<FlowDiagram steps={["Create an account","Complete your profile","Add favorites","Manage security"]} />
+<ArticleMeta audience="Customers" minutes={3} updated="2026-07-10" />
 
-## The Essentials
+<Eyebrow icon="insights">Overview</Eyebrow>
 
-Your Grubano account centralizes all your personal information: name, phone number, notification preferences, favorite delivery addresses, and review history. You control what you share and how you are contacted, with permanent access to your [loyalty rewards](/en/guides/consumer-loyalty/).
+## Your digital identity
 
-## How It Works
+<FlowDiagram steps={[
+  { icon: "person", title: "Create an account", desc: "Email and password or Google sign-in" },
+  { icon: "edit", title: "Complete your profile", desc: "Name, phone, delivery addresses" },
+  { icon: "favorite", title: "Add favorites", desc: "Follow your favorite restaurants and dishes" },
+  { icon: "lock", title: "Manage security", desc: "Change your email, notifications, and language" }
+]} />
 
-Each customer account is based on a verified email address and a secure password. Once created, you can enrich your profile with a phone number to facilitate communication with restaurants and delivery drivers, save multiple delivery addresses to order more quickly, and adjust your notification preferences to receive only the alerts that interest you (orders, reviews, offers, new restaurants).
+<Eyebrow icon="bolt">The essentials</Eyebrow>
 
-Your account also gives you access to your order history, your favorite restaurants, and your loyalty points balance. All your data is protected and can be modified at any time.
+## In brief
 
-## Step by Step
+<Essentials title="If you only remember one thing:" items={[
+  <>Your account stores your <b>contact details, addresses, favorites, and reviews</b>: a single profile for all your orders.</>,
+  <>You can change your <b>email, phone, language</b> and your notification preferences at any time.</>,
+  <>Your [loyalty](/en/guides/consumer-loyalty/) points and your order history are <b>automatically linked</b> to your account.</>
+]} />
+
+<Eyebrow icon="lightbulb">How it works</Eyebrow>
+
+## The principle (and the why)
+
+Your customer account is the heart of your Grubano experience: it brings together your contact information, your delivery and billing addresses, your favorite restaurants, the reviews you've left, and your language preferences. Every order you place, every [loyalty](/en/guides/consumer-loyalty/) point you earn is automatically linked to your profile, which lets you find your history, easily reorder your favorite dishes, and benefit from your loyalty credit.
+
+The "My account" section gives you direct access to all this data. You can view it, edit it, or delete it at any time. The restaurant sees your history and preferences to serve you better — never your contact details (email, phone, address), which Grubano protects; only the information needed for delivery is shared with it for the duration of the order.
+
+<Eyebrow icon="format_list_numbered">Step by step</Eyebrow>
+
+## View and edit your account
 
 <Steps>
 
-### Create Your Account
+### Go to the My account page
 
-Go to the registration page (`/eat/auth`). Enter your email address, choose a strong password (minimum 10 characters with uppercase, lowercase, and numbers), and confirm. You will receive a welcome email to confirm the opening of your account.
+From the mobile app or the website, tap the profile icon in the navigation bar (bottom right on mobile, top right on desktop). Select **My account**.
 
-### Complete Your Profile
+### Review your information
 
-In **My Account** (`/eat/account`), add your full name (2 to 80 characters) and your phone number (optional, free format up to 30 characters). This information facilitates exchanges with restaurants and delivery drivers if needed.
+You immediately see your **name**, your **phone**, and your **email address**. These fields are pre-filled with the data you provided at sign-up or during your last update.
 
-### Manage Your Notification Preferences
+### Edit your contact details
 
-Access **Notifications** (`/eat/account/notifications`). Enable or disable channels (push notifications, email, SMS) and choose the types of alerts you wish to receive: order tracking, delivery driver messages, review responses, promotional offers, new restaurants, loyalty rewards. You can also activate a silent mode to temporarily disable everything.
+Tap the field you want to change (name or phone), enter the new value, then tap **Save**. The change is applied instantly.
 
-### Change Your Email Address
+### Change your email address
 
-From **Security** (`/eat/account/security`), request an email change. You must first prove your identity by entering a code received at your current address, then confirm the new address via a unique link sent by email. Your old email remains active until final validation.
+For security reasons, changing your email happens in **two steps**:
+- Tap **Change email**, enter the **confirmation code** that was sent to your current address, then provide the **new address**.
+- A confirmation link will be sent to this new address; click it to finalize the change. Your old address stays active until this validation.
 
-<Callout type="info">
-Email changes are only available for accounts created directly with a password. Accounts linked to Google or Apple cannot change their email address from the application.
-</Callout>
+### Manage your delivery addresses
 
-### Reset Your Password
+Tap **Addresses** to see the list of all saved addresses. You can add a new one, or edit or delete existing ones. The address marked as **primary** will be offered by default on your next orders.
 
-If you have forgotten your password, click **Forgot Password** on the login page. Enter your email address: you will receive a secure link valid for 24 hours to set a new password.
+### Check your favorites
+
+The **Favorites** section displays the restaurants and dishes you've marked with a heart. Tap a favorite to go straight to its page and order again.
+
+### Reread your reviews
+
+The **My reviews** page lists all the comments you've left on restaurants or dishes. You can edit or delete them if you wish.
+
+### Change the app language
+
+In **Settings**, select **Language** and choose from the available languages (French, English, Spanish, Arabic, Italian). The interface is translated instantly.
 
 </Steps>
 
-## Best Practices
+<Eyebrow icon="check_circle">Best practices</Eyebrow>
 
-- **Complete your profile** upon registration to speed up your first orders and receive the right notifications.
-- **Verify your email** after any address change to avoid losing access to your account.
-- **Enable only useful notifications** to avoid being overwhelmed with alerts: order tracking and delivery driver messages remain essential, promotional offers can be disabled if they do not interest you.
-- **Use a unique password** different from your other online accounts to protect your payment data and loyalty history.
+## Keep your profile up to date
 
-## Common Errors
-
-<Callout type="warning">
-If you attempt to change your email to an address already used by another Grubano account, you receive a generic message indicating that a confirmation email has been sent, but no change is recorded. The address in question receives a security notification. This anti-enumeration measure prevents anyone from verifying whether an email address already has a Grubano account.
+<Callout type="default">
+- **Check your phone number**: couriers use it to contact you if needed.
+- **Save several addresses** if you regularly order at the office, at home, or at friends' and family's: you'll save time on every order.
+- **Mark your favorite dishes** to find them quickly and receive personalized recommendations.
+- **Leave constructive reviews**: they help other customers choose and let restaurateurs improve.
 </Callout>
 
-- **Invalid verification code**: one-time codes to prove your identity expire after a few minutes. If yours no longer works, request a new one.
-- **Password too weak**: registration rejects passwords with fewer than 10 characters or without a mix of uppercase, lowercase, and numbers. Choose a robust combination from the start.
-- **Email change blocked**: if your account was created via Google or Apple, or if you manage a restaurant or franchise, email address changes are not available to preserve the integrity of business profiles.
+<Eyebrow icon="error">Mistakes to avoid</Eyebrow>
 
-## Going Further
+## Common pitfalls
 
-**Understanding the Context**  
-[Customer Guide](/en/guides/consumer/) — overview of the Grubano user experience, from discovering restaurants to order tracking.
+<Callout type="error">
+- **Not confirming the email change**: if you enter a new address but don't click the confirmation link, your old address stays active and you risk no longer receiving order notifications.
+- **Forgetting to update your phone** after a number change: the courier won't be able to reach you if there's a problem.
+- **Using an email you no longer check**: you'll miss order summaries and personalized offers.
+</Callout>
 
-**Next Step**  
-[Loyalty Program](/en/guides/consumer-loyalty/) — discover how to earn points on every order and unlock exclusive rewards.
+<Eyebrow icon="lightbulb">Tip</Eyebrow>
+
+## Save time when ordering
+
+<Callout type="info">
+If you often order to the same addresses, save them all in your profile and name them clearly ("Home", "Office", "Parents"). When you check out your cart, you'll just need to select the address from the list instead of re-entering it each time.
+</Callout>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
+
+## Frequently asked questions
+
+<Faq items={[
+  {
+    icon: "email",
+    q: "Can I use the same email for multiple accounts?",
+    a: "No: each email address can be linked to only one Grubano account. If you try to sign up with an address that's already registered, you'll get an error message. Use the 'Forgot password' feature to recover access to the existing account."
+  },
+  {
+    icon: "lock",
+    q: "How do I change my password?",
+    a: "Go to the login page and click 'Forgot password'. Enter your email address: you'll receive a link to reset your password. This secure procedure ensures that no one else can change your password without access to your inbox."
+  },
+  {
+    icon: "delete",
+    q: "Can I permanently delete my account?",
+    a: "Yes. Contact support through the app (Help section) to request the deletion of your account. All your personal data (contact details, order history, reviews) will be irreversibly erased within 30 days of your request, in accordance with GDPR."
+  },
+  {
+    icon: "language",
+    q: "Does the language also change for notifications?",
+    a: "Yes: when you change the app language, order confirmation emails, push notifications, and customer service messages are automatically sent in the chosen language."
+  }
+]} />
+
+<Eyebrow icon="menu_book">Going further</Eyebrow>
+
+## Related articles
+
+<RelatedCards items={[
+  {
+    icon: "shopping_bag",
+    title: "Order & track",
+    sub: "Order and track",
+    href: "/en/guides/consumer/"
+  },
+  {
+    icon: "loyalty",
+    title: "Loyalty, wallet & referral",
+    sub: "Points and referral",
+    href: "/en/guides/consumer-loyalty/"
+  },
+  {
+    icon: "insights",
+    title: "Dashboard",
+    sub: "Live metrics",
+    href: "/en/guides/restaurant/"
+  },
+  {
+    icon: "menu_book",
+    title: "Menu & AI Scan",
+    sub: "Menu & AI Scan",
+    href: "/en/guides/menu/"
+  }
+]} />

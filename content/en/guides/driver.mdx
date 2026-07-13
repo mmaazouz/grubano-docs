@@ -1,138 +1,172 @@
 ---
-title: "Becoming a driver & missions"
-description: "Become an independent driver on Grubano: apply (waiting list then KYC validation), go available, view missions, and complete a delivery step by step."
+title: "Become a courier & missions"
+description: "Become an independent courier on Grubano: apply (waitlist then KYC validation), go available, view missions, and complete a delivery step by step."
 generated: true
-sourceHash: f9d62a4d3e81126d
+sourceHash: 504ca049f8337458
 generator: scripts/generate-feature-page.js
-templateVersion: 5
+templateVersion: 6
 ---
 
 import { Steps, Callout } from 'nextra/components'
 
-# Becoming a driver & missions
+# Become a courier & missions
 
-Join Grubano as an independent driver: apply in a few minutes, pass automatic validation, then freely accept available deliveries in your area.
+Become an independent courier on Grubano: apply through the waitlist, verify your business identity, go available, browse the missions on offer, and complete your deliveries step by step.
 
-<FlowDiagram steps={["Apply","Validation / KYC","Go available","Complete a delivery"]} />
+<ArticleMeta audience="Couriers" minutes={4} updated="2026-07-10" />
 
-## The essentials
+<Eyebrow icon="insights">Overview</Eyebrow>
 
-Are you an independent courier or managing a delivery fleet? Grubano allows you to apply online, be automatically validated (subject to identity and compliance checks), then freely accept delivery missions that match your vehicles and activity zones. You remain in control of your schedule: you go available when you wish, you view proposed deliveries and you choose which ones to accept.
+## The courier journey
 
-## How it works
+<FlowDiagram steps={[
+  { icon:"description", title:"Apply", desc:"Sign up through the waitlist with SIREN/SIRET validation" },
+  { icon:"gavel", title:"Validation / KYC", desc:"Automatic verification of your business identity" },
+  { icon:"two_wheeler", title:"Go available", desc:"Turn on your availability to receive missions" },
+  { icon:"local_shipping", title:"Complete a delivery", desc:"Accept, pick up and deliver the order" }
+]} />
 
-Grubano is progressively opening its driver network to offer a fair alternative to traditional platforms. Unlike high-commission models, the system is based on transparency and autonomy: you declare your capabilities (mission types, vehicles, zones), the platform automatically verifies your business status (SIREN or SIRET) with the official registry, then you access a dedicated dashboard where you accept deliveries freely, without penalty for refusal.
+<Eyebrow icon="bolt">The essentials</Eyebrow>
 
-The process is designed to be fast and secure: automatic validation based on public data (no complex paperwork), a clean driver space that displays available missions in real time, and step-by-step tracking of each delivery (accepted → picked up → delivered) directly from your mobile.
+## In brief
 
-<Callout type="warning">
-**Progressive rollout** — The opening of the driver network is currently managed in stages. Your application will be placed on a waiting list while Grubano definitively activates the matching. You will be notified by email as soon as you can start accepting missions.
-</Callout>
+<Essentials title="If you only remember one thing:" items={[
+  <>Applications are currently on a <b>waitlist</b>: you can sign up right now, and activation will go live soon</>,
+  <>Your <b>business identity</b> (SIREN or SIRET) is verified automatically as soon as you sign up — a contact name that differs from the official name won't block you</>,
+  <>You freely choose <b>which missions to accept</b>: turning down a delivery carries no penalty or rating</>
+]} />
 
-## Step by step
+<Eyebrow icon="lightbulb">How it works</Eyebrow>
+
+## The principle (and the why)
+
+Grubano is looking for independent couriers or delivery businesses to handle deliveries for its local restaurants. You apply with your SIREN or SIRET, specify your mission types (meals, supplier goods, B2B, refrigerated) and the vehicles you have available (bike, scooter, car, van, refrigerated). Once your business identity is validated automatically, you'll soon receive access to your dashboard.
+
+Validation relies on a check against the official business register: Grubano confirms that your SIREN exists and that your entity is active. The contact name you declare may differ from your company's official name — it's simply a display name, never grounds for rejection. Once active, you'll be able to go available to receive mission offers, which you accept freely with no obligation. Your [earnings](/en/guides/driver-earnings/) are paid out for every delivery you complete.
+
+<Eyebrow icon="format_list_numbered">Step by step</Eyebrow>
+
+## Apply and complete your first delivery
 
 <Steps>
 
-### Apply online
+### Fill in the sign-up form
 
-Fill out the driver registration form: status (independent or company), contact name, email, phone, SIREN or SIRET (9 or 14 digits), accepted mission types (meals, supplier products, B2B, cold), available vehicles (bike, scooter, car, van, refrigerated), delivery zones. Validate your consent to data processing.
+Go to the courier sign-up page. Enter your partner type (independent or business), your contact name, your email, your phone number and your SIREN (9 digits) or SIRET (14 digits). Specify the mission types you want to take on and the vehicles you have, along with your service areas.
 
-The platform automatically triggers a business identity verification with the official registry: company existence, activity status, matching of declared name. A minimum delay of 2 seconds is imposed to exclude bots.
+### Automatic identity validation
 
-### Receive the validation result
+Your SIREN or SIRET is verified automatically against the official business register. If your entity exists and is active, your application is approved even if the contact name you declared differs from the official name. If the entity can't be found or has been struck off, the application is rejected. Any technical issue (register unavailable, verification impossible) places your application in manual review.
 
-Three possible outcomes: **active** (your profile is validated, you access the driver space immediately once the network opening is effective), **pending** (manual verification required or registration on waiting list), **rejected** (company not found or struck off). The official name of your company (as registered) is communicated to you if your application is accepted.
+### Wait on the waitlist
 
-A passwordless account is automatically created at your email address: you will receive a magic login link each time you want to log in. Your profile remains editable at any time from the **Profile** tab of your driver space (contact details, mission types, vehicles, zones).
+Courier account activation is currently on a waitlist. Your application has been recorded; you'll soon receive an email to access your workspace and start receiving missions. This waiting period lets Grubano roll out the logistics service gradually.
 
-<Callout type="info">
-**Tolerant name validation** — Automatic verification accepts a contact name that differs slightly from the official registry name (for example, a trading name or abbreviation). Only a company not found or struck off results in rejection.
-</Callout>
+### Turn on your availability
 
-### Declare your compliance documents
+Once your account is activated, log in to your courier workspace and switch the "Available" toggle to ON. You'll then receive mission offers matching your criteria (areas, mission types, vehicles).
 
-Before being able to accept missions, you must complete your profile with your insurance documents: vehicle or activity liability insurer, policy number, expiration date, and — if applicable — professional liability insurer with its policy number. This information is declarative (no file to upload in this version) and will be verified manually by the Grubano team.
+### Browse the missions on offer
 
-Your document status changes from **none** to **submitted** upon sending, then to **verified** once validated by an administrator. This status appears clearly in your dashboard and determines the final activation of your driver account.
+Missions matching your profile appear in the "Available missions" tab. Each mission shows the pickup restaurant, the delivery neighborhood (the exact address is only revealed once you accept the mission), the delivery type and your [earnings](/en/guides/driver-earnings/) amount.
 
-### Go available
+### Accept a mission
 
-Once your profile is active and your documents verified, activate the **Available** button in your driver space. This simple status (online / offline) indicates to the platform that you are ready to receive delivery offers. You can deactivate it at any time without justification.
-
-While you are offline, no mission will be offered to you. As soon as you go online, deliveries matching your criteria (vehicles, zones, mission types) appear in the **Available missions** tab.
-
-### View available missions
-
-The **Available missions** tab lists in real time the deliveries you can accept: departure restaurant (name, full address), approximate delivery zone (neighborhood or postal code — the exact customer address is only revealed once the mission is accepted), estimated distance, mission type, delivery amount. You only see missions compatible with your profile and that you have not already refused.
-
-No penalty for refusal: if a delivery does not suit you, simply ignore it. It will disappear from your list but may be offered to another driver. You remain free to accept or not each mission.
-
-### Accept a delivery
-
-Click **Accept** on the mission of your choice. Attribution is immediate and exclusive: the first eligible driver who accepts wins the delivery. If the mission has already been taken by another driver in the meantime, you receive a neutral message "Mission unavailable" (this is not your error, just a normal selection race).
-
-Upon acceptance, the customer’s full address is revealed to you, and the mission appears in your **In progress** tab. You can then go to the starting point.
+Click "Accept" on the mission of your choice. If another courier accepted it in the meantime, you'll get a neutral notification ("Mission already assigned") with no penalty. Once accepted, the customer's full address is revealed to you.
 
 ### Pick up the order
 
-Arrived at the restaurant, confirm pickup by pressing **Picked up** in the application. The mission status changes from **accepted** to **picked up**. This step triggers notification to the customer (the delivery is on its way) and allows you to clearly track where you are.
-
-If you try to mark a step out of order (for example, deliver before having picked up), the application refuses the action with an explicit message. Each mission follows a strict cycle: accepted → picked up → delivered.
+Head to the indicated restaurant. Once there, mark "Order picked up" in the app. The mission moves to the next step.
 
 ### Deliver the order
 
-Once arrived at the customer’s, confirm delivery by pressing **Delivered**. The mission status changes to **delivered**, the delivery is archived in the **Completed** tab and your [earnings](/en/guides/driver-earnings/) are recorded (actual payment coming soon — see the Earnings page).
-
-You can view the complete history of your completed deliveries (delivered or cancelled) in the **Completed** tab: up to 50 recent missions, sorted by descending date.
+Head to the customer's address. Once you've handed over the order, mark "Order delivered". The mission is complete and your earnings are recorded — the actual payout is coming soon (see the Earnings guide).
 
 </Steps>
 
-## Best practices
+<Eyebrow icon="check_circle">Best practices</Eyebrow>
 
-- **Update your delivery zones regularly**: if you expand your service area or add a new vehicle, modify your profile immediately to receive more suitable offers.
-- **Go online only when you are truly available**: no need to receive offers if you cannot accept them immediately. The available / unavailable status is for that.
-- **Check the Available missions tab frequently**: deliveries are assigned to the first accepter. The faster you react, the more you increase your chances of securing interesting missions.
-- **Don’t be afraid to refuse a delivery**: no algorithm will penalize you. If the distance doesn’t suit you or the time slot doesn’t fit, simply ignore the mission.
+## Maximize your missions
 
-## Common errors
-
-<Callout type="warning">
-**Trying to deliver before having picked up** — The mission cycle is strict: you must first accept, then mark **Picked up** at the restaurant, and finally **Delivered** at the customer’s. If you try to skip a step, the application refuses the action (error 422). Respect the order of steps.
+<Callout type="default">
+- **Turn on your availability** as soon as you're ready to receive missions — you'll only get offers if you're online.
+- **Accept quickly** the missions you're interested in: other couriers see the same offers and can grab them first.
+- **Mark each step** (pickup, delivery) in the app so the restaurant and the customer are kept informed in real time.
+- **Turn missions down without worry**: if a mission doesn't suit you, don't accept it — no penalty and no rating will be applied to you.
 </Callout>
 
-**Incorrect SIREN or SIRET during application** — Automatic validation queries the official registry. If the number is invalid (too short, too long, or non-existent), your application will be rejected. Check your SIREN (9 digits) or SIRET (14 digits) before submitting the form.
+<Eyebrow icon="error">Mistakes to avoid</Eyebrow>
 
-**Changing email after registration** — The email declared at registration is your definitive login identifier. It cannot be modified from the driver space (it is the anchor of your multi-role account). If you need to change email, contact Grubano support.
+## Common pitfalls
+
+<Callout type="error">
+- **Don't stay available if you're not ready**: turn off the "Available" toggle as soon as you take a break, otherwise you'll keep receiving offers.
+- **Don't forget to mark "Picked up"**: until you confirm this step, the restaurant doesn't know you're on your way.
+- **Don't accept a mission without checking** the delivery area: once accepted, you're committed to completing it.
+</Callout>
+
+<Eyebrow icon="lightbulb">Tip</Eyebrow>
+
+## Prepare your application
+
+<Callout type="info">
+Before filling in the form, have your SIREN or SIRET number handy (it appears on your SIRENE registration certificate, which you can download for free from the INSEE website). If you're a sole trader (micro-entrepreneur), your SIRET is the same as your social security number followed by 5 digits. A valid, active SIREN or SIRET speeds up your automatic validation.
+</Callout>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
 
 ## Frequently asked questions
 
 <Faq items={[
   {
-    icon: 'help',
-    q: 'Can I combine the driver role with another role on Grubano (restaurateur, creator, affiliate)?',
-    a: 'Yes. Grubano allows role accumulation on the same account. Your email remains unique, and you access distinct spaces according to the active role. For example, you can manage a restaurant and deliver orders for other establishments with the same identifier.'
+    icon: "schedule",
+    q: "How long does validation take?",
+    a: "Verification of your SIREN or SIRET is automatic and immediate. If your entity is recognized and active, your application is approved instantly. You're then placed on the waitlist pending the general activation of courier accounts."
   },
   {
-    icon: 'help',
-    q: 'What happens if I systematically refuse all missions?',
-    a: 'Nothing. Grubano never penalizes a mission refusal. If you ignore a delivery, it simply disappears from your list and may be offered to another driver. You remain free to accept or not, without consequence on your status.'
+    icon: "gavel",
+    q: "What happens if my contact name differs from my company's official name?",
+    a: "That's not a problem. Grubano only checks that your SIREN or SIRET exists and that your entity is active. The contact name you declare is simply a display name, never grounds for rejection."
   },
   {
-    icon: 'help',
-    q: 'How can I track my earnings?',
-    a: 'Your earnings per delivery are recorded automatically as soon as you mark a mission as delivered. Payment details (history, payments) will appear in a dedicated section of your driver space, currently being deployed. Consult the Driver Earnings page to learn more.'
+    icon: "two_wheeler",
+    q: "Can I turn down a mission without penalty?",
+    a: "Yes, absolutely. You freely accept the missions that suit you. Turning down a delivery carries no penalty, no rating and doesn't affect your access to future missions."
   },
   {
-    icon: 'help',
-    q: 'Why does the customer’s full address only appear after acceptance?',
-    a: 'Out of respect for customer privacy (GDPR), the exact delivery address is hidden while the mission is offered to a pool of eligible drivers. Only the neighborhood or postal code is visible. As soon as you accept the delivery, you become its exclusive driver and the full address is revealed to you.'
+    icon: "local_shipping",
+    q: "How are the missions I see selected?",
+    a: "You receive missions matching your criteria (service areas, mission types, available vehicles) and your “Available” status. Several couriers see the same offers; the first to accept wins the mission."
   }
 ]} />
 
-## Going further
+<Eyebrow icon="menu_book">Learn more</Eyebrow>
 
-**Next step**  
-[Driver earnings](/en/guides/driver-earnings/) — Understand how your earnings are calculated per delivery, when and how you are paid, and how to view your earnings history.
+## Related articles
 
-**See also**  
-[Driver position tracking](/en/guides/driver-tracking/) — Discover how consent to real-time position tracking works during a delivery, and how the customer can follow your progress (progressive feature, subject to your explicit agreement).
+<RelatedCards items={[
+  {
+    icon: "payments",
+    title: "Earnings & withdrawals",
+    sub: "Earnings and withdrawals",
+    href: "/en/guides/driver-earnings/"
+  },
+  {
+    icon: "location_on",
+    title: "Ride tracking",
+    sub: "Live location",
+    href: "/en/guides/driver-tracking/"
+  },
+  {
+    icon: "shopping_bag",
+    title: "Order & track",
+    sub: "Order and track",
+    href: "/en/guides/consumer/"
+  },
+  {
+    icon: "loyalty",
+    title: "Loyalty, credit & referral",
+    sub: "Points and referral",
+    href: "/en/guides/consumer-loyalty/"
+  }
+]} />

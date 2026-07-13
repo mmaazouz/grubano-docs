@@ -1,81 +1,174 @@
 ---
 title: "Mi cuenta"
-description: "Gestionar su cuenta de cliente: datos de contacto, direcciones, favoritos, opiniones publicadas e idioma de la aplicación."
+description: "Gestiona tu cuenta de cliente: datos de contacto, direcciones, favoritos, reseñas dejadas e idioma de la aplicación."
 generated: true
-sourceHash: ac1d8fc21a827220
+sourceHash: 7a8de1503219cc08
 generator: scripts/generate-feature-page.js
-templateVersion: 5
+templateVersion: 6
 ---
 
 import { Steps, Callout } from 'nextra/components'
 
 # Mi cuenta
 
-Gestione sus datos de contacto, direcciones favoritas, preferencias y el historial de sus opiniones en un solo lugar.
+Gestiona tu información personal, tus direcciones de entrega, tus restaurantes favoritos, tus reseñas y el idioma de la aplicación, todo desde un solo lugar.
 
-<FlowDiagram steps={["Crear una cuenta","Completar el perfil","Añadir favoritos","Gestionar la seguridad"]} />
+<ArticleMeta audience="Clientes" minutes={3} updated="2026-07-10" />
 
-## Lo esencial
+<Eyebrow icon="insights">Resumen</Eyebrow>
 
-Su cuenta Grubano centraliza toda su información personal: nombre, teléfono, preferencias de notificación, direcciones de entrega favoritas e historial de sus opiniones. Usted controla qué comparte y cómo se le contacta, con acceso permanente a sus [recompensas de fidelidad](/es/guides/consumer-loyalty/).
+## Tu identidad digital
 
-## Cómo funciona
+<FlowDiagram steps={[
+  { icon: "person", title: "Crear una cuenta", desc: "Correo y contraseña o inicio de sesión con Google" },
+  { icon: "edit", title: "Completar el perfil", desc: "Nombre, teléfono, direcciones de entrega" },
+  { icon: "favorite", title: "Añadir favoritos", desc: "Sigue tus restaurantes y platos preferidos" },
+  { icon: "lock", title: "Gestionar la seguridad", desc: "Cambiar el correo, las notificaciones y el idioma" }
+]} />
 
-Cada cuenta de cliente se basa en una dirección de correo electrónico verificada y una contraseña segura. Una vez creada, puede enriquecer su perfil con un número de teléfono para facilitar la comunicación con los restaurantes y los repartidores, registrar varias direcciones de entrega para pedir más rápidamente, y ajustar sus preferencias de notificación para recibir únicamente las alertas que le interesan (pedidos, opiniones, ofertas, nuevos restaurantes).
+<Eyebrow icon="bolt">Lo esencial</Eyebrow>
 
-Su cuenta también le da acceso a su historial de pedidos, a sus restaurantes favoritos y a su saldo de puntos de fidelidad. Todos sus datos están protegidos y pueden modificarse en cualquier momento.
+## En resumen
 
-## Paso a paso
+<Essentials title="Si solo debes quedarte con esto:" items={[
+  <>Tu cuenta guarda tus <b>datos de contacto, direcciones, favoritos y reseñas</b>: un único perfil para todos tus pedidos.</>,
+  <>Puedes cambiar tu <b>correo, teléfono, idioma</b> y tus preferencias de notificaciones en cualquier momento.</>,
+  <>Los puntos de [fidelidad](/es/guides/consumer-loyalty/) y el historial de tus pedidos se <b>vinculan automáticamente</b> a tu cuenta.</>
+]} />
+
+<Eyebrow icon="lightbulb">Cómo funciona</Eyebrow>
+
+## El principio (y el porqué)
+
+Tu cuenta de cliente es el corazón de tu experiencia Grubano: reúne tu información de contacto, tus direcciones de entrega y de facturación, tus restaurantes favoritos, tus reseñas dejadas y tus preferencias de idioma. Cada pedido que realizas, cada punto de [fidelidad](/es/guides/consumer-loyalty/) que ganas se vincula automáticamente a tu perfil, lo que te permite recuperar tu historial, volver a pedir fácilmente tus platos preferidos y beneficiarte de tus saldos.
+
+La sección «Mi cuenta» te da acceso directo a todos estos datos. Puedes consultarlos, modificarlos o eliminarlos en cualquier momento. El restaurante ve tu historial y tus preferencias para atenderte mejor — nunca tus datos de contacto (correo, teléfono, dirección), que Grubano protege; solo la información necesaria para la entrega se le transmite durante el pedido.
+
+<Eyebrow icon="format_list_numbered">Paso a paso</Eyebrow>
+
+## Consultar y modificar tu cuenta
 
 <Steps>
 
-### Crear su cuenta
+### Accede a la página Mi cuenta
 
-Acceda a la página de registro (`/eat/auth`). Introduzca su dirección de correo electrónico, elija una contraseña segura (mínimo 10 caracteres con mayúsculas, minúsculas y números), y valide. Recibirá un correo de bienvenida para confirmar la apertura de su cuenta.
+Desde la aplicación móvil o el sitio web, toca el icono de perfil en la barra de navegación (abajo a la derecha en móvil, arriba a la derecha en escritorio). Selecciona **Mi cuenta**.
 
-### Completar su perfil
+### Consulta tu información
 
-En **Mi cuenta** (`/eat/account`), añada su nombre completo (de 2 a 80 caracteres) y su número de teléfono (opcional, formato libre hasta 30 caracteres). Esta información facilita el intercambio con los restaurantes y los repartidores en caso de necesidad.
+Ves de inmediato tu **nombre**, tu **teléfono** y tu **dirección de correo**. Estos campos se rellenan previamente con los datos que proporcionaste al registrarte o en tu última actualización.
 
-### Gestionar sus preferencias de notificación
+### Modifica tus datos de contacto
 
-Acceda a **Notificaciones** (`/eat/account/notifications`). Active o desactive los canales (notificaciones push, correo electrónico, SMS) y elija los tipos de alertas que desea recibir: seguimiento de pedido, mensajes del repartidor, respuestas a opiniones, ofertas promocionales, nuevos restaurantes, recompensas de fidelidad. También puede activar un modo silencioso para desactivar todo temporalmente.
+Toca el campo que quieras cambiar (nombre o teléfono), introduce el nuevo valor y luego toca **Guardar**. La modificación se aplica al instante.
 
-### Modificar su dirección de correo electrónico
+### Cambia tu dirección de correo
 
-Desde **Seguridad** (`/eat/account/security`), solicite un cambio de correo electrónico. Primero deberá demostrar su identidad introduciendo un código recibido en su dirección actual, y después confirmar la nueva dirección mediante un enlace único enviado por correo electrónico. Su antiguo correo permanece activo hasta la validación final.
+Por razones de seguridad, el cambio de correo se realiza en **dos pasos**:
+- Toca **Cambiar de correo**, introduce el **código de confirmación** que se envió a tu dirección actual y luego indica la **nueva dirección**.
+- Se te enviará un enlace de confirmación a esa nueva dirección; haz clic en él para finalizar el cambio. Tu dirección anterior sigue activa hasta esta validación.
 
-<Callout type="info">
-El cambio de correo electrónico solo está disponible para las cuentas creadas directamente con una contraseña. Las cuentas vinculadas a Google o Apple no pueden modificar su dirección de correo electrónico desde la aplicación.
-</Callout>
+### Gestiona tus direcciones de entrega
 
-### Restablecer su contraseña
+Toca **Direcciones** para ver la lista de todas las direcciones registradas. Puedes añadir una nueva, modificar o eliminar las existentes. La dirección marcada como **principal** se propondrá por defecto en tus próximos pedidos.
 
-Si ha olvidado su contraseña, haga clic en **Contraseña olvidada** en la página de inicio de sesión. Introduzca su dirección de correo electrónico: recibirá un enlace seguro válido durante 24 horas para definir una nueva contraseña.
+### Consulta tus favoritos
+
+La sección **Favoritos** muestra los restaurantes y los platos que has marcado con un corazón. Toca un favorito para acceder directamente a su ficha y volver a pedir.
+
+### Relee tus reseñas
+
+La página **Mis reseñas** enumera todos los comentarios que has dejado sobre restaurantes o platos. Puedes modificarlos o eliminarlos si lo deseas.
+
+### Cambia el idioma de la aplicación
+
+En los **Ajustes**, selecciona **Idioma** y elige entre los idiomas disponibles (francés, inglés, español, árabe, italiano). La interfaz se traduce al instante.
 
 </Steps>
 
-## Buenas prácticas
+<Eyebrow icon="check_circle">Buenas prácticas</Eyebrow>
 
-- **Complete su perfil** desde el momento de la inscripción para acelerar sus primeros pedidos y recibir las notificaciones adecuadas.
-- **Verifique su correo electrónico** después de cualquier cambio de dirección para evitar perder el acceso a su cuenta.
-- **Active únicamente las notificaciones útiles** para no verse desbordado por alertas: el seguimiento de pedido y los mensajes del repartidor siguen siendo esenciales, las ofertas promocionales pueden desactivarse si no le interesan.
-- **Utilice una contraseña única** diferente de sus otras cuentas en línea para proteger sus datos de pago y su historial de fidelidad.
+## Mantén tu perfil actualizado
 
-## Errores frecuentes
-
-<Callout type="warning">
-Si intenta modificar su correo electrónico hacia una dirección ya utilizada por otra cuenta Grubano, recibirá un mensaje genérico indicando que se ha enviado un correo de confirmación, pero no se registra ningún cambio. La dirección en cuestión recibe una notificación de seguridad. Esta medida antienumeración impide que alguien verifique si una dirección de correo electrónico ya posee una cuenta Grubano.
+<Callout type="default">
+- **Verifica tu número de teléfono**: los repartidores lo utilizan para contactarte cuando es necesario.
+- **Registra varias direcciones** si pides con regularidad en la oficina, en casa o en casa de tus allegados: ahorrarás tiempo en cada pedido.
+- **Marca tus platos favoritos** para encontrarlos rápidamente y recibir recomendaciones personalizadas.
+- **Deja reseñas constructivas**: ayudan a los demás clientes a elegir y permiten a los restauradores mejorar.
 </Callout>
 
-- **Código de verificación inválido**: los códigos de un solo uso para demostrar su identidad expiran después de unos minutos. Si el suyo ya no funciona, solicite uno nuevo.
-- **Contraseña demasiado débil**: el registro rechaza las contraseñas de menos de 10 caracteres o sin mezcla de mayúsculas, minúsculas y números. Elija una combinación robusta desde el principio.
-- **Cambio de correo electrónico bloqueado**: si su cuenta fue creada mediante Google o Apple, o si gestiona un restaurante o una franquicia, el cambio de dirección de correo electrónico no está disponible para preservar la integridad de los perfiles profesionales.
+<Eyebrow icon="error">Errores que evitar</Eyebrow>
 
-## Para ir más lejos
+## Los errores más comunes
 
-**Comprender el contexto**  
-[Guía del cliente](/es/guides/consumer/) — visión general de la experiencia de usuario Grubano, desde el descubrimiento de restaurantes hasta el seguimiento de pedido.
+<Callout type="error">
+- **No validar el cambio de correo**: si introduces una nueva dirección pero no haces clic en el enlace de confirmación, tu dirección anterior sigue activa y podrías dejar de recibir las notificaciones de pedido.
+- **Olvidar actualizar tu teléfono** tras un cambio de número: el repartidor no podrá localizarte en caso de problema.
+- **Usar un correo que ya no consultas**: te perderás los resúmenes de pedido y las ofertas personalizadas.
+</Callout>
 
-**Siguiente paso**  
-[Programa de fidelidad](/es/guides/consumer-loyalty/) — descubra cómo ganar puntos en cada pedido y desbloquear recompensas exclusivas.
+<Eyebrow icon="lightbulb">Consejo</Eyebrow>
+
+## Ahorra tiempo al pedir
+
+<Callout type="info">
+Si pides a menudo a las mismas direcciones, regístralas todas en tu perfil y ponles un nombre claro («Casa», «Oficina», «Padres»). Al confirmar tu carrito, solo tendrás que seleccionar la dirección en la lista en lugar de volver a escribirla cada vez.
+</Callout>
+
+<Eyebrow icon="quiz">Preguntas frecuentes</Eyebrow>
+
+## Preguntas frecuentes
+
+<Faq items={[
+  {
+    icon: "email",
+    q: "¿Puedo usar el mismo correo para varias cuentas?",
+    a: "No: cada dirección de correo solo puede asociarse a una única cuenta Grubano. Si intentas registrarte con una dirección ya registrada, recibirás un mensaje de error. Usa la función «Contraseña olvidada» para recuperar el acceso a la cuenta existente."
+  },
+  {
+    icon: "lock",
+    q: "¿Cómo cambio mi contraseña?",
+    a: "Ve a la página de inicio de sesión y haz clic en «Contraseña olvidada». Introduce tu dirección de correo: recibirás un enlace para restablecer tu contraseña. Este procedimiento seguro garantiza que nadie más pueda modificar tu contraseña sin acceso a tu buzón de correo."
+  },
+  {
+    icon: "delete",
+    q: "¿Puedo eliminar mi cuenta de forma definitiva?",
+    a: "Sí. Contacta con el soporte a través de la aplicación (sección Ayuda) para solicitar la eliminación de tu cuenta. Todos tus datos personales (datos de contacto, historial de pedidos, reseñas) se borrarán de forma irreversible en los 30 días siguientes a tu solicitud, conforme al RGPD."
+  },
+  {
+    icon: "language",
+    q: "¿El idioma cambia también para las notificaciones?",
+    a: "Sí: cuando modificas el idioma de la aplicación, los correos de confirmación de pedido, las notificaciones push y los mensajes del servicio de atención al cliente se envían automáticamente en el idioma elegido."
+  }
+]} />
+
+<Eyebrow icon="menu_book">Para saber más</Eyebrow>
+
+## Artículos relacionados
+
+<RelatedCards items={[
+  {
+    icon: "shopping_bag",
+    title: "Pedir y seguir",
+    sub: "Pedir y seguir",
+    href: "/es/guides/consumer/"
+  },
+  {
+    icon: "loyalty",
+    title: "Fidelidad, saldo y recomendación",
+    sub: "Puntos y recomendación",
+    href: "/es/guides/consumer-loyalty/"
+  },
+  {
+    icon: "insights",
+    title: "Panel de control",
+    sub: "Indicadores en directo",
+    href: "/es/guides/restaurant/"
+  },
+  {
+    icon: "menu_book",
+    title: "Menú y escaneo IA",
+    sub: "Carta y escaneo IA",
+    href: "/es/guides/menu/"
+  }
+]} />

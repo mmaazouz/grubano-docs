@@ -1,0 +1,167 @@
+---
+title: "Analíticas y briefing IA"
+description: "Siga sus ventas en tiempo real: curva de 7 días, horas punta, clasificación de sus marcas — y un briefing IA cada mañana con las cifras y alertas del día."
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# Analíticas y briefing IA
+
+Dos páginas para pilotar su actividad: **Analíticas** para la visión de conjunto de sus ventas, y el **Briefing** para empezar cada mañana con las cifras, las alertas y las prioridades del día — todo calculado automáticamente.
+
+<ArticleMeta audience="Restaurantes" minutes={4} updated="2026-07-12" />
+
+<Eyebrow icon="insights">Vista general</Eyebrow>
+
+## Sus cifras, de un vistazo
+
+<AnalyticsBoard />
+
+<Eyebrow icon="bolt">Lo esencial</Eyebrow>
+
+## En resumen
+
+<Essentials title="Si solo debe recordar esto:" items={[
+  <>La página <b>Analíticas</b> muestra sus ventas reales: curva de los últimos 7 días, facturación por periodo, clasificación de sus marcas y horas punta</>,
+  <>El <b>Briefing</b> resume cada mañana su jornada: facturación validada, pedidos, reservas, cubiertos previstos y alertas de stock — con una breve síntesis redactada por la IA</>,
+  <>Todo se <b>calcula automáticamente</b> a partir de sus ventas validadas y de sus reservas: sin ninguna introducción de datos por su parte</>
+]} />
+
+<Eyebrow icon="lightbulb">Cómo funciona</Eyebrow>
+
+## Dos páginas, dos horizontes
+
+La página **Analíticas** toma distancia: agrega sus ventas validadas de los últimos 7 o 30 días y extrae de ellas una curva de evolución, indicadores clave y una clasificación de sus marcas. Las cifras se recalculan cada vez que abre la página.
+
+El **Briefing** mira la jornada que empieza: reúne sus cifras del día (facturación validada, pedidos, [reservas](/es/guides/reservations/), cubiertos previstos), detecta los puntos de atención ([stock bajo](/es/guides/stocks/), reservas por confirmar, grupos grandes) y confía todo a la IA, que redacta una breve síntesis mostrada en la parte superior de la página.
+
+<Comparison options={[
+  { icon: "monitoring", name: "Analíticas", desc: "La visión de conjunto" },
+  { icon: "auto_awesome", name: "Briefing IA", desc: "El punto de la mañana" }
+]} rows={[
+  { icon: "date_range", label: "Periodo cubierto", values: ["Últimos 7 o 30 días", "La jornada en curso"] },
+  { icon: "insights", label: "Indicadores", values: ["Facturación total, pedidos, ticket medio, marcas", "Facturación validada, pedidos, reservas, cubiertos"] },
+  { icon: "notifications", label: "Alertas", values: ["—", "Stock bajo, reservas por confirmar, grupos grandes"] },
+  { icon: "auto_awesome", label: "IA", values: ["—", "Síntesis de la mañana redactada automáticamente"] }
+]} />
+
+<Eyebrow icon="format_list_numbered">Paso a paso</Eyebrow>
+
+## Leer sus analíticas
+
+<Steps>
+
+### Abra la página Analíticas
+
+Desde el menú lateral de su [panel de control](/es/guides/restaurant/), haga clic en **Analíticas**. La vista por defecto cubre los **últimos 30 días**.
+
+### Lea los indicadores clave
+
+La **facturación total** sigue el periodo seleccionado (7 o 30 días). **Pedidos** y **Ticket medio** se calculan solo sobre 30 días: en la vista de 7 días, muestran «—» con la nota «Solo sobre 30 días». El recuadro **Cubiertos** aún lleva una etiqueta «Próximamente», y las insignias de tendencia (comparación con el periodo anterior) también llegarán próximamente.
+
+### Cambie de periodo si lo necesita
+
+Dos botones alternan entre **7 días** y **30 días**; los totales se recalculan al instante. El botón **Personalizado** (fechas personalizadas) está por ahora desactivado (etiqueta «Próximamente»).
+
+### Siga la evolución de las ventas
+
+La curva traza sus ventas de los **últimos 7 días**, día a día, con el **Total 7 días** y el **Mejor día** calculados justo encima. La comparación con la semana anterior se añadirá próximamente — el gráfico lo anuncia con honestidad en lugar de mostrar una curva ficticia.
+
+### Detecte sus horas punta
+
+Una banda de intensidad muestra su actividad **hora por hora** (de 10 h a 23 h, en 6 niveles de intensidad), calculada sobre los últimos 7 días. Su hora más cargada se destaca — «Pico a las 19 h», por ejemplo. El detalle cruzado día × hora llegará próximamente.
+
+### Consulte la clasificación de sus marcas
+
+La facturación y el número de pedidos de cada una de sus marcas sobre **30 días**, ordenados de mayor a menor facturación (top 5 mostrado). La clasificación de los platos más vendidos llegará próximamente.
+
+</Steps>
+
+<Eyebrow icon="auto_awesome">Briefing</Eyebrow>
+
+## Su punto de la mañana
+
+Cada mañana, la página **Briefing** le recibe por su nombre y muestra las cifras reales del día:
+
+- **Facturación validada** y **pedidos del día**;
+- **Reservas del día** y **cubiertos previstos** (suma de los cubiertos reservados);
+- **Alertas**: artículos de [stock](/es/guides/stocks/) cercanos a su umbral mínimo, reservas aún por confirmar, grupos grandes (6 cubiertos o más).
+
+En la parte superior de la página, la **síntesis IA** pone estas cifras en palabras: un texto breve redactado automáticamente a partir de sus datos del día (facturación, pedidos, reservas, cubiertos, stock bajo) y mostrado tal cual. Más abajo, la **checklist de la mañana** retoma sus alertas reales y añade los controles de rutina (neveras, equipos): marque cada punto, el contador hecho/total sigue su progreso.
+
+<Eyebrow icon="check_circle">Buenas prácticas</Eyebrow>
+
+## Coja el ritmo
+
+<Callout type="default">
+- **Abra el Briefing al llegar por la mañana**: las alertas de stock y las reservas por confirmar se gestionan mejor antes del servicio que en pleno rush.
+- **Ajuste sus horarios a las horas punta**: si el pico es a las 19 h, refuerce el equipo de cocina desde las 18 h 30.
+- **Compare sus marcas sobre 30 días**: la clasificación muestra dónde concentrar sus esfuerzos — y qué [menú](/es/guides/menu/) merece una renovación.
+- **Pase a la vista de 30 días para el ticket medio**: es el único periodo en el que se calcula este indicador.
+</Callout>
+
+<Eyebrow icon="update">Próximamente</Eyebrow>
+
+## Lo que viene después
+
+<Callout type="info">
+Varias mejoras ya se anuncian en la interfaz con una etiqueta «Próximamente»: la **comparación con el periodo anterior** (insignias de tendencia sobre los indicadores, semana anterior en la curva), el contador de **cubiertos** en las Analíticas, el **detalle día × hora** de las horas punta, la **clasificación de los platos**, las **fechas personalizadas**, así como — del lado del Briefing — la **meteorología y su impacto en la entrega**, la **nota media** de sus reseñas y las **recomendaciones IA proactivas**. Estas últimas son distintas de la síntesis de la mañana, que ya está activa.
+</Callout>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
+
+## Preguntas frecuentes
+
+<Faq items={[
+  {
+    icon: "database",
+    q: "¿De dónde vienen las cifras?",
+    a: "Se calculan automáticamente a partir de sus ventas validadas: la curva y las horas punta agregan los últimos 7 días, la clasificación de las marcas y el ticket medio se basan en 30 días. El Briefing, por su parte, se limita a la jornada en curso. No es necesaria ninguna introducción manual de datos."
+  },
+  {
+    icon: "calendar_view_week",
+    q: "¿Por qué «Pedidos» y «Ticket medio» muestran «—» en la vista de 7 días?",
+    a: "Estos dos indicadores se calculan solo sobre 30 días. En la vista de 7 días, la página lo indica con honestidad («Solo sobre 30 días») en lugar de mostrar una cifra aproximada. Vuelva a la vista de 30 días para consultarlos."
+  },
+  {
+    icon: "auto_awesome",
+    q: "Mi síntesis IA muestra «llega próximamente», ¿es normal?",
+    a: "Es un mensaje de repuesto, mostrado solo cuando la síntesis aún no está disponible. Normalmente, se genera automáticamente a partir de sus cifras reales del día y se muestra tal cual en la parte superior del Briefing."
+  },
+  {
+    icon: "trending_up",
+    q: "¿Puedo comparar con la semana anterior?",
+    a: "Todavía no: la curva muestra la indicación «Semana anterior — próximamente» y cada indicador lleva una insignia «Tendencia próximamente». La comparación de periodos forma parte de las mejoras previstas."
+  }
+]} />
+
+<Eyebrow icon="menu_book">Para saber más</Eyebrow>
+
+## Artículos relacionados
+
+<RelatedCards items={[
+  {
+    icon: "storefront",
+    title: "Panel de control",
+    sub: "Sus indicadores en directo",
+    href: "/es/guides/restaurant/"
+  },
+  {
+    icon: "account_balance",
+    title: "Finanzas y pagos",
+    sub: "Comisión y transferencias",
+    href: "/es/guides/finances/"
+  },
+  {
+    icon: "inventory_2",
+    title: "Gestión de stock",
+    sub: "Diario y alertas",
+    href: "/es/guides/stocks/"
+  },
+  {
+    icon: "loyalty",
+    title: "Programa de fidelidad",
+    sub: "Puntos y recompensas",
+    href: "/es/guides/loyalty/"
+  }
+]} />

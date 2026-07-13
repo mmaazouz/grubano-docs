@@ -1,114 +1,184 @@
 ---
-title: "Loyalty, wallet & referral"
-description: "Earn points and climb tiers, track your wallet balance, and refer friends and family via a referral code to unlock benefits."
+title: "Loyalty, credit & referral"
+description: "Earn points and climb the tiers, track your loyalty credit, and refer friends and family via a referral code to unlock perks."
 generated: true
-sourceHash: 6bb0d2e960459b52
+sourceHash: a2559e49548f4d15
 generator: scripts/generate-feature-page.js
-templateVersion: 5
+templateVersion: 6
 ---
 
 import { Steps, Callout } from 'nextra/components'
 
-# Loyalty, wallet & referral
+# Loyalty, credit & referral
 
-Earn points on every order, climb loyalty tiers, and share your referral code to turn your purchases into tangible benefits.
+Earn points with every order, climb the loyalty tiers, and refer friends and family to give them a welcome discount while earning perks yourself.
 
-<FlowDiagram steps={["Order","Earn points","Climb a tier","Refer"]} />
+<ArticleMeta audience="Customers" minutes={5} updated="2026-07-10" />
 
-## The essentials
+<Eyebrow icon="insights">Overview</Eyebrow>
 
-The Grubano loyalty program rewards every order: you earn points that convert into credit in euros, redeemable on your next orders. The more you order, the higher you climb through the tiers (Bronze, Silver, Gold, Platinum) and the more your wallet grows. You can also [refer](RELATED_LINKS[0]) friends and family using your personal code: they receive a welcome discount, and you earn points on their purchases.
+## Your loyalty journey
 
-## How it works
+<FlowDiagram steps={[
+  { icon: "receipt_long", title: "Order", desc: "Place an order at a restaurant in the network" },
+  { icon: "loyalty", title: "Earn points", desc: "Automatically earn points on every purchase" },
+  { icon: "star", title: "Climb a tier", desc: "Progress from Bronze to Platinum as your points grow" },
+  { icon: "code", title: "Refer", desc: "Invite friends and family with your personal code" }
+]} />
 
-Every time you [place an order](/en/guides/consumer/), your loyalty account accumulates points proportional to the amount spent. These points feed your **wallet**: credit in euros that you spend freely on your next purchases. No fixed rewards or gift catalogs — your point balance converts to euros at a transparent rate, and you choose when to use it.
+<Eyebrow icon="bolt">The essentials</Eyebrow>
 
-**Loyalty tiers** (Bronze, Silver, Gold, Platinum) reflect your cumulative history: the more you order, the higher you progress. Each tier marks a visible milestone of your commitment, without changing the conversion rate — all customers benefit from the same credit per point.
+## In short
 
-**Referral** complements the program: you receive a unique personal code that you share with friends and family. When a referral places their first order with your code, they get a welcome discount, and you earn points on their future purchases for a defined period. It’s a virtuous circle: your friends discover Grubano with an immediate benefit, and you’re rewarded for word of mouth.
+<Essentials title="If you only remember one thing:" items={[
+  <>Every delivered order earns you <b>points automatically</b> — your balance turns into loyalty credit (€) that you spend on a future order.</>,
+  <>You progress from <b>Bronze to Platinum</b> (tiers at 100, 200, then 400 points) — your current tier is shown on your account.</>,
+  <>Your referral code gives your friends and family a <b>welcome discount</b> on their first order and earns you perks on their purchases.</>
+]} />
 
-## Step by step
+<Eyebrow icon="lightbulb">How it works</Eyebrow>
+
+## The principle (and the why)
+
+Every time you [order](/en/guides/consumer/) and the restaurant delivers, Grubano records your order in your loyalty history and credits your points balance. Those points then turn into loyalty credit in euros — real spending power you use to lower the amount of a future order, no strings attached.
+
+You also build up seniority: the higher your balance grows, the further you climb the tiers (Bronze → Silver → Gold → Platinum). Your progress is visible at any time on your account, along with how far you are from the next tier.
+
+Finally, you have a personal referral code: share it with friends and family to give them a welcome discount on their first order. Grubano records the link between you and the person you referred, which unlocks perks for you as they keep ordering.
+
+<Eyebrow icon="format_list_numbered">Step by step</Eyebrow>
+
+## Track your points and tier
 
 <Steps>
 
-### Earn points on every order
+### Check your balance
 
-With every validated order, your loyalty account automatically receives points proportional to the amount spent. No action required — the system records your earnings once delivery or pickup is complete.
+Head to your account page (accessible from the user icon at the top of the app). Your current points balance is shown at the top, along with its equivalent in loyalty credit (€).
 
-### Check your wallet
+### Discover your tier
 
-Go to your **Account** page in the app: you’ll see your point balance, the corresponding credit in euros, and the conversion scale (for example 100 points = 5 €, 200 points = 10 €, 400 points = 20 €). The history of your transactions — points earned, credit spent, refunds — is accessible in real time.
+Just below, you can see your current tier (Bronze, Silver, Gold, or Platinum) and how many points you still need to earn to reach the next one. Tiers are crossed at 100, 200, and 400 points.
 
-### Climb the tiers
+### Check the credit scale
 
-Your cumulative point total moves you up through the tiers: **Bronze** (0+), **Silver** (100+), **Gold** (200+), **Platinum** (400+). The Account page displays your current tier and the number of points remaining to reach the next one. The tier is a loyalty marker — the conversion rate remains identical for everyone.
+A grid shows the loyalty credit amounts corresponding to 100, 200, and 400 points. These reference points help you picture the spending power your balance represents.
 
-### Refer friends and family
+### Review your transaction history
 
-Copy your referral code from the Account page and share it by message, social media, or link. When a referral signs up and orders with this code, they receive a discount on their first order, and you earn points on their purchases for a set duration (typically 90 days). Each active referral feeds your wallet.
-
-### Spend your credit
-
-When finalizing an order, the cart offers to apply all or part of your loyalty credit. Select the amount to use — the order total is reduced accordingly. Your point balance decreases, and the transaction appears in your history.
+A section shows your latest points transactions: orders that earned points, uses of loyalty credit on a purchase, or re-credits in case of a cancellation. Each line carries a sign (+ earned, − spent) and the euro equivalent of the transaction.
 
 </Steps>
 
-<Callout type="info">
-Loyalty credit is funded by Grubano: when you spend your points, it’s Grubano who covers the discount, not the restaurant. Points don’t expire as long as you remain active on the platform.
+<Eyebrow icon="format_list_numbered">Step by step</Eyebrow>
+
+## Refer a friend
+
+<Steps>
+
+### Find your code
+
+On your account page, a "Referral" section shows your personal code (eight uppercase characters). This code is unique and permanent.
+
+### Share it
+
+Send this code to your friends and family through the channel of your choice (message, email, social media). They will need to enter it or follow a link containing this code when they place their first order.
+
+### Your referee gets a welcome discount
+
+When the person you referred validates their first order with your code, Grubano automatically applies a discount to the cart amount (a capped percentage, within the limits set by Grubano). This discount appears in the summary before payment.
+
+### You get credited
+
+Once the order is delivered, Grubano records the referral link between you and your referee. The financial terms of this referral are set between the parties involved; you will see your perks appear as your referee keeps ordering.
+
+</Steps>
+
+<Eyebrow icon="calculate">A concrete example</Eyebrow>
+
+## A 240-point journey
+
+You have earned 240 points across your orders. Your balance converts into loyalty credit of 12 € (the conversion rate is set by Grubano). You are at the Gold tier (crossed at 200 points) and you have 160 points left to earn to reach Platinum (400 points). On your next order, you can choose to use all or part of this 12 € to lower the amount to pay — the unused credit stays available.
+
+<Callout type="default">
+This example is illustrative. The conversion rate from points to euros and the tier thresholds are configured by Grubano and apply uniformly to all customers.
 </Callout>
 
-## Best practices
+<Eyebrow icon="check_circle">Best practices</Eyebrow>
 
-- **Check your history regularly**: every point earned and spent is tracked with the associated order reference. This gives you a clear view of your wallet’s evolution.
-- **Share your code as soon as your friends and family sign up**: the welcome discount applies only to the referral’s first order. Remember to give them the code before they create their account.
-- **Use your credit strategically**: nothing requires you to spend all your points at once. Save your credit for a large order or divide it according to your needs — you decide.
-- **Verify referral eligibility**: the welcome discount applies only to new customers who have never ordered on Grubano. A friend already registered won’t be able to benefit from your code.
+## Get the most out of your loyalty
 
-## Common mistakes
-
-<Callout type="warning">
-**Points not credited**: if you don’t see your points after an order, check that it’s marked "delivered" or "picked up" in your history. Points are credited only once the order is finalized, never at the time of payment.
+<Callout type="default">
+- **Order regularly** — every delivered order feeds your balance; even small amounts count.
+- **Watch your thresholds** — if you are close to a new tier, one extra order may be enough to cross it.
+- **Share your code widely** — the more people you refer, the more chances you create to enjoy perks on their orders.
+- **Use your credit whenever it suits you** — you are never required to spend it all at once; the balance stays available as long as your account is active.
 </Callout>
 
-**Referral code not recognized**: the code must be entered **before** the referral’s first order. If your friend has already ordered once without a code, they can no longer benefit from the welcome discount — the system allows only one referral per account.
+<Eyebrow icon="error">Mistakes to avoid</Eyebrow>
 
-**Tier / credit confusion**: moving up a tier (Bronze → Silver) doesn’t change the points/euros conversion rate. The tier is a progress marker, not a value multiplier — all customers convert their points at the same rate.
+## Common pitfalls
 
-## Tips & advice
+<Callout type="error">
+- **Not checking your balance before ordering** — you risk paying full price when you had loyalty credit ready to use.
+- **Sharing a code that isn't yours** — only your personal code earns you perks; passing along someone else's code credits you nothing.
+- **Forgetting to enter a referral code on your first order** — the welcome discount applies only once, on the very first order; you won't be able to claim it retroactively.
+</Callout>
 
-- **Track your progress toward the next tier**: the Account page shows how many points you need to accumulate before reaching Silver, Gold, or Platinum. It’s a good indicator of where you stand in your loyalty journey.
-- **Share your personalized link**: instead of copying and pasting a raw code, use the automatically generated referral link — your friends click, sign up, and the code is applied effortlessly.
-- **Combine loyalty credit and promotions**: loyalty credit applies to your cart total after restaurant discounts. You can therefore combine a restaurant promotion and your Grubano credit on the same order.
+<Eyebrow icon="quiz">FAQ</Eyebrow>
 
 ## Frequently asked questions
 
 <Faq items={[
   {
-    icon: "help",
-    q: "Do my points expire?",
-    a: "No. As long as you remain active on Grubano, your point balance is kept indefinitely. Only a prolonged inactive account (several months without an order) could trigger a review — but no automatic expiration is applied under normal circumstances."
+    icon: "loyalty",
+    q: "How many points do you earn per order?",
+    a: "The number of points depends on your order amount and the loyalty rules set by Grubano. Every delivered order automatically credits your account; you can see the breakdown in your transaction history."
   },
   {
-    icon: "help",
-    q: "Can I combine multiple referral codes?",
-    a: "No. A customer account can be linked to only one referrer. The first valid code used during sign-up locks the referral link — you cannot apply a second one afterwards."
+    icon: "star",
+    q: "What do the Bronze, Silver, Gold, and Platinum tiers give me?",
+    a: "The tiers mark your progression: you cross Silver at 100 points, Gold at 200, and Platinum at 400. Your current tier is a visual marker of your seniority and activity; Grubano may associate perks or specific offers with it."
   },
   {
-    icon: "help",
-    q: "How do I know how many points my order is worth?",
-    a: "The number of points earned is proportional to the amount spent. After order validation, check your loyalty history: each line displays the points credited and their equivalent in euros."
+    icon: "payments",
+    q: "How do I use my loyalty credit (€) on an order?",
+    a: "Soon, you'll be able to choose directly in your cart to put all or part of your loyalty credit to use. The deducted amount will appear in the summary before payment. For now, the credit is calculated and displayed server-side; the manual selection interface will be added in a future update."
   },
   {
-    icon: "help",
-    q: "What happens if I cancel an order after using my credit?",
-    a: "If the order is cancelled or refunded, the points spent are re-credited to your account. The transaction appears in your history with the type “refund” and the reference of the related order."
+    icon: "code",
+    q: "Can I refer someone who has already ordered?",
+    a: "No. The welcome discount and the recording of the referral link apply only on your referee's very first order. If the person has already ordered without a code, you can no longer refer them retroactively."
   }
 ]} />
 
-## Going further
+<Eyebrow icon="menu_book">Go further</Eyebrow>
 
-**Read before**  
-[Ordering on Grubano](/en/guides/consumer/) — Discover the complete ordering journey, from choosing a restaurant to delivery tracking. The loyalty program activates automatically with every finalized order.
+## Related articles
 
-**Manage your account**  
-[My customer account](/en/guides/consumer-account/) — Check your personal information, saved addresses, and order history. This is also where you’ll find your referral code and real-time point balance.
+<RelatedCards items={[
+  {
+    icon: "shopping_bag",
+    title: "Order & track",
+    sub: "Order and track",
+    href: "/en/guides/consumer/"
+  },
+  {
+    icon: "person",
+    title: "My account",
+    sub: "Profile and addresses",
+    href: "/en/guides/consumer-account/"
+  },
+  {
+    icon: "loyalty",
+    title: "Loyalty program",
+    sub: "Build customer loyalty",
+    href: "/en/guides/loyalty/"
+  },
+  {
+    icon: "insights",
+    title: "Dashboard",
+    sub: "Live indicators",
+    href: "/en/guides/restaurant/"
+  }
+]} />

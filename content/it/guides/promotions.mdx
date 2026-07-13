@@ -1,0 +1,174 @@
+---
+title: "Promozioni e offerte"
+description: "Creare e gestire le tue promozioni: quattro tipi di offerte, targeting per piatti e per modalità, applicazione automatica del miglior sconto e impatto sulla commissione."
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# Promozioni e offerte
+
+Crea offerte mirate — percentuale, importo fisso, 2º articolo o soglia — applicate automaticamente al carrello del cliente, senza codice da inserire.
+
+<ArticleMeta audience="Ristoratori" minutes={4} updated="2026-07-12" />
+
+<Eyebrow icon="insights">Panoramica</Eyebrow>
+
+## Dal tuo schermo al carrello del cliente
+
+<FlowDiagram steps={[
+  { icon: "sell", title: "Crei l'offerta", desc: "Tipo, valore, finestra di validità, targeting" },
+  { icon: "shopping_cart", title: "Il cliente ordina", desc: "Niente da inserire, nessun codice richiesto" },
+  { icon: "auto_awesome", title: "Si applica la promo migliore", desc: "Una sola offerta per ordine, risolta lato server" },
+  { icon: "percent", title: "Commissione sull'importo pagato", desc: "Lo sconto riduce la base della commissione" }
+]} />
+
+<Eyebrow icon="bolt">L'essenziale</Eyebrow>
+
+## In breve
+
+<Essentials title="Se devi ricordare solo questo:" items={[
+  <>Quattro tipi di offerte: <b>percentuale</b>, <b>importo fisso</b>, <b>2º articolo a −X %</b> e <b>soglia</b> (sconto o articolo omaggio al raggiungimento di un importo)</>,
+  <>L'applicazione è <b>automatica</b>: al pagamento, la migliore promozione attiva del tuo marchio viene applicata al carrello — <b>una sola offerta per ordine</b>, mai cumulabile</>,
+  <>Lo sconto <b>riduce la base della commissione</b>: Grubano trattiene la sua commissione sull'importo effettivamente pagato (subtotale − sconto), non sul prezzo di partenza</>
+]} />
+
+<Eyebrow icon="lightbulb">Come funziona</Eyebrow>
+
+## Il principio (e il perché)
+
+Ogni promozione è collegata a un **marchio** e descrive uno sconto secondo uno dei quattro tipi. La **percentuale** applica un tasso intero — tra 1 e 90 — al carrello interessato. L'**importo fisso** sottrae una somma in euro, limitata al carrello — mai un totale negativo. Il **2º articolo a −X %** sconta soltanto l'unità meno cara del carrello interessato, e solo a partire da 2 unità idonee. La **soglia** scatta quando il subtotale raggiunge il valore che imposti: la ricompensa è o una percentuale sul subtotale, oppure un **articolo omaggio** (l'unità meno cara tra i piatti che hai scelto).
+
+Puoi affinare ogni offerta con condizioni facoltative: un **minimo di carrello** (valutato sul subtotale *prima* dello sconto), dei **piatti mirati** (lo sconto riguarda allora solo questi piatti del tuo [menù](/it/guides/menu/)) e le **modalità interessate** (Consegna, Click & collect). Una **finestra di validità** inizio/fine è obbligatoria: fuori dalla finestra, l'offerta non si applica.
+
+Lato cliente, tutto è automatico: al momento dell'ordine, il server risolve le promozioni attive del marchio e applica **la più vantaggiosa** — a parità di sconto, vince la più vecchia, per restare prevedibile. Il cliente non inserisce mai un codice né un importo: il calcolo è fatto al 100 % lato server. La promozione è inoltre **esclusiva** rispetto allo sconto di [passaparola](/it/guides/consumer-loyalty/) (se si applica uno sconto di passaparola, la promozione viene esclusa) e ai punti [fedeltà](/it/guides/loyalty/), che non si combinano né con una promozione né con il passaparola.
+
+Infine, lato finanze: la [commissione per modalità](/it/guides/finances/) è calcolata sull'**importo pagato** (subtotale − sconto). Lo sconto che concedi riduce quindi anche la commissione trattenuta — non è mai interamente a tuo carico sul fronte dei costi.
+
+<Eyebrow icon="format_list_numbered">Passo dopo passo</Eyebrow>
+
+## Creare una promozione
+
+<Steps>
+
+### Apri la schermata Promozioni
+
+Dal tuo [pannello di controllo](/it/guides/restaurant/), apri la schermata **Promozioni** e seleziona il **marchio** interessato: ogni offerta è collegata a un marchio preciso.
+
+### Assegna un nome all'offerta e scegli il tipo
+
+Assegna un nome (almeno 2 caratteri) e scegli tra i quattro tipi proposti: **Percentuale**, **Importo fisso**, **2º articolo** o **Soglia**.
+
+### Imposta il valore
+
+Per una percentuale o un 2º articolo: un intero tra **1 e 90**. Per un importo fisso: una somma in euro **superiore a 0**. Per una soglia: un **valore soglia in euro superiore a 0**, poi la ricompensa — una percentuale (tra 1 e 90) o un articolo omaggio, con **almeno un piatto** nell'elenco degli articoli omaggio (il modulo lo richiede, per proteggere il tuo margine).
+
+### Definisci la finestra di validità
+
+Date e ore di **inizio e fine obbligatorie**, con la fine rigorosamente dopo l'inizio. È ciò che ti permette di programmare offerte limitate nel tempo.
+
+### Affina il targeting se necessario
+
+Aggiungi un **minimo di carrello**, seleziona dei **piatti mirati** dal tuo menù (un piatto fuori dal tuo menù viene rifiutato) e limita l'offerta a determinate **modalità** (Consegna, Click & collect).
+
+### Attiva, monitora, disattiva
+
+La schermata distingue gli **sconti automatici** (percentuale, importo fisso) dalle **offerte** (2º articolo, soglia). Una promozione si **disattiva** con un clic ma non si elimina mai: gli ordini già effettuati vi fanno riferimento.
+
+</Steps>
+
+<Eyebrow icon="calculate">Esempio concreto</Eyebrow>
+
+## Una promo −20 % su un ordine in consegna
+
+Immaginiamo un carrello di 30 € in consegna, con una promozione **−20 %** attiva su tutto il menù.
+
+<Breakdown title="Scomposizione dell'ordine" rows={[
+  { icon: "shopping_cart", label: "Subtotale del carrello", value: "30,00 €" },
+  { icon: "sell", label: "Promozione −20 %", value: "−6,00 €", variant: "minus" },
+  { icon: "payments", label: "Importo pagato dal cliente", value: "24,00 €" },
+  { icon: "percent", label: "Commissione consegna (12 % di 24 €)", value: "−2,88 €", variant: "minus" },
+  { icon: "account_balance", label: "Netto versato", value: "21,12 €", variant: "total" }
+]} />
+
+La commissione è calcolata proprio sui **24 € pagati**, non sui 30 € di partenza: senza questa regola, la commissione sarebbe stata di 3,60 €. Questo esempio è illustrativo; i tuoi dati reali dipendono dalla modalità e dal tipo di offerta.
+
+<Eyebrow icon="check_circle">Buone pratiche</Eyebrow>
+
+## Offerte che rendono
+
+<Callout type="default">
+- **Smaltisci le tue scorte con 1 clic** : la scorciatoia « scorte da smaltire » crea direttamente una promozione in percentuale mirata sui piatti interessati, con una finestra che va da adesso alla data di scadenza e un suggerimento di −30 % che puoi regolare. Comodo con il tuo monitoraggio delle [scorte](/it/guides/stocks/).
+- **Prova la soglia con articolo omaggio** per far salire il carrello medio : « da 25 €, un contorno in omaggio » invita a completare l'ordine.
+- **Usa la finestra di validità** per offerte flash brevi anziché sconti permanenti che erodono il margine.
+- **Pensa alle campagne dei [creatori](/it/guides/creators/)** : quando adotti un piatto di campagna, una promozione in percentuale legata alla campagna può essere creata subito dopo, delimitata dalle date della campagna.
+</Callout>
+
+<Eyebrow icon="error">Errori da evitare</Eyebrow>
+
+## Le insidie più comuni
+
+<Callout type="error">
+- **Aspettarsi un cumulo** : una sola promozione si applica per ordine — la migliore. Inutile accumulare tre offerte attive sullo stesso marchio, una nota nella schermata te lo ricorda.
+- **Confondere il minimo di carrello con l'importo dopo lo sconto** : il minimo si valuta sul subtotale *prima* dello sconto.
+- **Creare una soglia « articolo omaggio » senza scegliere i piatti** : impossibile — almeno un piatto omaggio è richiesto alla creazione.
+- **Cercare di eliminare una promozione** : non si elimina, si disattiva. Una promozione disattivata smette immediatamente di applicarsi.
+- **Credere che tutte le offerte siano messe in evidenza lato cliente** : solo le promozioni in percentuale e in importo fisso compaiono nella vetrina pubblica ; le offerte 2º articolo e soglia si applicano bene al carrello, ma senza una messa in evidenza dedicata.
+</Callout>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
+
+## Domande frequenti
+
+<Faq items={[
+  {
+    icon: "qr_code",
+    q: "Il cliente deve inserire un codice promozionale?",
+    a: "No. Al momento del pagamento, il server risolve le promozioni attive del tuo marchio e applica automaticamente la migliore al carrello. Il cliente non deve inserire nulla, e nessun importo di sconto proviene dal suo dispositivo: tutto è calcolato lato server."
+  },
+  {
+    icon: "layers",
+    q: "Posso cumulare più promozioni?",
+    a: "No. Una sola promozione si applica per ordine: vince la più vantaggiosa (a parità di sconto, la più vecchia, per restare prevedibile). La promozione è anche esclusiva rispetto allo sconto di passaparola e ai punti fedeltà: se si applica uno sconto di passaparola, la promozione viene esclusa."
+  },
+  {
+    icon: "percent",
+    q: "La commissione è calcolata prima o dopo lo sconto?",
+    a: "Dopo. La commissione per modalità si basa sull'importo effettivamente pagato dal cliente (subtotale − sconto). Uno sconto di 6 € riduce quindi anche la commissione trattenuta sull'ordine."
+  },
+  {
+    icon: "toggle_off",
+    q: "Come eliminare una promozione conclusa?",
+    a: "Non si elimina mai una promozione: gli ordini già effettuati vi fanno riferimento. La disattivi con un clic — smette immediatamente di applicarsi — e puoi riattivarla più tardi se necessario."
+  }
+]} />
+
+<Eyebrow icon="menu_book">Per approfondire</Eyebrow>
+
+## Articoli correlati
+
+<RelatedCards items={[
+  {
+    icon: "menu_book",
+    title: "Menù e scansione IA",
+    sub: "I tuoi piatti, i tuoi prezzi",
+    href: "/it/guides/menu/"
+  },
+  {
+    icon: "account_balance",
+    title: "Finanze e versamenti",
+    sub: "Commissione per modalità",
+    href: "/it/guides/finances/"
+  },
+  {
+    icon: "storefront",
+    title: "Pannello di controllo",
+    sub: "Indicatori in tempo reale",
+    href: "/it/guides/restaurant/"
+  },
+  {
+    icon: "loyalty",
+    title: "Programma fedeltà",
+    sub: "Punti e ricompense",
+    href: "/it/guides/loyalty/"
+  }
+]} />

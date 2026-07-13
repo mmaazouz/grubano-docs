@@ -1,92 +1,166 @@
 ---
 title: "Remuneración y retiros"
-description: "Comprenda su remuneración como repartidor: gastos de entrega menos una comisión Grubano del 20 %, propinas revertidas al 100 %, maduración en la entrega y retiro a partir de 25 €."
+description: "Comprender su remuneración de repartidor: la tarifa de entrega menos una comisión Grubano del 20 %, propinas abonadas al 100 %, maduración en la entrega, y retiro a partir de 25 €."
 generated: true
-sourceHash: a90f361581a84dd8
+sourceHash: 80bf12c90b9e3ced
 generator: scripts/generate-feature-page.js
-templateVersion: 5
+templateVersion: 6
 ---
 
 import { Steps, Callout } from 'nextra/components'
 
 # Remuneración y retiros
 
-Su remuneración se calcula en cada entrega: usted recibe una parte de los gastos de entrega después de la comisión Grubano, y el 100 % de las propinas.
+Siga sus ganancias de entrega en tiempo real: la tarifa de entrega menos la comisión Grubano, propinas abonadas íntegramente, y retire sus ingresos en cuanto se alcance el umbral.
 
-<FlowDiagram steps={["Pedido entregado","Gastos − comisión 20 %","Maduración","Retiro desde 25 €"]} />
+<ArticleMeta audience="Repartidores" minutes={4} updated="2026-07-10" />
 
-## Lo esencial
+<Eyebrow icon="insights">Visión general</Eyebrow>
 
-Grubano remunera a los repartidores con dos fuentes: una parte de los gastos de entrega pagados por el cliente (después de una comisión Grubano), y la totalidad de las propinas recibidas. Sus ganancias están disponibles para el retiro una vez que hayan madurado y el saldo alcance los 25 €.
+## El recorrido de su dinero
 
-## Cómo funciona
+<FlowDiagram steps={[
+  { icon: "two_wheeler", title: "Carrera entregada", desc: "Realiza una entrega para un restaurante asociado" },
+  { icon: "percent", title: "Tarifa − comisión 20 %", desc: "La tarifa de entrega se reparte entre usted y Grubano" },
+  { icon: "schedule", title: "Maduración", desc: "Sus ganancias quedan disponibles tras un periodo de seguridad" },
+  { icon: "payments", title: "Retiro desde 25 €", desc: "Transfiera sus ingresos a su cuenta bancaria" }
+]} />
 
-Cada vez que usted entrega una [misión](/es/guides/driver/), el sistema registra dos tipos de ganancias: los **gastos de carrera** (la parte que le corresponde de los gastos de entrega facturados al cliente, menos una comisión Grubano) y las **propinas** (revertidas al 100 %, sin comisión). Estos montos pasan por tres estados: **en espera** (justo después de la entrega), **maduros** (después de un período de seguridad de 7 días, garantizando que el pedido esté pagado y no reembolsado), luego **pagados** (una vez que usted ha solicitado un retiro). Este ciclo protege tanto al repartidor como a la plataforma: usted tiene la garantía de recibir lo que se le debe, y Grubano se asegura de que la transacción sea definitiva antes de realizar el pago.
+<Eyebrow icon="bolt">Lo esencial</Eyebrow>
 
-La **comisión Grubano** sobre los gastos de carrera financia las herramientas, la infraestructura logística y el soporte. Las propinas, por su parte, le corresponden íntegramente — recompensan directamente su servicio.
+## En resumen
 
-## Paso a paso
+<Essentials title="Si solo debe recordar esto:" items={[
+  <>Usted recibe el <b>80 % de la tarifa de entrega</b> que paga el cliente (Grubano cobra una comisión del 20 %); las propinas le corresponden al <b>100 %</b>.</>,
+  <>Sus ganancias <b>maduran tras unos días</b> de seguridad (para garantizar que ningún reembolso anule el pedido) y luego pasan a su saldo disponible.</>,
+  <>Puede retirar en cuanto su saldo alcance los <b>25 €</b>; la transferencia se realiza en un plazo de 1 a 3 días hábiles a su cuenta bancaria.</>
+]} />
+
+<Eyebrow icon="lightbulb">Cómo funciona</Eyebrow>
+
+## El principio (y el porqué)
+
+Cada vez que entrega un pedido, el sistema registra automáticamente su ganancia: la parte que le corresponde de la tarifa de entrega que paga el cliente, menos la comisión Grubano del 20 %. Si el cliente deja una propina, esta se le abona íntegramente, sin ninguna retención.
+
+Para proteger a todas las partes, sus ganancias permanecen *pendientes* durante un breve periodo de maduración: esto garantiza que el pedido se haya cumplido correctamente y que ningún reembolso excepcional lo anule. Una vez transcurrido este plazo, el importe pasa a su saldo *disponible* y puede retirarlo. Este mecanismo asegura la confianza y la transparencia entre usted, los restaurantes y Grubano.
+
+<Eyebrow icon="format_list_numbered">Paso a paso</Eyebrow>
+
+## Seguir y retirar sus ganancias
 
 <Steps>
 
-### Entrega efectuada
+### Consulte su panel de control
 
-Tan pronto como usted marca una misión como entregada, el sistema registra dos líneas de ganancias: una para los gastos de carrera (monto bruto − comisión Grubano = monto neto que se le debe) y, en su caso, una para la propina (100 % neto). Estas líneas aparecen inmediatamente en su espacio **Mis ganancias**, con el estado **En espera**.
+Conéctese a su espacio de repartidor y acceda a la página «Mis ganancias». Allí verá tres saldos: *disponible* (lo que puede retirar de inmediato), *pendiente* (las ganancias en proceso de maduración) y *ya abonado* (el historial de sus retiros).
 
-### Período de maduración
+### Verifique el detalle de las carreras
 
-Sus ganancias permanecen en espera durante **7 días** a partir de la entrega. Este plazo permite verificar que el pedido esté pagado y que no se haya emitido ningún reembolso completo. Al término de este período, si todo está en orden, las ganancias pasan automáticamente al estado **Matured** (maduras) y se suman a su saldo disponible.
+Cada línea muestra la carrera entregada, el importe bruto (tarifa de entrega o propina), la comisión Grubano si corresponde, y el neto que le corresponde. El estado indica si la ganancia todavía está *pendiente*, *madura* (disponible) o *pagada* (ya transferida).
 
-### Saldo disponible
+### Solicite un retiro
 
-Su saldo disponible corresponde a la suma de todas las ganancias maduras que aún no han sido transferidas. Usted puede consultarlo en cualquier momento en **Mis ganancias**. Tan pronto como este saldo alcance o supere los **25 €**, el botón **Retirar** se activa.
+En cuanto su saldo disponible alcance o supere los 25 €, el botón «Retirar» se activa y registra su solicitud. La activación efectiva de las transferencias llegará pronto: una vez activada, la transferencia se enviará a la cuenta que registró durante su inscripción, sin gastos de retiro.
 
-### Solicitud de retiro
+### Reciba la transferencia
 
-Haga clic en **Retirar** para solicitar una transferencia de su saldo disponible. El sistema verifica que sus datos de pago estén registrados y validados con nuestro proveedor de servicios, luego registra su solicitud — el procesamiento efectivo de las transferencias llegará pronto. Una vez realizada una transferencia, sus ganancias pasarán al estado **Pagados** y aparecerán en el historial.
+Una vez activada la ejecución efectiva, el pago llegará en un plazo de 1 a 3 días hábiles. Recibirá una notificación por correo electrónico cuando la transferencia se haya enviado, y una segunda cuando su banco la haya abonado. El historial conserva el registro de cada retiro (fecha, importe, referencia de transferencia).
 
 </Steps>
 
-<Callout type="info">
-El monto del retiro siempre es calculado por el servidor — usted no puede elegir un monto parcial. Cada retiro vacía completamente su saldo disponible (todas las ganancias maduras en ese momento).
+<Eyebrow icon="calculate">Ejemplo concreto</Eyebrow>
+
+## Una semana con 8 carreras
+
+Imaginemos que entrega 8 pedidos en la semana, con una tarifa de entrega media de 3,50 € por carrera y 2 propinas de 2 € cada una.
+
+<Breakdown title="Desglose de sus ganancias semanales" rows={[
+  { icon: "two_wheeler", label: "Tarifa de entrega (8 × 3,50 €)", value: "28,00 €" },
+  { icon: "percent", label: "Comisión Grubano (20 %)", value: "−5,60 €", variant: "minus" },
+  { icon: "account_balance_wallet", label: "Su parte de las carreras", value: "22,40 €" },
+  { icon: "loyalty", label: "Propinas (2 × 2 €, 100 %)", value: "+4,00 €", variant: "plus" },
+  { icon: "payments", label: "Total neto de la semana", value: "26,40 €", variant: "total" }
+]} />
+
+Una vez transcurrido el periodo de maduración (unos días después de cada carrera), esos 26,40 € pasan a su saldo disponible. Supera el umbral de 25 €: puede retirar la totalidad.
+
+*Este ejemplo es ilustrativo; las tarifas de entrega reales varían según la distancia y la configuración de cada restaurante.*
+
+<Eyebrow icon="check_circle">Buenas prácticas</Eyebrow>
+
+## Maximice sus ingresos
+
+<Callout type="default">
+- **Acepte las misiones rápidamente**: los horarios más rentables (mediodía, noche) se asignan a los repartidores reactivos.
+- **Respete los plazos**: una entrega puntual valoriza su perfil y puede desbloquear más misiones.
+- **Verifique su saldo con regularidad**: retire en cuanto alcance el umbral para optimizar su tesorería.
+- **Mantenga sus datos bancarios actualizados**: un IBAN válido evita cualquier retraso en la transferencia.
 </Callout>
 
-## Buenas prácticas
+<Eyebrow icon="error">Errores a evitar</Eyebrow>
 
-**Consulte regularmente su espacio Mis ganancias** para seguir la evolución de sus ingresos en tiempo real. Allí verá la distinción clara entre las ganancias aún en espera (que madurarán en unos días) y las ya disponibles para retiro.
+## Los errores frecuentes
 
-**Anticipe el umbral de 25 €**: si realiza pocas carreras por semana, puede tomar varios días alcanzar el monto mínimo. Planifique sus retiros en consecuencia para evitar esperas innecesarias.
+<Callout type="error">
+- **No confunda el saldo «pendiente» con el saldo «disponible»**: solo el segundo puede retirarse; la espera es un periodo de seguridad legal, no un bloqueo arbitrario.
+- **No solicite varios retiros seguidos**: si ya hay una transferencia en curso, el botón «Retirar» permanece atenuado hasta que la anterior se finalice (protección contra duplicados).
+- **No olvide validar su identidad**: una cuenta bancaria verificada (KYC) es obligatoria antes del primer retiro — complete este paso desde su inscripción para no bloquear sus ganancias.
+</Callout>
 
-**Verifique su cuenta bancaria** antes de su primer retiro: asegúrese de que sus datos estén correctamente registrados y validados con nuestro proveedor de pago. Un perfil incompleto bloquea la transferencia — el sistema le alertará si falta alguna información.
-
-**Conserve un registro de sus retiros**: el historial en Mis ganancias archiva cada transferencia con su fecha, monto y referencia. Útil para sus declaraciones o su contabilidad personal.
+<Eyebrow icon="quiz">FAQ</Eyebrow>
 
 ## Preguntas frecuentes
 
 <Faq items={[
   {
-    icon: "help",
-    q: "¿Por qué mis ganancias están en espera durante 7 días?",
-    a: "Este plazo garantiza que el pedido esté definitivamente pagado y no reembolsado. Protege tanto a usted (nunca recibirá una ganancia cancelada) como a la plataforma (no hay pago prematuro). Pasado este período, sus ganancias quedan disponibles para retiro."
+    icon: "schedule",
+    q: "¿Cuánto tiempo pasa antes de que mis ganancias estén disponibles?",
+    a: "Las ganancias maduran unos días después de la entrega, para garantizar que ningún reembolso excepcional anule el pedido. Una vez transcurrido este plazo, el importe pasa automáticamente a su saldo disponible y puede retirarlo."
   },
   {
-    icon: "help",
-    q: "¿Puedo retirar menos de 25 €?",
-    a: "No, el umbral mínimo de retiro está fijado en 25 €. Por debajo de esta cantidad, el botón Retirar permanece inactivo. Este mínimo reduce las comisiones de transacción bancaria y simplifica la gestión para todos."
+    icon: "payments",
+    q: "¿Hay gastos de retiro?",
+    a: "No. Grubano no cobra ningún gasto sobre sus retiros; usted recibe el 100 % del importe solicitado. La transferencia bancaria pasa por nuestro proveedor de pago, sin costes ocultos."
   },
   {
-    icon: "help",
-    q: "¿Qué sucede si un pedido es reembolsado después de que me hayan pagado?",
-    a: "El período de maduración de 7 días cubre este riesgo: el sistema verifica el estado del pedido antes de liberar sus ganancias. Si ocurre un reembolso durante estos 7 días, la ganancia correspondiente pasa al estado cancelado y nunca se suma a su saldo disponible."
+    icon: "percent",
+    q: "¿Por qué una comisión del 20 % sobre la tarifa de entrega?",
+    a: "Esta comisión cubre los costes de la plataforma (tecnología, soporte, seguros) y permite a Grubano ofrecerle un flujo regular de misiones. Las propinas, en cambio, le corresponden íntegramente."
   },
   {
-    icon: "help",
-    q: "¿Las propinas están sujetas a comisión?",
-    a: "No. Las propinas se le revierten al 100 %, sin ninguna comisión. Solo los gastos de carrera (la parte de los gastos de entrega) están sujetos a la comisión Grubano."
+    icon: "account_balance",
+    q: "¿Qué pasa si nunca retiro mi saldo?",
+    a: "Su dinero permanece disponible indefinidamente en su cuenta de repartidor; no hay fecha límite ni gastos de inactividad. Puede retirar cuando lo desee, en cuanto se alcance el umbral de 25 €."
   }
 ]} />
 
-## Para ir más lejos
+<Eyebrow icon="menu_book">Para ir más allá</Eyebrow>
 
-**Siguiente paso**  
-[Guía del repartidor](/es/guides/driver/) — Descubra cómo aceptar misiones, organizar sus rutas y maximizar sus ingresos en Grubano.
+## Artículos relacionados
+
+<RelatedCards items={[
+  {
+    icon: "two_wheeler",
+    title: "Ser repartidor y misiones",
+    sub: "Candidatura y misiones",
+    href: "/es/guides/driver/"
+  },
+  {
+    icon: "payments",
+    title: "Finanzas y pagos",
+    sub: "Comisión y pagos",
+    href: "/es/guides/finances/"
+  },
+  {
+    icon: "location_on",
+    title: "Seguimiento de la entrega",
+    sub: "Posición en directo",
+    href: "/es/guides/driver-tracking/"
+  },
+  {
+    icon: "shopping_bag",
+    title: "Pedir y seguir",
+    sub: "Pedir y seguir",
+    href: "/es/guides/consumer/"
+  }
+]} />

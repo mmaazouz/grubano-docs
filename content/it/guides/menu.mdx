@@ -1,108 +1,167 @@
 ---
-title: "Menu & Scan IA"
-description: "Mettere online il menu di un ristorante fotografando semplicemente la carta — l’IA riconosce i piatti, propone nome, descrizione e allergeni; il ristoratore convalida."
+title: "Menù e scansione IA"
+description: "Mettere online il menù di un ristorante fotografando semplicemente la carta — l'IA riconosce i piatti, propone nome, descrizione e allergeni; il ristoratore convalida."
 generated: true
-sourceHash: ae7086fe57bec1a6
+sourceHash: 7c374512a7514f25
 generator: scripts/generate-feature-page.js
-templateVersion: 5
+templateVersion: 6
 ---
 
 import { Steps, Callout } from 'nextra/components'
 
-# Menu & Scan IA
+# Menù e scansione IA
 
-Metta online il suo menu fotografando semplicemente i suoi piatti: l’IA riconosce ogni ricetta, propone nome, descrizione e allergeni, e Lei deve solo convalidare.
+Fotografa il tuo menù cartaceo: l'IA riconosce i piatti, propone nome, descrizione e allergeni. Convalida e il tuo menù è online.
 
-<FlowDiagram steps={["Scansionare il menu","Verificare i piatti","Pubblicare","Aggiornare"]} />
+<ArticleMeta audience="Ristoratori" minutes={4} updated="2026-07-10" />
 
-## L’essenziale
+<Eyebrow icon="insights">Panoramica</Eyebrow>
 
-Lo scanner IA trasforma una foto del menu in una scheda piatto strutturata — nome, descrizione appetitosa, allergeni, calorie stimate, categoria — in pochi secondi. Lei verifica, regola il prezzo e pubblica. Ideale per accelerare la messa online di un nuovo menu o l’aggiunta occasionale di un piatto del giorno, senza noiosa digitazione manuale.
+## Dalla carta al menù online
 
-## Come funziona
+<FlowDiagram steps={[
+  { icon: "photo_camera", title: "Scansionare il menù", desc: "Scatta una foto del tuo menù cartaceo" },
+  { icon: "auto_awesome", title: "Verificare i piatti", desc: "L'IA estrae nome, descrizione e allergeni" },
+  { icon: "check_circle", title: "Pubblicare", desc: "Convalida e aggiungi i tuoi piatti al menù" },
+  { icon: "edit", title: "Aggiornare", desc: "Modifica prezzi, categorie e disponibilità" }
+]} />
 
-Fotografare un menu cartaceo per riscriverlo riga per riga è dispendioso in termini di tempo e fonte di errori. Lo scanner IA legge l’immagine, identifica ogni piatto visibile e genera automaticamente una scheda completa in francese: nome commerciale, presentazione di due frasi, elenco ingredienti, allergeni standardizzati (Glutine, Lattosio, Uovo, Soia…), fascia calorica, categoria (Antipasti, Primi, Dessert, Bevande) e etichette suggerite (Vegetariano, Halal, Senza glutine, Piccante). Lei riceve un JSON pronto all’uso che il [cruscotto](/it/guides/restaurant/) integra direttamente nel suo menu: resta solo da fissare il prezzo e convalidare. Il riconoscimento funziona su un modello Claude Sonnet 4.5 addestrato su menu di ristoranti — individua anche i piatti scritti a mano o in un layout denso.
+<Eyebrow icon="bolt">L'essenziale</Eyebrow>
 
-<Callout type="info">
-L’IA propone anche varianti (taglia Piccola/Media/Grande, supplementi Formaggio/Bacon…) e una nota di preparazione se rileva una menzione speciale sul menu. Queste opzioni sono facoltative: Lei le attiva o le rimuove secondo la sua offerta reale.
-</Callout>
+## In breve
 
-## Passo dopo passo
+<Essentials 
+  title="Se devi ricordare solo questo:" 
+  items={[
+    <>L'IA analizza <b>automaticamente</b> le foto del tuo menù ed estrae nome, descrizione, ingredienti, allergeni e categoria</>,
+    <>Tu <b>regoli</b> il prezzo, verifichi i suggerimenti e convalidi — ogni piatto viene aggiunto al tuo marchio con un clic</>,
+    <>Il menù rimane <b>modificabile</b> dal tuo pannello di controllo: prezzo, disponibilità, categorie, foto — tutto si aggiorna in tempo reale</>
+  ]} 
+/>
+
+<Eyebrow icon="lightbulb">Come funziona</Eyebrow>
+
+## Il principio (e il perché)
+
+Ricopiare a mano un menù di 30 piatti richiede tempo — e gli errori sugli allergeni possono costare caro. Lo scanner IA legge il tuo menù cartaceo (o un PDF), riconosce ogni piatto e precompila i campi: devi solo verificare e regolare il prezzo. I piatti vengono aggiunti al tuo marchio (la Brand proprietaria) e appaiono immediatamente nel [pannello di controllo](/it/guides/restaurant/) — disponibili per i tuoi clienti non appena vengono pubblicati.
+
+La scansione utilizza un modello di visione addestrato su migliaia di menù di ristoranti. Identifica gli allergeni comuni (glutine, lattosio, uovo, frutta a guscio…), stima le calorie e classifica ogni piatto (antipasto, piatto principale, dolce, bevanda). Mantieni il controllo: nessun dato viene pubblicato senza la tua convalida.
+
+<Eyebrow icon="format_list_numbered">Passo dopo passo</Eyebrow>
+
+## Digitalizzare il tuo menù
 
 <Steps>
 
 ### Accedere allo scanner
 
-Nel [cruscotto](/it/guides/restaurant/), sezione **Menu**, clicchi sulla scheda **Da adottare** poi **Scansiona menu** (icona fotocamera). Autorizzi l’accesso alla fotocamera o selezioni un’immagine già scattata.
+Da `/menu`, clicca sulla scheda **Menù e scansione IA**. Vedrai il pulsante «Digitalizza un piatto».
 
 ### Fotografare il piatto
 
-Inquadri il piatto o la sezione di menu che lo descrive. Una luce naturale e un’inquadratura dritta migliorano il riconoscimento. Convalidi lo scatto.
+Scatta una foto nitida della riga del menù (o carica un'immagine dalla tua galleria). Formati accettati: JPEG, PNG, WebP, GIF. L'IA supporta i menù stampati, manoscritti e gli screenshot di PDF.
 
-### Verificare la scheda generata
+### Verificare i suggerimenti
 
-L’IA restituisce in ~3 secondi un’anteprima strutturata: nome, descrizione, ingredienti, allergeni, calorie min–max, categoria, etichette. Rilegga ogni campo — l’IA è affidabile ma può confondere un ingrediente raro o mal scritto.
+L'IA restituisce un oggetto JSON con `name`, `description`, `ingredients`, `allergens` (elenco filtrato: Glutine, Lattosio, Uovo, Soia, Arachidi, Frutta a guscio, Pesce, Crostacei, Molluschi, Sedano, Senape, Sesamo, Solfiti, Lupini), `calories_min`/`calories_max`, `category` (Antipasti, Piatti principali, Dolci, Bevande) e `suggested_labels` (Veggie, Halal, Senza glutine, Piccante). Correggi le eventuali approssimazioni.
 
-### Regolare e pubblicare
+### Fissare il prezzo e pubblicare
 
-Modifichi il nome o la descrizione se necessario, inserisca il prezzo di vendita (l’IA non legge gli importi per evitare errori di valuta), spunti **Disponibile**, poi **Salva**. Il piatto appare immediatamente sul suo menu pubblico nella categoria rilevata.
+La scansione non indovina i prezzi — inserisci l'importo IVA inclusa. Clicca su «Aggiungi al menù»: il piatto viene creato nel tuo marchio (campo `brandId`) con `available: true` per impostazione predefinita. Appare subito sulla tua pagina ristorante.
 
 </Steps>
 
-## Esempio concreto
+<Eyebrow icon="check_circle">Buone pratiche</Eyebrow>
 
-Lei apre un banco di hamburger e desidera mettere online dieci ricette signature. Piuttosto che compilare dieci moduli a mano, Lei fotografa il suo menu stampato sezione per sezione. Per il **Cheese Deluxe**, l’IA propone: « Hamburger doppio manzo macinato 180 g, cheddar fuso, cetriolini croccanti, salsa della casa su pane brioche. » Identifica gli allergeni Glutine, Lattosio, Uovo (salsa) e Soia (pane), stima 650–750 kcal, classifica il piatto in **Primi** e suggerisce l’etichetta **Halal** se la sua carne lo è. Lei conferma, aggiunge il prezzo 12,90 € e tre opzioni Piccola/Media/Grande. In dieci minuti i dieci hamburger sono online, contro un’ora di digitazione manuale.
+## Ottimizzare il riconoscimento
 
-## Buone pratiche
-
-- **Fotografi piatto per piatto** se il suo menu è denso: l’IA elabora meglio una ricetta isolata che una pagina completa con quindici antipasti.
-- **Illuminazione indiretta**: eviti i riflessi su un menu plastificato che nascondono il testo.
-- **Verifichi gli allergeni**: l’IA si basa sugli ingredienti visibili; un condimento nascosto (senape in una vinaigrette) può sfuggirle. Aggiunga manualmente qualsiasi allergene mancante.
-- **Fissi Lei stesso il prezzo**: l’IA non legge mai gli importi per evitare qualsiasi confusione tra prezzo IVA inclusa, valuta o promozione. È l’unico campo obbligatorio da inserire dopo la scansione.
-
-<Callout type="warning">
-Lo scanner IA consuma crediti API per foto analizzata. Un limite ragionevole (alcune decine di scansioni al giorno) si applica per impostazione predefinita per preservare le risorse condivise. Se raggiunge il limite, riprovi qualche ora più tardi o contatti il supporto per una quota ampliata.
+<Callout type="default">
+- **Foto inquadrata** : isola un piatto alla volta — se il menù ne contiene 10, scansionali uno per uno. Il riconoscimento è più affidabile su una sola riga.
+- **Luce e contrasto** : evita i riflessi e le ombre. Uno sfondo chiaro e un testo nero danno i risultati migliori.
+- **Verifica sempre gli allergeni** : l'IA li estrae dalla descrizione visibile, ma se un ingrediente non è indicato sul menù non può indovinarlo. Completa manualmente se necessario.
+- **Categorie coerenti** : il campo `category` viene ripulito (trim) lato server per evitare i duplicati («Bevande» vs «  Bevande  »). Mantieni le stesse diciture per raggruppare i tuoi piatti in modo ordinato.
 </Callout>
 
-## Errori frequenti
+<Eyebrow icon="error">Errori da evitare</Eyebrow>
 
-**« L’IA non riconosce il mio piatto scritto a mano. »** — La scrittura deve rimanere leggibile; una calligrafia molto stilizzata o un testo troppo piccolo riducono la precisione. Scatti la foto più da vicino o riscriva il nome manualmente, poi lasci che l’IA generi la descrizione a partire da questo nome.
+## Le insidie più comuni
 
-**« Le calorie proposte sembrano sbagliate. »** — L’IA fornisce una fascia ampia (es. 650–750 kcal) basata sulle porzioni standard del tipo di piatto. Regoli il valore se conosce il peso esatto delle sue porzioni o lasci vuoto: la visualizzazione calorica è facoltativa lato cliente.
+<Callout type="error">
+- **Convalidare senza rileggere** : l'IA fa suggerimenti, non certezze. Un allergene mancato o un prezzo letto male può generare un reclamo del cliente.
+- **Scansionare un menù intero** : inviare una foto di più piatti in una volta produce un unico JSON con dati mescolati. Risultato: dovrai correggere tutto a mano.
+- **Dimenticare le foto finali** : la scansione analizza l'immagine del menù, ma non la memorizza come foto del piatto. Aggiungi una vera foto gastronomica dal modulo di modifica per conquistare i tuoi clienti.
+</Callout>
 
-**« Il piatto appare nella categoria sbagliata. »** — Cambi manualmente la categoria (Antipasti, Primi, Dessert, Bevande) prima di pubblicare. L’IA indovina dal nome e dagli ingredienti, ma un « Carpaccio di tonno » può esitare tra Antipasti e Primi secondo il contesto.
+<Eyebrow icon="lightbulb">Consiglio</Eyebrow>
 
-## Suggerimenti & consigli
+## Risparmia tempo lavorando in blocco
 
-- **Riutilizzi le schede**: una volta scansionata, una ricetta resta modificabile nel suo menu. Cambi il prezzo o la disponibilità senza ri-scansionare.
-- **Scansioni i piatti del giorno**: fotografi la lavagna del pranzo, convalidi i tre suggerimenti, pubblichi in due minuti. La sera, li disattivi con un clic in [Gestione delle scorte](/it/guides/stocks/) o nel cruscotto.
-- **Arricchisca la descrizione**: l’IA produce due frasi generiche; aggiunga un dettaglio signature (« carne frollata 21 giorni », « pasta fatta in casa ») per distinguersi.
+<Callout type="info">
+Se hai 20 piatti da digitalizzare, prepara tutte le foto in anticipo (una per piatto, ben inquadrate). Scansionale una dopo l'altra: l'interfaccia mantiene il focus sullo scanner, devi solo caricare l'immagine successiva, verificare, regolare il prezzo e convalidare. In 10 minuti il tuo menù è completo.
+</Callout>
+
+<Eyebrow icon="restaurant_menu">Ricette dei creatori</Eyebrow>
+
+## Adottare le ricette dei creatori
+
+Il tuo menù non si limita ai tuoi piatti: nella schermata Menù, la scheda **Da adottare** ti apre il catalogo delle ricette pubblicate dai [creatori](/it/guides/creators/). Ogni scheda presenta il piatto, la sua descrizione e le sue condizioni; con un clic la ricetta si aggiunge al tuo menù come qualsiasi altro piatto — la cucini con la tua insegna, fissi il prezzo di vendita e il creatore riceve il 2 % su ogni vendita del piatto adottato.
+
+Alcune ricette sono esclusive per città: se un altro ristorante l'ha già adottata vicino a te, iscriviti alla lista d'attesa dalla stessa scheda. Quando il posto si libera, ricevi un'offerta a tempo limitato, che accetti o rifiuti con un clic — se la lasci passare, viene proposta al ristorante successivo nella lista.
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
 
 ## Domande frequenti
 
 <Faq items={[
   {
-    icon: 'help',
-    q: 'Lo scanner funziona con un menu in un’altra lingua?',
-    a: "Sì, l’IA legge diverse lingue (inglese, spagnolo, arabo, italiano) ma restituisce sempre la scheda in francese, la lingua predefinita della piattaforma. Rilegga la traduzione proposta prima di pubblicare."
+    icon: "photo_camera",
+    q: "L'IA riconosce i menù manoscritti?",
+    a: "Sì, purché la scrittura sia leggibile. I menù stampati o dattiloscritti danno i risultati migliori, ma anche una bella scrittura a mano funziona."
   },
   {
-    icon: 'help',
-    q: 'Posso scansionare un intero menu in una volta?',
-    a: "Tecnicamente sì, ma la precisione diminuisce se più di cinque piatti figurano nell’immagine. Privilegi una foto per sezione (antipasti, primi, dessert) per un miglior tasso di riconoscimento."
+    icon: "translate",
+    q: "Posso scansionare un menù in inglese o in arabo?",
+    a: "Il modello è addestrato su più lingue, ma restituisce sempre name e description in francese (prompt di sistema). Se il tuo menù è in una lingua straniera, l'IA traduce automaticamente — verifica le sfumature."
   },
   {
-    icon: 'help',
-    q: 'Cosa succede se raggiungo il limite di scansioni quotidiane?',
-    a: "Lei riceve un errore 429 « Limite IA raggiunto ». Attenda qualche ora — la quota si reinizializza automaticamente — o contatti il supporto per richiedere un aumento permanente se gestisce più stabilimenti."
+    icon: "receipt_long",
+    q: "Cosa succede se scansiono due volte lo stesso piatto?",
+    a: "Nessun controllo anti-duplicato automatico: ogni scansione crea un nuovo MenuItem con un id distinto. Se convalidi due volte, avrai due voci nel tuo menù — elimina il duplicato dalla scheda «Piatti»."
   },
   {
-    icon: 'help',
-    q: 'L’IA può rilevare le opzioni (taglia, supplementi)?',
-    a: "Suggerisce varianti comuni (Piccola/Media/Grande, Formaggio/Bacon/Uovo) se il testo del menu le menziona, ma non crea automaticamente le griglie di prezzo. Configuri le opzioni manualmente dopo la convalida per garantire la coerenza tariffaria."
+    icon: "warning",
+    q: "L'IA può sbagliare sugli allergeni?",
+    a: "Sì. Estrae gli allergeni dagli ingredienti visibili nella descrizione, ma non indovina ciò che non è scritto. Rileggi sempre l'elenco prima di pubblicare — è una tua responsabilità legale."
   }
 ]} />
 
-## Per andare oltre
+<Eyebrow icon="menu_book">Per approfondire</Eyebrow>
 
-Una volta scansionato e pubblicato il suo menu, segua le [rotture di stock](/it/guides/stocks/) in tempo reale per disattivare automaticamente i piatti esauriti. Consulti il [cruscotto](/it/guides/restaurant/) operatore per gestire ordini, recensioni e performance da un’unica schermata.
+## Articoli correlati
+
+<RelatedCards items={[
+  {
+    icon: "inventory_2",
+    title: "Gestione delle scorte",
+    sub: "Registro e avvisi",
+    href: "/it/guides/stocks/"
+  },
+  {
+    icon: "insights",
+    title: "Pannello di controllo",
+    sub: "Indicatori in tempo reale",
+    href: "/it/guides/restaurant/"
+  },
+  {
+    icon: "restaurant_menu",
+    title: "Creatore di ricette",
+    sub: "Ricette e commissioni",
+    href: "/it/guides/creators/"
+  },
+  {
+    icon: "bolt",
+    title: "Iniziare in 15 minuti",
+    sub: "Pronto in 15 minuti",
+    href: "/it/guides/quick-start/"
+  }
+]} />

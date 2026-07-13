@@ -19,6 +19,11 @@ export default {
   stocks: 'Gestione delle scorte',
   loyalty: 'Programma fedeltà',
   reservations: 'Prenotazioni e sala',
+  promotions: 'Promozioni e offerte',
+  kds: 'Schermo cucina (KDS)',
+  reviews: 'Recensioni dei clienti',
+  analytics: 'Analisi e briefing IA',
+  'supplier-orders': 'Ordinare dai propri fornitori',
   finances: 'Finanze e versamenti',
   pro: 'Passare a Pro',
 

@@ -1,0 +1,168 @@
+---
+title: "Ordering from your suppliers"
+description: "Find a supplier on the Grubano marketplace, fill your cart up to the minimum order, place an order with no online payment, and track every step through to delivery."
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# Ordering from your suppliers
+
+Stock your restaurant from the Grubano marketplace: search for a supplier by product or by area, fill your cart up to the minimum order, then track every order from dispatch to delivery.
+
+<ArticleMeta audience="Restaurants" minutes={4} updated="2026-07-12" />
+
+<Eyebrow icon="insights">Overview</Eyebrow>
+
+## From search to delivery
+
+<FlowDiagram steps={[
+  { icon: "storefront", title: "Find a supplier", desc: "Search by product, area and minimum" },
+  { icon: "shopping_cart", title: "Fill the cart", desc: "Progress toward the minimum order" },
+  { icon: "send", title: "Place the order", desc: "Requested date and notes, no online payment" },
+  { icon: "local_shipping", title: "Track delivery", desc: "Timeline from dispatch to receipt" }
+]} />
+
+<Eyebrow icon="bolt">The essentials</Eyebrow>
+
+## In short
+
+<Essentials title="If you remember only this:" items={[
+  <>The <b>supplier marketplace</b> is reserved for restaurants: you only see active suppliers and available items, with city, minimum order and lead time shown up front</>,
+  <>The <b>cart</b> fills up supplier by supplier in your browser; nothing is ordered or charged until you confirm — the prices that count are always the server's</>,
+  <>The <b>minimum order</b> is checked twice (on screen and by the server) and every order follows a timeline — sent, confirmed, in preparation, delivered — cancellable until it is confirmed</>
+]} />
+
+<Eyebrow icon="lightbulb">How it works</Eyebrow>
+
+## The principle (and the why)
+
+The supplier marketplace is a **professional** sourcing channel, separate from your private supplier directory and from your customers' orders. It shows only **active** suppliers with a verified catalog, and only their **available** items. Each card states the city, the product families, the number of products, the delivery lead time and the minimum order; detailed delivery zones appear when you open the supplier's profile.
+
+At confirmation, your browser sends **no amount**: the server recalculates everything from the catalog prices and locks each line (name, unit, price in cents) into an immutable snapshot. Placing an order triggers no online payment, and this channel activates no loyalty points, no promotions and no referral — it is a flow separate from the customer journey.
+
+<Eyebrow icon="format_list_numbered">Step by step</Eyebrow>
+
+## Placing your first supplier order
+
+<Steps>
+
+### Open the marketplace
+
+From your [dashboard](/en/guides/restaurant/), open the **supplier marketplace**. Each card shows the supplier's name, city, product families, number of products, delivery lead time and — if they have set one — their minimum order.
+
+### Search by product
+
+The search field narrows the list to suppliers offering an **available item** matching your query ("mozzarella", "flour"…). Matching items appear directly on the relevant supplier's card, so you don't have to open every catalog.
+
+### Browse the catalog
+
+Open a supplier's profile to view their full catalog. A **"Delivers to your area"** badge appears when your restaurant's city matches the delivery zones declared by the supplier. Temporarily unavailable items are greyed out and cannot be added to the cart.
+
+### Fill your cart
+
+Adjust quantities with the + / − buttons, filter by search or by product family. A bar at the bottom of the screen tracks your **progress toward the minimum order** and shows the amount still to reach: the "View cart" button only activates once the cart holds at least one item **and** reaches the minimum. The cart is kept in your browser, supplier by supplier — you can come back later without losing anything.
+
+### Confirm the order
+
+The cart screen reloads prices **from the server** (those are the ones that count) and recaps your lines. Choose a **requested delivery date** from five consecutive days — the first suggestion starts from today plus the supplier's preparation lead time — and add a **note** if needed (time slot, access, instructions… 1,000 characters maximum). On confirmation, the order is created with the **"sent"** status, with no online payment.
+
+### Track, cancel or reorder
+
+The **Orders** page lists your supplier orders with tabs by status (all, sent, confirmed, in preparation, delivered) and their counters. Open an order to see its timeline, its lines and its total. While it is "sent", you can **cancel** it; "Reorder" reloads the same lines into your cart; "Contact" opens the supplier's phone or email directly.
+
+</Steps>
+
+<Eyebrow icon="calculate">Worked example</Eyebrow>
+
+## An order from a greengrocer
+
+Imagine a fruit-and-vegetable supplier with a minimum order of 120 € and a preparation lead time of 2 days. You fill your cart:
+
+<Breakdown title="Cart summary" rows={[
+  { icon: "shopping_basket", label: "Seasonal vegetables — 12 kg", value: "54,00 €" },
+  { icon: "shopping_basket", label: "Fresh herbs — 20 bunches", value: "24,00 €" },
+  { icon: "shopping_basket", label: "Citrus — 10 kg box", value: "48,00 €" },
+  { icon: "payments", label: "Total — 120 € minimum reached", value: "126,00 €", variant: "total" }
+]} />
+
+At 96 €, the progress bar would have shown you the missing amount; at 126 €, the button activates. It is Wednesday: with a 2-day lead time, the suggested dates run from Friday to Tuesday. On confirmation, each line is locked: if the supplier changes their prices on Thursday, your order does not take them into account, and the timeline will show your requested date as the "expected" delivery date. This example is illustrative; your actual amounts depend on each supplier's catalog.
+
+<Eyebrow icon="check_circle">Best practices</Eyebrow>
+
+## Order without friction
+
+<Callout type="default">
+- **Check the zones and the minimum before filling the cart**: the supplier card shows them right away, and the "Delivers to your area" badge confirms the match with your restaurant's city.
+- **Use the order note** for your receiving instructions (time slot, access, dock…): it is sent to the supplier with the order.
+- **Use "Reorder"** for your recurring purchases: the previous order's lines are reloaded into the cart, and both prices and availability are rechecked at the new confirmation.
+- **Group your needs** with a single supplier to reach the minimum in one order, and reconcile your deliveries with your [stock management](/en/guides/stocks/) to keep an up-to-date journal.
+</Callout>
+
+<Eyebrow icon="error">Mistakes to avoid</Eyebrow>
+
+## Common pitfalls
+
+<Callout type="error">
+- **Confusing cart and order**: the cart lives in your browser; until you confirm, nothing is sent to the supplier — and you won't find it on another device.
+- **Waiting to cancel**: cancellation is only possible while the order is "sent"; as soon as the supplier confirms, use the "Contact" button to sort things out directly.
+- **Looking for a timestamp at every step**: only the "Order sent" step carries a real time; the following steps show the status reached, and delivery shows your requested date as the expected date.
+- **Counting on loyalty points**: supplier orders are a separate professional channel — no points, no promotions and no referral apply.
+</Callout>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
+
+## Frequently asked questions
+
+<Faq items={[
+  {
+    icon: "schedule",
+    q: "Why am I only offered certain delivery dates?",
+    a: "Date suggestions start from today plus the preparation lead time declared by the supplier, over five consecutive days. The supplier's closing days are not taken into account at this stage: if a constraint exists (market, delivery round…), note it in the order note."
+  },
+  {
+    icon: "cancel",
+    q: "Can I cancel an order that is already confirmed?",
+    a: "No. You can cancel while the order is in the 'sent' status. Once confirmed by the supplier, direct cancellation is no longer possible: use the 'Contact' button (phone or email) to reach an arrangement. The supplier, for their part, can decline a sent order."
+  },
+  {
+    icon: "sell",
+    q: "Can prices change between my order and delivery?",
+    a: "No. At confirmation, each line is locked into an immutable snapshot: product name, unit and price in cents. The supplier's later price changes only apply to future orders — and if an item becomes unavailable before you confirm, the server refuses the order so you can adjust the cart."
+  },
+  {
+    icon: "payments",
+    q: "How does payment work?",
+    a: "Confirming the order triggers no online payment: you pay your supplier through their usual terms. Secure online payment will arrive soon."
+  }
+]} />
+
+<Eyebrow icon="menu_book">Going further</Eyebrow>
+
+## Related articles
+
+<RelatedCards items={[
+  {
+    icon: "inventory_2",
+    title: "Stock management",
+    sub: "Journal and alerts",
+    href: "/en/guides/stocks/"
+  },
+  {
+    icon: "storefront",
+    title: "Dashboard",
+    sub: "Live indicators",
+    href: "/en/guides/restaurant/"
+  },
+  {
+    icon: "account_balance",
+    title: "Finances & payouts",
+    sub: "Payouts and statements",
+    href: "/en/guides/finances/"
+  },
+  {
+    icon: "menu_book",
+    title: "Menu & AI Scan",
+    sub: "Create your menu",
+    href: "/en/guides/menu/"
+  }
+]} />

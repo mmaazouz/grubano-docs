@@ -1,95 +1,182 @@
 ---
-title: "Loyalty Program"
-description: "Build customer loyalty: 1 point = 1 € spent, Bronze/Silver/Gold/Platinum tiers, points credited upon order delivery."
+title: "Loyalty program"
+description: "Build customer loyalty: 1 point = 1 € spent, Bronze/Silver/Gold/Platinum tiers, points credited when the order is delivered."
 generated: true
-sourceHash: c0f84754871285ec
+sourceHash: 4f0c65d4648d427e
 generator: scripts/generate-feature-page.js
-templateVersion: 5
+templateVersion: 6
 ---
 
 import { Steps, Callout } from 'nextra/components'
 
-# Loyalty Program
+# Loyalty program
 
-Turn every euro spent into loyalty points, with four reward tiers that encourage your customers to come back.
+Build a lasting bond with your customers: every euro spent earns a point, tiers from Bronze to Platinum unlock perks, and points turn into loyalty credit that can be used on the next order.
 
-<FlowDiagram steps={["Register a customer","Purchase","Point credit","Reward"]} />
+<ArticleMeta audience="Restaurants" minutes={4} updated="2026-07-10" />
 
-## The essentials
+<Eyebrow icon="insights">Overview</Eyebrow>
 
-Grubano’s loyalty program automatically rewards your customers: **1 point = 1 € spent**. Points accumulate across four tiers (Bronze, Silver, Gold, Platinum) and convert into credit usable on their next order. Points are credited as soon as the order is delivered.
+## The customer journey
 
-## How it works
+<FlowDiagram steps={[
+  { icon: "person_add", title: "Sign-up", desc: "The customer joins the program (email + name)" },
+  { icon: "shopping_bag", title: "Order", desc: "Every euro spent = 1 point credited" },
+  { icon: "loyalty", title: "Accumulation", desc: "Points unlock Bronze, Silver, Gold, or Platinum" },
+  { icon: "payments", title: "Reward", desc: "The customer spends their loyalty credit on an order" }
+]} />
 
-Your regular customers deserve recognition. The loyalty program builds a lasting relationship: every purchase strengthens attachment to your brand, every tier reached motivates the next order.
+<Eyebrow icon="bolt">The essentials</Eyebrow>
 
-The system works end-to-end — quick registration (name, email, optional phone), automatic validation upon delivery, **conversion of points into euros of credit** that the customer spends whenever they want. You track activity from your [dashboard](/en/guides/restaurant/): point balance, current tier, history of the last ten validated orders.
+## In short
 
-## Step by step
+<Essentials title="If you only remember one thing:" items={[
+  <>Customers earn <b>1 point per euro</b> spent, credited as soon as the order is delivered</>,
+  <>Four automatic tiers — <b>Bronze</b> (0 pts), <b>Silver</b> (100 pts), <b>Gold</b> (200 pts), <b>Platinum</b> (400 pts) — unlock progressive perks</>,
+  <>The points balance converts into <b>loyalty credit (€)</b> that the customer uses freely on their next order</>
+]} />
+
+<Eyebrow icon="lightbulb">How it works</Eyebrow>
+
+## The principle (and the why)
+
+A returning customer costs less to acquire than a new one: the loyalty program turns a one-off purchase into a habit. Every euro spent automatically earns a point, visible in real time on the customer's [dashboard](/en/guides/restaurant/). The Bronze, Silver, Gold, and Platinum tiers unlock without any manual action — the more the customer orders, the higher their status climbs and the greater the perks. The points balance becomes loyalty credit in euros, spendable on any order: the customer chooses when and how to use it, and you keep control of your margin.
+
+<Eyebrow icon="format_list_numbered">Step by step</Eyebrow>
+
+## Enroll a customer in the program
 
 <Steps>
 
-### Register a customer in the program
+### Collect the information
 
-Collect the customer’s name and email (phone is optional). **Welcome bonus: 10 points** credited immediately upon account creation. Each customer receives a unique referral code (eight characters, uppercase) they can share.
+The customer provides their name, email, and optionally their phone number via the **POST /api/loyalty/register** route. A welcome bonus of 10 points is automatically credited at sign-up; the initial tier is Bronze.
 
-### Validate a delivered order
+### Check for uniqueness
 
-When an order is marked **delivered**, enter the customer’s email, order number (unique identifier — never validated twice), and total amount including tax. The system awards **1 point per euro spent** (rounded down to the nearest whole number) and recalculates the tier.
+The system detects duplicate emails: if an account already exists, the sign-up returns a 409 error with the message "An account already exists with this email." The customer immediately receives their unique referral code (the first 8 characters of the `referralCode`, in uppercase).
 
-### Track balance and tier
+### View the wallet
 
-Four progressive tiers unlock access to credit:
-
-- **Bronze** — 0 to 99 points (starting tier)
-- **Silver** — 100 to 199 points
-- **Gold** — 200 to 399 points
-- **Platinum** — 400 points and above
-
-The tier updates automatically as soon as a threshold is crossed. The customer sees their point balance **converted into euros of credit** (conversion rate set by Grubano) that they can spend as they wish.
-
-### Spend the credit
-
-The customer chooses to apply all or part of their credit to the basket. The discount is deducted from the order total; the point balance decreases accordingly. No financial charge on the restaurant side — **Grubano fully finances** the applied discount.
+The **GET /api/loyalty/wallet** route (authenticated, `restaurant` or `admin` role) displays the points balance, the current tier, the points needed to reach the next tier, and the last 10 validated orders. A signed-in customer can view their own wallet without the `?email=` parameter.
 
 </Steps>
 
-## Best practices
+<Eyebrow icon="format_list_numbered">Step by step</Eyebrow>
 
-- **Share the referral code** — encourage your customers to share it (business card, packaging, social media). A referred customer earns additional points for the referrer.
-- **Remind about the balance** — mention the number of points earned on the receipt or in the confirmation email. An informed customer comes back faster.
-- **Target the tiers** — a customer with 180 points knows they have 20 € left to spend to reach Gold. This visible threshold triggers a "milestone" order.
-- **Validate quickly** — points are only credited upon actual delivery of the order. The faster the validation, the more the customer perceives the immediate reward.
+## Validate an order and credit points
+
+<Steps>
+
+### Record the order
+
+After delivery, use **POST /api/loyalty/validate** with the customer's email, the order number (`uberOrderNumber`), the total amount, and the brand name. The system rounds the amount down to the nearest integer to calculate the points (example: 23,80 € = 23 points).
+
+### Prevent duplicates
+
+Each `uberOrderNumber` is unique: if the order has already been validated, the API returns a 409 error. The customer cannot earn the same points twice on a single order.
+
+### Update the tier
+
+The system automatically recalculates the tier based on the new balance: 0–99 pts = Bronze, 100–199 = Silver, 200–399 = Gold, 400+ = Platinum. The JSON response indicates the points earned, the new balance, the current tier, and the order identifier.
+
+</Steps>
+
+<Eyebrow icon="calculate">A concrete example</Eyebrow>
+
+## The journey of a loyal customer
+
+Marie joins the program and receives a **10-point** welcome bonus (Bronze tier). She orders **45 €** worth from your brand: 45 points are credited, and her balance rises to **55 points** (still Bronze). Two weeks later, she spends **72 €**: +72 points, balance **127 points** → she automatically moves up to **Silver**. After six orders over three months, she reaches **420 points** (Platinum tier) and decides to use **200 points** as loyalty credit on her next order; her balance drops back to **220 points** but she keeps her Gold status.
+
+<Eyebrow icon="check_circle">Best practices</Eyebrow>
+
+## Maximize engagement
+
+<Callout type="default">
+
+- **Communicate the balance** — show the number of points and the current tier on every order confirmation (email or notification).
+- **Remind them of thresholds** — "Only 18 points to go to reach Silver!" encourages a quick reorder.
+- **Highlight the loyalty credit** — express the balance in euros ("240 pts = 12 € in loyalty credit") to make the benefit tangible.
+- **Encourage referrals** — the unique referral code (8 characters) lets the customer introduce your brand to friends and family; plan a bonus for both the referrer and the referee (the `referredBy` mechanism is present in the model).
+
+</Callout>
+
+<Eyebrow icon="error">Mistakes to avoid</Eyebrow>
+
+## Common pitfalls
+
+<Callout type="error">
+
+- **Validating a cancelled order** — only credit points if the order was actually delivered; a later refund requires a manual balance adjustment.
+- **Forgetting to fill in the brand** — the `brandName` field must exactly match the name recorded in the `Brand` table (a case-insensitive `contains` search, but a typo will block validation).
+- **Double-crediting** — the uniqueness constraint on `uberOrderNumber` protects against duplicates server-side, but make sure your integration doesn't call the API twice in the event of a temporary network error.
+
+</Callout>
+
+<Eyebrow icon="lightbulb">Tip</Eyebrow>
+
+## Automate point crediting
+
+<Callout type="info">
+
+Connect your partner platform's delivery webhook to **POST /api/loyalty/validate**: as soon as an order moves to the "delivered" status, the API automatically credits the points with no manual intervention. The customer sees their balance grow in real time, and you reduce the risk of oversights or delays.
+
+</Callout>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
 
 ## Frequently asked questions
 
 <Faq items={[
   {
-    icon: "help",
-    q: "Do points expire?",
-    a: "No. The point balance remains acquired as long as the customer account is active. No expiration date is imposed."
+    icon: "loyalty",
+    q: "What happens if a customer changes their email?",
+    a: "The loyalty program is tied to the email: if the customer creates a new account with a different address, they start over from scratch (10 welcome points). To transfer the history, contact technical support with both addresses; an administrator can merge the accounts manually."
   },
   {
-    icon: "help",
-    q: "Who finances the discount applied to the basket?",
-    a: "Grubano fully finances the loyalty credit spent by the customer. You receive the total order amount (minus the usual 10% commission), with no additional deduction."
+    icon: "percent",
+    q: "What is a point worth in euros?",
+    a: "The conversion is defined in lib/loyalty.ts (the centsPerPoint function) and may evolve according to Grubano's strategy. The customer sees the euro equivalent of their balance via GET /api/loyalty/wallet (the balanceEuros field); the exact rate applied on an order stays server-side to guarantee consistency."
   },
   {
-    icon: "help",
-    q: "Can I view a customer’s history?",
-    a: "Yes. From your dashboard, search for the customer by email: you see their balance, current tier, and the last ten validated orders (brand, amount, points earned, date)."
+    icon: "star",
+    q: "Do the tiers offer differentiated perks?",
+    a: "Yes: the Silver, Gold, and Platinum tiers can unlock exclusive promotions, discounts on delivery fees, or priority access to new items on your menu. The business logic for these perks is configured on the restaurant side; the loyalty system provides the tier (`tier`), and you decide on the associated perk."
   },
   {
-    icon: "help",
-    q: "What happens if I validate the same order number twice?",
-    a: "The system rejects the second attempt (409 error) to avoid crediting points twice. Each order number is validated only once."
+    icon: "code",
+    q: "How does the referral code work?",
+    a: "Each customer receives a unique referralCode (the first 8 characters in uppercase, visible in GET /api/loyalty/wallet). The referredBy field of the LoyaltyCustomer model lets you trace who referred whom; you can then reward the referrer (a points bonus) and the referee (a welcome discount) via custom business logic."
   }
 ]} />
 
-<Callout type="info">
-**Commission unchanged** — The loyalty program does not impact the 10% commission per order. The Pro subscription (29 €/month, multi-platform aggregation) remains optional and separate from the loyalty program.
-</Callout>
+<Eyebrow icon="menu_book">Go further</Eyebrow>
 
-## Going further
+## Related articles
 
-**Dashboard** — View the balance and loyalty history of your customers from your restaurant [dashboard](/en/guides/restaurant/).
+<RelatedCards items={[
+  {
+    icon: "insights",
+    title: "Dashboard",
+    sub: "Live indicators",
+    href: "/en/guides/restaurant/"
+  },
+  {
+    icon: "loyalty",
+    title: "Loyalty, credit & referral",
+    sub: "Points and referral",
+    href: "/en/guides/consumer-loyalty/"
+  },
+  {
+    icon: "bolt",
+    title: "Get started in 15 minutes",
+    sub: "Ready in 15 minutes",
+    href: "/en/guides/quick-start/"
+  },
+  {
+    icon: "menu_book",
+    title: "Menu & AI Scan",
+    sub: "Menu and AI Scan",
+    href: "/en/guides/menu/"
+  }
+]} />

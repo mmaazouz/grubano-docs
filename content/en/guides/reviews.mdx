@@ -1,0 +1,146 @@
+---
+title: "Customer reviews"
+description: "Read the reviews your customers publish, track your average rating, and prepare your replies with an AI-written draft tailored to the rating."
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# Customer reviews
+
+Read every review your customers publish, track your average rating, and prepare your replies with an AI-written draft.
+
+<ArticleMeta audience="Restaurants" minutes={3} updated="2026-07-12" />
+
+<Eyebrow icon="reviews">Overview</Eyebrow>
+
+## A review's journey
+
+<FlowDiagram steps={[
+  { icon: "rate_review", title: "Review published", desc: "A customer rates your restaurant and writes their review" },
+  { icon: "storefront", title: "Visible in your space", desc: "The review appears on the Reviews page of your dashboard" },
+  { icon: "auto_awesome", title: "AI draft", desc: "Generate a suggested reply, then fine-tune it" },
+  { icon: "schedule", title: "Send the reply", desc: "Coming soon, directly from the page" }
+]} />
+
+<Eyebrow icon="bolt">The essentials</Eyebrow>
+
+## In short
+
+<Essentials title="If you only remember this:" items={[
+  <>Every signed-in customer can publish <b>one review per restaurant</b> (a 1-to-5-star rating is required), which they can edit afterward — no duplicates</>,
+  <>Your Reviews page shows the <b>average rating</b> (one decimal), the <b>breakdown by star</b>, and the 50 most recent published reviews</>,
+  <>The <b>Generate</b> button writes an AI reply draft, tailored to the review's rating and fully editable — sending the reply is coming soon</>
+]} />
+
+<Eyebrow icon="lightbulb">How it works</Eyebrow>
+
+## The principle (and why)
+
+Reviews come straight from your customers: from your restaurant's page in the app, a signed-in customer can rate their experience and write a comment — one review per customer per restaurant, which they can edit at any time (the new review replaces the old one). Only **published** reviews appear on your Reviews page, sorted from newest to oldest. This keeps your customer relationship yours: feedback lands with you, in the same place as your [orders and metrics](/en/guides/restaurant/).
+
+To protect your customers' privacy, only the author's **first name** is shown next to their review. Each review also carries a **source** badge — "Grubano" today, the only review source on the platform. Your **average rating** is calculated from the breakdown by star (a weighted average from 1 to 5) and displayed with one decimal, along with the matching stars.
+
+<Eyebrow icon="format_list_numbered">Step by step</Eyebrow>
+
+## Prepare a reply with AI
+
+<Steps>
+
+### Open the Reviews page
+
+From your dashboard's side menu, click **Reviews**. The page automatically loads the reviews for the current restaurant (the one selected in your dashboard).
+
+### Read the summary at the top of the page
+
+The average rating, the breakdown of ratings from 1 to 5 stars, and the total number of reviews give you the overall temperature at a glance.
+
+### Browse the reviews
+
+The 50 most recent published reviews appear from newest to oldest: author's first name, rating, text, date, and source badge.
+
+### Generate a reply draft
+
+Open a review's reply window and click **Generate**. The AI writes a short suggested reply (fewer than three sentences), signed "The Grubano team," with a tone matched to the rating.
+
+### Review and personalize
+
+The draft appears in a fully editable text area: adjust it with your own words, a detail from the service, or a goodwill gesture. The **Send** button is still inactive — sending is coming soon; in the meantime, you can copy your text to reuse it wherever you like.
+
+</Steps>
+
+<Eyebrow icon="check_circle">Best practices</Eyebrow>
+
+## Get the most out of AI drafts
+
+<Callout type="default">
+- **Let the AI adapt to the rating**: the draft's tone is chosen automatically — empathetic with an apology for a 1- or 2-star review, measured at 3 stars, enthusiastic from 4 upward.
+- **Always personalize**: the draft is a starting point; a concrete detail (the dish ordered, the evening of the incident) makes the reply far more credible.
+- **Watch the breakdown by star**: a rise in 1- or 2-star reviews shows up in the breakdown before it weighs on the average.
+- **Keep it simple**: drafts are fewer than three sentences by design — a short, sincere reply beats a long plea.
+</Callout>
+
+<Eyebrow icon="schedule">Coming soon</Eyebrow>
+
+## What's coming next
+
+<Callout type="info">
+Three improvements are already visible in the interface and will arrive soon: **sending replies** directly from the compose window (the Send button is shown but still inactive), **importing reviews from other platforms** (Google, TripAdvisor…) to centralize everything in one place, and the **To reply / Replied** tracking — since replies aren't saved yet, the Replied tab shows 0 for now and all reviews stay classified as "To reply."
+</Callout>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
+
+## Frequently asked questions
+
+<Faq items={[
+  {
+    icon: "person",
+    q: "Who can publish a review of my restaurant?",
+    a: "Any customer signed in to their account, with a required rating from 1 to 5 stars. Each customer can publish only one review per restaurant: if they edit it, the new version replaces the previous one. Only published reviews appear on your page."
+  },
+  {
+    icon: "smart_toy",
+    q: "How does the AI choose the tone of the reply?",
+    a: "The tone is derived automatically from the review's rating: empathetic with an apology up to 2 stars, measured at 3 stars, enthusiastic from 4 upward. A per-account usage quota applies: if you exceed it, wait a little before generating another draft."
+  },
+  {
+    icon: "star",
+    q: "Is the rating shown on my customer-facing page recalculated from these reviews?",
+    a: "Not yet: your page's overall rating is managed separately and isn't automatically recalculated from the reviews published on Grubano. This connection is being explored."
+  },
+  {
+    icon: "lock",
+    q: "Is my customers' full name visible?",
+    a: "No. Out of respect for privacy, only the author's first name is shown next to their review — both on your Reviews page and on the public side."
+  }
+]} />
+
+<Eyebrow icon="menu_book">Go further</Eyebrow>
+
+## Related articles
+
+<RelatedCards items={[
+  {
+    icon: "sentiment_satisfied",
+    title: "Order & track",
+    sub: "The customer journey",
+    href: "/en/guides/consumer/"
+  },
+  {
+    icon: "storefront",
+    title: "Dashboard",
+    sub: "Live metrics",
+    href: "/en/guides/restaurant/"
+  },
+  {
+    icon: "loyalty",
+    title: "Loyalty program",
+    sub: "Points and rewards",
+    href: "/en/guides/loyalty/"
+  },
+  {
+    icon: "monitoring",
+    title: "Analytics & AI briefing",
+    sub: "Your numbers decoded",
+    href: "/en/guides/analytics/"
+  }
+]} />

@@ -19,6 +19,11 @@ export default {
   stocks: 'Gestión de stock',
   loyalty: 'Programa de fidelidad',
   reservations: 'Reservas y en sala',
+  promotions: 'Promociones y ofertas',
+  kds: 'Pantalla de cocina (KDS)',
+  reviews: 'Reseñas de clientes',
+  analytics: 'Analíticas y briefing IA',
+  'supplier-orders': 'Hacer pedidos a sus proveedores',
   finances: 'Finanzas y pagos',
   pro: 'Pasar a Pro',
 

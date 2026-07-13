@@ -1,109 +1,176 @@
 ---
-title: "Order & Track"
+title: "Order & track"
 description: "Find a local restaurant, place an order (delivery / click & collect / dine-in) and track progress in real time."
 generated: true
-sourceHash: bf78b8eca73da5ba
+sourceHash: f1525f494baf9f7e
 generator: scripts/generate-feature-page.js
-templateVersion: 5
+templateVersion: 6
 ---
 
 import { Steps, Callout } from 'nextra/components'
 
-# Order & Track
+# Order & track
 
-Find a restaurant near you, place your order in just a few clicks and track your delivery or pickup in real time.
+Find a restaurant near you, build your order (delivery, click & collect or dine-in) and track it in real time until you receive it.
 
----
+<ArticleMeta audience="Customers" minutes={4} updated="2026-07-12" />
 
-<FlowDiagram steps={["Find a restaurant","Build your order","Pay","Track the order"]} />
+<Eyebrow icon="insights">Overview</Eyebrow>
 
----
+## Your order's journey
 
-## The essentials
+<FlowDiagram steps={[
+  { icon: "search", title: "Find a restaurant", desc: "Browse local restaurants that deliver to you or offer click & collect" },
+  { icon: "restaurant_menu", title: "Build your order", desc: "Add your dishes, customize the options and choose how you'll receive it" },
+  { icon: "payments", title: "Pay", desc: "Pay online by card — your money is secured until delivery" },
+  { icon: "two_wheeler", title: "Track the order", desc: "Get real-time notifications: accepted, being prepared, on the way" }
+]} />
 
-You choose a local restaurant, build your basket with the dishes and options you want, then pay online. Your order is transmitted instantly to the restaurant, which prepares it while you track its progress — from the kitchen to your door or the pickup counter.
+<Eyebrow icon="bolt">The essentials</Eyebrow>
 
----
+## In brief
 
-## How it works
+<Essentials title="If you only remember one thing:" items={[
+  <>Grubano takes a <b>commission of 5% to 12% depending on the mode</b> (dine-in 5%, click & collect 8%, delivery 12%), never on delivery fees or tips</>,
+  <>You track your order <b>in real time</b> — from the moment the restaurant accepts it through to delivery, with a unique tracking link</>,
+  <>Secure online payment: <b>your money stays held</b> until delivery is confirmed — you only pay for what you receive</>
+]} />
 
-Grubano directly connects local restaurants (which cook in their own kitchens) to customers. Each order goes through four stages: you find an open and active establishment, you customize your dishes (size, extras, exclusions), you pay online, then the restaurant receives your order and prepares it. You choose between home delivery or on-site pickup — in both cases, you know in real time where your meal is.
+<Eyebrow icon="lightbulb">How it works</Eyebrow>
 
-[Loyalty](/en/guides/consumer-loyalty/) rewards every euro spent (excluding fees) with one point, which you can use on your next orders. Your information is stored in your [account](/en/guides/consumer-account/) to speed up your future visits.
+## The principle (and the why)
 
----
+Grubano connects **local** restaurants — the ones that cook in their own kitchen — with customers in their neighborhood. You order directly from the restaurant owner, who keeps [their customer relationship and loyalty](/en/guides/consumer-loyalty/) in the app. Real-time tracking works for all three modes: **delivery** (a courier brings you the order), **click & collect** (you pick it up at the restaurant), or **dine-in** (you eat at the table). Each mode has its own commission — the restaurant owner keeps the rest.
 
-## Step by step
+Status transparency (received, preparing, ready, on the way, delivered) ensures you're always kept informed. If a restaurant is closed when you order, the app shows you the next opening time and blocks checkout — so you can never place an order that goes nowhere.
+
+<Eyebrow icon="format_list_numbered">Step by step</Eyebrow>
+
+## Place and track an order
 
 <Steps>
 
 ### Find a restaurant
 
-Browse active restaurants near you, filter by cuisine (Italian, Asian, burgers…) or search by name. The map displays the average rating, preparation time and delivery fees for each establishment. A restaurant closed outside its opening hours tells you when it will reopen.
+Browse the map or the list of open restaurants. They show their **estimated delivery time**, their **rating** and their **minimum order**. You can filter by cuisine type and sort by rating or time.
 
-### Build your basket
+### Build your cart
 
-Add the dishes you like. For each item, choose the size (Small, Medium, Large), check the paid extras (cheese, bacon, avocado…), select free exclusions (no onion, gluten-free…) and leave a preparation note if necessary. The total updates live; options are saved line by line, so ordering the same dish twice with different toppings creates two distinct lines.
+Add the dishes you like. For each dish, customize the **options** (size, extras, exclusions) and leave a **note** if needed. The cart calculates the total in real time — dish subtotal, delivery fees and any discounts.
 
-### Choose delivery or pickup
+### Choose how to receive your order
 
-Switch between **Delivery** (to your address, fees displayed) and **On-site pickup** (no fees, collection at the restaurant counter). For pickup, the basket displays the establishment’s address and the time your order will be ready; for delivery, you enter your full address. If the address is outside the restaurant’s delivery zone, the order is rejected before payment.
+At the top of the cart, switch between **🛵 Delivery** and **🥡 Click & collect**. Click & collect removes the delivery fees and shows the restaurant's address. Delivery shows your saved address — change it if needed in [your account](/en/guides/consumer-account/).
 
 ### Pay online
 
-The summary details the subtotal (your dishes), delivery fees (or €0 for pickup), any active discount (restaurant promo code, welcome discount on your first referred order) and the final amount. You can spend your accumulated loyalty points — the corresponding euro credit is deducted from the total, within a cap that preserves the platform’s balance. Payment by bank card immediately triggers transmission to the restaurant; "cash" or "wallet" methods (legacy) also transmit the order without delay.
+Check out. Your card is charged immediately, but the money stays **held** until delivery is confirmed — that's a safety guarantee. If the order is cancelled, you get a **full refund**.
 
-### Track the order
+### Track in real time
 
-As soon as payment is validated, your order appears in history with its real-time status: **Received** (the restaurant has just been notified), **Preparing** (the kitchen is working), **Ready** (to be picked up or waiting for the delivery driver), **Picked up** (the driver has taken it or you have collected it) and finally **Delivered** (completed). A tracking link lets you visualize progress; the restaurant updates each stage from its dashboard. You receive an estimated delivery time as soon as payment is confirmed.
+As soon as the restaurant accepts, you receive a notification. The statuses follow one after another: **Preparing** → **Ready** → **On the way** (delivery) or **Picked up** (click & collect) → **Delivered**. A unique tracking link lets you refresh the page at any time.
+
+### Confirm receipt
+
+When the status changes to **Delivered**, the money is released to the restaurant owner. You earn **loyalty points** (1 point per euro spent) that you can spend on your next orders.
 
 </Steps>
 
----
+<Eyebrow icon="calculate">Concrete example</Eyebrow>
 
-## Concrete example
+## A €25 delivery order
 
-You are looking for an Asian restaurant open at 7:30 PM on a Tuesday. Grubano displays three active establishments within a 5 km radius, with their ratings and times. You choose one rated 4.6 stars, add a bowl of ramen (Medium size + marinated egg extra + no green onions) and a mochi dessert. The basket shows €16.50 + €1.99 delivery. You switch to **On-site pickup**: fees drop to €0, total €16.50, ready in 20 minutes. You confirm, pay by card, and the order instantly goes to "Received" status on the restaurant side. Fifteen minutes later, it switches to "Ready" — you leave to pick it up at the indicated address, and once there the restaurant marks it "Picked up", then "Delivered" when you leave. You earn 16 loyalty points (one per euro spent on dishes and delivery).
+Let's say you order €25 of dishes from a local restaurant, for **delivery**. The restaurant shows a delivery fee of €1.99. No active promotion.
 
----
+<Breakdown title="Order breakdown" rows={[
+  { icon: "restaurant_menu", label: "Dishes ordered", value: "€25.00" },
+  { icon: "local_shipping", label: "Delivery fee", value: "€1.99" },
+  { icon: "payments", label: "Total to pay", value: "€26.99", variant: "total" }
+]} />
 
-## Best practices
+Behind the scenes, Grubano takes a **12% commission on the €25 of dishes** (i.e. €3), never on the delivery fee. The restaurant therefore collects **€22 + €1.99 = €23.99** net. If you had chosen **click & collect**, the commission would have been 8% (€2) and the delivery fee €0, for a total of **€25 to pay** and **€23 net** for the restaurant. Courier tips are passed on in full — **100%**.
 
-- **Check the hours**: a restaurant displayed as closed tells you precisely when it will reopen ("Opens tomorrow at 11:30 AM"). Ordering during an open time slot guarantees immediate preparation.
-- **Review your options**: size, extras and exclusions are fixed when added — modifying a line afterwards requires deleting and recreating it. Take time to check everything before confirming.
-- **Use your points wisely**: loyalty credit is deducted from the final total, but a cap (linked to the net margin available on this order) may limit the discount. On a small order, save your points for a larger basket to maximize their value.
-- **Choose pickup when possible**: no delivery fees, no driver wait time, and you control the collection time. Ideal for short trips or lunch breaks.
+This example is illustrative — each restaurant sets its own minimum order and delivery fees.
 
----
+<Eyebrow icon="check_circle">Best practices</Eyebrow>
+
+## Order smart
+
+<Callout type="default">
+
+- **Check the hours** — the app shows the next opening time if the restaurant is closed, but you save time by checking the slots before building your order.
+- **Compare delivery and click & collect** — click & collect removes the delivery fees and lowers the commission (so it supports the restaurant owner more).
+- **Use your points** — 1 point = 1 cent of loyalty credit. If you have enough, turn on "Use my points" in the cart to reduce the final amount.
+- **Leave clear notes** — specify your exclusions ("no onion") or your preferences in the dish's free-text field — the restaurant will see them.
+
+</Callout>
+
+<Eyebrow icon="error">Mistakes to avoid</Eyebrow>
+
+## Common pitfalls
+
+<Callout type="error">
+
+- **Ordering below the minimum** — if the subtotal doesn't reach the restaurant's threshold, checkout is blocked. Add a dish or choose another restaurant.
+- **Changing the address after checkout** — once the order is on its way, you can no longer change the destination. Check **before** paying.
+- **Ignoring the statuses** — if an order stays stuck on "Received" for a long time, contact the restaurant (number shown on its page). Tracking is there to alert you.
+
+</Callout>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
 
 ## Frequently asked questions
 
 <Faq items={[
   {
-    icon: "help",
-    q: "Can I cancel or modify my order after payment?",
-    a: "A paid order is transmitted immediately to the restaurant, which begins preparation. Any cancellation or modification must be done directly with the establishment (contact details in your history). Grubano cannot remove a dish already in the kitchen.",
+    icon: "schedule",
+    q: "Can I order for later?",
+    a: "Not yet — all orders are prepared immediately. Time scheduling (“Deliver at 7:30 PM”) is coming soon."
   },
   {
-    icon: "help",
-    q: "What happens if the restaurant refuses my order?",
-    a: "The restaurant can mark an order as “Cancelled” (out of stock, unexpected closure). You are notified immediately and the amount paid is fully refunded to your payment method. Loyalty points are not debited in this case.",
+    icon: "payments",
+    q: "When am I charged?",
+    a: "Your card is charged as soon as you check out, but the money stays held until the restaurant confirms delivery. In case of cancellation, you get a full refund."
   },
   {
-    icon: "help",
-    q: "Are my loyalty points deducted automatically?",
-    a: "No. You must check “Use my points” in the basket for the corresponding credit to apply. The server calculates the maximum usable amount (never more than the available balance, nor more than this order’s cap) and deducts this amount from the total. Points are debited from your account only when payment is confirmed.",
+    icon: "loyalty",
+    q: "How many points do I earn?",
+    a: "1 point per euro actually spent (on the total after discounts). Delivery fees count too. The points appear in your balance as soon as delivery is confirmed."
   },
   {
-    icon: "help",
-    q: "Why does my order remain in “Pending payment” status?",
-    a: "An order by bank card is created in this state and only becomes visible to the restaurant once payment is confirmed by Stripe (webhook). If payment fails or expires, the order will never be transmitted. Check that your card is valid and that the amount has not been blocked; if in doubt, reorder.",
-  },
+    icon: "local_shipping",
+    q: "Can the restaurant cancel my order?",
+    a: "Yes, if a dish is out of stock or something unexpected happens. You are refunded right away and notified in the app. The status changes to “Cancelled”."
+  }
 ]} />
 
----
+<Eyebrow icon="menu_book">Going further</Eyebrow>
 
-## Go further
+## Related articles
 
-- [Loyalty](/en/guides/consumer-loyalty/) — Accumulate and spend your points on each order, discover how the rewards program works and the credit caps.
-- [Account](/en/guides/consumer-account/) — Manage your saved delivery addresses, view complete order history and update your payment preferences.
+<RelatedCards items={[
+  {
+    icon: "loyalty",
+    title: "Loyalty, credit & referral",
+    sub: "Points and referral",
+    href: "/en/guides/consumer-loyalty/"
+  },
+  {
+    icon: "person",
+    title: "My account",
+    sub: "Profile and addresses",
+    href: "/en/guides/consumer-account/"
+  },
+  {
+    icon: "insights",
+    title: "Dashboard",
+    sub: "Live metrics",
+    href: "/en/guides/restaurant/"
+  },
+  {
+    icon: "menu_book",
+    title: "Menu & AI Scan",
+    sub: "Menu and AI Scan",
+    href: "/en/guides/menu/"
+  }
+]} />

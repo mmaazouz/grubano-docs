@@ -1,0 +1,168 @@
+---
+title: "Ordinare dai propri fornitori"
+description: "Trovare un fornitore sul marketplace Grubano, riempire il proprio carrello fino al minimo d’ordine, effettuare l’ordine senza pagamento online e seguire ogni fase fino alla consegna."
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# Ordinare dai propri fornitori
+
+Rifornite il vostro ristorante dal marketplace Grubano: cercate un fornitore per prodotto o per zona, riempite il vostro carrello fino al minimo d’ordine, poi seguite ogni ordine dall’invio alla consegna.
+
+<ArticleMeta audience="Ristoratori" minutes={4} updated="2026-07-12" />
+
+<Eyebrow icon="insights">Panoramica</Eyebrow>
+
+## Dalla ricerca alla consegna
+
+<FlowDiagram steps={[
+  { icon: "storefront", title: "Trovare un fornitore", desc: "Ricerca per prodotto, zona e minimo" },
+  { icon: "shopping_cart", title: "Riempire il carrello", desc: "Avanzamento verso il minimo d’ordine" },
+  { icon: "send", title: "Effettuare l’ordine", desc: "Data desiderata e note, senza pagamento online" },
+  { icon: "local_shipping", title: "Seguire la consegna", desc: "Cronologia dall’invio alla ricezione" }
+]} />
+
+<Eyebrow icon="bolt">L’essenziale</Eyebrow>
+
+## In breve
+
+<Essentials title="Se dovete ricordare solo questo:" items={[
+  <>Il <b>marketplace fornitori</b> è riservato ai ristoratori: vedete solo fornitori attivi e articoli disponibili, con città, minimo d’ordine e tempi indicati in anticipo</>,
+  <>Il <b>carrello</b> si riempie fornitore per fornitore nel vostro browser; nulla viene ordinato né addebitato finché non confermate — i prezzi che fanno fede sono sempre quelli del server</>,
+  <>Il <b>minimo d’ordine</b> viene verificato due volte (a schermo e dal server) e ogni ordine segue una cronologia — inviato, confermato, in preparazione, consegnato — annullabile finché non è confermato</>
+]} />
+
+<Eyebrow icon="lightbulb">Come funziona</Eyebrow>
+
+## Il principio (e il perché)
+
+Il marketplace fornitori è un circuito di approvvigionamento **professionale**, distinto dalla vostra rubrica di fornitori privata e dagli ordini dei vostri clienti. Mostra solo fornitori **attivi** con catalogo verificato, e unicamente i loro articoli **disponibili**. Ogni scheda indica la città, le categorie di prodotti, il numero di prodotti, il tempo di consegna e il minimo d’ordine; le zone di consegna dettagliate compaiono aprendo la scheda del fornitore.
+
+Al momento della conferma, il vostro browser non invia **alcun importo**: il server ricalcola tutto a partire dai prezzi del catalogo e congela ogni riga (nome, unità, prezzo in centesimi) in un’istantanea immutabile. L’invio dell’ordine non attiva alcun pagamento online, e questo circuito non attiva né punti fedeltà, né promozioni, né passaparola — è un flusso separato dal percorso del cliente.
+
+<Eyebrow icon="format_list_numbered">Passo dopo passo</Eyebrow>
+
+## Effettuare il primo ordine fornitore
+
+<Steps>
+
+### Aprite il marketplace
+
+Dal vostro [pannello di controllo](/it/guides/restaurant/), aprite il **marketplace fornitori**. Ogni scheda mostra il nome del fornitore, la sua città, le sue categorie di prodotti, il suo numero di prodotti, il suo tempo di consegna e — se ne ha fissato uno — il suo minimo d’ordine.
+
+### Cercate per prodotto
+
+Il campo di ricerca filtra l’elenco ai fornitori che offrono un **articolo disponibile** corrispondente a quanto digitate (« mozzarella », « farina »…). Gli articoli trovati compaiono direttamente sulla scheda del fornitore interessato, evitandovi di aprire ogni catalogo.
+
+### Sfogliate il catalogo
+
+Aprite la scheda di un fornitore per consultare il suo catalogo completo. Un badge **« Consegna nella tua zona »** compare quando la città del vostro ristorante corrisponde alle zone di consegna dichiarate dal fornitore. Gli articoli momentaneamente non disponibili sono in grigio e non possono essere aggiunti al carrello.
+
+### Riempite il vostro carrello
+
+Regolate le quantità con i pulsanti + / −, filtrate per ricerca o per categoria di prodotti. Una barra in fondo allo schermo segue il vostro **avanzamento verso il minimo d’ordine** e mostra l’importo che resta da raggiungere: il pulsante « Vedi il carrello » si attiva solo quando il carrello contiene almeno un articolo **e** raggiunge il minimo. Il carrello viene conservato nel vostro browser, fornitore per fornitore — potete tornare più tardi senza perdere nulla.
+
+### Confermate l’ordine
+
+La schermata del carrello ricarica i prezzi **dal server** (sono questi a fare fede) e riepiloga le vostre righe. Scegliete una **data di consegna desiderata** tra cinque giorni consecutivi — la prima proposta parte da oggi più il tempo di preparazione del fornitore — e aggiungete se necessario una **nota** (fascia oraria, accesso, istruzioni… 1 000 caratteri al massimo). Alla conferma, l’ordine viene creato con lo stato **« inviato »**, senza alcun pagamento online.
+
+### Seguite, annullate o riordinate
+
+La pagina **Ordini** elenca i vostri ordini fornitori con schede per stato (tutti, inviati, confermati, in preparazione, consegnati) e i relativi contatori. Aprite un ordine per vederne la cronologia, le righe e il totale. Finché è « inviato », potete **annullarlo**; « Riordina » ricarica le stesse righe nel vostro carrello; « Contatta » apre direttamente il telefono o l’e-mail del fornitore.
+
+</Steps>
+
+<Eyebrow icon="calculate">Esempio concreto</Eyebrow>
+
+## Un ordine da un fruttivendolo
+
+Immaginiamo un fornitore di frutta e verdura con un minimo d’ordine di 120 € e un tempo di preparazione di 2 giorni. Riempite il vostro carrello:
+
+<Breakdown title="Riepilogo del carrello" rows={[
+  { icon: "shopping_basket", label: "Verdure di stagione — 12 kg", value: "54,00 €" },
+  { icon: "shopping_basket", label: "Erbe fresche — 20 mazzi", value: "24,00 €" },
+  { icon: "shopping_basket", label: "Agrumi — cartone da 10 kg", value: "48,00 €" },
+  { icon: "payments", label: "Totale — minimo di 120 € raggiunto", value: "126,00 €", variant: "total" }
+]} />
+
+A 96 €, la barra di avanzamento vi avrebbe indicato l’importo mancante; a 126 €, il pulsante si attiva. È mercoledì: con un tempo di 2 giorni, le date proposte vanno da venerdì a martedì. Alla conferma, ogni riga viene congelata: se il fornitore cambia le sue tariffe giovedì, il vostro ordine non ne tiene conto, e la cronologia mostrerà la vostra data desiderata come data « prevista » di consegna. Questo esempio è illustrativo; i vostri importi reali dipendono dal catalogo di ogni fornitore.
+
+<Eyebrow icon="check_circle">Buone pratiche</Eyebrow>
+
+## Ordinate senza attriti
+
+<Callout type="default">
+- **Verificate le zone e il minimo prima di riempire il carrello**: la scheda del fornitore li mostra fin da subito, e il badge « Consegna nella tua zona » conferma la corrispondenza con la città del vostro ristorante.
+- **Usate la nota dell’ordine** per le vostre istruzioni di ricezione (fascia oraria, accesso, banchina…): viene trasmessa al fornitore insieme all’ordine.
+- **Usate « Riordina »** per i vostri acquisti ricorrenti: le righe dell’ordine precedente vengono ricaricate nel carrello, e sia i prezzi sia le disponibilità vengono riverificati al momento della nuova conferma.
+- **Raggruppate le vostre esigenze** presso uno stesso fornitore per raggiungere il minimo in un solo ordine, e collegate le vostre ricezioni alla vostra [gestione delle scorte](/it/guides/stocks/) per mantenere un registro aggiornato.
+</Callout>
+
+<Eyebrow icon="error">Errori da evitare</Eyebrow>
+
+## Le insidie più comuni
+
+<Callout type="error">
+- **Confondere carrello e ordine**: il carrello vive nel vostro browser; finché non confermate, nulla viene inviato al fornitore — e non lo ritroverete su un altro dispositivo.
+- **Aspettare per annullare**: l’annullamento è possibile solo finché l’ordine è « inviato »; non appena il fornitore conferma, usate il pulsante « Contatta » per accordarvi direttamente.
+- **Cercare una marca temporale a ogni fase**: solo la fase « Ordine inviato » riporta un orario reale; le fasi successive indicano lo stato raggiunto, e la consegna mostra la vostra data desiderata come data prevista.
+- **Contare sui punti fedeltà**: gli ordini fornitori sono un circuito professionale separato — nessun punto, nessuna promozione, nessun passaparola vi si applica.
+</Callout>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
+
+## Domande frequenti
+
+<Faq items={[
+  {
+    icon: "schedule",
+    q: "Perché mi vengono proposte solo alcune date di consegna?",
+    a: "Le proposte di data partono da oggi più il tempo di preparazione dichiarato dal fornitore, su cinque giorni consecutivi. I giorni di chiusura del fornitore non vengono considerati in questa fase: se esiste un vincolo (mercato, giro di consegne…), specificatelo nella nota dell’ordine."
+  },
+  {
+    icon: "cancel",
+    q: "Posso annullare un ordine già confermato?",
+    a: "No. Potete annullare finché l’ordine è allo stato « inviato ». Una volta confermato dal fornitore, l’annullamento diretto non è più possibile: usate il pulsante « Contatta » (telefono o e-mail) per trovare un accordo. Il fornitore può da parte sua rifiutare un ordine inviato."
+  },
+  {
+    icon: "sell",
+    q: "I prezzi possono cambiare tra il mio ordine e la consegna?",
+    a: "No. Alla conferma, ogni riga viene congelata in un’istantanea immutabile: nome del prodotto, unità e prezzo in centesimi. Le successive variazioni di tariffa del fornitore si applicano solo agli ordini successivi — e se un articolo diventa non disponibile prima della vostra conferma, il server rifiuta l’ordine affinché possiate correggere il carrello."
+  },
+  {
+    icon: "payments",
+    q: "Come avviene il pagamento?",
+    a: "La conferma dell’ordine non attiva alcun pagamento online: pagate il vostro fornitore secondo le sue modalità abituali. Il pagamento online sicuro arriverà presto."
+  }
+]} />
+
+<Eyebrow icon="menu_book">Per approfondire</Eyebrow>
+
+## Articoli correlati
+
+<RelatedCards items={[
+  {
+    icon: "inventory_2",
+    title: "Gestione delle scorte",
+    sub: "Registro e avvisi",
+    href: "/it/guides/stocks/"
+  },
+  {
+    icon: "storefront",
+    title: "Pannello di controllo",
+    sub: "Indicatori in tempo reale",
+    href: "/it/guides/restaurant/"
+  },
+  {
+    icon: "account_balance",
+    title: "Finanze e versamenti",
+    sub: "Versamenti e rendiconti",
+    href: "/it/guides/finances/"
+  },
+  {
+    icon: "menu_book",
+    title: "Menù e scansione IA",
+    sub: "Creare il vostro menù",
+    href: "/it/guides/menu/"
+  }
+]} />

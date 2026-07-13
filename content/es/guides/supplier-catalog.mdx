@@ -1,101 +1,148 @@
 ---
 title: "Catálogo, zonas y pedidos"
-description: "Publique su catálogo y sus precios, defina sus zonas de entrega y su pedido mínimo, y reciba y procese los pedidos de los restaurantes."
+description: "Publique su catálogo y sus precios, defina sus zonas de entrega y su pedido mínimo, y luego reciba y procese los pedidos de los restauradores."
 generated: true
-sourceHash: b14ffa152f153b7f
+sourceHash: 4683fb1c25a236b6
 generator: scripts/generate-feature-page.js
-templateVersion: 5
+templateVersion: 6
 ---
 
 import { Steps, Callout } from 'nextra/components'
 
 # Catálogo, zonas y pedidos
 
-Publique su oferta de productos, defina sus condiciones de entrega y reciba los pedidos de los restaurantes de forma sencilla.
+Publique su catálogo y sus precios, defina sus zonas de entrega y su pedido mínimo, y luego reciba y procese los pedidos de los restauradores.
 
-<FlowDiagram steps={["Publicar el catálogo","Definir zonas y mínimo","Recibir un pedido","Procesar y entregar"]} />
+<ArticleMeta audience="Proveedores" minutes={4} updated="2026-07-10" />
 
-## Lo esencial
+<Eyebrow icon="insights">Vista general</Eyebrow>
 
-Su catálogo es el escaparate de su oferta: cada producto publicado se hace visible para los restaurantes de sus zonas de entrega. Usted define sus precios (mostrados en céntimos de euro), sus cantidades mínimas y sus plazos, y luego recibe los pedidos directamente en su panel de control. Todo está centralizado, usted mantiene el control.
+## Cuatro pasos para vender en línea
 
-## Cómo funciona
+<FlowDiagram steps={[
+  { icon:"menu_book", title:"Publicar el catálogo", desc:"Añada sus productos, precios y presentaciones" },
+  { icon:"local_shipping", title:"Definir zonas y mínimo", desc:"Perímetros de entrega y pedido mínimo" },
+  { icon:"shopping_bag", title:"Recibir un pedido", desc:"Un restaurador pide desde su catálogo" },
+  { icon:"check_circle", title:"Procesar y entregar", desc:"Prepare el pedido y organice la entrega" }
+]} />
 
-El catálogo de proveedor funciona como una tienda B2B: usted añade sus productos (nombre, precio unitario, acondicionamiento, alérgenos), define su zona de entrega (ciudades o sectores) y establece su pedido mínimo. En cuanto un restaurante realiza un pedido, este aparece en su panel de control con el resumen de las líneas, el total y los datos del cliente.
+<Eyebrow icon="bolt">Lo esencial</Eyebrow>
 
-Este sistema resuelve un problema clásico: la dispersión de las solicitudes por teléfono o correo electrónico. Aquí, cada pedido queda registrado, con marca de tiempo, resumido línea por línea — usted siempre sabe quién ha pedido qué, cuándo y para qué fecha de entrega deseada. Puede concentrarse en la preparación y la logística, la plataforma gestiona la trazabilidad.
+## En resumen
 
-## Paso a paso
+<Essentials title="Si solo debe recordar esto:" items={[
+  <>Su <b>catálogo</b> es privado: solo los restauradores activos acceden a él — usted controla sus productos, precios (en céntimos) y presentaciones.</>,
+  <>Las <b>zonas de entrega</b> y el <b>pedido mínimo</b> filtran las solicitudes: un restaurador fuera de zona o por debajo del umbral no puede pedir.</>,
+  <>Cada <b>pedido entrante</b> aparece en su espacio; usted ve el detalle de las líneas, el total y la fecha deseada — el pago llega <b>pronto</b> (proveedor de pago en proceso de activación).</>
+]} />
+
+<Eyebrow icon="lightbulb">Cómo funciona</Eyebrow>
+
+## El principio (y el porqué)
+
+Grubano conecta a los proveedores de suministros con los restauradores locales. A diferencia de un catálogo en papel o de un pedido por correo electrónico, su oferta en línea está **siempre actualizada**: cuando modifica un precio o marca un producto como no disponible, todos los restauradores lo ven de inmediato.
+
+Usted define sus **condiciones comerciales** una sola vez (zonas de entrega, pedido mínimo, plazo de preparación, condiciones de pago): los restauradores saben de antemano si pueden pedirle, y usted solo recibe solicitudes compatibles con su organización. El pago de los pedidos pasará por un proveedor de pago seguro — esta pieza llega **pronto**; mientras tanto, usted organiza el pago directamente con sus clientes.
+
+<Eyebrow icon="format_list_numbered">Paso a paso</Eyebrow>
+
+## Publicar su catálogo y recibir sus primeros pedidos
 
 <Steps>
 
-### Publique sus productos
+### Construya su catálogo
 
-Acceda a su espacio de proveedor y añada cada referencia: nombre, descripción, categoría (frescos, carne, pescado, lácteos, bebidas, alimentación seca, envases), precio unitario en euros, unidad de medida (kg, g, L, cL, pieza, caja, pack), acondicionamiento («caja de 6», «saco de 25 kg»), posibles alérgenos. El precio se convierte automáticamente en céntimos para garantizar la precisión. Puede marcar un producto como no disponible temporalmente sin retirarlo del catálogo.
+Acceda a su espacio de proveedor. Añada un producto: nombre, descripción (opcional), familia (carne, lácteos, ultramarinos…), **precio unitario en euros** (almacenado en céntimos por el sistema para evitar redondeos), unidad (kg, L, pieza, caja…), presentación (« caja de 6 », « saco de 5 kg »…). Marque **Disponible**; desmarque si hay rotura de stock. Puede indicar los alérgenos (opcional, norma INCO). Repita para cada referencia.
 
-### Defina sus condiciones comerciales
+### Defina su oferta comercial
 
-En su perfil, indique sus zonas de entrega (ciudades o códigos postales), su importe mínimo de pedido (en euros), su plazo de entrega (en días) y sus condiciones de pago. Esta información es visible para los restaurantes antes de que realicen un pedido — saben inmediatamente si están en su zona y si alcanzan el mínimo.
+Vaya a **Perfil**. Complete sus **zonas de entrega** (ciudades o zonas postales cubiertas), el **pedido mínimo** (importe en euros), el **plazo de preparación** (en días) y sus **condiciones de pago** (texto libre: transferencia, cheque, plazo…). Estos parámetros filtran a los restauradores: fuera de zona o por debajo del umbral, no verán el botón « Pedir ».
 
-### Reciba los pedidos
+### Reciba un pedido
 
-Cada vez que un restaurante valida un carrito en su tienda, un nuevo pedido aparece en su panel de control con el estado «Realizado». Usted ve el nombre del restaurante, su ciudad, la lista de líneas (producto, cantidad, precio unitario, subtotal), el importe total, las posibles notas y la fecha de entrega deseada.
+Un restaurador consulta su catálogo, añade líneas a su carrito y valida. Usted recibe el pedido en la pestaña **Pedidos**: ve el nombre del cliente, su ciudad, las líneas pedidas (producto, cantidad, precio unitario capturado en el momento del pedido), el total en céntimos, la fecha deseada y las posibles notas.
 
-### Haga seguimiento de sus clientes
+### Prepare y entregue
 
-La pestaña «Clientes» agrupa automáticamente todos los restaurantes que le han realizado al menos un pedido: para cada uno ve el número de pedidos, el importe total gastado (en céntimos) y la fecha del último pedido. Esto le ayuda a identificar a sus clientes habituales y anticipar sus necesidades.
+Prepare el pedido según su proceso habitual. Organice la entrega o la recogida con el restaurador (dirección y contacto mostrados en el detalle del pedido). El pago se realiza por ahora directamente entre ustedes — la pasarela de pago segura llega **pronto**.
 
 </Steps>
 
-<Callout type="info">
-**Próximamente**: el cambio de estado de los pedidos (confirmado, en preparación, entregado) estará disponible directamente desde su panel de control. Por ahora, los pedidos se registran con el estado «Realizado» y permanecen visibles en modo de solo lectura.
+<Eyebrow icon="check_circle">Buenas prácticas</Eyebrow>
+
+## Consejos para un catálogo eficaz
+
+<Callout type="default">
+- **Descripciones claras**: mencione el origen, el sello (ecológico, DOP…) o el formato (« bandeja de 500 g ») para eliminar cualquier ambigüedad.
+- **Categorías coherentes**: agrupe sus productos por familia (frescos, carne, pescado, bebidas…) para facilitar la navegación.
+- **Stock actualizado**: desmarque **Disponible** en cuanto un producto se agote — el restaurador no podrá añadirlo al carrito y usted evita las cancelaciones.
+- **Zonas realistas**: liste solo las áreas que realmente cubre; un pedido mínimo adaptado a sus gastos de envío reduce los carritos abandonados.
 </Callout>
 
-## Buenas prácticas
+<Eyebrow icon="error">Errores a evitar</Eyebrow>
 
-**Catálogo actualizado** — Marque como «no disponible» las referencias con rotura temporal en lugar de eliminarlas: conserva el historial y puede reactivarlas con un clic.
+## Los errores más comunes
 
-**Acondicionamiento claro** — Especifique siempre el acondicionamiento («caja de 12», «saco de 10 kg»): evita malentendidos sobre las cantidades pedidas.
-
-**Zonas realistas** — Liste únicamente los sectores que puede entregar en el plazo anunciado. Un restaurante que pide fuera de zona puede sentirse decepcionado si no puede cumplir la entrega.
-
-**Mínimo coherente** — Establezca un importe mínimo que cubra sus gastos de entrega: un umbral demasiado bajo puede hacer cada viaje no rentable, un umbral demasiado alto puede frenar a los pequeños establecimientos.
-
-## Errores frecuentes
-
-<Callout type="warning">
-**Precios en euros, almacenados en céntimos** — El formulario espera euros con decimales (ej. 12,50 €), pero la plataforma almacena y muestra los importes en céntimos (1 250). No introduzca directamente céntimos en el campo de precio, la conversión es automática.
+<Callout type="error">
+- **Olvidar los precios en céntimos**: usted introduce los precios en **euros** en el formulario (« 12,50 » para 12,50 €), pero el sistema los almacena en céntimos (1 250) para garantizar la precisión — no multiplique manualmente por 100.
+- **Zonas imprecisas**: « región parisina » es demasiado vago; prefiera « París 75001–75020, 92, 93, 94 » o una lista de ciudades precisa.
+- **Catálogo congelado**: si nunca actualiza sus precios o disponibilidades, los restauradores pedirán productos que ya no existen o a tarifas caducadas.
 </Callout>
 
-**Olvidar los alérgenos** — Si un producto contiene un alérgeno importante (gluten, lactosa, frutos secos…), indíquelo sistemáticamente. Los restaurantes deben poder informar a sus propios clientes; una omisión compromete su responsabilidad.
-
-**Catálogo vacío tras el registro** — Su perfil está activo desde la verificación de su SIREN, pero permanece invisible en el marketplace mientras no haya publicado ningún producto. Añada al menos una referencia para aparecer en las búsquedas de los restaurantes.
+<Eyebrow icon="quiz">FAQ</Eyebrow>
 
 ## Preguntas frecuentes
 
 <Faq items={[
   {
-    icon: "help",
-    q: "¿Puedo modificar el precio de un producto ya pedido?",
-    a: "No: cada línea de pedido registra el precio en el momento de la validación (snapshot). Modificar el precio del catálogo solo afecta a los nuevos pedidos. El historial permanece fijo para garantizar la trazabilidad."
+    icon:"percent",
+    q:"¿Grubano cobra una comisión sobre mis ventas?",
+    a:"Las condiciones financieras entre proveedores y Grubano se fijan en el momento de la apertura de su cuenta. El pago de los pedidos por parte de los restauradores pasará por un proveedor de pago seguro — esta funcionalidad llega pronto."
   },
   {
-    icon: "help",
-    q: "¿Cómo saber si un pedido ha sido pagado?",
-    a: "El pago de los pedidos a proveedores se activará próximamente a través de un proveedor de pagos. Por ahora, los pedidos se registran sin transacción financiera — las condiciones de pago (inmediato, 30 días…) deben acordarse directamente con cada restaurante."
+    icon:"local_shipping",
+    q:"¿Quién se encarga de la entrega?",
+    a:"Usted organiza la entrega o la recogida según sus condiciones comerciales (indicadas en « Condiciones de pago »). Grubano no gestiona el transporte para los pedidos de proveedores — usted trata directamente con el restaurador."
   },
   {
-    icon: "help",
-    q: "¿Puede realizar un pedido un restaurante fuera de mi zona?",
-    a: "No: el marketplace solo propone su catálogo a los restaurantes ubicados en las zonas que usted ha declarado. Si amplía su perímetro, actualice la lista en su perfil."
+    icon:"shopping_bag",
+    q:"¿Puede un restaurador pedir por debajo de mi mínimo?",
+    a:"No: el sistema compara el importe del carrito con el mínimo que usted ha fijado. Si el total es inferior, el botón « Pedir » permanece desactivado y el restaurador ve el umbral que debe alcanzar."
   },
   {
-    icon: "help",
-    q: "¿Qué ocurre si elimino un producto ya pedido?",
-    a: "Las líneas de pedidos realizados conservan el nombre y la unidad del producto (snapshot) incluso después de eliminarlo del catálogo. Simplemente pierde el enlace directo a la ficha del producto, pero el historial permanece legible."
+    icon:"update",
+    q:"¿Puedo modificar un precio después de que un restaurador haya pedido?",
+    a:"Sí, pero el pedido ya realizado conserva el precio capturado en el momento de la validación (snapshot). Sus nuevas tarifas se aplican a los próximos pedidos — las líneas de un pedido existente nunca cambian."
   }
 ]} />
 
-## Para profundizar
+<Eyebrow icon="menu_book">Para saber más</Eyebrow>
 
-**Guía completa del proveedor** — Descubra el recorrido completo del proveedor, desde el registro hasta la gestión de clientes: [Guía del proveedor](/es/guides/supplier/).
+## Artículos relacionados
+
+<RelatedCards items={[
+  {
+    icon: "storefront",
+    title: "Vender sus suministros",
+    sub: "Vender a los restaurantes",
+    href: "/es/guides/supplier/"
+  },
+  {
+    icon: "inventory_2",
+    title: "Gestión de stock",
+    sub: "Diario y alertas",
+    href: "/es/guides/stocks/"
+  },
+  {
+    icon: "shopping_bag",
+    title: "Pedir y seguir",
+    sub: "Pedir y seguir",
+    href: "/es/guides/consumer/"
+  },
+  {
+    icon: "loyalty",
+    title: "Fidelidad, saldo y recomendación",
+    sub: "Puntos y recomendación",
+    href: "/es/guides/consumer-loyalty/"
+  }
+]} />

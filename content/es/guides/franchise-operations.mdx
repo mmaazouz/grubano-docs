@@ -1,86 +1,131 @@
 ---
 title: "Gestionar su red"
-description: "Gestionar una red de franquicia: varios puntos de venta, seguimiento de las regalías adeudadas y reporting consolidado — dentro de los límites fijados por Grubano."
+description: "Gestionar una red de franquicia: varios puntos de venta, seguimiento de las regalías debidas e informes consolidados, dentro de los límites fijados por Grubano."
 generated: true
-sourceHash: 3671b12687b14450
+sourceHash: f763ab5bbbf6c698
 generator: scripts/generate-feature-page.js
-templateVersion: 5
+templateVersion: 6
 ---
 
 import { Steps, Callout } from 'nextra/components'
 
 # Gestionar su red
 
-Siga el rendimiento de sus establecimientos franquiciados, verifique las regalías acumuladas y consolide sus informes — todo desde un solo panel de control.
+Siga su red de franquicia — facturación consolidada, regalías debidas e informes por restaurante — dentro de los límites fijados por Grubano.
 
-<FlowDiagram steps={["Puntos de venta","CA de la red","Regalías","Reporting"]} />
+<ArticleMeta audience="Franquiciados" minutes={3} updated="2026-07-10" />
 
-## Lo esencial
+<Eyebrow icon="insights">Vista general</Eyebrow>
 
-Cuando se convierte en franquiciador en Grubano, accede a un panel de control dedicado que agrega las ventas de todos sus establecimientos franquiciados, calcula las regalías adeudadas dentro de los límites fijados por Grubano, y le permite seguir la salud de su red en tiempo real.
+## El recorrido de su dinero
 
-## Cómo funciona
+<FlowDiagram steps={[
+  { icon: "storefront", title: "Puntos de venta", desc: "Sus restaurantes cobran los pedidos" },
+  { icon: "account_balance_wallet", title: "Facturación de la red", desc: "Facturación consolidada en 30 días móviles" },
+  { icon: "percent", title: "Regalías", desc: "Parte deducida de la facturación de cada restaurante" },
+  { icon: "description", title: "Informes", desc: "Seguimiento consolidado e historial de los pagos" }
+]} />
 
-Cada punto de venta vinculado a su marca registra sus pedidos en el sistema Grubano. El panel de control del franquiciador consolida automáticamente estos datos en una ventana móvil de 30 días: cifra de negocio por establecimiento, número de pedidos, regalías acumuladas. Así puede ver de un vistazo qué establecimientos tienen mejor rendimiento, cuánto debe percibir, y dónde concentrar su acompañamiento. Las condiciones financieras (tasa de regalías, gastos de apertura, zonas de exclusividad) se fijan entre las partes interesadas; el panel de control aplica estos parámetros para calcular los importes adeudados.
+<Eyebrow icon="bolt">Lo esencial</Eyebrow>
 
-## Paso a paso
+## En resumen
+
+<Essentials title="Si solo debe recordar esto:" items={[
+  <>El <b>panel de control de franquicia</b> consolida la facturación de todos sus restaurantes en una ventana móvil de 30 días</>,
+  <>Las <b>regalías se calculan</b> automáticamente sobre la facturación de cada punto de venta, dentro de los límites fijados por Grubano</>,
+  <>El <b>historial de los pagos</b> registra las regalías acumuladas, en liquidación y liquidadas, por restaurante</>
+]} />
+
+<Eyebrow icon="lightbulb">Cómo funciona</Eyebrow>
+
+## El principio (y el porqué)
+
+Cuando gestiona varios restaurantes en [franquicia](/es/guides/franchise/), Grubano agrega el rendimiento de cada punto de venta en un único panel de control. Allí ve la facturación consolidada de los últimos 30 días, el número de pedidos entregados y el importe de regalías debido. Cada restaurante aparece con su nombre, su ciudad, su propia facturación y el detalle de sus regalías — así puede comparar el rendimiento e identificar los puntos de venta más activos.
+
+El cálculo y el cobro automatizados de las regalías llegarán pronto: cada pedido entregado generará un canon según una tasa definida con usted en el momento de la apertura. El panel de control ya registra tres importes distintos: las regalías **acumuladas** (el total de todos los periodos), **en liquidación** (un lote que estará en curso de transferencia) y **liquidadas** (los pagos efectuados, una vez activado el mecanismo). Esta separación garantizará que ningún importe se cuente dos veces y que cada pago siga siendo rastreable.
+
+<Eyebrow icon="format_list_numbered">Paso a paso</Eyebrow>
+
+## Consultar los informes consolidados
 
 <Steps>
 
-### Acceda al panel de control
+### Acceda al panel de control de franquicia
 
-Inicie sesión con su cuenta de franquiciador, luego diríjase al espacio **Franquicia** → **Vista general**. Allí encontrará el resumen de la red: número de establecimientos activos, ciudades cubiertas, candidaturas pendientes.
+En su espacio, haga clic en **Vista general** en la barra lateral. Verá de inmediato la facturación de la red de los últimos 30 días, comparada con el periodo anterior (d-60 → d-30).
 
-### Consulte el rendimiento por establecimiento
+### Recorra la lista de sus restaurantes
 
-La sección "Establecimientos" enumera todos los puntos de venta franquiciados: nombre, ciudad, cifra de negocio en 30 días, número de pedidos. Los establecimientos se clasifican por ingresos decrecientes, lo que hace destacar inmediatamente las locomotoras de la red y los sitios que necesitan acompañamiento.
+Cada punto de venta aparece con su nombre, su ciudad, su facturación de 30 días, el número de pedidos entregados y el importe de regalías correspondiente. La lista está ordenada por fecha de apertura.
 
-### Verifique las regalías
+### Consulte el resumen financiero
 
-El bloque "Regalías" muestra tres importes:  
-— **Acumuladas**: la suma total de las regalías registradas desde el origen;  
-— **Pendientes**: lo que aún no se ha abonado;  
-— **Abonadas**: el histórico de los pagos ya efectuados.  
-Cuando el mecanismo de cobro automático está activado en la plataforma, estas líneas se calculan pedido por pedido; en caso contrario, los importes permanecen en cero y el seguimiento se realiza manualmente.
+El banner superior muestra tres totales: **regalías acumuladas** (el acumulado desde el inicio), **regalías en liquidación** (un lote en preparación para su transferencia) y **regalías liquidadas** (los pagos finalizados — los importes permanecerán en cero mientras el pago automatizado no esté activado).
 
-### Explore la actividad reciente
+### Verifique el historial de los pagos
 
-La línea de tiempo en la parte inferior de la página enumera los eventos destacados: aperturas de establecimientos, hitos de cifra de negocio. Le ayuda a identificar las tendencias (crecimiento rápido en una zona, desaceleración en otra parte) y a anticipar las necesidades de acompañamiento.
+La página **Finanzas** (accesible desde la barra lateral) listará cada pago efectuado, con su fecha, su importe y su estado, en cuanto se active el pago automatizado (pronto). Allí encuentra ya hoy el desglose de las regalías por restaurante.
 
 </Steps>
 
-## Buenas prácticas
+<Eyebrow icon="check_circle">Buenas prácticas</Eyebrow>
 
-**Compare el rendimiento en el mismo horario** — Los restaurantes del centro de la ciudad y los de zona periurbana no tienen las mismas horas punta; ajuste sus expectativas teniendo en cuenta el perfil de cada establecimiento.
+## Optimizar el seguimiento
 
-**Identifique las mejores prácticas locales** — Si un establecimiento muestra un ticket medio notablemente superior a la media de la red, analice su menú o su estrategia promocional para replicarla en otros lugares.
+<Callout type="default">
+- **Compare los restaurantes** — identifique los puntos de venta con mejor rendimiento y los que necesitan acompañamiento.
+- **Vigile las tendencias** — el delta entre los dos periodos de 30 días revela un crecimiento o una ralentización de la red.
+- **Verifique los pagos** — una vez activado el pago automatizado, el historial de las regalías liquidadas servirá de justificante para su contabilidad.
+</Callout>
 
-**Supervise las candidaturas pendientes** — Un tiempo de procesamiento demasiado largo puede desanimar a candidatos serios; consulte regularmente el contador de candidaturas y procéselas en plazos razonables.
+<Eyebrow icon="error">Errores a evitar</Eyebrow>
 
-## Ejemplo concreto
+## Los errores más comunes
 
-Imaginemos que su marca cuenta con cinco establecimientos en Vaucluse. El panel de control muestra una cifra de negocio consolidada de 38 500 € en los últimos treinta días, frente a 34 200 € del periodo anterior — es decir, un crecimiento de +12,6 %. Observa que Aviñón genera 14 000 € por sí solo, mientras que Carpentras se estanca en 4 500 €. Al investigar, descubre que Carpentras no activa la recogida en el local y cierra los domingos. Llama al franquiciado para sugerirle abrir el domingo al mediodía y activar el pickup: dos palancas simples que, desplegadas en Aviñón, precisamente impulsaron la cifra de negocio local.
+<Callout type="error">
+- **No confunda ventana móvil y mes natural** — la tabla muestra los últimos 30 días a partir de hoy, no el mes en curso. Un pedido del 5 de abril sigue contándose hasta el 4 de mayo.
+- **No sume acumuladas + en liquidación + liquidadas** — estos tres importes son etapas de un mismo flujo; solo las regalías acumuladas representan el total de todos los periodos.
+- **No intente modificar la tasa** — las condiciones financieras se fijan entre los actores implicados; contacte con Grubano para cualquier revisión contractual.
+</Callout>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
 
 ## Preguntas frecuentes
 
 <Faq items={[
-  {
-    icon: 'help',
-    q: '¿Puedo ver el detalle de los pedidos de cada establecimiento?',
-    a: 'No. El panel de control del franquiciador muestra los agregados (CA, número de pedidos, regalías) para preservar la confidencialidad operativa de cada franquiciado. Si necesita un diagnóstico más detallado, contacte directamente con el explotador correspondiente.'
-  },
-  {
-    icon: 'help',
-    q: '¿Qué sucede si un establecimiento cierra temporalmente?',
-    a: 'Un punto de venta marcado como inactivo desaparece del contador "establecimientos abiertos" pero permanece visible en el histórico. Sus pedidos pasados continúan figurando en los totales acumulados; sin embargo, no genera nuevas regalías mientras esté cerrado.'
-  },
-  {
-    icon: 'help',
-    q: '¿Las regalías tienen en cuenta los reembolsos?',
-    a: 'Sí, está previsto: cuando el mecanismo de regalías esté activado, todo pedido reembolsado parcial o totalmente verá su regalía ajustada proporcionalmente al importe reembolsado. El saldo "pendiente" reflejará así siempre la parte neta adeudada.'
-  }
+  { icon: "schedule", q: "¿Por qué una ventana de 30 días y no el mes en curso?", a: "Una ventana móvil suaviza las variaciones ligadas al calendario (meses de 28, 30 o 31 días, festivos) y muestra siempre un periodo completo, lo que hace que las comparaciones sean más fiables." },
+  { icon: "percent", q: "¿La tasa de regalías es la misma para todos mis restaurantes?", a: "Depende de su contrato. Cuando una sola tasa se aplica a todas sus marcas franquiciadas, el panel de control la muestra en la parte superior de la página; si varía, aparece un guion (—) en su lugar." },
+  { icon: "payments", q: "¿Cuándo se pagan las regalías en liquidación?", a: "El pago automatizado llegará pronto. Al activarse, las regalías pasarán de «acumuladas» a «en liquidación» durante un lote de pago, y luego a «liquidadas» una vez confirmada la transferencia, según las condiciones fijadas con Grubano." },
+  { icon: "storefront", q: "¿Un restaurante cerrado temporalmente aparece en la tabla?", a: "Solo los restaurantes activos se listan en la vista principal. Puede consultar el número total de restaurantes (abiertos + cerrados) y el desglose por ciudad en las estadísticas de la red." }
 ]} />
 
-## Para ir más allá
+<Eyebrow icon="menu_book">Para ir más allá</Eyebrow>
 
-**Contexto** — Descubra cómo funciona el modelo de [franquicia](/es/guides/franchise/) en Grubano: apertura de puntos de venta, gestión de candidaturas, mecanismos de regalías.
+## Artículos relacionados
+
+<RelatedCards items={[
+  {
+    icon: "hub",
+    title: "La franquicia en Grubano",
+    sub: "El modelo Grubano",
+    href: "/es/guides/franchise/"
+  },
+  {
+    icon: "payments",
+    title: "Finanzas y pagos",
+    sub: "Comisión y transferencias",
+    href: "/es/guides/finances/"
+  },
+  {
+    icon: "shopping_bag",
+    title: "Pedir y seguir",
+    sub: "Pedir y seguir",
+    href: "/es/guides/consumer/"
+  },
+  {
+    icon: "loyalty",
+    title: "Fidelidad, monedero y recomendación",
+    sub: "Puntos y recomendación",
+    href: "/es/guides/consumer-loyalty/"
+  }
+]} />

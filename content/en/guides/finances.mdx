@@ -1,119 +1,197 @@
 ---
-title: "Finances & Payouts"
-description: "Understanding your Grubano finances: 10% commission per order, payout schedule, gross/commission/net breakdown, and DAC7 reporting."
+title: "Finances & payouts"
+description: "Understand your Grubano finances: commission by mode (5 to 12%), payout schedule, gross/commission/net breakdown, and DAC7 reporting."
 generated: true
-sourceHash: 786e621b2b34ea5c
+sourceHash: 304d44d35710cdf9
 generator: scripts/generate-feature-page.js
-templateVersion: 5
+templateVersion: 6
 ---
 
 import { Steps, Callout } from 'nextra/components'
 
-# Finances & Payouts
+# Finances & payouts
 
-Track your revenue in real time, understand the 10% commission, and review your payouts: everything is transparent.
+Track your revenue in real time, understand the commission by mode, and review the history of every financial transaction.
 
-<FlowDiagram steps={["Order paid","10% Commission","Payout","Statement & DAC7"]} />
+<ArticleMeta audience="Restaurants" minutes={5} updated="2026-07-12" />
 
-## The essentials
+<Eyebrow icon="insights">Overview</Eyebrow>
 
-Every paid order generates a direct payout to your bank account, less the Grubano commission of 10%. You can view the gross / commission / net breakdown in your [dashboard](/en/guides/restaurant/), and you receive a monthly statement for your accounting and DAC7 reporting.
+## Where your money travels
 
-## How it works
+<FlowDiagram steps={[
+  { icon: "receipt_long", title: "Order paid", desc: "The customer pays for their order by card" },
+  { icon: "percent", title: "Commission deducted", desc: "5 to 12% depending on the mode" },
+  { icon: "account_balance", title: "Automatic payout", desc: "Transfer within 2 to 7 days" },
+  { icon: "description", title: "Statement & DAC7", desc: "Consolidated tax reporting" }
+]} />
 
-Grubano applies a **single commission of 10%** on the revenue you generate through the platform — regardless of the channel (dine-in, takeaway, delivery, reservation). This commission covers the technical infrastructure, marketing, payment processing, and support. The remaining 90% is paid directly to you, day by day, to the bank account you provided when you signed up.
+<Eyebrow icon="bolt">The essentials</Eyebrow>
 
-The model is simple: you see the gross amount of each order, the commission deducted, and the net amount paid to you. No hidden fees, no surprises. You remain the owner of your customer data, and payouts are processed automatically without any action required on your part.
+## In short
 
-At the end of each month, you receive a detailed statement — useful for your accountant and to fulfill your tax obligations (notably the DAC7 declaration for digital platforms). This statement summarizes all your transactions, commissions, any refunds, and the net amount paid out.
+<Essentials title="If you only remember one thing:" items={[
+  <>Grubano charges a <b>commission by mode</b>: 5% on dine-in, 8% on click & collect, 12% on delivery, 0% on reservations</>,
+  <>Payouts are <b>automatic</b> within 2 to 7 days to your bank account, with no minimum threshold</>,
+  <>The <b>detailed statement</b> lists every transaction (payments, refunds, processing fees absorbed by Grubano) and feeds the DAC7 declaration</>
+]} />
 
-## Step by step
+<Eyebrow icon="lightbulb">How it works</Eyebrow>
+
+## The principle (and the why)
+
+Every customer payment — a delivery order, click & collect, table bill or reservation deposit — generates an **accounting entry** in your financial ledger, timestamped and tagged with the mode (dine-in, click & collect, delivery, reservation). The Grubano commission is deducted **at the source** based on the order's mode, before the money leaves for your bank account.
+
+**Payouts** are automatic: as soon as a payment is confirmed by Stripe (a few seconds), the net amount is transferred to you within 2 to 7 business days, with no threshold and no manual action. You track the status in real time from your [dashboard](/en/guides/restaurant/).
+
+<Eyebrow icon="format_list_numbered">Step by step</Eyebrow>
+
+## Track a payout
 
 <Steps>
 
-### View the financial summary
+### Open the Finances page
 
-From your dashboard, click **Finances** in the side menu. You immediately see:
+From the side menu of your dashboard, click **Finances**. The default view shows your figures over a **rolling 7 days** (today + the previous 6 days).
 
-- The **gross revenue** for the period (last 7 days by default)
-- The **Grubano commission** (10% of revenue)
-- The **net amount** transferred to your account
+### Read the summary at the top of the page
 
-Change the period (day / week / month) to refine your analysis.
+Four tiles give you the **gross collected** (the sum of all customer payments), the **Grubano commission** (the sum of the application fees deducted), the **net paid out** (what goes to your bank), and the **number of transactions** over the period.
 
-### Review the transaction details
+### Change the period if needed
 
-Scroll down the page: each line corresponds to a financial transaction (payment, refund, adjustment). You see:
+Three buttons let you switch between **Today** (since midnight), **Last 7 days** and **Last 30 days**. The totals recalculate instantly.
 
-- The date and time
-- The transaction type (customer payment, reservation deposit capture, refund)
-- The gross amount collected
-- The commission deducted
-- The net amount credited to your account
+### Browse the transaction history
 
-Click on a line to see the related receipt or reservation.
+Further down, a table lists each **accounting entry**: type (`payment` for a collection, `refund` for a refund, `deposit_capture` for a captured reservation deposit), date and time, gross amount, commission, net, and the mode (dine-in, click & collect, delivery, reservation) when set. Rows are sorted from most recent to oldest.
 
-### Track payouts
+### Identify the source of a transaction
 
-Funds are transferred **automatically** to your bank account, according to your payment provider’s schedule (typically within 2 to 7 business days after collection). You do not need to take any action: as soon as an order is paid, the 90% net amount is due to you.
+Each row shows either a **table bill** (table name + status), a **reservation** (customer name + deposit status), or an **order** (click & collect or delivery, with payment status). You can see at a glance which sale generated the money.
 
-The details of each payout appear in the transaction history, with the transfer reference (useful for reconciling your bank statements).
+### Spot the refunds
 
-### Download the monthly statement
-
-At the end of each month, a PDF statement is generated automatically. It summarizes:
-
-- The monthly gross revenue
-- Total commissions
-- Any refunds (cancellations, goodwill gestures)
-- The net amount paid out
-
-This document complies with the requirements of the **DAC7** directive (reporting income from digital platforms). Provide it to your accountant for your income tax return.
+Rows of type `refund` appear as a **negative amount**: they represent the money returned to the customer. For each payment, the table also shows the **amount already refunded** (cumulative across all dates), so you can tell whether a bill is still partially refundable.
 
 </Steps>
 
-<Callout type="info">
-**Total transparency** — The 10% commission applies to *all* your sales channels on Grubano (dine-in, takeaway, delivery, reservation). It will not change with the Pro plan, available soon: Pro (€29/month) will add aggregation of your other platforms (Uber Eats, Deliveroo…) on a single dashboard, but the commission will remain 10%.
+<Eyebrow icon="calculate">A concrete example</Eyebrow>
+
+## A month with 4 000 € collected
+
+Imagine a restaurant that collects 4 000 € over 30 days: 1 500 € on delivery (12% commission), 1 800 € on click & collect (8% commission), 700 € on dine-in (5% commission).
+
+<Breakdown title="Payout breakdown" rows={[
+  { icon: "account_balance_wallet", label: "Gross collected — delivery", value: "1 500,00 €" },
+  { icon: "percent", label: "Delivery commission (12%)", value: "−180,00 €", variant: "minus" },
+  { icon: "account_balance_wallet", label: "Gross collected — click & collect", value: "1 800,00 €" },
+  { icon: "percent", label: "Click & collect commission (8%)", value: "−144,00 €", variant: "minus" },
+  { icon: "account_balance_wallet", label: "Gross collected — dine-in", value: "700,00 €" },
+  { icon: "percent", label: "Dine-in commission (5%)", value: "−35,00 €", variant: "minus" },
+  { icon: "payments", label: "Total net paid out", value: "3 641,00 €", variant: "total" }
+]} />
+
+The **Stripe processing fees** (roughly 1,4% + 0,25 € per card transaction) are **absorbed by Grubano**: they do not appear in your statement, and you receive exactly the net amount shown. This example is illustrative; your actual figures depend on your mix of modes.
+
+<Eyebrow icon="check_circle">Best practices</Eyebrow>
+
+## Stay in control
+
+<Callout type="default">
+- **Check the Finances page every Monday** to confirm that the previous week's payouts have gone through.
+- **Compare the modes**: if click & collect (8%) accounts for 60% of your revenue, your average commission will be far lower than 12%.
+- **Reconcile with your bank statement**: transfers arrive within 2 to 7 days; a gap of a few days between the order date and the credit to your account is normal.
+- **Keep an eye on the refund rate**: a figure above 5% may signal a quality or communication issue with customers.
 </Callout>
 
-## Concrete example
+<Eyebrow icon="error">Mistakes to avoid</Eyebrow>
 
-Your restaurant collects **€2,000 in orders** for the week via Grubano (€150 dine-in, €850 takeaway, €1,000 delivery). The 10% commission amounts to **€200**. You therefore receive **€1,800 net** in your bank account. A customer cancels a €25 order: you are refunded €22.50 net (the 90% of that order), and the €2.50 commission is also returned to you.
+## Common pitfalls
 
-At the end of the month, the PDF statement totals €8,500 in gross revenue, €850 in commission, €7,650 paid out, and lists 3 refunds for €75. You provide this statement to your accountant for the annual tax return.
+<Callout type="error">
+- **Confusing gross and net**: the figure at the top of the page is the gross *before* commission; only budget against the net paid out.
+- **Forgetting that Stripe fees are absorbed**: unlike other platforms, Grubano does not pass the banking fees back to you — the net shown is what you actually receive.
+- **Looking for a minimum payout threshold**: there isn't one. Even 10 € is sent automatically to your bank.
+- **Ignoring the order's mode**: a reservation generates *no* commission at all (0%); if you forget to enable it, you miss out on fee-free revenue.
+</Callout>
 
-## Best practices
+<Eyebrow icon="lightbulb">Tip</Eyebrow>
 
-- **Reconcile weekly** — Compare the net amount shown in Grubano with the transfers received in your bank account. If there is a discrepancy, review the transaction details (a pending refund may explain a difference).
-- **Archive monthly statements** — Keep each PDF: they constitute your supporting document for the tax authorities and simplify annual accounting close.
-- **Monitor the refund rate** — A high rate (> 5%) may signal a quality or communication issue with customers. The dashboard displays this ratio: use it as an alert signal.
+## Download your monthly statement
+
+<Callout type="info">
+A **Download statement** button (visible on the page but not yet wired up) will soon let you get a summary PDF in accounting format, ready for your accountant. The statement will consolidate all payments, refunds and adjustments for the period, broken down by mode, and will include the elements required for the DAC7 declaration (the European directive on platforms).
+</Callout>
+
+<Eyebrow icon="description">Tax</Eyebrow>
+
+## VAT & DAC7: your tax information
+
+Your tax information is managed from the **Settings** page (the **More** entry on mobile), under **Legal & tax information**. Three blocks are relevant to you.
+
+**Intra-EU VAT number**: enter your number (for example `FR 12 345 678 901`) then click **Save**. It will appear on the commission invoices Grubano sends you. Saving the field empty clears the number.
+
+**DAC7 declaration**: a second form collects the information required by the European directive — seller type (company or individual), registered address, tax identification number (TIN) and its issuing country (two-letter ISO code); the date of birth is only requested if you declare as an individual. This information can be edited at any time, and it is the only DAC7 step expected on your side: Grubano handles the declaration to the tax authorities.
+
+<Callout type="info">
+The **business verification (KYB)** is shown in the same place, read-only: legal name, legal form, SIREN and verification status (**Up to date**, **In progress** or **Action required**, with the verification date where applicable). These items are checked by Grubano — you cannot edit them from this page.
+</Callout>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
 
 ## Frequently asked questions
 
 <Faq items={[
   {
-    icon: "help",
-    q: "Does the 10% commission also apply to delivery fees?",
-    a: "No. The 10% commission is calculated only on the amount of the dishes (subtotal). Delivery fees are returned to you in full (100%), without any deduction."
+    icon: "percent",
+    q: "Does the commission change if I switch to Pro?",
+    a: "No. The Pro subscription (29 €/month, coming soon) will aggregate your Uber Eats, Deliveroo and Just Eat orders on a single dashboard, but the commission grid by mode (5/8/12/0%) stays strictly identical on Standard and on Pro."
   },
   {
-    icon: "help",
-    q: "Can I choose the payout frequency?",
-    a: "Payouts are automatic and follow your payment provider’s schedule (typically within 2 to 7 days after each collection). You cannot change this frequency, but you can see in real time the net amount due in your dashboard."
+    icon: "schedule",
+    q: "Why 2 to 7 days and not instant?",
+    a: "The delay is Stripe's (our payment provider). Payouts leave automatically as soon as the payment is confirmed; the credit to your bank account follows the interbank calendar (typically 2 business days in Europe, up to 7 in some cases)."
   },
   {
-    icon: "help",
-    q: "What should I do if a payout is late or missing?",
-    a: "First check the transaction details in the Finances page: a recent refund may have reduced the expected amount. If the discrepancy persists after 7 business days, contact Grubano support with the reference of the transaction in question."
+    icon: "account_balance",
+    q: "Can I change the destination bank account?",
+    a: "Yes, from the Settings > Bank account page. Any new payout will go to the new bank details; transfers already in progress will still go to the old account."
   },
   {
-    icon: "help",
-    q: "Is the monthly statement sufficient for my tax return?",
-    a: "Yes. The Grubano statement complies with the DAC7 directive and summarizes all your income from the platform. Provide it to your accountant: it contains all the necessary information (gross revenue, commissions, refunds, net amount paid out)."
+    icon: "description",
+    q: "What is DAC7?",
+    a: "The DAC7 directive requires platforms like Grubano to report their sellers' income to the tax authorities. Your monthly statement (soon downloadable) will gather all the necessary data; on your side, simply fill in your tax information in Settings (see the section above) — Grubano takes care of the rest."
   }
 ]} />
 
-## Going further
+<Eyebrow icon="menu_book">Going further</Eyebrow>
 
-- [Restaurant dashboard](/en/guides/restaurant/) — Overview of your activity, real-time KPIs, and direct access to the Finances page.
-- [Grubano Pro](/en/guides/pro/) — Soon, receive orders from all your platforms (Uber Eats, Deliveroo…) on a single dashboard. The commission will remain 10%; Pro will be a monthly subscription of €29 that is added, without commitment.
+## Related articles
+
+<RelatedCards items={[
+  {
+    icon: "insights",
+    title: "Dashboard",
+    sub: "Live metrics",
+    href: "/en/guides/restaurant/"
+  },
+  {
+    icon: "workspace_premium",
+    title: "Go Pro",
+    sub: "Multi-platform aggregation",
+    href: "/en/guides/pro/"
+  },
+  {
+    icon: "payments",
+    title: "Earnings & withdrawals",
+    sub: "Income and withdrawals",
+    href: "/en/guides/driver-earnings/"
+  },
+  {
+    icon: "bolt",
+    title: "Get started in 15 minutes",
+    sub: "Ready in 15 minutes",
+    href: "/en/guides/quick-start/"
+  }
+]} />

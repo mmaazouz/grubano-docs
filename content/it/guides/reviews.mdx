@@ -1,0 +1,146 @@
+---
+title: "Recensioni dei clienti"
+description: "Consulta le recensioni pubblicate dai tuoi clienti, monitora il tuo voto medio e prepara le tue risposte con una bozza redatta dall'IA, adattata al voto."
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# Recensioni dei clienti
+
+Leggi tutte le recensioni pubblicate dai tuoi clienti, monitora il tuo voto medio e prepara le tue risposte con una bozza redatta dall'IA.
+
+<ArticleMeta audience="Ristoratori" minutes={3} updated="2026-07-12" />
+
+<Eyebrow icon="reviews">Panoramica</Eyebrow>
+
+## Il percorso di una recensione
+
+<FlowDiagram steps={[
+  { icon: "rate_review", title: "Recensione pubblicata", desc: "Un cliente valuta il tuo ristorante e scrive la sua recensione" },
+  { icon: "storefront", title: "Visibile nel tuo spazio", desc: "La recensione appare nella pagina Recensioni del tuo pannello di controllo" },
+  { icon: "auto_awesome", title: "Bozza con IA", desc: "Genera una proposta di risposta, poi ritoccala" },
+  { icon: "schedule", title: "Invio della risposta", desc: "Presto disponibile, direttamente dalla pagina" }
+]} />
+
+<Eyebrow icon="bolt">L'essenziale</Eyebrow>
+
+## In breve
+
+<Essentials title="Se devi ricordare solo questo:" items={[
+  <>Ogni cliente connesso può pubblicare <b>una recensione per ristorante</b> (voto da 1 a 5 stelle obbligatorio), che può poi modificare — nessun duplicato</>,
+  <>La tua pagina Recensioni mostra il <b>voto medio</b> (un decimale), la <b>ripartizione per stella</b> e le 50 recensioni pubblicate più recenti</>,
+  <>Il pulsante <b>Genera</b> redige una bozza di risposta con IA, adattata al voto della recensione e liberamente modificabile — l'invio della risposta arriva presto</>
+]} />
+
+<Eyebrow icon="lightbulb">Come funziona</Eyebrow>
+
+## Il principio (e il perché)
+
+Le recensioni arrivano direttamente dai tuoi clienti: dalla scheda del tuo ristorante sull'app, un cliente connesso può valutare la sua esperienza e scrivere un commento — una sola recensione per cliente e per ristorante, che può modificare in qualsiasi momento (la nuova recensione sostituisce la precedente). Solo le recensioni **pubblicate** appaiono nella tua pagina Recensioni, ordinate dalla più recente alla meno recente. Mantieni così la tua relazione con il cliente: i riscontri arrivano da te, nello stesso posto dei tuoi [ordini e indicatori](/it/guides/restaurant/).
+
+Per proteggere la privacy dei tuoi clienti, accanto alla recensione viene mostrato solo il **nome** dell'autore. Ogni recensione porta anche un badge di **origine** — « Grubano » oggi, l'unica fonte di recensioni sulla piattaforma. Il tuo **voto medio** è calcolato a partire dalla ripartizione per stella (media ponderata da 1 a 5) e mostrato con un decimale, accompagnato dalle stelle corrispondenti.
+
+<Eyebrow icon="format_list_numbered">Passo dopo passo</Eyebrow>
+
+## Preparare una risposta con l'IA
+
+<Steps>
+
+### Apri la pagina Recensioni
+
+Dal menu laterale del tuo pannello di controllo, clicca su **Recensioni**. La pagina carica automaticamente le recensioni del ristorante corrente (quello selezionato nel tuo pannello di controllo).
+
+### Leggi la sintesi in cima alla pagina
+
+Il voto medio, la ripartizione dei voti da 1 a 5 stelle e il numero totale di recensioni ti danno la temperatura generale a colpo d'occhio.
+
+### Scorri le recensioni
+
+Le 50 recensioni pubblicate più recenti si mostrano dalla più recente alla meno recente: nome dell'autore, voto, testo, data e badge di origine.
+
+### Genera una bozza di risposta
+
+Apri la finestra di risposta di una recensione e clicca su **Genera**. L'IA redige una proposta in francese, breve (meno di tre frasi) e firmata « L'équipe Grubano », con un tono adattato al voto.
+
+### Rileggi e personalizza
+
+La bozza appare in un'area di testo liberamente modificabile: adattala con le tue parole, un dettaglio del servizio o un gesto commerciale. Il pulsante **Invia** è ancora inattivo — l'invio arriverà presto; nel frattempo, puoi copiare il tuo testo per riutilizzarlo dove preferisci.
+
+</Steps>
+
+<Eyebrow icon="check_circle">Buone pratiche</Eyebrow>
+
+## Ottieni il meglio dalle bozze IA
+
+<Callout type="default">
+- **Lascia che l'IA si adatti al voto**: il tono della bozza è scelto automaticamente — empatico e con delle scuse per una recensione da 1 o 2 stelle, sfumato a 3 stelle, entusiasta a partire da 4.
+- **Personalizza sempre**: la bozza è un punto di partenza; un dettaglio concreto (il piatto ordinato, la sera dell'inconveniente) rende la risposta molto più credibile.
+- **Tieni d'occhio la ripartizione per stella**: un aumento delle recensioni da 1 o 2 stelle si vede nella ripartizione prima di pesare sulla media.
+- **Resta sobrio**: le bozze hanno meno di tre frasi, è voluto — una risposta breve e sincera vale più di una lunga arringa.
+</Callout>
+
+<Eyebrow icon="schedule">Prossimamente</Eyebrow>
+
+## Cosa arriva dopo
+
+<Callout type="info">
+Tre evoluzioni sono già visibili nell'interfaccia e arriveranno a breve: l'**invio delle risposte** direttamente dalla finestra di redazione (il pulsante Invia è mostrato ma ancora inattivo), l'**importazione delle recensioni da altre piattaforme** (Google, TripAdvisor…) per centralizzare tutto in un unico posto, e il monitoraggio **Da rispondere / Con risposta** — dato che le risposte non sono ancora salvate, la scheda Con risposta mostra 0 per ora e tutte le recensioni restano classificate « Da rispondere ».
+</Callout>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
+
+## Domande frequenti
+
+<Faq items={[
+  {
+    icon: "person",
+    q: "Chi può pubblicare una recensione sul mio ristorante?",
+    a: "Qualsiasi cliente connesso al proprio account, con un voto obbligatorio da 1 a 5 stelle. Ogni cliente può pubblicare una sola recensione per ristorante: se la modifica, la nuova versione sostituisce la precedente. Solo le recensioni pubblicate appaiono nella tua pagina."
+  },
+  {
+    icon: "smart_toy",
+    q: "Come sceglie l'IA il tono della risposta?",
+    a: "Il tono è ricavato automaticamente dal voto della recensione: empatico e con delle scuse fino a 2 stelle, sfumato a 3 stelle, entusiasta a partire da 4. Si applica una quota di utilizzo per account: se la superi, attendi un po' prima di generare una nuova bozza."
+  },
+  {
+    icon: "star",
+    q: "Il voto mostrato sulla mia scheda lato clienti viene ricalcolato a partire da queste recensioni?",
+    a: "Non ancora: il voto complessivo della tua scheda è gestito separatamente e non viene ricalcolato automaticamente a partire dalle recensioni pubblicate su Grubano. Questo collegamento è allo studio."
+  },
+  {
+    icon: "lock",
+    q: "Il nome completo dei miei clienti è visibile?",
+    a: "No. Per rispetto della privacy, accanto alla recensione viene mostrato solo il nome dell'autore — sia sulla tua pagina Recensioni sia lato pubblico."
+  }
+]} />
+
+<Eyebrow icon="menu_book">Per approfondire</Eyebrow>
+
+## Articoli correlati
+
+<RelatedCards items={[
+  {
+    icon: "sentiment_satisfied",
+    title: "Ordinare e seguire",
+    sub: "Il percorso lato cliente",
+    href: "/it/guides/consumer/"
+  },
+  {
+    icon: "storefront",
+    title: "Pannello di controllo",
+    sub: "Indicatori in diretta",
+    href: "/it/guides/restaurant/"
+  },
+  {
+    icon: "loyalty",
+    title: "Programma fedeltà",
+    sub: "Punti e premi",
+    href: "/it/guides/loyalty/"
+  },
+  {
+    icon: "monitoring",
+    title: "Analisi e briefing IA",
+    sub: "I tuoi numeri decifrati",
+    href: "/it/guides/analytics/"
+  }
+]} />

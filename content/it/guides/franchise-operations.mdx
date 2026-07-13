@@ -1,86 +1,131 @@
 ---
 title: "Gestire la propria rete"
-description: "Gestire una rete di franchising: più punti vendita, monitoraggio delle royalty dovute e reporting consolidato — entro i limiti stabiliti da Grubano."
+description: "Gestire una rete in franchising: più punti vendita, monitoraggio delle royalty dovute e reporting consolidato — nei limiti fissati da Grubano."
 generated: true
-sourceHash: 3671b12687b14450
+sourceHash: f763ab5bbbf6c698
 generator: scripts/generate-feature-page.js
-templateVersion: 5
+templateVersion: 6
 ---
 
 import { Steps, Callout } from 'nextra/components'
 
 # Gestire la propria rete
 
-Monitorate le performance dei vostri punti vendita in franchising, verificate le royalty accumulate e consolidate i vostri report — il tutto da un’unica dashboard.
+Monitorate la vostra rete in franchising — fatturato consolidato, royalty dovute e reporting per ristorante — nei limiti fissati da Grubano.
 
-<FlowDiagram steps={["Punti vendita","Fatturato della rete","Royalties","Reporting"]} />
+<ArticleMeta audience="Affiliati" minutes={3} updated="2026-07-10" />
 
-## L’essenziale
+<Eyebrow icon="insights">Panoramica</Eyebrow>
 
-Quando diventate franchisor su Grubano, accedete a una dashboard dedicata che aggrega le vendite di tutti i vostri punti vendita in franchising, calcola le royalty dovute entro i limiti stabiliti da Grubano e vi permette di monitorare lo stato della vostra rete in tempo reale.
+## Il percorso del vostro denaro
 
-## Come funziona
+<FlowDiagram steps={[
+  { icon: "storefront", title: "Punti vendita", desc: "I vostri ristoranti incassano gli ordini" },
+  { icon: "account_balance_wallet", title: "Fatturato della rete", desc: "Fatturato consolidato su 30 giorni mobili" },
+  { icon: "percent", title: "Royalty", desc: "Quota prelevata sul fatturato di ogni ristorante" },
+  { icon: "description", title: "Reporting", desc: "Monitoraggio consolidato e storico dei versamenti" }
+]} />
 
-Ogni punto vendita collegato al vostro marchio registra i propri ordini nel sistema Grubano. La dashboard franchisor consolida automaticamente questi dati su una finestra mobile di 30 giorni: fatturato per punto vendita, numero di ordini, royalty accumulate. Vedete così a colpo d’occhio quali punti vendita performano, quanto dovete percepire e dove concentrare il vostro supporto. Le condizioni finanziarie (tasso di royalty, spese di apertura, zone di esclusività) sono stabilite tra le parti interessate; la dashboard applica questi parametri per calcolare gli importi dovuti.
+<Eyebrow icon="bolt">L’essenziale</Eyebrow>
 
-## Passo dopo passo
+## In breve
+
+<Essentials title="Se dovete ricordare solo questo:" items={[
+  <>Il <b>pannello di controllo franchising</b> consolida il fatturato di tutti i vostri ristoranti su una finestra mobile di 30 giorni</>,
+  <>Le <b>royalty sono calcolate</b> automaticamente sul fatturato di ogni punto vendita, nei limiti fissati da Grubano</>,
+  <>Lo <b>storico dei versamenti</b> traccia le royalty accumulate, in liquidazione e liquidate, per ristorante</>
+]} />
+
+<Eyebrow icon="lightbulb">Come funziona</Eyebrow>
+
+## Il principio (e il perché)
+
+Quando gestite più ristoranti in [franchising](/it/guides/franchise/), Grubano aggrega le performance di ogni punto vendita in un unico pannello di controllo. Qui vedete il fatturato consolidato sugli ultimi 30 giorni, il numero di ordini consegnati e l’importo delle royalty dovute. Ogni ristorante compare con il suo nome, la sua città, il suo fatturato e il dettaglio delle sue royalty — potete così confrontare le performance e individuare i punti vendita più attivi.
+
+Il calcolo e il prelievo automatizzati delle royalty arrivano presto: ogni ordine consegnato genererà una royalty secondo un tasso definito con voi al momento dell’apertura. Il pannello di controllo traccia già tre importi distinti: le royalty **accumulate** (il totale di tutti i periodi), **in liquidazione** (un lotto che sarà in corso di trasferimento) e **liquidate** (i versamenti effettuati, una volta attivato il meccanismo). Questa separazione garantirà che nessun importo venga conteggiato due volte e che ogni versamento resti tracciabile.
+
+<Eyebrow icon="format_list_numbered">Passo dopo passo</Eyebrow>
+
+## Consultare il reporting consolidato
 
 <Steps>
 
-### Accedete alla dashboard
+### Accedete al pannello di controllo franchising
 
-Collegatevi con il vostro account franchisor, poi andate nella sezione **Franchising** → **Panoramica**. Troverete il riepilogo della rete: numero di punti vendita attivi, città coperte, candidature in attesa.
+Nel vostro spazio, cliccate su **Panoramica** nella barra laterale. Vedete immediatamente il fatturato della rete sugli ultimi 30 giorni, confrontato con il periodo precedente (g-60 → g-30).
 
-### Consultate le performance per punto vendita
+### Scorrete l’elenco dei vostri ristoranti
 
-La sezione "Punti vendita" elenca tutti i punti vendita in franchising: nome, città, fatturato su 30 giorni, numero di ordini. I punti vendita sono classificati per fatturato decrescente, il che fa emergere immediatamente le locomotive della rete e i siti da supportare.
+Ogni punto vendita compare con il suo nome, la sua città, il suo fatturato su 30 giorni, il numero di ordini consegnati e l’importo di royalty corrispondente. L’elenco è ordinato per data di apertura.
 
-### Verificate le royalty
+### Consultate il riepilogo finanziario
 
-Il blocco "Royalty" mostra tre importi:  
-— **Accumulate**: la somma totale delle royalty registrate dall’origine;  
-— **In attesa**: quanto non è ancora stato versato;  
-— **Versate**: lo storico dei pagamenti già effettuati.  
-Quando l’interruttore del prelievo automatico è attivato lato piattaforma, queste voci sono calcolate ordine per ordine; in caso contrario, gli importi restano a zero e il monitoraggio avviene manualmente.
+La fascia superiore mostra tre totali: **royalty accumulate** (il cumulo dall’inizio), **royalty in liquidazione** (un lotto in preparazione al trasferimento) e **royalty liquidate** (i versamenti completati — gli importi resteranno a zero finché il versamento automatizzato non è attivato).
 
-### Esplorate l’attività recente
+### Verificate lo storico dei versamenti
 
-La cronologia in fondo alla pagina elenca gli eventi significativi: aperture di punti vendita, traguardi di fatturato. Vi aiuta a individuare le tendenze (crescita rapida in una zona, rallentamento altrove) e ad anticipare le esigenze di supporto.
+La pagina **Finanze** (accessibile dalla barra laterale) elencherà ogni versamento effettuato, con la sua data, il suo importo e il suo stato, non appena il versamento automatizzato sarà attivato (presto). Qui trovate già oggi la ripartizione delle royalty per ristorante.
 
 </Steps>
 
-## Buone pratiche
+<Eyebrow icon="check_circle">Buone pratiche</Eyebrow>
 
-**Confrontate le performance sullo stesso orario** — I ristoranti del centro città e quelli di zona periurbana non hanno gli stessi orari di punta; adeguate le vostre aspettative tenendo conto del profilo di ogni punto vendita.
+## Ottimizzare il monitoraggio
 
-**Identificate le migliori pratiche locali** — Se un punto vendita mostra uno scontrino medio nettamente superiore alla media della rete, analizzate il suo menu o la sua strategia promozionale per replicarla altrove.
+<Callout type="default">
+- **Confrontate i ristoranti** — individuate i punti vendita più performanti e quelli che necessitano di accompagnamento.
+- **Monitorate le tendenze** — il delta tra i due periodi di 30 giorni rivela una crescita o un rallentamento della rete.
+- **Verificate i versamenti** — una volta attivato il versamento automatizzato, lo storico delle royalty liquidate servirà da documento giustificativo per la vostra contabilità.
+</Callout>
 
-**Monitorate le candidature in attesa** — Un tempo di elaborazione troppo lungo può scoraggiare candidati seri; consultate regolarmente il contatore delle candidature e trattatele entro tempi ragionevoli.
+<Eyebrow icon="error">Errori da evitare</Eyebrow>
 
-## Esempio concreto
+## Le insidie più comuni
 
-Immaginiamo che il vostro marchio conti cinque punti vendita in Vaucluse. La dashboard mostra un fatturato consolidato di 38.500 € sugli ultimi trenta giorni, contro 34.200 € del periodo precedente — ossia una crescita del +12,6 %. Constatate che Avignone genera 14.000 € da solo, mentre Carpentras si ferma a 4.500 €. Approfondendo, scoprite che Carpentras non attiva il ritiro sul posto e chiude la domenica. Chiamate il franchisee per suggerirgli di aprire la domenica a pranzo e di attivare il pickup: due leve semplici che, implementate ad Avignone, hanno proprio fatto decollare il fatturato locale.
+<Callout type="error">
+- **Non confondete la finestra mobile con il mese di calendario** — la tabella mostra gli ultimi 30 giorni a partire da oggi, non il mese in corso. Un ordine del 5 aprile resta conteggiato fino al 4 maggio.
+- **Non sommate accumulate + in liquidazione + liquidate** — questi tre importi sono fasi di uno stesso flusso; solo le royalty accumulate rappresentano il totale di tutti i periodi.
+- **Non cercate di modificare il tasso** — le condizioni finanziarie sono fissate tra le parti interessate; contattate Grubano per qualsiasi revisione contrattuale.
+</Callout>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
 
 ## Domande frequenti
 
 <Faq items={[
-  {
-    icon: 'help',
-    q: 'Posso vedere il dettaglio degli ordini di ogni punto vendita?',
-    a: 'No. La dashboard franchisor mostra gli aggregati (fatturato, numero di ordini, royalty) per preservare la riservatezza operativa di ogni franchisee. Se avete bisogno di una diagnosi più approfondita, contattate direttamente l’esercente interessato.'
-  },
-  {
-    icon: 'help',
-    q: 'Cosa succede se un punto vendita chiude temporaneamente?',
-    a: 'Un punto vendita contrassegnato come inattivo scompare dal contatore "punti vendita aperti" ma resta visibile nello storico. I suoi ordini passati continuano a figurare nei totali cumulati; invece, non genera più nuove royalty finché rimane chiuso.'
-  },
-  {
-    icon: 'help',
-    q: 'Le royalty tengono conto dei rimborsi?',
-    a: 'Sì, è previsto: quando il meccanismo delle royalty sarà attivato, ogni ordine rimborsato parzialmente o totalmente vedrà la propria royalty adeguata in proporzione all’importo rimborsato. Il saldo "in attesa" rifletterà così sempre la quota netta dovuta.'
-  }
+  { icon: "schedule", q: "Perché una finestra di 30 giorni e non il mese in corso?", a: "Una finestra mobile attenua le variazioni legate al calendario (mesi di 28, 30 o 31 giorni, giorni festivi) e mostra sempre un periodo completo, il che rende i confronti più affidabili." },
+  { icon: "percent", q: "Il tasso di royalty è lo stesso per tutti i miei ristoranti?", a: "Dipende dal vostro contratto. Quando un unico tasso si applica a tutti i vostri marchi in franchising, il pannello di controllo lo mostra in cima alla pagina; se varia, al suo posto compare un trattino (—)." },
+  { icon: "payments", q: "Quando vengono versate le royalty in liquidazione?", a: "Il versamento automatizzato arriva presto. Alla sua attivazione, le royalty passeranno da « accumulate » a « in liquidazione » durante un lotto di versamento, poi a « liquidate » una volta confermato il trasferimento, secondo le condizioni fissate con Grubano." },
+  { icon: "storefront", q: "Un ristorante chiuso temporaneamente compare nella tabella?", a: "Solo i ristoranti attivi sono elencati nella vista principale. Potete consultare il numero totale di ristoranti (aperti + chiusi) e la ripartizione per città nelle statistiche della rete." }
 ]} />
 
-## Per approfondire
+<Eyebrow icon="menu_book">Per approfondire</Eyebrow>
 
-**Contesto** — Scoprite come funziona il modello di [franchising](/it/guides/franchise/) su Grubano: apertura di punti vendita, gestione delle candidature, meccanismi di royalty.
+## Articoli correlati
+
+<RelatedCards items={[
+  {
+    icon: "hub",
+    title: "Il franchising su Grubano",
+    sub: "Il modello Grubano",
+    href: "/it/guides/franchise/"
+  },
+  {
+    icon: "payments",
+    title: "Finanze e versamenti",
+    sub: "Commissione e versamenti",
+    href: "/it/guides/finances/"
+  },
+  {
+    icon: "shopping_bag",
+    title: "Ordinare e seguire",
+    sub: "Ordinare e seguire",
+    href: "/it/guides/consumer/"
+  },
+  {
+    icon: "loyalty",
+    title: "Fedeltà, credito e passaparola",
+    sub: "Punti e passaparola",
+    href: "/it/guides/consumer-loyalty/"
+  }
+]} />

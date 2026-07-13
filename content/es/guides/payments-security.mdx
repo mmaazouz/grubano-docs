@@ -1,12 +1,161 @@
 ---
-sourceHash: 0981d7ffcb3791c4
 title: "Pagos y seguridad"
+description: "Cómo Grubano asegura los pagos, protege los datos bancarios y gestiona reembolsos y disputas — con total transparencia."
 ---
 
-import { Callout } from 'nextra/components'
+import { Steps, Callout } from 'nextra/components'
 
 # Pagos y seguridad
 
-<Callout type="warning">
-**Página en redacción.** Esta guía llegará próximamente.
+Cómo Grubano asegura los pagos, protege los datos bancarios y gestiona reembolsos y disputas — con total transparencia.
+
+<ArticleMeta audience="Restaurantes" minutes={4} updated="2026-07-12" />
+
+<Eyebrow icon="insights">Visión general</Eyebrow>
+
+## El pago, del pedido a la transferencia
+
+El cliente paga su pedido **en línea, con tarjeta**, en el momento de confirmarlo. La transacción la procesa **Stripe**, nuestro proveedor de pago: está cifrada y protegida por la autenticación reforzada **3D Secure**. Grubano cobra por cuenta de su restaurante, deduce la comisión según el **modo** del pedido (consulte la [tabla por modo](/es/guides/finances/)) y luego le transfiere el neto automáticamente. No tiene **ningún impago que gestionar**: un pedido solo existe una vez confirmado su pago.
+
+<FlowDiagram steps={[
+  { icon: "shopping_bag", title: "Pedido pagado", desc: "El cliente confirma y paga con tarjeta" },
+  { icon: "lock", title: "3D Secure / Stripe", desc: "Transacción cifrada y autenticada" },
+  { icon: "percent", title: "Comisión por modo", desc: "12, 8, 5 o 0 % según el modo" },
+  { icon: "account_balance", title: "Neto transferido", desc: "Transferencia automática al restaurante" }
+]} />
+
+<Eyebrow icon="bolt">Lo esencial</Eyebrow>
+
+## En resumen
+
+<Essentials title="Si solo debe recordar esto:" items={[
+  <>Los pagos pasan por <b>Stripe</b>, certificado PCI-DSS: los números de tarjeta <b>nunca se almacenan</b> en Grubano</>,
+  <>Grubano <b>cobra y le transfiere el neto</b> automáticamente: cero impagos que gestionar por su parte</>,
+  <>Pedido reembolsado = <b>comisión devuelta</b>: Grubano no se queda nada de un pedido reembolsado</>
+]} />
+
+<Eyebrow icon="lock">Seguridad</Eyebrow>
+
+## Seguridad de los datos bancarios
+
+La conformidad **PCI-DSS** (el estándar de seguridad de la industria de las tarjetas de pago) está garantizada por Stripe. En concreto:
+
+- Grubano **nunca ve ni almacena los números de tarjeta**. Cuando el cliente introduce su tarjeta, los datos van directamente a Stripe, sin pasar en claro por nuestros servidores.
+- Las tarjetas guardadas por los clientes se conservan **del lado de Stripe, de forma tokenizada**: Grubano solo maneja un token técnico, nunca el número de tarjeta.
+- Los **datos bancarios de los socios** (los que sirven para las transferencias, incluidos los suyos) también los gestiona el proveedor de pago — nunca los almacena Grubano.
+
+<Callout type="info">
+Ni usted ni Grubano tienen, por tanto, datos bancarios sensibles que proteger: nunca salen de la infraestructura certificada de Stripe.
 </Callout>
+
+<Eyebrow icon="undo">Reembolsos</Eyebrow>
+
+## Reembolsos
+
+Tres principios se aplican a todo pedido reembolsado, sea cual sea el motivo:
+
+- **La comisión Grubano se devuelve a prorrata** del importe reembolsado. Grubano no se queda nada de un pedido reembolsado — reembolso total, comisión devuelta íntegramente; reembolso parcial, comisión devuelta en la misma proporción.
+- **El importe está limitado**: es imposible reembolsar más de lo que el cliente pagó realmente.
+- **Sin doble reembolso**: cada importe reembolsado queda registrado, un euro ya devuelto no puede devolverse una segunda vez.
+
+Del lado del cliente, el reembolso aparece en su cuenta **en unos días laborables, según su banco** (plazos interbancarios estándar).
+
+<Callout type="info">
+El proceso de reembolso en autoservicio desde su panel de control llegará **pronto**. Los principios anteriores se aplicarán de forma idéntica.
+</Callout>
+
+<Eyebrow icon="block">Cancelaciones</Eyebrow>
+
+## Cancelaciones
+
+Un pedido puede cancelarse **en cualquier etapa antes de la entrega**, únicamente por **el restaurante** o por el **soporte de Grubano**. El cliente no puede cancelar por sí mismo desde la aplicación: contacta con el restaurante o pasa por la ayuda. Una vez el pedido **entregado**, ya no puede cancelarse.
+
+Toda cancelación conlleva el **reembolso del cliente**, según los principios detallados anteriormente — comisión devuelta incluida.
+
+<Eyebrow icon="balance">Disputas</Eyebrow>
+
+## Disputas y reclamaciones bancarias
+
+<Callout type="info">
+Grubano le acompañará en caso de **reclamación bancaria** (chargeback): centralización de los justificantes y respuesta al banco — **pronto**.
+</Callout>
+
+<Eyebrow icon="event_seat">Reservas</Eyebrow>
+
+## Reservas: la preautorización bancaria
+
+Para proteger sus servicios frente a los no-shows, las [reservas](/es/guides/reservations/) pueden garantizarse mediante una **preautorización bancaria**. Es una función **disponible y opcional**: es usted quien la activa, fijando el importe de la penalización por no-show. Por defecto, ese importe es de **0 €** — la preautorización permanece desactivada mientras no fije un importe.
+
+<Steps>
+
+### En el momento de la reserva
+
+El banco del cliente **autoriza** el importe de la preautorización. No se cobra nada: el cliente no paga nada en esta etapa.
+
+### A la llegada del cliente
+
+La preautorización se **libera**. La reserva cumplida no le cuesta nada al cliente, y la autorización desaparece de su cuenta.
+
+### En caso de no-show
+
+Puede **capturar la penalización**: el importe de la preautorización, el que usted configuró, se cobra entonces.
+
+</Steps>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
+
+## Preguntas frecuentes
+
+<Faq items={[
+  {
+    icon: "credit_card",
+    q: "¿Grubano almacena los números de tarjeta?",
+    a: "No. Los pagos los procesa Stripe, certificado PCI-DSS: los números de tarjeta nunca pasan en claro por Grubano, y las tarjetas guardadas se tokenizan del lado de Stripe."
+  },
+  {
+    icon: "percent",
+    q: "¿Grubano se queda con su comisión en un pedido reembolsado?",
+    a: "No. La comisión se devuelve a prorrata del importe reembolsado: en un pedido reembolsado íntegramente, Grubano no se queda nada."
+  },
+  {
+    icon: "schedule",
+    q: "¿Cuándo ve el cliente su reembolso?",
+    a: "En unos días laborables, según su banco: una vez iniciado el reembolso, el plazo de aparición en la cuenta depende de los circuitos interbancarios estándar."
+  },
+  {
+    icon: "block",
+    q: "¿Puede un cliente cancelar su pedido por sí mismo?",
+    a: "No. La cancelación pasa por el restaurante o el soporte de Grubano, en cualquier etapa antes de la entrega. Un pedido entregado ya no puede cancelarse; todo pedido cancelado es reembolsado."
+  }
+]} />
+
+<Eyebrow icon="menu_book">Para ir más allá</Eyebrow>
+
+## Artículos relacionados
+
+<RelatedCards items={[
+  {
+    icon: "payments",
+    title: "Finanzas y pagos",
+    sub: "Comisión por modo y pagos",
+    href: "/es/guides/finances/"
+  },
+  {
+    icon: "event_seat",
+    title: "Reservas y en sala",
+    sub: "Mesas, preautorización y no-show",
+    href: "/es/guides/reservations/"
+  },
+  {
+    icon: "insights",
+    title: "Panel de control",
+    sub: "Indicadores en directo",
+    href: "/es/guides/restaurant/"
+  },
+  {
+    icon: "shopping_bag",
+    title: "Pedir y seguir",
+    sub: "El recorrido del lado del cliente",
+    href: "/es/guides/consumer/"
+  }
+]} />

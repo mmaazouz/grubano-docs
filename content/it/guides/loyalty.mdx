@@ -1,95 +1,182 @@
 ---
 title: "Programma fedeltà"
-description: "Fidelizzare la clientela: 1 punto = 1 € speso, livelli Bronze/Silver/Gold/Platinum, punti accreditati alla consegna dell’ordine."
+description: "Fidelizzare la clientela: 1 punto = 1 € speso, livelli Bronze/Silver/Gold/Platinum, punti accreditati alla consegna dell'ordine."
 generated: true
-sourceHash: c0f84754871285ec
+sourceHash: 4f0c65d4648d427e
 generator: scripts/generate-feature-page.js
-templateVersion: 5
+templateVersion: 6
 ---
 
 import { Steps, Callout } from 'nextra/components'
 
 # Programma fedeltà
 
-Trasformate ogni euro speso in punti fedeltà, con quattro livelli di ricompensa che incoraggiano i vostri clienti a tornare.
+Crea un legame duraturo con i tuoi clienti: ogni euro speso genera un punto, i livelli da Bronze a Platino sbloccano dei vantaggi e i punti si trasformano in credito utilizzabile sul prossimo ordine.
 
-<FlowDiagram steps={["Iscrivere un cliente","Acquistare","Accredito punti","Ricompensa"]} />
+<ArticleMeta audience="Ristoratori" minutes={4} updated="2026-07-10" />
 
-## L’essenziale
+<Eyebrow icon="insights">Panoramica</Eyebrow>
 
-Il programma fedeltà Grubano premia automaticamente i vostri clienti: **1 punto = 1 € speso**. I punti si accumulano su quattro livelli (Bronze, Silver, Gold, Platinum) e si convertono in credito utilizzabile sul prossimo ordine. I punti vengono accreditati non appena l’ordine è consegnato.
+## Il percorso del cliente
 
-## Come funziona
+<FlowDiagram steps={[
+  { icon: "person_add", title: "Iscrizione", desc: "Il cliente aderisce al programma (email + nome)" },
+  { icon: "shopping_bag", title: "Ordine", desc: "Ogni euro speso = 1 punto accreditato" },
+  { icon: "loyalty", title: "Accumulo", desc: "I punti sbloccano Bronze, Silver, Gold o Platino" },
+  { icon: "payments", title: "Ricompensa", desc: "Il cliente spende il suo credito su un ordine" }
+]} />
 
-I vostri clienti abituali meritano un riconoscimento. Il programma fedeltà costruisce una relazione duratura: ogni acquisto rafforza l’attaccamento alla vostra insegna, ogni livello raggiunto motiva l’ordine successivo.
+<Eyebrow icon="bolt">L'essenziale</Eyebrow>
 
-Il sistema funziona dall’inizio alla fine — iscrizione rapida (nome, email, telefono opzionale), convalida automatica alla consegna, **conversione dei punti in euro di credito** che il cliente spende quando vuole. Potete monitorare l’attività dalla vostra [dashboard](/it/guides/restaurant/): saldo punti, livello attuale, storico degli ultimi dieci ordini convalidati.
+## In breve
 
-## Passo dopo passo
+<Essentials title="Se devi ricordare solo questo:" items={[
+  <>I clienti guadagnano <b>1 punto per euro</b> speso, accreditato non appena l'ordine è consegnato</>,
+  <>Quattro livelli automatici — <b>Bronze</b> (0 pt), <b>Silver</b> (100 pt), <b>Gold</b> (200 pt), <b>Platino</b> (400 pt) — sbloccano vantaggi progressivi</>,
+  <>Il saldo punti si converte in <b>credito (€)</b> che il cliente utilizza liberamente sul suo prossimo ordine</>
+]} />
+
+<Eyebrow icon="lightbulb">Come funziona</Eyebrow>
+
+## Il principio (e il perché)
+
+Un cliente che torna costa meno da acquisire rispetto a uno nuovo: il programma fedeltà trasforma un acquisto occasionale in un'abitudine. Ogni euro speso genera automaticamente un punto, visibile in tempo reale sul [pannello di controllo](/it/guides/restaurant/) del cliente. I livelli Bronze, Silver, Gold e Platino si sbloccano senza alcuna azione manuale — più il cliente ordina, più il suo status sale e più i vantaggi aumentano. Il saldo punti diventa un credito in euro, spendibile su qualsiasi ordine: il cliente sceglie quando e come utilizzarlo, mentre tu mantieni il controllo del tuo margine.
+
+<Eyebrow icon="format_list_numbered">Passo dopo passo</Eyebrow>
+
+## Iscrivere un cliente al programma
 
 <Steps>
 
-### Iscrivere un cliente al programma
+### Raccogliere le informazioni
 
-Raccogliete il nome e l’email del cliente (il telefono è opzionale). **Bonus di benvenuto: 10 punti** accreditati immediatamente alla creazione dell’account. Ogni cliente riceve un codice di referral unico (otto caratteri, maiuscole) che può condividere.
+Il cliente fornisce il suo nome, la sua email ed eventualmente il suo telefono tramite la route **POST /api/loyalty/register**. Un bonus di benvenuto di 10 punti viene automaticamente accreditato al momento dell'iscrizione; il livello iniziale è Bronze.
 
-### Convalidare un ordine consegnato
+### Verificare l'unicità
 
-Quando un ordine è contrassegnato come **consegnato**, inserite l’email del cliente, il numero dell’ordine (identificativo unico — mai convalidato due volte) e l’importo IVA inclusa. Il sistema attribuisce **1 punto per euro speso** (arrotondato all’intero inferiore) e ricalcola il livello.
+Il sistema rileva i duplicati di email: se un account esiste già, l'iscrizione restituisce un errore 409 con il messaggio « Un account esiste già con questa email ». Il cliente riceve immediatamente il suo codice referral unico (primi 8 caratteri del `referralCode`, in maiuscolo).
 
-### Monitorare il saldo e il livello
+### Consultare il portafoglio
 
-Quattro livelli progressivi sbloccano l’accesso al credito:
-
-- **Bronze** — da 0 a 99 punti (livello di partenza)
-- **Silver** — da 100 a 199 punti
-- **Gold** — da 200 a 399 punti
-- **Platinum** — 400 punti e oltre
-
-Il livello si aggiorna automaticamente non appena viene superata una soglia. Il cliente vede il proprio saldo punti **convertito in euro di credito** (tasso di conversione stabilito da Grubano) che può spendere a suo piacimento.
-
-### Spendere il credito
-
-Il cliente sceglie di applicare tutto o parte del proprio credito al carrello. La riduzione viene imputata sul totale dell’ordine; il saldo punti diminuisce di conseguenza. Nessun prelievo finanziario dal lato del ristorante — **Grubano finanzia integralmente** la riduzione applicata.
+La route **GET /api/loyalty/wallet** (autenticata, ruolo `restaurant` o `admin`) mostra il saldo punti, il livello attuale, i punti mancanti per raggiungere il livello successivo e gli ultimi 10 ordini convalidati. Un cliente connesso può consultare il proprio portafoglio senza il parametro `?email=`.
 
 </Steps>
 
-## Buone pratiche
+<Eyebrow icon="format_list_numbered">Passo dopo passo</Eyebrow>
 
-- **Comunicate il codice di referral** — incoraggiate i vostri clienti a condividerlo (biglietto da visita, confezione, social network). Un cliente invitato porta punti aggiuntivi al referente.
-- **Ricordate il saldo** — indicate il numero di punti guadagnati sullo scontrino o nell’email di conferma. Un cliente informato ritorna più rapidamente.
-- **Puntate ai livelli** — un cliente con 180 punti sa che gli restano 20 € da spendere per raggiungere il Gold. Questa soglia visibile innesca un ordine "di passaggio".
-- **Convalidate rapidamente** — i punti vengono accreditati solo alla consegna effettiva dell’ordine. Più rapida è la convalida, più il cliente percepisce la ricompensa immediata.
+## Convalidare un ordine e accreditare i punti
+
+<Steps>
+
+### Registrare l'ordine
+
+Dopo la consegna, utilizza **POST /api/loyalty/validate** con l'email del cliente, il numero dell'ordine (`uberOrderNumber`), l'importo totale e il nome del brand. Il sistema arrotonda l'importo all'intero inferiore per calcolare i punti (esempio: 23,80 € = 23 punti).
+
+### Evitare i duplicati
+
+Ogni `uberOrderNumber` è unico: se l'ordine è già stato convalidato, l'API restituisce un errore 409. Il cliente non può cumulare due volte gli stessi punti su un unico ordine.
+
+### Aggiornare il livello
+
+Il sistema ricalcola automaticamente il livello in base al nuovo saldo: 0–99 pt = Bronze, 100–199 = Silver, 200–399 = Gold, 400+ = Platino. La risposta JSON indica i punti guadagnati, il nuovo saldo, il livello attuale e l'identificativo dell'ordine.
+
+</Steps>
+
+<Eyebrow icon="calculate">Esempio concreto</Eyebrow>
+
+## Il percorso di un cliente fedele
+
+Marie aderisce al programma e riceve **10 punti** di benvenuto (livello Bronze). Ordina per **45 €** dal tuo brand: vengono accreditati 45 punti, il suo saldo sale a **55 punti** (resta Bronze). Due settimane più tardi, spende **72 €**: +72 punti, saldo **127 punti** → passa automaticamente a **Silver**. Dopo sei ordini in tre mesi, raggiunge **420 punti** (livello Platino) e decide di utilizzare **200 punti** di credito sul suo prossimo ordine; il suo saldo scende a **220 punti** ma conserva lo status Gold.
+
+<Eyebrow icon="check_circle">Buone pratiche</Eyebrow>
+
+## Massimizzare il coinvolgimento
+
+<Callout type="default">
+
+- **Comunica il saldo**: mostra il numero di punti e il livello attuale su ogni conferma d'ordine (email o notifica).
+- **Ricorda le soglie**: « Ancora 18 punti per diventare Silver! » invoglia a riordinare rapidamente.
+- **Valorizza il credito**: esprimi il saldo in euro (« 240 pt = 12 € di credito ») per rendere il vantaggio tangibile.
+- **Incoraggia il passaparola**: il codice referral unico (8 caratteri) permette al cliente di far scoprire il tuo brand ai suoi cari; prevedi un bonus per il referente e per l'invitato (meccanismo `referredBy` presente nel modello).
+
+</Callout>
+
+<Eyebrow icon="error">Errori da evitare</Eyebrow>
+
+## Le insidie più comuni
+
+<Callout type="error">
+
+- **Convalidare un ordine annullato**: accredita punti solo se l'ordine è stato effettivamente consegnato; un rimborso successivo richiede una rettifica manuale del saldo.
+- **Dimenticare di indicare il brand**: il campo `brandName` deve corrispondere esattamente al nome registrato nella tabella `Brand` (ricerca tramite `contains` senza distinzione tra maiuscole e minuscole, ma un errore di battitura blocca la convalida).
+- **Accreditare due volte**: l'unicità su `uberOrderNumber` protegge dai duplicati lato server, ma verifica che la tua integrazione non chiami due volte l'API in caso di errore di rete temporaneo.
+
+</Callout>
+
+<Eyebrow icon="lightbulb">Consiglio</Eyebrow>
+
+## Automatizza l'accredito dei punti
+
+<Callout type="info">
+
+Collega il webhook di consegna della tua piattaforma partner a **POST /api/loyalty/validate**: non appena un ordine passa allo stato « consegnato », l'API accredita automaticamente i punti senza intervento manuale. Il cliente vede il suo saldo aumentare in tempo reale e tu riduci il rischio di dimenticanze o ritardi.
+
+</Callout>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
 
 ## Domande frequenti
 
 <Faq items={[
   {
-    icon: "help",
-    q: "I punti scadono?",
-    a: "No. Il saldo punti rimane acquisito finché l’account del cliente è attivo. Non viene imposta alcuna data di scadenza."
+    icon: "loyalty",
+    q: "Cosa succede se un cliente cambia email?",
+    a: "Il programma fedeltà è legato all'email: se il cliente crea un nuovo account con un indirizzo diverso, riparte da zero (10 punti di benvenuto). Per trasferire lo storico, contatta il supporto tecnico con i due indirizzi; un amministratore potrà unire manualmente gli account."
   },
   {
-    icon: "help",
-    q: "Chi finanzia la riduzione applicata al carrello?",
-    a: "Grubano finanzia integralmente il credito fedeltà speso dal cliente. Ricevete l’importo totale dell’ordine (meno la commissione abituale del 10 %), senza detrazioni aggiuntive."
+    icon: "percent",
+    q: "Qual è il valore di un punto in euro?",
+    a: "La conversione è definita in lib/loyalty.ts (funzione centsPerPoint) e può evolvere secondo la strategia di Grubano. Il cliente consulta l'equivalente in euro del suo saldo tramite GET /api/loyalty/wallet (campo balanceEuros); il tasso esatto applicato durante un ordine resta lato server per garantire la coerenza."
   },
   {
-    icon: "help",
-    q: "Posso consultare lo storico di un cliente?",
-    a: "Sì. Dalla vostra dashboard, cercate il cliente tramite email: vedrete il suo saldo, il livello attuale e gli ultimi dieci ordini convalidati (marca, importo, punti guadagnati, data)."
+    icon: "star",
+    q: "I livelli offrono vantaggi differenziati?",
+    a: "Sì: i livelli Silver, Gold e Platino possono sbloccare promozioni esclusive, sconti sulle spese di consegna o un accesso prioritario alle novità del tuo menù. La logica di business di questi vantaggi è configurata lato ristorante; il sistema fedeltà fornisce il livello (`tier`), tu decidi il vantaggio associato."
   },
   {
-    icon: "help",
-    q: "Cosa succede se convalido due volte lo stesso numero di ordine?",
-    a: "Il sistema rifiuta il secondo tentativo (errore 409) per evitare di accreditare i punti due volte. Ogni numero di ordine viene convalidato una sola volta."
+    icon: "code",
+    q: "Come funziona il codice referral?",
+    a: "Ogni cliente riceve un referralCode unico (primi 8 caratteri in maiuscolo, visibili in GET /api/loyalty/wallet). Il campo referredBy del modello LoyaltyCustomer permette di tracciare chi ha invitato chi; puoi poi ricompensare il referente (bonus di punti) e l'invitato (sconto di benvenuto) tramite una logica di business personalizzata."
   }
 ]} />
 
-<Callout type="info">
-**Commissione invariata** — Il programma fedeltà non impatta la commissione del 10 % per ordine. L’abbonamento Pro (29 €/mese, aggregazione multi-piattaforme) rimane opzionale e distinto dal programma fedeltà.
-</Callout>
+<Eyebrow icon="menu_book">Per approfondire</Eyebrow>
 
-## Per approfondire
+## Articoli correlati
 
-**Dashboard** — Consultate il saldo e lo storico fedeltà dei vostri clienti dalla vostra [dashboard](/it/guides/restaurant/) del ristorante.
+<RelatedCards items={[
+  {
+    icon: "insights",
+    title: "Pannello di controllo",
+    sub: "Indicatori in tempo reale",
+    href: "/it/guides/restaurant/"
+  },
+  {
+    icon: "loyalty",
+    title: "Fedeltà, credito e passaparola",
+    sub: "Punti e passaparola",
+    href: "/it/guides/consumer-loyalty/"
+  },
+  {
+    icon: "bolt",
+    title: "Iniziare in 15 minuti",
+    sub: "Pronto in 15 minuti",
+    href: "/it/guides/quick-start/"
+  },
+  {
+    icon: "menu_book",
+    title: "Menù e scansione IA",
+    sub: "Carta e scansione IA",
+    href: "/it/guides/menu/"
+  }
+]} />

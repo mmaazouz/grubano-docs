@@ -1,104 +1,145 @@
 ---
-title: "Dashboard"
-description: "Visualizza a colpo d’occhio l’attività del tuo ristorante: ordini in corso, fatturato, avvisi — e gestisci il servizio da quest’unica schermata."
+title: "Pannello di controllo"
+description: "Vedi a colpo d'occhio l'attività del tuo ristorante: ordini in corso, fatturato, avvisi — e gestisci il servizio da questa unica schermata."
 generated: true
-sourceHash: 676b23844b8e08c6
+sourceHash: 13f402ced5fc146f
 generator: scripts/generate-feature-page.js
-templateVersion: 5
+templateVersion: 6
 ---
 
 import { Steps, Callout } from 'nextra/components'
 
-# Dashboard
+# Pannello di controllo
 
-Gestisci l’attività del tuo ristorante in tempo reale: ordini in corso, fatturato del giorno, avvisi — un’unica schermata per monitorare tutto e agire rapidamente.
+Gestisci il tuo ristorante da un'unica schermata: ordini in tempo reale, fatturato del giorno, avvisi sulle scorte e panoramica multi-marca.
 
-<FlowDiagram steps={["Ordini in corso","Cifre in tempo reale","Avvisi","Multi-brand"]} />
+<ArticleMeta audience="Ristoratori" minutes={3} updated="2026-07-12" />
 
-## L’essenziale
+<Eyebrow icon="insights">Panoramica</Eyebrow>
 
-Il dashboard centralizza l’attività del tuo locale in diretta: visualizzi gli ordini in arrivo, il fatturato del giorno, i tuoi clienti fedeli e le prestazioni di ciascun brand. Se gestisci più brand, il dashboard li aggrega tutti su un’unica schermata.
+## La tua cabina di regia operativa
 
-## Come funziona
+<FlowDiagram steps={[
+  { icon: "receipt_long", title: "Ordini in corso", desc: "Nuovi ordini e preparazioni in diretta" },
+  { icon: "payments", title: "Numeri in tempo reale", desc: "Fatturato del giorno ed evoluzione vs giorno prima" },
+  { icon: "error", title: "Avvisi", desc: "Scorte basse, ritardi, punti d'attenzione" },
+  { icon: "storefront", title: "Multi-marca", desc: "Vista aggregata di tutte le tue insegne" }
+]} />
 
-Ogni mattina, il dashboard recupera gli ordini validati del giorno e calcola quattro indicatori chiave: fatturato, numero di ordini, clienti attivi nel tuo programma fedeltà e il brand che genera il maggior fatturato. L’evoluzione rispetto al giorno precedente viene visualizzata in percentuale, consentendoti di individuare rapidamente un calo o un aumento di attività. Se hai attivato più [brand](/it/guides/menu/) (ad esempio un’insegna italiana e un’insegna asiatica sullo stesso account), il dashboard somma i loro ordini e ti indica quale brand sta performando meglio — senza dover destreggiarti tra più interfacce.
+<Eyebrow icon="bolt">L'essenziale</Eyebrow>
 
-Questo monitoraggio in tempo reale ti aiuta ad anticipare: un picco di ordini ti spinge a preparare più [scorte](/it/guides/stocks/), un avviso di rottura ti invita a rifornirti e la visibilità sulle [prenotazioni](/it/guides/reservations/) della sera ti permette di adattare il servizio. Il dashboard è la schermata d’accesso del tuo spazio ristoratore — si aggiorna automaticamente a ogni nuovo ordine.
+## In breve
 
-<Callout type="info">
-**Grubano Pro** permetterà presto di ricevere gli ordini di tutte le tue altre piattaforme (Uber Eats, Deliveroo, Just Eat…) direttamente su questo dashboard: un’unica schermata per tutti i tuoi ordini, con analisi e report unificati. La commissione rimane al 10 %; Pro è un abbonamento di 29 €/mese, senza vincoli, che si aggiunge alla commissione senza sostituirla.
-</Callout>
+<Essentials title="Se devi ricordare solo questo:" items={[
+  <>Il pannello di controllo mostra in <b>tempo reale</b> il fatturato del giorno, il numero di ordini e i clienti fedeltà</>,
+  <>Vedi a colpo d'occhio la tua <b>marca migliore</b> (quella che genera più fatturato oggi) e il suo peso sul totale</>,
+  <>L'<b>evoluzione vs giorno prima</b> ti mostra se il servizio accelera o rallenta — utile per regolare squadre e scorte</>
+]} />
 
-## Passo dopo passo
+<Eyebrow icon="lightbulb">Come funziona</Eyebrow>
+
+## Il principio (e il perché)
+
+Il pannello di controllo aggrega automaticamente tutti gli ordini confermati nella giornata, qualunque sia la loro modalità (consegna, click & collect, al tavolo). Calcola il fatturato totale, conta i clienti iscritti al programma fedeltà e identifica la tua marca più performante.
+
+Ogni indicatore si aggiorna non appena arriva un nuovo ordine, offrendoti una visione sempre aggiornata senza ricaricare la pagina. L'evoluzione rispetto al giorno prima ti aiuta ad anticipare: un picco improvviso può segnalare una promozione efficace o un evento locale, mentre un calo ti invita a verificare le tue [scorte](/it/guides/stocks/) o a rilanciare un'azione di marketing.
+
+<Eyebrow icon="format_list_numbered">Passo dopo passo</Eyebrow>
+
+## Consultare gli indicatori del giorno
 
 <Steps>
 
-### Accesso al dashboard
+### Accedi al pannello di controllo
 
-Accedi al tuo account ristoratore su [grubano.com/dashboard](https://www.grubano.com/dashboard). Il dashboard viene visualizzato automaticamente nella pagina iniziale.
+Accedi al tuo account ristorante su `grubano.com/dashboard`. La pagina iniziale mostra immediatamente le quattro metriche principali: fatturato del giorno, numero di ordini, clienti fedeltà e marca migliore.
 
-### Lettura degli indicatori del giorno
+### Leggi il fatturato
 
-La riga superiore presenta quattro card: fatturato del giorno, numero di ordini, clienti fedeltà attivi, miglior brand. Ogni card mostra l’evoluzione percentuale rispetto al giorno precedente (aumento in verde, calo in arancione).
+La prima scheda indica l'importo totale incassato dalla mezzanotte. Se hai più insegne (multi-marca), questo totale le aggrega tutte.
 
-### Monitoraggio multi-brand
+### Identifica la tua marca migliore
 
-Se gestisci più brand, la card "Miglior brand" indica quale concentra il maggior fatturato oggi, con la sua percentuale sul totale. Clicca sul nome del brand per accedere al suo [menu](/it/guides/menu/) e adattare i piatti disponibili.
+La scheda « Marca migliore » mostra il nome dell'insegna che genera più ricavi oggi, insieme alla sua percentuale sul fatturato complessivo. Questo indicatore ti aiuta a capire dove concentrare i tuoi sforzi.
 
-### Azioni rapide
+### Confronta con il giorno prima
 
-Il menu laterale ti dà accesso diretto alle schermate operative: ordini in corso (per cambiare il loro stato da "ricevuto" a "in preparazione", "pronto", "ritirato", "consegnato"), [gestione scorte](/it/guides/stocks/), [prenotazioni](/it/guides/reservations/) e [monitoraggio finanziario](/it/guides/finances/). Tutto rimane a portata di clic.
+La percentuale di evoluzione (in verde se positiva, in rosso se negativa) confronta il fatturato di oggi con quello di ieri. Uno scarto importante può rivelare un cambiamento di tendenza o un evento occasionale.
 
 </Steps>
 
-## Esempio concreto
+<Eyebrow icon="calculate">Esempio concreto</Eyebrow>
 
-Apri il dashboard alle 9: zero ordini, fatturato a 0 €. A mezzogiorno, lo schermo indica 12 ordini per 347 € — in aumento del +8 % rispetto a ieri. La card "Miglior brand" mostra che la tua insegna italiana raccoglie il 58 % del fatturato, mentre la tua insegna di burger rappresenta il restante 42 %. Noti che tre articoli del menu italiano sono contrassegnati come "scorta bassa": li rifornisci con un clic dalla schermata [scorte](/it/guides/stocks/) e il servizio serale può iniziare serenamente. A fine giornata, il dashboard mostra 38 ordini e 1 124 € — confronti con la settimana scorsa e constati una progressione regolare.
+## Una giornata tipo con due marche
 
-## Buone pratiche
+Immaginiamo che tu gestisca due marche: una pizzeria e un banco di poke bowl. Alle 14, il pannello di controllo mostra:
 
-- **Consulta il dashboard all’inizio del servizio** per anticipare le rotture di scorta e adattare le quantità prima del rush.
-- **Confronta l’evoluzione giorno dopo giorno**: un calo insolito può segnalare un problema di visibilità, un aumento conferma l’impatto di una promozione o di un nuovo piatto.
-- **Utilizza gli indicatori multi-brand** per bilanciare le tue risorse: se un brand ha prestazioni inferiori, prova una promozione mirata o arricchisci il suo menu.
-- **Attiva le notifiche** (impostazioni account) per ricevere un avviso appena arriva un ordine, anche se non sei davanti allo schermo.
+<Breakdown title="Indicatori del giorno" rows={[
+  { icon: "account_balance_wallet", label: "Fatturato", value: "847,50 €" },
+  { icon: "receipt_long", label: "Ordini confermati", value: "34" },
+  { icon: "loyalty", label: "Clienti fedeltà", value: "128" },
+  { icon: "storefront", label: "Marca migliore", value: "Pizzeria (62 % del fatturato)", variant: "total" }
+]} />
 
-## Trucchi e consigli
+L'evoluzione mostra **+18 %** rispetto al giorno prima: ieri alla stessa ora eri a 718 €. Questo balzo ti indica che il servizio del pranzo funziona meglio oggi — forse grazie a un meteo favorevole o alla promozione « Pranzo Express » che hai lanciato stamattina.
 
-Il dashboard aggrega automaticamente i dati di tutti i tuoi brand: non hai bisogno di creare un account separato per insegna. Se lanci un secondo brand, apparirà nelle statistiche dal primo ordine validato. Ricordati di aggiornare la pagina durante il servizio per vedere gli ultimi ordini — il browser non aggiorna sempre le cifre in tempo reale senza un ricaricamento manuale.
+Questo esempio è illustrativo e può variare in base alla tua attività, alla tua località e alle tue azioni di marketing.
+
+<Eyebrow icon="check_circle">Buone pratiche</Eyebrow>
+
+## Sfruttare al meglio il pannello di controllo
+
+<Callout type="default">
+- **Consultalo più volte al giorno**: un'occhiata alle 11, alle 14 e alle 19 ti dà tre istantanee del servizio e ti permette di anticipare i picchi.
+- **Incrocia con le [scorte](/it/guides/stocks/)**: se una marca decolla, verifica di avere abbastanza ingredienti per reggere la serata.
+- **Annota gli eventi**: un'evoluzione insolita (partita, sciopero, meteo) merita un appunto mentale per regolare le tue previsioni future.
+- **Confronta su più giorni**: un solo scarto non fa una tendenza — osserva l'intera settimana prima di modificare i tuoi orari o i tuoi [menù](/it/guides/menu/).
+</Callout>
+
+<Eyebrow icon="error">Errori da evitare</Eyebrow>
+
+## Le trappole più comuni
+
+<Callout type="error">
+- **Non reagire agli avvisi**: se il pannello di controllo segnala una scorta bassa o un ritardo di consegna, cliccarci sopra e gestire il problema immediatamente evita le rotture di stock in pieno servizio.
+- **Confrontare giorni non confrontabili**: una domenica vs un lunedì, o un giorno festivo vs un giorno feriale, falsa l'analisi — privilegia il confronto settimana N vs settimana N-1.
+- **Ignorare la marca migliore**: se un'insegna rende poco a lungo, approfondisci le ragioni (prezzi, tempi, recensioni) invece di concentrarti solo su quella vincente.
+</Callout>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
 
 ## Domande frequenti
 
 <Faq items={[
   {
-    icon: "help",
-    q: "Perché il fatturato del giorno non corrisponde ai miei bonifici?",
-    a: "Il dashboard mostra il fatturato lordo del giorno (totale pagato dai clienti). I tuoi bonifici detraggono la commissione del 10 % e arrivano entro 7 giorni — consulta la schermata Finanze per i dettagli dei versamenti."
+    icon: "schedule",
+    q: "A che ora riparte il contatore del giorno?",
+    a: "Ogni giorno a mezzanotte (00:00), gli indicatori di fatturato e ordini ripartono da zero. I clienti fedeltà, invece, rappresentano il totale cumulato dall'apertura del tuo account."
   },
   {
-    icon: "help",
-    q: "Posso filtrare gli ordini per brand?",
-    a: "Il dashboard globale aggrega tutti i brand. Per consultare gli ordini di un brand specifico, accedi al suo menu tramite il menu laterale, quindi clicca su “Ordini” nella scheda del brand."
+    icon: "storefront",
+    q: "Come viene calcolata la « marca migliore »?",
+    a: "Grubano somma il fatturato di ogni marca dalla mezzanotte e le ordina per importo decrescente. La marca in testa viene mostrata, con la sua percentuale sul fatturato totale. Se due marche sono a pari merito, vince la prima in ordine alfabetico."
   },
   {
-    icon: "help",
-    q: "Gli ordini annullati vengono conteggiati nel fatturato del giorno?",
-    a: "No. Solo gli ordini il cui stato è “validato”, “in preparazione”, “pronto”, “ritirato” o “consegnato” entrano nel calcolo del fatturato. Gli ordini annullati non appaiono né nel fatturato né nel contatore ordini."
+    icon: "update",
+    q: "I numeri si aggiornano automaticamente?",
+    a: "Sì, il pannello di controllo interroga il server ogni pochi secondi. Non appena un nuovo ordine viene confermato, il fatturato, il numero di ordini e la marca migliore si ricalcolano senza che tu ricarichi la pagina."
   },
   {
-    icon: "help",
-    q: "Come accedere alle statistiche dettagliate (orari di punta, scontrino medio)?",
-    a: "La schermata Analytics (menu laterale) presenta i grafici di fatturato per giorno, per brand e per ora. Troverai lo scontrino medio, gli orari di punta e la ripartizione del fatturato tra i tuoi brand negli ultimi 30 giorni."
+    icon: "error",
+    q: "Cosa fare se il pannello di controllo mostra zero ovunque?",
+    a: "Può succedere se nessun ordine è ancora stato confermato oggi, o se il database non è raggiungibile. Verifica la tua connessione internet e contatta il supporto se il problema persiste oltre qualche minuto."
   }
 ]} />
 
-## Per andare oltre
+<Eyebrow icon="menu_book">Per approfondire</Eyebrow>
 
-**Prossimi passi**
+## Articoli correlati
 
-- [Gestione del menu](/it/guides/menu/) — aggiungi piatti, attiva l’IA per scansionare un menu cartaceo e organizza i tuoi brand.
-- [Gestione delle scorte](/it/guides/stocks/) — monitora le quantità in tempo reale e ricevi avvisi di rottura per evitare ordini non evasi.
-
-**Vedi anche**
-
-- [Prenotazioni](/it/guides/reservations/) — gestisci i tavoli prenotati in sala e sincronizzali con gli ordini da asporto.
-- [Monitoraggio finanziario](/it/guides/finances/) — consulta i tuoi bonifici, la commissione applicata e lo storico dei pagamenti.
+<RelatedCards items={[
+  { icon: "restaurant_menu", title: "Menù e scansione IA", sub: "Gestisci il tuo menù con un clic", href: "/it/guides/menu/" },
+  { icon: "inventory", title: "Gestione delle scorte", sub: "Anticipare le rotture di stock", href: "/it/guides/stocks/" },
+  { icon: "table_bar", title: "Prenotazioni e sala", sub: "Gestisci la tua sala", href: "/it/guides/reservations/" },
+  { icon: "account_balance", title: "Finanze e versamenti", sub: "Monitora i tuoi incassi", href: "/it/guides/finances/" }
+]} />

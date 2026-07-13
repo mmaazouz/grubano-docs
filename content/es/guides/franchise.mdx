@@ -2,102 +2,147 @@
 title: "La franquicia en Grubano"
 description: "Convertirse en franquiciador (abrir su marca a la red) o franquiciado (explotar una marca existente) — la marca sigue siendo del franquiciador, dentro de los límites fijados por Grubano."
 generated: true
-sourceHash: dfe7ab844a2ab5e5
+sourceHash: 40b52c90577fa7c7
 generator: scripts/generate-feature-page.js
-templateVersion: 5
+templateVersion: 6
 ---
 
 import { Steps, Callout } from 'nextra/components'
 
 # La franquicia en Grubano
 
-Desarrolle su marca en red o explote una marca existente, dentro de los límites fijados por Grubano.
+La franquicia le permite convertirse en franquiciador (abrir su marca a la red) o franquiciado (explotar una marca existente) — usted conserva la relación con el cliente y la visibilidad de su enseña, dentro de los límites fijados por Grubano.
 
-<FlowDiagram steps={["Candidatear","Validación Grubano","Adoptar una marca","Explotar"]} />
+<ArticleMeta audience="Franquiciados" minutes={3} updated="2026-07-12" />
 
-## Lo esencial
+<Eyebrow icon="insights">Vista general</Eyebrow>
 
-La franquicia le permite convertirse en **franquiciador** — abrir su marca a otros restauradores que la explotarán en su cocina — o **franquiciado** — unirse a una marca existente y cocinar su menú en su establecimiento. La marca, el menú y los estándares siguen siendo propiedad del franquiciador; cada punto de venta opera en su propia cocina.
+## Dos caminos, una misma herramienta
 
-## Cómo funciona
+<FlowDiagram steps={[
+  { icon: "storefront", title: "Presentar candidatura", desc: "Elija una marca abierta a la red o proponga la suya" },
+  { icon: "description", title: "Validación Grubano", desc: "Se examina su expediente (cocina, número de identificación fiscal, motivación)" },
+  { icon: "restaurant", title: "Adoptar una marca", desc: "Conviértase en explotador de una enseña aprobada" },
+  { icon: "two_wheeler", title: "Explotar", desc: "Reciba sus pedidos y gestione sus restaurantes" }
+]} />
 
-Grubano le ofrece dos caminos: si posee una marca que funciona bien (nota ≥ 4,5 estrellas, volumen estable), puede abrirla a la red; a largo plazo, percibirá regalías sobre la facturación de cada franquiciado (el cálculo y el pago automatizado de las regalías llegarán pronto a la plataforma). Si es restaurador y busca un concepto probado, candidatea para explotar una marca abierta a la franquicia — cocina su menú en su cocina, bajo su responsabilidad, y abonará una regalía al franquiciador.
+<Eyebrow icon="bolt">Lo esencial</Eyebrow>
 
-Este modelo responde a dos necesidades: acelerar el crecimiento de una marca exitosa sin invertir en nuevos locales, y permitir a un restaurador comenzar con un concepto validado en lugar de crear el suyo desde cero. La comisión de Grubano permanece en **10 %** por pedido, idéntica para todos los roles (Standard como Pro). Las condiciones financieras entre franquiciador y franquiciado — regalía, derechos de entrada — son fijadas por Grubano en el momento de la apertura de la marca.
+## En resumen
 
-## Paso a paso
+<Essentials title="Si solo debe recordar esto:" items={[
+  <>Dos roles posibles: <b>franquiciador</b> (abrir su marca a la red) o <b>franquiciado</b> (explotar una marca existente) — usted conserva su relación con el cliente y la visibilidad de su enseña.</>,
+  <>La comisión Grubano se mantiene idéntica — <b>del 5 al 12 % según el modo de pedido</b> (en el local 5 %, click & collect 8 %, entrega 12 %, reserva 0 %) — sea cual sea su estatus.</>,
+  <>Las condiciones financieras entre franquiciador y franquiciado (regalía, derechos de entrada, zonas) están <b>definidas con usted en el momento de la apertura</b>, dentro de los límites fijados por Grubano.</>
+]} />
 
-### Convertirse en franquiciado (explotar una marca)
+<Eyebrow icon="lightbulb">Cómo funciona</Eyebrow>
 
-<Steps>
+## El principio (y el porqué)
 
-### Descubrir las marcas abiertas
+Grubano permite a los restauradores duplicar su concepto (franquiciador) o unirse a una red probada (franquiciado), conservando su relación con el cliente y su fidelidad, dentro de Grubano. Usted conserva su panel de control unificado, sus análisis de ventas y su autonomía — la marca sigue siendo del franquiciador, el vínculo con el cliente en el punto de venta.
 
-Diríjase a la página **Franquicia** para ver las marcas que están reclutando. Cada ficha indica la cocina, la facturación promedio mensual, las ciudades disponibles y los platos destacados.
+Si explota varios restaurantes, puede [gestionar su red](/es/guides/franchise-operations/) desde una sola cuenta y seguir el rendimiento de cada enseña.
 
-### Candidatear
+<Eyebrow icon="format_list_numbered">Paso a paso</Eyebrow>
 
-Haga clic en **"Candidatear"** y complete el formulario: nombre, email, número de identificación fiscal, IBAN (opcionales en esta etapa), si dispone de una cocina equipada, y un mensaje de motivación. Su candidatura se registra con el estado `pending`.
-
-### Esperar la validación
-
-Grubano examina su expediente. Si la candidatura es aprobada (`approved`), un **punto de venta** se crea automáticamente y se vincula a la marca. Usted recibe un email de confirmación. Si es rechazada (`rejected`), se le informa.
-
-### Explotar
-
-Una vez validado, su punto de venta aparece en su espacio de franquiciado. Usted cocina el menú de la marca, recibe los pedidos en su panel de control, y sigue sus resultados (facturación, número de pedidos, regalías debidas). La marca sigue siendo propiedad del franquiciador; usted es el explotador local.
-
-</Steps>
-
-### Convertirse en franquiciador (abrir su marca a la red)
+## Presentar una candidatura
 
 <Steps>
 
-### Preparar su marca
+### Rellenar el formulario de candidatura
 
-Asegúrese de que su restaurante muestre una nota ≥ 4,5 estrellas y un volumen de pedidos estable (≥ 50 por semana). Estos criterios garantizan que su concepto esté probado y sea duplicable.
+Diríjase a la página pública `/franchise` y haga clic en «Presentar candidatura». Deberá facilitar su nombre, correo electrónico, motivación e indicar si dispone de una cocina equipada. El número de identificación fiscal y el IBAN son opcionales en esta etapa.
 
-### Abrir la marca a la franquicia
+### Seleccionar una marca (franquiciado) o proponer la suya (franquiciador)
 
-Desde su cuenta de restaurante, active la opción **"Abrir a la franquicia"** en una de sus marcas. Grubano fija con usted las condiciones: regalía (porcentaje de la facturación), derechos de entrada, zonas geográficas disponibles.
+Si presenta su candidatura como franquiciado, elija una marca abierta a la red en la lista mostrada (cocina, facturación promedio, ciudades disponibles). Si desea convertirse en franquiciador, indique el nombre de su enseña en el campo `brandName`.
 
-### Recibir las candidaturas
+### Esperar la validación Grubano
 
-Los restauradores interesados postulan a través de la página pública Franquicia. Usted recibe sus expedientes (nombre, email, número de identificación fiscal, motivación) y decide aprobar o rechazar cada candidatura.
+Su candidatura pasa al estado `pending` en la base de datos. El equipo de Grubano examina su expediente (presencia de una cocina, coherencia del proyecto, número de identificación fiscal si se facilita) antes de aprobarla (`approved`) o rechazarla (`rejected`).
 
-### Dirigir su red
+### Acceder a su espacio de franquiciado
 
-Una vez validados los franquiciados, accede a un panel de control dedicado: facturación de la red, número de puntos de venta activos, regalías debidas, y resultados por establecimiento. Usted mantiene el control de la marca (nombre, menú, estándares); cada franquiciado cocina en su propia cocina.
+Una vez aprobado, recibe una cuenta con el rol `franchise`. Puede entonces iniciar sesión y acceder a `/franchise/dashboard` para seguir sus puntos de venta, sus pedidos y sus ingresos.
 
 </Steps>
 
-<Callout type="info">
-**Próximamente**: Grubano Pro (29 €/mes) le permitirá recibir los pedidos de todas sus otras plataformas (Uber Eats, Deliveroo, Just Eat…) directamente en su panel de control de Grubano, con análisis unificados. La comisión permanece en 10 %.
+<Eyebrow icon="check_circle">Buenas prácticas</Eyebrow>
+
+## Maximizar sus posibilidades de aprobación
+
+<Callout type="default">
+- **Indique su número de identificación fiscal desde la candidatura** — esto acelera la validación administrativa y demuestra que ya está registrado.
+- **Detalle su motivación** — explique por qué esta marca (o su propio concepto) se ajusta a su proyecto y a su zona geográfica.
+- **Verifique que dispone de una cocina equipada** — en Grubano, todos los restaurantes cocinan en su propio local.
+- **Complete su perfil de operador tras la aprobación** — la ciudad y el teléfono pueden editarse más tarde mediante `PATCH /api/franchise/profile` (estos campos no son bloqueantes para la validación).
 </Callout>
 
-## Ejemplo concreto
+<Eyebrow icon="error">Errores a evitar</Eyebrow>
 
-Un restaurador especializado en wraps vegetarianos muestra una nota de 4,7 estrellas y procesa 60 pedidos por semana. Abre su marca a la franquicia en tres ciudades de su región. Un segundo restaurador, que dispone de una cocina equipada pero busca un concepto validado, candidatea y es aprobado. El franquiciado recibe el menú completo (recetas, fotos, descripciones), cocina los wraps en su propia cocina. El franquiciador sigue los resultados de la red desde su panel de control; el pago automatizado de las regalías sobre la facturación llegará pronto — cada monto debido será entonces visible mes a mes.
+## Los errores más comunes
 
-## Buenas prácticas
-
-- **Franquiciadores**: abra su marca a la franquicia solo si sus indicadores son sólidos (nota ≥ 4,5, volumen regular). Un concepto frágil corre el riesgo de decepcionar a los franquiciados y perjudicar su reputación.
-- **Franquiciados**: lea atentamente las condiciones (regalía, derechos de entrada, zonas) antes de candidatear. Asegúrese de que su cocina esté equipada para cocinar el menú de la marca.
-- **Documentación**: mantenga un registro de las candidaturas aprobadas y de los resultados por punto de venta. Esto le ayudará a identificar los establecimientos que rinden bien y aquellos que necesitan acompañamiento.
-- **Comunicación**: manténgase en contacto regular con sus franquiciados (o su franquiciador). Una red que se comunica bien es una red que perdura.
-
-## Errores frecuentes
-
-<Callout type="warning">
-**Atención**: candidatear a una marca sin disponer de una cocina equipada retrasa el proceso. Grubano verifica que usted pueda cocinar el menú antes de validar su candidatura.
+<Callout type="error">
+- **Presentar candidatura sin cocina** — si marca `hasKitchen: false`, su expediente corre el riesgo de ser rechazado de inmediato (Grubano exige que cada punto de venta cocine en el local).
+- **Multiplicar las candidaturas para la misma marca** — el modelo `FranchiseeApplication` impone una restricción de unicidad sobre `(restaurantId, brandId)`; una segunda solicitud para el mismo par fallará.
+- **Confundir franquicia y afiliación** — la afiliación (creadores / influencers) cobra una comisión sobre las ventas aportadas por un enlace de recomendación; la franquicia explota una marca y paga una regalía al franquiciador, dentro de los límites fijados por Grubano.
 </Callout>
 
-**Abrir demasiado pronto**: un franquiciador que abre su marca antes de haber estabilizado su concepto (nota < 4,5, volumen irregular) expone a sus franquiciados a un riesgo de fracaso. Consolide primero su propio restaurante.
+<Eyebrow icon="quiz">FAQ</Eyebrow>
 
-**No seguir los resultados**: un franquiciador que nunca consulta su panel de control ignora las señales débiles (caída de facturación, puntos de venta inactivos). [Dirigir su red](/es/guides/franchise-operations/) le evita sorpresas desagradables.
+## Preguntas frecuentes
 
-## Para ir más lejos
+<Faq items={[
+  {
+    icon: "percent",
+    q: "¿Cuál es la comisión Grubano como franquiciado?",
+    a: "La comisión se mantiene idéntica a la de un restaurante independiente: del 5 al 12 % según el modo de pedido (en el local 5 %, click & collect 8 %, entrega 12 %, reserva 0 %). La regalía abonada al franquiciador se define con usted en el momento de la apertura, dentro de los límites fijados por Grubano."
+  },
+  {
+    icon: "storefront",
+    q: "¿Puedo explotar varios puntos de venta bajo la misma marca?",
+    a: "Sí. Cada punto de venta se registra como un `PointOfSale` distinto, vinculado a la misma `Brand`. Usted gestiona el conjunto desde su panel de control de franquiciado, con estadísticas por restaurante."
+  },
+  {
+    icon: "gavel",
+    q: "¿Quién fija las condiciones financieras de la franquicia?",
+    a: "Las condiciones (regalía, derechos de entrada, zonas de exclusividad) se definen entre el franquiciador y usted en el momento de la apertura, dentro de los límites fijados por Grubano. La tasa de regalía puede configurarse por marca (campo `royaltyPct` en el modelo `Brand`)."
+  },
+  {
+    icon: "account_balance",
+    q: "¿Cómo se calculan las regalías?",
+    a: "El panel de control de franquiciado muestra una estimación (facturación × tasa de regalía de la marca) y, pronto, el importe real retenido en cada pedido (mediante el modelo `FranchiseRoyalty`). Los pagos quedan registrados en la tabla y son visibles en su espacio."
+  }
+]} />
 
-**Siguiente paso**: una vez lanzada su red, consulte [Dirigir su red de franquicia](/es/guides/franchise-operations/) para aprender a seguir los resultados, gestionar las regalías, y acompañar a sus franquiciados.
+<Eyebrow icon="menu_book">Para ir más allá</Eyebrow>
 
-**Ver también**: si es restaurador y duda entre crear su propia marca o unirse a una franquicia, lea [Comenzar como restaurante](/es/guides/restaurant/) para comparar los dos enfoques.
+## Artículos relacionados
+
+<RelatedCards items={[
+  {
+    icon: "insights",
+    title: "Gestionar su red",
+    sub: "Gestionar la red",
+    href: "/es/guides/franchise-operations/"
+  },
+  {
+    icon: "insights",
+    title: "Panel de control",
+    sub: "Indicadores en directo",
+    href: "/es/guides/restaurant/"
+  },
+  {
+    icon: "shopping_bag",
+    title: "Pedir y seguir",
+    sub: "Pedir y seguir",
+    href: "/es/guides/consumer/"
+  },
+  {
+    icon: "loyalty",
+    title: "Fidelidad, monedero y recomendación",
+    sub: "Puntos y recomendación",
+    href: "/es/guides/consumer-loyalty/"
+  }
+]} />

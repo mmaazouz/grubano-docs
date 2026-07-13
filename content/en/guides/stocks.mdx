@@ -1,104 +1,156 @@
 ---
-title: "Inventory Management"
-description: "Keep a brand’s inventory up to date: add items, track quantities and expiration dates, receive restocking alerts, and update stocks in natural language via AI."
+title: "Stock management"
+description: "Keep a brand's inventory up to date: add items, track quantities and expiration dates, receive restocking alerts, and update stocks in natural language via AI."
 generated: true
-sourceHash: 0081a0b9c1238a2c
+sourceHash: 5ced8fb4a6feb257
 generator: scripts/generate-feature-page.js
-templateVersion: 5
+templateVersion: 6
 ---
 
 import { Steps, Callout } from 'nextra/components'
 
-# Inventory Management
+# Stock management
 
-Keep your inventory up to date in real time, detect stockouts before they impact your sales, and manage your restocking in natural language.
+Keep your brand's inventory up to date in real time, set restocking thresholds and get alerts before you run out — or update your stocks in natural language with AI.
 
-<FlowDiagram steps={["Add an item","Set a min threshold","Restock alert","7-day stockout forecast"]} />
+<ArticleMeta audience="Restaurants" minutes={4} updated="2026-07-10" />
 
-## The Essentials
+<Eyebrow icon="insights">Overview</Eyebrow>
 
-Inventory management allows you to monitor your quantities in real time, anticipate stockouts, and receive automatic alerts when a product falls below your restocking threshold. You can add or update your items manually, or simply send a message in natural language — the AI understands "chicken 3 kg, rice 5 kg, tomato sauce out" and updates the inventory for you.
+## The life cycle of an item
 
-## How It Works
+<FlowDiagram steps={[
+  { icon: "add", title: "Add an item", desc: "Name, initial quantity, unit and minimum threshold" },
+  { icon: "tune", title: "Set a min threshold", desc: "Get an alert when stock drops below it" },
+  { icon: "notifications", title: "Restock alert", desc: "Notification as soon as an item crosses the threshold" },
+  { icon: "schedule", title: "7-day stockout forecast", desc: "The AI estimates the stockout date from your consumption" }
+]} />
 
-Each brand has its own inventory: you list your ingredients, current quantities, and expiration dates. Grubano continuously monitors this data and alerts you as soon as a product reaches the critical threshold you have set. The goal: never run out without your customers knowing, and order at the right time.
+<Eyebrow icon="bolt">The essentials</Eyebrow>
 
-AI-powered updates analyze your short messages ("2 kg of flour, tomatoes out") and automatically adjust the corresponding stocks. If the item already exists, its quantity is updated; otherwise, it is created. As a bonus, you get a **7-day stockout forecast**: for each product, Grubano estimates the number of days remaining based on average daily consumption and indicates the expected depletion date.
+## In short
 
-<Callout type="info">
-The forecast relies on default averages (0.7 kg/day for kilograms, 5 units/day for pieces). Refine your thresholds over time to match your actual service pace.
-</Callout>
+<Essentials title="If you only remember one thing:" items={[
+  <>Each item carries a <b>name, a quantity, a unit</b> (kg, L, u…) and a <b>restocking threshold</b>.</>,
+  <>A <b>visual alert</b> warns you as soon as a stock drops below the threshold — and the AI computes the expected stockout date over a rolling 7-day window.</>,
+  <>The AI assistant accepts a natural-language message (<i>"chicken 3 kg, rice out"</i>) and updates the inventory for you.</>
+]} />
 
-## Step by Step
+<Eyebrow icon="lightbulb">How it works</Eyebrow>
+
+## The principle (and the why)
+
+Each brand has a centralized inventory: your ingredients, your containers, everything that goes into your production. For each item you set a **minimum acceptable quantity**; as soon as it is crossed, Grubano flags it on your [dashboard](/en/guides/restaurant/). The AI goes further: it observes the average consumption rate of each product and tells you how many days you have before you run out — enough time to order from your suppliers before you run dry.
+
+Rather than entering each line by hand, you can also send a simple message in plain language ("I received 5 kg of chicken, there are 2 L of tomato sauce left, the rice is out"): the assistant parses your text, identifies the items and updates the quantities right away. A precious time-saver in the middle of a rush.
+
+<Eyebrow icon="format_list_numbered">Step by step</Eyebrow>
+
+## Create and track a stock item
 
 <Steps>
 
-### Add an Item
+### Add a new item
 
-From your [dashboard](/en/guides/restaurant/), open the **Inventory** page. Click **Add an item**, enter the ingredient name, current quantity, unit (kg, g, L, mL, or u for "unit"), then save. The item appears immediately in your inventory.
+From the Stocks page of your [menu](/en/guides/menu/), click **Add an item**. Enter the ingredient name (chicken, basmati rice, olive oil…), the initial quantity, the unit (kg, L, g, mL or u for unit/piece) and the minimum threshold that will trigger the alert.
 
-### Set a Restocking Threshold
+### Set the restocking threshold
 
-Edit the item and specify the **minimum threshold** (for example, 2 kg). As soon as the quantity drops below this threshold, Grubano displays a "low stock" alert on the corresponding line. You can adjust this threshold at any time.
+The **Minimum threshold** field is the level below which Grubano alerts you. For example, if you enter 2 kg for chicken, you will receive a notification as soon as the stock drops below this line.
 
-### Update in Natural Language
+### Get the alert and check the forecast
 
-On the Inventory page, type a sentence like "chicken 3 kg, rice 5 kg, tomato sauce out" in the **Update via text** field. Confirm: the AI parses your message, recognizes the ingredients, updates the quantities (0 if "out"), and displays a summary of modified or created items. No item-by-item forms.
+When an item crosses its threshold, a red dot appears in the stock list. The AI also computes the **number of days remaining before stockout** based on your recent average consumption — an indicator displayed under each product's name.
 
-### Check the Forecasts
+### Update quantities manually or in natural language
 
-Once stocks are updated, consult the 7-day forecast table. Grubano indicates for each item the number of **days remaining**, the **estimated stockout date**, and a **status** (critical if ≤ 1 day, low if ≤ 3 days, ok otherwise). Order in advance items marked "critical" or "low."
-
-### Track Expiration Dates
-
-Enter an **expiration date** when creating or editing an item. Products near their expiration date appear at the top of the list to remind you to use them first or remove them from the [menu](/en/guides/menu/).
+You can edit an item's quantity by clicking on it, or use the AI assistant: type "chicken 3 kg, tomato sauce out" in the dedicated field, and the AI updates the inventory for you in a second.
 
 </Steps>
 
-## Best Practices
+<Eyebrow icon="lightbulb">Tip</Eyebrow>
 
-- **Update after each delivery**: as soon as you receive a supplier package, add the new quantities. The forecast remains reliable only if your stocks are up to date.
-- **Realistic thresholds**: a threshold that is too low causes stockouts; a threshold that is too high ties up cash. Observe your sales over a week and adjust gradually.
-- **Use AI for quick updates**: at the end of service, dictate or type the day’s consumption in one sentence. It is faster than manually editing each line.
-- **Link inventory and menu**: if a key ingredient is out, mark the corresponding dish as out of stock from the [Menu & AI Scan](/en/guides/menu/) page to avoid orders you cannot fulfill.
+## Save time with the AI assistant
 
-## Tips & Advice
-
-Phrase your AI messages like a telegraphic list: "flour 5 kg, eggs 2 dozen, oil 3 L." The AI recognizes common synonyms ("dozen" → 12 u, "finished/out" → 0) and abbreviated units (kg, L). No need for complete sentences.
-
-<Callout type="warning">
-AI updates are subject to a monthly quota per restaurant. If you reach the limit, a 429 error message prompts you to wait until the following month or switch to manual entry.
+<Callout type="info">
+Instead of clicking each stock line, dictate your inventory in **natural language**: "5 kg of flour, 2 L of oil, cherry tomatoes out". The AI automatically recognizes the ingredients, quantities and units, then applies the updates. Ideal for saving several minutes every morning.
 </Callout>
 
-## Frequently Asked Questions
+<Eyebrow icon="check_circle">Best practices</Eyebrow>
+
+## What works well
+
+<Callout type="default">
+- **Realistic thresholds**: set the minimum threshold to a value that leaves you time to restock (2–3 days of consumption in general).
+- **Daily updates**: refresh the quantities every morning or after each delivery so the forecasts stay reliable.
+- **Expiration date filled in**: if an item has a short expiration date (fresh products), enter it; Grubano will remind you to use it up first.
+- **Use the AI**: it saves you several minutes a day and reduces data-entry errors.
+</Callout>
+
+<Eyebrow icon="error">Mistakes to avoid</Eyebrow>
+
+## Common pitfalls
+
+<Callout type="error">
+- **Forgetting the threshold**: a threshold set to zero or missing never triggers an alert — you risk a stockout with no warning.
+- **Ignoring the forecast**: the AI tells you "stockout in 2 days"? Order now, not tomorrow.
+- **Inconsistent units**: if you alternate between "kg" and "g" for the same item, create two separate lines or standardize the unit to track thresholds correctly.
+</Callout>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
+
+## Frequently asked questions
 
 <Faq items={[
   {
-    icon: "help",
-    q: "Can I manage multiple brands with separate inventories?",
-    a: "Yes. Each brand has its own inventory. Select the relevant brand at the top of the Inventory page to display and edit only its items."
+    icon: "notifications",
+    q: "Where do I see restocking alerts?",
+    a: "Items below their threshold appear with a red dot in the stock list. You will also find them in the Low stock section of your dashboard."
+  },
+  {
+    icon: "schedule",
+    q: "How does the AI calculate the stockout date?",
+    a: "It observes your average daily consumption over recent days and divides the current quantity by that rate. It is an estimate that becomes more accurate over time."
+  },
+  {
+    icon: "smart_toy",
+    q: "Does the AI assistant understand every ingredient?",
+    a: "Yes, as long as you use a common name (chicken, rice, tomato sauce…). If a term is ambiguous, rephrase: 'chicken 3 kg' rather than 'assorted poultry'. The AI also recognizes 'out', 'empty' or '0' to set an item to zero."
   },
   {
     icon: "help",
-    q: "What happens if I send an AI message without specifying a brand?",
-    a: "The API returns a preview of detected items (status 'preview') without saving them. Provide a brand identifier (brandId) to save the changes to your inventory."
-  },
-  {
-    icon: "help",
-    q: "Is the stockout forecast reliable from day one?",
-    a: "It relies on default averages. After a few weeks, adjust your thresholds based on your actual consumption to refine the forecasts."
-  },
-  {
-    icon: "help",
-    q: "Can I delete an item from the inventory?",
-    a: "Currently, the API allows you to create and update items. To permanently remove a product, set its quantity to zero and its threshold to zero; it will no longer appear in alerts."
+    q: "Can I track multiple brands in the same inventory?",
+    a: "Each brand has its own inventory. If you manage several brands, you will see a separate stock list for each one — select the relevant brand before adding or editing an item."
   }
 ]} />
 
-## Going Further
+<Eyebrow icon="menu_book">Go further</Eyebrow>
 
-**Next Step**  
-[Menu & AI Scan](/en/guides/menu/) — Link your inventory to your menu: mark a dish as out of stock as soon as a key ingredient is depleted, to avoid orders you cannot fulfill.
+## Related articles
 
-**See Also**  
-[Restaurant Dashboard](/en/guides/restaurant/) — Access the Inventory page from your dashboard and check your restocking alerts at a glance.
+<RelatedCards items={[
+  {
+    icon: "menu_book",
+    title: "Menu & AI Scan",
+    sub: "Menu and AI Scan",
+    href: "/en/guides/menu/"
+  },
+  {
+    icon: "insights",
+    title: "Dashboard",
+    sub: "Live indicators",
+    href: "/en/guides/restaurant/"
+  },
+  {
+    icon: "inventory_2",
+    title: "Catalog, zones & orders",
+    sub: "Catalog and orders",
+    href: "/en/guides/supplier-catalog/"
+  },
+  {
+    icon: "bolt",
+    title: "Get started in 15 minutes",
+    sub: "Ready in 15 minutes",
+    href: "/en/guides/quick-start/"
+  }
+]} />

@@ -1,109 +1,176 @@
 ---
 title: "Ordinare e seguire"
-description: "Trova un ristorante locale, effettua un ordine (consegna / ritiro / sul posto) e segui l’avanzamento in tempo reale."
+description: "Trova un ristorante locale, effettua un ordine (consegna / click & collect / al tavolo) e segui l'avanzamento in tempo reale."
 generated: true
-sourceHash: bf78b8eca73da5ba
+sourceHash: f1525f494baf9f7e
 generator: scripts/generate-feature-page.js
-templateVersion: 5
+templateVersion: 6
 ---
 
 import { Steps, Callout } from 'nextra/components'
 
 # Ordinare e seguire
 
-Trova un ristorante vicino a te, ordina in pochi clic e segui la tua consegna o il ritiro in tempo reale.
+Trova un ristorante vicino a te, componi il tuo ordine (consegna, click & collect o al tavolo) e seguilo in tempo reale fino alla ricezione.
 
----
+<ArticleMeta audience="Clienti" minutes={4} updated="2026-07-12" />
 
-<FlowDiagram steps={["Trovare un ristorante","Comporre","Pagare","Seguire l’ordine"]} />
+<Eyebrow icon="insights">Panoramica</Eyebrow>
 
----
+## Il percorso del tuo ordine
 
-## L’essenziale
+<FlowDiagram steps={[
+  { icon: "search", title: "Trova un ristorante", desc: "Sfoglia i ristoranti locali che consegnano a domicilio o offrono il click & collect" },
+  { icon: "restaurant_menu", title: "Componi", desc: "Aggiungi i tuoi piatti, personalizza le opzioni e scegli la modalità di ricezione" },
+  { icon: "payments", title: "Paga", desc: "Paga online con carta — il tuo denaro è al sicuro fino alla consegna" },
+  { icon: "two_wheeler", title: "Segui l'ordine", desc: "Ricevi le notifiche in tempo reale: accettato, in preparazione, in arrivo" }
+]} />
 
-Scegli un ristorante locale, componi il tuo carrello con i piatti e le opzioni che desideri, poi paga online. Il tuo ordine viene trasmesso istantaneamente al ristorante, che lo prepara mentre tu segui l’avanzamento — dalla cucina fino alla tua porta o al banco di ritiro.
+<Eyebrow icon="bolt">L'essenziale</Eyebrow>
 
----
+## In breve
 
-## Come funziona
+<Essentials title="Se devi ricordare solo una cosa:" items={[
+  <>Grubano applica una <b>commissione dal 5 al 12 % a seconda della modalità</b> (al tavolo 5 %, click & collect 8 %, consegna 12 %), mai sulle spese di consegna né sulle mance</>,
+  <>Segui il tuo ordine <b>in tempo reale</b> — dall'accettazione da parte del ristorante fino alla consegna, con un link di tracciamento unico</>,
+  <>Pagamento sicuro online: <b>il tuo denaro resta bloccato</b> fino alla conferma della consegna — paghi solo ciò che ricevi</>
+]} />
 
-Grubano collega direttamente i ristoranti locali (che cucinano nella propria cucina) ai clienti. Ogni ordine passa attraverso quattro fasi: trovi un locale aperto e attivo, personalizzi i tuoi piatti (dimensione, supplementi, esclusioni), paghi online, poi il ristorante riceve il tuo ordine e lo prepara. Scegli tra la consegna a domicilio o il ritiro sul posto — in entrambi i casi, sai in tempo reale a che punto è il tuo pasto.
+<Eyebrow icon="lightbulb">Come funziona</Eyebrow>
 
-Il programma [fedeltà](/it/guides/consumer-loyalty/) premia ogni euro speso (escluse le spese) con un punto, che potrai utilizzare sui tuoi prossimi ordini. Le tue informazioni sono conservate nel tuo [account](/it/guides/consumer-account/) per velocizzare le tue prossime visite.
+## Il principio (e il perché)
 
----
+Grubano collega i ristoranti **locali** — quelli che cucinano nella propria cucina — ai clienti del loro quartiere. Ordini direttamente dal ristoratore, che mantiene [la sua relazione con i clienti e la sua fedeltà](/it/guides/consumer-loyalty/) nell'app. Il tracciamento in tempo reale funziona per tutte e tre le modalità: **consegna** (un rider ti porta l'ordine), **click & collect** (lo ritiri al ristorante) o **al tavolo** (mangi seduto al ristorante). Ogni modalità ha la propria commissione — il ristoratore incassa il resto.
 
-## Passo dopo passo
+La trasparenza degli stati (ricevuto, in preparazione, pronto, in arrivo, consegnato) garantisce che tu sia sempre informato. Se un ristorante è chiuso nel momento in cui ordini, l'app ti indica la prossima apertura e blocca la conferma — non puoi mai ordinare a vuoto.
+
+<Eyebrow icon="format_list_numbered">Passo dopo passo</Eyebrow>
+
+## Effettuare e seguire un ordine
 
 <Steps>
 
-### Trovare un ristorante
+### Trova un ristorante
 
-Sfoglia i ristoranti attivi vicino a te, filtra per cucina (italiana, asiatica, hamburger…) o cerca per nome. La mappa mostra il voto medio, il tempo di preparazione e le spese di consegna di ogni locale. Un ristorante chiuso fuori dal suo orario di apertura ti indica quando riaprirà.
+Sfoglia la mappa o l'elenco dei ristoranti aperti. Mostrano il loro **tempo di consegna stimato**, il loro **voto** e il loro **ordine minimo**. Puoi filtrare per tipo di cucina e ordinare per voto o per tempo.
 
-### Comporre il tuo carrello
+### Componi il tuo carrello
 
-Aggiungi i piatti che ti piacciono. Per ogni articolo, scegli la dimensione (Piccola, Media, Grande), seleziona i supplementi a pagamento (formaggio, bacon, avocado…), scegli le esclusioni gratuite (senza cipolla, senza glutine…) e lascia una nota di preparazione se necessario. Il totale si aggiorna in tempo reale; le opzioni vengono salvate riga per riga, quindi ordinare due volte lo stesso piatto con guarnizioni diverse crea effettivamente due righe distinte.
+Aggiungi i piatti che ti piacciono. Per ogni piatto, personalizza le **opzioni** (dimensione, supplementi, esclusioni) e lascia una **nota** se necessario. Il carrello calcola il totale in tempo reale — subtotale dei piatti, spese di consegna ed eventuali sconti.
 
-### Scegliere consegna o ritiro
+### Scegli la modalità di ricezione
 
-Passa da **Consegna** (al tuo indirizzo, spese visualizzate) a **Ritiro sul posto** (nessuna spesa, raccolta al banco del ristorante). In modalità ritiro, il carrello mostra l’indirizzo del locale e l’orario in cui il tuo ordine sarà pronto; in consegna, inserisci il tuo indirizzo completo. Se l’indirizzo si trova fuori dalla zona di consegna del ristorante, l’ordine viene rifiutato prima del pagamento.
+In cima al carrello, passa da **🛵 Consegna** a **🥡 Click & collect**. Il click & collect annulla le spese di consegna e mostra l'indirizzo del ristorante. La consegna mostra il tuo indirizzo salvato — modificalo se necessario nel [tuo account](/it/guides/consumer-account/).
 
-### Pagare online
+### Paga online
 
-Il riepilogo dettaglia il subtotale (i tuoi piatti), le spese di consegna (o 0 € per il ritiro), eventuali sconti attivi (codice promozionale del ristorante, sconto di benvenuto sul tuo primo ordine segnalato) e l’importo finale. Puoi spendere i tuoi punti fedeltà accumulati — il credito in euro corrispondente viene detratto dal totale, entro un limite massimo che preserva l’equilibrio della piattaforma. Il pagamento con carta bancaria attiva immediatamente la trasmissione al ristorante; i metodi "contanti" o "wallet" (eredità) trasmettono anch’essi l’ordine senza attendere.
+Conferma il carrello. La tua carta viene addebitata immediatamente, ma il denaro resta **bloccato** fino alla conferma della consegna — è una garanzia di sicurezza. Se l'ordine viene annullato, vieni **rimborsato integralmente**.
 
-### Seguire l’ordine
+### Segui in tempo reale
 
-Non appena il pagamento è confermato, il tuo ordine appare nella cronologia con il suo stato in tempo reale: **Ricevuto** (il ristorante è appena stato notificato), **In preparazione** (la cucina sta lavorando), **Pronto** (da ritirare o in attesa del corriere), **Ritirato** (il corriere l’ha preso o tu l’hai ritirato) e infine **Consegnato** (completato). Un link di tracciamento ti permette di visualizzare l’avanzamento; il ristorante aggiorna ogni fase dal suo pannello di controllo. Ricevi una stima del tempo di consegna subito dopo la conferma del pagamento.
+Non appena il ristorante accetta, ricevi una notifica. Gli stati si susseguono: **In preparazione** → **Pronto** → **In arrivo** (consegna) o **Ritirato** (click & collect) → **Consegnato**. Un link di tracciamento unico ti permette di aggiornare la pagina in qualsiasi momento.
+
+### Conferma la ricezione
+
+Quando lo stato passa a **Consegnato**, il denaro viene liberato al ristoratore. Guadagni **punti fedeltà** (1 punto per ogni euro speso) che potrai spendere sui tuoi prossimi ordini.
 
 </Steps>
 
----
+<Eyebrow icon="calculate">Esempio concreto</Eyebrow>
 
-## Esempio concreto
+## Un ordine di 25 € in consegna
 
-Cerchi un ristorante asiatico aperto alle 19:30 di martedì. Grubano mostra tre locali attivi nel raggio di 5 km, con i loro voti e tempi di attesa. Ne scegli uno con 4,6 stelle, aggiungi una ciotola di ramen (dimensione Media + supplemento uovo marinato + senza cipollotti) e un dessert mochi. Il carrello mostra 16,50 € + 1,99 € di consegna. Passi a **Ritiro sul posto**: le spese scendono a 0 €, totale 16,50 €, pronto in 20 minuti. Confermi, paghi con carta e l’ordine passa immediatamente allo stato "Ricevuto" dal lato del ristorante. Quindici minuti dopo, passa a "Pronto" — parti per ritirarlo all’indirizzo indicato e una volta sul posto il ristorante lo contrassegna come "Ritirato", poi "Consegnato" quando te ne vai. Guadagni 16 punti fedeltà (uno per ogni euro speso sui piatti e sulla consegna).
+Immaginiamo che tu ordini 25 € di piatti presso un ristorante locale, in **consegna**. Il ristorante mostra spese di consegna di 1,99 €. Nessuna promozione attiva.
 
----
+<Breakdown title="Dettaglio dell'ordine" rows={[
+  { icon: "restaurant_menu", label: "Piatti ordinati", value: "25,00 €" },
+  { icon: "local_shipping", label: "Spese di consegna", value: "1,99 €" },
+  { icon: "payments", label: "Totale da pagare", value: "26,99 €", variant: "total" }
+]} />
 
-## Buone pratiche
+Dietro le quinte, Grubano applica il **12 % di commissione sui 25 € di piatti** (ovvero 3 €), mai sulle spese di consegna. Il ristorante incassa quindi **22 € + 1,99 € = 23,99 €** netti. Se avessi scelto il **click & collect**, la commissione sarebbe stata dell'8 % (2 €) e le spese di consegna di 0 €, per un totale di **25 € da pagare** e **23 € netti** per il ristorante. Le mance al rider vengono versate al **100 %**.
 
-- **Verifica gli orari**: un ristorante visualizzato come chiuso ti indica precisamente quando riaprirà ("Apre domani alle 11:30"). Ordinare durante una fascia di apertura garantisce una preparazione immediata.
-- **Rileggi le tue opzioni**: dimensione, supplementi ed esclusioni sono fissati all’aggiunta — modificare una riga dopo richiede di eliminarla e ricrearla. Prenditi il tempo di selezionare tutto prima di confermare.
-- **Usa i tuoi punti intelligentemente**: il credito fedeltà viene detratto dal totale finale, ma un limite massimo (legato al margine netto disponibile su questo ordine) può limitare la riduzione. Su un piccolo ordine, risparmia i tuoi punti per un carrello più consistente per massimizzare il loro valore.
-- **Preferisci il ritiro quando possibile**: nessuna spesa di consegna, nessun tempo di attesa per il corriere e controlli tu l’orario di ritiro. Ideale per spostamenti brevi o pause pranzo.
+Questo esempio è illustrativo — ogni ristorante fissa il proprio ordine minimo e le proprie spese di consegna.
 
----
+<Eyebrow icon="check_circle">Buone pratiche</Eyebrow>
+
+## Ordina in modo intelligente
+
+<Callout type="default">
+
+- **Verifica gli orari** — l'app mostra la prossima apertura se il ristorante è chiuso, ma risparmi tempo consultando le fasce orarie prima di comporre.
+- **Confronta consegna e click & collect** — il click & collect annulla le spese di consegna e riduce la commissione (quindi sostiene di più il ristoratore).
+- **Usa i tuoi punti** — 1 punto = 1 centesimo di credito. Se ne hai abbastanza, attiva «Usa i miei punti» nel carrello per ridurre l'importo finale.
+- **Lascia note chiare** — indica le tue esclusioni («senza cipolla») o le tue preferenze nell'area di testo libero del piatto — il ristorante le vedrà.
+
+</Callout>
+
+<Eyebrow icon="error">Errori da evitare</Eyebrow>
+
+## Le insidie più comuni
+
+<Callout type="error">
+
+- **Ordinare sotto il minimo** — se il subtotale non supera la soglia del ristorante, la conferma è bloccata. Aggiungi un piatto o scegli un altro ristorante.
+- **Modificare l'indirizzo dopo la conferma** — una volta partito l'ordine, non puoi più cambiare la destinazione. Verifica **prima** di pagare.
+- **Ignorare gli stati** — se un ordine resta bloccato su «Ricevuto» a lungo, contatta il ristorante (numero indicato sulla scheda). Il tracciamento serve ad avvisarti.
+
+</Callout>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
 
 ## Domande frequenti
 
 <Faq items={[
   {
-    icon: "help",
-    q: "Posso annullare o modificare il mio ordine dopo il pagamento?",
-    a: "Un ordine pagato viene trasmesso immediatamente al ristorante, che inizia la preparazione. Qualsiasi annullamento o modifica deve essere fatto direttamente con il locale (contatti nella tua cronologia). Grubano non può rimuovere un piatto già in cucina.",
+    icon: "schedule",
+    q: "Posso ordinare per più tardi?",
+    a: "Non ancora — tutti gli ordini vengono preparati immediatamente. La pianificazione oraria («Consegna alle 19:30») arriverà presto."
   },
   {
-    icon: "help",
-    q: "Cosa succede se il ristorante rifiuta il mio ordine?",
-    a: "Il ristorante può contrassegnare un ordine come “Annullato” (rottura di stock, chiusura imprevista). Vieni notificato immediatamente e l’importo pagato viene integralmente rimborsato sul tuo metodo di pagamento. I punti fedeltà non vengono addebitati in questo caso.",
+    icon: "payments",
+    q: "Quando vengo addebitato?",
+    a: "La tua carta viene addebitata al momento della conferma, ma il denaro resta bloccato finché il ristorante non conferma la consegna. In caso di annullamento, vieni rimborsato integralmente."
   },
   {
-    icon: "help",
-    q: "I miei punti fedeltà vengono detratti automaticamente?",
-    a: "No. Devi selezionare “Usa i miei punti” nel carrello affinché il credito corrispondente venga applicato. Il server calcola l’importo massimo utilizzabile (mai più del saldo disponibile, né più del limite di questo ordine) e detrae questa somma dal totale. I punti vengono addebitati dal tuo account solo alla conferma del pagamento.",
+    icon: "loyalty",
+    q: "Quanti punti guadagno?",
+    a: "1 punto per ogni euro effettivamente speso (sul totale dopo gli sconti). Anche le spese di consegna contano. I punti compaiono nel tuo saldo alla conferma della consegna."
   },
   {
-    icon: "help",
-    q: "Perché il mio ordine rimane nello stato “In attesa di pagamento”?",
-    a: "Un ordine con carta bancaria viene creato in questo stato e diventa visibile al ristorante solo dopo che il pagamento è confermato da Stripe (webhook). Se il pagamento fallisce o scade, l’ordine non verrà mai trasmesso. Verifica che la tua carta sia valida e che l’importo non sia stato bloccato; in caso di dubbio, rifai l’ordine.",
-  },
+    icon: "local_shipping",
+    q: "Il ristorante può annullare il mio ordine?",
+    a: "Sì, se un piatto è esaurito o se sopraggiunge un imprevisto. Vieni rimborsato subito e notificato dall'app. Lo stato passa a «Annullato»."
+  }
 ]} />
 
----
+<Eyebrow icon="menu_book">Per approfondire</Eyebrow>
 
-## Per approfondire
+## Articoli correlati
 
-- [Fedeltà](/it/guides/consumer-loyalty/) — Accumula e spendi i tuoi punti su ogni ordine, scopri il funzionamento del programma premi e i limiti massimi di credito.
-- [Account](/it/guides/consumer-account/) — Gestisci i tuoi indirizzi di consegna registrati, consulta la cronologia completa dei tuoi ordini e aggiorna le tue preferenze di pagamento.
+<RelatedCards items={[
+  {
+    icon: "loyalty",
+    title: "Fedeltà, credito e passaparola",
+    sub: "Punti e passaparola",
+    href: "/it/guides/consumer-loyalty/"
+  },
+  {
+    icon: "person",
+    title: "Il mio account",
+    sub: "Profilo e indirizzi",
+    href: "/it/guides/consumer-account/"
+  },
+  {
+    icon: "insights",
+    title: "Pannello di controllo",
+    sub: "Indicatori in tempo reale",
+    href: "/it/guides/restaurant/"
+  },
+  {
+    icon: "menu_book",
+    title: "Menù e scansione IA",
+    sub: "Carta e scansione IA",
+    href: "/it/guides/menu/"
+  }
+]} />

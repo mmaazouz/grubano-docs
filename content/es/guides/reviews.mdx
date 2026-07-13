@@ -1,0 +1,146 @@
+---
+title: "Reseñas de clientes"
+description: "Consulte las reseñas publicadas por sus clientes, siga su puntuación media y prepare sus respuestas con un borrador redactado por IA, adaptado a la puntuación."
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# Reseñas de clientes
+
+Lea todas las reseñas publicadas por sus clientes, siga su puntuación media y prepare sus respuestas con un borrador redactado por IA.
+
+<ArticleMeta audience="Restaurantes" minutes={3} updated="2026-07-12" />
+
+<Eyebrow icon="reviews">Vista general</Eyebrow>
+
+## El recorrido de una reseña
+
+<FlowDiagram steps={[
+  { icon: "rate_review", title: "Reseña publicada", desc: "Un cliente puntúa su restaurante y redacta su reseña" },
+  { icon: "storefront", title: "Visible en su espacio", desc: "La reseña aparece en la página Reseñas de su panel de control" },
+  { icon: "auto_awesome", title: "Borrador con IA", desc: "Genere una propuesta de respuesta y luego retóquela" },
+  { icon: "schedule", title: "Envío de la respuesta", desc: "Disponible próximamente, directamente desde la página" }
+]} />
+
+<Eyebrow icon="bolt">Lo esencial</Eyebrow>
+
+## En resumen
+
+<Essentials title="Si solo tiene que quedarse con esto:" items={[
+  <>Cada cliente con sesión iniciada puede publicar <b>una reseña por restaurante</b> (puntuación de 1 a 5 estrellas obligatoria), que puede modificar después — sin duplicados</>,
+  <>Su página Reseñas muestra la <b>puntuación media</b> (un decimal), la <b>distribución por estrellas</b> y las 50 reseñas publicadas más recientes</>,
+  <>El botón <b>Generar</b> redacta un borrador de respuesta con IA, adaptado a la puntuación de la reseña y libremente modificable — el envío de la respuesta llegará próximamente</>
+]} />
+
+<Eyebrow icon="lightbulb">Cómo funciona</Eyebrow>
+
+## El principio (y el porqué)
+
+Las reseñas vienen directamente de sus clientes: desde la ficha de su restaurante en la app, un cliente con sesión iniciada puede puntuar su experiencia y redactar un comentario — una sola reseña por cliente y por restaurante, que puede modificar en cualquier momento (la nueva reseña reemplaza a la anterior). Solo las reseñas **publicadas** aparecen en su página Reseñas, ordenadas de la más reciente a la más antigua. Así conserva su relación con el cliente: las opiniones llegan a usted, en el mismo lugar que sus [pedidos e indicadores](/es/guides/restaurant/).
+
+Para proteger la privacidad de sus clientes, solo se muestra el **nombre de pila** del autor junto a su reseña. Cada reseña lleva también una etiqueta de **origen** — «Grubano» hoy, la única fuente de reseñas de la plataforma. Su **puntuación media** se calcula a partir de la distribución por estrellas (media ponderada de 1 a 5) y se muestra con un decimal, acompañada de las estrellas correspondientes.
+
+<Eyebrow icon="format_list_numbered">Paso a paso</Eyebrow>
+
+## Preparar una respuesta con IA
+
+<Steps>
+
+### Abra la página Reseñas
+
+Desde el menú lateral de su panel de control, haga clic en **Reseñas**. La página carga automáticamente las reseñas del restaurante actual (el seleccionado en su panel de control).
+
+### Lea el resumen en la parte superior de la página
+
+La puntuación media, la distribución de las puntuaciones de 1 a 5 estrellas y el número total de reseñas le dan la temperatura general de un vistazo.
+
+### Recorra las reseñas
+
+Las 50 reseñas publicadas más recientes se muestran de la más reciente a la más antigua: nombre de pila del autor, puntuación, texto, fecha y etiqueta de origen.
+
+### Genere un borrador de respuesta
+
+Abra la ventana de respuesta de una reseña y haga clic en **Generar**. La IA redacta una propuesta en español, corta (menos de tres frases) y firmada «El equipo de Grubano», con un tono adaptado a la puntuación.
+
+### Relea y personalice
+
+El borrador se muestra en un cuadro de texto libremente editable: ajústelo con sus palabras, un detalle del servicio o un gesto comercial. El botón **Enviar** todavía está inactivo — el envío llegará próximamente; mientras tanto, puede copiar su texto para reutilizarlo donde quiera.
+
+</Steps>
+
+<Eyebrow icon="check_circle">Buenas prácticas</Eyebrow>
+
+## Saque el máximo partido a los borradores de IA
+
+<Callout type="default">
+- **Deje que la IA se adapte a la puntuación**: el tono del borrador se elige automáticamente — empático y con disculpas para una reseña de 1 o 2 estrellas, matizado a 3 estrellas, entusiasta a partir de 4.
+- **Personalice siempre**: el borrador es un punto de partida; un detalle concreto (el plato pedido, la noche del incidente) hace que la respuesta sea mucho más creíble.
+- **Vigile la distribución por estrellas**: un aumento de las reseñas de 1 o 2 estrellas se nota en la distribución antes de repercutir en la media.
+- **Sea sobrio**: los borradores tienen menos de tres frases, es intencionado — una respuesta corta y sincera vale más que un largo alegato.
+</Callout>
+
+<Eyebrow icon="schedule">Próximamente</Eyebrow>
+
+## Lo que viene después
+
+<Callout type="info">
+Tres novedades ya son visibles en la interfaz y llegarán próximamente: el **envío de las respuestas** directamente desde la ventana de redacción (el botón Enviar aparece pero todavía está inactivo), la **importación de reseñas de otras plataformas** (Google, TripAdvisor…) para centralizarlo todo en el mismo lugar, y el seguimiento **Por responder / Respondidas** — como las respuestas todavía no se guardan, la pestaña Respondidas muestra 0 por ahora y todas las reseñas permanecen clasificadas como «Por responder».
+</Callout>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
+
+## Preguntas frecuentes
+
+<Faq items={[
+  {
+    icon: "person",
+    q: "¿Quién puede publicar una reseña sobre mi restaurante?",
+    a: "Cualquier cliente con sesión iniciada en su cuenta, con una puntuación obligatoria de 1 a 5 estrellas. Cada cliente solo puede publicar una reseña por restaurante: si la modifica, la nueva versión reemplaza a la anterior. Solo las reseñas publicadas aparecen en su página."
+  },
+  {
+    icon: "smart_toy",
+    q: "¿Cómo elige la IA el tono de la respuesta?",
+    a: "El tono se deriva automáticamente de la puntuación de la reseña: empático y con disculpas hasta 2 estrellas, matizado a 3 estrellas, entusiasta a partir de 4. Se aplica una cuota de uso por cuenta: si la supera, espere un poco antes de generar un nuevo borrador."
+  },
+  {
+    icon: "star",
+    q: "¿La puntuación mostrada en mi ficha del lado de los clientes se recalcula a partir de estas reseñas?",
+    a: "Todavía no: la puntuación global de su ficha se gestiona por separado y no se recalcula automáticamente a partir de las reseñas publicadas en Grubano. Esta conexión está en estudio."
+  },
+  {
+    icon: "lock",
+    q: "¿Es visible el nombre completo de mis clientes?",
+    a: "No. Por respeto a la privacidad, solo se muestra el nombre de pila del autor junto a su reseña — tanto en su página Reseñas como del lado público."
+  }
+]} />
+
+<Eyebrow icon="menu_book">Para saber más</Eyebrow>
+
+## Artículos relacionados
+
+<RelatedCards items={[
+  {
+    icon: "sentiment_satisfied",
+    title: "Pedir y seguir",
+    sub: "El recorrido del lado del cliente",
+    href: "/es/guides/consumer/"
+  },
+  {
+    icon: "storefront",
+    title: "Panel de control",
+    sub: "Indicadores en directo",
+    href: "/es/guides/restaurant/"
+  },
+  {
+    icon: "loyalty",
+    title: "Programa de fidelidad",
+    sub: "Puntos y recompensas",
+    href: "/es/guides/loyalty/"
+  },
+  {
+    icon: "monitoring",
+    title: "Análisis y briefing IA",
+    sub: "Sus cifras descifradas",
+    href: "/es/guides/analytics/"
+  }
+]} />

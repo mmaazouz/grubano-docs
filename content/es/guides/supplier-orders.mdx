@@ -1,0 +1,168 @@
+---
+title: "Hacer pedidos a sus proveedores"
+description: "Encontrar un proveedor en el mercado de Grubano, llenar el carrito hasta el mínimo de pedido, hacer el pedido sin pago en línea y seguir cada etapa hasta la entrega."
+---
+
+import { Steps, Callout } from 'nextra/components'
+
+# Hacer pedidos a sus proveedores
+
+Abastezca su restaurante desde el mercado de Grubano: busque un proveedor por producto o por zona, llene su carrito hasta el mínimo de pedido y luego siga cada pedido desde el envío hasta la entrega.
+
+<ArticleMeta audience="Restaurantes" minutes={4} updated="2026-07-12" />
+
+<Eyebrow icon="insights">Visión general</Eyebrow>
+
+## De la búsqueda a la entrega
+
+<FlowDiagram steps={[
+  { icon: "storefront", title: "Encontrar un proveedor", desc: "Búsqueda por producto, zona y mínimo" },
+  { icon: "shopping_cart", title: "Llenar el carrito", desc: "Progreso hacia el mínimo de pedido" },
+  { icon: "send", title: "Hacer el pedido", desc: "Fecha deseada y notas, sin pago en línea" },
+  { icon: "local_shipping", title: "Seguir la entrega", desc: "Cronología del envío a la recepción" }
+]} />
+
+<Eyebrow icon="bolt">Lo esencial</Eyebrow>
+
+## En resumen
+
+<Essentials title="Si solo debe recordar esto:" items={[
+  <>El <b>mercado de proveedores</b> está reservado a los restauradores: solo ve proveedores activos y artículos disponibles, con la ciudad, el mínimo de pedido y el plazo mostrados de antemano</>,
+  <>El <b>carrito</b> se llena proveedor por proveedor en su navegador; no se pide ni se cobra nada mientras no confirme — los precios que prevalecen son siempre los del servidor</>,
+  <>El <b>mínimo de pedido</b> se verifica dos veces (en pantalla y por el servidor) y cada pedido sigue una cronología — enviado, confirmado, en preparación, entregado — cancelable mientras no esté confirmado</>
+]} />
+
+<Eyebrow icon="lightbulb">Cómo funciona</Eyebrow>
+
+## El principio (y el porqué)
+
+El mercado de proveedores es un circuito de abastecimiento **profesional**, distinto de su directorio de proveedores privado y de los pedidos de sus clientes. Solo muestra proveedores **activos** con catálogo verificado, y únicamente sus artículos **disponibles**. Cada tarjeta indica la ciudad, las familias de productos, el número de productos, el plazo de entrega y el mínimo de pedido; las zonas de entrega detalladas se muestran al abrir la ficha del proveedor.
+
+En el momento de la confirmación, su navegador no envía **ningún importe**: el servidor recalcula todo a partir de los precios del catálogo y congela cada línea (nombre, unidad, precio en céntimos) en una instantánea inmutable. Hacer el pedido no genera ningún pago en línea, y este circuito no activa ni puntos de fidelidad, ni promociones, ni recomendación — es un flujo separado del recorrido del cliente.
+
+<Eyebrow icon="format_list_numbered">Paso a paso</Eyebrow>
+
+## Hacer su primer pedido a un proveedor
+
+<Steps>
+
+### Abra el mercado
+
+Desde su [panel de control](/es/guides/restaurant/), abra el **mercado de proveedores**. Cada tarjeta muestra el nombre del proveedor, su ciudad, sus familias de productos, su número de productos, su plazo de entrega y — si lo ha fijado — su mínimo de pedido.
+
+### Busque por producto
+
+El campo de búsqueda filtra la lista a los proveedores que ofrecen un **artículo disponible** que coincide con lo que escribe («mozzarella», «harina»…). Los artículos encontrados se muestran directamente en la tarjeta del proveedor correspondiente, lo que le evita abrir cada catálogo.
+
+### Explore el catálogo
+
+Abra la ficha de un proveedor para consultar su catálogo completo. Aparece una etiqueta **«Entrega en su zona»** cuando la ciudad de su restaurante coincide con las zonas de entrega declaradas por el proveedor. Los artículos momentáneamente no disponibles aparecen en gris y no se pueden añadir al carrito.
+
+### Llene su carrito
+
+Ajuste las cantidades con los botones + / −, filtre por búsqueda o por familia de productos. Una barra en la parte inferior de la pantalla sigue su **progreso hacia el mínimo de pedido** y muestra el importe que falta por alcanzar: el botón «Ver el carrito» solo se activa cuando el carrito contiene al menos un artículo **y** alcanza el mínimo. El carrito se conserva en su navegador, proveedor por proveedor — puede volver más tarde sin perder nada.
+
+### Confirme el pedido
+
+La pantalla del carrito recarga los precios **desde el servidor** (son los que prevalecen) y resume sus líneas. Elija una **fecha de entrega deseada** entre cinco días consecutivos — la primera propuesta parte de hoy más el plazo de preparación del proveedor — y añada si es necesario una **nota** (franja horaria, acceso, instrucciones… 1000 caracteres máximo). Al confirmar, el pedido se crea con el estado **«enviado»**, sin ningún pago en línea.
+
+### Siga, cancele o vuelva a pedir
+
+La página **Pedidos** enumera sus pedidos a proveedores con pestañas por estado (todos, enviados, confirmados, en preparación, entregados) y sus contadores. Abra un pedido para ver su cronología, sus líneas y su total. Mientras esté «enviado», puede **cancelarlo**; «Volver a pedir» recarga las mismas líneas en su carrito; «Contactar» abre directamente el teléfono o el correo electrónico del proveedor.
+
+</Steps>
+
+<Eyebrow icon="calculate">Ejemplo concreto</Eyebrow>
+
+## Un pedido a un proveedor de frutas y verduras
+
+Imaginemos un proveedor de frutas y verduras con un mínimo de pedido de 120 € y un plazo de preparación de 2 días. Usted llena su carrito:
+
+<Breakdown title="Resumen del carrito" rows={[
+  { icon: "shopping_basket", label: "Verduras de temporada — 12 kg", value: "54,00 €" },
+  { icon: "shopping_basket", label: "Hierbas frescas — 20 manojos", value: "24,00 €" },
+  { icon: "shopping_basket", label: "Cítricos — caja de 10 kg", value: "48,00 €" },
+  { icon: "payments", label: "Total — mínimo de 120 € alcanzado", value: "126,00 €", variant: "total" }
+]} />
+
+Con 96 €, la barra de progreso le habría indicado el importe que faltaba; con 126 €, el botón se activa. Es miércoles: con un plazo de 2 días, las fechas propuestas van del viernes al martes. Al confirmar, cada línea queda congelada: si el proveedor cambia sus tarifas el jueves, su pedido no lo tiene en cuenta, y la cronología mostrará su fecha deseada como fecha «prevista» de entrega. Este ejemplo es ilustrativo; sus importes reales dependen del catálogo de cada proveedor.
+
+<Eyebrow icon="check_circle">Buenas prácticas</Eyebrow>
+
+## Pida sin fricciones
+
+<Callout type="default">
+- **Compruebe las zonas y el mínimo antes de llenar el carrito**: la tarjeta del proveedor los muestra de entrada, y la etiqueta «Entrega en su zona» confirma la coincidencia con la ciudad de su restaurante.
+- **Utilice la nota del pedido** para sus instrucciones de recepción (franja horaria, acceso, muelle…): se transmite al proveedor junto con el pedido.
+- **Use «Volver a pedir»** para sus compras recurrentes: las líneas del pedido anterior se recargan en el carrito, y tanto los precios como la disponibilidad se vuelven a verificar en el momento de la nueva confirmación.
+- **Agrupe sus necesidades** en un mismo proveedor para alcanzar el mínimo en un solo pedido, y concilie sus recepciones con su [gestión de stock](/es/guides/stocks/) para mantener un registro al día.
+</Callout>
+
+<Eyebrow icon="error">Errores que evitar</Eyebrow>
+
+## Los errores más comunes
+
+<Callout type="error">
+- **Confundir carrito y pedido**: el carrito vive en su navegador; mientras no confirme, no se envía nada al proveedor — y no lo recuperará en otro dispositivo.
+- **Esperar para cancelar**: la cancelación solo es posible mientras el pedido esté «enviado»; en cuanto el proveedor lo confirma, use el botón «Contactar» para llegar a un acuerdo directamente.
+- **Buscar una marca de tiempo en cada etapa**: solo la etapa «Pedido enviado» lleva una hora real; las etapas siguientes indican el estado alcanzado, y la entrega muestra su fecha deseada como fecha prevista.
+- **Contar con puntos de fidelidad**: los pedidos a proveedores son un circuito profesional separado — no se aplica ningún punto, ninguna promoción, ninguna recomendación.
+</Callout>
+
+<Eyebrow icon="quiz">FAQ</Eyebrow>
+
+## Preguntas frecuentes
+
+<Faq items={[
+  {
+    icon: "schedule",
+    q: "¿Por qué solo se me proponen algunas fechas de entrega?",
+    a: "Las propuestas de fecha parten de hoy más el plazo de preparación declarado por el proveedor, sobre cinco días consecutivos. Los días de cierre del proveedor no se tienen en cuenta en esta fase: si existe una restricción (mercado, ruta…), indíquela en la nota del pedido."
+  },
+  {
+    icon: "cancel",
+    q: "¿Puedo cancelar un pedido ya confirmado?",
+    a: "No. Puede cancelar mientras el pedido esté en estado «enviado». Una vez confirmado por el proveedor, la cancelación directa ya no es posible: use el botón «Contactar» (teléfono o correo electrónico) para llegar a un acuerdo. El proveedor, por su parte, puede rechazar un pedido enviado."
+  },
+  {
+    icon: "sell",
+    q: "¿Pueden cambiar los precios entre mi pedido y la entrega?",
+    a: "No. Al confirmar, cada línea queda congelada en una instantánea inmutable: nombre del producto, unidad y precio en céntimos. Los cambios de tarifa posteriores del proveedor solo se aplican a los pedidos siguientes — y si un artículo deja de estar disponible antes de su confirmación, el servidor rechaza el pedido para que ajuste el carrito."
+  },
+  {
+    icon: "payments",
+    q: "¿Cómo se realiza el pago?",
+    a: "La confirmación del pedido no genera ningún pago en línea: usted paga a su proveedor según sus condiciones habituales. El pago en línea seguro llegará pronto."
+  }
+]} />
+
+<Eyebrow icon="menu_book">Para saber más</Eyebrow>
+
+## Artículos relacionados
+
+<RelatedCards items={[
+  {
+    icon: "inventory_2",
+    title: "Gestión de stock",
+    sub: "Registro y alertas",
+    href: "/es/guides/stocks/"
+  },
+  {
+    icon: "storefront",
+    title: "Panel de control",
+    sub: "Indicadores en directo",
+    href: "/es/guides/restaurant/"
+  },
+  {
+    icon: "account_balance",
+    title: "Finanzas y pagos",
+    sub: "Pagos y extractos",
+    href: "/es/guides/finances/"
+  },
+  {
+    icon: "menu_book",
+    title: "Menú y escaneo IA",
+    sub: "Crear su carta",
+    href: "/es/guides/menu/"
+  }
+]} />
