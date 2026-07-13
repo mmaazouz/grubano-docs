@@ -9,11 +9,15 @@ const cat = (icon: string, label: string) =>
 // ⚠️ ترجمة آلية — تحتاج مراجعة بشرية.
 export default {
   '-- clients': { type: 'separator', title: cat('restaurant', 'العملاء') },
+  'espace-clients': { title: 'ابدأ هنا', display: 'hidden', theme: { toc: false } },
+  'parcours-client': { title: 'المسار: أول طلب', display: 'hidden' },
   consumer: 'الطلب والتتبّع',
   'consumer-loyalty': 'الولاء والإحالة',
   'consumer-account': 'حسابي',
 
   '-- restaurant': { type: 'separator', title: cat('storefront', 'المطاعم') },
+  'espace-restaurateurs': { title: 'ابدأ هنا', display: 'hidden', theme: { toc: false } },
+  'parcours-restaurateur': { title: 'المسار: بداية موفقة', display: 'hidden' },
   'quick-start': 'ابدأ في 15 دقيقة',
   restaurant: 'لوحة التحكم',
   menu: 'القائمة والمسح بالذكاء الاصطناعي',
@@ -29,10 +33,13 @@ export default {
   pro: 'الترقية إلى Pro',
 
   '-- supplier': { type: 'separator', title: cat('local_shipping', 'المورّدون') },
+  'espace-fournisseurs': { title: 'ابدأ هنا', display: 'hidden', theme: { toc: false } },
   supplier: 'بيع المستلزمات',
   'supplier-catalog': 'الكتالوج والمناطق والطلبات',
 
   '-- franchise': { type: 'separator', title: cat('hub', 'أصحاب الامتياز') },
+  'espace-franchises': { title: 'ابدأ هنا', display: 'hidden', theme: { toc: false } },
+  'parcours-franchise': { title: 'المسار: إطلاق امتياز', display: 'hidden' },
   franchise: 'الامتياز على Grubano',
   'franchise-operations': 'إدارة شبكتك',
 
@@ -46,6 +53,8 @@ export default {
   influencer: 'كن مؤثراً',
 
   '-- driver': { type: 'separator', title: cat('two_wheeler', 'عمال التوصيل') },
+  'espace-livreurs': { title: 'ابدأ هنا', display: 'hidden', theme: { toc: false } },
+  'parcours-livreur': { title: 'المسار: كن عامل توصيل', display: 'hidden' },
   driver: 'كن عامل توصيل والمهام',
   'driver-earnings': 'الأرباح والسحوبات',
   'driver-tracking': 'تتبّع التوصيلة',

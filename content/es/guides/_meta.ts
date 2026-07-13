@@ -8,11 +8,15 @@ const cat = (icon: string, label: string) =>
 // Orden del sidebar = catálogo v5 (por público). Refleja content/fr/guides/_meta.ts.
 export default {
   '-- clients': { type: 'separator', title: cat('restaurant', 'Clientes') },
+  'espace-clients': { title: 'Empezar aquí', display: 'hidden', theme: { toc: false } },
+  'parcours-client': { title: 'Recorrido: primer pedido', display: 'hidden' },
   consumer: 'Pedir y seguir',
   'consumer-loyalty': 'Fidelidad y recomendación',
   'consumer-account': 'Mi cuenta',
 
   '-- restaurant': { type: 'separator', title: cat('storefront', 'Restaurantes') },
+  'espace-restaurateurs': { title: 'Empezar aquí', display: 'hidden', theme: { toc: false } },
+  'parcours-restaurateur': { title: 'Recorrido: buen comienzo', display: 'hidden' },
   'quick-start': 'Empezar en 15 minutos',
   restaurant: 'Panel de control',
   menu: 'Menú y escaneo IA',
@@ -28,10 +32,13 @@ export default {
   pro: 'Pasar a Pro',
 
   '-- supplier': { type: 'separator', title: cat('local_shipping', 'Proveedores') },
+  'espace-fournisseurs': { title: 'Empezar aquí', display: 'hidden', theme: { toc: false } },
   supplier: 'Vender sus suministros',
   'supplier-catalog': 'Catálogo, zonas y pedidos',
 
   '-- franchise': { type: 'separator', title: cat('hub', 'Franquiciados') },
+  'espace-franchises': { title: 'Empezar aquí', display: 'hidden', theme: { toc: false } },
+  'parcours-franchise': { title: 'Recorrido: lanzar una franquicia', display: 'hidden' },
   franchise: 'La franquicia en Grubano',
   'franchise-operations': 'Gestionar su red',
 
@@ -45,6 +52,8 @@ export default {
   influencer: 'Convertirse en influencer',
 
   '-- driver': { type: 'separator', title: cat('two_wheeler', 'Repartidores') },
+  'espace-livreurs': { title: 'Empezar aquí', display: 'hidden', theme: { toc: false } },
+  'parcours-livreur': { title: 'Recorrido: ser repartidor', display: 'hidden' },
   driver: 'Ser repartidor y misiones',
   'driver-earnings': 'Remuneración y retiros',
   'driver-tracking': 'Seguimiento de la entrega',
