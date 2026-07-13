@@ -1,6 +1,6 @@
 ---
 title: "Finanze e versamenti"
-description: "Comprendere le tue finanze Grubano: commissione per modalità (dal 5 al 12 %), calendario dei versamenti, dettaglio lordo/commissione/netto e dichiarazione DAC7."
+description: "Comprendere le sue finanze Grubano: commissione per modalità (dal 5 al 12 %), calendario dei versamenti, dettaglio lordo/commissione/netto e dichiarazione DAC7."
 generated: true
 sourceHash: 304d44d35710cdf9
 generator: scripts/generate-feature-page.js
@@ -11,13 +11,13 @@ import { Steps, Callout } from 'nextra/components'
 
 # Finanze e versamenti
 
-Monitora i tuoi incassi in tempo reale, comprendi la commissione per modalità e consulta lo storico di ogni operazione monetaria.
+Monitori i suoi incassi in tempo reale, comprenda la commissione per modalità e consulti lo storico di ogni operazione monetaria.
 
 <ArticleMeta audience="Ristoratori" minutes={5} updated="2026-07-12" />
 
 <Eyebrow icon="insights">Panoramica</Eyebrow>
 
-## Il percorso del tuo denaro
+## Il percorso del suo denaro
 
 <FlowDiagram steps={[
   { icon: "receipt_long", title: "Ordine pagato", desc: "Il cliente paga il suo ordine con carta" },
@@ -30,9 +30,9 @@ Monitora i tuoi incassi in tempo reale, comprendi la commissione per modalità e
 
 ## In breve
 
-<Essentials title="Se devi ricordare solo questo:" items={[
+<Essentials title="Se deve ricordare solo questo:" items={[
   <>Grubano trattiene una <b>commissione per modalità</b> : 5 % al tavolo, 8 % in click & collect, 12 % in consegna, 0 % sulle prenotazioni</>,
-  <>I versamenti sono <b>automatici</b> entro 2-7 giorni sul tuo conto bancario, senza soglia minima</>,
+  <>I versamenti sono <b>automatici</b> entro 2-7 giorni sul suo conto bancario, senza soglia minima</>,
   <>L'<b>estratto conto dettagliato</b> elenca ogni operazione (incassi, rimborsi, costi di elaborazione a carico di Grubano) e alimenta la dichiarazione DAC7</>
 ]} />
 
@@ -40,9 +40,9 @@ Monitora i tuoi incassi in tempo reale, comprendi la commissione per modalità e
 
 ## Il principio (e il perché)
 
-Ogni pagamento del cliente — ordine in consegna, click & collect, conto al tavolo o caparra di prenotazione — genera una **riga contabile** nel tuo registro finanziario, con data e ora e arricchita della modalità (al tavolo, click & collect, consegna, prenotazione). La commissione Grubano viene trattenuta **alla fonte** in base alla modalità dell'ordine, prima che il denaro parta verso il tuo conto bancario.
+Ogni pagamento del cliente — ordine in consegna, click & collect, conto al tavolo o caparra di prenotazione — genera una **riga contabile** nel suo registro finanziario, con data e ora e arricchita della modalità (al tavolo, click & collect, consegna, prenotazione). La commissione Grubano viene trattenuta **alla fonte** in base alla modalità dell'ordine, prima che il denaro parta verso il suo conto bancario.
 
-I **versamenti** sono automatici: non appena un pagamento viene confermato da Stripe (pochi secondi), l'importo netto ti viene trasferito entro un termine di 2-7 giorni lavorativi, senza soglia né azione manuale. Puoi consultare lo stato in tempo reale dal tuo [pannello di controllo](/it/guides/restaurant/).
+I **versamenti** sono automatici: non appena un pagamento viene confermato da Stripe (pochi secondi), l'importo netto le viene trasferito entro un termine di 2-7 giorni lavorativi, senza soglia né azione manuale. Può consultare lo stato in tempo reale dal suo [pannello di controllo](/it/guides/restaurant/).
 
 <Eyebrow icon="format_list_numbered">Passo dopo passo</Eyebrow>
 
@@ -50,29 +50,29 @@ I **versamenti** sono automatici: non appena un pagamento viene confermato da St
 
 <Steps>
 
-### Apri la pagina Finanze
+### Apra la pagina Finanze
 
-Dal menu laterale del tuo pannello di controllo, clicca su **Finanze**. La vista predefinita mostra i tuoi dati su **7 giorni mobili** (oggi + i 6 giorni precedenti).
+Dal menu laterale del suo pannello di controllo, clicchi su **Finanze**. La vista predefinita mostra i suoi dati su **7 giorni mobili** (oggi + i 6 giorni precedenti).
 
-### Leggi il riepilogo in cima alla pagina
+### Legga il riepilogo in cima alla pagina
 
-Quattro riquadri ti indicano il **lordo incassato** (somma di tutti i pagamenti dei clienti), la **commissione Grubano** (somma delle commissioni applicative trattenute), il **netto versato** (ciò che parte verso la tua banca) e il **numero di operazioni** nel periodo.
+Quattro riquadri le indicano il **lordo incassato** (somma di tutti i pagamenti dei clienti), la **commissione Grubano** (somma delle commissioni applicative trattenute), il **netto versato** (ciò che parte verso la sua banca) e il **numero di operazioni** nel periodo.
 
-### Cambia il periodo se necessario
+### Cambi il periodo se necessario
 
-Tre pulsanti ti permettono di passare tra **Oggi** (da mezzanotte), **Ultimi 7 giorni** e **Ultimi 30 giorni**. I totali si ricalcolano istantaneamente.
+Tre pulsanti le permettono di passare tra **Oggi** (da mezzanotte), **Ultimi 7 giorni** e **Ultimi 30 giorni**. I totali si ricalcolano istantaneamente.
 
-### Scorri lo storico delle operazioni
+### Scorra lo storico delle operazioni
 
 Più in basso, una tabella elenca ogni **riga contabile** : tipo (`payment` per un incasso, `refund` per un rimborso, `deposit_capture` per una caparra di prenotazione acquisita), data e ora, importo lordo, commissione, netto e la modalità (al tavolo, click & collect, consegna, prenotazione) se indicata. Le righe sono ordinate dalla più recente alla più vecchia.
 
-### Individua l'origine di un'operazione
+### Individui l'origine di un'operazione
 
-Ogni riga indica un **conto al tavolo** (nome del tavolo + stato), una **prenotazione** (nome del cliente + stato della caparra) oppure un **ordine** (click & collect o consegna, con stato del pagamento). Sai a colpo d'occhio quale vendita ha generato il denaro.
+Ogni riga indica un **conto al tavolo** (nome del tavolo + stato), una **prenotazione** (nome del cliente + stato della caparra) oppure un **ordine** (click & collect o consegna, con stato del pagamento). Sa a colpo d'occhio quale vendita ha generato il denaro.
 
-### Individua i rimborsi
+### Individui i rimborsi
 
-Le righe di tipo `refund` compaiono con **importo negativo** : rappresentano il denaro restituito al cliente. La tabella indica anche, per ogni pagamento, l'**importo già rimborsato** (cumulato su tutte le date), il che ti permette di sapere se un conto resta parzialmente rimborsabile.
+Le righe di tipo `refund` compaiono con **importo negativo** : rappresentano il denaro restituito al cliente. La tabella indica anche, per ogni pagamento, l'**importo già rimborsato** (cumulato su tutte le date), il che le permette di sapere se un conto resta parzialmente rimborsabile.
 
 </Steps>
 
@@ -92,17 +92,17 @@ Immaginiamo un ristorante che incassa 4 000 € su 30 giorni: 1 500 € in conse
   { icon: "payments", label: "Netto versato totale", value: "3 641,00 €", variant: "total" }
 ]} />
 
-I **costi di elaborazione Stripe** (circa 1,4 % + 0,25 € per transazione con carta) sono **a carico di Grubano** : non compaiono nel tuo conteggio, ricevi esattamente il netto indicato. Questo esempio è illustrativo; i tuoi dati reali dipendono dal tuo mix di modalità.
+I **costi di elaborazione Stripe** (circa 1,4 % + 0,25 € per transazione con carta) sono **a carico di Grubano** : non compaiono nel suo conteggio, riceve esattamente il netto indicato. Questo esempio è illustrativo; i suoi dati reali dipendono dal suo mix di modalità.
 
 <Eyebrow icon="check_circle">Buone pratiche</Eyebrow>
 
-## Gestisci con serenità
+## Gestisca con serenità
 
 <Callout type="default">
-- **Consulta la pagina Finanze ogni lunedì** per verificare che i versamenti della settimana precedente siano effettivamente partiti.
-- **Confronta le modalità** : se il click & collect (8 %) rappresenta il 60 % del tuo fatturato, la tua commissione media sarà ben più bassa del 12 %.
-- **Riconcilia con il tuo estratto conto bancario** : i bonifici arrivano entro 2-7 giorni; uno sfasamento di qualche giorno tra la data dell'ordine e l'accredito sul tuo conto è normale.
-- **Tieni d'occhio il tasso di rimborso** : un indicatore superiore al 5 % può segnalare un problema di qualità o di comunicazione con i clienti.
+- **Consulti la pagina Finanze ogni lunedì** per verificare che i versamenti della settimana precedente siano effettivamente partiti.
+- **Confronti le modalità** : se il click & collect (8 %) rappresenta il 60 % del suo fatturato, la sua commissione media sarà ben più bassa del 12 %.
+- **Riconcili con il suo estratto conto bancario** : i bonifici arrivano entro 2-7 giorni; uno sfasamento di qualche giorno tra la data dell'ordine e l'accredito sul suo conto è normale.
+- **Tenga d'occhio il tasso di rimborso** : un indicatore superiore al 5 % può segnalare un problema di qualità o di comunicazione con i clienti.
 </Callout>
 
 <Eyebrow icon="error">Errori da evitare</Eyebrow>
@@ -110,32 +110,32 @@ I **costi di elaborazione Stripe** (circa 1,4 % + 0,25 € per transazione con c
 ## Le insidie più comuni
 
 <Callout type="error">
-- **Confondere lordo e netto** : il dato in cima alla pagina è il lordo *prima* della commissione; fai il budget solo sul netto versato.
-- **Dimenticare che i costi Stripe sono a carico di Grubano** : a differenza di altre piattaforme, Grubano non ti riaddebita i costi bancari — il netto indicato è ciò che ricevi realmente.
-- **Cercare una soglia minima di versamento** : non ce n'è. Anche 10 € partono automaticamente verso la tua banca.
-- **Ignorare la modalità dell'ordine** : una prenotazione non genera *alcuna* commissione (0 %); se dimentichi di attivarla, ti perdi incassi senza costi.
+- **Confondere lordo e netto** : il dato in cima alla pagina è il lordo *prima* della commissione; faccia il budget solo sul netto versato.
+- **Dimenticare che i costi Stripe sono a carico di Grubano** : a differenza di altre piattaforme, Grubano non le riaddebita i costi bancari — il netto indicato è ciò che riceve realmente.
+- **Cercare una soglia minima di versamento** : non ce n'è. Anche 10 € partono automaticamente verso la sua banca.
+- **Ignorare la modalità dell'ordine** : una prenotazione non genera *alcuna* commissione (0 %); se dimentica di attivarla, si perde incassi senza costi.
 </Callout>
 
 <Eyebrow icon="lightbulb">Consiglio</Eyebrow>
 
-## Scarica il tuo estratto conto mensile
+## Scarichi il suo estratto conto mensile
 
 <Callout type="info">
-Un pulsante **Scarica l'estratto conto** (visibile sulla pagina ma non ancora collegato a oggi) ti permetterà presto di ottenere un PDF riepilogativo in formato contabile, pronto per il tuo commercialista. L'estratto conto consoliderà tutti i pagamenti, i rimborsi e le rettifiche del periodo, suddivisi per modalità, e integrerà gli elementi richiesti per la dichiarazione DAC7 (direttiva europea sulle piattaforme).
+Un pulsante **Scarica l'estratto conto** (visibile sulla pagina ma non ancora collegato a oggi) le permetterà presto di ottenere un PDF riepilogativo in formato contabile, pronto per il suo commercialista. L'estratto conto consoliderà tutti i pagamenti, i rimborsi e le rettifiche del periodo, suddivisi per modalità, e integrerà gli elementi richiesti per la dichiarazione DAC7 (direttiva europea sulle piattaforme).
 </Callout>
 
 <Eyebrow icon="description">Fiscalità</Eyebrow>
 
-## IVA e DAC7 : le tue informazioni fiscali
+## IVA e DAC7 : le sue informazioni fiscali
 
-Le tue informazioni fiscali si gestiscono dalla pagina **Impostazioni** (voce **Altro** su mobile), sezione **Informazioni legali e fiscali**. Ti riguardano tre blocchi.
+Le sue informazioni fiscali si gestiscono dalla pagina **Impostazioni** (voce **Altro** su mobile), sezione **Informazioni legali e fiscali**. La riguardano tre blocchi.
 
-**N. di partita IVA intracomunitaria** : inserisci il tuo numero (per esempio `FR 12 345 678 901`) poi clicca su **Salva**. Comparirà sulle fatture di commissione che Grubano ti invia. Salvare il campo vuoto cancella il numero.
+**N. di partita IVA intracomunitaria** : inserisca il suo numero (per esempio `FR 12 345 678 901`) poi clicchi su **Salva**. Comparirà sulle fatture di commissione che Grubano le invia. Salvare il campo vuoto cancella il numero.
 
-**Dichiarazione DAC7** : un secondo modulo raccoglie le informazioni richieste dalla direttiva europea — tipo di venditore (società o privato), indirizzo della sede, numero di identificazione fiscale (TIN) e il suo paese emittente (codice ISO a due lettere) ; la data di nascita è richiesta solo se dichiari come privato. Queste informazioni restano modificabili in qualsiasi momento, ed è l'unico adempimento DAC7 richiesto dalla tua parte: Grubano si occupa della dichiarazione alle autorità fiscali.
+**Dichiarazione DAC7** : un secondo modulo raccoglie le informazioni richieste dalla direttiva europea — tipo di venditore (società o privato), indirizzo della sede, numero di identificazione fiscale (TIN) e il suo paese emittente (codice ISO a due lettere) ; la data di nascita è richiesta solo se dichiara come privato. Queste informazioni restano modificabili in qualsiasi momento, ed è l'unico adempimento DAC7 richiesto dalla sua parte: Grubano si occupa della dichiarazione alle autorità fiscali.
 
 <Callout type="info">
-La **verifica dell'impresa (KYB)** compare nello stesso punto, in sola lettura: ragione sociale, forma giuridica, SIREN e stato della verifica (**Aggiornato**, **In corso** o **Azione richiesta**, con la data della verifica se applicabile). Questi elementi sono controllati da Grubano — non puoi modificarli da questa pagina.
+La **verifica dell'impresa (KYB)** compare nello stesso punto, in sola lettura: ragione sociale, forma giuridica, SIREN e stato della verifica (**Aggiornato**, **In corso** o **Azione richiesta**, con la data della verifica se applicabile). Questi elementi sono controllati da Grubano — non può modificarli da questa pagina.
 </Callout>
 
 <Eyebrow icon="quiz">FAQ</Eyebrow>
@@ -146,12 +146,12 @@ La **verifica dell'impresa (KYB)** compare nello stesso punto, in sola lettura: 
   {
     icon: "percent",
     q: "La commissione cambia se passo a Pro ?",
-    a: "No. L'abbonamento Pro (29 €/mese, presto disponibile) aggregherà i tuoi ordini Uber Eats, Deliveroo e Just Eat in un unico pannello di controllo, ma la griglia di commissione per modalità (5/8/12/0 %) resta rigorosamente identica sia in Standard sia in Pro."
+    a: "No. L'abbonamento Pro (29 €/mese, presto disponibile) aggregherà i suoi ordini Uber Eats, Deliveroo e Just Eat in un unico pannello di controllo, ma la griglia di commissione per modalità (5/8/12/0 %) resta rigorosamente identica sia in Standard sia in Pro."
   },
   {
     icon: "schedule",
     q: "Perché 2-7 giorni e non immediato ?",
-    a: "Il termine è quello di Stripe (il nostro fornitore di pagamento). I versamenti partono automaticamente non appena il pagamento è confermato; l'accredito sul tuo conto bancario segue il calendario interbancario (generalmente 2 giorni lavorativi in Europa, fino a 7 in alcuni casi)."
+    a: "Il termine è quello di Stripe (il nostro fornitore di pagamento). I versamenti partono automaticamente non appena il pagamento è confermato; l'accredito sul suo conto bancario segue il calendario interbancario (generalmente 2 giorni lavorativi in Europa, fino a 7 in alcuni casi)."
   },
   {
     icon: "account_balance",
@@ -161,7 +161,7 @@ La **verifica dell'impresa (KYB)** compare nello stesso punto, in sola lettura: 
   {
     icon: "description",
     q: "Che cos'è DAC7 ?",
-    a: "La direttiva DAC7 impone alle piattaforme come Grubano di dichiarare alle autorità fiscali i redditi dei loro venditori. Il tuo estratto conto mensile (presto scaricabile) raccoglierà tutti i dati necessari; dalla tua parte, inserisci semplicemente le tue informazioni fiscali in Impostazioni (vedi la sezione qui sopra) — Grubano si occupa del resto."
+    a: "La direttiva DAC7 impone alle piattaforme come Grubano di dichiarare alle autorità fiscali i redditi dei loro venditori. Il suo estratto conto mensile (presto scaricabile) raccoglierà tutti i dati necessari; dalla sua parte, inserisca semplicemente le sue informazioni fiscali in Impostazioni (veda la sezione qui sopra) — Grubano si occupa del resto."
   }
 ]} />
 
